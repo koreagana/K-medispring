@@ -1,3 +1,26 @@
+/* ============================
+   FONT SETTINGS (로니 & 리디아 2025.10.11)
+   ============================ */
+
+/* Merriweather */
+@font-face {
+  font-family: "Merriweather";
+  src: url("../fonts/Merriweather-VariableFont_opsz,wdth,wght.ttf") format("truetype");
+  font-weight: 300 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* Roboto */
+@font-face {
+  font-family: "Roboto";
+  src: url("../fonts/Roboto-VariableFont_wdth,wght.ttf") format("truetype");
+  font-weight: 300 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+
 /* ===== Typography: EN = Editorial look, ZH = Baidu-style ===== */
 
 /* 현재 템플릿의 영문 질감 유지용 스택 */
@@ -2318,4 +2341,5 @@ button,
 .lang-switch a[aria-current="page"]{ background:#f1f1f1; font-weight:600; }
 .lang-switch a[aria-disabled="true"]{ opacity:.5; pointer-events:none; }
 .lang-switch .sep{ opacity:.35; }
+
 
