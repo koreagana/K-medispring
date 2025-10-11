@@ -1,9 +1,43 @@
+/* ===== Typography: EN = Editorial look, ZH = Baidu-style ===== */
+
+/* 현재 템플릿의 영문 질감 유지용 스택 */
+:root{
+  --en-heading: "Merriweather", Georgia, "Times New Roman", serif;
+  --en-body: "Source Sans Pro", -apple-system, BlinkMacSystemFont, "Segoe UI",
+             Roboto, "Helvetica Neue", Arial, sans-serif;
+}
+
+/* 중국어(간체) 스택 */
+:root{
+  --zh-sc: "PingFang SC", "Microsoft YaHei", "Noto Sans CJK SC",
+           "Source Han Sans SC", "Heiti SC", "SimHei", sans-serif;
+}
+
+/* 페이지 기본 폰트: 영문(라틴)은 EN, 한자(CJK)는 자동으로 ZH 폴백 */
+html[lang="zh-CN"] body{
+  font-family: var(--en-body), var(--zh-sc);
+  line-height: 1.65;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* 제목은 Merriweather 질감 유지 + 중문 보강 */
+h1, h2, h3, h4, h5, h6{
+  font-family: var(--en-heading), var(--zh-sc);
+  font-weight: 700;
+}
+
+/* 영문 전용 구간이 필요하면: <span lang="en">텍스트</span> */
+:lang(en){ font-family: var(--en-body), var(--zh-sc); }
+/* 여기까지 22025/10/11일 추가한 내용 */
+
 @import url(fontawesome-all.min.css);
 @import url("https://fonts.googleapis.com/css?family=Open+Sans:400,600,400italic,600italic|Roboto+Slab:400,700");
 /*
 	Editorial by HTML5 UP
 	html5up.net | @ajlkn
 	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+
 */
 html, body, div, span, applet, object,
 iframe, h1, h2, h3, h4, h5, h6, p, blockquote,
@@ -2271,3 +2305,17 @@ button,
     border-top: 0;
     margin-top: 0;
     padding-top: 0; }
+
+	/* Language switch (Header)2025/10/11 */
+.lang-switch{
+  display:flex; align-items:center; gap:.5rem; margin-left:1rem;
+  font-size:.95rem;
+}
+.lang-switch a{
+  padding:.2rem .6rem; border:1px solid #e6e6e6; border-radius:999px;
+  text-decoration:none;
+}
+.lang-switch a[aria-current="page"]{ background:#f1f1f1; font-weight:600; }
+.lang-switch a[aria-disabled="true"]{ opacity:.5; pointer-events:none; }
+.lang-switch .sep{ opacity:.35; }
+
