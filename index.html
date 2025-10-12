@@ -366,34 +366,49 @@
   <div class="modal-inner">
     <button class="close" aria-label="Close">&times;</button>
     <p class="modal-caption">扫描二维码添加微信</p>
-    <img class="modal-content" src="images/wechat-qr.jpg" alt="WeChat QR for e-gana">
+    <!-- ./ 로 시작 + id 부여 -->
+    <img id="wechatQR" class="modal-content" src="./images/wechat-qr.jpg" alt="WeChat QR for e-gana">
     <p class="modal-id">WeChat ID：e-gana</p>
   </div>
 </div>
 
-	<script>
+
+<script>
 document.addEventListener('DOMContentLoaded', function () {
-  var modal   = document.getElementById('wechatModal');
-  var trigger = document.getElementById('wechat-icon');
-  var closeBtn= modal.querySelector('.close');
+  var modal    = document.getElementById('wechatModal');
+  var trigger  = document.getElementById('wechat-icon');
+  var closeBtn = modal.querySelector('.close');
+  var qrImg    = document.getElementById('wechatQR');
+
+  // 이미지 로드 실패 시 자동 폴백 (공백이 있는 파일명까지 커버)
+  var triedFallback = false;
+  qrImg.onerror = function () {
+    if (!triedFallback) {
+      triedFallback = true;
+      // 1차: 공백 파일명 시도
+      qrImg.src = './images/qr%20weixin.jpg';
+    } else {
+      // 2차: 절대/상대 경로 이슈를 위해 최후 수단 안내
+      qrImg.alt = 'QR 이미지를 불러오지 못했습니다. /images/wechat-qr.jpg 또는 "qr weixin.jpg" 파일명을 확인하세요.';
+    }
+  };
 
   function openModal(e){ if(e) e.preventDefault(); modal.style.display='block'; modal.setAttribute('aria-hidden','false'); }
   function closeModal(){ modal.style.display='none';  modal.setAttribute('aria-hidden','true'); }
 
   if (trigger) trigger.addEventListener('click', openModal);
   if (closeBtn) closeBtn.addEventListener('click', closeModal);
-  modal.addEventListener('click', function(e){ if(e.target===modal) closeModal(); });
-  document.addEventListener('keydown', function(e){ if(e.key==='Escape') closeModal(); });
+  modal.addEventListener('click', function (e) { if (e.target === modal) closeModal(); });
+  document.addEventListener('keydown', function (e) { if (e.key === 'Escape') closeModal(); });
 });
 </script>
 
-<!-- JS 비활성화 환경 대비(선택): -->
-<noscript><p style="text-align:center"><a href="images/wechat-qr.jpg" target="_blank">扫描二维码添加微信（点此打开）</a></p></noscript>
 
 		
 	</body>
 
 </html>
+
 
 
 
