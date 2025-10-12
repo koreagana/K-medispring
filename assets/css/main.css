@@ -2491,6 +2491,7 @@ html[lang="ko"] .button {
   background: rgba(0, 0, 0, 0.7);  /* 쉼표 수정 완료 */
 }
 
+/* === WeChat Modal 스타일 정리 === */
 .modal-inner {
   position: relative;
   margin: 8% auto;
@@ -2500,36 +2501,23 @@ html[lang="ko"] .button {
   border-radius: 12px;
   padding: 20px;
   text-align: center;
-  box-shadow: 0 0 20px rgba(0, 0, 0, 0.25);
+  box-shadow: 0 0 20px rgba(0,0,0,0.25);
+  border: none;           /* ✅ 테두리 제거 */
+  outline: none;          /* ✅ 빨간 박스 제거 */
 }
 
-.modal-content {
-  width: 100%;
-  height: auto;
-  border-radius: 8px;
-  margin: 10px 0;
-}
-.modal-caption {
-  font-size: 17px;
-  color: #222;
-  font-weight: 700;
-  margin-top: 4px;
-}
-.modal-id {
-  font-size: 14px;
-  color: #666;
-  margin-bottom: 5px;
-}
-.modal .close {
+/* 닫기 버튼 */
+.close {
   position: absolute;
-  top: 8px; right: 12px;
+  top: 10px;
+  right: 16px;
   font-size: 28px;
   color: #999;
   background: none;
-  border: 0;
+  border: none;           /* ✅ 혹시 남은 테두리 제거 */
+  outline: none;          /* ✅ 클릭 시 빨간 라인 제거 */
   cursor: pointer;
 }
-.modal .close:hover { color: #333; }
-.modal, .modal-inner { cursor: pointer; }
-
-
+.close:hover {
+  color: #333;
+}
