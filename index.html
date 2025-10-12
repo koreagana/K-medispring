@@ -316,34 +316,31 @@
 </div>
 
 <!-- ✅ WeChat Modal JS -->
-<script>
+
+		<script>
 document.addEventListener('DOMContentLoaded', function () {
   var modal    = document.getElementById('wechatModal');
   var trigger  = document.getElementById('wechat-icon');
   var closeBtn = modal.querySelector('.close');
-  var qrImg    = document.getElementById('wechatQR');
 
   function openModal(e) {
     if (e) e.preventDefault();
-    // 캐시 무효화하여 매번 새로 로드
-    qrImg.src = './images/qr%20weixin.jpg?v=' + Date.now();
     modal.style.display = 'block';
-    modal.setAttribute('aria-hidden', 'false');
   }
+
   function closeModal() {
     modal.style.display = 'none';
-    modal.setAttribute('aria-hidden', 'true');
   }
 
   if (trigger) trigger.addEventListener('click', openModal);
   if (closeBtn) closeBtn.addEventListener('click', closeModal);
 
-  // 모달의 어디를 클릭해도 닫힘
+  // ✅ 모달의 “바깥” 클릭 시 닫기 (QR 영역은 유지)
   modal.addEventListener('click', function (e) {
-    e.preventDefault();
-    closeModal();
+    if (e.target === modal) closeModal();
   });
-  // ESC 키로 닫기
+
+  // ✅ ESC 키로 닫기
   document.addEventListener('keydown', function (e) {
     if (e.key === 'Escape') closeModal();
   });
@@ -352,17 +349,3 @@ document.addEventListener('DOMContentLoaded', function () {
 
 </body>
 </html>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
