@@ -2482,42 +2482,63 @@ html[lang="ko"] .button {
 }
 
 
-/* === Modal (WeChat QR Popup) – 최종본 === */
+/* === WeChat Modal : 스마트폰 스타일 === */
 .modal {
   display: none;
   position: fixed;
   inset: 0;
-  z-index: 9999;              /* ← 겹침 방지 */
-  background: rgba(0, 0, 0, 0.7);  /* 쉼표 수정 완료 */
+  z-index: 9999;
+  background: rgba(0, 0, 0, 0.7);
 }
 
-/* === WeChat Modal 스타일 정리 === */
+/* 스마트폰 모양의 팝업 */
 .modal-inner {
   position: relative;
-  margin: 8% auto;
-  width: 90%;
-  max-width: 320px;
+  margin: 5% auto;
+  width: 300px;
+  height: 520px;
   background: #fff;
-  border-radius: 12px;
-  padding: 20px;
+  border-radius: 40px;
+  padding: 30px 20px;
   text-align: center;
-  box-shadow: 0 0 20px rgba(0,0,0,0.25);
-  border: none;           /* ✅ 테두리 제거 */
-  outline: none;          /* ✅ 빨간 박스 제거 */
+  box-shadow: 0 0 25px rgba(0,0,0,0.3);
+  border: 6px solid #e5e5e5;   /* 스마트폰 테두리 느낌 */
 }
 
-/* 닫기 버튼 */
-.close {
+/* 상단 검정 바 (스피커 부분처럼 보이게) */
+.modal-inner::before {
+  content: "";
   position: absolute;
-  top: 10px;
-  right: 16px;
-  font-size: 28px;
-  color: #999;
-  background: none;
-  border: none;           /* ✅ 혹시 남은 테두리 제거 */
-  outline: none;          /* ✅ 클릭 시 빨간 라인 제거 */
-  cursor: pointer;
+  top: 12px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 80px;
+  height: 8px;
+  background: #222;
+  border-radius: 4px;
 }
-.close:hover {
-  color: #333;
+
+/* QR 이미지 */
+.modal-content {
+  width: 100%;
+  height: auto;
+  margin-top: 60px;
+  border-radius: 12px;
+}
+
+/* 텍스트 */
+.modal-caption {
+  font-size: 17px;
+  font-weight: 700;
+  color: #111;
+  margin-top: 20px;
+}
+.modal-id {
+  font-size: 14px;
+  color: #777;
+}
+
+/* 닫기 버튼 제거 */
+.close {
+  display: none;
 }
