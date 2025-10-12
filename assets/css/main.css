@@ -2459,6 +2459,11 @@ html[lang="ko"] .button {
 .lang-switch a[aria-disabled="true"]{ opacity:.5; pointer-events:none; }
 .lang-switch .sep{ opacity:.35; }
 
+/* kill language switch anywhere */
+.lang-switch,
+.lang-switch a,
+.lang-switch .sep { display: none !important; }
+
 
 
 
