@@ -2459,27 +2459,35 @@ html[lang="ko"] .button {
 .lang-switch a[aria-disabled="true"]{ opacity:.5; pointer-events:none; }
 .lang-switch .sep{ opacity:.35; }
 
-/* kill language switch anywhere */
+/* kill language switch anywhere (keep) */
 .lang-switch,
 .lang-switch a,
 .lang-switch .sep { display: none !important; }
 
-/* WeChat hover 색상 */
+/* WeChat hover 색상 (1개만 유지) */
 .icons .fa-weixin:hover { color: #09b83e !important; }
 
-/* Xiaohongshu SVG 정렬 */
+/* Xiaohongshu SVG 정렬 + 기본 회색 → 호버 시 컬러 */
 .icons .icon svg { vertical-align: middle; margin-top: -3px; transition: transform .2s ease; }
-.icons .icon:hover svg { transform: scale(1.1); }
+a[title="小红书"] svg {
+  filter: grayscale(100%) brightness(70%);
+  opacity: .85;
+  transition: filter .2s ease, opacity .2s ease, transform .2s ease;
+}
+a[title="小红书"]:hover svg {
+  filter: none;
+  opacity: 1;
+  transform: scale(1.1);
+}
 
-/* === Modal (WeChat QR Popup) === */
+/* === Modal (WeChat QR Popup) — 최종본 === */
 .modal {
   display: none;
   position: fixed;
-  z-index: 1000;
   inset: 0;
-  background: rgba(0,0,0,0.7);
+  z-index: 9999;               /* ← 겹침 방지 */
+  background: rgba(0,0,0,.7);
 }
-
 .modal-inner {
   position: relative;
   margin: 8% auto;
@@ -2489,42 +2497,32 @@ html[lang="ko"] .button {
   border-radius: 12px;
   padding: 20px;
   text-align: center;
-  box-shadow: 0 0 20px rgba(0,0,0,0.25);
+  box-shadow: 0 0 20px rgba(0,0,0,.25);
 }
-
 .modal-content {
   width: 100%;
   height: auto;
   border-radius: 8px;
   margin: 10px 0;
 }
-
 .modal-caption {
   font-size: 17px;
   color: #222;
-  font-weight: bold;
-  margin-top: 5px;
+  font-weight: 700;
+  margin-top: 4px;
 }
-
 .modal-id {
   font-size: 14px;
   color: #666;
   margin-bottom: 5px;
 }
-
-.close {
+.modal .close {
   position: absolute;
-  top: 10px;
-  right: 16px;
+  top: 8px; right: 12px;
   font-size: 28px;
   color: #999;
   background: none;
-  border: none;
+  border: 0;
   cursor: pointer;
 }
-.close:hover { color: #333; }
-
-
-
-
-
+.modal .close:hover { color: #333; }
