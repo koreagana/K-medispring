@@ -1730,6 +1730,30 @@ button,
     pointer-events: none;
     opacity: 0.25; }
 
+/* ==========================
+   ↓ 기존 버튼 코드 끝나는 부분 ↓
+   ========================== */
+input[type="submit"].disabled, 
+input[type="submit"]:disabled,
+.button:disabled {
+  pointer-events: none;
+  opacity: 0.25;
+}
+
+/* ==========================
+   다국어 버튼 폰트 설정 (by 리디아 & 로니)
+   ========================== */
+html[lang="zh"] .button {
+  font-family: 'SourceHanSerifCN', serif;
+}
+html[lang="en"] .button {
+  font-family: 'Merriweather', serif;
+}
+html[lang="ko"] .button {
+  font-family: 'Pretendard', sans-serif;
+}
+
+	
 /* Mini Posts */
 .mini-posts article {
   border-top: solid 1px rgba(210, 215, 217, 0.75);
@@ -2434,6 +2458,7 @@ button,
 .lang-switch a[aria-current="page"]{ background:#f1f1f1; font-weight:600; }
 .lang-switch a[aria-disabled="true"]{ opacity:.5; pointer-events:none; }
 .lang-switch .sep{ opacity:.35; }
+
 
 
 
