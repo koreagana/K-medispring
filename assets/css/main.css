@@ -2,6 +2,67 @@
    FONT SETTINGS (로니 & 리디아 2025.10.11)
    ============================ */
 
+/* Pretendard Regular */
+@font-face {
+  font-family: 'Pretendard';
+  src: url('../fonts/Pretendard-Regular.ttf') format('truetype');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* Pretendard Bold */
+@font-face {
+  font-family: 'Pretendard';
+  src: url('../fonts/Pretendard-Bold.ttf') format('truetype');
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* Source Han Serif CN (Simplified Chinese) */
+@font-face {
+  font-family: 'SourceHanSerifCN';
+  src: url('../fonts/SourceHanSerifCN-Light.otf') format('opentype');
+  font-weight: 300;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'SourceHanSerifCN';
+  src: url('../fonts/SourceHanSerifCN-Medium.otf') format('opentype');
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'SourceHanSerifCN';
+  src: url('../fonts/SourceHanSerifCN-Bold.otf') format('opentype');
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* ===== 기존 Merriweather & Roboto ===== */
+@font-face {
+  font-family: "Merriweather";
+  src: url("../fonts/Merriweather-VariableFont_opsz,wdth,wght.ttf") format("truetype");
+  font-weight: 300 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Roboto";
+  src: url("../fonts/Roboto-VariableFont_wdth,wght.ttf") format("truetype");
+  font-weight: 300 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+
 /* Merriweather */
 @font-face {
   font-family: "Merriweather";
@@ -2341,5 +2402,6 @@ button,
 .lang-switch a[aria-current="page"]{ background:#f1f1f1; font-weight:600; }
 .lang-switch a[aria-disabled="true"]{ opacity:.5; pointer-events:none; }
 .lang-switch .sep{ opacity:.35; }
+
 
 
