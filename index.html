@@ -371,11 +371,30 @@
   </div>
 </div>
 
-	
+	<script>
+document.addEventListener('DOMContentLoaded', function () {
+  var modal   = document.getElementById('wechatModal');
+  var trigger = document.getElementById('wechat-icon');
+  var closeBtn= modal.querySelector('.close');
+
+  function openModal(e){ if(e) e.preventDefault(); modal.style.display='block'; modal.setAttribute('aria-hidden','false'); }
+  function closeModal(){ modal.style.display='none';  modal.setAttribute('aria-hidden','true'); }
+
+  if (trigger) trigger.addEventListener('click', openModal);
+  if (closeBtn) closeBtn.addEventListener('click', closeModal);
+  modal.addEventListener('click', function(e){ if(e.target===modal) closeModal(); });
+  document.addEventListener('keydown', function(e){ if(e.key==='Escape') closeModal(); });
+});
+</script>
+
+<!-- JS 비활성화 환경 대비(선택): -->
+<noscript><p style="text-align:center"><a href="images/wechat-qr.jpg" target="_blank">扫描二维码添加微信（点此打开）</a></p></noscript>
+
 		
 	</body>
 
 </html>
+
 
 
 
