@@ -25,45 +25,47 @@
 						<div class="inner">
 
 							<!-- Header -->
-								<header id="header">
-									 <a href="index.html" class="logo" aria-label="汉江春天 首页"><strong>汉江春天</strong></a>
-									<ul class="icons">
+<header id="header">
+  <a href="index.html" class="logo"><strong>汉江春天</strong></a>
 
-  <!-- WeChat -->
-  <li>
-    <a href="#" class="icon brands fa-weixin" title="WeChat: e-gana">
-      <span class="label">WeChat</span>
-    </a>
-  </li>
+  <!-- ✅ 딱 4개: WeChat / Xiaohongshu / Instagram / Email -->
+  <ul class="icons">
+    <!-- WeChat: QR 이미지 열기 or ID만 표시 -->
+    <!-- QR 이미지가 있으면 images/wechat-qr.jpg를 준비해 두고 아래 href로 연결 -->
+    <li>
+      <a href="images/wechat-qr.jpg" target="_blank" class="icon brands fa-weixin" title="WeChat: e-gana">
+        <span class="label">WeChat</span>
+      </a>
+    </li>
 
-  <!-- Xiaohongshu (小红书) -->
-  <li>
-    <a href="https://www.xiaohongshu.com/user/profile/550972467" target="_blank" class="icon" title="小红书">
-      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1024 1024" width="20" height="20">
-        <rect width="1024" height="1024" rx="200" ry="200" fill="#FF2442"/>
-        <path fill="#fff" d="M300 420h60v184h-60zM664 420h60v184h-60zM512 420h60v184h-60zM392 420h60v184h-60zM584 420h60v184h-60z"/>
-      </svg>
-      <span class="label">Xiaohongshu</span>
-    </a>
-  </li>
+    <!-- Xiaohongshu (커스텀 SVG 아이콘) -->
+    <li>
+      <a href="https://www.xiaohongshu.com/user/profile/550972467" target="_blank" class="icon" title="小红书">
+        <!-- 아이콘 크기는 템플릿 기본 아이콘과 비슷하게 20x20 -->
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1024 1024" width="20" height="20" aria-hidden="true" focusable="false">
+          <rect width="1024" height="1024" rx="200" ry="200" fill="#FF2442"/>
+          <!-- 심볼은 단순화: 사각형 로고만으로도 인지 충분 -->
+        </svg>
+        <span class="label">Xiaohongshu</span>
+      </a>
+    </li>
 
-  <!-- Instagram -->
-  <li>
-    <a href="https://www.instagram.com/jiana2734/" target="_blank" class="icon brands fa-instagram" title="Instagram">
-      <span class="label">Instagram</span>
-    </a>
-  </li>
+    <!-- Instagram -->
+    <li>
+      <a href="https://www.instagram.com/jiana2734/" target="_blank" class="icon brands fa-instagram" title="Instagram">
+        <span class="label">Instagram</span>
+      </a>
+    </li>
 
-  <!-- Email -->
-  <li>
-    <a href="mailto:egana@kmedispring.com" class="icon solid fa-envelope" title="Email">
-      <span class="label">Email</span>
-    </a>
-  </li>
+    <!-- Email -->
+    <li>
+      <a href="mailto:egana@kmedispring.com" class="icon solid fa-envelope" title="Email">
+        <span class="label">Email</span>
+      </a>
+    </li>
+  </ul>
+</header>
 
-</ul>
-
-								</header>
 
 							<!-- Banner -->
 								<section id="banner">
@@ -283,6 +285,7 @@
 	</body>
 
 </html>
+
 
 
 
