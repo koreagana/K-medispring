@@ -285,74 +285,27 @@
 									</ul>
 								</section>
 
-							<!-- Footer -->
-								<footer id="footer">
-									<p class="copyright">&copy; Untitled. All rights reserved. Demo Images: <a href="https://unsplash.com">Unsplash</a>. Design: <a href="https://html5up.net">HTML5 UP</a>.</p>
-								</footer>
+		<!-- Footer -->
+<footer id="footer">
+  <p class="copyright">
+    &copy; Untitled. All rights reserved. Demo Images:
+    <a href="https://unsplash.com">Unsplash</a>. Design:
+    <a href="https://html5up.net">HTML5 UP</a>.
+  </p>
+</footer>
 
-						</div>
-					</div>
+</div> <!-- .inner -->
+</div> <!-- #main -->
+</div> <!-- #wrapper -->
 
-			</div>
+<!-- Scripts -->
+<script src="assets/js/jquery.min.js"></script>
+<script src="assets/js/browser.min.js"></script>
+<script src="assets/js/breakpoints.min.js"></script>
+<script src="assets/js/util.js"></script>
+<script src="assets/js/main.js"></script>
 
-/* Xiaohongshu SVG 정렬 */
-.icons .icon svg { vertical-align: middle; margin-top: -3px; transition: transform .2s ease; }
-.icons .icon:hover svg { transform: scale(1.1); }
-
-/* === Modal (WeChat QR Popup) === */
-.modal {
-  display: none;
-  position: fixed;
-  z-index: 1000;
-  inset: 0;
-  background: rgba(0,0,0,0.7);
-}
-
-.modal-inner {
-  position: relative;
-  margin: 8% auto;
-  width: 90%;
-  max-width: 320px;
-  background: #fff;
-  border-radius: 12px;
-  padding: 20px;
-  text-align: center;
-  box-shadow: 0 0 20px rgba(0,0,0,0.25);
-}
-
-.modal-content {
-  width: 100%;
-  height: auto;
-  border-radius: 8px;
-  margin: 10px 0;
-}
-
-.modal-caption {
-  font-size: 17px;
-  color: #222;
-  font-weight: bold;
-  margin-top: 5px;
-}
-
-.modal-id {
-  font-size: 14px;
-  color: #666;
-  margin-bottom: 5px;
-}
-
-.close {
-  position: absolute;
-  top: 10px;
-  right: 16px;
-  font-size: 28px;
-  color: #999;
-  background: none;
-  border: none;
-  cursor: pointer;
-}
-.close:hover { color: #333; }
-
-<!-- ✅ WeChat QR Modal -->
+<!-- ✅ WeChat QR Modal (HTML만, CSS는 main.css에) -->
 <div id="wechatModal" class="modal" aria-hidden="true" role="dialog">
   <div class="modal-inner">
     <button class="close" aria-label="Close">&times;</button>
@@ -362,6 +315,7 @@
   </div>
 </div>
 
+<!-- ✅ WeChat Modal JS -->
 <script>
 document.addEventListener('DOMContentLoaded', function () {
   var modal    = document.getElementById('wechatModal');
@@ -369,39 +323,35 @@ document.addEventListener('DOMContentLoaded', function () {
   var closeBtn = modal.querySelector('.close');
   var qrImg    = document.getElementById('wechatQR');
 
-  // 매번 새로 로드 (캐시 무효화)
   function openModal(e) {
     if (e) e.preventDefault();
+    // 캐시 무효화하여 매번 새로 로드
     qrImg.src = './images/qr%20weixin.jpg?v=' + Date.now();
     modal.style.display = 'block';
     modal.setAttribute('aria-hidden', 'false');
   }
-
   function closeModal() {
     modal.style.display = 'none';
     modal.setAttribute('aria-hidden', 'true');
   }
 
-  // 이벤트 연결
-  trigger.addEventListener('click', openModal);
-  closeBtn.addEventListener('click', closeModal);
+  if (trigger) trigger.addEventListener('click', openModal);
+  if (closeBtn) closeBtn.addEventListener('click', closeModal);
+
+  // 모달의 어디를 클릭해도 닫힘
   modal.addEventListener('click', function (e) {
-    e.preventDefault(); // 어디를 눌러도 닫힘
+    e.preventDefault();
     closeModal();
   });
+  // ESC 키로 닫기
   document.addEventListener('keydown', function (e) {
     if (e.key === 'Escape') closeModal();
   });
 });
-
-	<script src="assets/js/main.js"></script>
+</script>
 
 </body>
 </html>
-
-
-
-
 
 
 
