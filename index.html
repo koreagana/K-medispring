@@ -49,41 +49,51 @@
   <a href="index.html" class="logo"><strong>汉江春天</strong></a>
 
   <!-- ✅ 딱 4개: WeChat / Xiaohongshu / Instagram / Email -->
-  <ul class="icons">
-    <!-- WeChat: QR 이미지 열기 or ID만 표시 -->
-    <!-- QR 이미지가 있으면 images/wechat-qr.jpg를 준비해 두고 아래 href로 연결 -->
-    <li>
-      <a href="images/wechat-qr.jpg" target="_blank" class="icon brands fa-weixin" title="WeChat: e-gana">
-        <span class="label">WeChat</span>
-      </a>
-    </li>
+<ul class="icons">
+  <!-- WeChat -->
+  <li>
+    <a href="#" id="wechat-icon" class="icon brands fa-weixin" title="WeChat: e-gana">
+      <span class="label">WeChat</span>
+    </a>
+  </li>
 
-    <!-- Xiaohongshu (커스텀 SVG 아이콘) -->
-    <li>
-      <a href="https://www.xiaohongshu.com/user/profile/550972467" target="_blank" class="icon" title="小红书">
-        <!-- 아이콘 크기는 템플릿 기본 아이콘과 비슷하게 20x20 -->
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1024 1024" width="20" height="20" aria-hidden="true" focusable="false">
-          <rect width="1024" height="1024" rx="200" ry="200" fill="#FF2442"/>
-          <!-- 심볼은 단순화: 사각형 로고만으로도 인지 충분 -->
-        </svg>
-        <span class="label">Xiaohongshu</span>
-      </a>
-    </li>
+  <!-- Xiaohongshu -->
+  <li>
+    <a href="https://www.xiaohongshu.com/user/profile/550972467" target="_blank" class="icon" title="小红书">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" width="20" height="20">
+        <rect width="100" height="100" rx="20" ry="20" fill="#FF2442"/>
+        <text x="50%" y="60%" text-anchor="middle" fill="#fff" font-size="30" font-family="sans-serif" font-weight="bold">小红书</text>
+      </svg>
+      <span class="label">Xiaohongshu</span>
+    </a>
+  </li>
 
-    <!-- Instagram -->
-    <li>
-      <a href="https://www.instagram.com/jiana2734/" target="_blank" class="icon brands fa-instagram" title="Instagram">
-        <span class="label">Instagram</span>
-      </a>
-    </li>
+  <!-- Instagram -->
+  <li>
+    <a href="https://www.instagram.com/jiana2734/" target="_blank" class="icon brands fa-instagram" title="Instagram">
+      <span class="label">Instagram</span>
+    </a>
+  </li>
 
-    <!-- Email -->
-    <li>
-      <a href="mailto:egana@kmedispring.com" class="icon solid fa-envelope" title="Email">
-        <span class="label">Email</span>
-      </a>
-    </li>
-  </ul>
+  <!-- Email -->
+  <li>
+    <a href="mailto:egana@kmedispring.com" class="icon solid fa-envelope" title="Email">
+      <span class="label">Email</span>
+    </a>
+  </li>
+</ul>
+
+<!-- ✅ WeChat QR Modal -->
+<div id="wechatModal" class="modal" aria-hidden="true" role="dialog">
+  <div class="modal-inner">
+    <button class="close" aria-label="Close">&times;</button>
+    <p class="modal-caption">扫描二维码添加微信</p>
+    <img class="modal-content" src="images/wechat-qr.jpg" alt="WeChat QR for e-gana">
+    <p class="modal-id">WeChat ID：e-gana</p>
+  </div>
+</div>
+
+	
 </header>
 
 
@@ -305,6 +315,7 @@
 	</body>
 
 </html>
+
 
 
 
