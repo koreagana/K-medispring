@@ -315,36 +315,39 @@
 </div>
 
 
-		<script>
+<script>
 document.addEventListener('DOMContentLoaded', function () {
   var modal    = document.getElementById('wechatModal');
   var trigger  = document.getElementById('wechat-icon');
-  var closeBtn = modal.querySelector('.close');
+  var qrImg    = document.getElementById('wechatQR');
 
-  function openModal(e) {
-    if (e) e.preventDefault();
+  function openModal(e){
+    if(e) e.preventDefault();
+    // 캐시 무효화 + 공백 안전 (qr weixin.jpg)
+    var src = 'images/qr weixin.jpg';
+    qrImg.src = encodeURI(src) + '?v=' + Date.now();
+
+    document.body.classList.add('modal-open');   // (4) 스크롤 잠금
     modal.style.display = 'block';
+    modal.setAttribute('aria-hidden','false');
   }
 
-  function closeModal() {
+  function closeModal(){
     modal.style.display = 'none';
+    modal.setAttribute('aria-hidden','true');
+    document.body.classList.remove('modal-open'); // (4) 잠금 해제
   }
 
   if (trigger) trigger.addEventListener('click', openModal);
-  if (closeBtn) closeBtn.addEventListener('click', closeModal);
 
-  // ✅ 모달의 “바깥” 클릭 시 닫기 (QR 영역은 유지)
+  // 바깥(반투명 영역) 클릭 시 닫기 — QR/텍스트는 유지
   modal.addEventListener('click', function (e) {
     if (e.target === modal) closeModal();
   });
 
-  // ✅ ESC 키로 닫기
+  // ESC 키로 닫기
   document.addEventListener('keydown', function (e) {
     if (e.key === 'Escape') closeModal();
   });
 });
 </script>
-
-</body>
-</html>
-
