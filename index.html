@@ -361,17 +361,15 @@
 }
 .close:hover { color: #333; }
 
-		<!-- ✅ WeChat QR Modal -->
+<!-- ✅ WeChat QR Modal -->
 <div id="wechatModal" class="modal" aria-hidden="true" role="dialog">
   <div class="modal-inner">
     <button class="close" aria-label="Close">&times;</button>
     <p class="modal-caption">扫描二维码添加微信</p>
-    <!-- ./ 로 시작 + id 부여 -->
-    <img id="wechatQR" class="modal-content" src="./images/wechat-qr.jpg" alt="WeChat QR for e-gana">
+    <img id="wechatQR" class="modal-content" src="./images/qr%20weixin.jpg" alt="WeChat QR for e-gana">
     <p class="modal-id">WeChat ID：e-gana</p>
   </div>
 </div>
-
 
 <script>
 document.addEventListener('DOMContentLoaded', function () {
@@ -380,41 +378,36 @@ document.addEventListener('DOMContentLoaded', function () {
   var closeBtn = modal.querySelector('.close');
   var qrImg    = document.getElementById('wechatQR');
 
-  // 이미지 로드 실패 시 자동 폴백 (공백이 있는 파일명까지 커버)
-  var triedFallback = false;
-  qrImg.onerror = function () {
-    if (!triedFallback) {
-      triedFallback = true;
-      // 1차: 공백 파일명 시도
-      qrImg.src = './images/qr%20weixin.jpg';
-    } else {
-      // 2차: 절대/상대 경로 이슈를 위해 최후 수단 안내
-      qrImg.alt = 'QR 이미지를 불러오지 못했습니다. /images/wechat-qr.jpg 또는 "qr weixin.jpg" 파일명을 확인하세요.';
-    }
-  };
+  // 매번 새로 로드 (캐시 무효화)
+  function openModal(e) {
+    if (e) e.preventDefault();
+    qrImg.src = './images/qr%20weixin.jpg?v=' + Date.now();
+    modal.style.display = 'block';
+    modal.setAttribute('aria-hidden', 'false');
+  }
 
-  function openModal(e){ if(e) e.preventDefault(); modal.style.display='block'; modal.setAttribute('aria-hidden','false'); }
-  function closeModal(){ modal.style.display='none';  modal.setAttribute('aria-hidden','true'); }
+  function closeModal() {
+    modal.style.display = 'none';
+    modal.setAttribute('aria-hidden', 'true');
+  }
 
-  if (trigger) trigger.addEventListener('click', openModal);
-  if (closeBtn) closeBtn.addEventListener('click', closeModal);
-
-	// 모달의 어디를 클릭해도 닫힘 (QR/텍스트/바깥 모두)
-modal.addEventListener('click', function (e) {
-  e.preventDefault();
-  closeModal();
-});
- 
-	document.addEventListener('keydown', function (e) 
-	{ if (e.key === 'Escape') closeModal();
+  // 이벤트 연결
+  trigger.addEventListener('click', openModal);
+  closeBtn.addEventListener('click', closeModal);
+  modal.addEventListener('click', function (e) {
+    e.preventDefault(); // 어디를 눌러도 닫힘
+    closeModal();
+  });
+  document.addEventListener('keydown', function (e) {
+    if (e.key === 'Escape') closeModal();
+  });
 });
 </script>
 
-
-		
 	</body>
 
 </html>
+
 
 
 
