@@ -2466,28 +2466,31 @@ html[lang="ko"] .button {
 
 /* WeChat hover 색상 (1개만 유지) */
 .icons .fa-weixin:hover { color: #09b83e !important; }
-
-/* Xiaohongshu SVG 정렬 + 기본 회색 → 호버 시 컬러 */
-.icons .icon svg { vertical-align: middle; margin-top: -3px; transition: transform .2s ease; }
-a[title="小红书"] svg {
+	
+/* Xiaohongshu: 기본 회색 → 호버 시 컬러 */
+.icons a[title="小红书"] svg,
+.icons .icon[title="小红书"] svg {
   filter: grayscale(100%) brightness(70%);
   opacity: .85;
   transition: filter .2s ease, opacity .2s ease, transform .2s ease;
 }
-a[title="小红书"]:hover svg {
-  filter: none;
+.icons a[title="小红书"]:hover svg,
+.icons .icon[title="小红书"]:hover svg {
+  filter: none;   /* 본래 #FF2442 */
   opacity: 1;
   transform: scale(1.1);
 }
 
-/* === Modal (WeChat QR Popup) — 최종본 === */
+
+/* === Modal (WeChat QR Popup) – 최종본 === */
 .modal {
   display: none;
   position: fixed;
   inset: 0;
-  z-index: 9999;               /* ← 겹침 방지 */
-  background: rgba(0,0,0,.7);
+  z-index: 9999;              /* ← 겹침 방지 */
+  background: rgba(0, 0, 0, 0.7);  /* 쉼표 수정 완료 */
 }
+
 .modal-inner {
   position: relative;
   margin: 8% auto;
@@ -2497,8 +2500,9 @@ a[title="小红书"]:hover svg {
   border-radius: 12px;
   padding: 20px;
   text-align: center;
-  box-shadow: 0 0 20px rgba(0,0,0,.25);
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.25);
 }
+
 .modal-content {
   width: 100%;
   height: auto;
@@ -2526,3 +2530,4 @@ a[title="小红书"]:hover svg {
   cursor: pointer;
 }
 .modal .close:hover { color: #333; }
+
