@@ -2530,4 +2530,6 @@ html[lang="ko"] .button {
   cursor: pointer;
 }
 .modal .close:hover { color: #333; }
+.modal, .modal-inner { cursor: pointer; }
+
 
