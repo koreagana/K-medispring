@@ -209,11 +209,14 @@ body {
 
 /* Type */
 body, input, select, textarea {
-  color: #7f888f;
-  font-family: "Open Sans", sans-serif;
-  font-size: 13pt;
+  color: #333;
+  font-family: "Source Han Serif CN", "Noto Serif KR", serif;
+  font-size: 15pt;   /* 나중에 16pt로 변경 가능 */
   font-weight: 400;
-  line-height: 1.65; }
+  line-height: 1.8;  /* 줄 간격 여유롭게 */
+}
+
+
   @media screen and (max-width: 1680px) {
     body, input, select, textarea {
       font-size: 11pt; } }
@@ -2572,3 +2575,4 @@ html[lang="ko"] .button {
 
 /* (4) 팝업 열릴 때 배경 스크롤 잠금 */
 body.modal-open{ overflow:hidden; }
+
