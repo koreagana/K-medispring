@@ -1601,14 +1601,14 @@ table {
 
 /* Button */
 
-/* === CTA: 了解更多 버튼 스타일 (리디아 커스텀 버전) === */
+/* === CTA: 定制医疗观光方案 버튼 스타일 (리디아 커스텀 버전) === */
 
 .button,
 .actions .button,
 a.button {
   font-family: 'Source Han Serif CN', 'Noto Serif KR', serif;
   font-weight: 700;
-  font-size: 16pt !important;   /* 글자 크기 업 */
+  font-size: 15pt !important;   /* 글자 크기 업 */
   letter-spacing: 0.05em;
   border-radius: 6px;
   padding: 0.55em 1.5em;       /* 버튼 높이 줄이기 */
@@ -1622,7 +1622,7 @@ a.button {
 /* 기본 컬러 (톤 다운된 블루) */
 .button.primary,
 .actions .button.primary {
-  background: #0E5E94;   /* 기존보다 채도 ↓, 명도 ↓ */
+  background: #4E97D1;   /* 기존보다 채도 ↓, 명도 ↓ */
   border-color: #0E5E94;
   color: #fff;
 }
@@ -2598,6 +2598,7 @@ html[lang="ko"] .button {
 
 /* (4) 팝업 열릴 때 배경 스크롤 잠금 */
 body.modal-open{ overflow:hidden; }
+
 
 
 
