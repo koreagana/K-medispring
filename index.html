@@ -31,9 +31,35 @@
 
   <!-- 사이트 메인 스타일 -->
   <link rel="stylesheet" href="assets/css/main.css" />
-</head>
 
-  </head>
+	<style>
+  :root {
+    --brand: #0077B6;   /* 브랜드 기본색 */
+    --hover: #2088C2;   /* 마우스오버 */
+    --deep:  #1565A0;   /* 강조/버튼 */
+    --line:  #A0C4DE;   /* 구분선 */
+  }
+
+  /* 메뉴 */
+  #menu a { color: #333; text-decoration: none; transition: color 0.25s ease; }
+  #menu a:hover { color: var(--hover); }
+  #menu a.active { color: var(--brand); font-weight: 600; }
+
+  /* 타이틀 밑줄 */
+  .major:after { background-color: var(--brand) !important; }
+
+  /* 버튼 */
+  .button.primary, .actions .button.primary {
+    background: var(--brand);
+    border-color: var(--brand);
+  }
+  .button.primary:hover { background: var(--hover); border-color: var(--hover); }
+
+  /* 구분선 */
+  hr, .inner .divider { border-color: var(--line); }
+</style>
+
+</head>
 
 	<body class="is-preload">
 
@@ -335,5 +361,6 @@ document.addEventListener('DOMContentLoaded', function () {
   });
 });
 </script>
+
 
 
