@@ -1601,22 +1601,38 @@ table {
 
 /* Button */
 
-/* === CTA: 了解更多 버튼 타이포그래피 업그레이드 === */
+/* === CTA: 了解更多 버튼 스타일 개선 === */
 .button,
 .actions .button,
 a.button {
-  font-family: 'SourceHanSerifCN', 'Pretendard', serif; /* 중국어 우선, 한영 폴백 */
+  font-family: 'Source Han Serif CN', 'Noto Serif KR', serif; /* 중국어/한글 모두 자연스럽게 */
   font-weight: 700;
+  font-size: 16pt; /* 글씨 크기 업 */
   letter-spacing: 0.05em;
+  border-radius: 6px;
+  padding: 0.75em 1.75em;
+  transition: all 0.25s ease;
 }
 
-.button.primary {
-  background: #e35757;
-  border-color: #e35757;
+/* 브랜드 톤 다운 블루 — 로고 톤에 맞게 조정 (#0077B6 → 좀 더 부드럽고 고급스러운 블루) */
+.button.primary,
+.actions .button.primary {
+  background: #1C7EBB;   /* 부드럽고 깊이 있는 블루 */
+  border-color: #1C7EBB;
+  color: #fff;
 }
-.button.primary:hover {
-  background: #ff6b66;
-  border-color: #ff6b66;
+
+.button.primary:hover,
+.actions .button.primary:hover {
+  background: #3797D3;   /* 밝은 하이라이트 블루 */
+  border-color: #3797D3;
+  transform: translateY(-1px);
+}
+
+/* 포커스 시 (탭이나 클릭 후) */
+.button.primary:focus {
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(28, 126, 187, 0.3);
 }
 
 /* ==========================
@@ -2575,4 +2591,5 @@ html[lang="ko"] .button {
 
 /* (4) 팝업 열릴 때 배경 스크롤 잠금 */
 body.modal-open{ overflow:hidden; }
+
 
