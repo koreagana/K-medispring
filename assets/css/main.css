@@ -2186,17 +2186,26 @@ html[lang="ko"] .button {
       text-transform: none !important;
       font-family: 'Font Awesome 5 Free';
       font-weight: 900; }
-    #sidebar .toggle:before {
-      content: '\f0c9';
-      font-size: 2rem;
-      height: inherit;
-      left: 0;
-      line-height: inherit;
-      position: absolute;
-      text-indent: 0;
-      top: 0;
-      width: inherit; }
-  #sidebar.inactive {
+
+	#sidebar .toggle:before {
+  content: '\f0c9';
+  font-size: 2rem;
+  color: #4E97D1; /* 🔹 브랜드 블루 추가 */
+  height: inherit;
+  left: 0;
+  line-height: inherit;
+  position: absolute;
+  text-indent: 0;
+  top: 0;
+  width: inherit;
+}
+
+#sidebar .toggle:hover:before {
+  color: #6FB5E9; /* 살짝 밝은 블루 (호버 효과) */
+}
+
+	
+	#sidebar.inactive {
     margin-left: -26em; }
   @media screen and (max-width: 1680px) {
     #sidebar {
@@ -2603,6 +2612,7 @@ html[lang="ko"] .button {
 
 /* (4) 팝업 열릴 때 배경 스크롤 잠금 */
 body.modal-open{ overflow:hidden; }
+
 
 
 
