@@ -41,23 +41,43 @@
   }
 
   /* 메뉴 */
-  #menu a { color: #333; text-decoration: none; transition: color 0.25s ease; }
-  #menu a:hover { color: var(--hover); }
-  #menu a.active { color: var(--brand); font-weight: 600; }
+  #menu a {
+    color: #333 !important;
+    text-decoration: none !important;
+    transition: color 0.25s ease !important;
+  }
+
+  #menu a:hover {
+    color: var(--hover) !important;
+  }
+
+  #menu a.active {
+    color: var(--brand) !important;
+    font-weight: 600 !important;
+  }
 
   /* 타이틀 밑줄 */
-  .major:after { background-color: var(--brand) !important; }
+  .major:after {
+    background-color: var(--brand) !important;
+  }
 
   /* 버튼 */
   .button.primary, .actions .button.primary {
-    background: var(--brand);
-    border-color: var(--brand);
+    background: var(--brand) !important;
+    border-color: var(--brand) !important;
   }
-  .button.primary:hover { background: var(--hover); border-color: var(--hover); }
+
+  .button.primary:hover {
+    background: var(--hover) !important;
+    border-color: var(--hover) !important;
+  }
 
   /* 구분선 */
-  hr, .inner .divider { border-color: var(--line); }
+  hr, .inner .divider {
+    border-color: var(--line) !important;
+  }
 </style>
+
 
 </head>
 
@@ -361,6 +381,7 @@ document.addEventListener('DOMContentLoaded', function () {
   });
 });
 </script>
+
 
 
 
