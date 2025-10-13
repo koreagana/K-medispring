@@ -2187,10 +2187,12 @@ html[lang="ko"] .button {
       font-family: 'Font Awesome 5 Free';
       font-weight: 900; }
 
-	#sidebar .toggle:before {
+#sidebar .toggle:before {
   content: '\f0c9';
   font-size: 2rem;
-  color: #4E97D1; /* 🔹 브랜드 블루 추가 */
+  color: #4E97D1 !important; /* 브랜드 블루 적용 */
+	
+ /* 🔹 브랜드 블루 추가 */
   height: inherit;
   left: 0;
   line-height: inherit;
@@ -2612,6 +2614,7 @@ html[lang="ko"] .button {
 
 /* (4) 팝업 열릴 때 배경 스크롤 잠금 */
 body.modal-open{ overflow:hidden; }
+
 
 
 
