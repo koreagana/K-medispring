@@ -150,13 +150,15 @@
 											<li><a href="#" class="button primary">定制医疗观光方案</a></li>
 										</ul>
 									</div>
-
-							<div class="hero-media">
+<div class="hero-media">
   <span class="image object">
     <video id="introVideo" autoplay loop muted playsinline>
       <source src="/K-medispring/videos/intro_v1.mp4#t=0.001" type="video/mp4">
     </video>
   </span>
+</div>           <!-- ✅ div 닫기 먼저 -->
+</section>       <!-- ✅ section 닫기 나중 -->
+
 
   <script>
     document.addEventListener("DOMContentLoaded", function() {
@@ -413,6 +415,7 @@ document.addEventListener('DOMContentLoaded', function () {
     v.muted = true;         // 자동재생 보장
   });
 </script>
+
 
 
 
