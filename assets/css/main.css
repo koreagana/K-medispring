@@ -2634,12 +2634,13 @@ body.modal-open{ overflow:hidden; }
   border-radius: 2px;
 }
 
-/* 메뉴 링크 호버/활성 색 */
+/* 메뉴 링크 호버/활성 색 (밑줄 제거, 색상만 유지) */
 #menu ul a:hover,
-#menu ul a.active{
+#menu ul a.active {
   color: #4E97D1 !important;
-  border-bottom: 2px solid #4E97D1; /* 원하면 밑줄 강조 */
+  border-bottom: none !important; /* ✅ 밑줄 제거 */
 }
+
 
 
 
