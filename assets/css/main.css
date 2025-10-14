@@ -2616,6 +2616,21 @@ html[lang="ko"] .button {
 body.modal-open{ overflow:hidden; }
 
 
+/*삼선 색깔 변동 */
+/* 탐색(探索) 메뉴 밑줄 색상 수정 — 한강애봄 블루 (#0076B6) */
+a.active,
+.nav a.active,
+.menu a.active,
+.nav-item.active,
+.nav-item.active::after,
+.tab.active,
+.tab.active::after,
+.section-title.active::after {
+  color: #0076B6 !important;
+  border-bottom: 2px solid #0076B6 !important;
+  background-color: transparent !important;
+}
+	
 
 
 
