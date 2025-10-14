@@ -2634,6 +2634,25 @@ body.modal-open{ overflow:hidden; }
   border-radius: 2px;
 }
 
+.hero-media{
+  position: relative;
+  width: 100%;
+  max-width: 900px;
+  height: 600px;      /* 필요 시 560~600px 사이 조절 */
+  margin: 0 auto;
+  overflow: hidden;
+  border-radius: 8px;
+}
+.hero-media video{
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 70%; /* 로고가 하단이면 65~80% 사이로 조절 */
+}
+@media (max-width: 980px){
+  .hero-media{ height: 48vw; max-width:none; }
+}
+
 
 
 
