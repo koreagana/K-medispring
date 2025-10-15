@@ -2403,6 +2403,20 @@ html[lang="ko"] .button {
   #footer .copyright a {
     color: inherit; }
 
+/* 슬라이드 패널 기본 */
+#menu {
+  position: fixed;
+  top: 0; right: -320px;
+  width: 320px; height: 100%;
+  background: #fff;
+  box-shadow: -3px 0 12px rgba(0,0,0,.12);
+  transition: right .28s ease;
+  z-index: 10000;
+  padding: 2rem 1.5rem;
+}
+#menu.is-open { right: 0; }
+
+	
 /* Menu */
 #menu ul {
   -moz-user-select: none;
@@ -2659,6 +2673,7 @@ body.modal-open{ overflow:hidden; }
 /* 헤더/메뉴 아이콘을 비디오 위로 올리기 */
 #header, .menuToggle, .toggle, .logo { position: relative; z-index: 2; }
 .hero-media video { pointer-events: none; }
+
 
 
 
