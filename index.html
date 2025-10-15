@@ -31,7 +31,7 @@
 
   <style>
   :root {
-    --brand: #0077B6;   /* 브랜드 기본색 */
+    --brand: #0077B6;   
     --hover: #2088C2;
     --deep:  #1565A0;
     --line:  #A0C4DE;
@@ -44,7 +44,8 @@
   .button.primary, .actions .button.primary { background: var(--brand) !important; border-color: var(--brand) !important; }
   .button.primary:hover { background: var(--hover) !important; border-color: var(--hover) !important; }
   hr, .inner .divider { border-color: var(--line) !important; }
-  /* 모달 오픈 시 스크롤 잠금 */
+  
+    /* 모달 오픈 시 스크롤 잠금 */
   .modal-open { overflow: hidden; }
   </style>
 </head>
@@ -62,9 +63,11 @@
           <a href="index.html" class="logo"><strong>汉江春天</strong></a>
 
           <!-- Hamburger / Menu toggle (필수) -->
-       <nav>
-      <a href="#menu" class="toggle" role="button" aria-label="打开菜单">菜单</a>
-         </nav>
+       <a href="#menu" class="menu-toggle" aria-label="Open Menu">
+    <span class="bars" aria-hidden="true"></span>
+  </a>
+</header>
+          
           <!-- SNS icons -->
           <ul class="icons">
             <li>
@@ -94,11 +97,14 @@
           </ul>
         </header>
 
-          /* 메뉴  */
+          <!-- 메뉴 -->
      <nav id="menu">
-    <header class="major"><h2>探索</h2></header>
+    <header class="major">
+      <h2>探索</h2>
+    </header>
     <ul>
-     <a href="index.html">首页</a>
+     <li><a href="index.html">首页</a></li>
+         
         <li><a href="wellness.html">大健康</a></li>
         <li><a href="stemcell.html">干细胞</a></li>
         <li><a href="derm.html">皮肤医美</a></li>
@@ -295,6 +301,7 @@
   <script src="assets/js/main.js"></script>
 </body>
 </html>
+
 
 
 
