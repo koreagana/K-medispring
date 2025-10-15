@@ -7,15 +7,12 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
     <title>汉江春天</title>
-
-    <!-- Font Awesome 아이콘 -->
-    <link rel="stylesheet" href="assets/css/fontawesome-all.min.css" />
-
+  
     <!-- 사이트 메인 스타일 -->
     <link rel="stylesheet" href="assets/css/main.css" />
 
 	  <html lang="zh-CN">
-<head>
+	<head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
   <title>汉江春天</title>
@@ -31,8 +28,9 @@
 
   <!-- 사이트 메인 스타일 -->
   <link rel="stylesheet" href="assets/css/main.css" />
-
-	<style>
+ <noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
+	
+		<style>
   :root {
     --brand: #0077B6;   /* 브랜드 기본색 */
     --hover: #2088C2;   /* 마우스오버 */
@@ -77,12 +75,9 @@
     border-color: var(--line) !important;
   }
 </style>
-
-
 </head>
 
 	<body class="is-preload">
-
 		<!-- Wrapper -->
 			<div id="wrapper">
 
@@ -91,45 +86,70 @@
 						<div class="inner">
 
 							<!-- Header -->
-<header id="header">
-  <a href="index.html" class="logo"><strong>汉江春天</strong></a>
 
-  <!-- ✅ 딱 4개: WeChat / Xiaohongshu / Instagram / Email -->
-<ul class="icons">
-  <!-- WeChat -->
-  <li>
-    <a href="#" id="wechat-icon" class="icon brands fa-weixin" title="WeChat: e-gana">
-      <span class="label">WeChat</span>
-    </a>
-  </li>
+							<!-- ✅ HEADER (hamburger + icons) -->
+							<header id="header">
+							  <a href="index.html" class="logo"><strong>汉江春天</strong></a>
 
-  <!-- Xiaohongshu -->
-  <li>
-    <a href="https://www.xiaohongshu.com/user/profile/550972467" target="_blank" class="icon" title="小红书">
-      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" width="20" height="20">
-        <rect width="100" height="100" rx="20" ry="20" fill="#FF2442"/>
-        <text x="50%" y="60%" text-anchor="middle" fill="#fff" font-size="30" font-family="sans-serif" font-weight="bold">小红书</text>
-      </svg>
-      <span class="label">Xiaohongshu</span>
-    </a>
-  </li>
+						  <!-- 🔔 Hamburger / Menu toggle -->
+ 							 <nav>
+ 							   <a href="#menu" class="toggle" aria-label="打开菜单">菜单</a>
+							  </nav>
 
-  <!-- Instagram -->
-  <li>
-    <a href="https://www.instagram.com/jiana2734/" target="_blank" class="icon brands fa-instagram" title="Instagram">
-      <span class="label">Instagram</span>
-    </a>
-  </li>
-
-  <!-- Email -->
-  <li>
-    <a href="mailto:egana@kmedispring.com" class="icon solid fa-envelope" title="Email">
-      <span class="label">Email</span>
-    </a>
-  </li>
-</ul>
+  <!-- ✅ 4 icons: WeChat / Xiaohongshu / Instagram / Email -->
+  <ul class="icons">
+    <!-- WeChat -->
+    <li>
+      <a href="#" id="wechat-icon" class="icon brands fa-weixin" title="WeChat: e-gana">
+        <span class="label">WeChat</span>
+      </a>
+    </li>
+    <!-- Xiaohongshu -->
+    <li>
+      <a href="https://www.xiaohongshu.com/user/profile/550972467" target="_blank" class="icon" title="小红书">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" width="20" height="20" aria-hidden="true">
+          <rect width="100" height="100" rx="20" ry="20" fill="#FF2442"/>
+          <text x="50%" y="60%" text-anchor="middle" fill="#fff" font-size="30" font-family="sans-serif" font-weight="bold">小红书</text>
+        </svg>
+        <span class="label">Xiaohongshu</span>
+      </a>
+    </li>
+    <!-- Instagram -->
+    <li>
+      <a href="https://www.instagram.com/jiana2734/" target="_blank" class="icon brands fa-instagram" title="Instagram">
+        <span class="label">Instagram</span>
+      </a>
+    </li>
+    <!-- Email -->
+    <li>
+      <a href="mailto:egana@kmedispring.com" class="icon solid fa-envelope" title="Email">
+        <span class="label">Email</span>
+      </a>
+    </li>
+  </ul>
 </header>
+  <!-- Font Awesome 아이콘 -->
+    <link rel="stylesheet" href="assets/css/fontawesome-all.min.css" />
 
+								<!-- Menu -->
+<nav id="menu">
+  <header class="major">
+    <h2>探索</h2>
+  </header>
+  <ul>
+    <li><a href="index.html">首页</a></li>
+    <li><a href="wellness.html">大健康</a></li>
+    <li><a href="stemcell.html">干细胞</a></li>
+    <li><a href="derm.html">皮肤医美</a></li>
+    <li><a href="surgery.html">整形医美</a></li>
+    <li><a href="woman.html">女性护理中心</a></li>
+    <li><a href="man.html">男性健康中心</a></li>
+    <li><a href="transfer.html">接送服务</a></li>
+    <li><a href="tour.html">市区观光</a></li>
+    <li><a href="lifestyle.html">生活服务</a></li>
+    <li><a href="custom-trip.html">定制医疗观光方案</a></li>
+  </ul>
+</nav>				
 
 							<!-- Banner -->
 								<section id="banner">
@@ -283,25 +303,7 @@
 									</form>
 								</section>
 
-							<!-- Menu -->
-<nav id="menu">
-  <header class="major">
-    <h2>探索</h2>
-  </header>
-  <ul>
-    <li><a href="index.html">首页</a></li>
-    <li><a href="wellness.html">大健康</a></li>
-    <li><a href="stemcell.html">干细胞</a></li>
-    <li><a href="derm.html">皮肤医美</a></li>
-    <li><a href="surgery.html">整形医美</a></li>
-    <li><a href="woman.html">女性护理中心</a></li>
-    <li><a href="man.html">男性健康中心</a></li>
-    <li><a href="transfer.html">接送服务</a></li>
-    <li><a href="tour.html">市区观光</a></li>
-    <li><a href="lifestyle.html">生活服务</a></li>
-    <li><a href="custom-trip.html">定制医疗观光方案</a></li>
-  </ul>
-</nav>							
+										
 							<!-- Section -->
 								<section>
 									<header class="major">
@@ -354,12 +356,7 @@
 </div> <!-- #main -->
 </div> <!-- #wrapper -->
 
-<!-- Scripts -->
-<script src="assets/js/jquery.min.js"></script>
-<script src="assets/js/browser.min.js"></script>
-<script src="assets/js/breakpoints.min.js"></script>
-<script src="assets/js/util.js"></script>
-<script src="assets/js/main.js"></script>
+
 
 <!-- ✅ WeChat QR Modal -->
 <div id="wechatModal" class="modal" aria-hidden="true" role="dialog">
@@ -419,8 +416,12 @@ document.addEventListener('DOMContentLoaded', function () {
 </script>
 
 
-
-
+<!-- Scripts -->
+<script src="assets/js/jquery.min.js"></script>
+<script src="assets/js/browser.min.js"></script>
+<script src="assets/js/breakpoints.min.js"></script>
+<script src="assets/js/util.js"></script>
+<script src="assets/js/main.js"></script>
 
 
 
