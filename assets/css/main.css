@@ -2671,10 +2671,23 @@ body.modal-open{ overflow:hidden; }
 .hero-media video { pointer-events: none; }
 
 
-#banner .content > header {
-  border-bottom: 5px solid #4E97D1;  /* 굵기/색상 조정 */
+
+/* 상단 헤더(#header) 라인만 남기고, 본문 헤더 밑줄 제거 */
+#header { border-bottom: 5px solid #4E97D1 !important; }
+
+/* 본문 섹션 제목 밑줄 OFF */
+header.major > :last-child {
+  border-bottom: 0 !important;
+  padding-bottom: 0 !important;
+  margin-bottom: 1.5em !important; /* 간격만 적당히 유지 */
 }
-#banner .content > header:after { display: none; }
+
+/* 혹시 다른 전역 header 밑줄 규칙이 있다면 같이 무력화 */
+.inner header,
+.inner header:after {
+  border-bottom: 0 !important;
+  box-shadow: none !important;
+}
 
 
 
