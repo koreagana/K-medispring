@@ -2696,6 +2696,13 @@ header.major > :last-child {
 }
 
 
+/* ✅ 메뉴(nav#menu)가 숨겨질 때 강제로 표시 */
+#sidebar .inner > nav#menu {
+  display: block !important;
+  visibility: visible !important;
+  opacity: 1 !important;
+}
+
 
 
 
