@@ -2671,6 +2671,12 @@ body.modal-open{ overflow:hidden; }
 .hero-media video { pointer-events: none; }
 
 
+#banner .content > header {
+  border-bottom: 5px solid #4E97D1;  /* 굵기/색상 조정 */
+}
+#banner .content > header:after { display: none; }
+
+
 
 
 
