@@ -2280,44 +2280,40 @@ html[lang="ko"] .button {
         top: 1em;
         width: 5em; } }
 
-/* Header */
+/* --- Fix SNS icons drifting below the blue line (Editorial) --- */
 #header {
-  display: -moz-flex;
-  display: -webkit-flex;
-  display: -ms-flex;
-  display: flex;
-  border-bottom: solid 5px #4E97D1;
-  padding: 6em 0 1em 0;
-  position: relative; }
-  #header > * {
-    -moz-flex: 1;
-    -webkit-flex: 1;
-    -ms-flex: 1;
-    flex: 1;
-    margin-bottom: 0; }
-  #header .logo {
-    border-bottom: 0;
-    color: inherit;
-    font-family: "Roboto Slab", serif;
-    font-size: 1.125em; }
-  #header .icons {
-    text-align: right; }
-  @media screen and (max-width: 1680px) {
-    #header {
-      padding-top: 5em; } }
-  @media screen and (max-width: 736px) {
-    #header {
-      padding-top: 6.5em; }
-      #header .logo {
-        font-size: 1.25em;
-        margin: 0; }
-      #header .icons {
-        height: 5em;
-        line-height: 5em;
-        position: absolute;
-        right: -0.5em;
-        top: 0; } }
+  display: flex;               /* 이미 flex지만, 명시적으로 덮어쓰기 */
+  align-items: center;         /* 수직 가운데 정렬 */
+  flex-wrap: nowrap;           /* 줄바꿈 금지 */
+}
 
+#header > * {
+  margin: 0;                   /* 제목/아이콘 아래 여백 제거 */
+  flex: 0 0 auto;              /* 필요 이상으로 늘어나지 않게 */
+}
+
+#header .logo {
+  flex: 1 1 auto;              /* 로고는 남는 공간 차지 */
+}
+
+#header .icons {
+  margin: 0;
+  display: flex;               /* 아이콘을 가로로 */
+  gap: .75rem;                 /* 아이콘 간격 */
+  align-items: center;
+  text-align: right;           /* 네 스타일 유지 */
+}
+
+/* 모바일 때 absolute 강제 배치가 흐름을 깨면 줄 세움 유지 */
+@media screen and (max-width: 736px) {
+  #header .icons {
+    position: static;          /* 기존 absolute 해제 */
+    height: auto;
+    line-height: normal;
+  }
+}
+
+	
 /* Banner */
 #banner {
   padding: 6em 0 4em 0 ;
@@ -2673,6 +2669,7 @@ body.modal-open{ overflow:hidden; }
 /* 헤더/메뉴 아이콘을 비디오 위로 올리기 */
 #header, .menuToggle, .toggle, .logo { position: relative; z-index: 2; }
 .hero-media video { pointer-events: none; }
+
 
 
 
