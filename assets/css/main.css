@@ -232,14 +232,14 @@ a {
   -webkit-transition: color 0.2s ease-in-out, border-bottom-color 0.2s ease-in-out;
   -ms-transition: color 0.2s ease-in-out, border-bottom-color 0.2s ease-in-out;
   transition: color 0.2s ease-in-out, border-bottom-color 0.2s ease-in-out;
-  border-bottom: dotted 1px;
+  /* border-bottom: dotted 1px; ← 이 줄만 삭제! */
   color: #4E97D1;
   text-decoration: none; }
-  a:hover {
-    border-bottom-color: #4E97D1;
-    color: #4E97D1 !important; }
-    a:hover strong {
-      color: inherit; }
+a:hover {
+  border-bottom: none;
+  color: #4E97D1 !important;
+}
+
 
 strong, b {
   color: #3d4449;
@@ -2694,6 +2694,7 @@ header.major > :last-child {
   border-bottom: 0 !important;
   box-shadow: none !important;
 }
+
 
 
 
