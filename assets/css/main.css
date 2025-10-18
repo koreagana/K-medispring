@@ -2664,23 +2664,19 @@ html[lang="ko"] .button {
 body.modal-open{ overflow:hidden; }
 
 
-/*삼선 색깔 변동 */
-/* 탐색 제목(探索) 밑줄 – 한강애봄 레드 */
-#menu header.major h2{
-  position: relative;
-  display: inline-block;
-  padding-bottom: 8px;
+/* ===== 삼선 색상 (유지) ===== */
+/* 여기에 삼선 관련 색상 정의가 있다면 그대로 두고, 밑줄 부분만 정리 */
+
+#menu header.major h2 {
+  display: none !important; /* 제목 자체도 완전히 숨김 */
 }
-#menu header.major h2::after{
-  content: "";
-  position: absolute;
-  left: 0;
-  bottom: 0;
-  width: 48px;          /* 밑줄 길이 */
-  height: 3px;          /* 밑줄 두께 */
-  background: #4E97D1;  /* 한강애봄 레드 */
-  border-radius: 2px;
+
+/* 탐색 제목(探索) 밑줄 제거 */
+#menu header.major h2::after {
+  content: none !important;
+  display: none !important;
 }
+
 
 .hero-media{
   position: relative;
@@ -2732,6 +2728,7 @@ header.major > :last-child {
   border-bottom: 0 !important;
   box-shadow: none !important;
 }
+
 
 
 
