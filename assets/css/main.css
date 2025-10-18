@@ -2537,22 +2537,22 @@ html[lang="ko"] .button {
 }
 
 /* =======================================
-   대표 사진 (사이드바 파트너 프로필용)
+   대표 사진 – 사각, 50% 크기, 워터마크 컷
    ======================================= */
-#sidebar .mini-posts .image.profile {
-  width: 70%;
-  margin: 0 auto;
-  overflow: hidden;
-  border-radius: 50% / 38%;
-  aspect-ratio: 3 / 4;
+#sidebar .mini-posts .image.profile{
+  width: 50%;              /* ← 사이드바 폭의 50% (이전 70% → 더 작게) */
+  margin: 0 auto;          /* 가운데 정렬 */
+  overflow: hidden;        /* 안쪽 이미지 잘라내기 */
+  border-radius: 0;        /* ← 모서리 둥글기 해제 (사각) */
+  aspect-ratio: 3 / 4;     /* 인물사진 비율 유지 */
 }
 
-#sidebar .mini-posts .image.profile img {
+#sidebar .mini-posts .image.profile img{
   width: 100%;
   height: 100%;
-  object-fit: cover;
-  object-position: 48% 44%;
-  transform: scale(1.06);
+  object-fit: cover;       /* 꽉 채우되 비율 유지 */
+  object-position: 48% 40%;/* 아래쪽 워터마크가 잘리도록 위로 살짝 당김 */
+  transform: scale(1.10);  /* 살짝 확대해 워터마크 영역 컷 */
 }
 
 	
@@ -2748,6 +2748,7 @@ header.major > :last-child {
   border-bottom: 0 !important;
   box-shadow: none !important;
 }
+
 
 
 
