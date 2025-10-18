@@ -2713,12 +2713,7 @@ header.major > :last-child {
 #sidebar nav#menu > ul > li { list-style: none; }
 #sidebar nav#menu a { display: block; padding: .5em 0; }
 
-/* 혹시 transform/transition으로 화면 밖에 나가는 경우 방지 */
-#menu { 
-  transform: none !important;
-  pointer-events: auto !important;
-  opacity: 1 !important;
-}
+
 
 /* --- nav#menu 강제 복구 (사이드바 맨 위에 보여지도록) --- */
 
@@ -2759,6 +2754,7 @@ header.major > :last-child {
   position: static !important;
   z-index: auto !important;
 }
+
 
 
 
