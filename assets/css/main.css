@@ -2671,23 +2671,31 @@ body.modal-open{ overflow:hidden; }
 .hero-media video { pointer-events: none; }
 
 
+/* ================================
+   🌊 한강애봄 헤더 & 밑줄 정리 최종본
+   ================================ */
 
-/* 상단 헤더(#header) 라인만 남기고, 본문 헤더 밑줄 제거 */
-#header { border-bottom: 5px solid #4E97D1 !important; }
+/* 1️⃣ 상단 헤더(#header) 굵은 파란선 (모든 페이지 공통 유지) */
+#header {
+  border-bottom: 5px solid #4E97D1 !important; /* 브랜드 시그니처 라인 */
+  padding: 6em 0 1em 0 !important;
+}
 
-/* 본문 섹션 제목 밑줄 OFF */
+/* 2️⃣ 본문 섹션 제목 밑줄 제거 (중복 밑줄 방지) */
 header.major > :last-child {
   border-bottom: 0 !important;
   padding-bottom: 0 !important;
-  margin-bottom: 1.5em !important; /* 간격만 적당히 유지 */
+  margin-bottom: 1.5em !important;
 }
 
-/* 혹시 다른 전역 header 밑줄 규칙이 있다면 같이 무력화 */
+/* 3️⃣ 전역 header 밑줄 규칙 완전 무력화 */
 .inner header,
 .inner header:after {
   border-bottom: 0 !important;
   box-shadow: none !important;
 }
+
+
 
 
 
