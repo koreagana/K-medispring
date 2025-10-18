@@ -2696,13 +2696,29 @@ header.major > :last-child {
 }
 
 
-/* ✅ 메뉴(nav#menu)가 숨겨질 때 강제로 표시 */
-#sidebar .inner > nav#menu {
+/* 사이드바 메뉴가 숨겨져 있을 때 강제 표시 */
+#sidebar .inner > nav#menu { 
   display: block !important;
   visibility: visible !important;
   opacity: 1 !important;
+  margin: 0 0 2rem 0;
 }
 
+/* 메뉴 내용이 접히거나 밀리는 것 방지 */
+#sidebar nav#menu > ul {
+  display: block !important;
+  padding-left: 0;
+  margin: 0;
+}
+#sidebar nav#menu > ul > li { list-style: none; }
+#sidebar nav#menu a { display: block; padding: .5em 0; }
+
+/* 혹시 transform/transition으로 화면 밖에 나가는 경우 방지 */
+#menu { 
+  transform: none !important;
+  pointer-events: auto !important;
+  opacity: 1 !important;
+}
 
 
 
