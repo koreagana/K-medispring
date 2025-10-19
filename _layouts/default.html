@@ -1,1 +1,42 @@
+<!DOCTYPE HTML>
+<html lang="zh">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{{ page.title }}｜K-MediSpring</title>
+    <link rel="stylesheet" href="/assets/css/main.css" />
+    <noscript><link rel="stylesheet" href="/assets/css/noscript.css" /></noscript>
+  </head>
+  <body class="is-preload">
+    <div id="wrapper">
+      <div id="main">
+        <div class="inner">
+          {{ content }}
+        </div>
+      </div>
+
+      <div id="sidebar">
+        <div class="inner">
+          <section id="search" class="alt">
+            <form method="get" action="/index.html">
+              <input type="text" name="query" id="query" placeholder="搜索" />
+            </form>
+          </section>
+
+          {% include menu.html %}
+
+          <footer id="footer">
+            <p class="copyright">&copy; K-MediSpring. Design: HTML5 UP.</p>
+          </footer>
+        </div>
+      </div>
+    </div>
+
+    <script src="/assets/js/jquery.min.js"></script>
+    <script src="/assets/js/browser.min.js"></script>
+    <script src="/assets/js/breakpoints.min.js"></script>
+    <script src="/assets/js/util.js"></script>
+    <script src="/assets/js/main.js"></script>
+  </body>
+</html>
 
