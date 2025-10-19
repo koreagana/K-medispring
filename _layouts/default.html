@@ -1,42 +1,68 @@
 <!DOCTYPE HTML>
 <html lang="zh">
-  <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>{{ page.title }}｜K-MediSpring</title>
-    <link rel="stylesheet" href="/assets/css/main.css" />
-    <noscript><link rel="stylesheet" href="/assets/css/noscript.css" /></noscript>
-  </head>
-  <body class="is-preload">
-    <div id="wrapper">
-      <div id="main">
-        <div class="inner">
-          {{ content }}
-        </div>
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>{% if page.title %}{{ page.title }} | {% endif %}{{ site.title }}</title>
+
+  <!-- CSS (baseurl 고려) -->
+  <link rel="stylesheet" href="{{ '/assets/css/main.css' | relative_url }}" />
+  <noscript><link rel="stylesheet" href="{{ '/assets/css/noscript.css' | relative_url }}" /></noscript>
+</head>
+<body class="is-preload">
+
+  <!-- Wrapper -->
+  <div id="wrapper">
+
+    <!-- Sidebar : 공통 네비게이션 -->
+    <section id="sidebar">
+      <div class="inner">
+
+        <!-- (선택) 검색 -->
+        <section id="search" class="alt">
+          <form method="get" action="{{ '/index.html' | relative_url }}">
+            <input type="text" name="query" id="query" placeholder="搜索" />
+          </form>
+        </section>
+
+        <!-- ✅ 메뉴 -->
+        <nav id="menu">
+          <ul>
+            {% include menu.html %}
+          </ul>
+        </nav>
+
       </div>
+    </section>
 
-      <div id="sidebar">
-        <div class="inner">
-          <section id="search" class="alt">
-            <form method="get" action="/index.html">
-              <input type="text" name="query" id="query" placeholder="搜索" />
-            </form>
-          </section>
+    <!-- Main -->
+    <div id="main">
+      <div class="inner">
 
-          {% include menu.html %}
+        <!-- (선택) 상단 헤더 -->
+        <header id="header">
+          <a href="{{ '/index.html' | relative_url }}" class="logo"><strong>{{ site.title }}</strong></a>
+          <ul class="icons"></ul>
+        </header>
 
-          <footer id="footer">
-            <p class="copyright">&copy; K-MediSpring. Design: HTML5 UP.</p>
-          </footer>
-        </div>
+        <!-- 페이지별 본문 -->
+        {{ content }}
+
+        <!-- (선택) 공통 푸터 -->
+        <footer id="footer">
+          <p class="copyright">&copy; {{ site.title }}. Design: HTML5 UP.</p>
+        </footer>
+
       </div>
     </div>
 
-    <script src="/assets/js/jquery.min.js"></script>
-    <script src="/assets/js/browser.min.js"></script>
-    <script src="/assets/js/breakpoints.min.js"></script>
-    <script src="/assets/js/util.js"></script>
-    <script src="/assets/js/main.js"></script>
-  </body>
-</html>
+  </div>
 
+  <!-- JS (baseurl 고려) -->
+  <script src="{{ '/assets/js/jquery.min.js' | relative_url }}"></script>
+  <script src="{{ '/assets/js/browser.min.js' | relative_url }}"></script>
+  <script src="{{ '/assets/js/breakpoints.min.js' | relative_url }}"></script>
+  <script src="{{ '/assets/js/util.js' | relative_url }}"></script>
+  <script src="{{ '/assets/js/main.js' | relative_url }}"></script>
+</body>
+</html>
