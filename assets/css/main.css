@@ -2521,17 +2521,18 @@ html[lang="ko"] .button {
     padding-top: 0; }
 
 /* ===== 모바일(≤980px): 왼쪽 슬라이드 오프캔버스 메뉴 ===== */
+/*
 @media screen and (max-width: 980px) {
   #menu {
     position: fixed;
     top: 0;
-    left: 0; /* ← 기존 right:-320px 대신 left 사용 */
+    left: 0; 
     width: 300px;
     max-width: 84vw;
     height: 100vh;
     background: #fff;
     box-shadow: 2px 0 12px rgba(0, 0, 0, 0.15);
-    transform: translateX(-105%); /* 기본: 화면 밖 */
+    transform: translateX(-105%);
     transition: transform 0.3s ease;
     z-index: 10010;
     overflow-y: auto;
@@ -2539,22 +2540,21 @@ html[lang="ko"] .button {
     padding: 2rem 1.25rem;
   }
 
-  /* 메뉴가 열렸을 때 */
   body.is-menu-visible #menu {
     transform: translateX(0);
   }
 
-  /* 메뉴가 열렸을 때 스크롤 잠금 */
   body.is-menu-visible {
     overflow: hidden;
     touch-action: none;
   }
 }
+*/
 
 /* ===== 데스크톱(≥981px): 사이드바 기본 노출 ===== */
 @media screen and (min-width: 981px) {
   #menu {
-    position: static;
+    position: static;		/* 고정 해제: 사이드바 안의 일반 요소로 표시 */
     width: auto;
     height: auto;
     background: transparent;
@@ -2780,6 +2780,7 @@ header.major > :last-child {
   border-bottom: 0 !important;
   box-shadow: none !important;
 }
+
 
 
 
