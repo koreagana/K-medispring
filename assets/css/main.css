@@ -2313,6 +2313,28 @@ html[lang="ko"] .button {
   }
 }
 
+	/* 헤더 로고 이미지 크기/정렬 — 기존 레이아웃 그대로 */
+#header .logo {
+  border-bottom: 0;           /* 링크 밑줄(점선) 방지: 안전장치 */
+}
+
+#header .logo img.logo-img {
+  height: 28px;               /* 현재 텍스트 로고 크기와 비슷한 시각 크기 */
+  width: auto;                /* 비율 유지 */
+  display: inline-block;
+  vertical-align: middle;     /* 아이콘/텍스트 높이와 균형 */
+  margin-top: -2px;           /* 시각 중심 보정(원본에 따라 0 ~ -3px 조정 가능) */
+  object-fit: contain;        /* 안전 */
+}
+
+/* 모바일에서 조금만 더 작게 */
+@media screen and (max-width: 736px) {
+  #header .logo img.logo-img {
+    height: 24px;
+    margin-top: -1px;
+  }
+}
+
 	
 /* Banner */
 #banner {
@@ -2758,6 +2780,7 @@ header.major > :last-child {
   border-bottom: 0 !important;
   box-shadow: none !important;
 }
+
 
 
 
