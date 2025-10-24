@@ -5,7 +5,7 @@
 /* Pretendard Regular */
 @font-face {
   font-family: 'Pretendard';
-  src: url('../fonts/Pretendard-Regular.ttf') format('truetype');
+  src: url('/assets/fonts/Pretendard-Regular.ttf') format('truetype');
   font-weight: 400;
   font-style: normal;
   font-display: swap;
@@ -14,7 +14,7 @@
 /* Pretendard Bold */
 @font-face {
   font-family: 'Pretendard';
-  src: url('../fonts/Pretendard-Bold.ttf') format('truetype');
+  src: url('/assets/fonts/Pretendard-Bold.ttf') format('truetype');
   font-weight: 700;
   font-style: normal;
   font-display: swap;
@@ -23,7 +23,7 @@
 /* Source Han Serif CN (Simplified Chinese) */
 @font-face {
   font-family: 'SourceHanSerifCN';
-  src: url('../fonts/SourceHanSerifCN-Light.otf') format('opentype');
+  src: url('/assets/fonts/SourceHanSerifCN-Light.otf') format('opentype');
   font-weight: 300;
   font-style: normal;
   font-display: swap;
@@ -31,7 +31,7 @@
 
 @font-face {
   font-family: 'SourceHanSerifCN';
-  src: url('../fonts/SourceHanSerifCN-Medium.otf') format('opentype');
+  src: url('/assets/fonts/SourceHanSerifCN-Medium.otf') format('opentype');
   font-weight: 500;
   font-style: normal;
   font-display: swap;
@@ -39,7 +39,7 @@
 
 @font-face {
   font-family: 'SourceHanSerifCN';
-  src: url('../fonts/SourceHanSerifCN-Bold.otf') format('opentype');
+  src: url('/assets/fonts/SourceHanSerifCN-Bold.otf') format('opentype');
   font-weight: 700;
   font-style: normal;
   font-display: swap;
@@ -48,7 +48,7 @@
 /* ===== 기존 Merriweather & Roboto ===== */
 @font-face {
   font-family: "Merriweather";
-  src: url("../fonts/Merriweather-VariableFont_opsz,wdth,wght.ttf") format("truetype");
+  src: url("/assets/fonts/Merriweather-VariableFont_opsz,wdth,wght.ttf") format("truetype");
   font-weight: 300 700;
   font-style: normal;
   font-display: swap;
@@ -56,7 +56,7 @@
 
 @font-face {
   font-family: "Roboto";
-  src: url("../fonts/Roboto-VariableFont_wdth,wght.ttf") format("truetype");
+  src: url("/assets/fonts/Roboto-VariableFont_wdth,wght.ttf") format("truetype");
   font-weight: 300 700;
   font-style: normal;
   font-display: swap;
@@ -66,7 +66,7 @@
 /* Merriweather */
 @font-face {
   font-family: "Merriweather";
-  src: url("../fonts/Merriweather-VariableFont_opsz,wdth,wght.ttf") format("truetype");
+  src: url("/assets/fonts/Merriweather-VariableFont_opsz,wdth,wght.ttf") format("truetype");
   font-weight: 300 700;
   font-style: normal;
   font-display: swap;
@@ -75,7 +75,7 @@
 /* Roboto */
 @font-face {
   font-family: "Roboto";
-  src: url("../fonts/Roboto-VariableFont_wdth,wght.ttf") format("truetype");
+  src: url("/assets/fonts/Roboto-VariableFont_wdth,wght.ttf") format("truetype");
   font-weight: 300 700;
   font-style: normal;
   font-display: swap;
@@ -2780,6 +2780,7 @@ header.major > :last-child {
   border-bottom: 0 !important;
   box-shadow: none !important;
 }
+
 
 
 
