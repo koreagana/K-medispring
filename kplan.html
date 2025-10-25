@@ -1,17 +1,15 @@
-
 <!DOCTYPE HTML>
 <!--
   2025/10/11 가나와 로니가 같이 만들기 시작함
-  정리본: 로니가 리디아 대신 깔끔하게 정리한 파일
+  정리본: 로니가 리디아 대신 깔끔하게 정리한 파일 (kplan.html)
 -->
 <html lang="zh-CN">
-
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
   <title>汉江春天</title>
 
-  <!-- ✅ Favicon / Web Icons (모두 상대경로) -->
+  <!-- ✅ Favicon / Web Icons (상대경로) -->
   <link rel="icon" type="image/x-icon" href="images/favicon.ico?v=20251012">
   <link rel="icon" type="image/png" sizes="32x32" href="images/favicon-32.png?v=20251012">
   <link rel="icon" type="image/png" sizes="16x16" href="images/favicon-16.png?v=20251012">
@@ -24,55 +22,80 @@
   <link rel="stylesheet" href="assets/css/main.css" />
   <noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
 
-  <!-- ✅ JS (상대경로) -->
-  <script defer src="assets/js/main.js"></script>
-
   <!-- Meta Tags -->
   <meta name="description" content="汉江春天 · 韩国医疗观光与大健康平台" />
   <meta property="og:title" content="汉江春天" />
   <meta property="og:description" content="专注于韩国医疗、皮肤医美、干细胞、健康管理与高端定制旅行" />
   <meta property="og:image" content="images/preview.jpg" />
-  <meta property="og:url" content="https://kmedispring.com/wellness.html" />
+  <meta property="og:url" content="https://kmedispring.com/kplan.html" />
   <meta name="twitter:card" content="summary_large_image" />
 
-  <!-- Custom Style -->
+  <!-- Custom Style (페이지 전용) -->
   <style>
-    :root {
-      --brand: #0077B6;
-      --hover: #2088C2;
-      --deep:  #1565A0;
-      --line:  #A0C4DE;
+    :root{
+      --brand:#0077B6; --hover:#2088C2; --deep:#1565A0; --line:#A0C4DE;
     }
-    #menu a { color: #333 !important; text-decoration: none !important; transition: color .25s ease !important; }
-    #menu a:hover { color: var(--hover) !important; }
-    #menu a.active { color: var(--brand) !important; font-weight:600 !important; }
-    .major:after { background-color: var(--brand) !important; }
-    .button.primary, .actions .button.primary { background: var(--brand) !important; border-color: var(--brand) !important; }
-    .button.primary:hover { background: var(--hover) !important; border-color: var(--hover) !important; }
-    hr, .inner .divider { border-color: var(--line) !important; }
-    .modal-open { overflow: hidden; }
+    /* 네비 컬러/버튼 */
+    #menu a{color:#333!important; text-decoration:none!important; transition:color .25s ease!important;}
+    #menu a:hover{color:var(--hover)!important;}
+    #menu a.active{color:var(--brand)!important; font-weight:600!important;}
+    .major:after{background-color:var(--brand)!important;}
+    .button.primary,.actions .button.primary{background:var(--brand)!important; border-color:var(--brand)!important;}
+    .button.primary:hover{background:var(--hover)!important; border-color:var(--hover)!important;}
+    hr,.inner .divider{border-color:var(--line)!important;}
+    .modal-open{overflow:hidden;}
+
+    /* 본문 가독성 업그레이드 */
+    .inner p{font-size:1.15rem; line-height:1.85; color:#222; letter-spacing:.015em;}
+    @media (max-width: 980px){ .inner p{font-size:1.08rem; line-height:1.8;} }
+
+    /* K-Plan 레이아웃 */
+    .kplan-form .fields{display:flex;flex-wrap:wrap;gap:1.4rem}
+    .kplan-form .field{flex:1 1 46%;min-width:250px}
+    .kplan-form label{font-weight:600;color:#333;margin-bottom:.35rem;display:block}
+    .kplan-form input[type="text"],.kplan-form select,.kplan-form textarea{
+      width:100%;border:1px solid #cfcfcf;border-radius:8px;padding:.75rem;font-size:1rem;box-sizing:border-box
+    }
+    .kplan-form textarea{resize:vertical}
+    .kplan-form .checkboxes{list-style:none;margin:0;padding:0;display:grid;gap:.55rem}
+    .kplan-form .checkboxes.two-col{grid-template-columns:repeat(auto-fit,minmax(220px,1fr))}
+    @media (max-width:736px){
+      .kplan-form .field{flex:1 1 100%}
+      .kplan-form .checkboxes.two-col{grid-template-columns:1fr}
+    }
+
+    /* 카테고리 아코디언 */
+    .kcat{display:grid;gap:1rem;margin-top:.6rem}
+    .kcat-cat{border:1px solid #e2e6ea;border-radius:10px;overflow:hidden;background:#fff}
+    .kcat-hd{display:flex;justify-content:space-between;align-items:center;padding:.85rem 1rem;cursor:pointer;background:#f7fafc}
+    .kcat-hd h4{margin:0;font-size:1.05rem}
+    .kcat-bd{display:none;padding:.6rem 1rem .9rem;gap:1rem}
+    .kcat-bd.open{display:grid}
+    .kgroup{border-top:1px dashed #e5e7eb;padding-top:.6rem;margin-top:.4rem}
+    .kgroup h5{margin:.2rem 0 .5rem;font-size:.95rem;color:#0f172a}
+    .kitems{list-style:none;margin:0;padding:0;display:grid;gap:.4rem;grid-template-columns:repeat(auto-fit,minmax(230px,1fr))}
+    .kitems label{font-weight:400}
+    #kplan-search{border-color:#99b9d6}
   </style>
 </head>
 
 <body id="kplan-page" class="is-preload" lang="zh-CN">
-
   <!-- Wrapper -->
   <div id="wrapper">
 
-    <!-- Main -->
+    <!-- Main (✅ 폼은 여기 안에 있어야 함) -->
     <div id="main">
       <div class="inner">
 
-    
-      <!-- Header -->
-<header id="header">
-  <a href="index.html" class="logo">
-    <img src="images/logo_ch.png" alt="汉江春天 로고" class="logo-img">
-  </a>
+        <!-- Header -->
+        <header id="header">
+          <a href="index.html" class="logo">
+            <img src="images/logo_ch.png" alt="汉江春天 로고" class="logo-img">
+          </a>
 
-          <!-- Hamburger / Menu toggle (필수) -->
-      <a href="#menu" class="toggle" aria-label="Open Menu"></a>
-  
+          <!-- Hamburger / Menu toggle -->
+          <a href="#menu" class="toggle" aria-label="Open Menu"></a>
+
           <!-- SNS icons -->
           <ul class="icons">
             <li>
@@ -100,58 +123,138 @@
               </a>
             </li>
           </ul>
-        </header>   
+        </header>
 
-      </div> <!-- .inner -->
-    </div> <!-- #main -->
+        <!-- ========================= K-PLAN FORM (Main Content) ========================= -->
+          <section id="kplan" class="kplan-band">
+          <div class="inner">
+            <header class="major">
+              <h2>定制医疗观光方案</h2>
+              <p>填写下列信息并勾选感兴趣的项目。提交后，我们将在 24 小时内与您确认细节。</p>
+            </header>
 
-    <!-- Sidebar -->
+
+            <form id="kplan-form" class="kplan-form" action="mailto:2gana@naver.com" method="post" enctype="text/plain" autocomplete="on">
+
+            <!-- Step 1 基本信息 -->
+              <h3>Step 1 · 基本信息</h3>
+              <div class="fields">
+                <div class="field half">
+                  <label>姓名</label>
+                  <input type="text" name="name" placeholder="中文或英文姓名" required />
+                </div>
+                <div class="field half">
+                  <label>国家 / 居住地</label>
+                  <input type="text" name="country" placeholder="例：中国 / 上海" required />
+                </div>
+                <div class="field half">
+                  <label>联系方式</label>
+                  <select name="contact_type">
+                    <option value="wechat">WeChat</option>
+                    <option value="phone">手机号</option>
+                    <option value="email">Email</option>
+                  </select>
+                </div>
+                <div class="field half">
+                  <label>联系方式内容</label>
+                  <input type="text" name="contact_value" placeholder="输入 WeChat ID / 电话 / 邮箱" />
+                </div>
+                <div class="field half">
+                  <label>偏好语言</label>
+                  <select name="language">
+                    <option value="zh">简体中文</option>
+                    <option value="en">English</option>
+                    <option value="ko">한국어</option>
+                  </select>
+                </div>
+              </div>
+
+              <!-- Step 2 医疗需求（可多选） -->
+              <h3>Step 2 · 医疗需求（可多选）</h3>
+
+              <!-- 검색창 -->
+              <div class="field">
+                <label>快速搜索（输入关键词即可过滤）</label>
+                <input id="kplan-search" type="text" placeholder="例：热玛吉 / 线雕 / 干细胞 / NK / 隆鼻 / 小阴唇…" />
+              </div>
+
+              <!-- 카테고리 & 항목 렌더 영역 -->
+              <div id="kplan-cats" class="kcat"></div>
+
+              <!-- Step 3 旅行选项 -->
+              <h3>Step 3 · 旅行服务（可选）</h3>
+              <div class="fields">
+                <div class="field">
+                  <label>请选择需要的服务：</label>
+                  <ul class="checkboxes two-col">
+                    <li><label><input type="checkbox" name="travel" value="接送机"> 机场接送</label></li>
+                    <li><label><input type="checkbox" name="travel" value="酒店预订"> 酒店预订</label></li>
+                    <li><label><input type="checkbox" name="travel" value="市区观光"> 市区观光</label></li>
+                    <li><label><input type="checkbox" name="travel" value="翻译服务"> 医疗陪同 / 翻译</label></li>
+                  </ul>
+                </div>
+                <div class="field">
+                  <label>希望就诊/旅行时间</label>
+                  <input type="text" name="visit_time" placeholder="例：11月中旬 或 具体日期" />
+                </div>
+                <div class="field">
+                  <label>备注 / 特别需求</label>
+                  <textarea name="notes" rows="3" placeholder="例如：希望女医生 / 想结合旅游 / 过敏史等"></textarea>
+                </div>
+              </div>
+
+              <ul class="actions" style="text-align:center;">
+                <li><button type="submit" class="button primary">提交方案请求</button></li>
+              </ul>
+            </form>
+          </div>
+        </section>
+        <!-- ========================= ✅ 폼 섹션 끝 ========================= -->
+
+        <script>
+      document.getElementById('kplan-form').addEventListener('submit', function() {
+      alert('谢谢！您的信息将通过邮箱发送，我们会尽快与您联系。');
+      });
+      </script>
+ 
+      </div><!-- .inner -->
+    </div><!-- #main -->
+
+    <!-- Sidebar (메뉴/소개/연락처/푸터) -->
     <div id="sidebar">
       <div class="inner">
 
-     <!-- Search -->
-<section id="search" class="alt">
-  <form method="get" action="#">
-    <input type="search" name="query" id="query" placeholder="搜索" aria-label="搜索" />
-  </form>
-</section>
-     
-     <!-- 메뉴 -->
-     <nav id="menu">
-   
-       <!--  <header class="major"> <h2>探索</h2> </header>  -->
-       
-    <ul>
-        <li><a href="index.html">首页</a></li>
-        <li><a href="wellness.html">大健康</a></li>
-        <li><a href="stemcell.html">干细胞</a></li>
-        <li><a href="derm.html">皮肤医美</a></li>
-        <li><a href="surgery.html">整形医美</a></li>
-        <li><a href="woman.html">女性护理中心</a></li>
-        <li><a href="man.html">男性健康中心</a></li>
-        <li><a href="transfer.html">接送服务</a></li>
-        <li><a href="tour.html">市区观光</a></li>
-        <li><a href="lifestyle.html">生活服务</a></li>
-       <!-- <nav id="menu"> 안의 <ul class="links"> 안에 추가 -->
-       <!-- ✅ 새로 추가된 메뉴 -->
-      <li>
-        <a href="kplan.html" data-i18n="navKplan">定制医疗观光方案</a>
-      </li>
-    </ul>
-</nav>
-        
+        <!-- Search -->
+        <section id="search" class="alt">
+          <form method="get" action="#">
+            <input type="search" name="query" id="query" placeholder="搜索" aria-label="搜索" />
+          </form>
+        </section>
+
+        <!-- Menu -->
+        <nav id="menu">
+          <ul>
+            <li><a href="index.html">首页</a></li>
+            <li><a href="wellness.html">大健康</a></li>
+            <li><a href="stemcell.html">干细胞</a></li>
+            <li><a href="derm.html">皮肤医美</a></li>
+            <li><a href="surgery.html">整形医美</a></li>
+            <li><a href="woman.html">女性护理中心</a></li>
+            <li><a href="man.html">男性健康中心</a></li>
+            <li><a href="transfer.html">接送服务</a></li>
+            <li><a href="tour.html">市区观光</a></li>
+            <li><a href="lifestyle.html">生活服务</a></li>
+            <li><a href="kplan.html" class="active" data-i18n="navKplan">定制医疗观光方案</a></li>
+          </ul>
+        </nav>
+
         <!-- About / Partners -->
         <section>
           <header class="major"><h2>关于我们</h2></header>
           <p style="text-align:center; color:#777;">合作伙伴</p>
           <div class="mini-posts">
             <article>
-
-              <!-- 대표 사진 -->
-        <a href="#" class="image profile">
-        <img src="images/gana.png" alt="汉江春天 代表" />
-        </a>
-            
+              <a href="#" class="image profile"><img src="images/gana.png" alt="汉江春天 代表" /></a>
               <p style="text-align:center; font-size:1em; margin-top:.5em;">汉江春天 代表</p>
             </article>
             <article>
@@ -165,7 +268,7 @@
           </div>
         </section>
 
-               <!-- Contact -->
+        <!-- Contact -->
         <section>
           <header class="major"><h2>联系方式</h2></header>
           <p>我们相信，美丽与健康，源于真诚的交流。如果你对韩国医疗、健康管理或合作有兴趣，欢迎通过微信或邮件与我们联系。</p>
@@ -176,350 +279,19 @@
           </ul>
         </section>
 
-<!-- ✅ 여기! 메인 콘텐츠 영역 안에 폼 배치 -->
-<section id="kplan" class="wrapper kplan-band">
-  <div class="kplan-shell">
-
-<!-- ========================= K-PLAN FORM (drop-in) ========================= -->
-<section id="kplan" class="wrapper style1">
-  <div class="inner">
-    <header class="major">
-      <h2>定制医疗观光方案</h2>
-      <p>填写下列信息并勾选感兴趣的项目。提交后，我们将在 24 小时内与您确认细节。</p>
-    </header>
-
-    <form id="kplan-form" class="kplan-form" autocomplete="on">
-      <!-- Step 1 基本信息 -->
-      <h3>Step 1 · 基本信息</h3>
-      <div class="fields">
-        <div class="field half">
-          <label>姓名</label>
-          <input type="text" name="name" placeholder="中文或英文姓名" required />
-        </div>
-        <div class="field half">
-          <label>国家 / 居住地</label>
-          <input type="text" name="country" placeholder="例：中国 / 上海" required />
-        </div>
-        <div class="field half">
-          <label>联系方式</label>
-          <select name="contact_type">
-            <option value="wechat">WeChat</option>
-            <option value="phone">手机号</option>
-            <option value="email">Email</option>
-          </select>
-        </div>
-        <div class="field half">
-          <label>联系方式内容</label>
-          <input type="text" name="contact_value" placeholder="输入 WeChat ID / 电话 / 邮箱" />
-        </div>
-        <div class="field half">
-          <label>偏好语言</label>
-          <select name="language">
-            <option value="zh">简体中文</option>
-            <option value="en">English</option>
-            <option value="ko">한국어</option>
-          </select>
-        </div>
-      </div>
-
-      <!-- Step 2 医疗需求（可多选） -->
-      <h3>Step 2 · 医疗需求（可多选）</h3>
-
-      <!-- 검색창 -->
-      <div class="field">
-        <label>快速搜索（输入关键词即可过滤）</label>
-        <input id="kplan-search" type="text" placeholder="例：热玛吉 / 线雕 / 干细胞 / NK / 隆鼻 / 小阴唇…" />
-      </div>
-
-      <!-- 카테고리 & 항목 렌더 영역 -->
-      <div id="kplan-cats" class="kcat"></div>
-
-      <!-- Step 3 旅行选项 -->
-      <h3>Step 3 · 旅行服务（可选）</h3>
-      <div class="fields">
-        <div class="field">
-          <label>请选择需要的服务：</label>
-          <ul class="checkboxes two-col">
-            <li><label><input type="checkbox" name="travel" value="接送机"> 机场接送</label></li>
-            <li><label><input type="checkbox" name="travel" value="酒店预订"> 酒店预订</label></li>
-            <li><label><input type="checkbox" name="travel" value="市区观光"> 市区观光</label></li>
-            <li><label><input type="checkbox" name="travel" value="翻译服务"> 医疗陪同 / 翻译</label></li>
-          </ul>
-        </div>
-        <div class="field">
-          <label>希望就诊/旅行时间</label>
-          <input type="text" name="visit_time" placeholder="例：11月中旬 或 具体日期" />
-        </div>
-        <div class="field">
-          <label>备注 / 特别需求</label>
-          <textarea name="notes" rows="3" placeholder="例如：希望女医生 / 想结合旅游 / 过敏史等"></textarea>
-        </div>
-      </div>
-
-      <ul class="actions" style="text-align:center;">
-        <li><button type="submit" class="button primary">提交方案请求</button></li>
-      </ul>
-    </form>
-  </div>
-</section>
-
-<style>
-/* --- K-Plan basic layout & readability --- */
-.kplan-form .fields{display:flex;flex-wrap:wrap;gap:1.4rem}
-.kplan-form .field{flex:1 1 46%;min-width:250px}
-.kplan-form label{font-weight:600;color:#333;margin-bottom:.35rem;display:block}
-.kplan-form input[type="text"],.kplan-form select,.kplan-form textarea{
-  width:100%;border:1px solid #cfcfcf;border-radius:8px;padding:.75rem;font-size:1rem;box-sizing:border-box
-}
-.kplan-form textarea{resize:vertical}
-.kplan-form .checkboxes{list-style:none;margin:0;padding:0;display:grid;gap:.55rem}
-.kplan-form .checkboxes.two-col{grid-template-columns:repeat(auto-fit,minmax(220px,1fr))}
-@media (max-width:736px){.kplan-form .field{flex:1 1 100%}.kplan-form .checkboxes.two-col{grid-template-columns:1fr}}
-
-/* --- Categories / accordion --- */
-.kcat{display:grid;gap:1rem;margin-top:.6rem}
-.kcat-cat{border:1px solid #e2e6ea;border-radius:10px;overflow:hidden;background:#fff}
-.kcat-hd{display:flex;justify-content:space-between;align-items:center;padding:.85rem 1rem;cursor:pointer;background:#f7fafc}
-.kcat-hd h4{margin:0;font-size:1.05rem}
-.kcat-bd{display:none;padding:.6rem 1rem .9rem;gap:1rem}
-.kcat-bd.open{display:grid}
-.kgroup{border-top:1px dashed #e5e7eb;padding-top:.6rem;margin-top:.4rem}
-.kgroup h5{margin:.2rem 0 .5rem;font-size:.95rem;color:#0f172a}
-.kitems{list-style:none;margin:0;padding:0;display:grid;gap:.4rem;grid-template-columns:repeat(auto-fit,minmax(230px,1fr))}
-.kitems label{font-weight:400}
-#kplan-search{border-color:#99b9d6}
-</style>
-
-<script>
-/* ====================== Data (CN) ====================== */
-const KDATA = {
-  skin: {
-    name:'皮肤科',
-    subs:{
-      lifting:[
-        'Ulthera 超声提升（Ulthera）',
-        'Thermage 热玛吉紧肤（Thermage）',
-        '线雕提拉（Thread lifting）'
-      ],
-      laser:[
-        '皮秒激光（色斑/痘印）',
-        '复合激光紧致 & 纹理/弹力改善',
-        '痤疮·疤痕激光',
-        '红血丝/血管激光'
-      ],
-      booster_inject:['Rejuran PN（丽珠兰）','皮肤水光/焕亮（Skin Booster）'],
-      microneedle:['黄金微针','射频微针'],
-      pore_texture:['毛孔缩小（含LDM等）','肌理改善方案'],
-      hair:['植发（FUE 无痕）']
-    }
-  },
-  fx: {
-    name:'大健康（功能医学）',
-    subs:{
-      core_panels:[
-        '营养代谢分析（有机酸 OAT）',
-        '线粒体功能检测',
-        '端粒（Telomere）检测',
-        '阿尔茨海默症风险血检'
-      ],
-      immune_hormone:['激素平衡/全套谱','NK 细胞活性检测'],
-      toxins_metabolic:['重金属/毒性金属检测','代谢综合征·肥胖管理'],
-      microbiome_sleep:['肠道微生态（微生物组）检测','睡眠·压力评估（肾上腺/皮质醇）'],
-      vascular_bone:['动脉弹性/血管年龄','骨密度','同型半胱氨酸'],
-      iv_therapy:['静脉营养（IV）治疗','免疫增强注射：Thymosin α1（扎达新/国产制剂）']
-    }
-  },
-  stem: {
-    name:'干细胞/再生',
-    subs:{
-      antiaging_iv:['干细胞静脉输注（IV）','外泌体治疗'],
-      tissue_regen:['软骨/关节再生干细胞','皮肤再生干细胞','神经再生干细胞'],
-      hair:['干细胞 + PRP 脱发再生'],
-      combo:['干细胞 + ECM 重塑','干细胞 + 基因/组织工程','干细胞 + NK 联合'],
-      source:['自体脂肪来源 MSC','自体骨髓来源 MSC','脐带血/胎盘·脐带膜 MSC']
-    }
-  },
-  plastic: {
-    name:'整形外科',
-    subs:{
-      eye:[
-        '埋线双眼皮（非切开）','部分切开','全切双眼皮','开内眼角','开外/下眼角',
-        '眼型矫正/上睑下垂','上/下睑手术','眼袋脂肪重新分配','提眉术','卧蚕手术','眼部修复'
-      ],
-      nose:[
-        '硅胶/膨体隆鼻','驼峰鼻/朝天鼻矫正','鼻中隔软骨鼻尖塑形','鼻翼缩小','隆鼻修复',
-        '鼻中隔偏曲矫正','混合型隆鼻','自体软骨/AlloDerm 移植'
-      ],
-      contour:[
-        '颧骨内推','下颌角切除','T截骨/长脸矫正','下巴假体','贵族手术（鼻基底填充）',
-        '双下巴吸脂/轮廓提升','轮廓针/收紧（如 Shurink/Refit）','迷你轮廓提升'
-      ],
-      lifting:[
-        '热玛吉/超声刀/Refit/Secret','Max 拉皮','Mini 拉皮',
-        '额/颈/中面部提拉','线雕（PDO 等）','脂肪移植联合提升','射频紧肤'
-      ],
-      filler_botox:[
-        '玻尿酸（唇/法令纹/下巴/颧/鼻/面颊/额）',
-        '肉毒（咬肌/斜方肌/小腿/鱼尾纹/眉间/口角）',
-        '皮肤肉毒（Skin Botox）','水光炸弹（注射）'
-      ],
-      fat_lipo:[
-        '面部脂肪移植（微脂/干细胞联合）','部位脂肪移植（法令/泪沟/额/面颊/下巴）',
-        '吸脂（腹/大腿/手臂/腰/小腿）','吸脂后射频管理','髋凹（Hip-dip）矫正'
-      ],
-      breast_body:[
-        '隆胸（假体）','胸部脂肪移植/混合隆胸','乳房上提/缩小','乳头内陷/乳晕缩小/副乳',
-        '假体取出/置换','男性女乳矫正','腹部拉皮','臂/大腿/臀部提升','臀部上提',
-        '骨盆/臀部填充','胸罩线吸脂'
-      ],
-      etc:[
-        '嘴角上提/唇部缩小/唇填充','酒窝成形','耳部整形（招风耳/切耳/耳垂）',
-        '疤痕缩小/瘢痕疙瘩/简单缝合','腋臭/多汗/微波热凝（MiraDry）',
-        '纹身/痣/老年斑/太田痣去除','修复/异物取出'
-      ]
-    }
-  },
-  female: {
-    name:'女性中心',
-    subs:{
-      gyne_surgery:[
-        '名器质性整形（盆底重建）','阴道口整形（1/3）','阴道紧缩（整形）',
-        '小阴唇整形（全切）','小阴唇边缘修整（翼部）',
-        '阴蒂包皮成形（露出）','阴蒂皱褶去除','阴蒂提升','会阴皱褶整形',
-        '大阴唇整形','大阴唇脂肪移植/吸脂',
-        '阴道紧致激光','阴道填充（填充剂）',
-        '乳头/乳晕美白','大阴唇美白','私密综合美白'
-      ],
-      gyne_checkup:[
-        '炎症检测','小便检查','性病检测 12 项','HPV',
-        '女性激素全套','甲状腺功能（选）',
-        '上腹/心脏/肾膀胱 超声','乳腺/子宫/卵巢 超声（选）',
-        '骨密度','同型半胱氨酸','有机酸检测（OAT）','NK 细胞活性检测'
-      ]
-    }
-  },
-  male: {
-    name:'男性健康',
-    subs:{
-      urology_surgery:['包皮环切','输精管结扎/复通','精索静脉曲张手术','泌尿重建（尿道/阴茎）'],
-      andrology:['阴茎增粗/加长','阴茎弯曲矫正（佩罗尼）','阴茎假体植入','龟头增大','阴茎填充/脂肪移植'],
-      ed_prostate:['勃起功能障碍综合治疗','前列腺增生微创（如 UroLift）'],
-      hormone_vaccine:['低睾酮治疗（睾酮补充）','HPV 疫苗/男性性病筛查'],
-      body_wellness:['男性体成分/代谢健康管理','体型塑形（吸脂/运动医学联动）']
-    }
-  }
-};
-
-/* =============== Render =============== */
-const $cats = document.getElementById('kplan-cats');
-const $search = document.getElementById('kplan-search');
-
-function renderCats(filterText=''){
-  $cats.innerHTML = '';
-  const kw = filterText.trim().toLowerCase();
-
-  Object.entries(KDATA).forEach(([cid, cobj])=>{
-    // 카테고리 컨테이너
-    const wrap = document.createElement('section');
-    wrap.className = 'kcat-cat';
-
-    // 헤더
-    const hd = document.createElement('div');
-    hd.className = 'kcat-hd';
-    hd.innerHTML = `<h4>${cobj.name}</h4><span aria-hidden="true">＋</span>`;
-    wrap.appendChild(hd);
-
-    // 바디
-    const bd = document.createElement('div');
-    bd.className = 'kcat-bd';
-
-    // 소분류 그룹
-    Object.entries(cobj.subs).forEach(([gid, items])=>{
-      // 검색 필터: 그룹 내 어떤 항목이라도 매칭되면 표시
-      const groupMatch = items.some(txt => txt.toLowerCase().includes(kw));
-      if (kw && !groupMatch) return;
-
-      const g = document.createElement('div');
-      g.className = 'kgroup';
-      const gtitle = document.createElement('h5');
-      gtitle.textContent = mapGroupName(gid);
-      g.appendChild(gtitle);
-
-      const ul = document.createElement('ul');
-      ul.className = 'kitems';
-      items
-        .filter(txt => !kw || txt.toLowerCase().includes(kw))
-        .forEach(txt=>{
-          const li = document.createElement('li');
-          li.innerHTML =
-            `<label><input type="checkbox" name="proc" value="${cobj.name} / ${gtitle.textContent} / ${txt}"> ${txt}</label>`;
-          ul.appendChild(li);
-        });
-      if (ul.children.length) g.appendChild(ul);
-      bd.appendChild(g);
-    });
-
-    // 토글
-    hd.addEventListener('click', ()=>{
-      const open = bd.classList.toggle('open');
-      hd.querySelector('span').textContent = open ? '－' : '＋';
-    });
-
-    // 기본: 접힘, 검색 키워드 있으면 자동 펼침
-    if (kw) { bd.classList.add('open'); hd.querySelector('span').textContent='－'; }
-
-    wrap.appendChild(bd);
-    // 그룹이 하나도 렌더되지 않으면 건너뜀
-    if (bd.children.length) $cats.appendChild(wrap);
-  });
-}
-
-function mapGroupName(key){
-  const m = {
-    lifting:'提升/紧致', laser:'激光/嫩肤', booster_inject:'注射·皮肤修复',
-    microneedle:'微针', pore_texture:'毛孔/纹理', hair:'毛发',
-    core_panels:'核心评估', immune_hormone:'免疫/激素', toxins_metabolic:'毒素/代谢',
-    microbiome_sleep:'肠道/睡眠压力', vascular_bone:'血管/骨骼', iv_therapy:'静脉营养/免疫',
-    antiaging_iv:'抗衰/静脉', tissue_regen:'组织再生', combo:'联合疗法', source:'来源',
-    eye:'眼部', nose:'鼻部', contour:'轮廓', filler_botox:'填充/肉毒',
-    fat_lipo:'吸脂/脂肪移植', breast_body:'胸体/躯干', etc:'其他',
-    gyne_surgery:'妇科整形', gyne_checkup:'妇科检查',
-    urology_surgery:'泌尿外科', andrology:'男科', ed_prostate:'ED/前列腺',
-    hormone_vaccine:'激素/疫苗', body_wellness:'体成分/健康'
-  };
-  return m[key] || key;
-}
-
-// 검색 이벤트
-$search.addEventListener('input', e => renderCats(e.target.value));
-renderCats(); // 초기 렌더
-
-// (선택) 제출 직렬화 예시
-document.getElementById('kplan-form').addEventListener('submit', function(e){
-  e.preventDefault();
-  const fd = new FormData(this);
-  const picked = [...document.querySelectorAll('input[name="proc"]:checked')].map(i=>i.value);
-  fd.append('picked', picked.join(' | '));
-  alert('已提交！我们会尽快与您联系。');
-});
-</script>
-<!-- ========================= ✅ 폼 섹션 끝============================ -->
-
-
-        
-   <!-- Footer -->
+        <!-- Footer -->
         <footer>
           <p style="text-align:center; font-size:0.9em; color:#666;">
-            © 2025 汉江春天 한강애봄 版权所有。模板设计：HTML5 UP。 </p>
+            © 2025 汉江春天 한강애봄 版权所有。模板设计：HTML5 UP。
+          </p>
         </footer>
 
-      </div> <!-- .inner sidebar -->
-    </div> <!-- #sidebar -->
-  </div> <!-- #wrapper -->
-        
- 
+      </div><!-- .inner (sidebar) -->
+    </div><!-- #sidebar -->
 
-  <!-- WeChat QR Modal (파일명 공백 제거 -> qr_weixin.jpg 권장) -->
+  </div><!-- #wrapper -->
+
+  <!-- WeChat QR Modal -->
   <div id="wechatModal" class="modal" aria-hidden="true" role="dialog" style="display:none;">
     <div class="modal-inner">
       <p class="modal-caption">扫描二维码添加微信</p>
@@ -528,71 +300,170 @@ document.getElementById('kplan-form').addEventListener('submit', function(e){
     </div>
   </div>
 
-  <!-- 모달 + 비디오 초기화 스크립트 -->
+  <!-- Page Scripts -->
   <script>
-  document.addEventListener('DOMContentLoaded', function () {
-    // 비디오 세팅
-    const v = document.getElementById("introVideo");
-    if (v) {
-      try { v.playbackRate = 0.33; } catch(e) {}
-      v.muted = true;
-      v.volume = 0;
+    document.addEventListener('DOMContentLoaded', function () {
+      // Modal
+      var modal = document.getElementById('wechatModal');
+      var trigger = document.getElementById('wechat-icon');
+      var qrImg = document.getElementById('wechatQR');
+
+      function openModal(e){
+        if(e) e.preventDefault();
+        if (qrImg) qrImg.src = (qrImg.getAttribute('data-src') || qrImg.src.split('?')[0]) + '?v=' + Date.now();
+        document.body.classList.add('modal-open');
+        if (modal) { modal.style.display = 'block'; modal.setAttribute('aria-hidden','false'); }
+      }
+      function closeModal(){
+        if (modal) { modal.style.display = 'none'; modal.setAttribute('aria-hidden','true'); }
+        document.body.classList.remove('modal-open');
+      }
+      if (trigger) trigger.addEventListener('click', openModal);
+      if (modal) {
+        modal.addEventListener('click', function (e) {
+          if (e.target === modal) closeModal();
+        });
+      }
+      document.addEventListener('keydown', function (e) {
+        if (e.key === 'Escape') closeModal();
+      });
+    });
+
+    /* ====== K-PLAN 데이터/렌더 ====== */
+    const KDATA = {
+      skin:{name:'皮肤科',subs:{
+        lifting:['Ulthera 超声提升（Ulthera）','Thermage 热玛吉紧肤（Thermage）','线雕提拉（Thread lifting）'],
+        laser:['皮秒激光（色斑/痘印）','复合激光紧致 & 纹理/弹力改善','痤疮·疤痕激光','红血丝/血管激光'],
+        booster_inject:['Rejuran PN（丽珠兰）','皮肤水光/焕亮（Skin Booster）'],
+        microneedle:['黄金微针','射频微针'],
+        pore_texture:['毛孔缩小（含LDM等）','肌理改善方案'],
+        hair:['植发（FUE 无痕）']
+      }},
+      fx:{name:'大健康（功能医学）',subs:{
+        core_panels:['营养代谢分析（有机酸 OAT）','线粒体功能检测','端粒（Telomere）检测','阿尔茨海默症风险血检'],
+        immune_hormone:['激素平衡/全套谱','NK 细胞活性检测'],
+        toxins_metabolic:['重金属/毒性金属检测','代谢综合征·肥胖管理'],
+        microbiome_sleep:['肠道微生态（微生物组）检测','睡眠·压力评估（肾上腺/皮质醇）'],
+        vascular_bone:['动脉弹性/血管年龄','骨密度','同型半胱氨酸'],
+        iv_therapy:['静脉营养（IV）治疗','免疫增强注射：Thymosin α1（扎达新/国产制剂）']
+      }},
+      stem:{name:'干细胞/再生',subs:{
+        antiaging_iv:['干细胞静脉输注（IV）','外泌体治疗'],
+        tissue_regen:['软骨/关节再生干细胞','皮肤再生干细胞','神经再生干细胞'],
+        hair:['干细胞 + PRP 脱发再生'],
+        combo:['干细胞 + ECM 重塑','干细胞 + 基因/组织工程','干细胞 + NK 联合'],
+        source:['自体脂肪来源 MSC','自体骨髓来源 MSC','脐带血/胎盘·脐带膜 MSC']
+      }},
+      plastic:{name:'整形外科',subs:{
+        eye:['埋线双眼皮（非切开）','部分切开','全切双眼皮','开内眼角','开外/下眼角','眼型矫正/上睑下垂','上/下睑手术','眼袋脂肪重新分配','提眉术','卧蚕手术','眼部修复'],
+        nose:['硅胶/膨体隆鼻','驼峰鼻/朝天鼻矫正','鼻中隔软骨鼻尖塑形','鼻翼缩小','隆鼻修复','鼻中隔偏曲矫正','混合型隆鼻','自体软骨/AlloDerm 移植'],
+        contour:['颧骨内推','下颌角切除','T截骨/长脸矫正','下巴假体','贵族手术（鼻基底填充）','双下巴吸脂/轮廓提升','轮廓针/收紧（如 Shurink/Refit）','迷你轮廓提升'],
+        lifting:['热玛吉/超声刀/Refit/Secret','Max 拉皮','Mini 拉皮','额/颈/中面部提拉','线雕（PDO 等）','脂肪移植联合提升','射频紧肤'],
+        filler_botox:['玻尿酸（唇/法令纹/下巴/颧/鼻/面颊/额）','肉毒（咬肌/斜方肌/小腿/鱼尾纹/眉间/口角）','皮肤肉毒（Skin Botox）','水光炸弹（注射）'],
+        fat_lipo:['面部脂肪移植（微脂/干细胞联合）','部位脂肪移植（法令/泪沟/额/面颊/下巴）','吸脂（腹/大腿/手臂/腰/小腿）','吸脂后射频管理','髋凹（Hip-dip）矫正'],
+        breast_body:['隆胸（假体）','胸部脂肪移植/混合隆胸','乳房上提/缩小','乳头内陷/乳晕缩小/副乳','假体取出/置换','男性女乳矫正','腹部拉皮','臂/大腿/臀部提升','臀部上提','骨盆/臀部填充','胸罩线吸脂'],
+        etc:['嘴角上提/唇部缩小/唇填充','酒窝成形','耳部整形（招风耳/切耳/耳垂）','疤痕缩小/瘢痕疙瘩/简单缝合','腋臭/多汗/微波热凝（MiraDry）','纹身/痣/老年斑/太田痣去除','修复/异物取出']
+      }},
+      female:{name:'女性中心',subs:{
+        gyne_surgery:['名器质性整形（盆底重建）','阴道口整形（1/3）','阴道紧缩（整形）','小阴唇整形（全切）','小阴唇边缘修整（翼部）','阴蒂包皮成形（露出）','阴蒂皱褶去除','阴蒂提升','会阴皱褶整形','大阴唇整形','大阴唇脂肪移植/吸脂','阴道紧致激光','阴道填充（填充剂）','乳头/乳晕美白','大阴唇美白','私密综合美白'],
+        gyne_checkup:['炎症检测','小便检查','性病检测 12 项','HPV','女性激素全套','甲状腺功能（选）','上腹/心脏/肾膀胱 超声','乳腺/子宫/卵巢 超声（选）','骨密度','同型半胱氨酸','有机酸检测（OAT）','NK 细胞活性检测']
+      }},
+      male:{name:'男性健康',subs:{
+        urology_surgery:['包皮环切','输精管结扎/复通','精索静脉曲张手术','泌尿重建（尿道/阴茎）'],
+        andrology:['阴茎增粗/加长','阴茎弯曲矫正（佩罗尼）','阴茎假体植入','龟头增大','阴茎填充/脂肪移植'],
+        ed_prostate:['勃起功能障碍综合治疗','前列腺增生微创（如 UroLift）'],
+        hormone_vaccine:['低睾酮治疗（睾酮补充）','HPV 疫苗/男性性病筛查'],
+        body_wellness:['男性体成分/代谢健康管理','体型塑形（吸脂/运动医学联动）']
+      }}
+    };
+
+    const $cats=document.getElementById('kplan-cats');
+    const $search=document.getElementById('kplan-search');
+
+    function mapGroupName(key){
+      const m={
+        lifting:'提升/紧致', laser:'激光/嫩肤', booster_inject:'注射·皮肤修复',
+        microneedle:'微针', pore_texture:'毛孔/纹理', hair:'毛发',
+        core_panels:'核心评估', immune_hormone:'免疫/激素', toxins_metabolic:'毒素/代谢',
+        microbiome_sleep:'肠道/睡眠压力', vascular_bone:'血管/骨骼', iv_therapy:'静脉营养/免疫',
+        antiaging_iv:'抗衰/静脉', tissue_regen:'组织再生', combo:'联合疗法', source:'来源',
+        eye:'眼部', nose:'鼻部', contour:'轮廓', filler_botox:'填充/肉毒',
+        fat_lipo:'吸脂/脂肪移植', breast_body:'胸体/躯干', etc:'其他',
+        gyne_surgery:'妇科整形', gyne_checkup:'妇科检查',
+        urology_surgery:'泌尿外科', andrology:'男科', ed_prostate:'ED/前列腺',
+        hormone_vaccine:'激素/疫苗', body_wellness:'体成分/健康'
+      };
+      return m[key]||key;
     }
 
-    // 모달
-    var modal = document.getElementById('wechatModal');
-    var trigger = document.getElementById('wechat-icon');
-    var qrImg = document.getElementById('wechatQR');
+    function renderCats(filterText=''){
+      $cats.innerHTML='';
+      const kw=filterText.trim().toLowerCase();
 
-    function openModal(e){
-      if(e) e.preventDefault();
-      // QR 캐시 무효화 (버전)
-      if (qrImg) qrImg.src = (qrImg.getAttribute('data-src') || qrImg.src.split('?')[0]) + '?v=' + Date.now();
-      document.body.classList.add('modal-open');
-      if (modal) { modal.style.display = 'block'; modal.setAttribute('aria-hidden','false'); }
-    }
-    function closeModal(){
-      if (modal) { modal.style.display = 'none'; modal.setAttribute('aria-hidden','true'); }
-      document.body.classList.remove('modal-open');
-    }
+      Object.entries(KDATA).forEach(([cid,cobj])=>{
+        const wrap=document.createElement('section');
+        wrap.className='kcat-cat';
 
-    if (trigger) trigger.addEventListener('click', openModal);
-    if (modal) {
-      modal.addEventListener('click', function (e) {
-        if (e.target === modal) closeModal();
+        const hd=document.createElement('div');
+        hd.className='kcat-hd';
+        hd.innerHTML=`<h4>${cobj.name}</h4><span aria-hidden="true">＋</span>`;
+        wrap.appendChild(hd);
+
+        const bd=document.createElement('div');
+        bd.className='kcat-bd';
+
+        Object.entries(cobj.subs).forEach(([gid,items])=>{
+          const groupMatch=items.some(txt=>txt.toLowerCase().includes(kw));
+          if(kw && !groupMatch) return;
+
+          const g=document.createElement('div');
+          g.className='kgroup';
+          const gtitle=document.createElement('h5');
+          gtitle.textContent=mapGroupName(gid);
+          g.appendChild(gtitle);
+
+          const ul=document.createElement('ul');
+          ul.className='kitems';
+          items.filter(txt=>!kw || txt.toLowerCase().includes(kw)).forEach(txt=>{
+            const li=document.createElement('li');
+            li.innerHTML=`<label><input type="checkbox" name="proc" value="${cobj.name} / ${gtitle.textContent} / ${txt}"> ${txt}</label>`;
+            ul.appendChild(li);
+          });
+          if(ul.children.length) g.appendChild(ul);
+          bd.appendChild(g);
+        });
+
+        hd.addEventListener('click', ()=>{
+          const open=bd.classList.toggle('open');
+          hd.querySelector('span').textContent=open?'－':'＋';
+        });
+
+        if(kw){ bd.classList.add('open'); hd.querySelector('span').textContent='－'; }
+
+        wrap.appendChild(bd);
+        if(bd.children.length) $cats.appendChild(wrap);
       });
     }
-    document.addEventListener('keydown', function (e) {
-      if (e.key === 'Escape') closeModal();
+
+    $search.addEventListener('input', e=>renderCats(e.target.value));
+    renderCats();
+
+    document.getElementById('kplan-form').addEventListener('submit', function(e){
+      e.preventDefault();
+      const picked=[...document.querySelectorAll('input[name="proc"]:checked')].map(i=>i.value);
+      alert('已提交！我们会尽快与您联系。\\n\\n选择：\\n- ' + picked.join('\\n- '));
+      // TODO: 네이버 메일 연동(서버/앱스) 연결 시 여기서 fetch/POST
     });
-  });
   </script>
 
-  <!-- Scripts: 5총사 (맨 아래에 위치) -->
-<script src="/assets/js/jquery.min.js"></script>
-<script src="/assets/js/browser.min.js"></script>
-<script src="/assets/js/breakpoints.min.js"></script>
-<script src="/assets/js/util.js"></script>
-<script src="/assets/js/main.js"></script>
-
-  
+  <!-- HTML5 UP scripts -->
+  <script src="/assets/js/jquery.min.js"></script>
+  <script src="/assets/js/browser.min.js"></script>
+  <script src="/assets/js/breakpoints.min.js"></script>
+  <script src="/assets/js/util.js"></script>
+  <script src="/assets/js/main.js"></script>
 </body>
 </html>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
