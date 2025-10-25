@@ -2859,6 +2859,20 @@ a:hover { color: var(--hover); }
 #header .logo { min-width: 140px; }
 
 
+/* ===== Readability upgrade for body text ===== */
+body p {
+  font-size: 1.1rem;        /* 기본보다 약간 큼 (기존이 1rem일 때 +10%) */
+  line-height: 1.8;         /* 줄간격 살짝 넓혀 가독성 향상 */
+  color: #222;              /* 살짝 더 진한 회색으로 눈 피로 줄이기 */
+  letter-spacing: 0.015em;  /* 글자 간격 미세하게 벌림 */
+}
+
+/* 중문 전용 보정 (한자체는 시각적으로 작게 보이니까) */
+html[lang="zh-CN"] body p {
+  font-size: 1.15rem;       /* 약간 더 크게 */
+  line-height: 1.85;
+}
+
 
 
 
