@@ -2859,20 +2859,44 @@ a:hover { color: var(--hover); }
 #header .logo { min-width: 140px; }
 
 
-/* ===== Readability upgrade for body text ===== */
-body p {
-  font-size: 1.1rem;        /* 기본보다 약간 큼 (기존이 1rem일 때 +10%) */
-  line-height: 1.8;         /* 줄간격 살짝 넓혀 가독성 향상 */
-  color: #222;              /* 살짝 더 진한 회색으로 눈 피로 줄이기 */
-  letter-spacing: 0.015em;  /* 글자 간격 미세하게 벌림 */
+/* === 본문 글자 크기 일괄 조정 === */
+body p,
+.inner p,
+#banner .content p {
+  font-size: 18px;          /* 기본 16px보다 약간 큼 */
+  line-height: 1.9;
+  color: #222;              /* 진한 회색 */
+  letter-spacing: 0.01em;
 }
 
-/* 중문 전용 보정 (한자체는 시각적으로 작게 보이니까) */
-html[lang="zh-CN"] body p {
-  font-size: 1.15rem;       /* 약간 더 크게 */
-  line-height: 1.85;
+/* 중국어(zh-CN) 페이지 전용 보정 */
+html[lang="zh-CN"] p {
+  font-size: 19px;
+  line-height: 1.9;
 }
 
+/* === K-Plan 페이지 전용 폰트 확대 (본문 중심 페이지) === */
+body#kplan-page p,
+body#kplan-page label,
+body#kplan-page select,
+body#kplan-page input,
+body#kplan-page textarea {
+  font-size: 18.5px;         /* 일반보다 크게, 카테고리보다 약간 작게 */
+  line-height: 1.9;
+  color: #222;
+}
+
+/* 모바일 화면에서는 자동으로 약간 더 커지게 */
+@media screen and (max-width: 768px) {
+  body#kplan-page p,
+  body#kplan-page label,
+  body#kplan-page select,
+  body#kplan-page input,
+  body#kplan-page textarea {
+    font-size: 19px;
+    line-height: 1.95;
+  }
+}
 
 /* ===== K-PLAN 레이아웃 보정 ===== */
 
@@ -2940,6 +2964,7 @@ html[lang="zh-CN"] body p {
 .kplan-shell .actions { text-align: center; margin-top: 1.2rem; }
 .kplan-shell .button.primary { background:#0b66c3; border-color:#0b66c3; color:#fff; }
 .kplan-shell .button.primary:hover { filter: brightness(1.05); }
+
 
 
 
