@@ -1,66 +1,126 @@
+
 <!DOCTYPE HTML>
+<!--
+  2025/10/11 가나와 로니가 같이 만들기 시작함
+  정리본: 로니가 리디아 대신 깔끔하게 정리한 파일
+-->
 <html lang="zh-CN">
+
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
-  <title>定制医疗观光方案 · 汉江春天</title>
+  <title>汉江春天</title>
 
-  <!-- Base path 설정 -->
-  <script>
-    (function () {
-      var project = "/K-medispring/";
-      var isGhPages = location.hostname.endsWith("github.io");
-      var base = document.createElement("base");
-      base.href = isGhPages ? project : "/";
-      document.head.appendChild(base);
-    })();
-  </script>
+  <!-- ✅ Favicon / Web Icons (모두 상대경로) -->
+  <link rel="icon" type="image/x-icon" href="images/favicon.ico?v=20251012">
+  <link rel="icon" type="image/png" sizes="32x32" href="images/favicon-32.png?v=20251012">
+  <link rel="icon" type="image/png" sizes="16x16" href="images/favicon-16.png?v=20251012">
+  <link rel="apple-touch-icon" sizes="180x180" href="images/apple-touch-icon.png?v=20251012">
 
-  <link rel="stylesheet" href="/assets/css/main.css" />
-  <link rel="stylesheet" href="/assets/css/fontawesome-all.min.css" />
-  <noscript><link rel="stylesheet" href="/assets/css/noscript.css" /></noscript>
+  <!-- ✅ Font Awesome (상대경로) -->
+  <link rel="stylesheet" href="assets/css/fontawesome-all.min.css" />
 
-  <meta name="description" content="汉江春天定制医疗观光方案 - 韩国医疗·康养·身心疗愈" />
-  <meta property="og:title" content="定制医疗观光方案 · 汉江春天" />
-  <meta property="og:image" content="/images/preview.jpg" />
+  <!-- ✅ 메인 스타일 (상대경로) -->
+  <link rel="stylesheet" href="assets/css/main.css" />
+  <noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
+
+  <!-- ✅ JS (상대경로) -->
+  <script defer src="assets/js/main.js"></script>
+
+  <!-- Meta Tags -->
+  <meta name="description" content="汉江春天 · 韩国医疗观光与大健康平台" />
+  <meta property="og:title" content="汉江春天" />
+  <meta property="og:description" content="专注于韩国医疗、皮肤医美、干细胞、健康管理与高端定制旅行" />
+  <meta property="og:image" content="images/preview.jpg" />
+  <meta property="og:url" content="https://kmedispring.com/wellness.html" />
+  <meta name="twitter:card" content="summary_large_image" />
+
+  <!-- Custom Style -->
+  <style>
+    :root {
+      --brand: #0077B6;
+      --hover: #2088C2;
+      --deep:  #1565A0;
+      --line:  #A0C4DE;
+    }
+    #menu a { color: #333 !important; text-decoration: none !important; transition: color .25s ease !important; }
+    #menu a:hover { color: var(--hover) !important; }
+    #menu a.active { color: var(--brand) !important; font-weight:600 !important; }
+    .major:after { background-color: var(--brand) !important; }
+    .button.primary, .actions .button.primary { background: var(--brand) !important; border-color: var(--brand) !important; }
+    .button.primary:hover { background: var(--hover) !important; border-color: var(--hover) !important; }
+    hr, .inner .divider { border-color: var(--line) !important; }
+    .modal-open { overflow: hidden; }
+  </style>
 </head>
 
 <body class="is-preload">
-  <div id="page-wrapper">
+  <!-- Wrapper -->
+  <div id="wrapper">
 
-    <!-- ✅ 공통 헤더 -->
-    <header id="header">
-      <a href="index.html" class="logo">
-        <img src="images/logo_ch.png" alt="汉江春天 로고" class="logo-img">
-      </a>
+    <!-- Main -->
+    <div id="main">
+      <div class="inner">
 
-      <!-- 햄버거 메뉴 -->
+    
+      <!-- Header -->
+<header id="header">
+  <a href="index.html" class="logo">
+    <img src="images/logo_ch.png" alt="汉江春天 로고" class="logo-img">
+  </a>
+
+          <!-- Hamburger / Menu toggle (필수) -->
       <a href="#menu" class="toggle" aria-label="Open Menu"></a>
+  
+          <!-- SNS icons -->
+          <ul class="icons">
+            <li>
+              <a href="#" id="wechat-icon" class="icon brands fa-weixin" title="WeChat: e-gana">
+                <span class="label">WeChat</span>
+              </a>
+            </li>
+            <li>
+              <a href="https://www.xiaohongshu.com/user/profile/550972467" target="_blank" class="icon" title="小红书">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" width="20" height="20" aria-hidden="true">
+                  <rect width="100" height="100" rx="20" ry="20" fill="#FF2442"/>
+                  <text x="50%" y="60%" text-anchor="middle" fill="#fff" font-size="30" font-family="sans-serif" font-weight="bold">小红书</text>
+                </svg>
+                <span class="label">Xiaohongshu</span>
+              </a>
+            </li>
+            <li>
+              <a href="https://www.instagram.com/jiana2734/" target="_blank" class="icon brands fa-instagram" title="Instagram">
+                <span class="label">Instagram</span>
+              </a>
+            </li>
+            <li>
+              <a href="mailto:egana@kmedispring.com" class="icon solid fa-envelope" title="Email">
+                <span class="label">Email</span>
+              </a>
+            </li>
+          </ul>
+        </header>   
 
-      <!-- SNS 아이콘 -->
-      <ul class="icons">
-        <li>
-          <a href="#" id="wechat-icon" class="icon brands fa-weixin" title="WeChat: e-gana">
-            <span class="label">WeChat</span>
-          </a>
-        </li>
-        <li>
-          <a href="https://www.xiaohongshu.com/user/profile/550972467" target="_blank" class="icon" title="小红书">
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" width="20" height="20" aria-hidden="true">
-              <rect width="100" height="100" rx="20" ry="20" fill="#FF2442"/>
-              <text x="50%" y="60%" text-anchor="middle" fill="#fff" font-size="30" font-family="sans-serif" font-weight="bold">小红书</text>
-            </svg>
-            <span class="label">Xiaohongshu</span>
-          </a>
-        </li>
-        <li><a href="https://www.instagram.com/jiana2734/" target="_blank" class="icon brands fa-instagram"><span class="label">Instagram</span></a></li>
-        <li><a href="mailto:egana@kmedispring.com" class="icon solid fa-envelope"><span class="label">Email</span></a></li>
-      </ul>
-    </header>
+      </div> <!-- .inner -->
+    </div> <!-- #main -->
 
-    <!-- ✅ 공통 네비게이션 -->
-    <nav id="menu">
-      <ul class="links">
+    <!-- Sidebar -->
+    <div id="sidebar">
+      <div class="inner">
+
+     <!-- Search -->
+<section id="search" class="alt">
+  <form method="get" action="#">
+    <input type="search" name="query" id="query" placeholder="搜索" aria-label="搜索" />
+  </form>
+</section>
+     
+     <!-- 메뉴 -->
+     <nav id="menu">
+   
+       <!--  <header class="major"> <h2>探索</h2> </header>  -->
+       
+    <ul>
         <li><a href="index.html">首页</a></li>
         <li><a href="wellness.html">大健康</a></li>
         <li><a href="stemcell.html">干细胞</a></li>
@@ -71,243 +131,163 @@
         <li><a href="transfer.html">接送服务</a></li>
         <li><a href="tour.html">市区观光</a></li>
         <li><a href="lifestyle.html">生活服务</a></li>
-        <li><a href="kplan.html" class="active" data-i18n="navKplan">定制医疗观光方案</a></li>
-      </ul>
-    </nav>
+       <!-- <nav id="menu"> 안의 <ul class="links"> 안에 추가 -->
+       <!-- ✅ 새로 추가된 메뉴 -->
+      <li>
+        <a href="kplan.html" data-i18n="navKplan">定制医疗观光方案</a>
+      </li>
+    </ul>
+</nav>
+        
+        <!-- About / Partners -->
+        <section>
+          <header class="major"><h2>关于我们</h2></header>
+          <p style="text-align:center; color:#777;">合作伙伴</p>
+          <div class="mini-posts">
+            <article>
 
-    <!-- ✅ 본문 시작 -->
-    <section id="main" class="wrapper">
-      <div class="inner">
-
-        <header class="major">
-          <h1>定制医疗观光方案</h1>
-          <p>用 3 步，生成您的专属方案。提交后，我们在 24 小时内与您确认细节。</p>
-        </header>
-
-        <!-- 👇 여기에 네가 만든 폼 전체 들어가면 됨 -->
-        <section id="kplan">
-
-        <!-- ====== 폼 섹션 시작 (로니 빌드) ====== -->
-        <section id="kplan" class="kplan-wrapper">
-          <header class="major">
-            <h2 id="kplan-title" data-i18n="title">定制医疗观光方案</h2>
-            <p id="kplan-sub" class="kplan-sub" data-i18n="subtitle">用 3 步，生成您的专属方案草案。提交后，我们在 24 小时内与您确认细节。</p>
-
-            <!-- 안내 배너: “항공권만 준비” -->
-            <div class="kplan-banner" id="kplan-banner" data-i18n="bannerTop">
-              您只需根据自己的时间购买合适的机票，其余行程由我们安排。
-            </div>
-          </header>
-
-          <form id="kplan-form" class="kplan-form" autocomplete="on">
-            <!-- Step 1 -->
-            <div class="kplan-step">
-              <h3 class="kplan-step-title" data-i18n="step1">Step 1 · 基本信息</h3>
-              <div class="kplan-grid">
-                <label class="kplan-field">
-                  <span data-i18n="name">姓名</span>
-                  <input type="text" name="name" required placeholder="中文或英文姓名" />
-                </label>
-                <label class="kplan-field">
-                  <span data-i18n="region">国籍 / 居住地</span>
-                  <input type="text" name="region" placeholder="例：中国 / 上海" />
-                </label>
-                <label class="kplan-field">
-                  <span data-i18n="contact">联系方式</span>
-                  <div class="kplan-inline">
-                    <select name="contact_type" aria-label="联系方式类型">
-                      <option value="wechat">WeChat</option>
-                      <option value="email">邮箱</option>
-                      <option value="phone">电话</option>
-                    </select>
-                    <input type="text" name="contact" required placeholder="输入 WeChat ID / 邮箱 / 电话" />
-                  </div>
-                </label>
-                <label class="kplan-field">
-                  <span data-i18n="prefLang">偏好语言</span>
-                  <select id="kplan-lang-select" name="lang">
-                    <option value="zh-CN">简体中文</option>
-                    <option value="ko">한국어</option>
-                    <option value="en">English</option>
-                  </select>
-                </label>
-              </div>
-            </div>
-
-            <!-- Step 2 -->
-            <div class="kplan-step">
-              <h3 class="kplan-step-title" data-i18n="step2">Step 2 · 医疗需求 (可多选)</h3>
-              <div id="kplan-categories" class="kplan-card-grid" role="group" aria-label="医疗类别"></div>
-            </div>
-
-            <!-- Step 3 여행 -->
-            <div class="kplan-step">
-              <h3 class="kplan-step-title" data-i18n="step3">Step 3 · 旅行偏好</h3>
-              <div class="kplan-grid">
-                <label class="kplan-field">
-                  <span data-i18n="dates">行程日期</span>
-                  <div class="kplan-inline">
-                    <input type="date" name="arrive" aria-label="到达日期" />
-                    <span class="kplan-dash">—</span>
-                    <input type="date" name="depart" aria-label="离开日期" />
-                  </div>
-                </label>
-                <label class="kplan-field">
-                  <span data-i18n="party">同行人数</span>
-                  <select name="party">
-                    <option value="1">1人</option>
-                    <option value="2">2人</option>
-                    <option value="3-4">3–4人</option>
-                    <option value="family">家庭（亲子）</option>
-                    <option value="group">小团体</option>
-                  </select>
-                </label>
-                <fieldset class="kplan-field">
-                  <legend data-i18n="style">旅行风格</legend>
-                  <div class="kplan-chips">
-                    <label><input type="checkbox" name="style" value="city"/>🏙️ 市区体验</label>
-                    <label><input type="checkbox" name="style" value="nature"/>🏞️ 自然疗愈</label>
-                    <label><input type="checkbox" name="style" value="spa"/>💆‍♀️ SPA & 休养</label>
-                    <label><input type="checkbox" name="style" value="food"/>🍽️ 美食文化</label>
-                    <label><input type="checkbox" name="style" value="shopping"/>🛍️ 购物</label>
-                    <label><input type="checkbox" name="style" value="premium"/>✨ 高端医疗 + 轻旅行</label>
-                  </div>
-                </fieldset>
-              </div>
-            </div>
-
-            <!-- Step 4 예산 & 서비스 -->
-            <div class="kplan-step">
-              <h3 class="kplan-step-title" data-i18n="step4">Step 4 · 预算与服务</h3>
-              <div class="kplan-grid">
-                <fieldset class="kplan-field">
-                  <legend data-i18n="budgetMed">医疗预算（总额）</legend>
-                  <div class="kplan-chips">
-                    <label><input type="radio" name="budget_med" value="入门"/>¥ · 入门（¥5,000–15,000）</label>
-                    <label><input type="radio" name="budget_med" value="标准"/>¥¥ · 标准（¥1.5万–3万）</label>
-                    <label><input type="radio" name="budget_med" value="进阶"/>¥¥¥ · 进阶（¥3万–6万）</label>
-                    <label><input type="radio" name="budget_med" value="高端"/>¥¥¥¥ · 高端（¥6万+）</label>
-                  </div>
-                  <p class="kplan-hint" data-i18n="tierNote">选择入门/标准/进阶/高端后，我们会发送对应天数、包含项目与预算明细的计划表（PDF）供您确认。</p>
-                </fieldset>
-
-                <!-- 숙소 -->
-                <fieldset class="kplan-field">
-                  <legend data-i18n="hotelNeed">是否需要我们代订住宿？</legend>
-                  <div class="kplan-chips">
-                    <label><input type="radio" name="hotel_need" value="no" checked/>不要</label>
-                    <label><input type="radio" name="hotel_need" value="yes"/>需要</label>
-                  </div>
-                  <div id="kplan-hotel-opts" class="kplan-subopts" hidden>
-                    <div class="kplan-inline" style="margin-top:.5rem; gap:.5rem;">
-                      <select name="hotel_class"><option value="3">三星</option><option value="4">四星</option><option value="5">五星</option></select>
-                      <select name="hotel_budget"><option value="econ">每晚 ¥500–900</option><option value="mid">每晚 ¥900–1,500</option><option value="high">每晚 ¥1,500+</option></select>
-                      <select name="hotel_area"><option value="jongno">钟路/市中心</option><option value="gangnam">江南/狎鸥亭</option><option value="hongdae">弘大/麻浦</option></select>
-                    </div>
-                    <p class="kplan-hint">* 价格区间为参考，旺季会有浮动；我们将提供2~3个候选酒店。</p>
-                  </div>
-                </fieldset>
-
-                <!-- 픽업/샌딩 -->
-                <fieldset class="kplan-field">
-                  <legend data-i18n="pickup">接送机服务</legend>
-                  <div class="kplan-chips">
-                    <label><input type="radio" name="transfer" value="none" checked/>不要</label>
-                    <label><input type="radio" name="transfer" value="oneway"/>单程</label>
-                    <label><input type="radio" name="transfer" value="round"/>往返</label>
-                  </div>
-                  <div id="kplan-transfer-opts" class="kplan-subopts" hidden>
-                    <div class="kplan-inline" style="margin-top:.5rem; gap:.5rem;">
-                      <select name="car_type"><option value="sedan">轿车（1–3人）</option><option value="van">商务车（4–7人）</option></select>
-                      <select name="transfer_price"><option value="std">标准 ¥350–550/单程</option><option value="prem">高端 ¥600–900/单程</option></select>
-                    </div>
-                    <p class="kplan-hint">* 价格含高速/停车，凌晨航班或加点可能有附加费。</p>
-                  </div>
-                </fieldset>
-              </div>
-            </div>
-
-            <!-- 추천 & 우측 요약 -->
-            <div id="kplan-reco" class="kplan-reco" hidden>
-              <h3 class="kplan-step-title" data-i18n="recoTitle">为您推荐</h3>
-              <div id="kplan-reco-list" class="kplan-reco-list"></div>
-            </div>
-
-            <aside class="kplan-preview" aria-live="polite">
-              <h4 data-i18n="preview">您的专属方案 · 初稿</h4>
-              <ul id="kplan-summary" class="kplan-summary"></ul>
-              <p class="kplan-note" data-i18n="note">提交后，我们将结合医生评估为您优化行程与预算。</p>
-            </aside>
-
-            <div class="kplan-actions">
-              <button type="submit" class="button primary" data-i18n="submit">提交方案</button>
-              <button type="reset" class="button" data-i18n="reset">重置</button>
-            </div>
-          </form>
-
-          <div id="kplan-toast" class="kplan-toast" role="status" aria-live="assertive" hidden>
-            <span id="kplan-toast-text">提交成功！我们已收到您的定制需求，将尽快与您联系。</span>
+              <!-- 대표 사진 -->
+        <a href="#" class="image profile">
+        <img src="images/gana.png" alt="汉江春天 代表" />
+        </a>
+            
+              <p style="text-align:center; font-size:1em; margin-top:.5em;">汉江春天 代表</p>
+            </article>
+            <article>
+              <a href="#" class="image"><img src="images/pic08.jpg" alt="" /></a>
+              <p>Aenean ornare velit lacus...</p>
+            </article>
+            <article>
+              <a href="#" class="image"><img src="images/pic09.jpg" alt="" /></a>
+              <p>Aenean ornare velit lacus...</p>
+            </article>
           </div>
         </section>
-        <!-- ====== 폼 섹션 끝 ====== -->
 
-      </div>
-    </section>
+               <!-- Contact -->
+        <section>
+          <header class="major"><h2>联系方式</h2></header>
+          <p>我们相信，美丽与健康，源于真诚的交流。如果你对韩国医疗、健康管理或合作有兴趣，欢迎通过微信或邮件与我们联系。</p>
+          <ul class="contact">
+            <li class="icon solid fa-envelope"><a href="mailto:egana@kmedispring.com">邮箱：egana@kmedispring.com</a></li>
+            <li class="icon solid fa-phone">(82) 10-4903-3123</li>
+            <li class="icon solid fa-home">韩国 首尔特别市 城北区 东小门路 63号 6层(邮编：02845)</li>
+          </ul>
+        </section>
 
-    <!-- ======================= 공통 푸터 ======================= -->
-        <!-- ✅ Footer -->
-      <footer id="footer">
-        <div class="inner">
+
+
+
+
+        
+        
+   <!-- Footer -->
+        <footer>
           <p style="text-align:center; font-size:0.9em; color:#666;">
-            © 2025 汉江春天 HanRiverSpring 한강애봄 版权所有。模板设计：HTML5 UP。
-          </p>
-        </div>
-      </footer>
-    </div> <!-- .inner -->
-  </section> <!-- #main -->
-</div> <!-- #page-wrapper -->
+            © 2025 汉江春天 한강애봄 版权所有。模板设计：HTML5 UP。 </p>
+        </footer>
 
+      </div> <!-- .inner sidebar -->
+    </div> <!-- #sidebar -->
+  </div> <!-- #wrapper -->
+        
+ 
 
-<!-- ✅ WeChat QR Modal -->
-<div id="wechatModal" class="modal" aria-hidden="true" role="dialog" style="display:none;">
-  <div class="modal-inner">
-    <p class="modal-caption">扫描二维码添加微信</p>
-    <img id="wechatQR" class="modal-content" src="images/qr_weixin.jpg" alt="WeChat QR for e-gana" />
-    <p class="modal-id">WeChat ID：e-gana</p>
+  <!-- WeChat QR Modal (파일명 공백 제거 -> qr_weixin.jpg 권장) -->
+  <div id="wechatModal" class="modal" aria-hidden="true" role="dialog" style="display:none;">
+    <div class="modal-inner">
+      <p class="modal-caption">扫描二维码添加微信</p>
+      <img id="wechatQR" class="modal-content" src="images/qr_weixin.jpg" alt="WeChat QR for e-gana" />
+      <p class="modal-id">WeChat ID：e-gana</p>
+    </div>
   </div>
-</div>
 
-<!-- ✅ 모달 스크립트만 (비디오 관련 부분 삭제됨) -->
-<script>
-document.addEventListener('DOMContentLoaded', function () {
-  const modal = document.getElementById('wechatModal');
-  const trigger = document.getElementById('wechat-icon');
-  const qrImg = document.getElementById('wechatQR');
+  <!-- 모달 + 비디오 초기화 스크립트 -->
+  <script>
+  document.addEventListener('DOMContentLoaded', function () {
+    // 비디오 세팅
+    const v = document.getElementById("introVideo");
+    if (v) {
+      try { v.playbackRate = 0.33; } catch(e) {}
+      v.muted = true;
+      v.volume = 0;
+    }
 
-  function openModal(e){
-    if(e) e.preventDefault();
-    if (qrImg) qrImg.src = (qrImg.getAttribute('data-src') || qrImg.src.split('?')[0]) + '?v=' + Date.now();
-    document.body.classList.add('modal-open');
-    if (modal) { modal.style.display = 'block'; modal.setAttribute('aria-hidden','false'); }
-  }
+    // 모달
+    var modal = document.getElementById('wechatModal');
+    var trigger = document.getElementById('wechat-icon');
+    var qrImg = document.getElementById('wechatQR');
 
-  function closeModal(){
-    if (modal) { modal.style.display = 'none'; modal.setAttribute('aria-hidden','true'); }
-    document.body.classList.remove('modal-open');
-  }
+    function openModal(e){
+      if(e) e.preventDefault();
+      // QR 캐시 무효화 (버전)
+      if (qrImg) qrImg.src = (qrImg.getAttribute('data-src') || qrImg.src.split('?')[0]) + '?v=' + Date.now();
+      document.body.classList.add('modal-open');
+      if (modal) { modal.style.display = 'block'; modal.setAttribute('aria-hidden','false'); }
+    }
+    function closeModal(){
+      if (modal) { modal.style.display = 'none'; modal.setAttribute('aria-hidden','true'); }
+      document.body.classList.remove('modal-open');
+    }
 
-  if (trigger) trigger.addEventListener('click', openModal);
-  if (modal) modal.addEventListener('click', e => { if (e.target === modal) closeModal(); });
-  document.addEventListener('keydown', e => { if (e.key === 'Escape') closeModal(); });
-});
-</script>
+    if (trigger) trigger.addEventListener('click', openModal);
+    if (modal) {
+      modal.addEventListener('click', function (e) {
+        if (e.target === modal) closeModal();
+      });
+    }
+    document.addEventListener('keydown', function (e) {
+      if (e.key === 'Escape') closeModal();
+    });
+  });
+  </script>
 
-<!-- ✅ JS 로더 (5총사) -->
+  <!-- Scripts: 5총사 (맨 아래에 위치) -->
 <script src="/assets/js/jquery.min.js"></script>
 <script src="/assets/js/browser.min.js"></script>
 <script src="/assets/js/breakpoints.min.js"></script>
 <script src="/assets/js/util.js"></script>
 <script src="/assets/js/main.js"></script>
 
+  
 </body>
 </html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
