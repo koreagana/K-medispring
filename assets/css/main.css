@@ -5,7 +5,7 @@
 /* Pretendard Regular */
 @font-face {
   font-family: 'Pretendard';
-  src: url('/assets/fonts/Pretendard-Regular.ttf') format('truetype');
+  src: url('../fonts/Pretendard-Regular.ttf') format('truetype');
   font-weight: 400;
   font-style: normal;
   font-display: swap;
@@ -14,7 +14,7 @@
 /* Pretendard Bold */
 @font-face {
   font-family: 'Pretendard';
-  src: url('/assets/fonts/Pretendard-Bold.ttf') format('truetype');
+  src: url('../fonts/Pretendard-Bold.ttf') format('truetype');
   font-weight: 700;
   font-style: normal;
   font-display: swap;
@@ -23,7 +23,7 @@
 /* Source Han Serif CN (Simplified Chinese) */
 @font-face {
   font-family: 'SourceHanSerifCN';
-  src: url('/assets/fonts/SourceHanSerifCN-Light.otf') format('opentype');
+  src: url('../fonts/SourceHanSerifCN-Light.otf') format('opentype');
   font-weight: 300;
   font-style: normal;
   font-display: swap;
@@ -31,7 +31,7 @@
 
 @font-face {
   font-family: 'SourceHanSerifCN';
-  src: url('/assets/fonts/SourceHanSerifCN-Medium.otf') format('opentype');
+  src: url('../fonts/SourceHanSerifCN-Medium.otf') format('opentype');
   font-weight: 500;
   font-style: normal;
   font-display: swap;
@@ -39,7 +39,7 @@
 
 @font-face {
   font-family: 'SourceHanSerifCN';
-  src: url('/assets/fonts/SourceHanSerifCN-Bold.otf') format('opentype');
+  src: url('../fonts/SourceHanSerifCN-Bold.otf') format('opentype');
   font-weight: 700;
   font-style: normal;
   font-display: swap;
@@ -48,7 +48,7 @@
 /* ===== 기존 Merriweather & Roboto ===== */
 @font-face {
   font-family: "Merriweather";
-  src: url("/assets/fonts/Merriweather-VariableFont_opsz,wdth,wght.ttf") format("truetype");
+  src: url("../fonts/Merriweather-VariableFont_opsz,wdth,wght.ttf") format("truetype");
   font-weight: 300 700;
   font-style: normal;
   font-display: swap;
@@ -56,17 +56,16 @@
 
 @font-face {
   font-family: "Roboto";
-  src: url("/assets/fonts/Roboto-VariableFont_wdth,wght.ttf") format("truetype");
+  src: url("../fonts/Roboto-VariableFont_wdth,wght.ttf") format("truetype");
   font-weight: 300 700;
   font-style: normal;
   font-display: swap;
 }
 
-
 /* Merriweather */
 @font-face {
   font-family: "Merriweather";
-  src: url("/assets/fonts/Merriweather-VariableFont_opsz,wdth,wght.ttf") format("truetype");
+  src: url("../fonts/Merriweather-VariableFont_opsz,wdth,wght.ttf") format("truetype");
   font-weight: 300 700;
   font-style: normal;
   font-display: swap;
@@ -75,7 +74,7 @@
 /* Roboto */
 @font-face {
   font-family: "Roboto";
-  src: url("/assets/fonts/Roboto-VariableFont_wdth,wght.ttf") format("truetype");
+  src: url("../fonts/Roboto-VariableFont_wdth,wght.ttf") format("truetype");
   font-weight: 300 700;
   font-style: normal;
   font-display: swap;
@@ -91,14 +90,20 @@
              Roboto, "Helvetica Neue", Arial, sans-serif;
 }
 
-/* 중국어(간체) 스택 */
-:root{
-  --zh-sc: "PingFang SC", "Microsoft YaHei", "Noto Sans CJK SC",
-           "Source Han Sans SC", "Heiti SC", "SimHei", sans-serif;
+/* ✅ 폰트 변수 정의 */
+:root {
+  /* 중국어(간체) 스택 */
+  --zh-sc: "PingFang SC","Microsoft YaHei","Noto Sans CJK SC",
+           "Source Han Sans SC","Heiti SC","SimHei",sans-serif;
+
+  /* 영문 본문/헤딩 스택 (로컬 우선, 시스템 폴백) */
+  --en-body: "Pretendard","Roboto","Open Sans",system-ui,-apple-system,
+             "Segoe UI",Arial,sans-serif;
+  --en-heading: "Merriweather","Roboto Slab","Times New Roman",serif;
 }
 
-/* 페이지 기본 폰트: 영문(라틴)은 EN, 한자(CJK)는 자동으로 ZH 폴백 */
-html[lang="zh-CN"] body{
+/* 페이지 기본 폰트: 라틴은 EN, CJK는 자동 ZH 폴백 */
+html[lang="zh-CN"] body {
   font-family: var(--en-body), var(--zh-sc);
   line-height: 1.65;
   -webkit-font-smoothing: antialiased;
@@ -106,17 +111,19 @@ html[lang="zh-CN"] body{
 }
 
 /* 제목은 Merriweather 질감 유지 + 중문 보강 */
-h1, h2, h3, h4, h5, h6{
+h1, h2, h3, h4, h5, h6 {
   font-family: var(--en-heading), var(--zh-sc);
   font-weight: 700;
 }
 
-/* 영문 전용 구간이 필요하면: <span lang="en">텍스트</span> */
-:lang(en){ font-family: var(--en-body), var(--zh-sc); }
-/* 여기까지 22025/10/11일 추가한 내용 */
+/* 영문 전용: <span lang="en">Text</span> */
+:lang(en) { font-family: var(--en-body), var(--zh-sc); }
 
-@import url(fontawesome-all.min.css);
-@import url("https://fonts.googleapis.com/css?family=Open+Sans:400,600,400italic,600italic|Roboto+Slab:400,700");
+/* ✅ 외부 import는 제거: Font Awesome은 <head>에서 link로, Google Fonts는 미사용(차단 가능성) */
+/* @import url(fontawesome-all.min.css);  ← 삭제 */
+/* @import url("https://fonts.googleapis.com/..."); ← 삭제 */
+
+
 /*
 	Editorial by HTML5 UP
 	html5up.net | @ajlkn
@@ -2780,6 +2787,7 @@ header.major > :last-child {
   border-bottom: 0 !important;
   box-shadow: none !important;
 }
+
 
 
 
