@@ -2966,6 +2966,35 @@ body#kplan-page textarea {
 .kplan-shell .button.primary:hover { filter: brightness(1.05); }
 
 
+/* ================================
+   ✅ 본문 텍스트 가독성 향상
+   ================================ */
+.inner p,
+.inner li,
+section p {
+  font-size: 1.15rem;       /* 기본보다 약간 크게 */
+  line-height: 1.85;        /* 줄 간격 넉넉하게 */
+  color: #222;              /* 눈에 편한 진회색 */
+  letter-spacing: 0.015em;  /* 글자 간격 살짝 띄움 */
+}
+
+/* 📱 모바일 전용 보정 */
+@media (max-width: 768px) {
+  .inner p,
+  .inner li,
+  section p {
+    font-size: 1.1rem;      /* 살짝 줄여서 화면 균형 유지 */
+    line-height: 1.75;
+  }
+}
+
+/* 🇨🇳 중국어 페이지 보정 (한자체 시각적으로 작으므로 +5%) */
+html[lang="zh-CN"] .inner p,
+html[lang="zh-CN"] .inner li {
+  font-size: 1.2rem;
+  line-height: 1.9;
+}
+
 
 
 
