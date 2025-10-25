@@ -181,34 +181,45 @@
               <!-- 카테고리 & 항목 렌더 영역 -->
               <div id="kplan-cats" class="kcat"></div>
 
-              <!-- Step 3 旅行选项 -->
-              <h3>Step 3 · 旅行服务（可选）</h3>
-              <div class="fields">
-                <div class="field">
-                  <label>请选择需要的服务：</label>
-                  <ul class="checkboxes two-col">
-                    <li><label><input type="checkbox" name="travel" value="接送机"> 机场接送</label></li>
-                    <li><label><input type="checkbox" name="travel" value="酒店预订"> 酒店预订</label></li>
-                    <li><label><input type="checkbox" name="travel" value="市区观光"> 市区观光</label></li>
-                    <li><label><input type="checkbox" name="travel" value="翻译服务"> 医疗陪同 / 翻译</label></li>
-                  </ul>
-                </div>
-                <div class="field">
-                  <label>希望就诊/旅行时间</label>
-                  <input type="text" name="visit_time" placeholder="例：11月中旬 或 具体日期" />
-                </div>
-                <div class="field">
-                  <label>备注 / 特别需求</label>
-                  <textarea name="notes" rows="3" placeholder="例如：希望女医生 / 想结合旅游 / 过敏史等"></textarea>
-                </div>
-              </div>
+           <!-- ===== Step 3 · 旅行服务（可选） ===== -->
+<section id="step3" class="k-form-section">
+  <h3>Step 3 · 旅行服务（可选）</h3>
 
-              <ul class="actions" style="text-align:center;">
-                <li><button type="submit" class="button primary">提交方案请求</button></li>
-              </ul>
-            </form>
-          </div>
-        </section>
+  <fieldset class="svc-group">
+    <legend>请选择各项服务是否需要：</legend>
+
+    <div class="svc-row">
+      <label>机场接送：</label>
+      <label class="need"><input type="radio" name="airport" value="需要">需要</label>
+      <label class="need"><input type="radio" name="airport" value="不需要">不需要</label>
+    </div>
+
+    <div class="svc-row">
+      <label>酒店预订：</label>
+      <label class="need"><input type="radio" name="hotel" value="需要">需要</label>
+      <label class="need"><input type="radio" name="hotel" value="不需要">不需要</label>
+    </div>
+
+    <div class="svc-row">
+      <label>市区观光：</label>
+      <label class="need"><input type="radio" name="tour" value="需要">需要</label>
+      <label class="need"><input type="radio" name="tour" value="不需要">不需要</label>
+    </div>
+
+    <div class="svc-row">
+      <label>医疗陪同 / 翻译：</label>
+      <label class="need"><input type="radio" name="translation" value="需要">需要</label>
+      <label class="need"><input type="radio" name="translation" value="不需要">不需要</label>
+    </div>
+  </fieldset>
+
+  <div class="svc-time">
+    <label for="visitTime">希望就诊/旅行时间</label>
+    <input id="visitTime" type="text" name="visit_time" placeholder="例：11月中旬 或 具体日期">
+  </div>
+
+  <input type="hidden" id="travelServicesSummary" name="travel_services_summary">
+</section>
         <!-- ========================= ✅ 폼 섹션 끝 ========================= -->
 
         <script>
