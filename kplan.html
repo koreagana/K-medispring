@@ -1,11 +1,11 @@
-<!doctype html>
+<!DOCTYPE HTML>
 <html lang="zh-CN">
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
   <title>定制医疗观光方案 · 汉江春天</title>
 
-  <!-- ✅ GitHub Pages 절대경로 보정 -->
+  <!-- Base path 설정 -->
   <script>
     (function () {
       var project = "/K-medispring/";
@@ -16,92 +16,76 @@
     })();
   </script>
 
-  <!-- Favicon -->
-  <link rel="icon" type="image/x-icon" href="/images/favicon.ico">
-  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
-
-  <!-- 사이트 공통 CSS -->
-  <link rel="stylesheet" href="/assets/css/fontawesome-all.min.css" />
   <link rel="stylesheet" href="/assets/css/main.css" />
+  <link rel="stylesheet" href="/assets/css/fontawesome-all.min.css" />
   <noscript><link rel="stylesheet" href="/assets/css/noscript.css" /></noscript>
 
-  <!-- 페이지 전용 미세 스타일 (브랜드색/라인색만 사용) -->
-  <style>
-    :root{
-      --kplan-brand:#0077B6;
-      --kplan-line:rgba(0,0,0,.12);
-    }
-    /* 헤더 메뉴에서 현재 페이지 강조 */
-    #menu a.kplan-active{color:var(--kplan-brand)!important;font-weight:600;}
-    /* 폼 컨테이너 */
-    .kplan-wrapper { background:#fff; border:1px solid var(--kplan-line); border-radius:14px; padding:1.25rem; }
-    .kplan-sub { margin-top:.25rem; color:#666; }
-    .kplan-form { display:grid; grid-template-columns: 1fr 320px; gap: 1.25rem; }
-    .kplan-step { grid-column: 1 / 2; border:1px dashed var(--kplan-line); border-radius:12px; padding:1rem; }
-    .kplan-step + .kplan-step { margin-top:.25rem; }
-    .kplan-step-title { margin: 0 0 .75rem; font-size:1.1rem; }
-    .kplan-grid { display:grid; gap:.75rem; grid-template-columns: repeat(2, minmax(0,1fr)); }
-    .kplan-field { display:flex; flex-direction: column; gap:.375rem; }
-    .kplan-field > span, .kplan-field > legend { font-size:.9rem; color:#333; }
-    .kplan-field input[type="text"],
-    .kplan-field input[type="date"],
-    .kplan-field select { height:40px; border:1px solid var(--kplan-line); border-radius:10px; padding:0 .75rem; font-size:.95rem; }
-    .kplan-inline{display:flex; gap:.5rem;}
-    .kplan-chips { display:flex; flex-wrap:wrap; gap:.5rem 1rem; }
-    .kplan-chips label { display:flex; align-items:center; gap:.375rem; border:1px solid var(--kplan-line); border-radius:999px; padding:.25rem .75rem; cursor:pointer; }
-    /* 우측 요약 */
-    .kplan-preview { grid-column: 2 / 3; border:1px solid var(--kplan-line); border-radius:12px; padding:1rem; position: sticky; top: 1rem; height: max-content; }
-    .kplan-summary { list-style:none; padding:0; margin:.25rem 0 .75rem; display:grid; gap:.25rem; font-size:.95rem; }
-    .kplan-summary li::before{content:"•"; color:var(--kplan-brand); font-weight:700; margin-right:.4rem;}
-    .kplan-actions { grid-column: 1 / -1; display:flex; gap:.5rem; margin-top:.5rem; }
-    .kplan-actions .button{ border-radius:10px; padding:.6rem 1.2rem; border:1px solid var(--kplan-line); cursor:pointer;}
-    .kplan-actions .button.primary{ background:var(--kplan-brand); color:#fff; border-color:var(--kplan-brand); }
-    /* 카테고리 카드(선택형) */
-    .kplan-card-grid{ display:grid; grid-template-columns: repeat(3, minmax(0,1fr)); gap:.75rem; }
-    .kplan-card{ border:1px solid var(--kplan-line); border-radius:12px; overflow:hidden; background:#fff; cursor:pointer; position:relative; }
-    .kplan-card[aria-checked="true"]{ outline:2px solid var(--kplan-brand); outline-offset:-2px;}
-    .kplan-thumb{ aspect-ratio:16/9; background:#f4f6f8; display:flex; align-items:center; justify-content:center; color:#777; }
-    .kplan-body{ padding:.6rem .75rem .8rem;}
-    .kplan-reco{ grid-column:1/2; margin-top:.25rem; border:1px solid var(--kplan-line); border-radius:12px; padding:1rem;}
-    .kplan-reco-list{ display:grid; grid-template-columns: repeat(3,minmax(0,1fr)); gap:.75rem;}
-    .kplan-reco-card{ border:1px solid var(--kplan-line); border-radius:12px; padding:.75rem; display:grid; gap:.35rem;}
-    .kplan-reco-actions .button{ border:1px solid var(--kplan-line); border-radius:10px; padding:.4rem .8rem; }
-    .kplan-banner{ margin-top:.6rem; padding:.6rem .8rem; background:#f4f9ff; border:1px solid var(--kplan-line); border-radius:10px; }
-    .kplan-subopts{ margin-top:.25rem; }
-    .kplan-hint{ color:#777; font-size:.86rem; margin:.35rem 0 0; }
-    .kplan-toast{ position:fixed; left:50%; transform:translateX(-50%); bottom:24px; background:#111; color:#fff; padding:.8rem 1rem; border-radius:10px; box-shadow:0 10px 24px rgba(0,0,0,.18); }
-    /* 반응형 */
-    @media (max-width:980px){ .kplan-form{grid-template-columns:1fr;} .kplan-preview{grid-column:1/-1; position:static;} .kplan-grid{grid-template-columns:1fr;} .kplan-card-grid,.kplan-reco-list{grid-template-columns:1fr 1fr;} }
-    @media (max-width:560px){ .kplan-card-grid,.kplan-reco-list{grid-template-columns:1fr;} }
-  </style>
+  <meta name="description" content="汉江春天定制医疗观光方案 - 韩国医疗·康养·身心疗愈" />
+  <meta property="og:title" content="定制医疗观光方案 · 汉江春天" />
+  <meta property="og:image" content="/images/preview.jpg" />
 </head>
 
 <body class="is-preload">
   <div id="page-wrapper">
 
-    <!-- ======================= 공통 헤더 ======================= -->
-    <header id="header" class="alt">
-      <!-- 좌측 로고 -->
+    <!-- ✅ 공통 헤더 -->
+    <header id="header">
       <a href="index.html" class="logo">
-        <span class="symbol"><img src="/images/logo_ch.png" alt="汉江春天" style="height:28px;"></span>
-        <span class="title">汉江春天</span>
+        <img src="images/logo_ch.png" alt="汉江春天 로고" class="logo-img">
       </a>
 
-      <!-- 우측 네비 (메인 메뉴 구성은 사이트와 동일하게 유지하세요) -->
-      <nav id="menu">
-        <ul>
-          <li><a href="index.html">首页</a></li>
-          <li><a href="derm.html">皮肤/医美</a></li>
-          <li><a href="surgery.html">整形</a></li>
-          <li><a href="wellness.html">大健康</a></li>
-          <li><a href="kplan.html" class="kplan-active">定制医疗观光方案</a></li>
-        </ul>
-      </nav>
+      <!-- 햄버거 메뉴 -->
+      <a href="#menu" class="toggle" aria-label="Open Menu"></a>
+
+      <!-- SNS 아이콘 -->
+      <ul class="icons">
+        <li>
+          <a href="#" id="wechat-icon" class="icon brands fa-weixin" title="WeChat: e-gana">
+            <span class="label">WeChat</span>
+          </a>
+        </li>
+        <li>
+          <a href="https://www.xiaohongshu.com/user/profile/550972467" target="_blank" class="icon" title="小红书">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" width="20" height="20" aria-hidden="true">
+              <rect width="100" height="100" rx="20" ry="20" fill="#FF2442"/>
+              <text x="50%" y="60%" text-anchor="middle" fill="#fff" font-size="30" font-family="sans-serif" font-weight="bold">小红书</text>
+            </svg>
+            <span class="label">Xiaohongshu</span>
+          </a>
+        </li>
+        <li><a href="https://www.instagram.com/jiana2734/" target="_blank" class="icon brands fa-instagram"><span class="label">Instagram</span></a></li>
+        <li><a href="mailto:egana@kmedispring.com" class="icon solid fa-envelope"><span class="label">Email</span></a></li>
+      </ul>
     </header>
 
-    <!-- ======================= 본문 ======================= -->
+    <!-- ✅ 공통 네비게이션 -->
+    <nav id="menu">
+      <ul class="links">
+        <li><a href="index.html">首页</a></li>
+        <li><a href="wellness.html">大健康</a></li>
+        <li><a href="stemcell.html">干细胞</a></li>
+        <li><a href="derm.html">皮肤医美</a></li>
+        <li><a href="surgery.html">整形医美</a></li>
+        <li><a href="woman.html">女性护理中心</a></li>
+        <li><a href="man.html">男性健康中心</a></li>
+        <li><a href="transfer.html">接送服务</a></li>
+        <li><a href="tour.html">市区观光</a></li>
+        <li><a href="lifestyle.html">生活服务</a></li>
+        <li><a href="kplan.html" class="active" data-i18n="navKplan">定制医疗观光方案</a></li>
+      </ul>
+    </nav>
+
+    <!-- ✅ 본문 시작 -->
     <section id="main" class="wrapper">
       <div class="inner">
+
+        <header class="major">
+          <h1>定制医疗观光方案</h1>
+          <p>用 3 步，生成您的专属方案。提交后，我们在 24 小时内与您确认细节。</p>
+        </header>
+
+        <!-- 👇 여기에 네가 만든 폼 전체 들어가면 됨 -->
+        <section id="kplan">
 
         <!-- ====== 폼 섹션 시작 (로니 빌드) ====== -->
         <section id="kplan" class="kplan-wrapper">
