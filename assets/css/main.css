@@ -2995,7 +2995,32 @@ html[lang="zh-CN"] .inner li {
   line-height: 1.9;
 }
 
+/* ===== Ronnie fix: ensure mobile menu visible ===== */
+#menu {
+  position: fixed;
+  top: 0;
+  right: -320px;
+  width: 320px;
+  height: 100vh;
+  background: #ffffff;
+  box-shadow: -3px 0 12px rgba(0,0,0,.12);
+  transition: right .3s ease;
+  z-index: 9999;
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+  padding: 2rem 1.5rem;
+}
 
+body.is-menu-visible #menu {
+  right: 0;
+}
+
+#menu a {
+  color: #111 !important;
+  text-decoration: none;
+  display: block;
+  margin: .5rem 0;
+}
 
 
 
