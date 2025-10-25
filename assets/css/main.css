@@ -3022,7 +3022,27 @@ body.is-menu-visible #menu {
   margin: .5rem 0;
 }
 
-
+/* ===== Step 3 (需要 / 不需要) ===== */
+.svc-group {
+  border: 1px solid #eee;
+  background: #fff;
+  padding: 1rem;
+  border-radius: .5rem;
+}
+.svc-row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: .75rem;
+  margin: .5rem 0;
+  line-height: 1.5;
+}
+.need input { margin-right: .25rem; }
+.need input:checked + span,
+.need input:checked {
+  accent-color: #0044cc; /* 체크박스 파란색 */
+}
+legend { font-weight: 600; margin-bottom: .75rem; }
 
 
 
