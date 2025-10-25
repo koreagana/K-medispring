@@ -1,0 +1,339 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+  <title>定制医疗观光方案 · 汉江春天</title>
+
+  <!-- ✅ GitHub Pages 절대경로 보정 -->
+  <script>
+    (function () {
+      var project = "/K-medispring/";
+      var isGhPages = location.hostname.endsWith("github.io");
+      var base = document.createElement("base");
+      base.href = isGhPages ? project : "/";
+      document.head.appendChild(base);
+    })();
+  </script>
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/x-icon" href="/images/favicon.ico">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+
+  <!-- 사이트 공통 CSS -->
+  <link rel="stylesheet" href="/assets/css/fontawesome-all.min.css" />
+  <link rel="stylesheet" href="/assets/css/main.css" />
+  <noscript><link rel="stylesheet" href="/assets/css/noscript.css" /></noscript>
+
+  <!-- 페이지 전용 미세 스타일 (브랜드색/라인색만 사용) -->
+  <style>
+    :root{
+      --kplan-brand:#0077B6;
+      --kplan-line:rgba(0,0,0,.12);
+    }
+    /* 헤더 메뉴에서 현재 페이지 강조 */
+    #menu a.kplan-active{color:var(--kplan-brand)!important;font-weight:600;}
+    /* 폼 컨테이너 */
+    .kplan-wrapper { background:#fff; border:1px solid var(--kplan-line); border-radius:14px; padding:1.25rem; }
+    .kplan-sub { margin-top:.25rem; color:#666; }
+    .kplan-form { display:grid; grid-template-columns: 1fr 320px; gap: 1.25rem; }
+    .kplan-step { grid-column: 1 / 2; border:1px dashed var(--kplan-line); border-radius:12px; padding:1rem; }
+    .kplan-step + .kplan-step { margin-top:.25rem; }
+    .kplan-step-title { margin: 0 0 .75rem; font-size:1.1rem; }
+    .kplan-grid { display:grid; gap:.75rem; grid-template-columns: repeat(2, minmax(0,1fr)); }
+    .kplan-field { display:flex; flex-direction: column; gap:.375rem; }
+    .kplan-field > span, .kplan-field > legend { font-size:.9rem; color:#333; }
+    .kplan-field input[type="text"],
+    .kplan-field input[type="date"],
+    .kplan-field select { height:40px; border:1px solid var(--kplan-line); border-radius:10px; padding:0 .75rem; font-size:.95rem; }
+    .kplan-inline{display:flex; gap:.5rem;}
+    .kplan-chips { display:flex; flex-wrap:wrap; gap:.5rem 1rem; }
+    .kplan-chips label { display:flex; align-items:center; gap:.375rem; border:1px solid var(--kplan-line); border-radius:999px; padding:.25rem .75rem; cursor:pointer; }
+    /* 우측 요약 */
+    .kplan-preview { grid-column: 2 / 3; border:1px solid var(--kplan-line); border-radius:12px; padding:1rem; position: sticky; top: 1rem; height: max-content; }
+    .kplan-summary { list-style:none; padding:0; margin:.25rem 0 .75rem; display:grid; gap:.25rem; font-size:.95rem; }
+    .kplan-summary li::before{content:"•"; color:var(--kplan-brand); font-weight:700; margin-right:.4rem;}
+    .kplan-actions { grid-column: 1 / -1; display:flex; gap:.5rem; margin-top:.5rem; }
+    .kplan-actions .button{ border-radius:10px; padding:.6rem 1.2rem; border:1px solid var(--kplan-line); cursor:pointer;}
+    .kplan-actions .button.primary{ background:var(--kplan-brand); color:#fff; border-color:var(--kplan-brand); }
+    /* 카테고리 카드(선택형) */
+    .kplan-card-grid{ display:grid; grid-template-columns: repeat(3, minmax(0,1fr)); gap:.75rem; }
+    .kplan-card{ border:1px solid var(--kplan-line); border-radius:12px; overflow:hidden; background:#fff; cursor:pointer; position:relative; }
+    .kplan-card[aria-checked="true"]{ outline:2px solid var(--kplan-brand); outline-offset:-2px;}
+    .kplan-thumb{ aspect-ratio:16/9; background:#f4f6f8; display:flex; align-items:center; justify-content:center; color:#777; }
+    .kplan-body{ padding:.6rem .75rem .8rem;}
+    .kplan-reco{ grid-column:1/2; margin-top:.25rem; border:1px solid var(--kplan-line); border-radius:12px; padding:1rem;}
+    .kplan-reco-list{ display:grid; grid-template-columns: repeat(3,minmax(0,1fr)); gap:.75rem;}
+    .kplan-reco-card{ border:1px solid var(--kplan-line); border-radius:12px; padding:.75rem; display:grid; gap:.35rem;}
+    .kplan-reco-actions .button{ border:1px solid var(--kplan-line); border-radius:10px; padding:.4rem .8rem; }
+    .kplan-banner{ margin-top:.6rem; padding:.6rem .8rem; background:#f4f9ff; border:1px solid var(--kplan-line); border-radius:10px; }
+    .kplan-subopts{ margin-top:.25rem; }
+    .kplan-hint{ color:#777; font-size:.86rem; margin:.35rem 0 0; }
+    .kplan-toast{ position:fixed; left:50%; transform:translateX(-50%); bottom:24px; background:#111; color:#fff; padding:.8rem 1rem; border-radius:10px; box-shadow:0 10px 24px rgba(0,0,0,.18); }
+    /* 반응형 */
+    @media (max-width:980px){ .kplan-form{grid-template-columns:1fr;} .kplan-preview{grid-column:1/-1; position:static;} .kplan-grid{grid-template-columns:1fr;} .kplan-card-grid,.kplan-reco-list{grid-template-columns:1fr 1fr;} }
+    @media (max-width:560px){ .kplan-card-grid,.kplan-reco-list{grid-template-columns:1fr;} }
+  </style>
+</head>
+
+<body class="is-preload">
+  <div id="page-wrapper">
+
+    <!-- ======================= 공통 헤더 ======================= -->
+    <header id="header" class="alt">
+      <!-- 좌측 로고 -->
+      <a href="index.html" class="logo">
+        <span class="symbol"><img src="/images/logo_ch.png" alt="汉江春天" style="height:28px;"></span>
+        <span class="title">汉江春天</span>
+      </a>
+
+      <!-- 우측 네비 (메인 메뉴 구성은 사이트와 동일하게 유지하세요) -->
+      <nav id="menu">
+        <ul>
+          <li><a href="index.html">首页</a></li>
+          <li><a href="derm.html">皮肤/医美</a></li>
+          <li><a href="surgery.html">整形</a></li>
+          <li><a href="wellness.html">大健康</a></li>
+          <li><a href="kplan.html" class="kplan-active">定制医疗观光方案</a></li>
+        </ul>
+      </nav>
+    </header>
+
+    <!-- ======================= 본문 ======================= -->
+    <section id="main" class="wrapper">
+      <div class="inner">
+
+        <!-- ====== 폼 섹션 시작 (로니 빌드) ====== -->
+        <section id="kplan" class="kplan-wrapper">
+          <header class="major">
+            <h2 id="kplan-title" data-i18n="title">定制医疗观光方案</h2>
+            <p id="kplan-sub" class="kplan-sub" data-i18n="subtitle">用 3 步，生成您的专属方案草案。提交后，我们在 24 小时内与您确认细节。</p>
+
+            <!-- 안내 배너: “항공권만 준비” -->
+            <div class="kplan-banner" id="kplan-banner" data-i18n="bannerTop">
+              您只需根据自己的时间购买合适的机票，其余行程由我们安排。
+            </div>
+          </header>
+
+          <form id="kplan-form" class="kplan-form" autocomplete="on">
+            <!-- Step 1 -->
+            <div class="kplan-step">
+              <h3 class="kplan-step-title" data-i18n="step1">Step 1 · 基本信息</h3>
+              <div class="kplan-grid">
+                <label class="kplan-field">
+                  <span data-i18n="name">姓名</span>
+                  <input type="text" name="name" required placeholder="中文或英文姓名" />
+                </label>
+                <label class="kplan-field">
+                  <span data-i18n="region">国籍 / 居住地</span>
+                  <input type="text" name="region" placeholder="例：中国 / 上海" />
+                </label>
+                <label class="kplan-field">
+                  <span data-i18n="contact">联系方式</span>
+                  <div class="kplan-inline">
+                    <select name="contact_type" aria-label="联系方式类型">
+                      <option value="wechat">WeChat</option>
+                      <option value="email">邮箱</option>
+                      <option value="phone">电话</option>
+                    </select>
+                    <input type="text" name="contact" required placeholder="输入 WeChat ID / 邮箱 / 电话" />
+                  </div>
+                </label>
+                <label class="kplan-field">
+                  <span data-i18n="prefLang">偏好语言</span>
+                  <select id="kplan-lang-select" name="lang">
+                    <option value="zh-CN">简体中文</option>
+                    <option value="ko">한국어</option>
+                    <option value="en">English</option>
+                  </select>
+                </label>
+              </div>
+            </div>
+
+            <!-- Step 2 -->
+            <div class="kplan-step">
+              <h3 class="kplan-step-title" data-i18n="step2">Step 2 · 医疗需求 (可多选)</h3>
+              <div id="kplan-categories" class="kplan-card-grid" role="group" aria-label="医疗类别"></div>
+            </div>
+
+            <!-- Step 3 여행 -->
+            <div class="kplan-step">
+              <h3 class="kplan-step-title" data-i18n="step3">Step 3 · 旅行偏好</h3>
+              <div class="kplan-grid">
+                <label class="kplan-field">
+                  <span data-i18n="dates">行程日期</span>
+                  <div class="kplan-inline">
+                    <input type="date" name="arrive" aria-label="到达日期" />
+                    <span class="kplan-dash">—</span>
+                    <input type="date" name="depart" aria-label="离开日期" />
+                  </div>
+                </label>
+                <label class="kplan-field">
+                  <span data-i18n="party">同行人数</span>
+                  <select name="party">
+                    <option value="1">1人</option>
+                    <option value="2">2人</option>
+                    <option value="3-4">3–4人</option>
+                    <option value="family">家庭（亲子）</option>
+                    <option value="group">小团体</option>
+                  </select>
+                </label>
+                <fieldset class="kplan-field">
+                  <legend data-i18n="style">旅行风格</legend>
+                  <div class="kplan-chips">
+                    <label><input type="checkbox" name="style" value="city"/>🏙️ 市区体验</label>
+                    <label><input type="checkbox" name="style" value="nature"/>🏞️ 自然疗愈</label>
+                    <label><input type="checkbox" name="style" value="spa"/>💆‍♀️ SPA & 休养</label>
+                    <label><input type="checkbox" name="style" value="food"/>🍽️ 美食文化</label>
+                    <label><input type="checkbox" name="style" value="shopping"/>🛍️ 购物</label>
+                    <label><input type="checkbox" name="style" value="premium"/>✨ 高端医疗 + 轻旅行</label>
+                  </div>
+                </fieldset>
+              </div>
+            </div>
+
+            <!-- Step 4 예산 & 서비스 -->
+            <div class="kplan-step">
+              <h3 class="kplan-step-title" data-i18n="step4">Step 4 · 预算与服务</h3>
+              <div class="kplan-grid">
+                <fieldset class="kplan-field">
+                  <legend data-i18n="budgetMed">医疗预算（总额）</legend>
+                  <div class="kplan-chips">
+                    <label><input type="radio" name="budget_med" value="入门"/>¥ · 入门（¥5,000–15,000）</label>
+                    <label><input type="radio" name="budget_med" value="标准"/>¥¥ · 标准（¥1.5万–3万）</label>
+                    <label><input type="radio" name="budget_med" value="进阶"/>¥¥¥ · 进阶（¥3万–6万）</label>
+                    <label><input type="radio" name="budget_med" value="高端"/>¥¥¥¥ · 高端（¥6万+）</label>
+                  </div>
+                  <p class="kplan-hint" data-i18n="tierNote">选择入门/标准/进阶/高端后，我们会发送对应天数、包含项目与预算明细的计划表（PDF）供您确认。</p>
+                </fieldset>
+
+                <!-- 숙소 -->
+                <fieldset class="kplan-field">
+                  <legend data-i18n="hotelNeed">是否需要我们代订住宿？</legend>
+                  <div class="kplan-chips">
+                    <label><input type="radio" name="hotel_need" value="no" checked/>不要</label>
+                    <label><input type="radio" name="hotel_need" value="yes"/>需要</label>
+                  </div>
+                  <div id="kplan-hotel-opts" class="kplan-subopts" hidden>
+                    <div class="kplan-inline" style="margin-top:.5rem; gap:.5rem;">
+                      <select name="hotel_class"><option value="3">三星</option><option value="4">四星</option><option value="5">五星</option></select>
+                      <select name="hotel_budget"><option value="econ">每晚 ¥500–900</option><option value="mid">每晚 ¥900–1,500</option><option value="high">每晚 ¥1,500+</option></select>
+                      <select name="hotel_area"><option value="jongno">钟路/市中心</option><option value="gangnam">江南/狎鸥亭</option><option value="hongdae">弘大/麻浦</option></select>
+                    </div>
+                    <p class="kplan-hint">* 价格区间为参考，旺季会有浮动；我们将提供2~3个候选酒店。</p>
+                  </div>
+                </fieldset>
+
+                <!-- 픽업/샌딩 -->
+                <fieldset class="kplan-field">
+                  <legend data-i18n="pickup">接送机服务</legend>
+                  <div class="kplan-chips">
+                    <label><input type="radio" name="transfer" value="none" checked/>不要</label>
+                    <label><input type="radio" name="transfer" value="oneway"/>单程</label>
+                    <label><input type="radio" name="transfer" value="round"/>往返</label>
+                  </div>
+                  <div id="kplan-transfer-opts" class="kplan-subopts" hidden>
+                    <div class="kplan-inline" style="margin-top:.5rem; gap:.5rem;">
+                      <select name="car_type"><option value="sedan">轿车（1–3人）</option><option value="van">商务车（4–7人）</option></select>
+                      <select name="transfer_price"><option value="std">标准 ¥350–550/单程</option><option value="prem">高端 ¥600–900/单程</option></select>
+                    </div>
+                    <p class="kplan-hint">* 价格含高速/停车，凌晨航班或加点可能有附加费。</p>
+                  </div>
+                </fieldset>
+              </div>
+            </div>
+
+            <!-- 추천 & 우측 요약 -->
+            <div id="kplan-reco" class="kplan-reco" hidden>
+              <h3 class="kplan-step-title" data-i18n="recoTitle">为您推荐</h3>
+              <div id="kplan-reco-list" class="kplan-reco-list"></div>
+            </div>
+
+            <aside class="kplan-preview" aria-live="polite">
+              <h4 data-i18n="preview">您的专属方案 · 初稿</h4>
+              <ul id="kplan-summary" class="kplan-summary"></ul>
+              <p class="kplan-note" data-i18n="note">提交后，我们将结合医生评估为您优化行程与预算。</p>
+            </aside>
+
+            <div class="kplan-actions">
+              <button type="submit" class="button primary" data-i18n="submit">提交方案</button>
+              <button type="reset" class="button" data-i18n="reset">重置</button>
+            </div>
+          </form>
+
+          <div id="kplan-toast" class="kplan-toast" role="status" aria-live="assertive" hidden>
+            <span id="kplan-toast-text">提交成功！我们已收到您的定制需求，将尽快与您联系。</span>
+          </div>
+        </section>
+        <!-- ====== 폼 섹션 끝 ====== -->
+
+      </div>
+    </section>
+
+    <!-- ======================= 공통 푸터 ======================= -->
+    <footer id="footer">
+      <div class="inner">
+        <ul class="copyright">
+          <li>© 汉江春天</li><li>All rights reserved.</li>
+        </ul>
+      </div>
+    </footer>
+
+  </div><!-- /#page-wrapper -->
+
+  <!-- 공통 스크립트 -->
+  <script src="/assets/js/main.js" defer></script>
+
+  <!-- 페이지 스크립트: i18n + 카테고리 카드 + 제출 토스트 -->
+  <script>
+    const I18N = {
+      'zh-CN': {
+        title:'定制医疗观光方案',
+        subtitle:'用 3 步，生成您的专属方案草案。提交后，我们在 24 小时内与您确认细节。',
+        bannerTop:'您只需根据自己的时间购买合适的机票，其余行程由我们安排。',
+        step1:'Step 1 · 基本信息', step2:'Step 2 · 医疗需求 (可多选)', step3:'Step 3 · 旅行偏好', step4:'Step 4 · 预算与服务',
+        name:'姓名', region:'国籍 / 居住地', contact:'联系方式', prefLang:'偏好语言', dates:'行程日期', party:'同行人数', style:'旅行风格',
+        budgetMed:'医疗预算（总额）', hotelNeed:'是否需要我们代订住宿？', pickup:'接送机服务', tierNote:'选择入门/标准/进阶/高端后，我们会发送对应天数、包含项目与预算明细的计划表（PDF）供您确认。',
+        recoTitle:'为您推荐', preview:'您的专属方案 · 初稿', note:'提交后，我们将结合医生评估为您优化行程与预算。', submit:'提交方案', reset:'重置',
+        toast:'提交成功！我们已收到您的定制需求，将尽快与您联系。'
+      },
+      'ko': {
+        title:'맞춤 의료관광 설계', subtitle:'3단계로 초안을 만들고, 접수 후 24시간 내로 상세 확인을 드립니다.',
+        bannerTop:'고객님은 일정에 맞는 항공권만 준비해 주세요. 나머지는 우리가 맡겠습니다.',
+        step1:'1단계 · 기본정보', step2:'2단계 · 의료 관심분야 (복수선택)', step3:'3단계 · 여행 선호', step4:'4단계 · 예산 & 부가서비스',
+        name:'이름', region:'국적 / 거주지', contact:'연락수단', prefLang:'선호 언어', dates:'여행 기간', party:'인원수', style:'여행 스타일',
+        budgetMed:'의료 예산(총액)', hotelNeed:'숙소 대행 예약', pickup:'공항 픽업/샌딩', tierNote:'입문/표준/진계/고급을 선택하시면, 해당 일정과 포함 항목·예산 내역이 담긴 계획표(PDF)를 보내드립니다.',
+        recoTitle:'추천 패키지', preview:'나의 맞춤안 · 초안', note:'제출 후 의료진 평가를 반영해 일정과 예산을 다듬어드립니다.', submit:'제출', reset:'초기화', toast:'제출 완료! 곧 연락드리겠습니다.'
+      },
+      'en': {
+        title:'Tailored Medi-Tour Plan', subtitle:'Create a draft in 3 steps. We’ll confirm details within 24h after submission.',
+        bannerTop:'Just purchase a flight that fits your schedule—we’ll handle the rest.',
+        step1:'Step 1 · Basic Info', step2:'Step 2 · Medical Interests (Multi-select)', step3:'Step 3 · Travel Preferences', step4:'Step 4 · Budget & Services',
+        name:'Name', region:'Nationality / City', contact:'Contact', prefLang:'Preferred Language', dates:'Dates', party:'Party Size', style:'Travel Style',
+        budgetMed:'Medical Budget (total)', hotelNeed:'Would you like us to book hotels?', pickup:'Airport Transfer', tierNote:'After choosing Entry/Standard/Advanced/Premium, we’ll send a PDF plan with days, inclusions, and budget details.',
+        recoTitle:'Recommended for You', preview:'Your Personalized Draft', note:'After submission, we’ll refine your itinerary and budget with doctor review.', submit:'Submit', reset:'Reset', toast:'Submitted! We will contact you shortly.'
+      }
+    };
+    function applyI18n(locale){
+      const dict = I18N[locale] || I18N['zh-CN'];
+      document.querySelectorAll('[data-i18n]').forEach(el=>{
+        const key = el.getAttribute('data-i18n');
+        if(dict[key]) el.textContent = dict[key];
+      });
+      document.getElementById('kplan-toast-text').textContent = dict.toast;
+    }
+
+    // ✅ 카테고리 카드(샘플) — 실제 운영 시 외부 JSON로 교체 가능
+    const CATEGORIES = [
+      { id:'skin',   title:'皮肤管理',        desc:'诊断 · 护理 · 术后修复' },
+      { id:'stem',   title:'干细胞 · 再生',    desc:'干细胞/外泌体 · 全面焕活' },
+      { id:'shape',  title:'体型管理 · 减脂', desc:'评估 · 方案 · 营养代谢' },
+      { id:'women',  title:'女性专属护理',    desc:'激素 · 私密 · 生殖健康' },
+      { id:'men',    title:'男性健康',        desc:'内分泌 · 泌尿 · 活力' },
+      { id:'fx',     title:'功能医学 · 体检',  desc:'功能检测 · 生活方式医学' }
+    ];
+
+    // 렌더
+    const elCats=document.getElementById('kplan-categories');
+    const elReco=document.getElementById('kplan-reco');
+    const elRecoList=document.getElementBy
