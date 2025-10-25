@@ -2790,6 +2790,74 @@ header.major > :last-child {
 
 
 
+/* =========================================================
+   K-MediSpring — Quick polish pack (by Ronnie)
+   붙이는 위치: /assets/css/main.css 맨 아래
+   색상: :root 의 --brand / --hover / --deep / --line 사용
+========================================================= */
+
+/* 1) 상단 헤더 CTA 버튼 정렬 & 간격 */
+#header { display:flex; align-items:center; gap:.75rem; }
+#header .logo-img { height: 42px; width:auto; display:block; }
+#header .actions { margin-left:auto; }           /* 로고-햄버거 다음, 오른쪽 정렬 */
+#header .actions .button.small {
+  line-height: 1; padding:.55rem .9rem; border-radius: 999px;
+  border:1px solid var(--brand); background: var(--brand); color:#fff;
+  transition: transform .15s ease, background .2s ease;
+}
+#header .actions .button.small:hover { background: var(--hover); transform: translateY(-1px); }
+
+/* 2) 헤더 아이콘 미세정렬 & 호버 */
+#header .icons { display:flex; gap:.5rem; margin-left:.25rem; }
+#header .icons a { color:#666; transition: color .2s ease, transform .15s ease; }
+#header .icons a:hover { color: var(--brand); transform: translateY(-1px); }
+
+/* 3) 모바일에서 헤더 CTA 숨김 (메뉴에 이미 항목 있음) */
+@media (max-width: 736px){
+  #header .actions { display:none; }
+  #header .logo-img { height: 36px; }
+}
+
+/* 4) 배너 CTA 버튼 강조 (배너 영역의 actions 공통) */
+#banner .actions .button.primary {
+  border-radius: 12px; padding:.8rem 1.3rem; font-weight:600;
+  background: var(--brand); border-color: var(--brand); color:#fff;
+}
+#banner .actions .button.primary:hover { background: var(--hover); }
+
+/* 5) 오프캔버스 메뉴 링크 가독성 + 포커스 */
+#menu .links li a {
+  display:block; padding:.8rem .9rem; border-radius: 10px;
+  text-decoration:none; color:#222; transition: background .15s ease, color .2s ease;
+}
+#menu .links li a:hover,
+#menu .links li a:focus { background: rgba(0,0,0,.04); color: var(--deep); outline: none; }
+
+/* 6) 현재 페이지 활성 표시 (JS로 .active 붙는 경우) */
+#menu a.active,
+#nav a.active { color: var(--brand); font-weight:600; }
+#menu a.active { background: rgba(0,119,182,.08); border-radius:10px; }
+
+/* 7) 구분선/얇은 라인 톤다운 */
+hr, .inner .divider { border-color: var(--line); }
+
+/* 8) 중국어 폰트 렌더링 부드럽게 (이미 정의된 --zh-sc 활용) */
+html[lang="zh-CN"] body {
+  font-family: var(--en-body, system-ui), var(--zh-sc, "PingFang SC","Microsoft YaHei","Noto Sans CJK SC",sans-serif);
+  -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale;
+}
+
+/* 9) 링크 기본색 살짝 차분하게 */
+a { color: #1f4e79; }
+a:hover { color: var(--hover); }
+
+/* 10) 푸터/본문 버튼 공통 작게 다듬기 */
+.button { border-radius: 10px; }
+.actions .button { padding:.6rem 1.05rem; }
+
+/* 11) 로고가 줄 바뀜으로 내려가지 않게(폭 좁을 때) */
+#header .logo { min-width: 140px; }
+
 
 
 
