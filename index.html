@@ -5,56 +5,44 @@
   정리본: 로니가 리디아 대신 깔끔하게 정리한 파일
 -->
 <html lang="zh-CN">
+
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
   <title>汉江春天</title>
 
-  <!-- ✅ 경로 기준 통합 스크립트 -->
-  <script>
-    (function () {
-      var project = "/K-medispring/";
-      var isGhPages = location.hostname.endsWith("github.io");
-      var base = document.createElement("base");
-      base.href = isGhPages ? project : "/";
-      document.head.appendChild(base);
-    })();
-  </script>
+  <!-- ✅ Favicon / Web Icons (모두 상대경로) -->
+  <link rel="icon" type="image/x-icon" href="images/favicon.ico?v=20251012">
+  <link rel="icon" type="image/png" sizes="32x32" href="images/favicon-32.png?v=20251012">
+  <link rel="icon" type="image/png" sizes="16x16" href="images/favicon-16.png?v=20251012">
+  <link rel="apple-touch-icon" sizes="180x180" href="images/apple-touch-icon.png?v=20251012">
 
-  <!-- Favicon / Web Icons -->
-  <link rel="icon" type="image/x-icon" href="/images/favicon.ico?v=20251012">
-  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32.png?v=20251012">
-  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16.png?v=20251012">
-  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png?v=20251012">
+  <!-- ✅ Font Awesome (상대경로) -->
+  <link rel="stylesheet" href="assets/css/fontawesome-all.min.css" />
 
-  <!-- Font Awesome -->
-  <link rel="stylesheet" href="/assets/css/fontawesome-all.min.css" />
+  <!-- ✅ 메인 스타일 (상대경로) -->
+  <link rel="stylesheet" href="assets/css/main.css" />
+  <noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
 
-  <!-- 메인 스타일 -->
-  <link rel="stylesheet" href="/assets/css/main.css" />
-  <noscript><link rel="stylesheet" href="/assets/css/noscript.css" /></noscript>
-
-  <!-- JS -->
-  <script defer src="/assets/js/main.js"></script>
+  <!-- ✅ JS (상대경로) -->
+  <script defer src="assets/js/main.js"></script>
 
   <!-- Meta Tags -->
   <meta name="description" content="汉江春天 · 韩国医疗观光与大健康平台" />
   <meta property="og:title" content="汉江春天" />
   <meta property="og:description" content="专注于韩国医疗、皮肤医美、干细胞、健康管理与高端定制旅行" />
-  <meta property="og:image" content="/images/preview.jpg" />
-  <meta property="og:url" content="https://kmedispring.com" />
+  <meta property="og:image" content="images/preview.jpg" />
+  <meta property="og:url" content="https://kmedispring.com/wellness.html" />
   <meta name="twitter:card" content="summary_large_image" />
 
   <!-- Custom Style -->
   <style>
     :root {
-      --brand: #0077B6;   
+      --brand: #0077B6;
       --hover: #2088C2;
       --deep:  #1565A0;
       --line:  #A0C4DE;
     }
-
-    /* 메뉴 및 버튼 스타일 */
     #menu a { color: #333 !important; text-decoration: none !important; transition: color .25s ease !important; }
     #menu a:hover { color: var(--hover) !important; }
     #menu a.active { color: var(--brand) !important; font-weight:600 !important; }
@@ -62,13 +50,9 @@
     .button.primary, .actions .button.primary { background: var(--brand) !important; border-color: var(--brand) !important; }
     .button.primary:hover { background: var(--hover) !important; border-color: var(--hover) !important; }
     hr, .inner .divider { border-color: var(--line) !important; }
-
-    /* 모달 오픈 시 스크롤 잠금 */
     .modal-open { overflow: hidden; }
   </style>
 </head>
-
-
 
 <body class="is-preload">
   <!-- Wrapper -->
@@ -416,6 +400,7 @@
   
 </body>
 </html>
+
 
 
 
