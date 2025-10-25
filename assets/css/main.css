@@ -2874,6 +2874,73 @@ html[lang="zh-CN"] body p {
 }
 
 
+/* ===== K-PLAN 레이아웃 보정 ===== */
+
+/* 회색 배경 밴드(푸터 계열과 자연스럽게) */
+.kplan-band {
+  background: #f2f4f7;           /* 푸터 톤과 유사한 연한 회색 */
+  padding: 2.5rem 0;             /* 위아래 여백 */
+  position: relative;
+  z-index: 1;                    /* 오버레이와 레이어 충돌 방지 */
+  border-top: 1px solid rgba(0,0,0,.04);
+}
+
+/* 중앙의 하얀 카드 */
+.kplan-shell {
+  max-width: 860px;              /* 폼 너비 */
+  margin: 0 auto;                /* 중앙 정렬! */
+  background: #ffffff;
+  border: 1px solid #e6e8eb;
+  border-radius: 14px;
+  padding: 1.2rem 1.2rem 1.6rem;
+  box-shadow: 0 10px 24px rgba(0,0,0,.04);
+}
+
+/* 본문 폼 필드 가독성 */
+.kplan-shell .fields {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.25rem;
+}
+.kplan-shell .field { flex: 1 1 46%; min-width: 240px; }
+.kplan-shell label { font-weight: 600; color: #333; margin-bottom: .35rem; display:block; }
+.kplan-shell input[type="text"],
+.kplan-shell select,
+.kplan-shell textarea {
+  width: 100%;
+  border: 1px solid #cfd6de;
+  border-radius: 10px;
+  padding: .72rem .85rem;
+  font-size: 1rem;
+  box-sizing: border-box;
+}
+.kplan-shell textarea { resize: vertical; }
+
+/* 카테고리 아코디언 */
+.kcat { display: grid; gap: 1rem; }
+.kcat-cat { border: 1px solid #e5e7ea; border-radius: 12px; overflow: hidden; background: #fff; }
+.kcat-hd { display:flex; justify-content:space-between; align-items:center; padding:.85rem 1rem; background:#f7fafc; cursor:pointer; }
+.kcat-hd h4 { margin:0; font-size:1.05rem; }
+.kcat-bd { display:none; padding:.6rem 1rem .9rem; gap:1rem; }
+.kcat-bd.open { display:grid; }
+.kgroup { border-top:1px dashed #e9edf1; padding-top:.6rem; margin-top:.4rem; }
+.kgroup h5 { margin:.2rem 0 .5rem; font-size:.95rem; color:#0f172a; }
+.kitems { list-style:none; margin:0; padding:0; display:grid; gap:.45rem; grid-template-columns:repeat(auto-fit,minmax(230px,1fr)); }
+
+/* 모바일: 1열 정렬 & 터치 영역 넉넉하게 */
+@media (max-width: 736px) {
+  .kplan-shell { max-width: 94%; padding: 1rem; }
+  .kplan-shell .field { flex: 1 1 100%; min-width: 0; }
+  .kitems { grid-template-columns: 1fr; }
+  .kcat-hd { padding: .8rem .9rem; }
+  .kcat-bd { padding: .55rem .9rem .85rem; }
+}
+
+/* 버튼 정렬 */
+.kplan-shell .actions { text-align: center; margin-top: 1.2rem; }
+.kplan-shell .button.primary { background:#0b66c3; border-color:#0b66c3; color:#fff; }
+.kplan-shell .button.primary:hover { filter: brightness(1.05); }
+
 
 
 
