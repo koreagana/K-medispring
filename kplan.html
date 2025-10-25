@@ -473,6 +473,33 @@
   <script src="/assets/js/breakpoints.min.js"></script>
   <script src="/assets/js/util.js"></script>
   <script src="/assets/js/main.js"></script>
+  
+  <script>
+(function(){
+  var rows = document.querySelectorAll('#step3 .svc-row');
+  var hidden = document.getElementById('travelServicesSummary');
+  if (!rows.length || !hidden) return;
+
+  function sync(){
+    var summary = [];
+    rows.forEach(function(row){
+      var label = row.querySelector('label:first-child');
+      var name = row.querySelector('input[type=radio]').name;
+      var checked = row.querySelector('input[name="'+name+'"]:checked');
+      if (checked){
+        summary.push(label.textContent.trim() + checked.value);
+      }
+    });
+    hidden.value = summary.join(' / ');
+  }
+
+  document.querySelectorAll('#step3 input[type=radio]').forEach(function(r){
+    r.addEventListener('change', sync, {passive:true});
+  });
+  sync();
+})();
+</script>
+
 </body>
 </html>
 
