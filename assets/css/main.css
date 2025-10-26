@@ -3138,10 +3138,14 @@ legend { font-weight: 600; margin-bottom: .75rem; }
   transition: background 0.2s ease, transform 0.15s ease;
 }
 #menu > ul li:hover {
-  background: rgba(255,255,255,0.9);
-  transform: translateY(-1px);
+  background: #fff; /* 배경 유지 */
+  transform: none; /* 살짝 떠오르는 효과 제거 */
 }
 
+#menu > ul li:hover a {
+  color: #0077B6; /* 글자만 파란색으로 */
+}
+	
 /* 검색창 배경 */
 #search.alt {
   background: var(--sidebar-bg);
@@ -3165,6 +3169,7 @@ legend { font-weight: 600; margin-bottom: .75rem; }
   border-color: #0077B6;
   outline: none;
 }
+
 
 
 
