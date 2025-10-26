@@ -3247,5 +3247,104 @@ legend { font-weight: 600; margin-bottom: .75rem; }
   }
 }
 
+/* ===========================
+   NAV + 레이아웃 FINAL PACK
+   (붙여넣기: main.css 맨 아래)
+   =========================== */
+
+/* 1) 데스크톱: 왼쪽 네비 항상 보이게 + 본문 중앙정렬 */
+@media (min-width: 981px){
+  /* 2열 레이아웃: sidebar | main */
+  #wrapper.with-sticky{
+    display: grid;
+    grid-template-columns: 270px 1fr;
+    gap: 2rem;
+    align-items: start;
+  }
+
+  /* 사이드바 고정(sticky) */
+  #sidebar{
+    position: sticky !important;
+    top: 2rem;                         /* 헤더 높이에 맞춰 조절 가능 */
+    height: calc(100vh - 2rem);
+    overflow: auto;
+    z-index: 1;                        /* 본문보다 뒤 */
+    background: #f5f5f5;               /* 단일 회색 밴드 */
+    border-radius: 8px;
+    padding: 0;
+  }
+  #sidebar > .inner{ padding: 1.25rem 1rem; }
+
+  /* 본문은 더 위 + 중앙 폭 제한 */
+  #main{ position: relative; z-index: 2; }
+  #main > .inner{
+    max-width: 980px;                  /* 중앙 카드 폭 */
+    margin: 0 auto;
+    padding: 0 0 3rem 0;
+  }
+
+  /* 메뉴(원본 라인형) */
+  #menu{ background:#f5f5f5; padding: 1.25rem 1rem; border-radius: 6px; }
+  #menu > ul{ margin:0; padding:0; list-style:none; }
+  #menu > ul > li{
+    background: none !important;
+    border: none !important;
+    border-top: 1px solid rgba(210,215,217,.75) !important; /* 진회색 라인 */
+    margin: .5em 0 0 0 !important;
+    padding: .5em 0 0 0 !important;
+    border-radius: 0 !important;
+  }
+  #menu > ul > li:first-child{ border-top:0; margin-top:0; padding-top:0; }
+  #menu > ul a{ display:block; padding:.9rem .5rem; background:none !important; color:#222; text-decoration:none; }
+  #menu > ul a:hover{ color:#0b66c3 !important; background:none !important; }
+  #menu > ul li.active > a, #menu > ul a[aria-current="page"]{ color:#0b66c3; font-weight:600; background:none; }
+
+  /* (선택) K-Plan 폼 카드 느낌 */
+  .kplan-shell{
+    background:#fff;
+    border:1px solid rgba(0,0,0,.06);
+    border-radius:10px;
+    box-shadow:0 1px 6px rgba(0,0,0,.06);
+    padding:1.5rem;
+  }
+}
+
+/* 2) 모바일: 지금 오프캔버스 유지 + 메뉴를 항상 위로(겹침 방지/가독성) */
+@media (max-width: 980px){
+  /* 사이드바 패널(이미 동작 중이면 그대로, 없으면 아래 적용됨) */
+  #sidebar{
+    position: fixed;
+    top: 0; right: -320px;
+    width: 320px; height: 100vh;
+    background:#fff;
+    box-shadow:-3px 0 12px rgba(0,0,0,.12);
+    z-index: 10000;
+    transition: right .28s ease;
+  }
+  #sidebar > .inner{
+    height:100%;
+    overflow-y:auto;
+    -webkit-overflow-scrolling:touch;
+    padding:1.25rem 1rem;
+    background:#f5f5f5;               /* 단일 회색 밴드 */
+  }
+  body.is-menu-visible{ overflow:hidden; }
+  body.is-menu-visible #sidebar{ right:0; }
+
+  /* 사이드바 내부 순서: 메뉴가 맨 위 (필요 시) */
+  #sidebar .inner{ display:flex; flex-direction:column; }
+  #sidebar .inner > nav#menu{ order:-100; }
+  #sidebar .inner > #search{ order:-50; }
+
+  /* 본문 여백/폭 */
+  #main > .inner{ max-width:900px; margin:0 auto; padding:0 1rem 2.25rem; }
+}
+
+/* 3) 전역 겹침 방지(혹시 모를 케이스용) */
+@media (min-width: 981px){
+  #main { position: relative; z-index: 2; }
+  #sidebar { z-index: 1; }
+}
+
 
 
