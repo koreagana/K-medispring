@@ -3047,7 +3047,7 @@ legend { font-weight: 600; margin-bottom: .75rem; }
 
 /* ✨ 입체 은색 프레임 스타일 */
 .k-form-section {
-  background: linear-gradient(180deg, #fafafa 0%, #ffffff 100%);
+  background: linear-gradient(180deg, #f5f5f5 0%, #ffffff 100%);
   border: 1px solid #c9c9c9;
   border-radius: 10px;
   box-shadow:
@@ -3097,22 +3097,46 @@ legend { font-weight: 600; margin-bottom: .75rem; }
   padding: 1.25rem 1.25rem 1rem 1.25rem;
 }
 
-/* 각 항목 (흰색 카드 느낌 유지) */
+/* ===== Sidebar Menu : 회색 밴드 + 밑줄형 ===== */
+
+/* li 카드 배경/외곽선 없애고 밑줄만 */
 #menu > ul li {
-  background: #fff;
-  border: 1px solid rgba(0,0,0,0.05);
-  border-radius: 6px;
-  margin-bottom: 0.5rem;
-  transition: background 0.2s ease, transform 0.15s ease;
+  background: transparent;                 /* 카드 흰배경 제거 */
+  border: none;                            /* 테두리 제거 */
+  border-bottom: 1px solid rgba(0,0,0,0.10);/* 진회색 밑줄 */
+  border-radius: 0;
+  margin: 0;                               /* 카드 간격 제거 */
+  transition: color .2s ease;              /* 배경 전환 제거 */
 }
-#menu > ul li:hover {
-  background: #fff; /* 배경 유지 */
-  transform: none; /* 살짝 떠오르는 효과 제거 */
+#menu > ul li:last-child { border-bottom: none; }
+
+/* 링크 레이아웃(라인형) */
+#menu > ul a {
+  display: block;
+  padding: 0.9rem 0.5rem;                  /* 좌우 살짝 여백 */
+  text-decoration: none;
+  color: #222;
+  background: none;                        /* 혹시 남아있을 배경 무효화 */
 }
 
-#menu > ul li:hover a {
-  color: #0077B6; /* 글자만 파란색으로 */
+/* hover: 글씨만 포인트 컬러, 배경 변화 없음 */
+#menu > ul a:hover {
+  color: #0b66c3;
+  background: none;
 }
+
+/* 활성 항목(선택된 메뉴) 강조 */
+#menu > ul li.active > a,
+#menu > ul a[aria-current="page"] {
+  color: #0b66c3;
+  font-weight: 600;
+  background: none;
+}
+
+/* 사이드바 밴드 색은 #f5f5f5 유지 (이미 적용돼 있으면 생략 가능) */
+#menu { background: #f5f5f5; }
+
+
 	
 /* 검색창 배경 */
 #search.alt {
@@ -3169,6 +3193,7 @@ legend { font-weight: 600; margin-bottom: .75rem; }
   }
 }
 */
+
 
 
 
