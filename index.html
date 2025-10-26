@@ -65,7 +65,6 @@
   </style>
 </head>
 
-<body class="is-preload">
   <!-- Wrapper -->
   <div id="wrapper">
 
@@ -417,7 +416,7 @@
   function closeMenu(e){ if(e) e.preventDefault(); body.classList.remove('is-menu-visible'); }
   function toggleMenu(e){ if(e) e.preventDefault(); body.classList.toggle('is-menu-visible'); }
 
- document.querySelectorAll('.menuToggle, a[href="#menu"]').forEach(function(el){
+document.querySelectorAll('.toggle, a[href="#menu"]').forEach(function(el){
   el.addEventListener('click', toggleMenu, {passive:true});
 });
 
@@ -458,6 +457,7 @@
   
 </body>
 </html>
+
 
 
 
