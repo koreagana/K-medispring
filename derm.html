@@ -1,69 +1,308 @@
----
-layout: default
-title: 皮肤医美
----
+<!DOCTYPE HTML>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+  <title>皮肤医美 · 汉江春天</title>
 
-<header class="main">
-  <h1>皮肤医美</h1>
-</header>
+  <!-- GitHub Pages base -->
+  <script>
+    (function () {
+      var project = "/K-medispring/";
+      var isGhPages = location.hostname.endsWith("github.io");
+      var base = document.createElement("base");
+      base.href = isGhPages ? project : "/";
+      document.head.appendChild(base);
+    })();
+  </script>
 
-<!-- Hero -->
-<span class="image main">
-  <img src="{{ site.baseurl }}/images/derm/hero_derm.png" alt="皮肤科与韩医协作诊疗">
-</span>
+  <!-- Meta -->
+  <meta name="description" content="皮肤科与韩医协作诊疗 · 检测/诊断/修复/管理一体化" />
+  <meta property="og:title" content="皮肤医美 · 汉江春天" />
+  <meta property="og:description" content="专业皮肤科与韩医协作诊疗，分层分析与多维修复，重启肌底健康。" />
+  <meta property="og:image" content="images/derm/hero_derm.png" />
+  <meta property="og:url" content="https://kmedispring.com/derm.html" />
+  <meta name="twitter:card" content="summary_large_image" />
 
-<p>
-  专业皮肤科与韩医协作诊疗，针对痤疮、色斑、敏纹、弹力等问题进行分层分析与治疗。
-  结合个性化修复方案，重启肌底健康，恢复洁净与弹润。
-</p>
+  <!-- Icons -->
+  <link rel="icon" type="image/x-icon" href="images/favicon.ico?v=20251012">
+  <link rel="icon" type="image/png" sizes="32x32" href="images/favicon-32.png?v=20251012">
+  <link rel="icon" type="image/png" sizes="16x16" href="images/favicon-16.png?v=20251012">
+  <link rel="apple-touch-icon" sizes="180x180" href="images/apple-touch-icon.png?v=20251012">
 
-<hr class="major" />
+  <!-- CSS -->
+  <link rel="stylesheet" href="assets/css/fontawesome-all.min.css?v=20251027" />
+  <link rel="stylesheet" href="assets/css/main.css?v=20251027" />
+  <noscript><link rel="stylesheet" href="assets/css/noscript.css?v=20251027" /></noscript>
 
-<!-- Row 1 -->
-<div class="row gtr-200">
-  <div class="col-6 col-12-medium">
-    <h3>检测与诊断</h3>
-    <p>通过功能性皮肤检测与AI影像分析，精准定位皮肤问题根源。</p>
-    <span class="image fit">
-      <img src="{{ site.baseurl }}/images/derm/section_checks.png" alt="皮肤检测与诊断">
-    </span>
+  <style>
+    :root{ --brand:#0077B6; --hover:#2088C2; --deep:#1565A0; --line:#A0C4DE; }
+    #menu a{ color:#333!important; text-decoration:none!important; transition:color .25s ease!important;}
+    #menu a:hover{ color:var(--hover)!important;}
+    #menu a[aria-current="page"]{ color:var(--brand)!important; font-weight:600!important;}
+    .major:after{ background-color:var(--brand)!important;}
+    .button.primary{ background:var(--brand)!important; border-color:var(--brand)!important;}
+    .button.primary:hover{ background:var(--hover)!important; border-color:var(--hover)!important;}
+  </style>
+</head>
+
+<body class="is-preload">
+  <div id="wrapper" class="with-sticky">
+    <!-- Main -->
+    <div id="main">
+      <div class="inner">
+
+        <!-- Header -->
+        <header id="header">
+          <a href="index.html" class="logo">
+            <img src="images/logo_ch.png" alt="汉江春天 로고" class="logo-img">
+          </a>
+          <!-- Hamburger / Menu toggle -->
+          <a href="#menu" class="toggle" aria-label="Open Menu"><i class="fas fa-bars"></i></a>
+
+          <!-- SNS icons -->
+          <ul class="icons">
+            <li><a href="#" id="wechat-icon" class="icon brands fa-weixin" title="WeChat: e-gana"><span class="label">WeChat</span></a></li>
+            <li>
+              <a href="https://www.xiaohongshu.com/user/profile/550972467" target="_blank" class="icon" title="小红书">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" width="20" height="20" aria-hidden="true">
+                  <rect width="100" height="100" rx="20" ry="20" fill="#FF2442"/>
+                  <text x="50%" y="60%" text-anchor="middle" fill="#fff" font-size="30" font-family="sans-serif" font-weight="bold">小红书</text>
+                </svg>
+                <span class="label">Xiaohongshu</span>
+              </a>
+            </li>
+            <li><a href="https://www.instagram.com/jiana2734/" target="_blank" class="icon brands fa-instagram" title="Instagram"><span class="label">Instagram</span></a></li>
+            <li><a href="mailto:egana@kmedispring.com" class="icon solid fa-envelope" title="Email"><span class="label">Email</span></a></li>
+          </ul>
+        </header>
+
+        <!-- Page hero -->
+        <section id="banner" class="alt" aria-labelledby="titleDerm">
+          <div class="content">
+            <header>
+              <h1 id="titleDerm">皮肤医美</h1>
+              <h2 style="margin-top:.25em; font-size:2rem; font-weight:400;">皮肤科 · 韩医协作诊疗</h2>
+            </header>
+            <p>
+              专业皮肤科与韩医协作诊疗，针对痤疮、色斑、皱纹、弹力等问题进行分层分析与治疗。<br>
+              结合个性化修复方案，重启肌底健康，恢复澄净与弹润。
+            </p>
+            <ul class="actions">
+              <li><a href="kplan.html" class="button primary">定制医疗观光方案</a></li>
+            </ul>
+          </div>
+          <span class="image object hero-media">
+            <img src="images/derm/hero_derm.png" alt="皮肤科与韩医协作诊疗">
+          </span>
+        </section>
+
+        <!-- Blocks -->
+        <section>
+          <header class="major"><h2>核心模块</h2></header>
+
+          <div class="posts">
+            <!-- 检测与诊断 -->
+            <article>
+              <h3>检测与诊断</h3>
+              <p>功能性皮肤检测与AI影像分析，精准定位问题根源，制定个性化治疗路径。</p>
+              <span class="image fit">
+                <img src="images/derm/section_checks.png" alt="皮肤检测与诊断">
+              </span>
+            </article>
+
+            <!-- 实验室支持 -->
+            <article>
+              <h3>实验室支持</h3>
+              <p>微生物平衡、炎症与免疫指标分析，为治疗与修复提供科学依据。</p>
+              <span class="image fit">
+                <img src="images/derm/section_lab.png" alt="皮肤实验室分析">
+              </span>
+            </article>
+
+            <!-- 皮肤管理 -->
+            <article>
+              <h3>皮肤管理</h3>
+              <p>从深层焕活到日常保养，融合东方草本与韩医理念，打造自然健康肤质。</p>
+              <span class="image fit">
+                <img src="images/derm/section_skin.png" alt="皮肤管理与疗程">
+              </span>
+            </article>
+
+            <!-- 综合修复 -->
+            <article>
+              <h3>综合修复</h3>
+              <p>联合激光、微针、注射等多维方案，恢复皮肤屏障与水分平衡，提升弹力与光泽。</p>
+              <span class="image fit">
+                <img src="images/derm/section_checks.png" alt="综合修复疗程">
+              </span>
+            </article>
+          </div>
+        </section>
+
+        <!-- CTA -->
+        <section class="box">
+          <p>想了解属于你的皮肤管理与治疗方案？点击开始 1:1 咨询。</p>
+          <ul class="actions">
+            <li><a href="kplan.html" class="button primary">定制我的皮肤方案</a></li>
+          </ul>
+        </section>
+
+      </div>
+    </div>
+
+    <!-- Sidebar -->
+    <div id="sidebar">
+      <div class="inner">
+
+        <!-- Search -->
+        <section id="search" class="alt">
+          <form method="get" action="#">
+            <input type="search" name="query" id="query" placeholder="搜索" aria-label="搜索" />
+          </form>
+        </section>
+
+        <!-- Menu -->
+        <nav id="menu">
+          <ul class="links">
+            <li><a href="index.html">首页</a></li>
+            <li><a href="wellness.html">大健康</a></li>
+            <li><a href="stemcell.html">干细胞</a></li>
+            <li><a href="derm.html">皮肤医美</a></li>
+            <li><a href="surgery.html">整形医美</a></li>
+            <li><a href="woman.html">女性护理中心</a></li>
+            <li><a href="man.html">男性健康中心</a></li>
+            <li><a href="transfer.html">接送服务</a></li>
+            <li><a href="tour.html">市区观光</a></li>
+            <li><a href="lifestyle.html">生活服务</a></li>
+            <li><a href="kplan.html" data-i18n="navKplan">定制医疗观光方案</a></li>
+          </ul>
+        </nav>
+
+        <!-- About -->
+        <section>
+          <header class="major"><h2>关于我们</h2></header>
+          <p style="text-align:center; color:#777;">合作伙伴</p>
+          <div class="mini-posts">
+            <article>
+              <a href="#" class="image profile"><img src="images/gana.png" alt="汉江春天 代表" /></a>
+              <p style="text-align:center; font-size:1em; margin-top:.5em;">汉江春天 代表</p>
+            </article>
+          </div>
+        </section>
+
+        <!-- Contact -->
+        <section>
+          <header class="major"><h2>联系方式</h2></header>
+          <ul class="contact">
+            <li class="icon solid fa-envelope"><a href="mailto:egana@kmedispring.com">邮箱：egana@kmedispring.com</a></li>
+            <li class="icon solid fa-phone">(82) 10-4903-3123</li>
+            <li class="icon solid fa-home">韩国 首尔特别市 城北区 东小门路 63号 6层(02845)</li>
+          </ul>
+        </section>
+
+        <!-- Footer -->
+        <footer>
+          <p style="text-align:center; font-size:0.9em; color:#666;">
+            © 2025 汉江春天 한강애봄 版权所有。模板设计：HTML5 UP。
+          </p>
+        </footer>
+      </div>
+    </div>
   </div>
 
-  <div class="col-6 col-12-medium">
-    <h3>实验室支持</h3>
-    <p>微生物平衡检测、免疫与炎症指标分析，为治疗提供科学依据。</p>
-    <span class="image fit">
-      <img src="{{ site.baseurl }}/images/derm/section_lab.png" alt="皮肤实验室分析">
-    </span>
-  </div>
-</div>
-
-<hr class="major" />
-
-<!-- Row 2 -->
-<div class="row gtr-200">
-  <div class="col-6 col-12-medium">
-    <h3>皮肤管理</h3>
-    <p>从深层焕活到日常保养，结合东方草本与韩医理念，打造自然健康的肤质。</p>
-    <span class="image fit">
-      <img src="{{ site.baseurl }}/images/derm/section_skin.png" alt="皮肤管理与治疗">
-    </span>
+  <!-- WeChat Modal -->
+  <div id="wechatModal" class="modal" aria-hidden="true" role="dialog" style="display:none;">
+    <div class="modal-inner">
+      <p class="modal-caption">扫描二维码添加微信</p>
+      <img id="wechatQR" class="modal-content" src="images/qr_weixin.jpg" alt="WeChat QR for e-gana" />
+      <p class="modal-id">WeChat ID：e-gana</p>
+    </div>
   </div>
 
-  <div class="col-6 col-12-medium">
-    <h3>综合修复</h3>
-    <p>联合激光、微针、注射等多维方案，恢复皮肤屏障与水分平衡。</p>
-    <span class="image fit">
-      <img src="{{ site.baseurl }}/images/derm/section_checks.png" alt="综合修复疗程">
-    </span>
-  </div>
-</div>
+  <!-- Video + Modal JS -->
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      const v = document.getElementById("introVideo");
+      if (v) { try { v.playbackRate = 0.33; } catch(e) {} v.muted = true; v.volume = 0; }
 
-<!-- CTA -->
-<div class="box">
-  <p>想了解属于你的皮肤管理与治疗方案？点击开始 1:1 咨询。</p>
-  <ul class="actions">
-    <li><a href="{{ site.baseurl }}/custom-trip.html" class="button primary">定制我的皮肤方案</a></li>
-    <!-- <li><a href="{{ site.baseurl }}/hospitals.html" class="button alt">查看合作医院</a></li> -->
-  </ul>
-</div>
+      var modal = document.getElementById('wechatModal');
+      var trigger = document.getElementById('wechat-icon');
+      var qrImg = document.getElementById('wechatQR');
+
+      function openModal(e){
+        if(e) e.preventDefault();
+        if (qrImg) qrImg.src = (qrImg.getAttribute('data-src') || qrImg.src.split('?')[0]) + '?v=' + Date.now();
+        document.body.classList.add('modal-open');
+        if (modal) { modal.style.display = 'block'; modal.setAttribute('aria-hidden','false'); }
+      }
+      function closeModal(){
+        if (modal) { modal.style.display = 'none'; modal.setAttribute('aria-hidden','true'); }
+        document.body.classList.remove('modal-open');
+      }
+      if (trigger) trigger.addEventListener('click', openModal);
+      if (modal) modal.addEventListener('click', function (e) { if (e.target === modal) closeModal(); });
+      document.addEventListener('keydown', function (e) { if (e.key === 'Escape') closeModal(); });
+    });
+  </script>
+
+  <!-- Core scripts -->
+  <script src="assets/js/jquery.min.js"></script>
+  <script src="assets/js/browser.min.js"></script>
+  <script src="assets/js/breakpoints.min.js"></script>
+  <script src="assets/js/util.js"></script>
+  <script src="assets/js/main.js"></script>
+
+  <!-- Menu open/close (이미 프로젝트에 동일 로직 존재하면 중복 제거 OK) -->
+  <script>
+    (function () {
+      if (window.__menuBound) return;
+      window.__menuBound = true;
+
+      var body = document.body;
+      var menu = document.getElementById('menu');
+      if (!menu) return;
+
+      function openMenu(e){ if(e) e.preventDefault(); body.classList.add('is-menu-visible'); }
+      function closeMenu(e){ if(e) e.preventDefault(); body.classList.remove('is-menu-visible'); }
+      function toggleMenu(e){ if(e) e.preventDefault(); body.classList.toggle('is-menu-visible'); }
+
+      document.querySelectorAll('.toggle, a[href="#menu"]').forEach(function(el){
+        el.addEventListener('click', toggleMenu, {passive:true});
+      });
+
+      menu.addEventListener('click', function(e){
+        var a = e.target.closest('a');
+        if (a) closeMenu();
+      }, {passive:true});
+
+      document.addEventListener('click', function(e){
+        if (!body.classList.contains('is-menu-visible')) return;
+        if (menu.contains(e.target)) return;
+        if (e.target.closest('.toggle, a[href="#menu"]')) return;
+        closeMenu();
+      }, {passive:true});
+
+      document.addEventListener('keydown', function(e){
+        if (e.key === 'Escape') closeMenu();
+      });
+    })();
+  </script>
+
+  <!-- 현재 페이지 메뉴 활성화 -->
+  <script>
+    (function(){
+      var path = location.pathname.replace(/\/K-medispring\/?/, '/');
+      document.querySelectorAll('#menu a[href]').forEach(function(a){
+        try {
+          var u = new URL(a.getAttribute('href'), location.origin);
+          if (u.pathname === path || u.pathname === location.pathname){
+            a.setAttribute('aria-current','page');
+            a.parentElement.classList.add('active');
+          }
+        } catch(e){}
+      });
+    })();
+  </script>
+</body>
+</html>
