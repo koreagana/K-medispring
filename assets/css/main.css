@@ -3187,34 +3187,7 @@ legend { font-weight: 600; margin-bottom: .75rem; }
 
   #sidebar > .inner{ padding: 1.25rem 1rem; }
 
-/* ===== 본문 폭 반응형 조정 ===== */
 
-/* PC (넓은 화면): 꽉 차게 */
-@media screen and (min-width: 1281px) {
-  #main > .inner {
-    max-width: 100%;   /* 화면 전체 폭 사용 */
-    margin: 0;
-    padding: 0 2rem 3rem 2rem; /* 좌우 2rem만 살짝 여백 */
-  }
-}
-
-/* 태블릿 (중간 화면): 살짝 제한 */
-@media screen and (min-width: 981px) and (max-width: 1280px) {
-  #main > .inner {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 0 2rem 3rem 2rem;
-  }
-}
-
-/* 모바일 (기존 유지) */
-@media screen and (max-width: 980px) {
-  #main > .inner {
-    max-width: 900px;
-    margin: 0 auto;
-    padding: 0 1rem 2.25rem;
-  }
-}
 
   /* 메뉴: 라인형(원본 톤) */
   #menu{ background:#f5f5f5; padding: 1.25rem 1rem; border-radius: 6px; }
@@ -3261,13 +3234,7 @@ legend { font-weight: 600; margin-bottom: .75rem; }
   body.is-menu-visible{ overflow:hidden; }
   body.is-menu-visible #sidebar{ right:0; }
 
-  /* 본문 여백 살짝 줄이기 + 중앙 폭 제한 유지 */
-  #main > .inner{
-    max-width: 900px;
-    margin: 0 auto;
-    padding: 0 1rem 2.25rem;
-  }
-}
+
 
 /* ===========================
    NAV + 레이아웃 FINAL PACK (정리 완료)
@@ -3343,13 +3310,15 @@ legend { font-weight: 600; margin-bottom: .75rem; }
     padding: 0 2rem 3rem 2rem;
   }
 
-  /* 화면별 폭 조정 */
-  @media screen and (min-width: 1281px) {
-    #main > .inner { max-width: 100%; }       /* PC 전체폭 */
+/* 화면별 폭 조정 — 단순화 */
+@media screen and (min-width: 981px) {
+  #main > .inner {
+    max-width: 100%;
+    margin: 0;
+    padding: 0 2rem 3rem; /* 좌우 살짝 여백만 */
   }
-  @media screen and (min-width: 981px) and (max-width: 1280px) {
-    #main > .inner { max-width: 1200px; }     /* 태블릿 / 노트북 */
-  }
+}
+
 
   /* K-Plan 폼 카드 느낌 */
   .kplan-shell {
@@ -3400,5 +3369,6 @@ legend { font-weight: 600; margin-bottom: .75rem; }
 /* 3) 전역 겹침 방지 */
 #main { position: relative; z-index: 2; }
 #sidebar { z-index: 1; }
+
 
 
