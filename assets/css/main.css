@@ -3373,4 +3373,13 @@ legend { font-weight: 600; margin-bottom: .75rem; }
 }
 
 
+/* 사이드바 검색창을 패널 폭에 정확히 맞춤 */
+#sidebar #search { margin: 0 0 1rem; }
+#sidebar #search input[type="search"]{
+  display: block;
+  width: 100%;
+  max-width: 100%;
+  box-sizing: border-box;   /* 패딩/보더 포함해서 100%로 계산 */
+}
+
 
