@@ -2559,20 +2559,20 @@ html[lang="ko"] .button {
 */
 
 /* ===== 데스크톱(≥981px): 사이드바 기본 노출 ===== */
-@media screen and (min-width: 981px) {
+@media (min-width: 981px) {
   #menu {
-    position: static;		/* 고정 해제: 사이드바 안의 일반 요소로 표시 */
-    width: auto;
-    height: auto;
-    background: transparent;
-    box-shadow: none;
-    padding: 0;
-    transform: none;
-    transition: none;
-    z-index: auto;
-    overflow: visible;
+    position: static !important;
+    right: auto !important;
+    width: auto !important;
+    height: auto !important;
+    box-shadow: none !important;
+    padding: 0 !important;
+    overflow: visible !important;
+    display: block !important;
   }
+  body.is-menu-visible #menu { right: auto !important; }
 }
+
 
 	
 /* =======================================
@@ -3107,5 +3107,6 @@ legend { font-weight: 600; margin-bottom: .75rem; }
   padding-bottom: 0.4rem;
   margin-bottom: 1.2rem;
 }
+
 
 
