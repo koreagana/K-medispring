@@ -3395,6 +3395,81 @@ legend { font-weight: 600; margin-bottom: .75rem; }
     right: 0;
   }
 
+/* ===========================
+   Mobile Nav Patch (<=980px)
+   =========================== */
+@media (max-width: 980px) {
+
+  /* 1) 토글 버튼 보이기 & 위치 */
+  .menuToggle{
+    display:inline-block;
+    position:absolute;         /* 헤더 안 우상단 고정 */
+    top: 12px;
+    right: 16px;
+    padding: 10px 12px;
+    line-height: 1;
+    text-decoration:none;
+    border: 1px solid rgba(0,0,0,.15);
+    border-radius: 6px;
+    font-size: 0.95rem;
+    background: #fff;
+  }
+  /* 삼선 느낌 */
+  .menuToggle span{
+    display:inline-block;
+    letter-spacing:.1em;
+  }
+
+  /* 2) 오프캔버스 메뉴 패널 */
+  #menu{
+    position: fixed;
+    top: 0;
+    left: 0;                    /* 좌측 슬라이드 (오른쪽이면 right:0; 로 교체) */
+    width: 320px;
+    max-width: 86vw;
+    height: 100%;
+    background: #fff;
+    box-shadow: 2px 0 12px rgba(0,0,0,.12);
+    transform: translateX(-100%);
+    transition: transform .28s ease;
+    z-index: 10001;             /* 콘텐츠보다 위 */
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
+    pointer-events: auto;
+  }
+  body.is-menu-visible #menu{ transform: translateX(0); }
+
+  /* 3) 오버레이 (메뉴 열렸을 때 배경 클릭 닫기) */
+  body:before{
+    content:'';
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,.28);
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity .2s ease;
+    z-index: 10000;             /* 메뉴보다 낮게 */
+  }
+  body.is-menu-visible:before{
+    opacity: 1;
+    pointer-events: auto;
+  }
+
+  /* 4) 메뉴 항목 터치 영역 확대 */
+  #menu .links a{
+    display:block;
+    padding:12px 18px;
+    text-decoration:none;
+  }
+}
+
+/* 5) 데스크톱에서는 토글 숨김 (기존 사이드바 유지) */
+@media (min-width: 981px){
+  .menuToggle{ display:none !important; }
+}
+
+/* 6) 다른 레이어와 충돌 방지 (모달이 최상단) */
+#wechatModal{ z-index: 11000; }
 
 
 
