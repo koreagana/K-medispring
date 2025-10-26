@@ -418,9 +418,9 @@
   function closeMenu(e){ if(e) e.preventDefault(); body.classList.remove('is-menu-visible'); }
   function toggleMenu(e){ if(e) e.preventDefault(); body.classList.toggle('is-menu-visible'); }
 
-  document.querySelectorAll('.toggle, a[href="#menu"]').forEach(function(el){
-    el.addEventListener('click', toggleMenu, {passive:true});
-  });
+ document.querySelectorAll('.menuToggle, a[href="#menu"]').forEach(function(el){
+  el.addEventListener('click', toggleMenu, {passive:true});
+});
 
   menu.addEventListener('click', function(e){
     var a = e.target.closest('a');
@@ -440,8 +440,26 @@
 })();
 </script>
 
+  <script>
+  // 현재 페이지 링크 활성화
+  (function(){
+    var path = location.pathname.replace(/\/K-medispring\/?/, '/'); // base 보정
+    document.querySelectorAll('#menu a[href]').forEach(function(a){
+      try {
+        var u = new URL(a.getAttribute('href'), location.origin);
+        if (u.pathname === path || u.pathname === location.pathname){
+          a.setAttribute('aria-current','page');
+          a.parentElement.classList.add('active');
+        }
+      } catch(e){}
+    });
+  })();
+</script>
+
+  
 </body>
 </html>
+
 
 
 
