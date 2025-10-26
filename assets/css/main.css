@@ -3163,37 +3163,89 @@ legend { font-weight: 600; margin-bottom: .75rem; }
 }
 
 
-/* ===== 모바일(≤980px): 왼쪽 슬라이드 오프캔버스 메뉴 ===== */
-/*
-@media screen and (max-width: 980px) {
-  #menu {
-    position: fixed;
-    top: 0;
-    left: 0; 
-    width: 300px;
-    max-width: 84vw;
-    height: 100vh;
-    background: #fff;
-    box-shadow: 2px 0 12px rgba(0, 0, 0, 0.15);
-    transform: translateX(-105%);
-    transition: transform 0.3s ease;
-    z-index: 10010;
-    overflow-y: auto;
-    -webkit-overflow-scrolling: touch;
-    padding: 2rem 1.25rem;
+/* ===== 데스크톱(≥981px): 왼쪽 네비 sticky + 본문 중앙 정렬 ===== */
+@media (min-width: 981px){
+  /* 2열 레이아웃 */
+  #wrapper.with-sticky{
+    display: grid;
+    grid-template-columns: 270px 1fr;   /* sidebar | main */
+    gap: 2.0rem;
+    align-items: start;
   }
 
-  body.is-menu-visible #menu {
-    transform: translateX(0);
+  /* 사이드바를 화면에 붙여 스크롤해도 보이게 */
+  #sidebar{
+    position: sticky;
+    top: 2rem;                           /* 상단 여백(헤더 높이에 맞춰 조정 가능) */
+    height: calc(100vh - 2rem);
+    overflow: auto;
+    z-index: 1;                          /* 본문 뒤 레이어 */
+    background: #f5f5f5;
+    border-radius: 8px;
+    padding: 0;                          /* inner가 패딩을 가짐 */
+  }
+  #sidebar > .inner{ padding: 1.25rem 1rem; }
+
+  /* 본문은 더 위 레이어 + 중앙 폭 제한 */
+  #main{ position: relative; z-index: 2; }
+  #main > .inner{
+    max-width: 980px;                    /* 중앙 폭 */
+    margin: 0 auto;                      /* 수평 중앙 정렬 */
+    padding: 0 0 3rem 0;                 /* 하단 여백 */
   }
 
-  body.is-menu-visible {
-    overflow: hidden;
-    touch-action: none;
+  /* 메뉴: 라인형(원본 톤) */
+  #menu{ background:#f5f5f5; padding: 1.25rem 1rem; border-radius: 6px; }
+  #menu > ul > li{
+    background: none !important;
+    border: none !important;
+    border-top: 1px solid rgba(210,215,217,.75) !important;
+    margin: .5em 0 0 0 !important;
+    padding: .5em 0 0 0 !important;
+    border-radius: 0 !important;
+  }
+  #menu > ul > li:first-child{ border-top:0; margin-top:0; padding-top:0; }
+  #menu > ul a{ background:none !important; }
+  #menu > ul a:hover{ color:#0b66c3 !important; background:none !important; }
+
+  /* K-Plan 폼 카드 느낌(선택사항) */
+  .kplan-shell{
+    background:#fff;
+    border:1px solid rgba(0,0,0,.06);
+    border-radius:10px;
+    box-shadow: 0 1px 6px rgba(0,0,0,.06);
+    padding: 1.5rem;
   }
 }
-*/
 
+/* ===== 모바일(≤980px): 사이드바 오프캔버스(현재 방식 유지) ===== */
+@media (max-width: 980px){
+  #sidebar{
+    position: fixed;
+    top: 0; right: -320px;
+    width: 320px; height: 100vh;
+    background:#fff;
+    box-shadow: -3px 0 12px rgba(0,0,0,.12);
+    z-index: 10000;
+    transition: right .28s ease;
+  }
+  #sidebar > .inner{
+    height: 100%;
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
+    padding: 1.25rem 1rem;
+    background:#f5f5f5;
+  }
+  body.is-menu-visible{ overflow:hidden; }
+  body.is-menu-visible #sidebar{ right:0; }
+
+  /* 본문 여백 살짝 줄이기 + 중앙 폭 제한 유지 */
+  #main > .inner{
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 0 1rem 2.25rem;
+  }
+}
 
 
 
