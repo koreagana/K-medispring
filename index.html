@@ -404,6 +404,7 @@
 <script src="assets/js/main.js"></script>
 
 <!-- ✅ 여기 바로 아래에 Ronnie 스크립트 추가 -->
+<!-- ✅ 여기 바로 아래에 Ronnie 스크립트 추가 -->
 <script>
 (function () {
   if (window.__menuBound) return;
@@ -417,9 +418,9 @@
   function closeMenu(e){ if(e) e.preventDefault(); body.classList.remove('is-menu-visible'); }
   function toggleMenu(e){ if(e) e.preventDefault(); body.classList.toggle('is-menu-visible'); }
 
-document.querySelectorAll('.toggle, a[href="#menu"]').forEach(function(el){
-  el.addEventListener('click', toggleMenu, {passive:true});
-});
+  document.querySelectorAll('.toggle, a[href="#menu"]').forEach(function(el){
+    el.addEventListener('click', toggleMenu, {passive:true});
+  });
 
   menu.addEventListener('click', function(e){
     var a = e.target.closest('a');
@@ -438,6 +439,7 @@ document.querySelectorAll('.toggle, a[href="#menu"]').forEach(function(el){
   });
 })();
 </script>
+
 
   <script>
   // 현재 페이지 링크 활성화
@@ -458,6 +460,7 @@ document.querySelectorAll('.toggle, a[href="#menu"]').forEach(function(el){
   
 </body>
 </html>
+
 
 
 
