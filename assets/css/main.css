@@ -3064,6 +3064,19 @@ legend { font-weight: 600; margin-bottom: .75rem; }
   position: static !important;
   opacity: 1 !important;
 }
+/* 🔧 Step3 설명문 정렬 및 강조 */
+#step3 legend {
+  display: block;
+  margin-top: 1.2rem;      /* 위쪽 여백으로 살짝 내려오기 */
+  margin-bottom: 0.8rem;   /* 아래쪽 공백도 일정하게 */
+  font-weight: 600;        /* 글자 약간 굵게 */
+  font-size: 1.05rem;      /* 살짝 키움 */
+  color: #333;             /* 진한 회색으로 안정감 있게 */
+  text-align: left;
+  border-bottom: 2px solid #eee;  /* 밑줄 느낌의 라인으로 구분 */
+  padding-bottom: 0.4rem;
+}
+
 
 
 
