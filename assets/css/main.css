@@ -3471,6 +3471,9 @@ legend { font-weight: 600; margin-bottom: .75rem; }
 /* 6) 다른 레이어와 충돌 방지 (모달이 최상단) */
 #wechatModal{ z-index: 11000; }
 
+#sidebar #main-nav li.active > a[aria-current="page"]{
+  font-weight:600; border-left:3px solid var(--brand, #c33); padding-left:12px;
+}
 
 
 
