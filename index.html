@@ -9,8 +9,28 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
-  <title>汉江春天</title>
 
+<title>汉江春天</title>
+
+<!-- ✅ GitHub Pages용 base 경로 스크립트 -->
+<script>
+  (function () {
+    var project = "/K-medispring/";
+    var isGhPages = location.hostname.endsWith("github.io");
+    var base = document.createElement("base");
+    base.href = isGhPages ? project : "/";
+    document.head.appendChild(base);
+  })();
+</script>
+
+ <!-- Meta Tags -->
+  <meta name="description" content="汉江春天 · 韩国医疗观光与大健康平台" />
+  <meta property="og:title" content="汉江春天" />
+  <meta property="og:description" content="专注于韩国医疗、皮肤医美、干细胞、健康管理与高端定制旅行" />
+  <meta property="og:image" content="https://kmedispring.com/images/preview.jpg" />
+  <meta property="og:url" content="https://kmedispring.com/wellness.html" />
+  <meta name="twitter:card" content="summary_large_image" />
+  
   <!-- ✅ Favicon / Web Icons (모두 상대경로) -->
   <link rel="icon" type="image/x-icon" href="images/favicon.ico?v=20251012">
   <link rel="icon" type="image/png" sizes="32x32" href="images/favicon-32.png?v=20251012">
@@ -26,14 +46,6 @@
 
   <!-- ✅ JS (상대경로) -->
   <script defer src="assets/js/main.js"></script>
-
-  <!-- Meta Tags -->
-  <meta name="description" content="汉江春天 · 韩国医疗观光与大健康平台" />
-  <meta property="og:title" content="汉江春天" />
-  <meta property="og:description" content="专注于韩国医疗、皮肤医美、干细胞、健康管理与高端定制旅行" />
-  <meta property="og:image" content="images/preview.jpg" />
-  <meta property="og:url" content="https://kmedispring.com/wellness.html" />
-  <meta name="twitter:card" content="summary_large_image" />
 
   <!-- Custom Style -->
   <style>
@@ -62,7 +74,6 @@
     <div id="main">
       <div class="inner">
 
-    
       <!-- Header -->
 <header id="header">
   <a href="index.html" class="logo">
@@ -102,9 +113,8 @@
         </header>
 
          
-
         <!-- Banner -->
-        <section id="banner">
+        <section id="banner" class="alt" aria-labelledby="siteTitle">
           <div class="content">
             <header>
               <h1>汉江春天</h1>
@@ -113,13 +123,13 @@
             <p>“汉江春天”是一家获得韩国政府正式许可的医疗旅游公司。公司负责人拥有韩国医疗机构的正式执照，并具备多年从事医疗旅游领域的丰富经验。我们在韩国整合了顶级、最优质的医疗与健康资源，总部位于首尔市中心的钟路区。 “汉江春天”的核心优势在于为中国客户提供量身定制的“一站式”医疗旅游解决方案，无论是就医、康养还是休闲体验，都力求让客户享受到最安心、最满意的服务体验。 “汉江春天”，愿成为您在韩国最值得信赖的朋友。 </p>
 
             <!-- ✅ 복구된 CTA 버튼 -->
-<ul class="actions">
-  <li>
-    <a href="kplan.html" class="button primary" data-i18n="navKplan">
-      定制医疗观光方案
-    </a>
-  </li>
-</ul>
+        <ul class="actions">
+        <li>
+          <a href="kplan.html" class="button primary" data-i18n="navKplan">
+            定制医疗观光方案
+          </a>
+        </li>
+        </ul>
           </div>
 
           <!-- Hero video (source는 video 내부에만) -->
@@ -176,9 +186,7 @@
   </div>
 </section>
 
-
    <!-- Posts -->
-
   <!-- 专业领域 · 一站式医疗体验 -->
 <section>
   <header class="major"><h2>专业领域 · 一站式医疗体验</h2></header>
@@ -257,10 +265,8 @@
         <li><a href="man.html" class="button">了解更多</a></li>
       </ul>
     </article>
-
   </div>
 </section>
-
 
       </div> <!-- .inner -->
     </div> <!-- #main -->
@@ -269,18 +275,9 @@
     <div id="sidebar">
       <div class="inner">
 
-     <!-- Search -->
-<section id="search" class="alt">
-  <form method="get" action="#">
-    <input type="search" name="query" id="query" placeholder="搜索" aria-label="搜索" />
-  </form>
-</section>
-     
-     <!-- 메뉴 -->
+  <!-- 메뉴 -->
      <nav id="menu">
-   
        <!--  <header class="major"> <h2>探索</h2> </header>  -->
-       
     <ul>
         <li><a href="index.html">首页</a></li>
         <li><a href="wellness.html">大健康</a></li>
@@ -300,6 +297,13 @@
     </ul>
 </nav>
         
+     <!-- Search -->
+<section id="search" class="alt">
+  <form method="get" action="#">
+    <input type="search" name="query" id="query" placeholder="搜索" aria-label="搜索" />
+  </form>
+</section>
+      
         <!-- About / Partners -->
         <section>
           <header class="major"><h2>关于我们</h2></header>
@@ -336,7 +340,6 @@
           </ul>
         </section>
 
-
    <!-- Footer -->
         <footer>
           <p style="text-align:center; font-size:0.9em; color:#666;">
@@ -347,8 +350,6 @@
     </div> <!-- #sidebar -->
   </div> <!-- #wrapper -->
         
- 
-
   <!-- WeChat QR Modal (파일명 공백 제거 -> qr_weixin.jpg 권장) -->
   <div id="wechatModal" class="modal" aria-hidden="true" role="dialog" style="display:none;">
     <div class="modal-inner">
@@ -400,11 +401,11 @@
 
   <!-- Scripts: 5총사 (맨 아래에 위치) -->
 <!-- Scripts: 기존 5총사 -->
-<script src="/assets/js/jquery.min.js"></script>
-<script src="/assets/js/browser.min.js"></script>
-<script src="/assets/js/breakpoints.min.js"></script>
-<script src="/assets/js/util.js"></script>
-<script src="/assets/js/main.js"></script>
+<script src="assets/js/jquery.min.js"></script>
+<script src="assets/js/browser.min.js"></script>
+<script src="assets/js/breakpoints.min.js"></script>
+<script src="assets/js/util.js"></script>
+<script src="assets/js/main.js"></script>
 
 <!-- ✅ 여기 바로 아래에 Ronnie 스크립트 추가 -->
 <script>
@@ -444,43 +445,3 @@
 
 </body>
 </html>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
