@@ -3044,6 +3044,26 @@ body.is-menu-visible #menu {
 }
 legend { font-weight: 600; margin-bottom: .75rem; }
 
+/* ✅ 라디오/체크박스 강제 노출 (iOS 포함) */
+.k-form-section input[type="radio"],
+.k-form-section input[type="checkbox"]{
+  -webkit-appearance: auto !important;
+  appearance: auto !important;
+  display: inline-block !important;
+  position: static !important;
+  opacity: 1 !important;
+  width: 1rem; height: 1rem;          /* 보기 좋게 */
+  margin-right: .4rem;
+  vertical-align: -2px;
+}
+
+/* 혹시 라디오를 숨기는 커스텀 규칙이 있으면 무력화 */
+.need input[type="radio"],
+.need input[type="checkbox"]{
+  display: inline-block !important;
+  position: static !important;
+  opacity: 1 !important;
+}
 
 
 
