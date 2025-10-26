@@ -188,35 +188,45 @@
   <fieldset class="svc-group">
     <legend>请选择各项服务是否需要：</legend>
 
-    <div class="svc-row">
-      <label>机场接送：</label>
-      <label class="need"><input type="radio" name="airport" value="需要">需要</label>
-      <label class="need"><input type="radio" name="airport" value="不需要">不需要</label>
-    </div>
+  <div class="svc-row">
+  <span class="svc-label">机场接送：</span>
+  <label class="need" for="airport_yes">
+    <input id="airport_yes" type="radio" name="airport" value="需要">需要
+  </label>
+  <label class="need" for="airport_no">
+    <input id="airport_no" type="radio" name="airport" value="不需要">不需要
+  </label>
+</div>
 
-    <div class="svc-row">
-      <label>酒店预订：</label>
-      <label class="need"><input type="radio" name="hotel" value="需要">需要</label>
-      <label class="need"><input type="radio" name="hotel" value="不需要">不需要</label>
-    </div>
+<div class="svc-row">
+  <span class="svc-label">酒店预订：</span>
+  <label class="need" for="hotel_yes">
+    <input id="hotel_yes" type="radio" name="hotel" value="需要">需要
+  </label>
+  <label class="need" for="hotel_no">
+    <input id="hotel_no" type="radio" name="hotel" value="不需要">不需要
+  </label>
+</div>
 
-    <div class="svc-row">
-      <label>市区观光：</label>
-      <label class="need"><input type="radio" name="tour" value="需要">需要</label>
-      <label class="need"><input type="radio" name="tour" value="不需要">不需要</label>
-    </div>
+<div class="svc-row">
+  <span class="svc-label">市区观光：</span>
+  <label class="need" for="tour_yes">
+    <input id="tour_yes" type="radio" name="tour" value="需要">需要
+  </label>
+  <label class="need" for="tour_no">
+    <input id="tour_no" type="radio" name="tour" value="不需要">不需要
+  </label>
+</div>
 
-    <div class="svc-row">
-      <label>医疗陪同 / 翻译：</label>
-      <label class="need"><input type="radio" name="translation" value="需要">需要</label>
-      <label class="need"><input type="radio" name="translation" value="不需要">不需要</label>
-    </div>
-  </fieldset>
-
-  <div class="svc-time">
-    <label for="visitTime">希望就诊/旅行时间</label>
-    <input id="visitTime" type="text" name="visit_time" placeholder="例：11月中旬 或 具体日期">
-  </div>
+<div class="svc-row">
+  <span class="svc-label">医疗陪同／翻译：</span>
+  <label class="need" for="translation_yes">
+    <input id="translation_yes" type="radio" name="translation" value="需要">需要
+  </label>
+  <label class="need" for="translation_no">
+    <input id="translation_no" type="radio" name="translation" value="不需要">不需要
+  </label>
+</div>
 
   <input type="hidden" id="travelServicesSummary" name="travel_services_summary">
 </section>
