@@ -455,6 +455,41 @@
   })();
 </script>
 
+<script>
+(function(){
+  var v = document.getElementById('introVideo');
+  if (!v) return;
+
+  // 혹시 모르니 속성 보강 (iOS/WeChat 인라인 재생 필수 플래그)
+  v.setAttribute('playsinline','');
+  v.setAttribute('webkit-playsinline','');
+  v.setAttribute('x5-video-player-type','h5');
+  v.setAttribute('x5-video-orientation','portrait');
+  v.muted = true; // 무음 보장 (오토플레이 요건)
+
+  function playSafe(){
+    // 재생 시도 + 실패 무시 (promise rejection 회피)
+    var p = v.play && v.play();
+    if (p && p.catch) p.catch(function(){});
+  }
+
+  // 위챗 전용 트리거
+  document.addEventListener('WeixinJSBridgeReady', playSafe, false);
+
+  // 사용자 제스처에도 붙여서 100% 보장
+  ['touchstart','click'].forEach(function(ev){
+    document.addEventListener(ev, playSafe, {once:true, passive:true});
+  });
+
+  // 앱 다시 보일 때 자동 복구
+  document.addEventListener('visibilitychange', function(){
+    if (!document.hidden) playSafe();
+  });
+
+  // iOS 첫 프레임 깨짐 방지: 살짝 지연 재생도 시도
+  setTimeout(playSafe, 300);
+})();
+</script>
   
 </body>
 </html>
