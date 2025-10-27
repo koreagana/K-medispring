@@ -3489,4 +3489,31 @@ legend { font-weight: 600; margin-bottom: .75rem; }
     font-size:1rem;
   }
 }
+/* 필드 기본 패딩/모서리/포커스 */
+:root{ --field-pad-y: .72rem; --field-pad-x: .9rem; --field-radius: 10px; }
 
+input[type="text"],
+input[type="search"],
+input[type="tel"],
+input[type="email"],
+input[type="number"],
+select,
+textarea{
+  box-sizing:border-box;
+  width:100%;
+  padding: var(--field-pad-y) var(--field-pad-x);
+  border-radius: var(--field-radius);
+}
+
+/* 플레이스홀더 컬러 살짝 옅게 */
+::placeholder{ color: rgba(0,0,0,.38); }
+
+/* 포커스 가시성 향상 */
+input:focus, select:focus, textarea:focus{
+  outline: none;
+  border-color: #7fb7ff !important;
+  box-shadow: 0 0 0 3px rgba(127,183,255,.35);
+}
+
+/* 좌우가 특히 붙어 보이는 경우 대비 */
+.field, .form-control{ padding-left: 0 !important; padding-right: 0 !important; } /* 프레임이 따로 감쌀 때 */
