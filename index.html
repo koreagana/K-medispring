@@ -554,6 +554,71 @@
 })();
 </script>
   
+  <script>
+(function(){
+  // ① "선택 가능한 리스트"로 쓸 컨테이너 클래스 지정 (섹션별로 여러 개 OK)
+  var LIST_SEL = '.proc-list, .selectable-list'; 
+  document.querySelectorAll(LIST_SEL+' li').forEach(function(li){
+    if (li.querySelector('input[type="checkbox"], input[type="radio"]')) return; // 이미 있으면 패스
+    var text = li.textContent.trim();
+    if (!text) return;
+
+    // 라벨+체크박스로 재구성
+    li.textContent = '';
+    var label = document.createElement('label');
+    label.className = 'option';
+    var cb = document.createElement('input');
+    cb.type = 'checkbox';
+    cb.name = (li.closest('[data-name]') ? li.closest('[data-name]').getAttribute('data-name') : 'procedures') + '[]';
+    cb.value = text;
+
+    var span = document.createElement('span');
+    span.className = 'option-text';
+    span.textContent = text;
+
+    label.appendChild(cb);
+    label.appendChild(span);
+    li.appendChild(label);
+  });
+
+  // ② 선택 시 시각피드백(하이라이트)
+  function syncLabelState(input){
+    var label = input.closest('label.option');
+    if (!label) return;
+    label.classList.toggle('is-selected', input.checked);
+  }
+  document.addEventListener('change', function(e){
+    if (e.target.matches('.option > input[type="checkbox"], .option > input[type="radio"]')) {
+      syncLabelState(e.target);
+    }
+  });
+  // 초기 상태 동기화
+  document.querySelectorAll('.option > input:checked').forEach(syncLabelState);
+
+  // ③ 라벨 아무데나 탭해도 토글 (접근성 유지)
+  document.addEventListener('click', function(e){
+    var lab = e.target.closest('label.option');
+    if (!lab) return;
+    var input = lab.querySelector('input');
+    if (e.target === input) return;
+    input.checked = !input.checked;
+    input.dispatchEvent(new Event('change', {bubbles:true}));
+  });
+
+  // ④(선택) 선택 요약 표시용 스팟이 있다면 자동 업데이트
+  var summary = document.getElementById('selectedSummary');
+  function updateSummary(){
+    if (!summary) return;
+    var picked = [].map.call(document.querySelectorAll('.option > input:checked'), function(i){ return i.value; });
+    summary.textContent = picked.length ? picked.join('， ') : '未选择';
+  }
+  document.addEventListener('change', function(e){
+    if (e.target.closest('label.option')) updateSummary();
+  });
+  updateSummary();
+})();
+</script>
+  
 </body>
 </html>
 
