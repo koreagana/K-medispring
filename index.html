@@ -402,7 +402,6 @@
 <script src="assets/js/main.js"></script>
 
 <!-- ✅ 여기 바로 아래에 Ronnie 스크립트 추가 -->
-<!-- ✅ 여기 바로 아래에 Ronnie 스크립트 추가 -->
 <script>
 (function () {
   if (window.__menuBound) return;
@@ -491,32 +490,67 @@
 })();
 </script>
   
-  <script>
-(function(){
-  // 모바일·태블릿 전용 (980px 이하일 때만)
-  if (window.matchMedia("(max-width: 980px)").matches) {
-    var menu = document.getElementById('menu');
-    if (!menu) return;
+<script>
+(function HOTFIX_MOBILE_MENU(){
+  var BP = "(max-width:1180px)";           // 태블릿까지
+  if (!window.matchMedia(BP).matches) return; // 데스크탑은 건드리지 않음
 
-    // 기존에 메뉴가 비어 있다면, 사이드바/헤더에서 복제
-    var srcUL =
-      document.querySelector('#sidebar nav ul') ||
-      document.querySelector('header nav ul') ||
-      document.querySelector('nav ul');
+  // 1) 스타일 주입 (z-index/백드롭/리스트 표시 강제)
+  var css = `
+  @media ${BP}{
+    #menu{position:fixed!important;top:0;left:-320px;width:320px;height:100%;
+      background:#fff;box-shadow:2px 0 12px rgba(0,0,0,.15);
+      z-index:99999!important;overflow-y:auto;transition:left .3s ease;}
+    body.is-menu-visible #menu{left:0!important;}
+    body.is-menu-visible::before{content:"";position:fixed;inset:0;
+      background:rgba(0,0,0,.32);z-index:99998;}
+    #menu ul.mobile-menu-list{display:block!important;visibility:visible!important;
+      opacity:1!important;margin:0;padding:1rem 1.25rem;}
+    #menu ul.mobile-menu-list>li{list-style:none;border-bottom:1px solid rgba(0,0,0,.08);}
+    #menu ul.mobile-menu-list>li>a{display:block;padding:.9rem 0;text-decoration:none;}
+  }`;
+  var style = document.createElement('style'); style.textContent = css; document.head.appendChild(style);
 
-    if (srcUL && !menu.querySelector('ul')) {
+  // 2) 요소 준비
+  var menu = document.getElementById('menu');
+
+  // 상태 표시 뱃지
+  function badge(txt, ok){
+    var b=document.getElementById('__mm_badge'); if(!b){b=document.createElement('div');
+      b.id='__mm_badge'; b.style.cssText='position:fixed;bottom:10px;right:10px;padding:.4rem .6rem;border-radius:6px;font:12px/1.2 -apple-system,Segoe UI,Arial;color:#fff;z-index:100000;background:#888;opacity:.85'; document.body.appendChild(b);}
+    b.style.background = ok ? '#2c8a3e' : '#d9534f'; b.textContent = txt;
+    setTimeout(function(){ if(b) b.remove(); }, 2500);
+  }
+
+  // 3) 내비 소스 찾기 + 복제(비어 있을 때만)
+  function cloneOnce(){
+    if (!menu) return badge('menu 없음', false);
+    var srcUL = document.querySelector('#sidebar nav ul') ||
+                document.querySelector('header nav ul') ||
+                document.querySelector('nav ul');
+    if (!srcUL){ badge('소스내비 없음', false); return; }
+    if (!menu.querySelector('ul')){
       var cloned = srcUL.cloneNode(true);
       cloned.classList.add('mobile-menu-list');
       menu.appendChild(cloned);
+      // 링크 클릭 시 닫기
+      menu.addEventListener('click', function(e){
+        if (e.target && e.target.tagName === 'A'){
+          document.body.classList.remove('is-menu-visible');
+        }
+      }, {passive:true});
+      badge('모바일메뉴 주입 OK', true);
+    } else {
+      badge('이미 주입됨', true);
     }
-
-    // 클릭 시 메뉴 닫기
-    menu.addEventListener('click', function(e){
-      if(e.target.tagName === 'A'){
-        document.body.classList.remove('is-menu-visible');
-      }
-    }, {passive:true});
   }
+
+  // 4) DOM 준비 타이밍 보장 (최대 10회 재시도)
+  var tries=0; (function wait(){
+    if (document.readyState === 'complete' || document.readyState === 'interactive'){
+      cloneOnce();
+    } else if (tries++ < 10){ setTimeout(wait, 200); } else { cloneOnce(); }
+  })();
 })();
 </script>
   
