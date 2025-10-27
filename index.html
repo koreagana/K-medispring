@@ -491,6 +491,35 @@
 })();
 </script>
   
+  <script>
+(function(){
+  // 모바일·태블릿 전용 (980px 이하일 때만)
+  if (window.matchMedia("(max-width: 980px)").matches) {
+    var menu = document.getElementById('menu');
+    if (!menu) return;
+
+    // 기존에 메뉴가 비어 있다면, 사이드바/헤더에서 복제
+    var srcUL =
+      document.querySelector('#sidebar nav ul') ||
+      document.querySelector('header nav ul') ||
+      document.querySelector('nav ul');
+
+    if (srcUL && !menu.querySelector('ul')) {
+      var cloned = srcUL.cloneNode(true);
+      cloned.classList.add('mobile-menu-list');
+      menu.appendChild(cloned);
+    }
+
+    // 클릭 시 메뉴 닫기
+    menu.addEventListener('click', function(e){
+      if(e.target.tagName === 'A'){
+        document.body.classList.remove('is-menu-visible');
+      }
+    }, {passive:true});
+  }
+})();
+</script>
+  
 </body>
 </html>
 
