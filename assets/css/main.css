@@ -3475,5 +3475,18 @@ legend { font-weight: 600; margin-bottom: .75rem; }
   font-weight:600; border-left:3px solid var(--brand, #c33); padding-left:12px;
 }
 
-
+ @media (max-width:980px){
+  #menu ul.mobile-menu-list {
+    list-style:none;
+    padding:0;
+    margin:0;
+  }
+  #menu ul.mobile-menu-list li a {
+    display:block;
+    padding:1rem 0;
+    border-bottom:1px solid rgba(0,0,0,0.1);
+    text-decoration:none;
+    font-size:1rem;
+  }
+}
 
