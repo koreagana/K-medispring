@@ -393,234 +393,147 @@
   });
   </script>
 
-  <!-- Scripts: 5총사 (맨 아래에 위치) -->
-<!-- Scripts: 기존 5총사 -->
+<!-- ✅ Ronnie Clean & Safe Integration (2025.11 Final Stable) -->
+<!-- Scripts: 기본 5총사 -->
 <script src="assets/js/jquery.min.js"></script>
 <script src="assets/js/browser.min.js"></script>
 <script src="assets/js/breakpoints.min.js"></script>
 <script src="assets/js/util.js"></script>
 <script src="assets/js/main.js"></script>
 
-<!-- ✅ 여기 바로 아래에 Ronnie 스크립트 추가 -->
+<!-- ✅ 메뉴 토글 & 닫기 (기본 동작) -->
 <script>
 (function () {
   if (window.__menuBound) return;
   window.__menuBound = true;
 
-  var body = document.body;
-  var menu = document.getElementById('menu');
+  const body = document.body;
+  const menu = document.getElementById('menu');
   if (!menu) return;
 
+  // 열기/닫기 함수
   function openMenu(e){ if(e) e.preventDefault(); body.classList.add('is-menu-visible'); }
   function closeMenu(e){ if(e) e.preventDefault(); body.classList.remove('is-menu-visible'); }
   function toggleMenu(e){ if(e) e.preventDefault(); body.classList.toggle('is-menu-visible'); }
 
-  document.querySelectorAll('.toggle, a[href="#menu"]').forEach(function(el){
+  // 토글 버튼 클릭
+  document.querySelectorAll('.toggle, a[href="#menu"]').forEach(el=>{
     el.addEventListener('click', toggleMenu, {passive:true});
   });
 
-  menu.addEventListener('click', function(e){
-    var a = e.target.closest('a');
-    if (a) closeMenu();
+  // 메뉴 내부 링크 클릭 시 닫기
+  menu.addEventListener('click', e=>{
+    if (e.target.closest('a')) closeMenu();
   }, {passive:true});
 
-  document.addEventListener('click', function(e){
+  // 외부 클릭 시 닫기
+  document.addEventListener('click', e=>{
     if (!body.classList.contains('is-menu-visible')) return;
     if (menu.contains(e.target)) return;
     if (e.target.closest('.toggle, a[href="#menu"]')) return;
     closeMenu();
   }, {passive:true});
 
-  document.addEventListener('keydown', function(e){
+  // ESC 키로 닫기
+  document.addEventListener('keydown', e=>{
     if (e.key === 'Escape') closeMenu();
   });
 })();
 </script>
 
-
-  <script>
-  // 현재 페이지 링크 활성화
-  (function(){
-    var path = location.pathname.replace(/\/K-medispring\/?/, '/'); // base 보정
-    document.querySelectorAll('#menu a[href]').forEach(function(a){
-      try {
-        var u = new URL(a.getAttribute('href'), location.origin);
-        if (u.pathname === path || u.pathname === location.pathname){
-          a.setAttribute('aria-current','page');
-          a.parentElement.classList.add('active');
-        }
-      } catch(e){}
-    });
-  })();
-</script>
-
+<!-- ✅ 현재 페이지 링크 활성화 -->
 <script>
 (function(){
-  var v = document.getElementById('introVideo');
-  if (!v) return;
+  const path = location.pathname.replace(/\/K-medispring\/?/, '/');
+  document.querySelectorAll('#menu a[href]').forEach(a=>{
+    try {
+      const u = new URL(a.getAttribute('href'), location.origin);
+      if (u.pathname === path || u.pathname === location.pathname){
+        a.setAttribute('aria-current','page');
+        a.parentElement.classList.add('active');
+      }
+    } catch(e){}
+  });
+})();
+</script>
 
-  // 혹시 모르니 속성 보강 (iOS/WeChat 인라인 재생 필수 플래그)
+<!-- ✅ Hero Video Safe Play (WeChat / iOS) -->
+<script>
+(function(){
+  const v = document.getElementById('introVideo');
+  if (!v) return;
   v.setAttribute('playsinline','');
   v.setAttribute('webkit-playsinline','');
   v.setAttribute('x5-video-player-type','h5');
   v.setAttribute('x5-video-orientation','portrait');
-  v.muted = true; // 무음 보장 (오토플레이 요건)
+  v.muted = true;
 
   function playSafe(){
-    // 재생 시도 + 실패 무시 (promise rejection 회피)
-    var p = v.play && v.play();
-    if (p && p.catch) p.catch(function(){});
+    const p = v.play && v.play();
+    if (p && p.catch) p.catch(()=>{});
   }
 
-  // 위챗 전용 트리거
   document.addEventListener('WeixinJSBridgeReady', playSafe, false);
-
-  // 사용자 제스처에도 붙여서 100% 보장
-  ['touchstart','click'].forEach(function(ev){
+  ['touchstart','click'].forEach(ev=>{
     document.addEventListener(ev, playSafe, {once:true, passive:true});
   });
-
-  // 앱 다시 보일 때 자동 복구
-  document.addEventListener('visibilitychange', function(){
+  document.addEventListener('visibilitychange', ()=>{
     if (!document.hidden) playSafe();
   });
-
-  // iOS 첫 프레임 깨짐 방지: 살짝 지연 재생도 시도
   setTimeout(playSafe, 300);
 })();
 </script>
-  
+
+<!-- ✅ 모바일 메뉴 고정 및 표시 (핵심 CSS + JS) -->
+<style>
+@media (max-width:1180px){
+  #menu{
+    position:fixed!important;
+    top:0; right:-320px;
+    width:320px; height:100vh;
+    background:#fff;
+    box-shadow:-3px 0 12px rgba(0,0,0,.15);
+    z-index:10000!important;
+    overflow-y:auto;
+    transition:right .28s ease;
+    -webkit-overflow-scrolling:touch;
+  }
+  body.is-menu-visible #menu{ right:0; }
+  body.is-menu-visible::before{
+    content:""; position:fixed; inset:0;
+    background:rgba(0,0,0,.32);
+    z-index:9999;
+  }
+  #menu ul{display:block!important;visibility:visible!important;opacity:1!important;margin:0;padding:1rem 1.25rem;}
+  #menu ul li{list-style:none;border-bottom:1px solid rgba(0,0,0,.08);}
+  #menu ul li a{display:block;padding:.9rem 0;text-decoration:none;}
+}
+</style>
+
 <script>
-(function HOTFIX_MOBILE_MENU(){
-  var BP = "(max-width:1180px)";           // 태블릿까지
-  if (!window.matchMedia(BP).matches) return; // 데스크탑은 건드리지 않음
+(function MobileMenuFix(){
+  const BP = window.matchMedia("(max-width:1180px)");
 
-  // 1) 스타일 주입 (z-index/백드롭/리스트 표시 강제)
-  var css = `
-  @media ${BP}{
-    #menu{position:fixed!important;top:0;left:-320px;width:320px;height:100%;
-      background:#fff;box-shadow:2px 0 12px rgba(0,0,0,.15);
-      z-index:99999!important;overflow-y:auto;transition:left .3s ease;}
-    body.is-menu-visible #menu{left:0!important;}
-    body.is-menu-visible::before{content:"";position:fixed;inset:0;
-      background:rgba(0,0,0,.32);z-index:99998;}
-    #menu ul.mobile-menu-list{display:block!important;visibility:visible!important;
-      opacity:1!important;margin:0;padding:1rem 1.25rem;}
-    #menu ul.mobile-menu-list>li{list-style:none;border-bottom:1px solid rgba(0,0,0,.08);}
-    #menu ul.mobile-menu-list>li>a{display:block;padding:.9rem 0;text-decoration:none;}
-  }`;
-  var style = document.createElement('style'); style.textContent = css; document.head.appendChild(style);
+  function moveMenuOut(){
+    const menu = document.getElementById('menu');
+    const sidebar = document.getElementById('sidebar');
+    if (!menu || !sidebar) return;
 
-  // 2) 요소 준비
-  var menu = document.getElementById('menu');
-
-  // 상태 표시 뱃지
-  function badge(txt, ok){
-    var b=document.getElementById('__mm_badge'); if(!b){b=document.createElement('div');
-      b.id='__mm_badge'; b.style.cssText='position:fixed;bottom:10px;right:10px;padding:.4rem .6rem;border-radius:6px;font:12px/1.2 -apple-system,Segoe UI,Arial;color:#fff;z-index:100000;background:#888;opacity:.85'; document.body.appendChild(b);}
-    b.style.background = ok ? '#2c8a3e' : '#d9534f'; b.textContent = txt;
-    setTimeout(function(){ if(b) b.remove(); }, 2500);
-  }
-
-  // 3) 내비 소스 찾기 + 복제(비어 있을 때만)
-  function cloneOnce(){
-    if (!menu) return badge('menu 없음', false);
-    var srcUL = document.querySelector('#sidebar nav ul') ||
-                document.querySelector('header nav ul') ||
-                document.querySelector('nav ul');
-    if (!srcUL){ badge('소스내비 없음', false); return; }
-    if (!menu.querySelector('ul')){
-      var cloned = srcUL.cloneNode(true);
-      cloned.classList.add('mobile-menu-list');
-      menu.appendChild(cloned);
-      // 링크 클릭 시 닫기
-      menu.addEventListener('click', function(e){
-        if (e.target && e.target.tagName === 'A'){
-          document.body.classList.remove('is-menu-visible');
-        }
-      }, {passive:true});
-      badge('모바일메뉴 주입 OK', true);
-    } else {
-      badge('이미 주입됨', true);
+    // 모바일일 때만 sidebar 밖으로 이동 (중복 이동 방지)
+    if (BP.matches && menu.parentElement.id === 'sidebar') {
+      document.body.appendChild(menu);
     }
   }
 
-  // 4) DOM 준비 타이밍 보장 (최대 10회 재시도)
-  var tries=0; (function wait(){
-    if (document.readyState === 'complete' || document.readyState === 'interactive'){
-      cloneOnce();
-    } else if (tries++ < 10){ setTimeout(wait, 200); } else { cloneOnce(); }
-  })();
+  document.addEventListener('DOMContentLoaded', moveMenuOut);
+  window.addEventListener('resize', moveMenuOut);
 })();
 </script>
-  
-  <script>
-(function(){
-  // ① "선택 가능한 리스트"로 쓸 컨테이너 클래스 지정 (섹션별로 여러 개 OK)
-  var LIST_SEL = '.proc-list, .selectable-list'; 
-  document.querySelectorAll(LIST_SEL+' li').forEach(function(li){
-    if (li.querySelector('input[type="checkbox"], input[type="radio"]')) return; // 이미 있으면 패스
-    var text = li.textContent.trim();
-    if (!text) return;
 
-    // 라벨+체크박스로 재구성
-    li.textContent = '';
-    var label = document.createElement('label');
-    label.className = 'option';
-    var cb = document.createElement('input');
-    cb.type = 'checkbox';
-    cb.name = (li.closest('[data-name]') ? li.closest('[data-name]').getAttribute('data-name') : 'procedures') + '[]';
-    cb.value = text;
-
-    var span = document.createElement('span');
-    span.className = 'option-text';
-    span.textContent = text;
-
-    label.appendChild(cb);
-    label.appendChild(span);
-    li.appendChild(label);
-  });
-
-  // ② 선택 시 시각피드백(하이라이트)
-  function syncLabelState(input){
-    var label = input.closest('label.option');
-    if (!label) return;
-    label.classList.toggle('is-selected', input.checked);
-  }
-  document.addEventListener('change', function(e){
-    if (e.target.matches('.option > input[type="checkbox"], .option > input[type="radio"]')) {
-      syncLabelState(e.target);
-    }
-  });
-  // 초기 상태 동기화
-  document.querySelectorAll('.option > input:checked').forEach(syncLabelState);
-
-  // ③ 라벨 아무데나 탭해도 토글 (접근성 유지)
-  document.addEventListener('click', function(e){
-    var lab = e.target.closest('label.option');
-    if (!lab) return;
-    var input = lab.querySelector('input');
-    if (e.target === input) return;
-    input.checked = !input.checked;
-    input.dispatchEvent(new Event('change', {bubbles:true}));
-  });
-
-  // ④(선택) 선택 요약 표시용 스팟이 있다면 자동 업데이트
-  var summary = document.getElementById('selectedSummary');
-  function updateSummary(){
-    if (!summary) return;
-    var picked = [].map.call(document.querySelectorAll('.option > input:checked'), function(i){ return i.value; });
-    summary.textContent = picked.length ? picked.join('， ') : '未选择';
-  }
-  document.addEventListener('change', function(e){
-    if (e.target.closest('label.option')) updateSummary();
-  });
-  updateSummary();
-})();
-</script>
   
 </body>
 </html>
+
 
 
 
