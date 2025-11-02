@@ -42,6 +42,60 @@
     .button.primary:hover{ background:var(--hover); border-color:var(--hover); }
     .major:after{ background-color:var(--brand); }
   </style>
+
+  <style id="mobile-nav-fix">
+/* 모바일에서 #menu를 화면 위로 끌어올리고 오프캔버스처럼 보이게 */
+@media (max-width: 1180px){
+  /* 메뉴 패널 */
+  #menu{
+    position: fixed !important;
+    top: 0; 
+    right: -320px;                 /* 필요하면 left:-320px 로 바꿔도 됨 */
+    width: 320px; 
+    height: 100vh;
+    background: #fff;
+    box-shadow: -3px 0 12px rgba(0,0,0,.15);
+    z-index: 10000 !important;     /* 어떤 요소 위에서도 보이게 */
+    overflow-y: auto;
+    transition: right .28s ease;   /* left 를 쓰면 right 대신 left 로 변경 */
+    -webkit-overflow-scrolling: touch;
+  }
+
+  /* 토글 후 열림 상태 */
+  body.is-menu-visible #menu{
+    right: 0;                      /* left를 쓰면 left:0 */
+  }
+
+  /* 백드롭(어두운 배경) */
+  body.is-menu-visible::before{
+    content: "";
+    position: fixed; 
+    inset: 0;
+    background: rgba(0,0,0,.32);
+    z-index: 9999;
+  }
+
+  /* 혹시 템플릿 기본 CSS가 리스트를 숨기고 있으면 강제 노출 */
+  #menu ul{ 
+    display: block !important; 
+    visibility: visible !important; 
+    opacity: 1 !important;
+    margin: 0; 
+    padding: 1rem 1.25rem;
+  }
+  #menu ul li{ 
+    list-style: none; 
+    border-bottom: 1px solid rgba(0,0,0,.08);
+  }
+  #menu ul li a{ 
+    display: block; 
+    padding: .9rem 0; 
+    text-decoration: none;
+  }
+}
+</style>
+
+
 </head>
 
 <body class="is-preload">
