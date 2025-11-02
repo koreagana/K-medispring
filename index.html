@@ -1,139 +1,85 @@
-
 <!DOCTYPE HTML>
 <!--
-  2025/10/11 가나와 로니가 같이 만들기 시작함
-  정리본: 로니가 리디아 대신 깔끔하게 정리한 파일
+  Editorial by HTML5 UP (base)
+  Customized for K-Medi Spring / 汉江春天 — minimal patch: fonts + header icons + banner(CTA+video) + CN menu + mobile nav & video fixes
 -->
 <html lang="zh-CN">
+  <head>
+    <title>汉江春天 | K-Medi Spring</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+    <link rel="stylesheet" href="assets/css/main.css" />
 
-<head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+    <!-- === Custom: CN/KR fonts + brand colors (kept minimal) === -->
+    <style>
+      /* Chinese serif (Source Han Serif CN) */
+      @font-face{font-family:'SourceHanSerifCN';font-weight:300;font-style:normal;
+        src:url('assets/fonts/SourceHanSerifCN-Light.otf') format('opentype');}
+      @font-face{font-family:'SourceHanSerifCN';font-weight:500;font-style:normal;
+        src:url('assets/fonts/SourceHanSerifCN-Medium.otf') format('opentype');}
+      @font-face{font-family:'SourceHanSerifCN';font-weight:700;font-style:normal;
+        src:url('assets/fonts/SourceHanSerifCN-Bold.otf') format('opentype');}
+      /* Korean fallback */
+      @font-face{font-family:'Pretendard';font-weight:400;font-style:normal;
+        src:url('assets/fonts/Pretendard-Regular.ttf') format('truetype');}
+      @font-face{font-family:'Pretendard';font-weight:700;font-style:normal;
+        src:url('assets/fonts/Pretendard-Bold.ttf') format('truetype');}
 
-<title>汉江春天</title>
+      :root{ --brand:#0077B6; --brand-2:#2088C2; }
+      body{font-family:'SourceHanSerifCN','Pretendard','Noto Serif CJK SC',serif;}
+      h1,h2,h3,h4,strong{font-family:'SourceHanSerifCN','Pretendard',serif;}
+      .button.primary{background:var(--brand);border-color:var(--brand);}
+      .button.primary:hover{background:var(--brand-2);border-color:var(--brand-2);}
 
-<!-- ✅ GitHub Pages용 base 경로 스크립트 -->
-<script>
-  (function () {
-    var project = "/K-medispring/";
-    var isGhPages = location.hostname.endsWith("github.io");
-    var base = document.createElement("base");
-    base.href = isGhPages ? project : "/";
-    document.head.appendChild(base);
-  })();
-</script>
+      /* hero video size tune on mobile */
+      @media (max-width:640px){ .hero-media video{height:48vh!important;} }
+    </style>
+  </head>
+  <body class="is-preload">
 
- <!-- Meta Tags -->
-  <meta name="description" content="汉江春天 · 韩国医疗观光与大健康平台" />
-  <meta property="og:title" content="汉江春天" />
-  <meta property="og:description" content="专注于韩国医疗、皮肤医美、干细胞、健康管理与高端定制旅行" />
-  <meta property="og:image" content="https://kmedispring.com/images/preview.jpg" />
-  <meta property="og:url" content="https://kmedispring.com/wellness.html" />
-  <meta name="twitter:card" content="summary_large_image" />
-  
-  <!-- ✅ Favicon / Web Icons (모두 상대경로) -->
-  <link rel="icon" type="image/x-icon" href="images/favicon.ico?v=20251012">
-  <link rel="icon" type="image/png" sizes="32x32" href="images/favicon-32.png?v=20251012">
-  <link rel="icon" type="image/png" sizes="16x16" href="images/favicon-16.png?v=20251012">
-  <link rel="apple-touch-icon" sizes="180x180" href="images/apple-touch-icon.png?v=20251012">
+    <!-- Wrapper -->
+    <div id="wrapper">
 
-<!-- ✅ Stylesheets (순서 중요: 아이콘 → 메인 CSS → noscript) -->
-<link rel="stylesheet" href="assets/css/fontawesome-all.min.css?v=20251027" />
-<link rel="stylesheet" href="assets/css/main.css?v=20251027" />
-<noscript><link rel="stylesheet" href="assets/css/noscript.css?v=20251027" /></noscript>
+      <!-- Main -->
+      <div id="main">
+        <div class="inner">
 
+          <!-- Header -->
+          <header id="header">
+            <a href="index.html" class="logo">
+               <img src="images/logo_ch.png" alt="汉江春天 로고" class="logo-img">
 
-  <!-- ✅ JS (상대경로) -->
-  <script defer src="assets/js/main.js"></script>
+            <!-- === Replaced icons (WeChat / Xiaohongshu / Instagram / Email) === -->
+            <ul class="icons">
+              <li>
+                <a href="#" id="wechat-icon" class="icon brands fa-weixin" title="WeChat: e-gana">
+                  <span class="label">WeChat</span>
+                </a>
+              </li>
+              <li>
+                <a href="https://www.xiaohongshu.com/user/profile/550972467" target="_blank" class="icon" title="小红书">
+                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" width="20" height="20" aria-hidden="true">
+                    <rect width="100" height="100" rx="20" ry="20" fill="#FF2442"/>
+                    <text x="50%" y="60%" text-anchor="middle" fill="#fff" font-size="30" font-family="sans-serif" font-weight="bold">小红书</text>
+                  </svg>
+                  <span class="label">Xiaohongshu</span>
+                </a>
+              </li>
+              <li>
+                <a href="https://www.instagram.com/jiana2734/" target="_blank" class="icon brands fa-instagram" title="Instagram">
+                  <span class="label">Instagram</span>
+                </a>
+              </li>
+              <li>
+                <a href="mailto:egana@kmedispring.com" class="icon solid fa-envelope" title="Email">
+                  <span class="label">Email</span>
+                </a>
+              </li>
+            </ul>
+          </header>
 
-  <!-- Custom Style -->
-  <style>
-    :root {
-      --brand: #0077B6;
-      --hover: #2088C2;
-      --deep:  #1565A0;
-      --line:  #A0C4DE;
-    }
-    #menu a { color: #333 !important; text-decoration: none !important; transition: color .25s ease !important; }
-    #menu a:hover { color: var(--hover) !important; }
-    #menu a.active { color: var(--brand) !important; font-weight:600 !important; }
-    .major:after { background-color: var(--brand) !important; }
-    .button.primary, .actions .button.primary { background: var(--brand) !important; border-color: var(--brand) !important; }
-    .button.primary:hover { background: var(--hover) !important; border-color: var(--hover) !important; }
-    hr, .inner .divider { border-color: var(--line) !important; }
-    .modal-open { overflow: hidden; }
-  </style>
-</head>
-
-  <!-- Wrapper -->
-  <div id="wrapper" class="with-sticky">
-
-    <!-- Main -->
-    <div id="main">
-      <div class="inner">
-
-<!-- 메뉴 -->
-<nav id="menu">
-  <!-- <header class="major"><h2>探索</h2></header> -->
-  <ul class="links">
-    <li><a href="index.html">首页</a></li>
-    <li><a href="wellness.html">大健康</a></li>
-    <li><a href="stemcell.html">干细胞</a></li>
-    <li><a href="derm.html">皮肤医美</a></li>
-    <li><a href="surgery.html">整形医美</a></li>
-    <li><a href="woman.html">女性护理中心</a></li>
-    <li><a href="man.html">男性健康中心</a></li>
-    <li><a href="transfer.html">接送服务</a></li>
-    <li><a href="tour.html">市区观光</a></li>
-    <li><a href="lifestyle.html">生活服务</a></li>
-    <li><a href="kplan.html" data-i18n="navKplan">定制医疗观光方案</a></li>
-  </ul>
-</nav>
-
-       <!-- Sidebar -->
-    <div id="sidebar">
-      <div class="inner">
-        
-      <!-- Header -->
-<header id="header">
-  <a href="index.html" class="logo">
-    <img src="images/logo_ch.png" alt="汉江春天 로고" class="logo-img">
-  </a>
-
-          <!-- Hamburger / Menu toggle (필수) -->
-
-          <!-- SNS icons -->
-          <ul class="icons">
-            <li>
-              <a href="#" id="wechat-icon" class="icon brands fa-weixin" title="WeChat: e-gana">
-                <span class="label">WeChat</span>
-              </a>
-            </li>
-            <li>
-              <a href="https://www.xiaohongshu.com/user/profile/550972467" target="_blank" class="icon" title="小红书">
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" width="20" height="20" aria-hidden="true">
-                  <rect width="100" height="100" rx="20" ry="20" fill="#FF2442"/>
-                  <text x="50%" y="60%" text-anchor="middle" fill="#fff" font-size="30" font-family="sans-serif" font-weight="bold">小红书</text>
-                </svg>
-                <span class="label">Xiaohongshu</span>
-              </a>
-            </li>
-            <li>
-              <a href="https://www.instagram.com/jiana2734/" target="_blank" class="icon brands fa-instagram" title="Instagram">
-                <span class="label">Instagram</span>
-              </a>
-            </li>
-            <li>
-              <a href="mailto:egana@kmedispring.com" class="icon solid fa-envelope" title="Email">
-                <span class="label">Email</span>
-              </a>
-            </li>
-          </ul>
-        </header>
-
-         
-        <!-- Banner -->
-        <section id="banner" class="alt" aria-labelledby="siteTitle">
+          <!-- === Added: Banner (CTA + hero video) === -->
+          <section id="banner" class="alt" aria-labelledby="siteTitle">
           <div class="content">
             <header>
               <h1>汉江春天</h1>
@@ -151,16 +97,16 @@
         </ul>
           </div>
 
-          <!-- Hero video (source는 video 내부에만) -->
-          <span class="image object hero-media">
-            <video id="introVideo" autoplay muted loop playsinline preload="metadata"
-                   style="width:100%;height:60vh;object-fit:cover;display:block">
-              <source src="https://kmedispring.com/videos/intro_v1.mp4.mp4?v=4#t=0.01" type="video/mp4">              
-            </video>
-          </span>
-        </section>
+            <!-- Hero video -->
+            <span class="image object hero-media">
+              <video id="introVideo" autoplay muted loop playsinline preload="metadata"
+                     style="width:100%;height:60vh;object-fit:cover;display:block">
+                <source src="https://kmedispring.com/videos/intro_v1.mp4.mp4?v=4#t=0.01" type="video/mp4">
+              </video>
+            </span>
+          </section>
 
-        <!-- Features -->
+          <!-- Features -->
         
       <section>
   <header class="major"><h2>品牌理念</h2></header>
@@ -290,16 +236,39 @@
       </div> <!-- .inner -->
     </div> <!-- #main -->
 
+        </div>
+      </div>
 
+      <!-- Sidebar -->
+      <div id="sidebar">
+        <div class="inner">
 
-  <!-- Search -->
-<section id="search" class="alt">
+          <!-- Search -->
+          <section id="search" class="alt">
+         <section id="search" class="alt">
   <form method="get" action="#">
     <input type="search" name="query" id="query" placeholder="搜索" aria-label="搜索" />
   </form>
-</section>
+          </section>
 
-     
+          <!-- === Replaced: Menu (Chinese) === -->
+          <nav id="menu">
+            <ul class="links">
+              <li><a href="index.html">首页</a></li>
+              <li><a href="wellness.html">大健康</a></li>
+              <li><a href="stemcell.html">干细胞</a></li>
+              <li><a href="derm.html">皮肤医美</a></li>
+              <li><a href="surgery.html">整形医美</a></li>
+              <li><a href="woman.html">女性护理中心</a></li>
+              <li><a href="man.html">男性健康中心</a></li>
+              <li><a href="transfer.html">接送服务</a></li>
+              <li><a href="tour.html">市区观光</a></li>
+              <li><a href="lifestyle.html">生活服务</a></li>
+              <li><a href="kplan.html" data-i18n="navKplan">定制医疗观光方案</a></li>
+            </ul>
+          </nav>
+
+           
         <!-- About / Partners -->
         <section>
           <header class="major"><h2>关于我们</h2></header>
@@ -341,12 +310,12 @@
           <p style="text-align:center; font-size:0.9em; color:#666;">
             © 2025 汉江春天 한강애봄 版权所有。模板设计：HTML5 UP。 </p>
         </footer>
-
-      </div> <!-- .inner sidebar -->
+          
+       </div> <!-- .inner sidebar -->
     </div> <!-- #sidebar -->
   </div> <!-- #wrapper -->
-        
-  <!-- WeChat QR Modal (파일명 공백 제거 -> qr_weixin.jpg 권장) -->
+
+ <!-- WeChat QR Modal (파일명 공백 제거 -> qr_weixin.jpg 권장) -->
   <div id="wechatModal" class="modal" aria-hidden="true" role="dialog" style="display:none;">
     <div class="modal-inner">
       <p class="modal-caption">扫描二维码添加微信</p>
@@ -354,196 +323,56 @@
       <p class="modal-id">WeChat ID：e-gana</p>
     </div>
   </div>
+    
+    <!-- Scripts (original 5) -->
+    <script src="assets/js/jquery.min.js"></script>
+    <script src="assets/js/browser.min.js"></script>
+    <script src="assets/js/breakpoints.min.js"></script>
+    <script src="assets/js/util.js"></script>
+    <script src="assets/js/main.js"></script>
 
-  <!-- 모달 + 비디오 초기화 스크립트 -->
-  <script>
-  document.addEventListener('DOMContentLoaded', function () {
-    // 비디오 세팅
-    const v = document.getElementById("introVideo");
-    if (v) {
-      try { v.playbackRate = 0.33; } catch(e) {}
-      v.muted = true;
-      v.volume = 0;
-    }
-
-    // 모달
-    var modal = document.getElementById('wechatModal');
-    var trigger = document.getElementById('wechat-icon');
-    var qrImg = document.getElementById('wechatQR');
-
-    function openModal(e){
-      if(e) e.preventDefault();
-      // QR 캐시 무효화 (버전)
-      if (qrImg) qrImg.src = (qrImg.getAttribute('data-src') || qrImg.src.split('?')[0]) + '?v=' + Date.now();
-      document.body.classList.add('modal-open');
-      if (modal) { modal.style.display = 'block'; modal.setAttribute('aria-hidden','false'); }
-    }
-    function closeModal(){
-      if (modal) { modal.style.display = 'none'; modal.setAttribute('aria-hidden','true'); }
-      document.body.classList.remove('modal-open');
-    }
-
-    if (trigger) trigger.addEventListener('click', openModal);
-    if (modal) {
-      modal.addEventListener('click', function (e) {
-        if (e.target === modal) closeModal();
-      });
-    }
-    document.addEventListener('keydown', function (e) {
-      if (e.key === 'Escape') closeModal();
-    });
-  });
-  </script>
-
-<!-- ✅ Ronnie Clean & Safe Integration (2025.11 Final Stable) -->
-<!-- Scripts: 기본 5총사 -->
-<script src="assets/js/jquery.min.js"></script>
-<script src="assets/js/browser.min.js"></script>
-<script src="assets/js/breakpoints.min.js"></script>
-<script src="assets/js/util.js"></script>
-<script src="assets/js/main.js"></script>
-
-<!-- ✅ 메뉴 토글 & 닫기 (기본 동작) -->
-<script>
-(function () {
-  if (window.__menuBound) return;
-  window.__menuBound = true;
-
-  const body = document.body;
-  const menu = document.getElementById('menu');
-  if (!menu) return;
-
-  // 열기/닫기 함수
-  function openMenu(e){ if(e) e.preventDefault(); body.classList.add('is-menu-visible'); }
-  function closeMenu(e){ if(e) e.preventDefault(); body.classList.remove('is-menu-visible'); }
-  function toggleMenu(e){ if(e) e.preventDefault(); body.classList.toggle('is-menu-visible'); }
-
-  // 토글 버튼 클릭
-  document.querySelectorAll('.toggle, a[href="#menu"]').forEach(el=>{
-    el.addEventListener('click', toggleMenu, {passive:true});
-  });
-
-  // 메뉴 내부 링크 클릭 시 닫기
-  menu.addEventListener('click', e=>{
-    if (e.target.closest('a')) closeMenu();
-  }, {passive:true});
-
-  // 외부 클릭 시 닫기
-  document.addEventListener('click', e=>{
-    if (!body.classList.contains('is-menu-visible')) return;
-    if (menu.contains(e.target)) return;
-    if (e.target.closest('.toggle, a[href="#menu"]')) return;
-    closeMenu();
-  }, {passive:true});
-
-  // ESC 키로 닫기
-  document.addEventListener('keydown', e=>{
-    if (e.key === 'Escape') closeMenu();
-  });
-})();
-</script>
-
-<!-- ✅ 현재 페이지 링크 활성화 -->
-<script>
-(function(){
-  const path = location.pathname.replace(/\/K-medispring\/?/, '/');
-  document.querySelectorAll('#menu a[href]').forEach(a=>{
-    try {
-      const u = new URL(a.getAttribute('href'), location.origin);
-      if (u.pathname === path || u.pathname === location.pathname){
-        a.setAttribute('aria-current','page');
-        a.parentElement.classList.add('active');
+    <!-- === Minimal, conflict-free add-ons: mobile menu + hero video autoplay === -->
+    <style>
+      @media (max-width:1180px){
+        #menu{position:fixed!important;top:0;right:-320px;width:320px;height:100vh;background:#fff;
+              box-shadow:-3px 0 12px rgba(0,0,0,.15);z-index:10000!important;overflow-y:auto;
+              transition:right .28s ease;-webkit-overflow-scrolling:touch;}
+        body.is-menu-visible #menu{right:0;}
+        body.is-menu-visible::before{content:"";position:fixed;inset:0;background:rgba(0,0,0,.32);z-index:9999;}
+        #menu ul{margin:0;padding:1rem 1.25rem;}
+        #menu ul li{list-style:none;border-bottom:1px solid rgba(0,0,0,.08);}
+        #menu ul li a{display:block;padding:.9rem 0;text-decoration:none;color:#222;}
       }
-    } catch(e){}
-  });
-})();
-</script>
-
-<!-- ✅ Hero Video Safe Play (WeChat / iOS) -->
-<script>
-(function(){
-  const v = document.getElementById('introVideo');
-  if (!v) return;
-  v.setAttribute('playsinline','');
-  v.setAttribute('webkit-playsinline','');
-  v.setAttribute('x5-video-player-type','h5');
-  v.setAttribute('x5-video-orientation','portrait');
-  v.muted = true;
-
-  function playSafe(){
-    const p = v.play && v.play();
-    if (p && p.catch) p.catch(()=>{});
-  }
-
-  document.addEventListener('WeixinJSBridgeReady', playSafe, false);
-  ['touchstart','click'].forEach(ev=>{
-    document.addEventListener(ev, playSafe, {once:true, passive:true});
-  });
-  document.addEventListener('visibilitychange', ()=>{
-    if (!document.hidden) playSafe();
-  });
-  setTimeout(playSafe, 300);
-})();
-</script>
-
-<!-- ✅ 모바일 메뉴 고정 및 표시 (핵심 CSS + JS) -->
-<style>
-@media (max-width:1180px){
-  #menu{
-    position:fixed!important;
-    top:0; right:-320px;
-    width:320px; height:100vh;
-    background:#fff;
-    box-shadow:-3px 0 12px rgba(0,0,0,.15);
-    z-index:10000!important;
-    overflow-y:auto;
-    transition:right .28s ease;
-    -webkit-overflow-scrolling:touch;
-  }
-  body.is-menu-visible #menu{ right:0; }
-  body.is-menu-visible::before{
-    content:""; position:fixed; inset:0;
-    background:rgba(0,0,0,.32);
-    z-index:9999;
-  }
-  #menu ul{display:block!important;visibility:visible!important;opacity:1!important;margin:0;padding:1rem 1.25rem;}
-  #menu ul li{list-style:none;border-bottom:1px solid rgba(0,0,0,.08);}
-  #menu ul li a{display:block;padding:.9rem 0;text-decoration:none;}
-}
-</style>
-
-<script>
-(function MobileMenuFix(){
-  const BP = window.matchMedia("(max-width:1180px)");
-
-  function moveMenuOut(){
-    const menu = document.getElementById('menu');
-    const sidebar = document.getElementById('sidebar');
-    if (!menu || !sidebar) return;
-
-    // 모바일일 때만 sidebar 밖으로 이동 (중복 이동 방지)
-    if (BP.matches && menu.parentElement.id === 'sidebar') {
-      document.body.appendChild(menu);
-    }
-  }
-
-  document.addEventListener('DOMContentLoaded', moveMenuOut);
-  window.addEventListener('resize', moveMenuOut);
-})();
-</script>
-
-  
-</body>
+    </style>
+    <script>
+      (function(){
+        if (window.__menuBound) return; window.__menuBound = true;
+        const body=document.body, menu=document.getElementById('menu'); if(!menu) return;
+        function closeMenu(e){ if(e) e.preventDefault(); body.classList.remove('is-menu-visible'); }
+        function toggleMenu(e){ if(e) e.preventDefault(); body.classList.toggle('is-menu-visible'); }
+        document.querySelectorAll('.toggle, a[href="#menu"]').forEach(el=>{
+          el.addEventListener('click', toggleMenu, {passive:true});
+        });
+        menu.addEventListener('click', e=>{ if(e.target.closest('a')) closeMenu(); }, {passive:true});
+        document.addEventListener('click', e=>{
+          if(!body.classList.contains('is-menu-visible')) return;
+          if(menu.contains(e.target) || e.target.closest('.toggle, a[href="#menu"]')) return;
+          closeMenu();
+        }, {passive:true});
+        document.addEventListener('keydown', e=>{ if(e.key==='Escape') closeMenu(); });
+      })();
+    </script>
+    <script>
+      (function(){
+        var v=document.getElementById('introVideo'); if(!v) return;
+        v.setAttribute('playsinline',''); v.setAttribute('webkit-playsinline','');
+        v.setAttribute('x5-video-player-type','h5'); v.muted=true;
+        function playSafe(){ var p=v.play&&v.play(); if(p&&p.catch) p.catch(function(){}); }
+        document.addEventListener('WeixinJSBridgeReady', playSafe, false);
+        ['touchstart','click'].forEach(function(ev){ document.addEventListener(ev, playSafe, {once:true, passive:true}); });
+        document.addEventListener('visibilitychange', function(){ if(!document.hidden) playSafe(); });
+        setTimeout(playSafe, 300);
+      })();
+    </script>
+  </body>
 </html>
-
-
-
-
-
-
-
-
-
-
-
-
