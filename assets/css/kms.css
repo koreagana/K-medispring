@@ -176,3 +176,28 @@ body{ background:#f5f7fb; }
   border-radius:12px;
 }
 
+/* ===== 브랜드理念(상단 4개 카드)만 라인 제거 ===== */
+section:nth-of-type(2) .features article {
+  border: none !important;                /* 브랜드理念 카드 라인 제거 */
+  box-shadow: 0 2px 8px rgba(0,0,0,.06);
+  border-radius: 14px;
+  transition: transform .2s ease, box-shadow .2s ease;
+}
+section:nth-of-type(2) .features article:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 4px 12px rgba(0,0,0,.08);
+}
+
+/* ===== 전문영역(하단 6개 카드)는 기존 라인 유지 ===== */
+section:nth-of-type(3) .posts article {
+  border: 1px solid rgba(210,215,217,.55);
+  border-radius: 10px;
+  background: #fff;
+  padding: 1.5rem 1.75rem;
+  transition: transform .2s ease, box-shadow .2s ease;
+}
+section:nth-of-type(3) .posts article:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 4px 10px rgba(0,0,0,.07);
+}
+
