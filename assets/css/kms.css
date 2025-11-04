@@ -1,1 +1,23 @@
+/* K-MediSpring overrides only — main.css는 절대 수정 X */
+
+/* 1) 타이포/간격 미세조정 */
+body { letter-spacing: 0.02em; }
+h1, h2, h3 { line-height: 1.25; }
+
+/* 2) 히어로 미디어 고정 높이 & 커버 */
+.hero-media video { width: 100%; height: 60vh; object-fit: cover; display: block; }
+
+/* 3) 좌측 사이드바 폭/여백(모바일 영향 없는 선에서) */
+#sidebar { width: 280px; }
+@media (max-width: 980px){
+  #sidebar { width: 100%; }
+}
+
+/* 4) 버튼 통일감 */
+.button.primary { font-weight: 600; }
+
+/* 5) WeChat 모달(이미 쓰는 클래스 유지) */
+body.modal-open { overflow: hidden; }
+#wechatModal[aria-hidden="false"] { display:block; }
+#wechatModal .modal-inner { max-width: 420px; margin: 8vh auto; border-radius: 14px; }
 
