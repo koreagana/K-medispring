@@ -1996,19 +1996,57 @@ button,
       text-indent: 0;
       top: 0;
       width: inherit; }
-  #sidebar.inactive {
-    margin-left: -26em; }
-  @media screen and (max-width: 1680px) {
-    #sidebar {
-      width: 24em; }
-      #sidebar > .inner {
-        padding: 1.66667em 1.66667em 1.33333em 1.66667em ;
-  /* width: 24em;  ← 삭제! */
-	  }
-        #sidebar > .inner > .alt {
-          margin: -1.66667em 0 3.33333em -1.66667em;
-          padding: 1.66667em;
-          width: calc(100% + 3.33333em); }
+ /* 사이드바가 접힐 때 실제 폭과 동일하게 숨기기 */
+#sidebar.inactive {
+  margin-left: -24em;   /* ← 기존 -26em에서 수정 */
+}
+
+@media screen and (max-width: 1680px) {
+  #sidebar { width: 24em; }
+
+  #sidebar > .inner {
+    padding: 1.66667em 1.66667em 1.33333em 1.66667em;
+    width: 24em; /* 유지 */
+    box-sizing: border-box;
+  }
+
+  /* 🔹검색 박스(#search.alt)를 회색 네비(사이드바) 폭에 맞게 확장 */
+  #sidebar > .inner > #search.alt {
+    /* .inner 좌우 패딩(1.66667em)만큼 바깥으로 빼서 폭을 맞춤 */
+    margin-left: -1.66667em;
+    margin-right: -1.66667em;
+    margin-bottom: 1.66667em;
+    width: calc(100% + 3.33333em);
+  }
+#sidebar #search form {
+  padding: 0 1.66667em;
+}
+#sidebar #search input {
+  width: 100%;
+  box-sizing: border-box;
+}
+
+  /* 확장된 영역 안쪽 여백 복구 + 인풋은 꽉 채우기 */
+  #sidebar #search form { padding: 0 1.66667em; }
+  #sidebar #search input {
+    width: 100%;
+    box-sizing: border-box;
+  }
+}
+
+/* 📱모바일에서 패딩이 달라지면 여기서 동일 로직 적용 */
+@media screen and (max-width: 980px) {
+  #sidebar > .inner { padding: 1.25em; }
+
+  #sidebar > .inner > #search.alt {
+    margin-left: -1.25em;
+    margin-right: -1.25em;
+    width: calc(100% + 2.5em);
+  }
+
+  #sidebar #search form { padding: 0 1.25em; }
+}
+
       #sidebar .toggle {
         height: 6.25em;
         left: 24em;
@@ -2272,4 +2310,5 @@ button,
     border-top: 0;
     margin-top: 0;
     padding-top: 0; }
+
 
