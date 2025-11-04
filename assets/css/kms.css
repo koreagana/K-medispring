@@ -100,3 +100,79 @@ body.modal-open{ overflow:hidden; }
 /* ========== 8) 여백/레이아웃 미세 보정(선택) ========== */
 /* 섹션 간 위쪽 간격 살짝 늘려 카드 구분 */
 .inner > * + .features { margin-top:2.5rem; }
+
+
+/* ===== 공통: 수평 스크롤 방지 ===== */
+html, body { overflow-x: hidden; }
+
+/* ===== 사이드바 미세조정 ===== */
+/* 데스크톱: 사이드바 내부 스크롤 제거(페이지 자체만 스크롤) */
+@media (min-width: 981px){
+  #sidebar .inner{
+    position: sticky;
+    top: 4.5rem;
+    max-height: none;
+    overflow: visible;
+  }
+}
+
+/* 모바일: 실제 사이드바는 숨기고, 오프캔버스 메뉴(#menu)만 사용 */
+@media (max-width: 980px){
+  #sidebar{ display: none !important; }
+}
+
+/* ===== 모바일 오프캔버스 메뉴 (#menu) 재정의 ===== */
+/* 기본값: 화면 왼쪽 밖에 대기(회색 바 잔상 방지, 배경은 순백) */
+#menu{
+  position: fixed;
+  top: 0;
+  left: -360px;
+  width: 320px;
+  height: 100vh;
+  background: #fff;
+  box-shadow: 3px 0 14px rgba(0,0,0,.12);
+  transition: left .28s ease;
+  z-index: 10000;
+  padding: 2rem 1.25rem;
+}
+
+/* 열렸을 때: 완전히 화면 안쪽으로 슬라이드인 */
+body.is-menu-visible #menu{ left: 0; }
+
+/* 메뉴 열릴 때 페이지 스크롤 잠금 & 오버레이 */
+body.is-menu-visible{ overflow: hidden; }
+body.is-menu-visible::before{
+  content: "";
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,.25);
+  z-index: 9990;
+}
+
+/* 메뉴 항목(흰 배경 유지, 회색 잔상 방지) */
+#menu ul li a{
+  display:block; width:100%;
+  padding: .9rem 1rem;
+  background:#fff;
+  border-bottom:1px solid rgba(210,215,217,.6);
+  transition: background .15s ease;
+}
+#menu ul li a:hover,
+#menu ul li a:focus{ background:#f2f4f6; }
+#menu ul li:last-child a{ border-bottom:0; }
+
+/* ===== 히어로/버튼 등 이전 규칙 보강(중복 OK) ===== */
+.hero-media video{ width:100%; height:60vh; object-fit:cover; display:block; }
+.button.primary{ font-weight:600; }
+
+/* 배경 톤(회색 잔상 대비) */
+body{ background:#f5f7fb; }
+#wrapper{ background:#fff; }
+
+/* 메인 카드들 */
+.features article{
+  background:#fff;
+  border:1px solid rgba(210,215,217,.55);
+  border-radius:12px;
+}
+
