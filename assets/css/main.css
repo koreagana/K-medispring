@@ -1,108 +1,493 @@
-/* =============================================
-   MOBILE NAV FIX PACK — K‑MediSpring (2025-11-04)
-   by Roni — paste this AT THE VERY BOTTOM of /assets/css/main.css
-   Purpose: unify the mobile menu behavior and remove conflicts.
-   ============================================= */
+/* =========================================================
+   K-MediSpring Main Styles (Clean, 2025-11-04 by Roni)
+   - Mobile nav: OFF-CANVAS = #sidebar ONLY (single source of truth)
+   - #menu = navigation list (static, no sliding)
+   - Duplicates removed, conflicts resolved, fonts consolidated
+========================================================= */
 
-/* --- 0) Reset conflicting #menu styles set earlier --- */
-@media (max-width: 980px){
-  /* Some rules above set #menu to right: -320px; others to left: -100%;
-     We HARD-RESET key properties here to a single left-slide pattern. */
-  #menu{
-    position: fixed !important;
-    top: 0 !important;
-    left: 0 !important;
-    right: auto !important;
-    width: 320px !important;
-    max-width: 86vw !important;
-    height: 100vh !important;
-    background: #fff !important;
-    box-shadow: 2px 0 12px rgba(0,0,0,.12) !important;
-    transform: translateX(-100%) !important;
-    transition: transform .28s ease !important;
-    z-index: 10001 !important;
-    overflow-y: auto !important;
-    -webkit-overflow-scrolling: touch !important;
-    padding: 1.25rem 1rem !important;
-  }
-  /* open state (toggled by body.is-menu-visible) */
-  body.is-menu-visible #menu{ transform: translateX(0) !important; }
+/* ----------------------------
+   Brand & Globals
+---------------------------- */
+:root{
+  --brand: #4E97D1;
+  --hover: #2077AD;
+  --deep: #0b66c3;
+  --line: rgba(210,215,217,.75);
 
-  /* link touch-targets */
-  #menu a{ display:block; padding:.9rem .6rem; color:#111 !important; text-decoration:none; }
-  #menu a:hover{ color:#0b66c3 !important; background: none !important; }
+  /* Fonts (stacks) */
+  --en-heading: "Merriweather", Georgia, "Times New Roman", serif;
+  --en-body: "Pretendard","Roboto","Open Sans",system-ui,-apple-system,"Segoe UI",Arial,sans-serif;
+  --zh-sc: "PingFang SC","Microsoft YaHei","Noto Sans CJK SC","Source Han Sans SC","Heiti SC","SimHei",sans-serif;
 
-  /* overlay for outside-click to close (uses body::before layer) */
-  body::before{
-    content:""; position: fixed; inset: 0; background: rgba(0,0,0,.28);
-    opacity: 0; pointer-events: none; transition: opacity .2s ease; z-index: 10000;
-  }
-  body.is-menu-visible::before{ opacity: 1; pointer-events: auto; }
+  /* Fields */
+  --field-pad-y: .72rem;
+  --field-pad-x: .9rem;
+  --field-radius: 10px;
 }
 
-/* --- 1) Single, consistent toggle button (.menuToggle) --- */
-/* Keep ONE class across HTML & JS: .menuToggle
-   If #header .toggle or #sidebar .toggle existed, they can stay hidden on mobile. */
-@media (max-width: 980px){
-  .menuToggle{
-    display:inline-flex !important; align-items:center; gap:.4rem;
-    position:absolute; top: 14px; right: 16px; z-index: 20000;
-    padding: .5rem .65rem; background:#fff; border:1px solid rgba(0,0,0,.15);
-    border-radius: 8px; text-decoration:none; font-size:.95rem; line-height:1;
-  }
-  .menuToggle .bars{ display:inline-block; width:18px; height:2px; background:#111; box-shadow: 0 6px 0 #111, 0 -6px 0 #111; border-radius:2px; }
-  /* If the template had #header .toggle, hide it to avoid duplicates */
-  #header .toggle{ display:none !important; }
+/* ----------------------------
+   Font Faces (deduped)
+---------------------------- */
+@font-face{
+  font-family:'Pretendard';
+  src:url('../fonts/Pretendard-Regular.ttf') format('truetype');
+  font-weight:400; font-style:normal; font-display:swap;
 }
-@media (min-width: 981px){ .menuToggle{ display:none !important; } }
-
-/* --- 2) Prevent other #menu variants from re-appearing on desktop --- */
-@media (min-width: 981px){
-  /* Desktop keeps original sidebar/menu inline; ensure no offcanvas leftovers */
-  #menu{
-    position: static !important; left:auto !important; right:auto !important;
-    height: auto !important; width: auto !important; transform:none !important;
-    box-shadow: none !important; padding: 0 !important; background: transparent !important;
-  }
+@font-face{
+  font-family:'Pretendard';
+  src:url('../fonts/Pretendard-Bold.ttf') format('truetype');
+  font-weight:700; font-style:normal; font-display:swap;
+}
+@font-face{
+  font-family:'SourceHanSerifCN';
+  src:url('../fonts/SourceHanSerifCN-Light.otf') format('opentype');
+  font-weight:300; font-style:normal; font-display:swap;
+}
+@font-face{
+  font-family:'SourceHanSerifCN';
+  src:url('../fonts/SourceHanSerifCN-Medium.otf') format('opentype');
+  font-weight:500; font-style:normal; font-display:swap;
+}
+@font-face{
+  font-family:'SourceHanSerifCN';
+  src:url('../fonts/SourceHanSerifCN-Bold.otf') format('opentype');
+  font-weight:700; font-style:normal; font-display:swap;
+}
+@font-face{
+  font-family:"Merriweather";
+  src:url("../fonts/Merriweather-VariableFont_opsz,wdth,wght.ttf") format("truetype");
+  font-weight:300 700; font-style:normal; font-display:swap;
+}
+@font-face{
+  font-family:"Roboto";
+  src:url("../fonts/Roboto-VariableFont_wdth,wght.ttf") format("truetype");
+  font-weight:300 700; font-style:normal; font-display:swap;
 }
 
-/* --- 3) Z-index order: modal > menu > header --- */
-#wechatModal{ z-index: 11000 !important; }
-@media (max-width: 980px){ #menu{ z-index: 10001 !important; } #header{ z-index: 10002; position:relative; } }
+/* ----------------------------
+   Reset (HTML5 UP base trimmed)
+---------------------------- */
+html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abbr,acronym,address,
+big,cite,code,del,dfn,em,img,ins,kbd,q,s,samp,small,strike,strong,sub,sup,tt,var,b,u,i,center,
+dl,dt,dd,ol,ul,li,fieldset,form,label,legend,table,caption,tbody,tfoot,thead,tr,th,td,
+article,aside,details,figcaption,figure,footer,header,hgroup,menu,nav,section,summary,time,mark,audio,video{
+  margin:0; padding:0; border:0; font:inherit; vertical-align:baseline;
+}
+article,aside,details,figcaption,figure,footer,header,hgroup,menu,nav,section{ display:block; }
+body{ line-height:1; -webkit-text-size-adjust:none; }
+ol,ul{ list-style:none; }
+blockquote,q{ quotes:none; }
+blockquote:before,blockquote:after,q:before,q:after{ content:''; }
+table{ border-collapse:collapse; border-spacing:0; }
+html{ box-sizing:border-box; }
+*,*:before,*:after{ box-sizing:inherit; }
+mark{ background-color:transparent; color:inherit; }
+input::-moz-focus-inner{ border:0; padding:0; }
+input,select,textarea{ appearance:none; }
 
-/* --- 4) Accessibility hints --- */
-#menu[aria-hidden="true"]{ visibility: hidden; }
-body.is-menu-visible #menu[aria-hidden="true"]{ visibility: visible; }
+/* ----------------------------
+   Base Type & Links
+---------------------------- */
+body{
+  background:#fff; color:#333;
+  font-family:"Source Han Serif CN","Noto Serif KR",serif;
+  font-size:15pt; line-height:1.8; font-weight:400;
+  -ms-overflow-style:scrollbar;
+}
+@media (max-width:1680px){ body{ font-size:11pt; } }
+@media (max-width:1280px){ body{ font-size:10pt; } }
+@media (max-width:360px){ body{ font-size:9pt; } }
 
-/* --- 5) Optional: animated focus ring for links in menu --- */
-#menu a:focus{ outline: none; box-shadow: 0 0 0 3px rgba(0,102,204,.2); border-radius: 8px; }
+html[lang="zh-CN"] body{
+  font-family: var(--en-body), var(--zh-sc);
+  -webkit-font-smoothing:antialiased; -moz-osx-font-smoothing:grayscale;
+}
 
-/* --- 6) Kill duplicated/legacy rules that force right-side panel --- */
-/* NOTE: If there are previous blocks like `#menu { right:-320px }` or
-   `body.is-menu-visible #menu { right:0 }`, they’re harmless now due to our
-   explicit left/transform + !important overrides above. No need to chase them. */
+h1,h2,h3,h4,h5,h6{
+  color:#3d4449; font-family: var(--en-heading), var(--zh-sc);
+  font-weight:700; line-height:1.5; margin:0 0 1em;
+}
+h1{ font-size:4em; line-height:1.3; margin:0 0 .5em; }
+h2{ font-size:1.75em; } h3{ font-size:1.25em; }
+h4{ font-size:1.1em; } h5{ font-size:.9em; } h6{ font-size:.7em; }
+@media (max-width:1680px){ h1{ font-size:3.5em; } }
+@media (max-width:980px){ h1{ font-size:3.25em; } }
+@media (max-width:736px){ h1{ font-size:2em; line-height:1.4; } h2{ font-size:1.5em; } }
 
-/* =============================================
-   END of Fix Pack
-   ============================================= */
+p{ margin:0 0 2em; }
+a{
+  transition: color .2s ease,border-bottom-color .2s ease;
+  color:#1f4e79; text-decoration:none; border-bottom:0;
+}
+a:hover{ color:var(--hover); }
 
-/* (Bonus) If your JS doesn’t currently toggle body.is-menu-visible, use this:
-<script>
-  document.addEventListener('click', function(e){
-    const t = e.target.closest('.menuToggle');
-    if(!t) return;
-    e.preventDefault();
-    document.body.classList.toggle('is-menu-visible');
-  });
-  // Close on ESC
-  document.addEventListener('keydown', function(e){
-    if(e.key === 'Escape') document.body.classList.remove('is-menu-visible');
-  });
-  // Close when clicking overlay
-  document.addEventListener('click', function(e){
-    if(document.body.classList.contains('is-menu-visible') && e.target === document.body){
-      document.body.classList.remove('is-menu-visible');
-    }
-  });
-</script>
-*/
+strong,b{ color:#3d4449; font-weight:600; }
+em,i{ font-style:italic; }
+code{
+  background:rgba(230,235,237,.25);
+  border-radius:.375em; border:1px solid rgba(210,215,217,.75);
+  font-family:"Courier New",monospace; font-size:.9em; padding:.25em .65em;
+}
+
+/* Language-specific button font */
+html[lang="zh"] .button{ font-family:'SourceHanSerifCN',serif; }
+html[lang="en"] .button{ font-family:'Merriweather',serif; }
+html[lang="ko"] .button{ font-family:'Pretendard',sans-serif; }
+
+/* ----------------------------
+   Grid (kept concise)
+---------------------------- */
+.row{ display:flex; flex-wrap:wrap; align-items:stretch; margin-left:-1.5em; }
+.row>*{ padding-left:1.5em; }
+
+/* ----------------------------
+   Header Line & Header tweaks
+---------------------------- */
+#header{
+  display:flex; align-items:center; gap:.75rem;
+  border-bottom:5px solid var(--brand)!important;
+  padding:6em 0 1em !important;
+}
+#header .logo{ border-bottom:0; min-width:140px; }
+#header .logo img.logo-img{
+  height:28px; width:auto; display:inline-block; vertical-align:middle;
+  margin-top:-2px; object-fit:contain;
+}
+@media (max-width:736px){ #header .logo img.logo-img{ height:24px; margin-top:-1px; } }
+
+#header .icons{ display:flex; gap:.75rem; align-items:center; margin-left:.25rem; }
+#header .icons a{ color:#666; transition:color .2s ease, transform .15s ease; }
+#header .icons a:hover{ color:var(--brand); transform:translateY(-1px); }
+.icons .fa-weixin:hover{ color:#09b83e !important; }
+/* Xiaohongshu hover effect */
+.icons a[title="小红书"] svg{ filter:grayscale(100%) brightness(70%); opacity:.85; transition:filter .2s,opacity .2s,transform .2s; }
+.icons a[title="小红书"]:hover svg{ filter:none; opacity:1; transform:scale(1.1); }
+
+/* ----------------------------
+   Buttons (consolidated)
+---------------------------- */
+.button, .actions .button, a.button{
+  font-family:'Source Han Serif CN','Noto Serif KR',serif;
+  font-weight:700; font-size:15pt !important; letter-spacing:.05em;
+  border-radius:10px; padding:.6rem 1.1rem; line-height:1.4em;
+  display:inline-flex; align-items:center; justify-content:center;
+  transition:all .25s ease; text-transform:uppercase;
+  box-shadow: inset 0 0 0 2px var(--brand);
+  color: var(--brand) !important; background:transparent; cursor:pointer;
+}
+.button.primary{ background:var(--brand); border-color:var(--brand); color:#fff !important; box-shadow:none; }
+.button.primary:hover{ background:var(--hover); transform:translateY(-1px); }
+.button:disabled,.button.disabled{ pointer-events:none; opacity:.25; }
+
+/* Header small CTA optional */
+#header .actions{ margin-left:auto; }
+#header .actions .button.small{
+  line-height:1; padding:.55rem .9rem; border-radius:999px;
+  border:1px solid var(--brand); background:var(--brand); color:#fff;
+  transition: transform .15s ease, background .2s ease;
+}
+#header .actions .button.small:hover{ background:var(--hover); transform:translateY(-1px); }
+@media (max-width:736px){ #header .actions{ display:none; } }
+
+/* ----------------------------
+   Sections / Headings underline cleanup
+---------------------------- */
+header p{
+  font-family:"Roboto Slab",serif; font-size:1em; font-weight:400;
+  letter-spacing:.075em; margin-top:-.5em; text-transform:uppercase;
+}
+header.major > :last-child{ border-bottom:0 !important; padding-bottom:0 !important; margin-bottom:1.5em !important; }
+.inner header, .inner header:after{ border-bottom:0 !important; box-shadow:none !important; }
+
+/* ----------------------------
+   Forms
+---------------------------- */
+label{ color:#3d4449; display:block; font-size:.9em; font-weight:600; margin:0 0 1em; }
+input[type="text"],input[type="password"],input[type="email"],input[type="tel"],input[type="search"],input[type="url"],select,textarea{
+  background:#fff; border:1px solid rgba(210,215,217,.75);
+  border-radius:.375em; color:inherit; display:block; width:100%;
+  outline:0; padding: var(--field-pad-y) var(--field-pad-x);
+}
+input:focus,select:focus,textarea:focus{
+  border-color:#7fb7ff !important; box-shadow:0 0 0 3px rgba(127,183,255,.35); outline:none;
+}
+::placeholder{ color:rgba(0,0,0,.38); }
+
+input[type="checkbox"],input[type="radio"]{
+  appearance:auto !important; display:inline-block !important; position:static !important; opacity:1 !important;
+  width:1rem; height:1rem; margin-right:.4rem; vertical-align:-2px;
+}
+
+/* ----------------------------
+   Lists / Tables
+---------------------------- */
+ol{ list-style:decimal; padding-left:1.25em; margin:0 0 2em; }
+ul{ list-style:disc; padding-left:1em; margin:0 0 2em; }
+ul.alt{ list-style:none; padding-left:0; }
+ul.alt li{ border-top:1px solid var(--line); padding:.5em 0; }
+ul.alt li:first-child{ border-top:0; padding-top:0; }
+
+.table-wrapper{ -webkit-overflow-scrolling:touch; overflow-x:auto; }
+table{ width:100%; margin:0 0 2em; }
+table tbody tr{ border-top:1px solid var(--line); border-bottom:1px solid var(--line); }
+table tbody tr:nth-child(2n+1){ background:rgba(230,235,237,.25); }
+table td{ padding:.75em; } table th{ padding:.75em; font-size:.9em; font-weight:600; color:#3d4449; text-align:left; }
+
+/* ----------------------------
+   Images
+---------------------------- */
+.image{ border:0; border-radius:.375em; display:inline-block; position:relative; }
+.image img{ display:block; border-radius:.375em; width:100%; }
+.image.fit,.image.main{ display:block; width:100%; margin:0 0 2em; }
+a.image{ overflow:hidden; }
+a.image img{ transition: transform .2s ease; }
+a.image:hover img{ transform:scale(1.075); }
+
+/* Sidebar profile image cut */
+#sidebar .mini-posts .image.profile{ width:50%; margin:0 auto; overflow:hidden; border-radius:0; aspect-ratio:3/4; }
+#sidebar .mini-posts .image.profile img{ width:100%; height:100%; object-fit:cover; object-position:48% 40%; transform:scale(1.10); }
+
+/* ----------------------------
+   Hero Video
+---------------------------- */
+.hero-media{
+  position:relative; z-index:0; width:100%; max-width:900px; height:600px; margin:0 auto; overflow:hidden; border-radius:8px;
+}
+.hero-media video{ display:block; width:100%; height:100%; object-fit:cover; object-position:center 70%; pointer-events:none; }
+@media (max-width:980px){ .hero-media{ height:48vw; max-width:none; } }
+/* Keep header/icons above video */
+#header, .menuToggle, .toggle, .logo{ position:relative; z-index:2; }
+
+/* ----------------------------
+   Banner
+---------------------------- */
+#banner{ padding:6em 0 4em; display:flex; }
+#banner .content{ flex:1 1 50%; }
+#banner .image{ flex:0 0 50%; margin:0 0 2em 4em; }
+#banner .image img{ width:100%; height:100%; object-fit:cover; object-position:center; }
+@media (orientation:portrait){
+  #banner{ flex-direction:column-reverse; }
+  #banner .content{ width:100%; }
+  #banner .image{ width:100%; height:25em; max-height:50vh; min-height:18em; margin:0 0 4em; }
+}
+@media (orientation:portrait) and (max-width:480px){ #banner .image{ max-height:35vh; } }
+
+/* ----------------------------
+   Footer
+---------------------------- */
+#footer .copyright{ color:#9fa3a6; font-size:.9em; }
+#footer .copyright a{ color:inherit; }
+
+/* ----------------------------
+   Sidebar (SINGLE SOURCE OF TRUTH for OFF-CANVAS)
+---------------------------- */
+#sidebar{
+  flex:0 0 auto; background:#f5f5f5; font-size:.9em; position:relative; width:26em; z-index:1;
+}
+#sidebar > .inner{
+  padding:1.25rem 1rem; width:100%;
+}
+#sidebar > .inner > *{
+  border-bottom:2px solid var(--line); margin:0 0 3.5em; padding:0 0 3.5em;
+}
+#sidebar > .inner > *:last-child{ border-bottom:0; margin-bottom:0; padding-bottom:0; }
+
+/* Desktop: sticky sidebar */
+@media (min-width:981px){
+  #sidebar{ position:sticky; top:2rem; border-radius:8px; }
+}
+
+/* ---- MOBILE OFF-CANVAS: #sidebar only ---- */
+@media (max-width:980px){
+  #sidebar{
+    position:fixed; top:0; right:-320px;
+    width:320px; height:100vh; background:#fff;
+    box-shadow:-3px 0 12px rgba(0,0,0,.12);
+    transition:right .28s ease; z-index:10000;
+  }
+  #sidebar > .inner{
+    height:100%; overflow-y:auto; -webkit-overflow-scrolling:touch; background:#f5f5f5;
+  }
+  body.is-menu-visible{ overflow:hidden; }
+  body.is-menu-visible #sidebar{ right:0; }
+
+  /* Overlay */
+  body:before{
+    content:''; position:fixed; inset:0; background:rgba(0,0,0,.28);
+    opacity:0; pointer-events:none; transition:opacity .2s ease; z-index:9999;
+  }
+  body.is-menu-visible:before{ opacity:1; pointer-events:auto; }
+
+  /* Toggle button in header */
+  #header .toggle{
+    display:block; position:absolute; top:1.2rem; right:1.25rem;
+    width:2.25rem; height:2.25rem; z-index:20000; cursor:pointer;
+    background:url("images/menu.svg") no-repeat center center; background-size:22px 22px;
+    border:0;
+  }
+
+  /* Keep header icons spaced from toggle */
+  #header .icons{ margin-right:3rem; }
+}
+
+/* ----------------------------
+   Menu (STATIC list inside sidebar)
+---------------------------- */
+#menu{ background:#f5f5f5; padding:1.25rem 1rem; border-radius:6px; }
+#menu > ul{ margin:0; padding:0; list-style:none; }
+#menu > ul > li{
+  border-top:1px solid var(--line); margin:.5em 0 0; padding:.5em 0 0; background:none; border-radius:0;
+}
+#menu > ul > li:first-child{ border-top:0; margin-top:0; padding-top:0; }
+#menu ul a, #menu ul span{
+  display:block; padding:.9rem .5rem; font-size:1.1em;
+  font-family:'Source Han Serif CN','Noto Serif KR',serif; font-weight:500; color:#222; text-decoration:none;
+}
+#menu ul a:hover{ color:#0b66c3; background:none; }
+#menu a.active, #nav a.active, #menu > ul li.active > a{ color:#0b66c3; font-weight:600; }
+
+/* Remove old "探索" underline header in menu (if present) */
+#menu header.major h2, #menu header.major h2::after{ display:none !important; content:none !important; }
+
+/* ----------------------------
+   Search (sidebar)
+---------------------------- */
+#sidebar #search{ background:#f5f6f7; padding:1rem; border-radius:6px; margin-bottom:1.5rem; }
+#sidebar #search input[type="search"]{
+  width:100%; background:#fff; border:none; border-radius:4px; padding:0;
+  box-shadow: inset 0 0 0 1px rgba(0,0,0,.1); font-size:.9rem; color:#555;
+}
+#sidebar #search input[type="search"]:focus{ outline:none; box-shadow: inset 0 0 0 1px var(--brand); }
+
+/* ----------------------------
+   Content Wrapper / Main
+---------------------------- */
+#wrapper{
+  display:flex; flex-direction:row-reverse; min-height:100vh;
+}
+#main{ flex:1 1 auto; position:relative; z-index:2; width:100%; }
+#main > .inner{
+  padding:0 2rem 3rem; margin:0 auto; max-width:110em;
+}
+#main > .inner > section{
+  padding:6em 0 4em; border-top:2px solid var(--line);
+}
+#main > .inner > section:first-of-type{ border-top:0 !important; }
+@media (max-width:1680px){
+  #main > .inner{ padding:0 2rem 3rem; }
+  #main > .inner > section{ padding:5em 0 3em; }
+}
+@media (max-width:1280px){
+  #main > .inner{ padding:0 2rem 3rem; }
+  #main > .inner > section{ padding:4em 0 2em; }
+}
+@media (max-width:736px){
+  #main > .inner{ padding:0 1rem 2rem; }
+  #main > .inner > section{ padding:3em 0 1em; }
+}
+
+/* ----------------------------
+   Modal (WeChat QR, refined)
+---------------------------- */
+.modal{ display:none; position:fixed; inset:0; z-index:11000; background:rgba(0,0,0,.7); animation:modalFade .15s ease-out; }
+.modal-inner{
+  position:relative; margin:5% auto; width:300px; height:520px; background:#fff; border-radius:40px;
+  padding:30px 20px; text-align:center; box-shadow:0 8px 30px rgba(0,0,0,.28); border:6px solid #e5e5e5; animation:cardPop .2s ease-out; outline:none;
+}
+.modal-inner::before{
+  content:""; position:absolute; top:12px; left:50%; transform:translateX(-50%);
+  width:80px; height:8px; background:#222; border-radius:4px;
+}
+.modal-inner::after{
+  content:""; position:absolute; bottom:10px; left:50%; transform:translateX(-50%);
+  width:90px; height:5px; background:#d9d9d9; border-radius:3px;
+}
+.modal-content{ width:90%; height:auto; display:block; margin:40px auto 10px; border-radius:12px; }
+.modal-caption{ font-size:17px; font-weight:700; color:#111; margin-top:8px; }
+.modal-id{ font-size:14px; color:#777; margin-top:8px; }
+.close{ display:none !important; }
+@media (max-width:420px){
+  .modal-inner{ width:270px; height:500px; padding:24px 18px; }
+  .modal-content{ margin:36px auto 8px; }
+  .modal-caption{ font-size:16px; }
+}
+@keyframes modalFade{ from{opacity:0} to{opacity:1} }
+@keyframes cardPop{ from{ transform:translateY(10px); opacity:.9 } to{ transform:translateY(0); opacity:1 } }
+body.modal-open{ overflow:hidden; }
+
+/* ----------------------------
+   K-Plan Form (polish)
+---------------------------- */
+.kplan-band{ background:#f5f5f5; padding:2.5rem 0; position:relative; z-index:1; border-top:1px solid rgba(0,0,0,.04); }
+.kplan-shell{
+  max-width:860px; margin:0 auto; background:#fff; border:1px solid #e6e8eb;
+  border-radius:14px; padding:1.2rem 1.2rem 1.6rem; box-shadow:0 10px 24px rgba(0,0,0,.04);
+}
+.kplan-shell .fields{ display:flex; flex-wrap:wrap; gap:1.25rem; }
+.kplan-shell .field{ flex:1 1 46%; min-width:240px; }
+.kplan-shell label{ font-weight:600; color:#333; margin-bottom:.35rem; }
+.kplan-shell textarea{ resize:vertical; }
+
+.kcat{ display:grid; gap:1rem; }
+.kcat-cat{ border:1px solid #e5e7ea; border-radius:12px; overflow:hidden; background:#fff; }
+.kcat-hd{ display:flex; justify-content:space-between; align-items:center; padding:.85rem 1rem; background:#f7fafc; cursor:pointer; }
+.kcat-hd h4{ margin:0; font-size:1.05rem; }
+.kcat-bd{ display:none; padding:.6rem 1rem .9rem; gap:1rem; }
+.kcat-bd.open{ display:grid; }
+.kgroup{ border-top:1px dashed #e9edf1; padding-top:.6rem; margin-top:.4rem; }
+.kgroup h5{ margin:.2rem 0 .5rem; font-size:.95rem; color:#0f172a; }
+.kitems{ list-style:none; margin:0; padding:0; display:grid; gap:.45rem; grid-template-columns:repeat(auto-fit,minmax(230px,1fr)); }
+
+@media (max-width:736px){
+  .kplan-shell{ max-width:94%; padding:1rem; }
+  .kplan-shell .field{ flex:1 1 100%; min-width:0; }
+  .kitems{ grid-template-columns:1fr; }
+  .kcat-hd{ padding:.8rem .9rem; }
+  .kcat-bd{ padding:.55rem .9rem .85rem; }
+}
+
+.kplan-shell .actions{ text-align:center; margin-top:1.2rem; }
+.kplan-shell .button.primary{ background:var(--deep); border-color:var(--deep); color:#fff; }
+.kplan-shell .button.primary:hover{ filter:brightness(1.05); }
+
+/* Step3 need/not-need group */
+.svc-group{ border:1px solid #eee; background:#fff; padding:1rem; border-radius:.5rem; }
+.svc-row{ display:flex; flex-wrap:wrap; align-items:center; gap:.75rem; margin:.5rem 0; line-height:1.5; }
+.need input{ margin-right:.25rem; }
+.need input:checked{ accent-color:#0044cc; }
+legend{ font-weight:600; margin-bottom:.75rem; }
+#step3 legend{
+  display:block; margin:1.2rem 0 .8rem; font-weight:600; font-size:1.05rem; color:#333;
+  text-align:left; border-bottom:2px solid #eee; padding-bottom:.4rem;
+}
+
+/* Silver frame section */
+.k-form-section{
+  background:linear-gradient(180deg,#f5f5f5 0%,#ffffff 100%);
+  border:1px solid #c9c9c9; border-radius:10px;
+  box-shadow: inset 0 1px 1px rgba(255,255,255,.8), 0 1px 4px rgba(180,180,180,.35), 0 0 6px rgba(220,220,220,.2);
+  padding:1.8rem 1.6rem; margin-bottom:2rem; transition:box-shadow .3s ease;
+}
+.k-form-section:hover{
+  box-shadow: inset 0 1px 2px rgba(255,255,255,.85), 0 2px 6px rgba(150,150,150,.4), 0 0 10px rgba(210,210,210,.25);
+}
+.k-form-section h3{
+  color:#333; font-weight:600; border-bottom:2px solid #e6e6e6; padding-bottom:.4rem; margin-bottom:1.2rem;
+}
+
+/* ----------------------------
+   Readability boost
+---------------------------- */
+.inner p, .inner li, section p{
+  font-size:1.15rem; line-height:1.85; color:#222; letter-spacing:.015em;
+}
+@media (max-width:768px){
+  .inner p, .inner li, section p{ font-size:1.1rem; line-height:1.75; }
+}
+html[lang="zh-CN"] .inner p, html[lang="zh-CN"] .inner li{ font-size:1.2rem; line-height:1.9; }
+
+/* ----------------------------
+   Misc keeps
+---------------------------- */
+#menu header.major h2{ display:none !important; } /* safety */
+#wechatModal{ z-index:11000; } /* modal above all */
