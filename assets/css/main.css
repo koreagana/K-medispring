@@ -1,136 +1,9 @@
-2025/11/03
-
-/* ============================
-   FONT SETTINGS (로니 & 리디아 2025.10.11)
-   ============================ */
-
-/* Pretendard Regular */
-@font-face {
-  font-family: 'Pretendard';
-  src: url('../fonts/Pretendard-Regular.ttf') format('truetype');
-  font-weight: 400;
-  font-style: normal;
-  font-display: swap;
-}
-
-/* Pretendard Bold */
-@font-face {
-  font-family: 'Pretendard';
-  src: url('../fonts/Pretendard-Bold.ttf') format('truetype');
-  font-weight: 700;
-  font-style: normal;
-  font-display: swap;
-}
-
-/* Source Han Serif CN (Simplified Chinese) */
-@font-face {
-  font-family: 'SourceHanSerifCN';
-  src: url('../fonts/SourceHanSerifCN-Light.otf') format('opentype');
-  font-weight: 300;
-  font-style: normal;
-  font-display: swap;
-}
-
-@font-face {
-  font-family: 'SourceHanSerifCN';
-  src: url('../fonts/SourceHanSerifCN-Medium.otf') format('opentype');
-  font-weight: 500;
-  font-style: normal;
-  font-display: swap;
-}
-
-@font-face {
-  font-family: 'SourceHanSerifCN';
-  src: url('../fonts/SourceHanSerifCN-Bold.otf') format('opentype');
-  font-weight: 700;
-  font-style: normal;
-  font-display: swap;
-}
-
-/* ===== 기존 Merriweather & Roboto ===== */
-@font-face {
-  font-family: "Merriweather";
-  src: url("../fonts/Merriweather-VariableFont_opsz,wdth,wght.ttf") format("truetype");
-  font-weight: 300 700;
-  font-style: normal;
-  font-display: swap;
-}
-
-@font-face {
-  font-family: "Roboto";
-  src: url("../fonts/Roboto-VariableFont_wdth,wght.ttf") format("truetype");
-  font-weight: 300 700;
-  font-style: normal;
-  font-display: swap;
-}
-
-/* Merriweather */
-@font-face {
-  font-family: "Merriweather";
-  src: url("../fonts/Merriweather-VariableFont_opsz,wdth,wght.ttf") format("truetype");
-  font-weight: 300 700;
-  font-style: normal;
-  font-display: swap;
-}
-
-/* Roboto */
-@font-face {
-  font-family: "Roboto";
-  src: url("../fonts/Roboto-VariableFont_wdth,wght.ttf") format("truetype");
-  font-weight: 300 700;
-  font-style: normal;
-  font-display: swap;
-}
-
-
-/* ===== Typography: EN = Editorial look, ZH = Baidu-style ===== */
-
-/* 현재 템플릿의 영문 질감 유지용 스택 */
-:root{
-  --en-heading: "Merriweather", Georgia, "Times New Roman", serif;
-  --en-body: "Source Sans Pro", -apple-system, BlinkMacSystemFont, "Segoe UI",
-             Roboto, "Helvetica Neue", Arial, sans-serif;
-}
-
-/* ✅ 폰트 변수 정의 */
-:root {
-  /* 중국어(간체) 스택 */
-  --zh-sc: "PingFang SC","Microsoft YaHei","Noto Sans CJK SC",
-           "Source Han Sans SC","Heiti SC","SimHei",sans-serif;
-
-  /* 영문 본문/헤딩 스택 (로컬 우선, 시스템 폴백) */
-  --en-body: "Pretendard","Roboto","Open Sans",system-ui,-apple-system,
-             "Segoe UI",Arial,sans-serif;
-  --en-heading: "Merriweather","Roboto Slab","Times New Roman",serif;
-}
-
-/* 페이지 기본 폰트: 라틴은 EN, CJK는 자동 ZH 폴백 */
-html[lang="zh-CN"] body {
-  font-family: var(--en-body), var(--zh-sc);
-  line-height: 1.65;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-}
-
-/* 제목은 Merriweather 질감 유지 + 중문 보강 */
-h1, h2, h3, h4, h5, h6 {
-  font-family: var(--en-heading), var(--zh-sc);
-  font-weight: 700;
-}
-
-/* 영문 전용: <span lang="en">Text</span> */
-:lang(en) { font-family: var(--en-body), var(--zh-sc); }
-
-/* ✅ 외부 import는 제거: Font Awesome은 <head>에서 link로, Google Fonts는 미사용(차단 가능성) */
-/* @import url(fontawesome-all.min.css);  ← 삭제 */
-/* @import url("https://fonts.googleapis.com/..."); ← 삭제 */
-
-
+@import url(fontawesome-all.min.css);
+@import url("https://fonts.googleapis.com/css?family=Open+Sans:400,600,400italic,600italic|Roboto+Slab:400,700");
 /*
 	Editorial by HTML5 UP
 	html5up.net | @ajlkn
 	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
-
 */
 html, body, div, span, applet, object,
 iframe, h1, h2, h3, h4, h5, h6, p, blockquote,
@@ -218,14 +91,11 @@ body {
 
 /* Type */
 body, input, select, textarea {
-  color: #333;
-  font-family: "Source Han Serif CN", "Noto Serif KR", serif;
-  font-size: 15pt;   /* 나중에 16pt로 변경 가능 */
+  color: #7f888f;
+  font-family: "Open Sans", sans-serif;
+  font-size: 13pt;
   font-weight: 400;
-  line-height: 1.8;  /* 줄 간격 여유롭게 */
-}
-
-
+  line-height: 1.65; }
   @media screen and (max-width: 1680px) {
     body, input, select, textarea {
       font-size: 11pt; } }
@@ -241,14 +111,14 @@ a {
   -webkit-transition: color 0.2s ease-in-out, border-bottom-color 0.2s ease-in-out;
   -ms-transition: color 0.2s ease-in-out, border-bottom-color 0.2s ease-in-out;
   transition: color 0.2s ease-in-out, border-bottom-color 0.2s ease-in-out;
-  /* border-bottom: dotted 1px; ← 이 줄만 삭제! */
-  color: #4E97D1;
+  border-bottom: dotted 1px;
+  color: #f56a6a;
   text-decoration: none; }
-a:hover {
-  border-bottom: none;
-  color: #4E97D1 !important;
-}
-
+  a:hover {
+    border-bottom-color: #f56a6a;
+    color: #f56a6a !important; }
+    a:hover strong {
+      color: inherit; }
 
 strong, b {
   color: #3d4449;
@@ -1128,7 +998,7 @@ header p {
   text-transform: uppercase; }
 
 header.major > :last-child {
-  border-bottom: solid 3px #4E97D1;
+  border-bottom: solid 3px #f56a6a;
   display: inline-block;
   margin: 0 0 2em 0;
   padding: 0 0.75em 0.5em 0; }
@@ -1186,8 +1056,8 @@ textarea {
   input[type="url"]:focus,
   select:focus,
   textarea:focus {
-    border-color: #4E97D1;
-    box-shadow: 0 0 0 1px #4E97D1; }
+    border-color: #f56a6a;
+    box-shadow: 0 0 0 1px #f56a6a; }
 
 select {
   background-image: url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='40' height='40' preserveAspectRatio='none' viewBox='0 0 40 40'%3E%3Cpath d='M9.4,12.3l10.4,10.4l10.4-10.4c0.2-0.2,0.5-0.4,0.9-0.4c0.3,0,0.6,0.1,0.9,0.4l3.3,3.3c0.2,0.2,0.4,0.5,0.4,0.9 c0,0.4-0.1,0.6-0.4,0.9L20.7,31.9c-0.2,0.2-0.5,0.4-0.9,0.4c-0.3,0-0.6-0.1-0.9-0.4L4.3,17.3c-0.2-0.2-0.4-0.5-0.4-0.9 c0-0.4,0.1-0.6,0.4-0.9l3.3-3.3c0.2-0.2,0.5-0.4,0.9-0.4S9.1,12.1,9.4,12.3z' fill='rgba(210, 215, 217, 0.75)' /%3E%3C/svg%3E");
@@ -1275,8 +1145,8 @@ input[type="radio"] {
     content: '\f00c'; }
   input[type="checkbox"]:focus + label:before,
   input[type="radio"]:focus + label:before {
-    border-color: #4E97D1;
-    box-shadow: 0 0 0 1px #4E97D1; }
+    border-color: #f56a6a;
+    box-shadow: 0 0 0 1px #f56a6a; }
 
 input[type="checkbox"] + label:before {
   border-radius: 0.375em; }
@@ -1506,7 +1376,7 @@ ul.contact {
       font-family: 'Font Awesome 5 Free';
       font-weight: 400; }
     ul.contact li:before {
-      color: #4E97D1;
+      color: #f56a6a;
       display: inline-block;
       font-size: 1.5em;
       height: 1.125em;
@@ -1551,7 +1421,7 @@ ul.pagination {
       padding: 0 0.5em;
       text-align: center; }
       ul.pagination li > .page.active {
-        background-color: #4E97D1;
+        background-color: #f56a6a;
         color: #ffffff !important; }
         ul.pagination li > .page.active:hover {
           background-color: #f67878; }
@@ -1609,61 +1479,6 @@ table {
       border-top: 0; }
 
 /* Button */
-
-/* === CTA: 定制医疗观光方案 버튼 스타일 (리디아 커스텀 버전) === */
-
-.button,
-.actions .button,
-a.button {
-  font-family: 'Source Han Serif CN', 'Noto Serif KR', serif;
-  font-weight: 700;
-  font-size: 15pt !important;   /* 글자 크기 업 */
-  letter-spacing: 0.05em;
-  border-radius: 6px;
-  padding: 0.55em 1.5em;       /* 버튼 높이 줄이기 */
-  line-height: 1.4em;          /* 글씨 중앙 맞춤 */
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  transition: all 0.25s ease;
-}
-
-/* 기본 컬러 (톤 다운된 블루) */
-.button.primary,
-.actions .button.primary {
-  background: #4E97D1;   /* 기존보다 채도 ↓, 명도 ↓ */
-  border-color: #0E5E94;
-  color: #fff;
-}
-
-/* 호버 시 색상 */
-.button.primary:hover,
-.actions .button.primary:hover {
-  background: #2077AD;   /* 한 단계 밝은 블루 */
-  border-color: #2077AD;
-  transform: translateY(-1px);
-}
-
-/* 클릭 후 포커스 */
-.button.primary:focus {
-  outline: none;
-  box-shadow: 0 0 0 3px rgba(14, 94, 148, 0.3);
-}
-
-
-/* ==========================
-   ↓ 여기부터 기존 원본 코드 유지 ↓
-   ========================== */
-
-/* Button */
-input[type="submit"],
-input[type="reset"],
-input[type="button"],
-button,
-.button {
-  ...
-}
-
 input[type="submit"],
 input[type="reset"],
 input[type="button"],
@@ -1680,8 +1495,8 @@ button,
   background-color: transparent;
   border-radius: 0.375em;
   border: 0;
-  box-shadow: inset 0 0 0 2px #4E97D1;
-  color: #4E97D1 !important;
+  box-shadow: inset 0 0 0 2px #f56a6a;
+  color: #f56a6a !important;
   cursor: pointer;
   display: inline-block;
   font-family: "Roboto Slab", serif;
@@ -1738,7 +1553,7 @@ button,
   input[type="button"].primary,
   button.primary,
   .button.primary {
-    background-color: #4E97D1;
+    background-color: #f56a6a;
     box-shadow: none;
     color: #ffffff !important; }
     input[type="submit"].primary:hover,
@@ -1765,30 +1580,6 @@ button,
     pointer-events: none;
     opacity: 0.25; }
 
-/* ==========================
-   ↓ 기존 버튼 코드 끝나는 부분 ↓
-   ========================== */
-input[type="submit"].disabled, 
-input[type="submit"]:disabled,
-.button:disabled {
-  pointer-events: none;
-  opacity: 0.25;
-}
-
-/* ==========================
-   다국어 버튼 폰트 설정 (by 리디아 & 로니)
-   ========================== */
-html[lang="zh"] .button {
-  font-family: 'SourceHanSerifCN', serif;
-}
-html[lang="en"] .button {
-  font-family: 'Merriweather', serif;
-}
-html[lang="ko"] .button {
-  font-family: 'Pretendard', sans-serif;
-}
-
-	
 /* Mini Posts */
 .mini-posts article {
   border-top: solid 1px rgba(210, 215, 217, 0.75);
@@ -1851,7 +1642,7 @@ html[lang="ko"] .button {
       text-align: center;
       width: 10em; }
       .features article .icon:before {
-        color: #4E97D1;
+        color: #f56a6a;
         font-size: 2.75rem;
         position: relative;
         top: 0.05em; }
@@ -2195,28 +1986,17 @@ html[lang="ko"] .button {
       text-transform: none !important;
       font-family: 'Font Awesome 5 Free';
       font-weight: 900; }
-
-#sidebar .toggle:before {
-  content: '\f0c9';
-  font-size: 2rem;
-  color: #4E97D1 !important; /* 브랜드 블루 적용 */
-	
- /* 🔹 브랜드 블루 추가 */
-  height: inherit;
-  left: 0;
-  line-height: inherit;
-  position: absolute;
-  text-indent: 0;
-  top: 0;
-  width: inherit;
-}
-
-#sidebar .toggle:hover:before {
-  color: #6FB5E9; /* 살짝 밝은 블루 (호버 효과) */
-}
-
-	
-	#sidebar.inactive {
+    #sidebar .toggle:before {
+      content: '\f0c9';
+      font-size: 2rem;
+      height: inherit;
+      left: 0;
+      line-height: inherit;
+      position: absolute;
+      text-indent: 0;
+      top: 0;
+      width: inherit; }
+  #sidebar.inactive {
     margin-left: -26em; }
   @media screen and (max-width: 1680px) {
     #sidebar {
@@ -2289,62 +2069,44 @@ html[lang="ko"] .button {
         top: 1em;
         width: 5em; } }
 
-/* --- Fix SNS icons drifting below the blue line (Editorial) --- */
+/* Header */
 #header {
-  display: flex;               /* 이미 flex지만, 명시적으로 덮어쓰기 */
-  align-items: center;         /* 수직 가운데 정렬 */
-  flex-wrap: nowrap;           /* 줄바꿈 금지 */
-}
-
-#header > * {
-  margin: 0;                   /* 제목/아이콘 아래 여백 제거 */
-  flex: 0 0 auto;              /* 필요 이상으로 늘어나지 않게 */
-}
-
-#header .logo {
-  flex: 1 1 auto;              /* 로고는 남는 공간 차지 */
-}
-
-#header .icons {
-  margin: 0;
-  display: flex;               /* 아이콘을 가로로 */
-  gap: .75rem;                 /* 아이콘 간격 */
-  align-items: center;
-  text-align: right;           /* 네 스타일 유지 */
-}
-
-/* 모바일 때 absolute 강제 배치가 흐름을 깨면 줄 세움 유지 */
-@media screen and (max-width: 736px) {
+  display: -moz-flex;
+  display: -webkit-flex;
+  display: -ms-flex;
+  display: flex;
+  border-bottom: solid 5px #f56a6a;
+  padding: 6em 0 1em 0;
+  position: relative; }
+  #header > * {
+    -moz-flex: 1;
+    -webkit-flex: 1;
+    -ms-flex: 1;
+    flex: 1;
+    margin-bottom: 0; }
+  #header .logo {
+    border-bottom: 0;
+    color: inherit;
+    font-family: "Roboto Slab", serif;
+    font-size: 1.125em; }
   #header .icons {
-    position: static;          /* 기존 absolute 해제 */
-    height: auto;
-    line-height: normal;
-  }
-}
+    text-align: right; }
+  @media screen and (max-width: 1680px) {
+    #header {
+      padding-top: 5em; } }
+  @media screen and (max-width: 736px) {
+    #header {
+      padding-top: 6.5em; }
+      #header .logo {
+        font-size: 1.25em;
+        margin: 0; }
+      #header .icons {
+        height: 5em;
+        line-height: 5em;
+        position: absolute;
+        right: -0.5em;
+        top: 0; } }
 
-	/* 헤더 로고 이미지 크기/정렬 — 기존 레이아웃 그대로 */
-#header .logo {
-  border-bottom: 0;           /* 링크 밑줄(점선) 방지: 안전장치 */
-}
-
-#header .logo img.logo-img {
-  height: 28px;               /* 현재 텍스트 로고 크기와 비슷한 시각 크기 */
-  width: auto;                /* 비율 유지 */
-  display: inline-block;
-  vertical-align: middle;     /* 아이콘/텍스트 높이와 균형 */
-  margin-top: -2px;           /* 시각 중심 보정(원본에 따라 0 ~ -3px 조정 가능) */
-  object-fit: contain;        /* 안전 */
-}
-
-/* 모바일에서 조금만 더 작게 */
-@media screen and (max-width: 736px) {
-  #header .logo img.logo-img {
-    height: 24px;
-    margin-top: -1px;
-  }
-}
-
-	
 /* Banner */
 #banner {
   padding: 6em 0 4em 0 ;
@@ -2430,20 +2192,6 @@ html[lang="ko"] .button {
   #footer .copyright a {
     color: inherit; }
 
-/* 슬라이드 패널 기본 */
-#menu {
-  position: fixed;
-  top: 0; right: -320px;
-  width: 320px; height: 100%;
-  background: #fff;
-  box-shadow: -3px 0 12px rgba(0,0,0,.12);
-  transition: right .28s ease;
-  z-index: 10000;
-  padding: 2rem 1.5rem;
-}
-#menu.is-open { right: 0; }
-
-	
 /* Menu */
 #menu ul {
   -moz-user-select: none;
@@ -2458,20 +2206,15 @@ html[lang="ko"] .button {
   margin-bottom: 0;
   padding: 0;
   text-transform: uppercase; }
-
-	#menu ul a, #menu ul span {
-  border-bottom: 0;
-  color: inherit;
-  cursor: pointer;
-  display: block;
-  font-size: 1.2em; /* ✅ 기존 0.9em → 1.2em (글씨 더 큼) */
-  font-family: 'Source Han Serif CN', 'Noto Serif KR', serif;
-  font-weight: 500;
-  padding: 0.7em 0;
-}
-	
+  #menu ul a, #menu ul span {
+    border-bottom: 0;
+    color: inherit;
+    cursor: pointer;
+    display: block;
+    font-size: 0.9em;
+    padding: 0.625em 0; }
     #menu ul a:hover, #menu ul span:hover {
-      color: #4E97D1; }
+      color: #f56a6a; }
     #menu ul a.opener, #menu ul span.opener {
       -moz-transition: color 0.2s ease-in-out;
       -webkit-transition: color 0.2s ease-in-out;
@@ -2501,7 +2244,7 @@ html[lang="ko"] .button {
         position: absolute;
         right: 0; }
       #menu ul a.opener:hover:before, #menu ul span.opener:hover:before {
-        color: #4E97D1; }
+        color: #f56a6a; }
       #menu ul a.opener.active + ul, #menu ul span.opener.active + ul {
         display: block; }
       #menu ul a.opener.active:before, #menu ul span.opener.active:before {
@@ -2528,995 +2271,3 @@ html[lang="ko"] .button {
     border-top: 0;
     margin-top: 0;
     padding-top: 0; }
-
-
-/* ===== 데스크톱(≥981px): 사이드바 기본 노출 ===== */
-@media (min-width: 981px) {
-  #menu {
-    position: static !important;
-    right: auto !important;
-    width: auto !important;
-    height: auto !important;
-    box-shadow: none !important;
-    padding: 0 !important;
-    overflow: visible !important;
-    display: block !important;
-  }
-  body.is-menu-visible #menu { right: auto !important; }
-}
-
-	
-/* =======================================
-   대표 사진 – 사각, 50% 크기, 워터마크 컷
-   ======================================= */
-#sidebar .mini-posts .image.profile{
-  width: 50%;              /* ← 사이드바 폭의 50% (이전 70% → 더 작게) */
-  margin: 0 auto;          /* 가운데 정렬 */
-  overflow: hidden;        /* 안쪽 이미지 잘라내기 */
-  border-radius: 0;        /* ← 모서리 둥글기 해제 (사각) */
-  aspect-ratio: 3 / 4;     /* 인물사진 비율 유지 */
-}
-
-#sidebar .mini-posts .image.profile img{
-  width: 100%;
-  height: 100%;
-  object-fit: cover;       /* 꽉 채우되 비율 유지 */
-  object-position: 48% 40%;/* 아래쪽 워터마크가 잘리도록 위로 살짝 당김 */
-  transform: scale(1.10);  /* 살짝 확대해 워터마크 영역 컷 */
-}
-
-	
-	/* Language switch (Header)2025/10/11 */
-.lang-switch{
-  display:flex; align-items:center; gap:.5rem; margin-left:1rem;
-  font-size:.95rem;
-}
-.lang-switch a{
-  padding:.2rem .6rem; border:1px solid #e6e6e6; border-radius:999px;
-  text-decoration:none;
-}
-.lang-switch a[aria-current="page"]{ background:#f1f1f1; font-weight:600; }
-.lang-switch a[aria-disabled="true"]{ opacity:.5; pointer-events:none; }
-.lang-switch .sep{ opacity:.35; }
-
-/* kill language switch anywhere (keep) */
-.lang-switch,
-.lang-switch a,
-.lang-switch .sep { display: none !important; }
-
-/* WeChat hover 색상 (1개만 유지) */
-.icons .fa-weixin:hover { color: #09b83e !important; }
-	
-/* Xiaohongshu: 기본 회색 → 호버 시 컬러 */
-.icons a[title="小红书"] svg,
-.icons .icon[title="小红书"] svg {
-  filter: grayscale(100%) brightness(70%);
-  opacity: .85;
-  transition: filter .2s ease, opacity .2s ease, transform .2s ease;
-}
-.icons a[title="小红书"]:hover svg,
-.icons .icon[title="小红书"]:hover svg {
-  filter: none;   /* 본래 #FF2442 */
-  opacity: 1;
-  transform: scale(1.1);
-}
-
-
-/* === WeChat Modal : 스마트폰 프레임 스타일 + 폴리싱 === */
-.modal{
-  display:none;
-  position:fixed;
-  inset:0;
-  z-index:9999;
-  background:rgba(0,0,0,.7);
-  animation: modalFade .15s ease-out;            /* (2) 페이드 */
-}
-
-/* 스마트폰 프레임 */
-.modal-inner{
-  position:relative;
-  margin:5% auto;
-  width:300px;
-  height:520px;
-  background:#fff;
-  border-radius:40px;
-  padding:30px 20px;
-  text-align:center;
-  box-shadow:0 8px 30px rgba(0,0,0,.28);
-  border:6px solid #e5e5e5;
-  animation: cardPop .2s ease-out;               /* (2) 팝 애니메이션 */
-  outline:none;
-}
-
-/* 상단 스피커바 */
-.modal-inner::before{
-  content:"";
-  position:absolute;
-  top:12px;
-  left:50%;
-  transform:translateX(-50%);
-  width:80px;
-  height:8px;
-  background:#222;
-  border-radius:4px;
-}
-
-/* 하단 제스처 바 (1) */
-.modal-inner::after{
-  content:"";
-  position:absolute;
-  bottom:10px;
-  left:50%;
-  transform:translateX(-50%);
-  width:90px;
-  height:5px;
-  background:#d9d9d9;
-  border-radius:3px;
-}
-
-/* QR 이미지 – 중앙 정렬(살짝 위로) */
-.modal-content{
-  width:90%;
-  height:auto;
-  display:block;
-  margin:40px auto 10px auto;   /* ← 가운데 + 위쪽 여백 조정(하단 치우침 해결) */
-  border-radius:12px;
-}
-
-/* 타이틀/보조 텍스트 */
-.modal-caption{
-  font-size:17px;
-  font-weight:700;
-  color:#111;
-  margin-top:8px;
-}
-.modal-id{
-  font-size:14px;
-  color:#777;
-  margin-top:8px;
-}
-
-/* 닫기 버튼은 사용 안 함 */
-.close{ display:none !important; }
-
-/* (3) 모바일 최적화 */
-@media (max-width:420px){
-  .modal-inner{ width:270px; height:500px; padding:24px 18px; }
-  .modal-content{ margin:36px auto 8px auto; }
-  .modal-caption{ font-size:16px; }
-}
-
-/* (2) 애니메이션 */
-@keyframes modalFade{ from{opacity:0} to{opacity:1} }
-@keyframes cardPop{ from{transform:translateY(10px); opacity:.9} to{transform:translateY(0); opacity:1} }
-
-/* (4) 팝업 열릴 때 배경 스크롤 잠금 */
-body.modal-open{ overflow:hidden; }
-
-
-/* ===== 삼선 색상 (유지) ===== */
-/* 여기에 삼선 관련 색상 정의가 있다면 그대로 두고, 밑줄 부분만 정리 */
-
-#menu header.major h2 {
-  display: none !important; /* 제목 자체도 완전히 숨김 */
-}
-
-/* 탐색 제목(探索) 밑줄 제거 */
-#menu header.major h2::after {
-  content: none !important;
-  display: none !important;
-}
-
-
-.hero-media{
-  position: relative;
-  width: 100%;
-  max-width: 900px;
-  height: 600px;      /* 필요 시 560~600px 사이 조절 */
-  margin: 0 auto;
-  overflow: hidden;
-  border-radius: 8px;
-}
-.hero-media video{
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  object-position: center 70%; /* 로고가 하단이면 65~80% 사이로 조절 */
-}
-@media (max-width: 980px){
-  .hero-media{ height: 48vw; max-width:none; }
-}
-
-/* 비디오가 헤더를 덮지 않게 */
-.hero-media { position: relative; z-index: 0; }
-.hero-media video { display: block; width: 100%; height: auto; object-fit: cover; }
-/* 헤더/메뉴 아이콘을 비디오 위로 올리기 */
-#header, .menuToggle, .toggle, .logo { position: relative; z-index: 2; }
-.hero-media video { pointer-events: none; }
-
-
-/* ================================
-   🌊 한강애봄 헤더 & 밑줄 정리 최종본
-   ================================ */
-
-/* 1️⃣ 상단 헤더(#header) 굵은 파란선 (모든 페이지 공통 유지) */
-#header {
-  border-bottom: 5px solid #4E97D1 !important; /* 브랜드 시그니처 라인 */
-  padding: 6em 0 1em 0 !important;
-}
-
-/* 2️⃣ 본문 섹션 제목 밑줄 제거 (중복 밑줄 방지) */
-header.major > :last-child {
-  border-bottom: 0 !important;
-  padding-bottom: 0 !important;
-  margin-bottom: 1.5em !important;
-}
-
-/* 3️⃣ 전역 header 밑줄 규칙 완전 무력화 */
-.inner header,
-.inner header:after {
-  border-bottom: 0 !important;
-  box-shadow: none !important;
-}
-
-
-
-/* =========================================================
-   K-MediSpring — Quick polish pack (by Ronnie)
-   붙이는 위치: /assets/css/main.css 맨 아래
-   색상: :root 의 --brand / --hover / --deep / --line 사용
-========================================================= */
-
-/* 1) 상단 헤더 CTA 버튼 정렬 & 간격 */
-#header { display:flex; align-items:center; gap:.75rem; }
-#header .logo-img { height: 42px; width:auto; display:block; }
-#header .actions { margin-left:auto; }           /* 로고-햄버거 다음, 오른쪽 정렬 */
-#header .actions .button.small {
-  line-height: 1; padding:.55rem .9rem; border-radius: 999px;
-  border:1px solid var(--brand); background: var(--brand); color:#fff;
-  transition: transform .15s ease, background .2s ease;
-}
-#header .actions .button.small:hover { background: var(--hover); transform: translateY(-1px); }
-
-/* 2) 헤더 아이콘 미세정렬 & 호버 */
-#header .icons { display:flex; gap:.5rem; margin-left:.25rem; }
-#header .icons a { color:#666; transition: color .2s ease, transform .15s ease; }
-#header .icons a:hover { color: var(--brand); transform: translateY(-1px); }
-
-/* 3) 모바일에서 헤더 CTA 숨김 (메뉴에 이미 항목 있음) */
-@media (max-width: 736px){
-  #header .actions { display:none; }
-  #header .logo-img { height: 36px; }
-}
-
-/* 4) 배너 CTA 버튼 강조 (배너 영역의 actions 공통) */
-#banner .actions .button.primary {
-  border-radius: 12px; padding:.8rem 1.3rem; font-weight:600;
-  background: var(--brand); border-color: var(--brand); color:#fff;
-}
-#banner .actions .button.primary:hover { background: var(--hover); }
-
-/* 5) 오프캔버스 메뉴 링크 가독성 + 포커스 */
-#menu .links li a {
-  display:block; padding:.8rem .9rem; border-radius: 10px;
-  text-decoration:none; color:#222; transition: background .15s ease, color .2s ease;
-}
-#menu .links li a:hover,
-#menu .links li a:focus { background: rgba(0,0,0,.04); color: var(--deep); outline: none; }
-
-/* 6) 현재 페이지 활성 표시 (JS로 .active 붙는 경우) */
-#menu a.active,
-#nav a.active { color: var(--brand); font-weight:600; }
-#menu a.active { background: rgba(0,119,182,.08); border-radius:10px; }
-
-/* 7) 구분선/얇은 라인 톤다운 */
-hr, .inner .divider { border-color: var(--line); }
-
-/* 8) 중국어 폰트 렌더링 부드럽게 (이미 정의된 --zh-sc 활용) */
-html[lang="zh-CN"] body {
-  font-family: var(--en-body, system-ui), var(--zh-sc, "PingFang SC","Microsoft YaHei","Noto Sans CJK SC",sans-serif);
-  -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale;
-}
-
-/* 9) 링크 기본색 살짝 차분하게 */
-a { color: #1f4e79; }
-a:hover { color: var(--hover); }
-
-/* 10) 푸터/본문 버튼 공통 작게 다듬기 */
-.button { border-radius: 10px; }
-.actions .button { padding:.6rem 1.05rem; }
-
-/* 11) 로고가 줄 바뀜으로 내려가지 않게(폭 좁을 때) */
-#header .logo { min-width: 140px; }
-
-
-/* === 본문 글자 크기 일괄 조정 === */
-body p,
-.inner p,
-#banner .content p {
-  font-size: 18px;          /* 기본 16px보다 약간 큼 */
-  line-height: 1.9;
-  color: #222;              /* 진한 회색 */
-  letter-spacing: 0.01em;
-}
-
-/* 중국어(zh-CN) 페이지 전용 보정 */
-html[lang="zh-CN"] p {
-  font-size: 19px;
-  line-height: 1.9;
-}
-
-/* === K-Plan 페이지 전용 폰트 확대 (본문 중심 페이지) === */
-body#kplan-page p,
-body#kplan-page label,
-body#kplan-page select,
-body#kplan-page input,
-body#kplan-page textarea {
-  font-size: 18.5px;         /* 일반보다 크게, 카테고리보다 약간 작게 */
-  line-height: 1.9;
-  color: #222;
-}
-
-/* 모바일 화면에서는 자동으로 약간 더 커지게 */
-@media screen and (max-width: 768px) {
-  body#kplan-page p,
-  body#kplan-page label,
-  body#kplan-page select,
-  body#kplan-page input,
-  body#kplan-page textarea {
-    font-size: 19px;
-    line-height: 1.95;
-  }
-}
-
-/* 회색 배경 밴드(푸터 계열과 자연스럽게) */
-.kplan-band {
-  background: #f5f5f5;           /* ✅ 통일된 따뜻한 회색 (#f5f5f5) */
-  padding: 2.5rem 0;             /* 위아래 여백 */
-  position: relative;
-  z-index: 1;                    /* 오버레이와 레이어 충돌 방지 */
-  border-top: 1px solid rgba(0,0,0,.04);
-}
-
-
-/* 중앙의 하얀 카드 */
-.kplan-shell {
-  max-width: 860px;              /* 폼 너비 */
-  margin: 0 auto;                /* 중앙 정렬! */
-  background: #ffffff;
-  border: 1px solid #e6e8eb;
-  border-radius: 14px;
-  padding: 1.2rem 1.2rem 1.6rem;
-  box-shadow: 0 10px 24px rgba(0,0,0,.04);
-}
-
-/* 본문 폼 필드 가독성 */
-.kplan-shell .fields {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 1.25rem;
-}
-.kplan-shell .field { flex: 1 1 46%; min-width: 240px; }
-.kplan-shell label { font-weight: 600; color: #333; margin-bottom: .35rem; display:block; }
-.kplan-shell input[type="text"],
-.kplan-shell select,
-.kplan-shell textarea {
-  width: 100%;
-  border: 1px solid #cfd6de;
-  border-radius: 10px;
-  padding: .72rem .85rem;
-  font-size: 1rem;
-  box-sizing: border-box;
-}
-.kplan-shell textarea { resize: vertical; }
-
-/* 카테고리 아코디언 */
-.kcat { display: grid; gap: 1rem; }
-.kcat-cat { border: 1px solid #e5e7ea; border-radius: 12px; overflow: hidden; background: #fff; }
-.kcat-hd { display:flex; justify-content:space-between; align-items:center; padding:.85rem 1rem; background:#f7fafc; cursor:pointer; }
-.kcat-hd h4 { margin:0; font-size:1.05rem; }
-.kcat-bd { display:none; padding:.6rem 1rem .9rem; gap:1rem; }
-.kcat-bd.open { display:grid; }
-.kgroup { border-top:1px dashed #e9edf1; padding-top:.6rem; margin-top:.4rem; }
-.kgroup h5 { margin:.2rem 0 .5rem; font-size:.95rem; color:#0f172a; }
-.kitems { list-style:none; margin:0; padding:0; display:grid; gap:.45rem; grid-template-columns:repeat(auto-fit,minmax(230px,1fr)); }
-
-/* 모바일: 1열 정렬 & 터치 영역 넉넉하게 */
-@media (max-width: 736px) {
-  .kplan-shell { max-width: 94%; padding: 1rem; }
-  .kplan-shell .field { flex: 1 1 100%; min-width: 0; }
-  .kitems { grid-template-columns: 1fr; }
-  .kcat-hd { padding: .8rem .9rem; }
-  .kcat-bd { padding: .55rem .9rem .85rem; }
-}
-
-/* 버튼 정렬 */
-.kplan-shell .actions { text-align: center; margin-top: 1.2rem; }
-.kplan-shell .button.primary { background:#0b66c3; border-color:#0b66c3; color:#fff; }
-.kplan-shell .button.primary:hover { filter: brightness(1.05); }
-
-
-/* ================================
-   ✅ 본문 텍스트 가독성 향상
-   ================================ */
-.inner p,
-.inner li,
-section p {
-  font-size: 1.15rem;       /* 기본보다 약간 크게 */
-  line-height: 1.85;        /* 줄 간격 넉넉하게 */
-  color: #222;              /* 눈에 편한 진회색 */
-  letter-spacing: 0.015em;  /* 글자 간격 살짝 띄움 */
-}
-
-/* 📱 모바일 전용 보정 */
-@media (max-width: 768px) {
-  .inner p,
-  .inner li,
-  section p {
-    font-size: 1.1rem;      /* 살짝 줄여서 화면 균형 유지 */
-    line-height: 1.75;
-  }
-}
-
-/* 🇨🇳 중국어 페이지 보정 (한자체 시각적으로 작으므로 +5%) */
-html[lang="zh-CN"] .inner p,
-html[lang="zh-CN"] .inner li {
-  font-size: 1.2rem;
-  line-height: 1.9;
-}
-
-/* ===== Ronnie fix: ensure mobile menu visible ===== */
-#menu {
-  position: fixed;
-  top: 0;
-  right: -320px;
-  width: 320px;
-  height: 100vh;
-  background: #ffffff;
-  box-shadow: -3px 0 12px rgba(0,0,0,.12);
-  transition: right .3s ease;
-  z-index: 9999;
-  overflow-y: auto;
-  -webkit-overflow-scrolling: touch;
-  padding: 2rem 1.5rem;
-}
-
-body.is-menu-visible #menu {
-  right: 0;
-}
-
-#menu a {
-  color: #111 !important;
-  text-decoration: none;
-  display: block;
-  margin: .5rem 0;
-}
-
-/* ===== Step 3 (需要 / 不需要) ===== */
-.svc-group {
-  border: 1px solid #eee;
-  background: #fff;
-  padding: 1rem;
-  border-radius: .5rem;
-}
-.svc-row {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  gap: .75rem;
-  margin: .5rem 0;
-  line-height: 1.5;
-}
-.need input { margin-right: .25rem; }
-.need input:checked + span,
-.need input:checked {
-  accent-color: #0044cc; /* 체크박스 파란색 */
-}
-legend { font-weight: 600; margin-bottom: .75rem; }
-
-/* ✅ 라디오/체크박스 강제 노출 (iOS 포함) */
-.k-form-section input[type="radio"],
-.k-form-section input[type="checkbox"]{
-  -webkit-appearance: auto !important;
-  appearance: auto !important;
-  display: inline-block !important;
-  position: static !important;
-  opacity: 1 !important;
-  width: 1rem; height: 1rem;          /* 보기 좋게 */
-  margin-right: .4rem;
-  vertical-align: -2px;
-}
-
-/* 혹시 라디오를 숨기는 커스텀 규칙이 있으면 무력화 */
-.need input[type="radio"],
-.need input[type="checkbox"]{
-  display: inline-block !important;
-  position: static !important;
-  opacity: 1 !important;
-}
-/* 🔧 Step3 설명문 정렬 및 강조 */
-#step3 legend {
-  display: block;
-  margin-top: 1.2rem;      /* 위쪽 여백으로 살짝 내려오기 */
-  margin-bottom: 0.8rem;   /* 아래쪽 공백도 일정하게 */
-  font-weight: 600;        /* 글자 약간 굵게 */
-  font-size: 1.05rem;      /* 살짝 키움 */
-  color: #333;             /* 진한 회색으로 안정감 있게 */
-  text-align: left;
-  border-bottom: 2px solid #eee;  /* 밑줄 느낌의 라인으로 구분 */
-  padding-bottom: 0.4rem;
-}
-
-/* ✨ 입체 은색 프레임 스타일 */
-.k-form-section {
-  background: linear-gradient(180deg, #f5f5f5 0%, #ffffff 100%);
-  border: 1px solid #c9c9c9;
-  border-radius: 10px;
-  box-shadow:
-    inset 0 1px 1px rgba(255, 255, 255, 0.8),   /* 윗쪽 반사광 */
-    0 1px 4px rgba(180, 180, 180, 0.35),       /* 외곽 그림자 */
-    0 0 6px rgba(220, 220, 220, 0.2);          /* 전체 은빛 윤광 */
-  padding: 1.8rem 1.6rem;
-  margin-bottom: 2rem;
-  transition: box-shadow 0.3s ease;
-}
-
-/* 🪞살짝 반짝 효과 (호버 시) */
-.k-form-section:hover {
-  box-shadow:
-    inset 0 1px 2px rgba(255, 255, 255, 0.85),
-    0 2px 6px rgba(150, 150, 150, 0.4),
-    0 0 10px rgba(210, 210, 210, 0.25);
-}
-
-/* 🔹 Step 제목과 구분선 유지 */
-.k-form-section h3 {
-  color: #333;
-  font-weight: 600;
-  border-bottom: 2px solid #e6e6e6;
-  padding-bottom: 0.4rem;
-  margin-bottom: 1.2rem;
-}
-
-/* ===============================
-   Sidebar + Menu Background Harmonization (ver. #f5f5f5)
-   =============================== */
-
-/* 공통 회색 배경 (따뜻한 아이보리톤) */
-:root {
-  --sidebar-bg: #f5f5f5; /* 카테고리와 검색창 배경 통일 */
-}
-
-/* 사이드바 전체 */
-#sidebar {
-  background: var(--sidebar-bg);
-}
-
-/* 메뉴 영역 */
-#menu {
-  background: var(--sidebar-bg);
-  border-radius: 0.5rem;
-  padding: 1.25rem 1.25rem 1rem 1.25rem;
-}
-
-/* ===== Sidebar Menu : 회색 밴드 + 밑줄형 ===== */
-
-/* li 카드 배경/외곽선 없애고 밑줄만 */
-#menu > ul li {
-  background: transparent;                 /* 카드 흰배경 제거 */
-  border: none;                            /* 테두리 제거 */
-  border-bottom: 1px solid rgba(0,0,0,0.10);/* 진회색 밑줄 */
-  border-radius: 0;
-  margin: 0;                               /* 카드 간격 제거 */
-  transition: color .2s ease;              /* 배경 전환 제거 */
-}
-#menu > ul li:last-child { border-bottom: none; }
-
-/* 링크 레이아웃(라인형) */
-#menu > ul a {
-  display: block;
-  padding: 0.9rem 0.5rem;                  /* 좌우 살짝 여백 */
-  text-decoration: none;
-  color: #222;
-  background: none;                        /* 혹시 남아있을 배경 무효화 */
-}
-
-/* hover: 글씨만 포인트 컬러, 배경 변화 없음 */
-#menu > ul a:hover {
-  color: #0b66c3;
-  background: none;
-}
-
-/* 활성 항목(선택된 메뉴) 강조 */
-#menu > ul li.active > a,
-#menu > ul a[aria-current="page"] {
-  color: #0b66c3;
-  font-weight: 600;
-  background: none;
-}
-
-/* 사이드바 밴드 색은 #f5f5f5 유지 (이미 적용돼 있으면 생략 가능) */
-#menu { background: #f5f5f5; }
-
-	
-/* 검색창 배경 */
-#search.alt {
-  background: var(--sidebar-bg);
-  border-radius: 8px;
-  padding: 1rem;
-  margin-bottom: 1rem;
-}
-
-/* 검색 input 내부 */
-#search input[type="search"] {
-  background: #fff;
-  border: 1px solid rgba(0,0,0,0.1);
-  border-radius: 6px;
-  padding: 0.5rem 0.75rem;
-  width: 100%;
-  box-sizing: border-box;
-  color: #333;
-  transition: border-color 0.2s ease;
-}
-#search input[type="search"]:focus {
-  border-color: #0077B6;
-  outline: none;
-}
-	
-/* 데스크톱: 사이드바는 페이지 스크롤에 자연히 따라오도록 고정 (내부 스크롤 없음) */
-@media (min-width: 981px){
-  #sidebar {
-    position: sticky;
-    top: 2rem;
-    background: #f5f5f5;
-    border-radius: 8px;
-    padding: 0;
-    z-index: 1;
-  }
-  #sidebar > .inner { padding: 1.25rem 1rem; }
-}
-
-
-  /* 메뉴: 라인형(원본 톤) */
-  #menu{ background:#f5f5f5; padding: 1.25rem 1rem; border-radius: 6px; }
-  #menu > ul > li{
-    background: none !important;
-    border: none !important;
-    border-top: 1px solid rgba(210,215,217,.75) !important;
-    margin: .5em 0 0 0 !important;
-    padding: .5em 0 0 0 !important;
-    border-radius: 0 !important;
-  }
-  #menu > ul > li:first-child{ border-top:0; margin-top:0; padding-top:0; }
-  #menu > ul a{ background:none !important; }
-  #menu > ul a:hover{ color:#0b66c3 !important; background:none !important; }
-
-  /* K-Plan 폼 카드 느낌(선택사항) */
-  .kplan-shell{
-    background:#fff;
-    border:1px solid rgba(0,0,0,.06);
-    border-radius:10px;
-    box-shadow: 0 1px 6px rgba(0,0,0,.06);
-    padding: 1.5rem;
-  }
-}
-
-/* ===== 모바일(≤980px): 사이드바 오프캔버스(현재 방식 유지) ===== */
-@media (max-width: 980px){
-  #sidebar{
-    position: fixed;
-    top: 0; right: -320px;
-    width: 320px; height: 100vh;
-    background:#fff;
-    box-shadow: -3px 0 12px rgba(0,0,0,.12);
-    z-index: 10000;
-    transition: right .28s ease;
-  }
-  #sidebar > .inner{
-    height: 100%;
-    overflow-y: auto;
-    -webkit-overflow-scrolling: touch;
-    padding: 1.25rem 1rem;
-    background:#f5f5f5;
-  }
-  body.is-menu-visible{ overflow:hidden; }
-  body.is-menu-visible #sidebar{ right:0; }
-
-
-/* ===========================
-   NAV + 레이아웃 FINAL PACK (정리 완료)
-   =========================== */
-
-/* 1) 데스크톱: 왼쪽 네비 항상 보이게 + 본문 반응형 폭 조정 */
-@media screen and (min-width: 981px) {
-
-
-  /* 메뉴 원본형 */
-  #menu {
-    position: static;
-    width: auto;
-    height: auto;
-    background: transparent;
-    box-shadow: none;
-    padding: 0;
-    transform: none;
-    transition: none;
-    z-index: auto;
-    overflow: visible;
-  }
-
-  #menu > ul { margin: 0; padding: 0; list-style: none; }
-  #menu > ul > li {
-    background: none !important;
-    border: none !important;
-    border-top: 1px solid rgba(210,215,217,.75) !important;
-    margin: .5em 0 0 0 !important;
-    padding: .5em 0 0 0 !important;
-    border-radius: 0 !important;
-  }
-  #menu > ul > li:first-child { border-top: 0; margin-top: 0; padding-top: 0; }
-  #menu > ul a {
-    display: block;
-    padding: .9rem .5rem;
-    background: none !important;
-    color: #222;
-    text-decoration: none;
-  }
-  #menu > ul a:hover { color: #0b66c3 !important; background: none !important; }
-  #menu > ul li.active > a,
-  #menu > ul a[aria-current="page"] {
-    color: #0b66c3;
-    font-weight: 600;
-    background: none;
-  }
-
-  /* 본문 레이아웃 반응형 */
-  #main { position: relative; z-index: 2; }
-  #main > .inner {
-    margin: 0 auto;
-    padding: 0 2rem 3rem 2rem;
-  }
-
-/* 화면별 폭 조정 — 단순화 */
-@media screen and (min-width: 981px) {
-  #main > .inner {
-    max-width: 100%;
-    margin: 0;
-    padding: 0 2rem 3rem; /* 좌우 살짝 여백만 */
-  }
-}
-
-
-  /* K-Plan 폼 카드 느낌 */
-  .kplan-shell {
-    background: #fff;
-    border: 1px solid rgba(0,0,0,.06);
-    border-radius: 10px;
-    box-shadow: 0 1px 6px rgba(0,0,0,.06);
-    padding: 1.5rem;
-  }
-}
-
-/* 2) 모바일 (≤980px): 오프캔버스 유지 */
-@media screen and (max-width: 980px) {
-  #sidebar {
-    position: fixed;
-    top: 0; right: -320px;
-    width: 320px; height: 100vh;
-    background: #fff;
-    box-shadow: -3px 0 12px rgba(0,0,0,.12);
-    z-index: 10000;
-    transition: right .28s ease;
-  }
-
-  #sidebar > .inner {
-    height: 100%;
-    overflow-y: auto;
-    -webkit-overflow-scrolling: touch;
-    padding: 1.25rem 1rem;
-    background: #f5f5f5;
-  }
-
-  body.is-menu-visible { overflow: hidden; }
-  body.is-menu-visible #sidebar { right: 0; }
-
-  /* 메뉴 순서 유지 */
-  #sidebar .inner { display: flex; flex-direction: column; }
-  #sidebar .inner > nav#menu { order: -100; }
-  #sidebar .inner > #search { order: -50; }
-
-  /* 본문 여백 / 폭 */
-  #main > .inner {
-    max-width: 94%;
-    margin: 0 auto;
-    padding: 0 1rem 2.25rem;
-  }
-}
-/* 3) 전역 겹침 방지 */
-#main { position: relative; z-index: 2; }
-#sidebar { z-index: 1; }
-
-/* ===== Sidebar Search Box (Original Editorial style 복원) ===== */
-#sidebar #search {
-  background: #f5f6f7;
-  padding: 1rem;
-  border-radius: 6px;
-  margin-bottom: 1.5rem;
-}
-
-#sidebar #search input[type="search"] {
-  width: 100%;
-  max-width: 100%;
-  background: #fff;
-  border: none;
-  border-radius: 4px;
-  padding: 0;
-  box-shadow: inset 0 0 0 1px rgba(0,0,0,0.1);
-  font-size: 0.9rem;
-  color: #555;
-  box-sizing: border-box;
-}
-
-#sidebar #search input[type="search"]:focus {
-  outline: none;
-  box-shadow: inset 0 0 0 1px var(--brand);
-}
-
-/* ===== 모바일 햄버거 메뉴 토글 복원 ===== */
-@media (max-width: 980px) {
-  #header .toggle {
-    display: block;
-    width: 2.25rem;
-    height: 2.25rem;
-    background: url("images/menu.svg") no-repeat center center;
-    background-size: 22px 22px;
-    position: absolute;
-    top: 1.2rem;
-    right: 1.25rem;
-    cursor: pointer;
-    z-index: 20000;
-  }
-  /* 아이콘과 간격 */
-  #header .icons {
-    margin-right: 3rem;
-  }
-
-  /* 사이드바 패널: 기본 닫힘 */
-  #sidebar {
-    position: fixed;
-    top: 0;
-    right: -320px;
-    width: 320px;
-    height: 100vh;
-    background: #fff;
-    box-shadow: -3px 0 12px rgba(0, 0, 0, 0.12);
-    transition: right 0.3s ease; /* 👈 슬라이드만 남기고 fade 제거 */
-    z-index: 10000;
-  }
-  body.is-menu-visible #sidebar {
-    right: 0;
-  }
-
-/* ===========================
-   Mobile Nav Patch (<=980px)
-   =========================== */
-@media (max-width: 980px) {
-
-  /* 1) 토글 버튼 보이기 & 위치 */
-  .menuToggle{
-    display:inline-block;
-    position:absolute;         /* 헤더 안 우상단 고정 */
-    top: 12px;
-    right: 16px;
-    padding: 10px 12px;
-    line-height: 1;
-    text-decoration:none;
-    border: 1px solid rgba(0,0,0,.15);
-    border-radius: 6px;
-    font-size: 0.95rem;
-    background: #fff;
-  }
-  /* 삼선 느낌 */
-  .menuToggle span{
-    display:inline-block;
-    letter-spacing:.1em;
-  }
-
-  /* 2) 오프캔버스 메뉴 패널 */
-  #menu{
-    position: fixed;
-    top: 0;
-    left: 0;                    /* 좌측 슬라이드 (오른쪽이면 right:0; 로 교체) */
-    width: 320px;
-    max-width: 86vw;
-    height: 100%;
-    background: #fff;
-    box-shadow: 2px 0 12px rgba(0,0,0,.12);
-    transform: translateX(-100%);
-    transition: transform .28s ease;
-    z-index: 10001;             /* 콘텐츠보다 위 */
-    overflow-y: auto;
-    -webkit-overflow-scrolling: touch;
-    pointer-events: auto;
-  }
-  body.is-menu-visible #menu{ transform: translateX(0); }
-
-  /* 3) 오버레이 (메뉴 열렸을 때 배경 클릭 닫기) */
-  body:before{
-    content:'';
-    position: fixed;
-    inset: 0;
-    background: rgba(0,0,0,.28);
-    opacity: 0;
-    pointer-events: none;
-    transition: opacity .2s ease;
-    z-index: 10000;             /* 메뉴보다 낮게 */
-  }
-  body.is-menu-visible:before{
-    opacity: 1;
-    pointer-events: auto;
-  }
-
-  /* 4) 메뉴 항목 터치 영역 확대 */
-  #menu .links a{
-    display:block;
-    padding:12px 18px;
-    text-decoration:none;
-  }
-}
-
-/* 5) 데스크톱에서는 토글 숨김 (기존 사이드바 유지) */
-@media (min-width: 981px){
-  .menuToggle{ display:none !important; }
-}
-
-/* 6) 다른 레이어와 충돌 방지 (모달이 최상단) */
-#wechatModal{ z-index: 11000; }
-
-#sidebar #main-nav li.active > a[aria-current="page"]{
-  font-weight:600; border-left:3px solid var(--brand, #c33); padding-left:12px;
-}
-
- @media (max-width:980px){
-  #menu ul.mobile-menu-list {
-    list-style:none;
-    padding:0;
-    margin:0;
-  }
-  #menu ul.mobile-menu-list li a {
-    display:block;
-    padding:1rem 0;
-    border-bottom:1px solid rgba(0,0,0,0.1);
-    text-decoration:none;
-    font-size:1rem;
-  }
-}
-/* 필드 기본 패딩/모서리/포커스 */
-:root{ --field-pad-y: .72rem; --field-pad-x: .9rem; --field-radius: 10px; }
-
-input[type="text"],
-input[type="search"],
-input[type="tel"],
-input[type="email"],
-input[type="number"],
-select,
-textarea{
-  box-sizing:border-box;
-  width:100%;
-  padding: var(--field-pad-y) var(--field-pad-x);
-  border-radius: var(--field-radius);
-}
-
-/* 플레이스홀더 컬러 살짝 옅게 */
-::placeholder{ color: rgba(0,0,0,.38); }
-
-/* 포커스 가시성 향상 */
-input:focus, select:focus, textarea:focus{
-  outline: none;
-  border-color: #7fb7ff !important;
-  box-shadow: 0 0 0 3px rgba(127,183,255,.35);
-}
-
-/* 좌우가 특히 붙어 보이는 경우 대비 */
-.field, .form-control{ padding-left: 0 !important; padding-right: 0 !important; } /* 프레임이 따로 감쌀 때 */
-
