@@ -2003,7 +2003,8 @@ button,
       width: 24em; }
       #sidebar > .inner {
         padding: 1.66667em 1.66667em 1.33333em 1.66667em ;
-        width: 24em; }
+  /* width: 24em;  ← 삭제! */
+	  }
         #sidebar > .inner > .alt {
           margin: -1.66667em 0 3.33333em -1.66667em;
           padding: 1.66667em;
@@ -2271,3 +2272,4 @@ button,
     border-top: 0;
     margin-top: 0;
     padding-top: 0; }
+
