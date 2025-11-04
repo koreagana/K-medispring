@@ -1913,7 +1913,7 @@ button,
     top: 0;
     width: 2em; }
   #search form input[type="text"] {
-    padding-right: 2.75em; }
+    padding-right: 0.75em; }
 
 #sidebar {
   -moz-flex-grow: 0;
@@ -2106,6 +2106,44 @@ button,
         position: absolute;
         right: -0.5em;
         top: 0; } }
+/* ✅ 로고 전용 리셋 & 사이즈 고정 */
+#header .logo { 
+  display: inline-flex; 
+  align-items: center; 
+  line-height: 1;
+}
+
+/* 이미지/ SVG 모두 커버 */
+#header .logo img,
+#header .logo svg {
+  height: 40px;          /* 원하는 높이로 조정 (예: 36~48px) */
+  width: auto;           
+  object-fit: contain;
+  display: block;
+}
+
+/* 전역 img { width:100% } 같은 규칙 무력화 */
+#header .logo img {
+  max-width: none;
+  width: auto !important;
+  height: auto;          /* 비율 유지 */
+}
+
+/* 혹시 .image 클래스가 섞여 있었을 경우 대비 */
+#header .logo.image img,
+#header .logo .image img {
+  width: auto !important;
+  height: 40px !important;
+  max-width: none !important;
+  object-fit: contain !important;
+}
+
+/* 모바일에서 살짝 줄이기 (선택) */
+@media (max-width: 736px) {
+  #header .logo img,
+  #header .logo svg { height: 36px; }
+}
+
 
 /* Banner */
 #banner {
@@ -2271,3 +2309,4 @@ button,
     border-top: 0;
     margin-top: 0;
     padding-top: 0; }
+
