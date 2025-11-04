@@ -1,72 +1,102 @@
 /* K-MediSpring overrides only — main.css는 절대 수정 X */
 
-/* 1) 타이포/간격 미세조정 */
-body { letter-spacing: 0.02em; }
+/* ========== 0) 기본 레이아웃 안정화 ========== */
+*, *::before, *::after { box-sizing: border-box; }  /* 카드/패딩 때문에 흔들림 방지 */
+html { scroll-behavior: smooth; }
+
+/* ========== 1) 타이포/간격 ========== */
+body { letter-spacing: .02em; background:#f5f7fb; } /* 페이지 바탕 통일 */
 h1, h2, h3 { line-height: 1.25; }
 
-/* 2) 히어로 미디어 고정 높이 & 커버 */
-.hero-media video { width: 100%; height: 60vh; object-fit: cover; display: block; }
+/* 메인 콘텐츠 카드 느낌 */
+#main .inner { background:#fff; border-radius:12px; }
 
-/* 3) 좌측 사이드바 폭/여백(모바일 영향 없는 선에서) */
-#sidebar { width: 280px; }
-@media (max-width: 980px){
-  #sidebar { width: 100%; }
+/* ========== 2) 히어로 미디어 ========== */
+.hero-media img,
+.hero-media video {
+  width:100%;
+  height:60vh;
+  object-fit:cover;
+  display:block;
 }
 
-/* 4) 버튼 통일감 */
-.button.primary { font-weight: 600; }
-
-/* 5) WeChat 모달(이미 쓰는 클래스 유지) */
-body.modal-open { overflow: hidden; }
-#wechatModal[aria-hidden="false"] { display:block; }
-#wechatModal .modal-inner { max-width: 420px; margin: 8vh auto; border-radius: 14px; }
-
-
-/* ========== Layout base ========== */
-body { background: #f5f7fb; }               /* 페이지 바탕 색 통일 */
-#wrapper { background: #fff; }              /* 콘텐츠 영역은 흰색 */
-
-/* ========== Sidebar(왼쪽) ========== */
-/* 사이드바 카드(‘关于我们’, 연락처 등) – 흰 카드 + 라운드 + 얇은 보더 */
-#sidebar .inner > section {
-  background: #ffffff;
-  border: 1px solid rgba(210,215,217,.6);
-  border-radius: 12px;
-  padding: 1.25rem;
-  margin: 0 0 1rem;
+/* ========== 3) 사이드바 레이아웃 ========== */
+/* 폭 고정(데스크톱) */
+#sidebar { width:280px; }
+@media (max-width:980px){
+  #sidebar { width:100%; }
 }
 
-/* 사이드 메뉴 리스트(회색 바처럼 보이던 부분 안정화) */
-#menu ul li a {
-  display: block;
-  width: 100%;
-  padding: 0.9rem 1rem;
-  background: #ffffff;                       /* 기본 배경 흰색 */
-  border-bottom: 1px solid rgba(210,215,217,.6);
-  transition: background .15s ease;
+/* 메인 영역은 남은 폭 사용(데스크톱일 때만) */
+@media (min-width:981px){
+  #main { width: calc(100% - 280px); }
 }
-#menu ul li a:hover,
-#menu ul li a:focus {
-  background: #f2f4f6;                       /* 호버 시 은은한 회색 */
-}
-#menu ul li:last-child a { border-bottom: 0; }
 
-/* 데스크톱에서 사이드바 스크롤 안정화(점프/흔들림 방지) */
-@media (min-width: 981px){
+/* 사이드바 내부 카드(‘关于我们’ 등) */
+#sidebar .inner > section{
+  background:#fff;
+  border:1px solid rgba(210,215,217,.6);
+  border-radius:12px;
+  padding:1.25rem;
+  margin:0 0 1rem;
+}
+
+/* 스크롤 점프/깜빡임 방지 */
+@media (min-width:981px){
   #sidebar .inner{
-    position: sticky;
-    top: 4.5rem;                              /* 헤더 높이에 맞춰 조정 */
-    max-height: calc(100vh - 4.5rem);
-    overflow: auto;
+    position:sticky;
+    top:4.5rem;                               /* 헤더 높이에 맞춰 필요시 조정 */
+    max-height:calc(100vh - 4.5rem);
+    overflow:auto;
   }
 }
 
-/* ========== Feature 카드(메인 영역 아이콘 카드들) ========== */
-.features article{
-  background: #ffffff;
-  border: 1px solid rgba(210,215,217,.55);
-  border-radius: 12px;
+/* ========== 4) 왼쪽 네비(회색 불안정 해결) ========== */
+/* 리스트 초기화 */
+#menu ul{ margin:0; padding:0; list-style:none; }
+#menu ul li{ border-bottom:1px solid rgba(210,215,217,.50); }
+#menu ul li:last-child{ border-bottom:0; }
+
+/* 항목 스타일(항상 흰 바탕) */
+#menu a{
+  display:block;
+  width:100%;
+  padding:.9rem 1rem;
+  background:#fff;                            /* 회색 깜빡임 방지: 확정 배경 */
+  line-height:1.35;
+  border-radius:8px;
+  transition:background .15s ease, color .15s ease, padding .15s ease;
+}
+#menu a:hover,
+#menu a:focus{ background:#f2f4f6; }
+
+/* 현재 페이지 강조(좌측 라인 + 굵기) */
+#menu a[aria-current="page"]{
+  font-weight:700;
+  background:#eef3ff;
+  border-left:3px solid #3b82f6;
+  padding-left:calc(1rem - 3px);
 }
 
-/* 버튼 두께 유지 */
+/* ========== 5) 피처 카드 ========== */
+.features article{
+  background:#fff;
+  border:1px solid rgba(210,215,217,.55);
+  border-radius:12px;
+}
+
+/* ========== 6) 버튼 통일감 ========== */
 .button.primary{ font-weight:600; }
+
+/* ========== 7) WeChat 모달 ========== */
+body.modal-open{ overflow:hidden; }
+#wechatModal[aria-hidden="false"]{ display:block; }
+#wechatModal .modal-inner{
+  max-width:420px;
+  margin:8vh auto;
+  border-radius:14px;
+}
+
+/* ========== 8) 여백/레이아웃 미세 보정(선택) ========== */
+/* 섹션 간 위쪽 간격 살짝 늘려 카드 구분 */
+.inner > * + .features { margin-top:2.5rem; }
