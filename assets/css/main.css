@@ -2112,21 +2112,14 @@ button,
   align-items: center; 
   line-height: 1;
 }
-
-/* 이미지/ SVG 모두 커버 */
+/* --- 로고 최종 크기 규칙 --- */
 #header .logo img,
 #header .logo svg {
-  height: 40px;          /* 원하는 높이로 조정 (예: 36~48px) */
-  width: auto;           
-  object-fit: contain;
-  display: block;
-}
-
-/* 전역 img { width:100% } 같은 규칙 무력화 */
-#header .logo img {
-  max-width: none;
-  width: auto !important;
-  height: auto;          /* 비율 유지 */
+    max-width: 160px !important;   /* 원하는 너비로 조절 */
+    height: auto !important;       /* 비율 유지 */
+    width: auto !important;
+    object-fit: contain;
+    display: block;
 }
 
 /* 혹시 .image 클래스가 섞여 있었을 경우 대비 */
@@ -2135,7 +2128,7 @@ button,
   width: auto !important;
   height: 40px !important;
   max-width: none !important;
-  object-fit: contain !important;
+object-fit: contain !important;
 }
 
 /* 모바일에서 살짝 줄이기 (선택) */
