@@ -1,8 +1,4 @@
 <!DOCTYPE HTML>
-<!--
-  2025/10/11 가나와 로니가 같이 만들기 시작함
-  정리본: 로니가 리디아 대신 깔끔하게 정리한 파일
--->
 <html lang="zh-CN">
 
 <head>
@@ -11,7 +7,7 @@
 
   <title>汉江春天</title>
 
-  <!-- ✅ GitHub Pages용 base 경로 스크립트 -->
+  <!-- base 경로 자동 설정 -->
   <script>
     (function () {
       var project = "/K-medispring/";
@@ -22,7 +18,7 @@
     })();
   </script>
 
-  <!-- Meta Tags -->
+  <!-- Meta -->
   <meta name="description" content="汉江春天 · 韩国医疗观光与大健康平台" />
   <meta property="og:title" content="汉江春天" />
   <meta property="og:description" content="专注于韩国医疗、皮肤医美、干细胞、健康管理与高端定制旅行" />
@@ -30,352 +26,20 @@
   <meta property="og:url" content="https://kmedispring.com/index.html" />
   <meta name="twitter:card" content="summary_large_image" />
 
-  <!-- ✅ Favicon / Web Icons (모두 상대경로) -->
+  <!-- Icons -->
   <link rel="icon" type="image/x-icon" href="images/favicon.ico?v=20251012">
   <link rel="icon" type="image/png" sizes="32x32" href="images/favicon-32.png?v=20251012">
   <link rel="icon" type="image/png" sizes="16x16" href="images/favicon-16.png?v=20251012">
   <link rel="apple-touch-icon" sizes="180x180" href="images/apple-touch-icon.png?v=20251012">
 
-  <!-- ✅ Stylesheets (순서 중요: 아이콘 → 메인 CSS → noscript) -->
+  <!-- CSS -->
   <link rel="stylesheet" href="assets/css/fontawesome-all.min.css?v=20251027" />
   <link rel="stylesheet" href="assets/css/main.css?v=20251027" />
-  <link rel="stylesheet" href="assets/css/kms.css">
+  <link rel="stylesheet" href="assets/css/kms.css?v=20251205" />
   <noscript><link rel="stylesheet" href="assets/css/noscript.css?v=20251027" /></noscript>
 </head>
 
-:root {
-  --brand: #0077B6;
-  --hover: #2088C2;
-  --deep: #1565A0;
-  --line: #A0C4DE;
-}
-
-/* ----------------
-   공통 색상 오버라이드
-------------------- */
-
-/* 링크 색을 기본 빨강(#f56a6a) → 브랜드 블루로 */
-a {
-  border-bottom-color: var(--brand);
-  color: var(--brand);
-}
-a:hover {
-  border-bottom-color: var(--hover);
-  color: var(--hover) !important;
-}
-
-/* 메이저 헤더 밑줄색 (섹션 제목 밑줄) */
-header.major > :last-child {
-  border-bottom-color: var(--brand);
-}
-
-/* 버튼 계열 색상 오버라이드 */
-input[type="submit"],
-input[type="reset"],
-input[type="button"],
-button,
-.button {
-  box-shadow: inset 0 0 0 2px var(--brand);
-  color: var(--brand) !important;
-}
-
-input[type="submit"].primary,
-input[type="reset"].primary,
-input[type="button"].primary,
-button.primary,
-.button.primary {
-  background-color: var(--brand);
-  box-shadow: none;
-  color: #ffffff !important;
-}
-input[type="submit"].primary:hover,
-input[type="reset"].primary:hover,
-input[type="button"].primary:hover,
-button.primary:hover,
-.button.primary:hover {
-  background-color: var(--hover);
-}
-input[type="submit"].primary:active,
-input[type="reset"].primary:active,
-input[type="button"].primary:active,
-button.primary:active,
-.button.primary:active {
-  background-color: var(--deep);
-}
-
-/* 연락처 아이콘 색상 (사이드바 Contact 아이콘) */
-ul.contact li:before {
-  color: var(--brand);
-}
-
-/* Features 아이콘 테두리 / 색상 */
-.features article .icon:before {
-  color: var(--brand);
-}
-.features article .icon:after {
-  border-color: rgba(160, 196, 222, 0.85);
-}
-
-/* 구분선 색 조금 더 부드럽게 */
-hr,
-.inner .divider {
-  border-color: var(--line);
-}
-
-/* ----------------
-   Header / 로고 / SNS
-------------------- */
-
-/* 헤더 아래 보더 색도 브랜드 컬러로 */
-#header {
-  border-bottom-color: var(--brand);
-}
-
-/* 로고 래퍼 리셋 + 정렬 */
-#header .logo {
-  display: inline-flex;
-  align-items: center;
-  line-height: 1;
-  border-bottom: none;
-}
-
-/* 로고 이미지 사이즈 통일 */
-#header .logo img,
-#header .logo svg {
-  max-width: 160px;
-  height: auto;
-  width: auto;
-  object-fit: contain;
-  display: block;
-}
-
-/* 혹시 .image 섞여 있던 경우 대비 */
-#header .logo.image img,
-#header .logo .image img {
-  width: auto !important;
-  height: 40px !important;
-  max-width: none !important;
-  object-fit: contain !important;
-}
-
-/* 모바일 로고 사이즈 살짝 줄이기 */
-@media screen and (max-width: 736px) {
-  #header .logo img,
-  #header .logo svg {
-    max-width: 140px;
-  }
-}
-
-/* 헤더 SNS 아이콘 살짝 정돈 */
-#header .icons {
-  text-align: right;
-}
-#header .icons .icon {
-  border-bottom: none;
-}
-#header .icons li {
-  padding-right: 0.5em;
-}
-
-/* 小红书 SVG 아이콘 수직 정렬 */
-#header .icons svg {
-  vertical-align: middle;
-}
-
-/* ----------------
-   메뉴 (Sidebar/Menu)
-------------------- */
-
-/* 메뉴 링크 색/호버/활성 */
-#menu a {
-  color: #333 !important;
-  text-decoration: none !important;
-  transition: color 0.25s ease !important;
-}
-#menu a:hover {
-  color: var(--hover) !important;
-}
-#menu a[aria-current="page"],
-#menu a.active {
-  color: var(--brand) !important;
-  font-weight: 600 !important;
-}
-
-/* 사이드바 안쪽 여백 조금 더 넉넉하게 (선택사항) */
-#sidebar > .inner {
-  /* 필요하면 아래 주석 해제
-  padding-top: 2.5em;
-  padding-bottom: 2.5em;
-  */
-}
-
-/* ----------------
-   배너 / 비디오
-------------------- */
-
-/* 배너 안의 비디오 박스 */
-.hero-media {
-  display: block;
-}
-
-/* PC 기준 비디오 높이 */
-.hero-media video,
-#banner .hero-media video {
-  width: 100%;
-  height: 60vh;
-  object-fit: cover;
-  display: block;
-}
-
-/* 세로 화면/모바일에서 너무 크지 않게 */
-@media screen and (max-width: 736px) {
-  .hero-media video,
-  #banner .hero-media video {
-    height: 45vh;
-  }
-}
-
-/* 배너 텍스트 줄 간격 살짝 정리 */
-#banner h1 {
-  margin-bottom: 0.2em;
-}
-#banner h2 {
-  margin-bottom: 0.8em;
-}
-
-/* ----------------
-   프로필 / 파트너 영역
-------------------- */
-
-.image.profile img {
-  border-radius: 50%;
-  object-fit: cover;
-}
-
-/* ----------------
-   WeChat 모달
-------------------- */
-
-.modal-open {
-  overflow: hidden;
-}
-
-#wechatModal {
-  position: fixed;
-  inset: 0;
-  z-index: 20000;
-  display: none; /* JS에서 block으로 변경 */
-  background: rgba(0, 0, 0, 0.55);
-}
-
-#wechatModal .modal-inner {
-  position: absolute;
-  left: 50%;
-  top: 50%;
-  transform: translate(-50%, -50%);
-  background: #ffffff;
-  border-radius: 0.75rem;
-  padding: 1.75rem 1.5rem 1.5rem;
-  text-align: center;
-  max-width: 320px;
-  width: 80%;
-  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.25);
-}
-
-#wechatModal .modal-caption {
-  font-size: 1.05rem;
-  font-weight: 600;
-  margin-bottom: 0.75rem;
-  color: #333;
-}
-
-#wechatModal .modal-content {
-  width: 220px;
-  max-width: 100%;
-  height: auto;
-  border-radius: 0.5rem;
-  margin: 0 auto 0.75rem;
-  border: 1px solid rgba(0, 0, 0, 0.06);
-}
-
-#wechatModal .modal-id {
-  font-size: 0.95rem;
-  color: #555;
-}
-
-/* 모바일에서 모달 폭 보정 */
-@media screen and (max-width: 480px) {
-  #wechatModal .modal-inner {
-    max-width: 280px;
-    padding: 1.5rem 1.25rem 1.25rem;
-  }
-}
-
-/* ----------------
-   기타 자잘한 보정
-------------------- */
-
-/* 사이드바 푸터 텍스트 중앙 정렬 */
-#sidebar footer p {
-  text-align: center;
-}
-
-/* Posts(전문분야 카드) 간격 약간 조절 */
-.posts article h3 {
-  margin-bottom: 0.6em;
-}
-.posts article p {
-  margin-bottom: 1.5em;
-}
-
-/* 작은 화면에서 posts 간격 조금 줄이기 */
-@media screen and (max-width: 736px) {
-  .posts {
-    margin-bottom: 1.5em;
-  }
-  .posts article {
-    margin-bottom: 3.5em;
-  }
-}
-
-/* 선택형 리스트(향후 폼에서 사용) */
-label.option {
-  display: flex;
-  align-items: center;
-  gap: 0.6em;
-  padding: 0.6em 0.75em;
-  border-radius: 0.5em;
-  border: 1px solid rgba(0, 0, 0, 0.07);
-  cursor: pointer;
-  transition: background 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
-}
-label.option .option-text {
-  flex: 1;
-  font-size: 0.95em;
-}
-label.option input[type="checkbox"],
-label.option input[type="radio"] {
-  width: 1em;
-  height: 1em;
-}
-label.option.is-selected {
-  background: rgba(0, 119, 182, 0.06);
-  border-color: var(--brand);
-  box-shadow: 0 0 0 1px rgba(0, 119, 182, 0.15);
-}
-
-/* 선택 요약 텍스트 */
-#selectedSummary {
-  font-size: 0.95em;
-  color: #555;
-}
-
-
-</head>
-
 <body class="is-preload">
-
-  <!-- Wrapper -->
   <div id="wrapper" class="with-sticky">
 
     <!-- Main -->
@@ -385,67 +49,47 @@ label.option.is-selected {
         <!-- Header -->
         <header id="header">
           <a href="index.html" class="logo">
-            <img src="images/logo_ch.png" alt="汉江春天 로고" class="logo-img">
+            <img src="images/logo_ch.png" alt="汉江春天 로고">
           </a>
 
-          <!-- ✅ 햄버거 메뉴 버튼 -->
           <a href="#menu" class="toggle" aria-label="打开菜单">
             <span class="icon fa-bars"></span>
           </a>
 
-          <!-- SNS icons -->
           <ul class="icons">
+            <li><a href="#" id="wechat-icon" class="icon brands fa-weixin"></a></li>
             <li>
-              <a href="#" id="wechat-icon" class="icon brands fa-weixin" title="WeChat: e-gana">
-                <span class="label">WeChat</span>
-              </a>
-            </li>
-            <li>
-              <a href="https://www.xiaohongshu.com/user/profile/550972467" target="_blank" class="icon" title="小红书">
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" width="20" height="20" aria-hidden="true">
-                  <rect width="100" height="100" rx="20" ry="20" fill="#FF2442"/>
-                  <text x="50%" y="60%" text-anchor="middle" fill="#fff" font-size="30" font-family="sans-serif" font-weight="bold">小红书</text>
+              <a href="https://www.xiaohongshu.com/user/profile/550972467" target="_blank">
+                <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 100 100">
+                  <rect width="100" height="100" rx="20" fill="#FF2442"/>
+                  <text x="50%" y="60%" fill="#fff" font-size="30" font-family="sans-serif" text-anchor="middle">小红书</text>
                 </svg>
-                <span class="label">Xiaohongshu</span>
               </a>
             </li>
-            <li>
-              <a href="https://www.instagram.com/jiana2734/" target="_blank" class="icon brands fa-instagram" title="Instagram">
-                <span class="label">Instagram</span>
-              </a>
-            </li>
-            <li>
-              <a href="mailto:egana@kmedispring.com" class="icon solid fa-envelope" title="Email">
-                <span class="label">Email</span>
-              </a>
-            </li>
+            <li><a href="https://www.instagram.com/jiana2734/" target="_blank" class="icon brands fa-instagram"></a></li>
+            <li><a href="mailto:egana@kmedispring.com" class="icon solid fa-envelope"></a></li>
           </ul>
         </header>
 
         <!-- Banner -->
-        <section id="banner" class="alt" aria-labelledby="siteTitle">
+        <section id="banner" class="alt">
           <div class="content">
             <header>
               <h1>汉江春天</h1>
-              <h2 style="margin-top: .25em; font-size: 2rem; font-weight: 400;">韩国医疗·康养·身心疗愈</h2>
+              <h2 style="margin-top:.25em;font-size:2rem;font-weight:400;">韩国医疗·康养·身心疗愈</h2>
             </header>
-            <p>“汉江春天”是一家获得韩国政府正式许可的医疗旅游公司。公司负责人拥有韩国医疗机构的正式执照，并具备多年从事医疗旅游领域的丰富经验。我们在韩国整合了顶级、最优质的医疗与健康资源，总部位于首尔市中心的钟路区。 “汉江春天”的核心优势在于为中国客户提供量身定制的“一站式”医疗旅游解决方案，无论是就医、康养还是休闲体验，都力求让客户享受到最安心、最满意的服务体验。 “汉江春天”，愿成为您在韩国最值得信赖的朋友。 </p>
 
-            <!-- ✅ CTA 버튼 -->
+            <p>“汉江春天”是一家获得韩国政府正式许可的医疗旅游公司……</p>
+
             <ul class="actions">
-              <li>
-                <a href="kplan.html" class="button primary" data-i18n="navKplan">
-                  定制医疗观光方案
-                </a>
-              </li>
+              <li><a href="kplan.html" class="button primary">定制医疗观光方案</a></li>
             </ul>
           </div>
 
-          <!-- Hero video -->
           <span class="image object hero-media">
             <video id="introVideo" autoplay muted loop playsinline preload="metadata"
-                   style="width:100%;height:60vh;object-fit:cover;display:block">
-              <source src="https://kmedispring.com/videos/intro_v1.mp4.mp4?v=4#t=0.01" type="video/mp4">
+                   style="width:100%;height:60vh;object-fit:cover;">
+              <source src="videos/intro_v1.mp4.mp4?v=4#t=0.01" type="video/mp4">
             </video>
           </span>
         </section>
@@ -454,144 +98,39 @@ label.option.is-selected {
         <section>
           <header class="major"><h2>品牌理念</h2></header>
           <div class="features">
-
-            <article>
-              <span class="icon fa-gem"></span>
-              <div class="content">
-                <h3>诚信医疗 · 真心相连</h3>
-                <p>我们不仅仅是做医疗观光，更致力于传递韩国医疗的真诚。<br>
-                以透明的流程与正规许可为基础，只推荐值得信赖的医疗机构。</p>
-              </div>
-            </article>
-
-            <article>
-              <span class="icon solid fa-paper-plane"></span>
-              <div class="content">
-                <h3>让韩国医疗的美，走向世界</h3>
-                <p>我们致力于将韩国先进的皮肤美容与健康管理技术，传递给世界各地的客户，<br>
-                让每一位客户都能体验到“健康之美”的真正价值。</p>
-              </div>
-            </article>
-
-            <article>
-              <span class="icon solid fa-rocket"></span>
-              <div class="content">
-                <h3>韩医与西医的协同力量</h3>
-                <p>通过韩医与西医的协作治疗，实现身心同疗的真正健康，<br>
-                带来从根本焕新的疗愈体验。</p>
-              </div>
-            </article>
-
-            <article>
-              <span class="icon solid fa-signal"></span>
-              <div class="content">
-                <h3>专属定制的医疗旅游方案</h3>
-                <p>根据每位客户的健康状况与目标，提供诊疗、住宿、接送、康复一站式服务，<br>
-                打造最安心、最贴心的健康之旅。</p>
-              </div>
-            </article>
-
+            <article><span class="icon fa-gem"></span><div class="content"><h3>诚信医疗 · 真心相连</h3><p>……</p></div></article>
+            <article><span class="icon solid fa-paper-plane"></span><div class="content"><h3>让韩国医疗的美走向世界</h3><p>……</p></div></article>
+            <article><span class="icon solid fa-rocket"></span><div class="content"><h3>韩医与西医的协同力量</h3><p>……</p></div></article>
+            <article><span class="icon solid fa-signal"></span><div class="content"><h3>专属定制医疗旅游方案</h3><p>……</p></div></article>
           </div>
         </section>
 
-        <!-- 专业领域 · 一站式医疗体验 -->
+        <!-- Posts -->
         <section>
           <header class="major"><h2>专业领域 · 一站式医疗体验</h2></header>
 
           <div class="posts">
-
-            <!-- 大健康 -->
-            <article>
-              <h3>大健康</h3>
-              <p>
-                以功能医学检测、激素检测、重金属检测为基础，系统分析体质与生活方式，
-                并整合饮食、睡眠与压力管理，提供全方位健康方案。
-                不只是治疗，更是让身心回到平衡的“重启护理”。
-              </p>
-              <ul class="actions">
-                <li><a href="wellness.html" class="button">了解更多</a></li>
-              </ul>
-            </article>
-
-            <!-- 干细胞 -->
-            <article>
-              <h3>干细胞</h3>
-              <p>
-                采用先进干细胞技术，聚焦抗衰与组织再生，从细胞层面激活修复力。
-                同步提升皮肤状态、免疫与能量系统，带来由内而外的青春焕新体验。
-              </p>
-              <ul class="actions">
-                <li><a href="stemcell.html" class="button">了解更多</a></li>
-              </ul>
-            </article>
-
-            <!-- 皮肤医美 -->
-            <article>
-              <h3>皮肤医美</h3>
-              <p>
-                专业皮肤科与韩医协作诊疗，针对痤疮、色斑、皱纹、弹力等问题进行分层分析与治疗。
-                结合个性化修复方案，重启肌底健康，恢复澄净与弹润。
-              </p>
-              <ul class="actions">
-                <li><a href="derm.html" class="button">了解更多</a></li>
-              </ul>
-            </article>
-
-            <!-- 整形医美 -->
-            <article>
-              <h3>整形医美</h3>
-              <p>
-                依托韩国先进医美与资深专家团队，以精细技术实现自然与和谐的改变。
-                不止于外在调整，更关注自信与情绪疗愈，塑造内外兼修的美。
-              </p>
-              <ul class="actions">
-                <li><a href="surgery.html" class="button">了解更多</a></li>
-              </ul>
-            </article>
-
-            <!-- 女性护理中心 -->
-            <article>
-              <h3>女性护理中心</h3>
-              <p>
-                根据女性不同生命阶段，进行激素平衡管理、产后修复与皮肤体型护理。
-                帮助找回专属节律，让美与健康共振，回归轻盈与从容。
-              </p>
-              <ul class="actions">
-                <li><a href="woman.html" class="button">了解更多</a></li>
-              </ul>
-            </article>
-
-            <!-- 男性健康中心 -->
-            <article>
-              <h3>男性健康中心</h3>
-              <p>
-                从功能医学视角评估压力、疲劳与体力下降等问题，提供个性化恢复方案。
-                以活力提升、激素平衡与疲劳修复为核心，实现真正的能量回归。
-              </p>
-              <ul class="actions">
-                <li><a href="man.html" class="button">了解更多</a></li>
-              </ul>
-            </article>
+            <article><h3>大健康</h3><p>……</p><ul class="actions"><li><a href="wellness.html" class="button">了解更多</a></li></ul></article>
+            <article><h3>干细胞</h3><p>……</p><ul class="actions"><li><a href="stemcell.html" class="button">了解更多</a></li></ul></article>
+            <article><h3>皮肤医美</h3><p>……</p><ul class="actions"><li><a href="derm.html" class="button">了解更多</a></li></ul></article>
+            <article><h3>整形医美</h3><p>……</p><ul class="actions"><li><a href="surgery.html" class="button">了解更多</a></li></ul></article>
+            <article><h3>女性护理中心</h3><p>……</p><ul class="actions"><li><a href="woman.html" class="button">了解更多</a></li></ul></article>
+            <article><h3>男性健康中心</h3><p>……</p><ul class="actions"><li><a href="man.html" class="button">了解更多</a></li></ul></article>
           </div>
         </section>
 
-      </div> <!-- .inner -->
-    </div> <!-- #main -->
+      </div>
+    </div>
 
     <!-- Sidebar -->
     <div id="sidebar">
       <div class="inner">
 
-        <!-- Search -->
         <section id="search" class="alt">
-          <form method="get" action="#">
-            <input type="search" name="query" id="query" placeholder="搜索" aria-label="搜索" />
-          </form>
+          <form><input type="search" placeholder="搜索"></form>
         </section>
 
-        <!-- 메뉴 -->
         <nav id="menu">
-          <!-- <header class="major"><h2>探索</h2></header> -->
           <ul class="links">
             <li><a href="index.html">首页</a></li>
             <li><a href="wellness.html">大健康</a></li>
@@ -603,311 +142,104 @@ label.option.is-selected {
             <li><a href="transfer.html">接送服务</a></li>
             <li><a href="tour.html">市区观光</a></li>
             <li><a href="lifestyle.html">生活服务</a></li>
-            <li><a href="kplan.html" data-i18n="navKplan">定制医疗观光方案</a></li>
+            <li><a href="kplan.html">定制医疗观光方案</a></li>
           </ul>
         </nav>
 
-        <!-- About / Partners -->
         <section>
           <header class="major"><h2>关于我们</h2></header>
-          <p style="text-align:center; color:#777;">合作伙伴</p>
+          <p style="text-align:center;">合作伙伴</p>
           <div class="mini-posts">
-            <article>
-              <!-- 대표 사진 -->
-              <a href="#" class="image profile">
-                <img src="images/gana.png" alt="汉江春天 代表" />
-              </a>
-              <p style="text-align:center; font-size:1em; margin-top:.5em;">汉江春天 代表</p>
-            </article>
-            <article>
-              <a href="#" class="image"><img src="images/pic08.jpg" alt="" /></a>
-              <p>Aenean ornare velit lacus...</p>
-            </article>
-            <article>
-              <a href="#" class="image"><img src="images/pic09.jpg" alt="" /></a>
-              <p>Aenean ornare velit lacus...</p>
-            </article>
+            <article><a href="#" class="image profile"><img src="images/gana.png"></a><p style="text-align:center;">汉江春天 代表</p></article>
           </div>
         </section>
 
-        <!-- Contact -->
         <section>
           <header class="major"><h2>联系方式</h2></header>
-          <p>我们相信，美丽与健康，源于真诚的交流。如果你对韩国医疗、健康管理或合作有兴趣，欢迎通过微信或邮件与我们联系。</p>
           <ul class="contact">
             <li class="icon solid fa-envelope"><a href="mailto:egana@kmedispring.com">邮箱：egana@kmedispring.com</a></li>
-            <li class="icon solid fa-phone">(82) 10-4903-3123</li>
-            <li class="icon solid fa-home">韩国 首尔特别市 城北区 东小门路 63号 6层(邮编：02845)</li>
+            <li class="icon solid fa-phone">(82)10-4903-3123</li>
+            <li class="icon solid fa-home">韩国 首尔 城北区 东小门路 63 6F</li>
           </ul>
         </section>
 
-        <!-- Footer -->
         <footer>
-          <p style="text-align:center; font-size:0.9em; color:#666;">
-            © 2025 汉江春天 한강애봄 版权所有。模板设计：HTML5 UP。
-          </p>
+          <p style="text-align:center;">© 2025 汉江春天 한강애봄</p>
         </footer>
 
-      </div> <!-- .inner sidebar -->
-    </div> <!-- #sidebar -->
-  </div> <!-- #wrapper -->
+      </div>
+    </div>
+  </div>
 
-  <!-- WeChat QR Modal -->
-  <div id="wechatModal" class="modal" aria-hidden="true" role="dialog" style="display:none;">
+  <!-- WeChat Modal -->
+  <div id="wechatModal" class="modal" aria-hidden="true">
     <div class="modal-inner">
       <p class="modal-caption">扫描二维码添加微信</p>
-      <img id="wechatQR" class="modal-content" src="images/qr_weixin.jpg" alt="WeChat QR for e-gana" />
+      <img id="wechatQR" src="images/qr_weixin.jpg" class="modal-content">
       <p class="modal-id">WeChat ID：e-gana</p>
     </div>
   </div>
 
-  <!-- 모달 + 비디오 초기화 스크립트 -->
-  <script>
-    document.addEventListener('DOMContentLoaded', function () {
-      // 비디오 세팅
-      const v = document.getElementById("introVideo");
-      if (v) {
-        try { v.playbackRate = 0.33; } catch(e) {}
-        v.muted = true;
-        v.volume = 0;
-      }
-
-      // 모달
-      var modal = document.getElementById('wechatModal');
-      var trigger = document.getElementById('wechat-icon');
-      var qrImg = document.getElementById('wechatQR');
-
-      function openModal(e){
-        if(e) e.preventDefault();
-        // QR 캐시 무효화 (버전)
-        if (qrImg) qrImg.src = (qrImg.getAttribute('data-src') || qrImg.src.split('?')[0]) + '?v=' + Date.now();
-        document.body.classList.add('modal-open');
-        if (modal) { modal.style.display = 'block'; modal.setAttribute('aria-hidden','false'); }
-      }
-      function closeModal(){
-        if (modal) { modal.style.display = 'none'; modal.setAttribute('aria-hidden','true'); }
-        document.body.classList.remove('modal-open');
-      }
-
-      if (trigger) trigger.addEventListener('click', openModal);
-      if (modal) {
-        modal.addEventListener('click', function (e) {
-          if (e.target === modal) closeModal();
-        });
-      }
-      document.addEventListener('keydown', function (e) {
-        if (e.key === 'Escape') closeModal();
-      });
-    });
-  </script>
-
-  <!-- Scripts: 5총사 -->
+  <!-- JS -->
   <script src="assets/js/jquery.min.js"></script>
   <script src="assets/js/browser.min.js"></script>
   <script src="assets/js/breakpoints.min.js"></script>
   <script src="assets/js/util.js"></script>
   <script src="assets/js/main.js"></script>
 
-  <!-- ✅ Ronnie 메뉴 토글 스크립트 -->
+  <!-- Ronnie Custom JS -->
   <script>
-  (function () {
-    if (window.__menuBound) return;
-    window.__menuBound = true;
+    // 메뉴 토글
+    (function () {
+      var body = document.body;
+      var toggle = document.querySelector('.toggle');
+      var menu = document.getElementById('menu');
+      if (!toggle || !menu) return;
 
-    var body = document.body;
-    var menu = document.getElementById('menu');
-    if (!menu) return;
+      toggle.addEventListener('click', function (e) {
+        e.preventDefault();
+        body.classList.toggle('is-menu-visible');
+      });
 
-    function openMenu(e){ if(e) e.preventDefault(); body.classList.add('is-menu-visible'); }
-    function closeMenu(e){ if(e) e.preventDefault(); body.classList.remove('is-menu-visible'); }
-    function toggleMenu(e){ if(e) e.preventDefault(); body.classList.toggle('is-menu-visible'); }
-
-    document.querySelectorAll('.toggle, a[href="#menu"]').forEach(function(el){
-      el.addEventListener('click', toggleMenu, {passive:true});
-    });
-
-    menu.addEventListener('click', function(e){
-      var a = e.target.closest('a');
-      if (a) closeMenu();
-    }, {passive:true});
-
-    document.addEventListener('click', function(e){
-      if (!body.classList.contains('is-menu-visible')) return;
-      if (menu.contains(e.target)) return;
-      if (e.target.closest('.toggle, a[href="#menu"]')) return;
-      closeMenu();
-    }, {passive:true});
-
-    document.addEventListener('keydown', function(e){
-      if (e.key === 'Escape') closeMenu();
-    });
-  })();
-  </script>
-
-  <!-- 현재 페이지 메뉴 활성화 -->
-  <script>
-  (function(){
-    var path = location.pathname.replace(/\/K-medispring\/?/, '/'); // base 보정
-    document.querySelectorAll('#menu a[href]').forEach(function(a){
-      try {
-        var u = new URL(a.getAttribute('href'), location.origin);
-        if (u.pathname === path || u.pathname === location.pathname){
-          a.setAttribute('aria-current','page');
-          a.parentElement.classList.add('active');
-        }
-      } catch(e){}
-    });
-  })();
-  </script>
-
-  <!-- 비디오 오토플레이 보강 -->
-  <script>
-  (function(){
-    var v = document.getElementById('introVideo');
-    if (!v) return;
-
-    v.setAttribute('playsinline','');
-    v.setAttribute('webkit-playsinline','');
-    v.setAttribute('x5-video-player-type','h5');
-    v.setAttribute('x5-video-orientation','portrait');
-    v.muted = true;
-
-    function playSafe(){
-      var p = v.play && v.play();
-      if (p && p.catch) p.catch(function(){});
-    }
-
-    document.addEventListener('WeixinJSBridgeReady', playSafe, false);
-    ['touchstart','click'].forEach(function(ev){
-      document.addEventListener(ev, playSafe, {once:true, passive:true});
-    });
-    document.addEventListener('visibilitychange', function(){
-      if (!document.hidden) playSafe();
-    });
-    setTimeout(playSafe, 300);
-  })();
-  </script>
-
-  <!-- 모바일 메뉴 HOTFIX -->
-  <script>
-  (function HOTFIX_MOBILE_MENU(){
-    var BP = "(max-width:1180px)";
-    if (!window.matchMedia(BP).matches) return;
-
-    var css = `
-    @media ${BP}{
-      #menu{position:fixed!important;top:0;left:-320px;width:320px;height:100%;
-        background:#fff;box-shadow:2px 0 12px rgba(0,0,0,.15);
-        z-index:99999!important;overflow-y:auto;transition:left .3s ease;}
-      body.is-menu-visible #menu{left:0!important;}
-      body.is-menu-visible::before{content:"";position:fixed;inset:0;
-        background:rgba(0,0,0,.32);z-index:99998;}
-      #menu ul.mobile-menu-list{display:block!important;visibility:visible!important;
-        opacity:1!important;margin:0;padding:1rem 1.25rem;}
-      #menu ul.mobile-menu-list>li{list-style:none;border-bottom:1px solid rgba(0,0,0,.08);}
-      #menu ul.mobile-menu-list>li>a{display:block;padding:.9rem 0;text-decoration:none;}
-    }`;
-    var style = document.createElement('style'); style.textContent = css; document.head.appendChild(style);
-
-    var menu = document.getElementById('menu');
-
-    function badge(txt, ok){
-      var b=document.getElementById('__mm_badge'); if(!b){b=document.createElement('div');
-        b.id='__mm_badge'; b.style.cssText='position:fixed;bottom:10px;right:10px;padding:.4rem .6rem;border-radius:6px;font:12px/1.2 -apple-system,Segoe UI,Arial;color:#fff;z-index:100000;background:#888;opacity:.85'; document.body.appendChild(b);}
-      b.style.background = ok ? '#2c8a3e' : '#d9534f'; b.textContent = txt;
-      setTimeout(function(){ if(b) b.remove(); }, 2500);
-    }
-
-    function cloneOnce(){
-      if (!menu) return badge('menu 없음', false);
-      var srcUL = document.querySelector('#sidebar nav ul') ||
-                  document.querySelector('header nav ul') ||
-                  document.querySelector('nav ul');
-      if (!srcUL){ badge('소스내비 없음', false); return; }
-      if (!menu.querySelector('ul')){
-        var cloned = srcUL.cloneNode(true);
-        cloned.classList.add('mobile-menu-list');
-        menu.appendChild(cloned);
-        menu.addEventListener('click', function(e){
-          if (e.target && e.target.tagName === 'A'){
-            document.body.classList.remove('is-menu-visible');
-          }
-        }, {passive:true});
-        badge('모바일메뉴 주입 OK', true);
-      } else {
-        badge('이미 주입됨', true);
-      }
-    }
-
-    var tries=0; (function wait(){
-      if (document.readyState === 'complete' || document.readyState === 'interactive'){
-        cloneOnce();
-      } else if (tries++ < 10){ setTimeout(wait, 200); } else { cloneOnce(); }
+      document.addEventListener('click', function (e) {
+        if (!body.classList.contains('is-menu-visible')) return;
+        if (menu.contains(e.target) || toggle.contains(e.target)) return;
+        body.classList.remove('is-menu-visible');
+      });
     })();
-  })();
-  </script>
 
-  <!-- 선택형 리스트 스크립트 -->
-  <script>
-  (function(){
-    var LIST_SEL = '.proc-list, .selectable-list';
-    document.querySelectorAll(LIST_SEL+' li').forEach(function(li){
-      if (li.querySelector('input[type="checkbox"], input[type="radio"]')) return;
-      var text = li.textContent.trim();
-      if (!text) return;
+    // WeChat 모달
+    (function () {
+      var btn = document.getElementById('wechat-icon');
+      var modal = document.getElementById('wechatModal');
 
-      li.textContent = '';
-      var label = document.createElement('label');
-      label.className = 'option';
-      var cb = document.createElement('input');
-      cb.type = 'checkbox';
-      cb.name = (li.closest('[data-name]') ? li.closest('[data-name]').getAttribute('data-name') : 'procedures') + '[]';
-      cb.value = text;
+      btn.addEventListener('click', function (e) {
+        e.preventDefault();
+        modal.style.display = 'block';
+      });
 
-      var span = document.createElement('span');
-      span.className = 'option-text';
-      span.textContent = text;
+      modal.addEventListener('click', function (e) {
+        if (e.target === modal) modal.style.display = 'none';
+      });
+    })();
 
-      label.appendChild(cb);
-      label.appendChild(span);
-      li.appendChild(label);
-    });
+    // 비디오 재생 보강
+    (function () {
+      var v = document.getElementById("introVideo");
+      if (!v) return;
+      v.muted = true;
 
-    function syncLabelState(input){
-      var label = input.closest('label.option');
-      if (!label) return;
-      label.classList.toggle('is-selected', input.checked);
-    }
-    document.addEventListener('change', function(e){
-      if (e.target.matches('.option > input[type="checkbox"], .option > input[type="radio"]')) {
-        syncLabelState(e.target);
+      function playSafe() {
+        var p = v.play();
+        if (p && p.catch) p.catch(()=>{});
       }
-    });
-    document.querySelectorAll('.option > input:checked').forEach(syncLabelState);
 
-    document.addEventListener('click', function(e){
-      var lab = e.target.closest('label.option');
-      if (!lab) return;
-      var input = lab.querySelector('input');
-      if (e.target === input) return;
-      input.checked = !input.checked;
-      input.dispatchEvent(new Event('change', {bubbles:true}));
-    });
-
-    var summary = document.getElementById('selectedSummary');
-    function updateSummary(){
-      if (!summary) return;
-      var picked = [].map.call(document.querySelectorAll('.option > input:checked'), function(i){ return i.value; });
-      summary.textContent = picked.length ? picked.join('， ') : '未选择';
-    }
-    document.addEventListener('change', function(e){
-      if (e.target.closest('label.option')) updateSummary();
-    });
-    updateSummary();
-  })();
+      document.addEventListener("WeixinJSBridgeReady", playSafe);
+      ["click","touchstart"].forEach(ev =>
+        document.addEventListener(ev, playSafe, { once:true })
+      );
+    })();
   </script>
 
 </body>
 </html>
-
-
