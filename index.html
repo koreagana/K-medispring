@@ -406,4 +406,194 @@
     var menu = document.getElementById('menu');
     if (!menu) return;
 
-    functi
+    function openMenu(e){ if(e) e.preventDefault(); body.classList.add('is-menu-visible'); }
+    function closeMenu(e){ if(e) e.preventDefault(); body.classList.remove('is-menu-visible'); }
+    function toggleMenu(e){ if(e) e.preventDefault(); body.classList.toggle('is-menu-visible'); }
+
+    document.querySelectorAll('.toggle, a[href="#menu"]').forEach(function(el){
+      el.addEventListener('click', toggleMenu, {passive:true});
+    });
+
+    menu.addEventListener('click', function(e){
+      var a = e.target.closest('a');
+      if (a) closeMenu();
+    }, {passive:true});
+
+    document.addEventListener('click', function(e){
+      if (!body.classList.contains('is-menu-visible')) return;
+      if (menu.contains(e.target)) return;
+      if (e.target.closest('.toggle, a[href="#menu"]')) return;
+      closeMenu();
+    }, {passive:true});
+
+    document.addEventListener('keydown', function(e){
+      if (e.key === 'Escape') closeMenu();
+    });
+  })();
+  </script>
+
+  <!-- 현재 페이지 메뉴 활성화 -->
+  <script>
+  (function(){
+    var path = location.pathname.replace(/\/K-medispring\/?/, '/'); // base 보정
+    document.querySelectorAll('#menu a[href]').forEach(function(a){
+      try {
+        var u = new URL(a.getAttribute('href'), location.origin);
+        if (u.pathname === path || u.pathname === location.pathname){
+          a.setAttribute('aria-current','page');
+          a.parentElement.classList.add('active');
+        }
+      } catch(e){}
+    });
+  })();
+  </script>
+
+  <!-- 비디오 오토플레이 보강 -->
+  <script>
+  (function(){
+    var v = document.getElementById('introVideo');
+    if (!v) return;
+
+    v.setAttribute('playsinline','');
+    v.setAttribute('webkit-playsinline','');
+    v.setAttribute('x5-video-player-type','h5');
+    v.setAttribute('x5-video-orientation','portrait');
+    v.muted = true;
+
+    function playSafe(){
+      var p = v.play && v.play();
+      if (p && p.catch) p.catch(function(){});
+    }
+
+    document.addEventListener('WeixinJSBridgeReady', playSafe, false);
+    ['touchstart','click'].forEach(function(ev){
+      document.addEventListener(ev, playSafe, {once:true, passive:true});
+    });
+    document.addEventListener('visibilitychange', function(){
+      if (!document.hidden) playSafe();
+    });
+    setTimeout(playSafe, 300);
+  })();
+  </script>
+
+  <!-- 모바일 메뉴 HOTFIX -->
+  <script>
+  (function HOTFIX_MOBILE_MENU(){
+    var BP = "(max-width:1180px)";
+    if (!window.matchMedia(BP).matches) return;
+
+    var css = `
+    @media ${BP}{
+      #menu{position:fixed!important;top:0;left:-320px;width:320px;height:100%;
+        background:#fff;box-shadow:2px 0 12px rgba(0,0,0,.15);
+        z-index:99999!important;overflow-y:auto;transition:left .3s ease;}
+      body.is-menu-visible #menu{left:0!important;}
+      body.is-menu-visible::before{content:"";position:fixed;inset:0;
+        background:rgba(0,0,0,.32);z-index:99998;}
+      #menu ul.mobile-menu-list{display:block!important;visibility:visible!important;
+        opacity:1!important;margin:0;padding:1rem 1.25rem;}
+      #menu ul.mobile-menu-list>li{list-style:none;border-bottom:1px solid rgba(0,0,0,.08);}
+      #menu ul.mobile-menu-list>li>a{display:block;padding:.9rem 0;text-decoration:none;}
+    }`;
+    var style = document.createElement('style'); style.textContent = css; document.head.appendChild(style);
+
+    var menu = document.getElementById('menu');
+
+    function badge(txt, ok){
+      var b=document.getElementById('__mm_badge'); if(!b){b=document.createElement('div');
+        b.id='__mm_badge'; b.style.cssText='position:fixed;bottom:10px;right:10px;padding:.4rem .6rem;border-radius:6px;font:12px/1.2 -apple-system,Segoe UI,Arial;color:#fff;z-index:100000;background:#888;opacity:.85'; document.body.appendChild(b);}
+      b.style.background = ok ? '#2c8a3e' : '#d9534f'; b.textContent = txt;
+      setTimeout(function(){ if(b) b.remove(); }, 2500);
+    }
+
+    function cloneOnce(){
+      if (!menu) return badge('menu 없음', false);
+      var srcUL = document.querySelector('#sidebar nav ul') ||
+                  document.querySelector('header nav ul') ||
+                  document.querySelector('nav ul');
+      if (!srcUL){ badge('소스내비 없음', false); return; }
+      if (!menu.querySelector('ul')){
+        var cloned = srcUL.cloneNode(true);
+        cloned.classList.add('mobile-menu-list');
+        menu.appendChild(cloned);
+        menu.addEventListener('click', function(e){
+          if (e.target && e.target.tagName === 'A'){
+            document.body.classList.remove('is-menu-visible');
+          }
+        }, {passive:true});
+        badge('모바일메뉴 주입 OK', true);
+      } else {
+        badge('이미 주입됨', true);
+      }
+    }
+
+    var tries=0; (function wait(){
+      if (document.readyState === 'complete' || document.readyState === 'interactive'){
+        cloneOnce();
+      } else if (tries++ < 10){ setTimeout(wait, 200); } else { cloneOnce(); }
+    })();
+  })();
+  </script>
+
+  <!-- 선택형 리스트 스크립트 -->
+  <script>
+  (function(){
+    var LIST_SEL = '.proc-list, .selectable-list';
+    document.querySelectorAll(LIST_SEL+' li').forEach(function(li){
+      if (li.querySelector('input[type="checkbox"], input[type="radio"]')) return;
+      var text = li.textContent.trim();
+      if (!text) return;
+
+      li.textContent = '';
+      var label = document.createElement('label');
+      label.className = 'option';
+      var cb = document.createElement('input');
+      cb.type = 'checkbox';
+      cb.name = (li.closest('[data-name]') ? li.closest('[data-name]').getAttribute('data-name') : 'procedures') + '[]';
+      cb.value = text;
+
+      var span = document.createElement('span');
+      span.className = 'option-text';
+      span.textContent = text;
+
+      label.appendChild(cb);
+      label.appendChild(span);
+      li.appendChild(label);
+    });
+
+    function syncLabelState(input){
+      var label = input.closest('label.option');
+      if (!label) return;
+      label.classList.toggle('is-selected', input.checked);
+    }
+    document.addEventListener('change', function(e){
+      if (e.target.matches('.option > input[type="checkbox"], .option > input[type="radio"]')) {
+        syncLabelState(e.target);
+      }
+    });
+    document.querySelectorAll('.option > input:checked').forEach(syncLabelState);
+
+    document.addEventListener('click', function(e){
+      var lab = e.target.closest('label.option');
+      if (!lab) return;
+      var input = lab.querySelector('input');
+      if (e.target === input) return;
+      input.checked = !input.checked;
+      input.dispatchEvent(new Event('change', {bubbles:true}));
+    });
+
+    var summary = document.getElementById('selectedSummary');
+    function updateSummary(){
+      if (!summary) return;
+      var picked = [].map.call(document.querySelectorAll('.option > input:checked'), function(i){ return i.value; });
+      summary.textContent = picked.length ? picked.join('， ') : '未选择';
+    }
+    document.addEventListener('change', function(e){
+      if (e.target.closest('label.option')) updateSummary();
+    });
+    updateSummary();
+  })();
+  </script>
+
+</body>
+</html>
