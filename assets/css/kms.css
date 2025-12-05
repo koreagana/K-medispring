@@ -1,334 +1,223 @@
-/* K-MediSpring overrides only — main.css는 절대 수정 X */
+/* ==========================================================
+   K-MediSpring Premium Blue Style
+   (main.css 수정 금지 / 모든 커스텀은 이 파일에서 처리)
+   ========================================================== */
 
-/* ========== 0) 기본 레이아웃 안정화 ========== */
-*, *::before, *::after { box-sizing: border-box; }  /* 카드/패딩 때문에 흔들림 방지 */
+/* -----------------------------
+   0) Reset / Stability
+----------------------------- */
+*, *::before, *::after { box-sizing: border-box; }
 html { scroll-behavior: smooth; }
+html, body { overflow-x: hidden; }
+body { background:#f5f7fb; letter-spacing:.02em; }
 
-/* ========== 1) 타이포/간격 ========== */
-body { letter-spacing: .02em; background:#f5f7fb; } /* 페이지 바탕 통일 */
-h1, h2, h3 { line-height: 1.25; }
+/* -----------------------------
+   1) Header & Logo
+----------------------------- */
+#header {
+  background:#ffffff;
+  border-bottom:1px solid rgba(0,0,0,0.05);
+}
 
-/* 메인 콘텐츠 카드 느낌 */
-#main .inner { background:#fff; border-radius:12px; }
+#header .logo img {
+  height:42px !important;
+  width:auto !important;
+  object-fit:contain;
+  display:block;
+}
 
-/* ========== 2) 히어로 미디어 ========== */
-.hero-media img,
-.hero-media video {
+@media(max-width:736px){
+  #header .logo img { height:36px !important; }
+}
+
+/* -----------------------------
+   2) Main Layout
+----------------------------- */
+#main .inner{
+  background:#fff;
+  border-radius:14px;
+  padding:2.5rem 2.2rem;
+  box-shadow:0 4px 12px rgba(0,0,0,0.06);
+}
+
+/* PC 레이아웃 (sidebar + main) */
+@media(min-width:981px){
+  #sidebar{ width:280px; }
+  #main{ width:calc(100% - 280px); }
+}
+
+/* 모바일(사이드바 숨김) */
+@media(max-width:980px){
+  #sidebar{ display:none !important; }
+}
+
+/* -----------------------------
+   3) Hero Media
+----------------------------- */
+.hero-media video,
+.hero-media img{
   width:100%;
   height:60vh;
   object-fit:cover;
+  border-radius:12px;
   display:block;
 }
 
-/* ========== 3) 사이드바 레이아웃 ========== */
-/* 폭 고정(데스크톱) */
-#sidebar { width:280px; }
-@media (max-width:980px){
-  #sidebar { width:100%; }
-}
-
-/* 메인 영역은 남은 폭 사용(데스크톱일 때만) */
-@media (min-width:981px){
-  #main { width: calc(100% - 280px); }
-}
-
-/* 사이드바 내부 카드(‘关于我们’ 등) */
+/* -----------------------------
+   4) Sidebar Cards
+----------------------------- */
 #sidebar .inner > section{
   background:#fff;
-  border:1px solid rgba(210,215,217,.6);
+  border:1px solid rgba(210,215,217,.55);
   border-radius:12px;
-  padding:1.25rem;
-  margin:0 0 1rem;
+  padding:1.25rem 1.2rem;
+  margin:0 0 1.2rem;
 }
 
-/* 스크롤 점프/깜빡임 방지 */
-@media (min-width:981px){
+@media(min-width:981px){
   #sidebar .inner{
     position:sticky;
-    top:4.5rem;                               /* 헤더 높이에 맞춰 필요시 조정 */
-    max-height:calc(100vh - 4.5rem);
-    overflow:auto;
+    top:4.5rem;
   }
 }
 
-/* ========== 4) 왼쪽 네비(회색 불안정 해결) ========== */
-/* 리스트 초기화 */
-#menu ul{ margin:0; padding:0; list-style:none; }
-#menu ul li{ border-bottom:1px solid rgba(210,215,217,.50); }
-#menu ul li:last-child{ border-bottom:0; }
+/* -----------------------------
+   5) Navigation Menu — Blue Premium
+----------------------------- */
+#menu ul{ list-style:none; margin:0; padding:0; }
+#menu ul li{ margin:0 0 .35rem; }
 
-/* 항목 스타일(항상 흰 바탕) */
 #menu a{
   display:block;
   width:100%;
-  padding:.9rem 1rem;
-  background:#fff;                            /* 회색 깜빡임 방지: 확정 배경 */
-  line-height:1.35;
+  padding:.85rem 1rem;
+  background:#ffffff;
   border-radius:8px;
-  transition:background .15s ease, color .15s ease, padding .15s ease;
+  border:1px solid rgba(210,215,217,.5);
+  color:#333;
+  transition:.15s ease;
 }
-#menu a:hover,
-#menu a:focus{ background:#f2f4f6; }
 
-/* 현재 페이지 강조(좌측 라인 + 굵기) */
-#menu a[aria-current="page"]{
-  font-weight:700;
+#menu a:hover{
   background:#eef3ff;
-  border-left:3px solid #3b82f6;
-  padding-left:calc(1rem - 3px);
+  border-color:#3b82f6;
+  color:#1f4fbf;
 }
 
-/* ========== 5) 피처 카드 ========== */
-.features article{
+#menu a[aria-current="page"]{
+  background:#e8f0ff;
+  border-left:4px solid #3b82f6;
+  font-weight:700;
+  padding-left:calc(1rem - 4px);
+}
+
+/* -----------------------------
+   6) Mobile Drawer Menu
+----------------------------- */
+@media(max-width:980px){
+
+  /* 햄버거 버튼 고정 */
+  #header .toggle, a[href="#menu"]{
+    position:fixed !important;
+    top:14px !important;
+    left:14px !important;
+    z-index:10010 !important;
+    padding:8px 12px;
+    background:#ffffffcc;
+    backdrop-filter:blur(6px);
+    border-radius:8px;
+  }
+
+  /* 드로어 */
+  #menu{
+    position:fixed !important;
+    top:0; right:-86vw;
+    width:86vw;
+    height:100vh;
+    background:#fff !important;
+    box-shadow:-16px 0 28px rgba(0,0,0,.15);
+    padding:2rem 1.4rem;
+    overflow-y:auto;
+    transition:right .28s ease;
+    z-index:10005 !important;
+  }
+  body.is-menu-visible #menu{ right:0; }
+
+  /* 배경 오버레이 없앰 */
+  body.is-menu-visible:before{ background:transparent !important; }
+
+  /* 모바일은 sidebar 안 씀 */
+  #sidebar{ display:none !important; }
+}
+
+/* -----------------------------
+   7) Buttons
+----------------------------- */
+.button.primary{
+  background:#0077b6 !important;
+  border:1px solid #0068a0 !important;
+  color:#fff !important;
+  font-weight:600;
+}
+.button.primary:hover{
+  background:#2088c2 !important;
+}
+
+/* -----------------------------
+   8) Feature Cards (上단 브랜드理念)
+----------------------------- */
+section:nth-of-type(2) .features article{
   background:#fff;
-  border:1px solid rgba(210,215,217,.55);
-  border-radius:12px;
-}
-
-/* ========== 6) 버튼 통일감 ========== */
-.button.primary{ font-weight:600; }
-
-/* ========== 7) WeChat 모달 ========== */
-body.modal-open{ overflow:hidden; }
-#wechatModal[aria-hidden="false"]{ display:block; }
-#wechatModal .modal-inner{
-  max-width:420px;
-  margin:8vh auto;
+  border:none !important;
   border-radius:14px;
+  box-shadow:0 3px 10px rgba(0,0,0,.06);
+  padding:1.8rem 1.6rem;
+  transition:.2s ease;
+}
+section:nth-of-type(2) .features article:hover{
+  transform:translateY(-3px);
+  box-shadow:0 5px 16px rgba(0,0,0,.09);
 }
 
-/* ========== 8) 여백/레이아웃 미세 보정(선택) ========== */
-/* 섹션 간 위쪽 간격 살짝 늘려 카드 구분 */
-.inner > * + .features { margin-top:2.5rem; }
-
-
-/* ===== 공통: 수평 스크롤 방지 ===== */
-html, body { overflow-x: hidden; }
-
-/* ===== 사이드바 미세조정 ===== */
-/* 데스크톱: 사이드바 내부 스크롤 제거(페이지 자체만 스크롤) */
-@media (min-width: 981px){
-  #sidebar .inner{
-    position: sticky;
-    top: 4.5rem;
-    max-height: none;
-    overflow: visible;
-  }
-}
-
-/* 모바일: 실제 사이드바는 숨기고, 오프캔버스 메뉴(#menu)만 사용 */
-@media (max-width: 980px){
-  #sidebar{ display: none !important; }
-}
-
-/* ===== 모바일 오프캔버스 메뉴 (#menu) 재정의 ===== */
-/* 기본값: 화면 왼쪽 밖에 대기(회색 바 잔상 방지, 배경은 순백) */
-#menu{
-  position: fixed;
-  top: 0;
-  left: -360px;
-  width: 320px;
-  height: 100vh;
-  background: #fff;
-  box-shadow: 3px 0 14px rgba(0,0,0,.12);
-  transition: left .28s ease;
-  z-index: 10000;
-  padding: 2rem 1.25rem;
-}
-
-/* 열렸을 때: 완전히 화면 안쪽으로 슬라이드인 */
-body.is-menu-visible #menu{ left: 0; }
-
-/* 메뉴 열릴 때 페이지 스크롤 잠금 & 오버레이 */
-body.is-menu-visible{ overflow: hidden; }
-body.is-menu-visible::before{
-  content: "";
-  position: fixed;
-  inset: 0;
-  background: rgba(0,0,0,.25);
-  z-index: 9990;
-}
-
-/* 메뉴 항목(흰 배경 유지, 회색 잔상 방지) */
-#menu ul li a{
-  display:block; width:100%;
-  padding: .9rem 1rem;
-  background:#fff;
-  border-bottom:1px solid rgba(210,215,217,.6);
-  transition: background .15s ease;
-}
-#menu ul li a:hover,
-#menu ul li a:focus{ background:#f2f4f6; }
-#menu ul li:last-child a{ border-bottom:0; }
-
-/* ===== 히어로/버튼 등 이전 규칙 보강(중복 OK) ===== */
-.hero-media video{ width:100%; height:60vh; object-fit:cover; display:block; }
-.button.primary{ font-weight:600; }
-
-/* 배경 톤(회색 잔상 대비) */
-body{ background:#f5f7fb; }
-#wrapper{ background:#fff; }
-
-/* 메인 카드들 */
-.features article{
+/* -----------------------------
+   9) Posts (专业领域 하단 6개)
+----------------------------- */
+.posts article{
   background:#fff;
   border:1px solid rgba(210,215,217,.55);
   border-radius:12px;
+  padding:1.7rem 1.6rem;
+  transition:.2s ease;
+}
+.posts article:hover{
+  transform:translateY(-3px);
+  box-shadow:0 4px 14px rgba(0,0,0,.08);
 }
 
-/* ===== 브랜드理念(상단 4개 카드)만 라인 제거 ===== */
-section:nth-of-type(2) .features article {
-  border: none !important;                /* 브랜드理念 카드 라인 제거 */
-  box-shadow: 0 2px 8px rgba(0,0,0,.06);
-  border-radius: 14px;
-  transition: transform .2s ease, box-shadow .2s ease;
+/* -----------------------------
+   10) WeChat Modal
+----------------------------- */
+#wechatModal{
+  display:none;
+  position:fixed;
+  inset:0;
+  background:rgba(0,0,0,.45);
+  z-index:20000;
 }
-section:nth-of-type(2) .features article:hover {
-  transform: translateY(-3px);
-  box-shadow: 0 4px 12px rgba(0,0,0,.08);
+#wechatModal .modal-inner{
+  background:#fff;
+  max-width:420px;
+  margin:10vh auto;
+  padding:1.8rem;
+  border-radius:14px;
+  text-align:center;
 }
+.modal-caption{ font-weight:600; margin-bottom:1rem; }
+.modal-id{ margin-top:1rem; color:#0077b6; font-weight:600; }
 
-/* ===== 전문영역(하단 6개 카드)는 기존 라인 유지 ===== */
-section:nth-of-type(3) .posts article {
-  border: 1px solid rgba(210,215,217,.55);
-  border-radius: 10px;
-  background: #fff;
-  padding: 1.5rem 1.75rem;
-  transition: transform .2s ease, box-shadow .2s ease;
-}
-section:nth-of-type(3) .posts article:hover {
-  transform: translateY(-3px);
-  box-shadow: 0 4px 10px rgba(0,0,0,.07);
-}
-
-
-/* ===== Mobile hamburger & drawer fixes ===== */
-@media (max-width: 980px){
-
-  /* 1) 햄버거 버튼: 화면 좌상단 '고정' + 맨 위로 */
-  #header .toggle,
-  a[href="#menu"] {
-    position: fixed !important;   /* 달아나지 않게 */
-    top: 14px !important;
-    left: 14px !important;
-    z-index: 10010 !important;    /* 메뉴/오버레이보다 위 */
-    line-height: 1;
-    padding: 8px 10px;            /* 터치 영역 확보 */
-    -webkit-tap-highlight-color: transparent;
-  }
-
-  /* 2) 드로어 패널: 흰색, 전체 높이, 부드럽게 */
-  #menu {
-    position: fixed !important;
-    top: 0;
-    right: -86vw;                 /* 기본은 화면 밖 */
-    width: 86vw;                  /* 살짝 여유 */
-    height: 100vh;
-    background: #fff !important;  /* 회색 잔상 제거 */
-    box-shadow: -14px 0 28px rgba(0,0,0,.12);
-    overflow-y: auto;
-    z-index: 10005 !important;
-    transition: right .28s ease;
-  }
-  body.is-menu-visible #menu { right: 0; }
-
-  /* 3) 오버레이 제거(회색 베일/잔상 없애기) */
-  body.is-menu-visible:before {
-    background: transparent !important;
-  }
-
-  /* 4) 메뉴 열렸을 때 배경 스크롤 고정(이미 추가했지만 재보강) */
-  html, body {
-    overscroll-behavior: contain;
-  }
-  body.is-menu-visible {
-    position: fixed;
-    width: 100%;
-  }
-
-  /* 5) 사이드바 기본 레이아웃 잔상 제거(모바일일 때) */
-  #sidebar { background: transparent !important; }
-  #sidebar .inner { box-shadow: none !important; }
-}
-
-/* ================= Hard guards: desktop vs mobile ================= */
-
-/* ➊ 데스크톱(≥981px): 모바일용 드로어 흔적 전부 무력화 */
-@media (min-width: 981px){
-  /* 햄버거는 데스크톱에선 감춤 */
-  #header .toggle,
-  a[href="#menu"]{ display: none !important; }
-
-  /* 모바일 드로어(#menu)는 레이아웃에 영향 못 주게 */
-  #menu{
-    position: static !important;
-    right: auto !important;
-    width: auto !important;
-    height: auto !important;
-    background: transparent !important;
-    box-shadow: none !important;
-    overflow: visible !important;
-  }
-  body.is-menu-visible #menu{ right: auto !important; } /* 안전핀 */
-}
-
-/* ➋ 모바일(≤980px): 데스크톱용 사이드바는 아예 숨김(회색기둥 차단) */
-@media (max-width: 980px){
-  #sidebar{ display: none !important; }
-
-  /* 드로어 패널은 흰색, 화면 높이 꽉 차게 */
-  #menu{
-    position: fixed !important;
-    top: 0; right: -86vw;
-    width: 86vw; height: 100vh;
-    background: #fff !important;
-    box-shadow: -14px 0 28px rgba(0,0,0,.12);
-    overflow-y: auto;
-    z-index: 10005 !important;
-    transition: right .28s ease;
-  }
-  body.is-menu-visible #menu{ right: 0; }
-
-  /* 회색 반투명 오버레이 잔상 제거 */
-  body.is-menu-visible:before{ background: transparent !important; }
-
-  /* 햄버거는 고정(달아나지 않게) */
-  #header .toggle,
-  a[href="#menu"]{
-    position: fixed !important;
-    top: 14px !important; left: 14px !important;
-    z-index: 10010 !important;
-    padding: 8px 10px;
-    -webkit-tap-highlight-color: transparent;
-  }
-}
-
-/* ➌ 공통: 드로어 열렸을 때 배경 스크롤 잠그기(재보강) */
-body.is-menu-visible{
-  position: fixed; width: 100%;
-  overflow: hidden;
-}
-
-/* ✅ 로고 전용 클래스 */
-.logo-img {
-  display: block;
-  height: 40px;          /* 원하는 높이로 조정 */
-  width: auto;
-  max-width: none;       /* 전역 width:100% 규칙 무시 */
-  object-fit: contain;
-  margin: 0;
-  padding: 0;
-}
-
-/* 전역 이미지 규칙 덮어쓰기 (중요) */
-img.logo-img {
-  width: auto !important;
-  height: 40px !important;
-}
-
-/* 모바일 대응 */
-@media (max-width: 736px) {
-  .logo-img {
-    height: 36px;
-  }
-}
+/* -----------------------------
+   11) Small Fixes
+----------------------------- */
+img { max-width:100%; height:auto; }
+.profile img{ border-radius:12px; }
+.features, .posts{ row-gap:2rem; }
