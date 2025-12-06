@@ -218,7 +218,7 @@ body {
 body, input, select, textarea {
   color: #333;
   font-family: "Source Han Serif CN", "Noto Serif KR", serif;
-  font-size: 15pt;   /* 나중에 16pt로 변경 가능 */
+  font-size: 20pt;   /* 나중에 16pt로 변경 가능 */
   font-weight: 400;
   line-height: 1.8;  /* 줄 간격 여유롭게 */
 }
@@ -2462,7 +2462,7 @@ html[lang="ko"] .button {
   color: inherit;
   cursor: pointer;
   display: block;
-  font-size: 1.2em; /* ✅ 기존 0.9em → 1.2em (글씨 더 큼) */
+  font-size: 1.6em; /* ✅ 기존 0.9em → 1.2em (글씨 더 큼) */
   font-family: 'Source Han Serif CN', 'Noto Serif KR', serif;
   font-weight: 500;
   padding: 0.7em 0;
@@ -3137,29 +3137,7 @@ legend { font-weight: 600; margin-bottom: .75rem; }
 #menu { background: #f5f5f5; }
 
 	
-/* 검색창 배경 */
-#search.alt {
-  background: var(--sidebar-bg);
-  border-radius: 8px;
-  padding: 1rem;
-  margin-bottom: 1rem;
-}
 
-/* 검색 input 내부 */
-#search input[type="search"] {
-  background: #fff;
-  border: 1px solid rgba(0,0,0,0.1);
-  border-radius: 6px;
-  padding: 0.5rem 0.75rem;
-  width: 100%;
-  box-sizing: border-box;
-  color: #333;
-  transition: border-color 0.2s ease;
-}
-#search input[type="search"]:focus {
-  border-color: #0077B6;
-  outline: none;
-}
 	
 /* 데스크톱: 사이드바는 페이지 스크롤에 자연히 따라오도록 고정 (내부 스크롤 없음) */
 @media (min-width: 981px){
@@ -3395,6 +3373,29 @@ legend { font-weight: 600; margin-bottom: .75rem; }
     right: 0;
   }
 
+/* 검색창 배경 */
+#search.alt {
+  background: var(--sidebar-bg);
+  border-radius: 8px;
+  padding: 1rem;
+  margin: 0 0 1rem 0;
+}
+
+/* 검색 input 내부 */
+#search input[type="search"] {
+  background: #fff;
+  border: 1px solid rgba(0,0,0,0.1);
+  border-radius: 6px;
+  padding: 0.5rem 0.75rem;
+  width: 100%;
+  box-sizing: border-box;
+  color: #333;
+  transition: border-color 0.2s ease;
+}
+#search input[type="search"]:focus {
+  border-color: #0077B6;
+  outline: none;
+}
 
 
 
