@@ -3395,6 +3395,17 @@ legend { font-weight: 600; margin-bottom: .75rem; }
     right: 0;
   }
 
+/* 햄버거 버튼이 왼쪽으로 삐져나오는 문제 해결 */
+a.toggle {
+  left: 0 !important;
+}
 
+a.toggle::before {
+  left: 0 !important;
+  margin-left: 0 !important;
+}
+
+
+  
 
 
