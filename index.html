@@ -44,19 +44,6 @@
       --line:  #A0C4DE;
     }
 
-    /* 로고 이미지 크기 */
-    #header .logo-img {
-      height: 36px;
-      width: auto;
-      display: block;
-    }
-
-    /* 헤더 안에 메뉴 토글(모바일 햄버거) */
-    #header .toggle {
-      margin-left: auto;
-      margin-right: 1.5rem;
-    }
-
     /* 메뉴 링크 컬러 */
     #menu a { 
       color: #333 !important; 
@@ -69,8 +56,12 @@
       font-weight: 600 !important; 
     }
 
+    /* 메인 섹션 제목 밑줄 색 */
     .major:after { background-color: var(--brand) !important; }
-    .button.primary, .actions .button.primary { 
+
+    /* 주요 버튼 색 */
+    .button.primary,
+    .actions .button.primary { 
       background: var(--brand) !important; 
       border-color: var(--brand) !important; 
     }
@@ -78,10 +69,11 @@
       background: var(--hover) !important; 
       border-color: var(--hover) !important; 
     }
-    hr, .inner .divider { border-color: var(--line) !important; }
 
+    /* 구분선 색 */
+    hr,
+    .inner .divider { border-color: var(--line) !important; }
 
-    
     /* 본문 타이포 (반응형) */
     #main p,
     #main li {
@@ -89,10 +81,11 @@
       line-height: 1.8;
       color: #6f7a82;
     }
-    #main h1, #main h2, #main h3 {
+    #main h1,
+    #main h2,
+    #main h3 {
       color: #333;
     }
-
     @media (max-width: 736px) {
       #main p,
       #main li {
@@ -147,62 +140,56 @@
       display: block;
       margin: 0 auto;
     }
-/* =========================
-   Sidebar 로고 + Menu 타이틀
-   ========================= */
 
-/* 로고 영역 여백 & 크기 */
-#sidebar-brand {
-  padding: 1.5rem 1.5rem 0.75rem 1.5rem;
-}
-#sidebar-brand .logo img {
-  display: block;
-  max-width: 140px;
-  height: auto;
-}
+    /* =========================
+       Sidebar 로고 + Menu 타이틀
+       ========================= */
 
-/* 기본 MENU 타이틀(h2) 제거 — 우리가 새로 만드는 MENU만 사용 */
-#menu > header.major {
-  padding: 0;
-  margin: 0;
-}
-#menu > header.major:after {
-  display: none !important;
-}
+    /* 로고 영역 여백 & 크기 */
+    #sidebar-brand {
+      padding: 1.5rem 1.5rem 0.75rem 1.5rem;
+    }
+    #sidebar-brand .logo img {
+      display: block;
+      max-width: 140px;
+      height: auto;
+    }
 
-/* 메뉴 리스트 좌우 여백 */
-#menu .links {
-  padding: 0 1.5rem 1.5rem;
-}
+    /* 사이드바에서 로고/메뉴 위 회색 선 제거 */
+    #sidebar-brand,
+    #menu {
+      border-top: none !important;
+    }
 
-/* =========================
-   MENU 첫 줄(타이틀 역할)
-   ========================= */
-#menu .menu-title a {
-  font-size: 1.1rem;
-  font-weight: 700;
-  color: #222 !important;
-  position: relative;
-  padding-bottom: 0.3rem;
-  display: inline-block;
-}
+    /* 메뉴 리스트 좌우 여백 */
+    #menu .links {
+      padding: 0 1.5rem 1.5rem;
+    }
+    /* 첫 번째 li(=MENU) 위에 선 생기지 않도록 */
+    #menu .links li:first-child {
+      border-top: 0;
+    }
 
-/* MENU 아래 파란 밑줄 */
-#menu .menu-title a::after {
-  content: "";
-  position: absolute;
-  left: 0;
-  bottom: -2px;
-  width: 2.5rem;
-  height: 2px;
-  background: var(--brand);
-}
+    /* MENU 첫 줄을 타이틀처럼 */
+    #menu .menu-title a {
+      font-size: 1.1rem !important;
+      font-weight: 700 !important;
+      color: #222 !important;
+      position: relative;
+      padding-bottom: 0.3rem;
+      display: inline-block;
+    }
 
-/* 로고 아래쪽 기본 보더 제거 */
-#sidebar-brand,
-#menu {
-  border-top: none !important;
-}
+    /* MENU 아래 파란 밑줄 */
+    #menu .menu-title a::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      bottom: -2px;
+      width: 2.5rem;
+      height: 2px;
+      background: var(--brand);
+    }
   </style>
 </head>
 
@@ -217,7 +204,7 @@
 
         <!-- Header -->
         <header id="header">
-        <a href="index.html" class="logo">K-Medi Spring</a>
+          <a href="index.html" class="logo">K-Medi Spring</a>
 
           <!-- SNS icons -->
           <ul class="icons">
@@ -239,7 +226,6 @@
           </ul>
         </header>
 
-        
         <!-- Banner -->
         <section id="banner" class="alt" aria-labelledby="siteTitle">
           <div class="content">
@@ -381,32 +367,28 @@
     <div id="sidebar">
       <div class="inner">
 
-<!-- Sidebar Brand + Menu -->
-<section id="sidebar-brand">
-  <a href="index.html" class="logo">
-    <img src="images/logo_ch.png" alt="汉江春天 로고">
-  </a>
-</section>
+        <!-- Sidebar Brand + Menu -->
+        <section id="sidebar-brand">
+          <a href="index.html" class="logo">
+            <img src="images/logo_ch.png" alt="汉江春天 로고">
+          </a>
+        </section>
 
-<nav id="menu">
-  <header class="major">
-    <h2>Menu</h2>
-  </header>
-
-  <ul class="links">
-    <li class="menu-title"><a href="index.html">MENU</a></li>
-    <li><a href="wellness.html">大健康</a></li>
-    <li><a href="stemcell.html">干细胞</a></li>
-    <li><a href="derm.html">皮肤医美</a></li>
-    <li><a href="surgery.html">整形医美</a></li>
-    <li><a href="woman.html">女性护理中心</a></li>
-    <li><a href="man.html">男性健康中心</a></li>
-    <li><a href="transfer.html">接送服务</a></li>
-    <li><a href="tour.html">市区观光</a></li>
-    <li><a href="lifestyle.html">生活服务</a></li>
-    <li><a href="kplan.html" data-i18n="navKplan">定制医疗观光方案</a></li>
-  </ul>
-</nav>
+        <nav id="menu">
+          <ul class="links">
+            <li class="menu-title"><a href="index.html">MENU</a></li>
+            <li><a href="wellness.html">大健康</a></li>
+            <li><a href="stemcell.html">干细胞</a></li>
+            <li><a href="derm.html">皮肤医美</a></li>
+            <li><a href="surgery.html">整形医美</a></li>
+            <li><a href="woman.html">女性护理中心</a></li>
+            <li><a href="man.html">男性健康中心</a></li>
+            <li><a href="transfer.html">接送服务</a></li>
+            <li><a href="tour.html">市区观光</a></li>
+            <li><a href="lifestyle.html">生活服务</a></li>
+            <li><a href="kplan.html" data-i18n="navKplan">定制医疗观光方案</a></li>
+          </ul>
+        </nav>
 
         <!-- About / Partners -->
         <section>
@@ -588,9 +570,3 @@
 
 </body>
 </html>
-
-
-
-
-
-
