@@ -1,17 +1,11 @@
 <!DOCTYPE HTML>
-<!--
-  2025/10/11 가나와 로니가 같이 만들기 시작함
-  정리본: 로니가 깔끔하게 정리한 버전
--->
 <html lang="zh-CN">
-
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
-
   <title>汉江春天</title>
 
-  <!-- ✅ GitHub Pages용 base 경로 스크립트 -->
+  <!-- GitHub Pages용 base 경로 -->
   <script>
     (function () {
       var project = "/K-medispring/";
@@ -27,100 +21,129 @@
   <meta property="og:title" content="汉江春天" />
   <meta property="og:description" content="专注于韩国医疗、皮肤医美、干细胞、健康管理与高端定制旅行" />
   <meta property="og:image" content="https://kmedispring.com/images/preview.jpg" />
-  <meta property="og:url" content="https://kmedispring.com/wellness.html" />
+  <meta property="og:url" content="https://kmedispring.com/index.html" />
   <meta name="twitter:card" content="summary_large_image" />
 
-  <!-- ✅ Favicon / Web Icons (상대경로) -->
+  <!-- Favicon -->
   <link rel="icon" type="image/x-icon" href="images/favicon.ico?v=20251012">
   <link rel="icon" type="image/png" sizes="32x32" href="images/favicon-32.png?v=20251012">
   <link rel="icon" type="image/png" sizes="16x16" href="images/favicon-16.png?v=20251012">
   <link rel="apple-touch-icon" sizes="180x180" href="images/apple-touch-icon.png?v=20251012">
 
-  <!-- ✅ Stylesheets (순서 중요) -->
+  <!-- CSS -->
   <link rel="stylesheet" href="assets/css/fontawesome-all.min.css?v=20251027" />
   <link rel="stylesheet" href="assets/css/main.css?v=20251027" />
   <noscript><link rel="stylesheet" href="assets/css/noscript.css?v=20251027" /></noscript>
 
-  <!-- ✅ 커스텀 스타일 -->
+  <!-- 커스텀 스타일 -->
   <style>
     :root {
       --brand: #0077B6;
       --hover: #2088C2;
-      --deep: #1565A0;
-      --line: #A0C4DE;
+      --deep:  #1565A0;
+      --line:  #A0C4DE;
     }
 
-    /* 메뉴 링크 색/hover */
-    #menu a {
-      color: #333 !important;
-      text-decoration: none !important;
-      transition: color .25s ease !important;
+    /* 로고 이미지 크기 */
+    #header .logo-img {
+      height: 36px;
+      width: auto;
+      display: block;
     }
 
-    #menu a:hover {
-      color: var(--hover) !important;
+    /* 헤더 안에 메뉴 토글(모바일 햄버거) */
+    #header .toggle {
+      margin-left: auto;
+      margin-right: 1.5rem;
     }
 
-    #menu a.active {
-      color: var(--brand) !important;
-      font-weight: 600 !important;
+    /* 메뉴 링크 컬러 */
+    #menu a { 
+      color: #333 !important; 
+      text-decoration: none !important; 
+      transition: color .25s ease !important; 
+    }
+    #menu a:hover { color: var(--hover) !important; }
+    #menu a[aria-current="page"] { 
+      color: var(--brand) !important; 
+      font-weight: 600 !important; 
     }
 
-    .major:after {
-      background-color: var(--brand) !important;
+    .major:after { background-color: var(--brand) !important; }
+    .button.primary, .actions .button.primary { 
+      background: var(--brand) !important; 
+      border-color: var(--brand) !important; 
     }
-
-    .button.primary,
-    .actions .button.primary {
-      background: var(--brand) !important;
-      border-color: var(--brand) !important;
+    .button.primary:hover { 
+      background: var(--hover) !important; 
+      border-color: var(--hover) !important; 
     }
+    hr, .inner .divider { border-color: var(--line) !important; }
 
-    .button.primary:hover {
-      background: var(--hover) !important;
-      border-color: var(--hover) !important;
-    }
-
-    hr,
-    .inner .divider {
-      border-color: var(--line) !important;
-    }
-
-    .modal-open {
-      overflow: hidden;
-    }
-
-    /* =========================
-       본문 타이포 (색·크기)
-       ========================= */
-
-    /* 메인 영역 기본 텍스트 색 */
-    #main {
-      color: #6f7a82;
-    }
-
-    /* 일반 문단 & 리스트 */
+    /* 본문 타이포 (반응형) */
     #main p,
     #main li {
       font-size: 20px;
       line-height: 1.8;
       color: #6f7a82;
     }
-
-    /* 제목은 더 진하게 */
-    #main h1,
-    #main h2,
-    #main h3 {
+    #main h1, #main h2, #main h3 {
       color: #333;
     }
 
-    /* 모바일에서는 글씨 조금 줄이기 */
     @media (max-width: 736px) {
       #main p,
       #main li {
         font-size: 16px;
         line-height: 1.7;
       }
+    }
+
+    .modal-open { overflow: hidden; }
+
+    /* QR 모달 공통 스타일 */
+    .modal {
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,.6);
+      display: none;
+      align-items: center;
+      justify-content: center;
+      z-index: 10000;
+    }
+    .modal-inner {
+      background: #fff;
+      border-radius: 10px;
+      padding: 1.5rem 1.75rem;
+      max-width: 320px;
+      width: 90%;
+      text-align: center;
+      position: relative;
+      box-shadow: 0 12px 30px rgba(0,0,0,.25);
+    }
+    .modal .close {
+      position: absolute;
+      right: 0.75rem;
+      top: 0.5rem;
+      border: none;
+      background: none;
+      font-size: 1.5rem;
+      cursor: pointer;
+    }
+    .modal-caption {
+      font-weight: 600;
+      margin-bottom: .75rem;
+    }
+    .modal-id {
+      font-size: .9rem;
+      color: #555;
+      margin-top: .5rem;
+    }
+    .modal-content {
+      max-width: 100%;
+      height: auto;
+      display: block;
+      margin: 0 auto;
     }
   </style>
 </head>
@@ -130,7 +153,7 @@
   <!-- Wrapper -->
   <div id="wrapper">
 
-    <!-- Main -->
+    <!-- Main (오른쪽 콘텐츠 영역) -->
     <div id="main">
       <div class="inner">
 
@@ -139,6 +162,9 @@
           <a href="index.html" class="logo">
             <img src="images/logo_ch.png" alt="汉江春天 로고" class="logo-img">
           </a>
+
+          <!-- 모바일 메뉴 토글 -->
+          <a href="#menu" class="toggle"><span>Menu</span></a>
 
           <!-- SNS icons -->
           <ul class="icons">
@@ -165,7 +191,7 @@
           <div class="content">
             <header>
               <h1 id="siteTitle">汉江春天</h1>
-              <h2 style="margin-top: .25em; font-size: 2.0rem; font-weight: 400;">
+              <h2 style="margin-top:.25em; font-size:2rem; font-weight:400;">
                 韩国医疗·康养·身心疗愈
               </h2>
             </header>
@@ -175,7 +201,6 @@
               “汉江春天”，愿成为您在韩国最值得信赖的朋友。
             </p>
 
-            <!-- CTA 버튼 -->
             <ul class="actions">
               <li>
                 <a href="kplan.html" class="button primary" data-i18n="navKplan">
@@ -188,27 +213,23 @@
           <!-- Hero video -->
           <span class="image object hero-media">
             <video id="introVideo" autoplay muted loop playsinline preload="metadata"
-              style="width:100%;height:60vh;object-fit:cover;display:block">
+                   style="width:100%;height:60vh;object-fit:cover;display:block">
               <source src="https://kmedispring.com/videos/intro_v1.mp4.mp4?v=4#t=0.01" type="video/mp4">
             </video>
           </span>
         </section>
 
-        <!-- 브랜드理念 -->
+        <!-- 品牌理念 -->
         <section>
-          <header class="major">
-            <h2>品牌理念</h2>
-          </header>
+          <header class="major"><h2>品牌理念</h2></header>
           <div class="features">
 
             <article>
               <span class="icon fa-gem"></span>
               <div class="content">
                 <h3>诚信医疗 · 真心相连</h3>
-                <p>
-                  我们不仅仅是做医疗观光，更致力于传递韩国医疗的真诚。<br>
-                  以透明的流程与正规许可为基础，只推荐值得信赖的医疗机构。
-                </p>
+                <p>我们不仅仅是做医疗观光，更致力于传递韩国医疗的真诚。<br>
+                以透明的流程与正规许可为基础，只推荐值得信赖的医疗机构。</p>
               </div>
             </article>
 
@@ -216,10 +237,8 @@
               <span class="icon solid fa-paper-plane"></span>
               <div class="content">
                 <h3>让韩国医疗的美，走向世界</h3>
-                <p>
-                  我们致力于将韩国先进的皮肤美容与健康管理技术，传递给世界各地的客户，<br>
-                  让每一位客户都能体验到“健康之美”的真正价值。
-                </p>
+                <p>我们致力于将韩国先进的皮肤美容与健康管理技术，传递给世界各地的客户，<br>
+                让每一位客户都能体验到“健康之美”的真正价值。</p>
               </div>
             </article>
 
@@ -227,10 +246,8 @@
               <span class="icon solid fa-rocket"></span>
               <div class="content">
                 <h3>韩医与西医的协同力量</h3>
-                <p>
-                  通过韩医与西医的协作治疗，实现身心同疗的真正健康，<br>
-                  带来从根本焕新的疗愈体验。
-                </p>
+                <p>通过韩医与西医的协作治疗，实现身心同疗的真正健康，<br>
+                带来从根本焕新的疗愈体验。</p>
               </div>
             </article>
 
@@ -238,10 +255,8 @@
               <span class="icon solid fa-signal"></span>
               <div class="content">
                 <h3>专属定制的医疗旅游方案</h3>
-                <p>
-                  根据每位客户的健康状况与目标，提供诊疗、住宿、接送、康复一站式服务，<br>
-                  打造最安心、最贴心的健康之旅。
-                </p>
+                <p>根据每位客户的健康状况与目标，提供诊疗、住宿、接送、康复一站式服务，<br>
+                打造最安心、最贴心的健康之旅。</p>
               </div>
             </article>
 
@@ -250,80 +265,53 @@
 
         <!-- 专业领域 · 一站式医疗体验 -->
         <section>
-          <header class="major">
-            <h2>专业领域 · 一站式医疗体验</h2>
-          </header>
+          <header class="major"><h2>专业领域 · 一站式医疗体验</h2></header>
 
           <div class="posts">
 
-            <!-- 大健康 -->
             <article>
               <h3>大健康</h3>
-              <p>
-                以功能医学检测、激素检测、重金属检测为基础，系统分析体质与生活方式，
-                并整合饮食、睡眠与压力管理，提供全方位健康方案。
-                不只是治疗，更是让身心回到平衡的“重启护理”。
-              </p>
+              <p>以功能医学检测、激素检测、重金属检测为基础，系统分析体质与生活方式，并整合饮食、睡眠与压力管理，提供全方位健康方案。不只是治疗，更是让身心回到平衡的“重启护理”。</p>
               <ul class="actions">
                 <li><a href="wellness.html" class="button">了解更多</a></li>
               </ul>
             </article>
 
-            <!-- 干细胞 -->
             <article>
               <h3>干细胞</h3>
-              <p>
-                采用先进干细胞技术，聚焦抗衰与组织再生，从细胞层面激活修复力。
-                同步提升皮肤状态、免疫与能量系统，带来由内而外的青春焕新体验。
-              </p>
+              <p>采用先进干细胞技术，聚焦抗衰与组织再生，从细胞层面激活修复力。同提升皮肤状态、免疫与能量系统，带来由内而外的青春焕新体验。</p>
               <ul class="actions">
                 <li><a href="stemcell.html" class="button">了解更多</a></li>
               </ul>
             </article>
 
-            <!-- 皮肤医美 -->
             <article>
               <h3>皮肤医美</h3>
-              <p>
-                专业皮肤科与韩医协作诊疗，针对痤疮、色斑、皱纹、弹力等问题进行分层分析与治疗。
-                结合个性化修复方案，重启肌底健康，恢复澄净与弹润。
-              </p>
+              <p>专业皮肤科与韩医协作诊疗，针对痤疮、色斑、皱纹、弹力等问题进行分层分析与治疗。结合个性化修复方案，重启肌底健康，恢复澄净与弹润。</p>
               <ul class="actions">
                 <li><a href="derm.html" class="button">了解更多</a></li>
               </ul>
             </article>
 
-            <!-- 整形医美 -->
             <article>
               <h3>整形医美</h3>
-              <p>
-                依托韩国先进医美与资深专家团队，以精细技术实现自然与和谐的改变。
-                不止于外在调整，更关注自信与情绪疗愈，塑造内外兼修的美。
-              </p>
+              <p>依托韩国先进医美与资深专家团队，以精细技术实现自然与和谐的改变。不止于外在调整，更关注自信与情绪疗愈，塑造内外兼修的美。</p>
               <ul class="actions">
                 <li><a href="surgery.html" class="button">了解更多</a></li>
               </ul>
             </article>
 
-            <!-- 女性护理中心 -->
             <article>
               <h3>女性护理中心</h3>
-              <p>
-                根据女性不同生命阶段，进行激素平衡管理、产后修复与皮肤体型护理。
-                帮助找回专属节律，让美与健康共振，回归轻盈与从容。
-              </p>
+              <p>根据女性不同生命阶段，进行激素平衡管理、产后修复与皮肤体型护理。帮助找回专属节律，让美与健康共振，回归轻盈与从容。</p>
               <ul class="actions">
                 <li><a href="woman.html" class="button">了解更多</a></li>
               </ul>
             </article>
 
-            <!-- 男性健康中心 -->
             <article>
               <h3>男性健康中心</h3>
-              <p>
-                从功能医学视角评估压力、疲劳与体力下降等问题，提供个性化恢复方案。
-                以活力提升、激素平衡与疲劳修复为核心，实现真正的能量回归。
-              </p>
+              <p>从功能医学视角评估压力、疲劳与体力下降等问题，提供个性化恢复方案。以活力提升、激素平衡与疲劳修复为核心，实现真正的能量回归。</p>
               <ul class="actions">
                 <li><a href="man.html" class="button">了解更多</a></li>
               </ul>
@@ -332,17 +320,17 @@
           </div>
         </section>
 
-      </div> <!-- .inner (main) -->
-    </div> <!-- #main -->
+      </div><!-- .inner (main) -->
+    </div><!-- #main -->
 
-    <!-- Sidebar -->
+    <!-- Sidebar (왼쪽 카테고리 + 정보) -->
     <div id="sidebar">
       <div class="inner">
 
-        <!-- 메뉴 -->
+        <!-- Menu -->
         <nav id="menu">
           <ul class="links">
-            <li><a href="index.html">Menu</a></li>
+            <li><a href="index.html">首页</a></li>
             <li><a href="wellness.html">大健康</a></li>
             <li><a href="stemcell.html">干细胞</a></li>
             <li><a href="derm.html">皮肤医美</a></li>
@@ -358,9 +346,7 @@
 
         <!-- About / Partners -->
         <section>
-          <header class="major">
-            <h2>关于我们</h2>
-          </header>
+          <header class="major"><h2>关于我们</h2></header>
           <p style="text-align:center; color:#777;">合作伙伴</p>
           <div class="mini-posts">
             <article>
@@ -382,37 +368,29 @@
 
         <!-- Contact -->
         <section>
-          <header class="major">
-            <h2>联系方式</h2>
-          </header>
-          <p>
-            我们相信，美丽与健康，源于真诚的交流。如果你对韩国医疗、健康管理或合作有兴趣，
-            欢迎通过微信或邮件与我们联系。
-          </p>
+          <header class="major"><h2>联系方式</h2></header>
+          <p>我们相信，美丽与健康，源于真诚的交流。如果你对韩国医疗、健康管理或合作有兴趣，欢迎通过微信或邮件与我们联系。</p>
           <ul class="contact">
-            <li class="icon solid fa-envelope">
-              <a href="mailto:egana@kmedispring.com">邮箱：egana@kmedispring.com</a>
-            </li>
+            <li class="icon solid fa-envelope"><a href="mailto:egana@kmedispring.com">邮箱：egana@kmedispring.com</a></li>
             <li class="icon solid fa-phone">(82) 10-4903-3123</li>
-            <li class="icon solid fa-home">韩国 首尔特别市 城北区 东小门路 63号 6层(邮编：02845)</li>
+            <li class="icon solid fa-home">韩国 首尔特别市 城北区 东小门路 63号 6层 (邮编：02845)</li>
           </ul>
         </section>
 
         <!-- Footer -->
-        <footer>
+        <footer id="footer">
           <p style="text-align:center; font-size:0.9em; color:#666;">
             © 2025 汉江春天 한강애봄 版权所有。模板设计：HTML5 UP。
           </p>
         </footer>
 
-      </div> <!-- .inner (sidebar) -->
-    </div> <!-- #sidebar -->
+      </div><!-- .inner(sidebar) -->
+    </div><!-- #sidebar -->
 
-  </div> <!-- #wrapper -->
-
+  </div><!-- #wrapper -->
 
   <!-- WeChat QR Modal -->
-  <div id="wechatModal" class="modal" aria-hidden="true" role="dialog" style="display:none;">
+  <div id="wechatModal" class="modal" aria-hidden="true" role="dialog">
     <div class="modal-inner">
       <button class="close" aria-label="Close">&times;</button>
       <p class="modal-caption">扫描二维码添加微信</p>
@@ -422,168 +400,127 @@
   </div>
 
   <!-- WhatsApp Modal -->
-  <div id="whatsappModal" class="modal" aria-hidden="true" role="dialog" style="display:none;">
+  <div id="whatsappModal" class="modal" aria-hidden="true" role="dialog">
     <div class="modal-inner">
       <button class="close" aria-label="Close">&times;</button>
       <p class="modal-caption">QR → WhatsApp Connect</p>
       <img id="whatsappQR" class="modal-content"
-        src="images/whatsapp_qr.jpg"
-        alt="WhatsApp QR for K-Medi Spring">
+           src="images/whatsapp_qr.jpg"
+           alt="WhatsApp QR for K-Medi Spring">
       <p class="modal-id">WhatsApp：+82-10-4903-3123</p>
     </div>
   </div>
 
-  <!-- ============================
-       모달 + 비디오 세팅 스크립트
-       ============================ -->
+  <!-- 비디오 + 모달 스크립트 -->
   <script>
-    document.addEventListener('DOMContentLoaded', function () {
+  document.addEventListener('DOMContentLoaded', function () {
 
-      /* 1) 인트로 비디오 세팅 */
-      const v = document.getElementById('introVideo');
-      if (v) {
-        try { v.playbackRate = 0.33; } catch (e) { }
-        v.muted = true;
-        v.volume = 0;
+    /* 1) 인트로 비디오 */
+    const v = document.getElementById('introVideo');
+    if (v) {
+      try { v.playbackRate = 0.33; } catch(e) {}
+      v.muted = true;
+      v.volume = 0;
+    }
+
+    /* 2) WeChat 모달 */
+    const wechatModal  = document.getElementById('wechatModal');
+    const wechatIcon   = document.getElementById('wechat-icon');
+    const wechatQR     = document.getElementById('wechatQR');
+    const wechatClose  = wechatModal ? wechatModal.querySelector('.close') : null;
+
+    function openWeChat(e){
+      if (e) e.preventDefault();
+      if (wechatQR){
+        wechatQR.src = wechatQR.src.split('?')[0] + '?v=' + Date.now();
       }
-
-      /* 2) WeChat 모달 */
-      const wechatModal = document.getElementById('wechatModal');
-      const wechatIcon = document.getElementById('wechat-icon');
-      const wechatQR = document.getElementById('wechatQR');
-      const wechatClose = wechatModal ? wechatModal.querySelector('.close') : null;
-
-      function openWeChat(e) {
-        if (e) e.preventDefault();
-        if (wechatQR) {
-          wechatQR.src = wechatQR.src.split('?')[0] + '?v=' + Date.now();
-        }
-        if (wechatModal) {
-          wechatModal.style.display = 'flex';
-          wechatModal.setAttribute('aria-hidden', 'false');
-        }
-        document.body.classList.add('modal-open');
+      if (wechatModal){
+        wechatModal.style.display = 'flex';
+        wechatModal.setAttribute('aria-hidden', 'false');
       }
-
-      function closeWeChat() {
-        if (wechatModal) {
-          wechatModal.style.display = 'none';
-          wechatModal.setAttribute('aria-hidden', 'true');
-        }
-        document.body.classList.remove('modal-open');
+      document.body.classList.add('modal-open');
+    }
+    function closeWeChat(){
+      if (wechatModal){
+        wechatModal.style.display = 'none';
+        wechatModal.setAttribute('aria-hidden', 'true');
       }
+      document.body.classList.remove('modal-open');
+    }
 
-      if (wechatIcon) wechatIcon.addEventListener('click', openWeChat);
-      if (wechatClose) wechatClose.addEventListener('click', closeWeChat);
-      if (wechatModal) {
-        wechatModal.addEventListener('click', function (e) {
-          if (e.target === wechatModal) closeWeChat();
-        });
-      }
-
-      /* 3) WhatsApp 모달 */
-      const whatsappModal = document.getElementById('whatsappModal');
-      const whatsappIcon = document.getElementById('whatsapp-icon');
-      const whatsappQR = document.getElementById('whatsappQR');
-      const whatsappClose = whatsappModal ? whatsappModal.querySelector('.close') : null;
-
-      function openWhatsApp(e) {
-        if (e) e.preventDefault();
-        if (whatsappQR) {
-          whatsappQR.src = whatsappQR.src.split('?')[0] + '?v=' + Date.now();
-        }
-        if (whatsappModal) {
-          whatsappModal.style.display = 'flex';
-          whatsappModal.setAttribute('aria-hidden', 'false');
-        }
-        document.body.classList.add('modal-open');
-      }
-
-      function closeWhatsApp() {
-        if (whatsappModal) {
-          whatsappModal.style.display = 'none';
-          whatsappModal.setAttribute('aria-hidden', 'true');
-        }
-        document.body.classList.remove('modal-open');
-      }
-
-      if (whatsappIcon) whatsappIcon.addEventListener('click', openWhatsApp);
-      if (whatsappClose) whatsappClose.addEventListener('click', closeWhatsApp);
-      if (whatsappModal) {
-        whatsappModal.addEventListener('click', function (e) {
-          if (e.target === whatsappModal) closeWhatsApp();
-        });
-      }
-
-      /* 4) ESC 키로 모달 닫기 */
-      document.addEventListener('keydown', function (e) {
-        if (e.key === 'Escape') {
-          closeWeChat();
-          closeWhatsApp();
-        }
+    if (wechatIcon)  wechatIcon.addEventListener('click', openWeChat);
+    if (wechatClose) wechatClose.addEventListener('click', closeWeChat);
+    if (wechatModal){
+      wechatModal.addEventListener('click', function(e){
+        if (e.target === wechatModal) closeWeChat();
       });
+    }
+
+    /* 3) WhatsApp 모달 */
+    const whatsappModal = document.getElementById('whatsappModal');
+    const whatsappIcon  = document.getElementById('whatsapp-icon');
+    const whatsappQR    = document.getElementById('whatsappQR');
+    const whatsappClose = whatsappModal ? whatsappModal.querySelector('.close') : null;
+
+    function openWhatsApp(e){
+      if (e) e.preventDefault();
+      if (whatsappQR){
+        whatsappQR.src = whatsappQR.src.split('?')[0] + '?v=' + Date.now();
+      }
+      if (whatsappModal){
+        whatsappModal.style.display = 'flex';
+        whatsappModal.setAttribute('aria-hidden','false');
+      }
+      document.body.classList.add('modal-open');
+    }
+    function closeWhatsApp(){
+      if (whatsappModal){
+        whatsappModal.style.display = 'none';
+        whatsappModal.setAttribute('aria-hidden','true');
+      }
+      document.body.classList.remove('modal-open');
+    }
+
+    if (whatsappIcon)  whatsappIcon.addEventListener('click', openWhatsApp);
+    if (whatsappClose) whatsappClose.addEventListener('click', closeWhatsApp);
+    if (whatsappModal){
+      whatsappModal.addEventListener('click', function(e){
+        if (e.target === whatsappModal) closeWhatsApp();
+      });
+    }
+
+    /* 4) ESC 키로 모두 닫기 */
+    document.addEventListener('keydown', function (e) {
+      if (e.key === 'Escape') {
+        closeWeChat();
+        closeWhatsApp();
+      }
     });
+
+  });
   </script>
 
-  <!-- Scripts: HTML5UP 기본 5총사 -->
+  <!-- 템플릿 기본 스크립트 5총사 -->
   <script src="assets/js/jquery.min.js"></script>
   <script src="assets/js/browser.min.js"></script>
   <script src="assets/js/breakpoints.min.js"></script>
   <script src="assets/js/util.js"></script>
   <script src="assets/js/main.js"></script>
 
-  <!-- 메뉴 토글 보강 스크립트 -->
+  <!-- 현재 페이지 메뉴 활성화 -->
   <script>
-    (function () {
-      if (window.__menuBound) return;
-      window.__menuBound = true;
-
-      var body = document.body;
-      var menu = document.getElementById('menu');
-      if (!menu) return;
-
-      function openMenu(e) { if (e) e.preventDefault(); body.classList.add('is-menu-visible'); }
-      function closeMenu(e) { if (e) e.preventDefault(); body.classList.remove('is-menu-visible'); }
-      function toggleMenu(e) { if (e) e.preventDefault(); body.classList.toggle('is-menu-visible'); }
-
-      document.querySelectorAll('.toggle, a[href="#menu"]').forEach(function (el) {
-        el.addEventListener('click', toggleMenu, { passive: true });
-      });
-
-      menu.addEventListener('click', function (e) {
-        var a = e.target.closest('a');
-        if (a) closeMenu();
-      }, { passive: true });
-
-      document.addEventListener('click', function (e) {
-        if (!body.classList.contains('is-menu-visible')) return;
-        if (menu.contains(e.target)) return;
-        if (e.target.closest('.toggle, a[href="#menu"]')) return;
-        closeMenu();
-      }, { passive: true });
-
-      document.addEventListener('keydown', function (e) {
-        if (e.key === 'Escape') closeMenu();
-      });
-    })();
-  </script>
-
-  <!-- 현재 페이지 메뉴 active 표시 -->
-  <script>
-    (function () {
-      var path = location.pathname.replace(/\/K-medispring\/?/, '/'); // base 보정
-      document.querySelectorAll('#menu a[href]').forEach(function (a) {
-        try {
-          var u = new URL(a.getAttribute('href'), location.origin);
-          if (u.pathname === path || u.pathname === location.pathname) {
-            a.setAttribute('aria-current', 'page');
-            if (a.parentElement) a.parentElement.classList.add('active');
-          }
-        } catch (e) { }
-      });
-    })();
+  (function(){
+    var path = location.pathname.replace(/\/K-medispring\/?/, '/');
+    document.querySelectorAll('#menu a[href]').forEach(function(a){
+      try {
+        var u = new URL(a.getAttribute('href'), location.origin);
+        if (u.pathname === path || u.pathname === location.pathname){
+          a.setAttribute('aria-current','page');
+        }
+      } catch(e){}
+    });
+  })();
   </script>
 
 </body>
 </html>
-
