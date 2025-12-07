@@ -190,6 +190,30 @@
       height: 2px;
       background: var(--brand);
     }
+
+/* 헤더 로고 - Editorial 스타일 */
+#header .logo {
+  font-family: "Roboto Slab", "Source Han Serif CN", "Noto Serif KR", serif;
+  font-size: 1.6rem;
+  font-weight: 700;
+  text-decoration: none;
+  color: #333;
+  letter-spacing: 0.02em;
+}
+
+/* K-Medi = 진하게, 진한 색 */
+#header .logo .brand-main {
+  font-weight: 700;
+  color: #333;
+}
+
+/* Spring = 얇게, 회색 */
+#header .logo .brand-sub {
+  font-weight: 400;
+  color: #888;
+  margin-left: 0.35rem;
+}
+    
   </style>
 </head>
 
@@ -203,8 +227,11 @@
       <div class="inner">
 
         <!-- Header -->
-        <header id="header">
-          <a href="index.html" class="logo">K-Medi Spring</a>
+       <header id="header">
+  <a href="index.html" class="logo">
+    <span class="brand-main">K-Medi</span>
+    <span class="brand-sub">Spring</span>
+  </a>
 
           <!-- SNS icons -->
           <ul class="icons">
@@ -570,3 +597,4 @@
 
 </body>
 </html>
+
