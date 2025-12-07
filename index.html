@@ -80,6 +80,8 @@
     }
     hr, .inner .divider { border-color: var(--line) !important; }
 
+
+    
     /* 본문 타이포 (반응형) */
     #main p,
     #main li {
@@ -145,6 +147,47 @@
       display: block;
       margin: 0 auto;
     }
+/* =========================
+   Sidebar 로고 + Menu 타이틀
+   ========================= */
+
+/* 로고 영역 여백 & 크기 */
+#sidebar-brand {
+  padding: 1.5rem 1.5rem 0.75rem 1.5rem;
+}
+#sidebar-brand .logo img {
+  display: block;
+  max-width: 140px;   /* 필요하면 크기 조정 가능 */
+  height: auto;
+}
+
+/* MENU 타이틀 줄 시작 위치 & 글자 스타일 */
+#menu > header.major {
+  padding: 0 1.5rem;
+  margin: 0 0 1rem 0;
+}
+#menu > header.major h2 {
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: #222;
+}
+
+/* MENU 밑줄 – 한강애봄 블루 */
+#menu > header.major:after {
+  content: "";
+  display: block;
+  width: 3rem;
+  height: 2px;
+  background: var(--brand);
+  margin-top: 0.4rem;
+}
+
+/* 메뉴 리스트 좌우 정렬 */
+#menu .links {
+  padding: 0 1.5rem 1.5rem;
+}
+
+    
   </style>
 </head>
 
@@ -159,12 +202,8 @@
 
         <!-- Header -->
         <header id="header">
-          <a href="index.html" class="logo">
-            <img src="images/logo_ch.png" alt="汉江春天 로고" class="logo-img">
-          </a>
-
-          <!-- 모바일 메뉴 토글 -->
-          <a href="#menu" class="toggle"><span>Menu</span></a>
+        <a href="index.html" class="logo">K-Medi Spring</a>
+        </header>
 
           <!-- SNS icons -->
           <ul class="icons">
@@ -184,8 +223,7 @@
               </a>
             </li>
           </ul>
-        </header>
-
+       
         <!-- Banner -->
         <section id="banner" class="alt" aria-labelledby="siteTitle">
           <div class="content">
@@ -327,22 +365,34 @@
     <div id="sidebar">
       <div class="inner">
 
-        <!-- Menu -->
-        <nav id="menu">
-          <ul class="links">
-            <li><a href="index.html">首页</a></li>
-            <li><a href="wellness.html">大健康</a></li>
-            <li><a href="stemcell.html">干细胞</a></li>
-            <li><a href="derm.html">皮肤医美</a></li>
-            <li><a href="surgery.html">整形医美</a></li>
-            <li><a href="woman.html">女性护理中心</a></li>
-            <li><a href="man.html">男性健康中心</a></li>
-            <li><a href="transfer.html">接送服务</a></li>
-            <li><a href="tour.html">市区观光</a></li>
-            <li><a href="lifestyle.html">生活服务</a></li>
-            <li><a href="kplan.html" data-i18n="navKplan">定制医疗观光方案</a></li>
-          </ul>
-        </nav>
+<!-- Sidebar Brand + Menu -->
+<section id="sidebar-brand">
+  <a href="index.html" class="logo">
+    <img src="images/logo_ch.png" alt="汉江春天 로고">
+  </a>
+</section>
+
+<nav id="menu">
+  <header class="major">
+    <h2>Menu</h2>
+  </header>
+
+  <ul class="links">
+    <li><a href="index.html">首页</a></li>
+    <li><a href="wellness.html">大健康</a></li>
+    <li><a href="stemcell.html">干细胞</a></li>
+    <li><a href="derm.html">皮肤医美</a></li>
+    <li><a href="surgery.html">整形医美</a></li>
+    <li><a href="woman.html">女性护理中心</a></li>
+    <li><a href="man.html">男性健康中心</a></li>
+    <li><a href="transfer.html">接送服务</a></li>
+    <li><a href="tour.html">市区观光</a></li>
+    <li><a href="lifestyle.html">生活服务</a></li>
+    <li><a href="kplan.html" data-i18n="navKplan">定制医疗观光方案</a></li>
+  </ul>
+</nav>
+
+
 
         <!-- About / Partners -->
         <section>
@@ -524,3 +574,4 @@
 
 </body>
 </html>
+
