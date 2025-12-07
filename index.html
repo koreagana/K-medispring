@@ -157,46 +157,37 @@
 }
 #sidebar-brand .logo img {
   display: block;
-  max-width: 140px;   /* 필요하면 크기 조정 가능 */
+  max-width: 140px;
   height: auto;
 }
 
-/* MENU 타이틀 줄 시작 위치 & 글자 스타일 */
+/* 기본 MENU 타이틀(h2) 제거 — 우리가 새로 만드는 MENU만 사용 */
 #menu > header.major {
-  padding: 0 1.5rem;
-  margin: 0 0 1rem 0;
+  padding: 0;
+  margin: 0;
 }
-#menu > header.major h2 {
-  font-size: 1.1rem;
-  font-weight: 700;
-  color: #222;
-}
-
-/* MENU 밑줄 – 한강애봄 블루 */
 #menu > header.major:after {
-  content: "";
-  display: block;
-  width: 3rem;
-  height: 2px;
-  background: var(--brand);
-  margin-top: 0.4rem;
+  display: none !important;
 }
 
-/* 메뉴 리스트 좌우 정렬 */
+/* 메뉴 리스트 좌우 여백 */
 #menu .links {
   padding: 0 1.5rem 1.5rem;
 }
 
-    /* MENU 첫 줄을 타이틀처럼 만들기 */
+/* =========================
+   MENU 첫 줄(타이틀 역할)
+   ========================= */
 #menu .menu-title a {
   font-size: 1.1rem;
   font-weight: 700;
   color: #222 !important;
   position: relative;
   padding-bottom: 0.3rem;
+  display: inline-block;
 }
 
-/* 파란 밑줄 */
+/* MENU 아래 파란 밑줄 */
 #menu .menu-title a::after {
   content: "";
   position: absolute;
@@ -206,6 +197,15 @@
   height: 2px;
   background: var(--brand);
 }
+
+/* 로고 아래쪽 기본 보더 제거 */
+#sidebar-brand,
+#menu {
+  border-top: none !important;
+}
+
+
+</style>
 
     
   </style>
@@ -594,6 +594,7 @@
 
 </body>
 </html>
+
 
 
 
