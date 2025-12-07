@@ -2677,7 +2677,7 @@ a:hover { color: var(--hover); }
 /* 중국어 페이지 전용(메인 본문만) */
 html[lang="zh-CN"] #main .inner p,
 html[lang="zh-CN"] #banner .content p {
-  font-size: 34px;
+  font-size: 28px;
   line-height: 2.05;
 }
 
@@ -3272,55 +3272,6 @@ legend { font-weight: 600; margin-bottom: .75rem; }
   cursor: pointer;
 }
 
-/* 햄버거 아이콘 자체 */
-.toggle:before {
-  font-family: 'Font Awesome 5 Free';
-  font-weight: 900;
-  content: '\f0c9';            /* ≒ ☰ */
-  position: absolute;
-  inset: 0;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  text-indent: 0;
-  font-size: 1.7rem;
-  color: #4E97D1;
-}
-
-/* hover 시 살짝 밝게 */
-.toggle:hover:before {
-  color: #6FB5E9;
-}
-
-/* 데스크톱(넓은 화면)에서는 토글 안 보이게 */
-@media screen and (min-width: 981px) {
-  .toggle { display: none; }
-}
-
-/* ==========================
-   ② 데스크톱용 Sidebar 레이아웃
-   ========================== */
-@media screen and (min-width: 981px) {
-  /* Sidebar 를 페이지 스크롤에 붙는 느낌으로 */
-  #sidebar {
-    position: sticky;
-    top: 2rem;
-    border-radius: 8px;
-  }
-  #sidebar > .inner {
-    padding: 1.25rem 1rem;
-  }
-
-  /* 메뉴는 일반 블록으로 (오프캔버스 아님) */
-  #menu {
-    position: static;
-    width: auto;
-    height: auto;
-    background: transparent;
-    box-shadow: none;
-    padding: 0;
-  }
-}
 
 /* ==========================
    ③ 모바일/태블릿(≤980px) : 오프캔버스
@@ -3398,6 +3349,7 @@ legend { font-weight: 600; margin-bottom: .75rem; }
   font-weight: 600;                /* 좀 더 로고 느낌 나게 */
   line-height: 1.2;
 }
+
 
 
 
