@@ -3297,7 +3297,24 @@ legend { font-weight: 600; margin-bottom: .75rem; }
   }
 }
 
+/* ==========================
+   features(아이콘 + 설명 칸) 전용 p 스타일 재정의
+   ========================== */
 
+.features article p {
+  color: #6f7a82 !important;     /* 회색으로 통일 */
+  font-size: 18px !important;    /* 본문보다 살짝 작게 */
+  line-height: 1.7 !important;
+  font-weight: 400;
+}
+
+
+@media (max-width: 736px) {
+  .features article p {
+    font-size: 15px !important;
+    line-height: 1.6 !important;
+  }
+}
 
 
 
