@@ -2656,20 +2656,45 @@ a:hover { color: var(--hover); }
 
 
 /* === 본문 글자 크기 일괄 조정 === */
+/* === 본문 글자 + 폰트 재정의 (2025-12-07 by 로니) === */
+
+/* ▶ 본문 p, .inner p, 배너 안 p 전부 여기가 최종 답 */
 body p,
 .inner p,
 #banner .content p {
-  font-size: 32px;          /* 기본 16px보다 약간 큼 */
-  line-height: 1.9;
-  color: #222;              /* 진한 회색 */
+  font-family: "Roboto Slab",        /* 위에 있는 “韩国医疗·康养·身心疗愈”랑 맞추기 */
+               "SourceHanSerifCN",
+               "Pretendard",
+               "Noto Sans CJK SC",
+               "PingFang SC",
+               "Microsoft YaHei",
+               serif;
+  font-size: 32px;       /* ✅ 기존 18px → 32px (대략 두 배 느낌) */
+  line-height: 2;        /* 줄 간격 넉넉하게 */
+  color: #222;
   letter-spacing: 0.01em;
 }
 
-/* 중국어(zh-CN) 페이지 전용 보정 */
-html[lang="zh-CN"] p {
-  font-size: 24px;
-  line-height: 1.9;
+/* 🇨🇳 중국어 페이지용: 한자는 조금 더 크게 */
+html[lang="zh-CN"] body p,
+html[lang="zh-CN"] .inner p,
+html[lang="zh-CN"] #banner .content p {
+  font-size: 34px;       /* 32px보다 살짝 업 */
+  line-height: 2.05;
 }
+
+/* 배너 안의 서브 타이틀(“韩国医疗·康养·身心疗愈”)과 본문을 같은 폰트로 강제 */
+#banner .content h2,
+#banner .content h3 {
+  font-family: "Roboto Slab",
+               "SourceHanSerifCN",
+               "Pretendard",
+               "Noto Sans CJK SC",
+               "PingFang SC",
+               "Microsoft YaHei",
+               serif;   /* ▶ 위·아래 글씨체統一 */
+}
+
 
 /* === K-Plan 페이지 전용 폰트 확대 (본문 중심 페이지) === */
 body#kplan-page p,
@@ -3413,6 +3438,7 @@ legend { font-weight: 600; margin-bottom: .75rem; }
     display: flex;
   }
 }
+
 
 
 
