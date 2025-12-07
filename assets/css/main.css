@@ -2391,26 +2391,6 @@ html[lang="ko"] .button {
 }
 
 	
-/* =======================================
-   대표 사진 – 사각, 50% 크기, 워터마크 컷
-   ======================================= */
-#sidebar .mini-posts .image.profile{
-  width: 50%;              /* ← 사이드바 폭의 50% (이전 70% → 더 작게) */
-  margin: 0 auto;          /* 가운데 정렬 */
-  overflow: hidden;        /* 안쪽 이미지 잘라내기 */
-  border-radius: 0;        /* ← 모서리 둥글기 해제 (사각) */
-  aspect-ratio: 3 / 4;     /* 인물사진 비율 유지 */
-}
-
-#sidebar .mini-posts .image.profile img{
-  width: 100%;
-  height: 100%;
-  object-fit: cover;       /* 꽉 채우되 비율 유지 */
-  object-position: 48% 40%;/* 아래쪽 워터마크가 잘리도록 위로 살짝 당김 */
-  transform: scale(1.10);  /* 살짝 확대해 워터마크 영역 컷 */
-}
-
-	
 	/* Language switch (Header)2025/10/11 */
 .lang-switch{
   display:flex; align-items:center; gap:.5rem; margin-left:1rem;
@@ -2932,10 +2912,6 @@ legend { font-weight: 600; margin-bottom: .75rem; }
   --sidebar-bg: #f5f5f5; /* 카테고리와 검색창 배경 통일 */
 }
 
-/* 사이드바 전체 */
-#sidebar {
-  background: var(--sidebar-bg);
-}
 
 /* 메뉴 영역 */
 #menu {
@@ -3086,6 +3062,277 @@ legend { font-weight: 600; margin-bottom: .75rem; }
     border-radius: 10px;
     box-shadow: 0 1px 6px rgba(0,0,0,.06);
     padding: 1.5rem;
+  }
+}
+
+/* ==========================
+   Sidebar + Toggle FINAL (by Ronnie 2025-12-07)
+   - 데스크톱: 왼쪽 고정 사이드바
+   - 모바일: 오른쪽에서 슬라이드 인
+   - 토글 버튼: 화면 오른쪽 위에 고정
+   ========================== */
+
+/* 🔹 공통 Sidebar 기본 스타일 (주로 데스크톱) */
+#sidebar {
+  /* sidebar 자체 박스 */
+  flex-grow: 0;          /* 본문보다 커지지 않게 */
+  flex-shrink: 0;        /* 줄어들지 않게 */
+  background-color: #f5f5f5;
+  font-size: 0.9em;
+  position: relative;
+  width: 26em;
+  z-index: 1;            /* 메인(#main) 보다 한 단계 아래 */
+}
+
+/* 🔹 Sidebar 안쪽 여백/구조 */
+#sidebar > .inner {
+  padding: 2.22222em 2.22222em 2.44444em 2.22222em;
+  position: relative;
+  width: 26em;
+}
+
+/* 🔹 Sidebar 섹션들 사이 구분선 */
+#sidebar > .inner > * {
+  border-bottom: solid 2px rgba(210, 215, 217, 0.75);
+  margin: 0 0 3.5em 0;
+  padding: 0 0 3.5em 0;
+}
+#sidebar > .inner > * > :last-child { margin-bottom: 0; }
+#sidebar > .inner > *:last-child {
+  border-bottom: 0;
+  margin-bottom: 0;
+  padding-bottom: 0;
+}
+
+/* 🔹 회색 밴드 섹션 (검색/공지 같은 박스) */
+#sidebar > .inner > .alt {
+  background-color: #eff1f2;
+  border-bottom: 0;
+  margin: -2.22222em 0 4.44444em -2.22222em;
+  padding: 2.22222em;
+  width: calc(100% + 4.44444em);
+}
+
+/* 🔹 헤딩 크기 살짝 조정 */
+#sidebar h2 { font-size: 1.38889em; }
+
+/* ==========================
+   Sidebar 검색창 (Search)
+   ========================== */
+
+/* 검색 섹션 전체 박스 */
+#sidebar #search {
+  margin-bottom: 1.5rem;
+}
+
+/* 회색 배경 박스 */
+#sidebar #search.alt {
+  background: var(--sidebar-bg, #f5f5f5);
+  border-radius: 8px;
+  padding: 1rem;
+}
+
+/* 검색 인풋 */
+#sidebar #search input[type="search"] {
+  width: 100%;
+  max-width: 100%;
+  background: #fff;
+  border-radius: 6px;
+  border: 1px solid rgba(0,0,0,0.1);
+  padding: 0.5rem 0.75rem;
+  box-shadow: none;
+  font-size: 0.95rem;
+  color: #333;
+  box-sizing: border-box;
+  transition: border-color 0.2s ease;
+}
+
+/* 포커스 시 파란 테두리 */
+#sidebar #search input[type="search"]:focus {
+  outline: none;
+  border-color: #0077B6;
+}
+
+/* 돋보기 아이콘 (폼 ::before) */
+#sidebar #search form {
+  position: relative;
+}
+#sidebar #search form:before {
+  /* Font Awesome 돋보기 아이콘 */
+  font-family: 'Font Awesome 5 Free';
+  font-weight: 900;
+  content: '\f002';
+  position: absolute;
+  right: 0.75rem;
+  top: 50%;
+  transform: translateY(-50%) scaleX(-1); /* 왼→오 대칭 */
+  color: #7f888f;
+  opacity: .4;
+  pointer-events: none;
+}
+
+/* ==========================
+   Menu (사이드바 메뉴 리스트)
+   ========================== */
+
+/* 메뉴 전체 UL */
+#menu ul {
+  user-select: none;
+  color: #3d4449;
+  font-family: "Roboto Slab", serif;
+  font-weight: 400;
+  letter-spacing: 0.075em;
+  list-style: none;
+  margin-bottom: 0;
+  padding: 0;
+  text-transform: uppercase;
+}
+
+/* 메뉴 링크 1줄씩 */
+#menu ul a,
+#menu ul span {
+  border-bottom: 0;
+  color: inherit;
+  cursor: pointer;
+  display: block;
+  font-size: 1.6em;   /* 네가 키워달라 했던 부분 유지 */
+  font-family: 'Source Han Serif CN', 'Noto Serif KR', serif;
+  font-weight: 500;
+  padding: 0.7em 0;
+}
+
+/* hover 색상 */
+#menu ul a:hover,
+#menu ul span:hover {
+  color: #4E97D1;
+}
+
+/* 1차 메뉴 li : 밑줄형 구분선 */
+#menu > ul > li {
+  border-top: 1px solid rgba(210, 215, 217, 0.75);
+  margin: 0.5em 0 0 0;
+  padding: 0.5em 0 0 0;
+}
+#menu > ul > li:first-child {
+  border-top: 0;
+  margin-top: 0;
+  padding-top: 0;
+}
+
+/* 현재 활성 링크 */
+#menu > ul li.active > a,
+#menu > ul a[aria-current="page"] {
+  color: #0b66c3;
+  font-weight: 600;
+}
+
+/* ==========================
+   ① 햄버거 토글 (모바일 공통)
+   ========================== */
+
+/* 💡 .toggle 앵커 하나를 “화면 오른쪽 위”에 고정
+   - main.js 에서 body.is-menu-visible 토글하는 바로 그 요소 */
+.toggle {
+  position: fixed;             /* 화면 기준 고정 */
+  top: 1rem;
+  right: 1rem;
+  width: 2.75rem;
+  height: 2.75rem;
+  z-index: 20000;
+  border: 0;
+  padding: 0;
+  margin: 0;
+  background: transparent;
+  text-indent: -9999px;        /* 텍스트는 화면 밖으로 */
+  cursor: pointer;
+}
+
+/* 햄버거 아이콘 자체 */
+.toggle:before {
+  font-family: 'Font Awesome 5 Free';
+  font-weight: 900;
+  content: '\f0c9';            /* ≒ ☰ */
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-indent: 0;
+  font-size: 1.7rem;
+  color: #4E97D1;
+}
+
+/* hover 시 살짝 밝게 */
+.toggle:hover:before {
+  color: #6FB5E9;
+}
+
+/* 데스크톱(넓은 화면)에서는 토글 안 보이게 */
+@media screen and (min-width: 981px) {
+  .toggle { display: none; }
+}
+
+/* ==========================
+   ② 데스크톱용 Sidebar 레이아웃
+   ========================== */
+@media screen and (min-width: 981px) {
+  /* Sidebar 를 페이지 스크롤에 붙는 느낌으로 */
+  #sidebar {
+    position: sticky;
+    top: 2rem;
+    border-radius: 8px;
+  }
+  #sidebar > .inner {
+    padding: 1.25rem 1rem;
+  }
+
+  /* 메뉴는 일반 블록으로 (오프캔버스 아님) */
+  #menu {
+    position: static;
+    width: auto;
+    height: auto;
+    background: transparent;
+    box-shadow: none;
+    padding: 0;
+  }
+}
+
+/* ==========================
+   ③ 모바일/태블릿(≤980px) : 오프캔버스
+   ========================== */
+@media screen and (max-width: 980px) {
+  /* Sidebar 패널: 기본은 화면 밖으로 숨김 */
+  #sidebar {
+    position: fixed;
+    top: 0;
+    right: -320px;                 /* 👉 오른쪽 바깥 */
+    width: 320px;
+    height: 100vh;
+    background: #fff;
+    box-shadow: -3px 0 12px rgba(0,0,0,.12);
+    z-index: 10000;
+    transition: right 0.3s ease;   /* 슬라이드 애니메이션 */
+  }
+
+  /* 안쪽 스크롤 가능 */
+  #sidebar > .inner {
+    height: 100%;
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
+    padding: 1.25rem 1rem;
+    background: #f5f5f5;
+  }
+
+  /* body 에 is-menu-visible 붙으면 화면 안으로 등장 */
+  body.is-menu-visible #sidebar {
+    right: 0;
+  }
+
+  /* 본문은 살짝 좁게 */
+  #main > .inner {
+    max-width: 94%;
+    margin: 0 auto;
+    padding: 0 1rem 2.25rem;
   }
 }
 
