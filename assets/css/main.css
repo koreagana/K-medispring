@@ -2654,8 +2654,6 @@ a:hover { color: var(--hover); }
 /* 11) 로고가 줄 바뀜으로 내려가지 않게(폭 좁을 때) */
 #header .logo { min-width: 140px; }
 
-
-/* === 본문 글자 크기 일괄 조정 === */
 /* === 본문 글자 + 폰트 재정의 (2025-12-07 by 로니) === */
 
 /* ▶ 본문 p, .inner p, 배너 안 p 전부 여기가 최종 답 */
@@ -2670,7 +2668,7 @@ a:hover { color: var(--hover); }
                "PingFang SC",
                "Microsoft YaHei",
                serif;
-  font-size: 32px;      /* 본문 크게 */
+  font-size: 28px;      /* 본문 크게 */
   line-height: 2;
   color: #222;
   letter-spacing: 0.01em;
@@ -2682,6 +2680,7 @@ html[lang="zh-CN"] #banner .content p {
   font-size: 34px;
   line-height: 2.05;
 }
+
 
 
 /* 배너 안의 서브 타이틀(“韩国医疗·康养·身心疗愈”)과 본문을 같은 폰트로 강제 */
@@ -3362,53 +3361,7 @@ legend { font-weight: 600; margin-bottom: .75rem; }
   }
 }
 
-/* ============================
-   [KMS FIX] 모바일 햄버거 토글 복원
-   - main.js 기본(#sidebar.inactive) 구조 존중
-   - 데스크톱: 원래 사이드바 그대로, 토글 숨김
-   - 모바일: 오른쪽 오프캔버스 + 상단 우측 햄버거 버튼
-   ============================ */
 
-/* 0. 공통: 토글 버튼 모양 */
-#sidebar .toggle {
-  position: fixed;
-  top: 0.75rem;
-  right: 0.75rem;
-  width: 2.5rem;
-  height: 2.5rem;
-  border-radius: 999px;
-  background: #0077B6;
-  color: #fff;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  z-index: 11000;
-  text-indent: -9999px; /* 텍스트는 숨기고 아이콘만 */
-}
-
-/* 햄버거 아이콘 */
-#sidebar .toggle:before {
-  content: "\f0c9"; /* Font Awesome 햄버거 */
-  font-family: "Font Awesome 5 Free";
-  font-weight: 900;
-  text-indent: 0;
-}
-
-/* 1. 데스크톱(원래 에디토리얼 레이아웃 유지) */
-@media screen and (min-width: 981px) {
-  #sidebar {
-    position: relative;
-    right: auto;
-    width: 26em;
-    height: auto;
-    box-shadow: none;
-    transform: none;
-  }
-
-  #sidebar .toggle {
-    display: none; /* 데스크톱에서는 햄버거 숨김 */
-  }
-}
 
 /* 2. 모바일/태블릿: 오른쪽 오프캔버스 + 슬라이드 */
 @media screen and (max-width: 980px) {
@@ -3439,6 +3392,7 @@ legend { font-weight: 600; margin-bottom: .75rem; }
     display: flex;
   }
 }
+
 
 
 
