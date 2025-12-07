@@ -3401,6 +3401,13 @@ legend { font-weight: 600; margin-bottom: .75rem; }
   box-sizing: border-box;
 }
 
+/* === 로고 텍스트(汉江春天) 크게 (2025-12-07) === */
+#header h1 a {
+  font-size: 32px !important;     /* ← 본문과 맞춘 32px */
+  font-weight: 600;                /* 좀 더 로고 느낌 나게 */
+  line-height: 1.2;
+}
+
 
 
 
