@@ -78,7 +78,6 @@
     <img src="images/logo_ch.png" alt="汉江春天 로고" class="logo-img">
   </a>
 
-          <!-- Hamburger / Menu toggle (필수) -->
 
           <!-- SNS icons -->
           <ul class="icons">
@@ -258,16 +257,9 @@
   </div>
 </section>
 
-      </div> <!-- .inner -->
-    </div> <!-- #main -->
-
-    <!-- Sidebar -->
-    <div id="sidebar">
-      <div class="inner">
 
 <!-- 메뉴 -->
 <nav id="menu">
-  <!-- <header class="major"><h2>探索</h2></header> -->
   <ul class="links">
     <li><a href="index.html">首页</a></li>
     <li><a href="wellness.html">大健康</a></li>
@@ -351,109 +343,110 @@
   </div>
 </div>
 
-  <!-- 모달 + 비디오 초기화 스크립트 -->
-  <script>
-  document.addEventListener('DOMContentLoaded', function () {
-    /* ====================
-       1) 비디오 세팅
-       ==================== */
-    const v = document.getElementById('introVideo');
-    if (v) {
-      try { v.playbackRate = 0.33; } catch(e) {}
-      v.muted = true;
-      v.volume = 0;
+ <!-- ============================
+     모달 + 비디오 세팅 전체 스크립트
+     ============================ -->
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+
+  /* ====================
+     1) 인트로 비디오 세팅
+     ==================== */
+  const v = document.getElementById('introVideo');
+  if (v) {
+    try { v.playbackRate = 0.33; } catch(e) {}
+    v.muted = true;
+    v.volume = 0;
+  }
+
+
+  /* ====================
+     2) WeChat QR 모달
+     ==================== */
+  const wechatModal  = document.getElementById('wechatModal');
+  const wechatIcon   = document.getElementById('wechat-icon');
+  const wechatQR     = document.getElementById('wechatQR'); 
+  const wechatClose  = wechatModal ? wechatModal.querySelector('.close') : null;
+
+  function openWeChat(e){
+    if (e) e.preventDefault();
+    if (wechatQR) {
+      wechatQR.src = wechatQR.src.split('?')[0] + '?v=' + Date.now();
     }
-
-    /* ====================
-       2) WeChat QR 모달
-       ==================== */
-    const wechatModal  = document.getElementById('wechatModal');
-    const wechatIcon   = document.getElementById('wechat-icon');
-    const wechatClose  = wechatModal ? wechatModal.querySelector('.close') : null;
-
-    if (wechatModal && wechatIcon) {
-      // 열기
-      wechatIcon.addEventListener('click', function (e) {
-        e.preventDefault();
-        wechatModal.style.display = 'flex';
-        document.body.classList.add('modal-open');
-      });
-
-      // 닫기 버튼(있다면)
-      if (wechatClose) {
-        wechatClose.addEventListener('click', function () {
-          wechatModal.style.display = 'none';
-          document.body.classList.remove('modal-open');
-        });
-      }
-
-      // 바깥 클릭 닫기
-      wechatModal.addEventListener('click', function (e) {
-        if (e.target === wechatModal) {
-          wechatModal.style.display = 'none';
-          document.body.classList.remove('modal-open');
-        }
-      });
+    if (wechatModal){
+      wechatModal.style.display = 'flex';
+      wechatModal.setAttribute('aria-hidden', 'false');
     }
+    document.body.classList.add('modal-open');
+  }
 
-    /* ============================
-       3) WhatsApp QR 모달
-       ============================ */
-    const whatsappIcon  = document.getElementById('whatsapp-icon');
-    const whatsappModal = document.getElementById('whatsappModal');
-    const whatsappClose = whatsappModal ? whatsappModal.querySelector('.close') : null;
-
-    if (whatsappIcon && whatsappModal) {
-      // 열기
-      whatsappIcon.addEventListener('click', function (e) {
-        e.preventDefault();
-        whatsappModal.style.display = 'flex';
-        document.body.classList.add('modal-open');
-      });
-
-      // 닫기 버튼
-      if (whatsappClose) {
-        whatsappClose.addEventListener('click', function () {
-          whatsappModal.style.display = 'none';
-          document.body.classList.remove('modal-open');
-        });
-      }
-
-      // 바깥 클릭 닫기
-      whatsappModal.addEventListener('click', function (e) {
-        if (e.target === whatsappModal) {
-          whatsappModal.style.display = 'none';
-          document.body.classList.remove('modal-open');
-        }
-      });
+  function closeWeChat(){
+    if (wechatModal){
+      wechatModal.style.display = 'none';
+      wechatModal.setAttribute('aria-hidden', 'true');
     }
+    document.body.classList.remove('modal-open');
+  }
 
-  });
-  </script>
-
-    function openModal(e){
-      if(e) e.preventDefault();
-      // QR 캐시 무효화 (버전)
-      if (qrImg) qrImg.src = (qrImg.getAttribute('data-src') || qrImg.src.split('?')[0]) + '?v=' + Date.now();
-      document.body.classList.add('modal-open');
-      if (modal) { modal.style.display = 'block'; modal.setAttribute('aria-hidden','false'); }
-    }
-    function closeModal(){
-      if (modal) { modal.style.display = 'none'; modal.setAttribute('aria-hidden','true'); }
-      document.body.classList.remove('modal-open');
-    }
-
-    if (trigger) trigger.addEventListener('click', openModal);
-    if (modal) {
-      modal.addEventListener('click', function (e) {
-        if (e.target === modal) closeModal();
-      });
-    }
-    document.addEventListener('keydown', function (e) {
-      if (e.key === 'Escape') closeModal();
+  if (wechatIcon)  wechatIcon.addEventListener('click', openWeChat);
+  if (wechatClose) wechatClose.addEventListener('click', closeWeChat);
+  if (wechatModal){
+    wechatModal.addEventListener('click', function(e){
+      if (e.target === wechatModal) closeWeChat();
     });
+  }
+
+
+  /* ====================
+     3) WhatsApp QR 모달
+     ==================== */
+  const whatsappModal = document.getElementById('whatsappModal');
+  const whatsappIcon  = document.getElementById('whatsapp-icon');
+  const whatsappQR    = document.getElementById('whatsappQR');
+  const whatsappClose = whatsappModal ? whatsappModal.querySelector('.close') : null;
+
+  function openWhatsApp(e){
+    if (e) e.preventDefault();
+    if (whatsappQR){
+      whatsappQR.src = whatsappQR.src.split('?')[0] + '?v=' + Date.now();
+    }
+    if (whatsappModal){
+      whatsappModal.style.display = 'flex';
+      whatsappModal.setAttribute('aria-hidden','false');
+    }
+    document.body.classList.add('modal-open');
+  }
+
+  function closeWhatsApp(){
+    if (whatsappModal){
+      whatsappModal.style.display = 'none';
+      whatsappModal.setAttribute('aria-hidden','true');
+    }
+    document.body.classList.remove('modal-open');
+  }
+
+  if (whatsappIcon)  whatsappIcon.addEventListener('click', openWhatsApp);
+  if (whatsappClose) whatsappClose.addEventListener('click', closeWhatsApp);
+  if (whatsappModal){
+    whatsappModal.addEventListener('click', function(e){
+      if (e.target === whatsappModal) closeWhatsApp();
+    });
+  }
+
+
+  /* ====================
+     4) ESC 키 닫기 (공통)
+     ==================== */
+  document.addEventListener('keydown', function (e) {
+    if (e.key === 'Escape') {
+      closeWeChat();
+      closeWhatsApp();
+    }
   });
-  </script>
+
+});  
+</script>
+
 
   <!-- Scripts: 5총사 (맨 아래에 위치) -->
 <!-- Scripts: 기존 5총사 -->
@@ -519,6 +512,7 @@
   
 </body>
 </html>
+
 
 
 
