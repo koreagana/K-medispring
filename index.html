@@ -187,6 +187,26 @@
   padding: 0 1.5rem 1.5rem;
 }
 
+    /* MENU 첫 줄을 타이틀처럼 만들기 */
+#menu .menu-title a {
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: #222 !important;
+  position: relative;
+  padding-bottom: 0.3rem;
+}
+
+/* 파란 밑줄 */
+#menu .menu-title a::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -2px;
+  width: 2.5rem;
+  height: 2px;
+  background: var(--brand);
+}
+
     
   </style>
 </head>
@@ -574,6 +594,7 @@
 
 </body>
 </html>
+
 
 
 
