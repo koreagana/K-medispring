@@ -3351,6 +3351,55 @@ legend { font-weight: 600; margin-bottom: .75rem; }
 }
 
 
+/* 기본(PC) */
+body, input, select, textarea {
+  color: #333;
+  font-family: "Source Han Serif CN", "Noto Serif KR", serif;
+  font-size: 20pt;   /* PC용 크게 */
+  font-weight: 400;
+  line-height: 1.8;
+}
+
+/* 모바일(폰)에서는 좀 더 작게 */
+@media (max-width: 736px) {
+  body, input, select, textarea {
+    font-size: 14pt;   /* 대충 지금의 2/3 정도 */
+    line-height: 1.7;
+  }
+}
+
+/* =========================
+   K-MediSpring 본문 타이포 재정의
+   ========================= */
+
+/* 본문 영역 기본 색상 (부드러운 회색톤) */
+#main {
+  color: #6f7a82;
+}
+
+/* 본문 텍스트: 문단/리스트 */
+#main p,
+#main li {
+  font-size: 20px;      /* 데스크탑 본문 글씨 크기 */
+  line-height: 1.8;
+  color: #6f7a82;       /* 편안한 그레이 */
+}
+
+/* 제목은 너무 흐려지지 않게 진하게 유지 */
+#main h1,
+#main h2,
+#main h3 {
+  color: #333;
+}
+
+/* 🔻 모바일(가로 736px 이하)에서는 글씨 조금 줄이기 */
+@media (max-width: 736px) {
+  #main p,
+  #main li {
+    font-size: 16px;    /* 폰에서는 자동으로 작게 */
+    line-height: 1.7;
+  }
+}
 
 
 
