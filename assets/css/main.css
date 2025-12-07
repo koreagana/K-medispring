@@ -3397,5 +3397,37 @@ legend { font-weight: 600; margin-bottom: .75rem; }
   outline: none;
 }
 
+/* ===== 모바일: 검색창이 햄버거 메뉴를 가리는 문제 해결 ===== */
+@media (max-width: 980px) {
+  /* 1) 검색창 z-index 낮추기 */
+  #search,
+  #search.alt {
+    position: relative;
+    z-index: 1 !important;
+  }
+
+  /* 2) 토글 버튼 z-index 높이기 */
+  #sidebar .toggle,
+  .toggle {
+    z-index: 10001 !important;
+    position: relative;
+  }
+
+  /* 3) 검색창 우측 여백 확보 (토글 버튼 공간) */
+  #search input[type="search"],
+  #search input[type="text"] {
+    padding-right: 3rem; /* 토글 버튼이 들어갈 공간 */
+  }
+
+  /* 4) 헤더 내부 요소 겹침 방지 */
+  #header {
+    position: relative;
+    z-index: 100;
+  }
+
+  #header .toggle {
+    pointer-events: auto !important;
+  }
+}
 
 
