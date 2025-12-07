@@ -339,73 +339,98 @@
     </div>
   </div>
 
-  <!-- WhatsApp Modal -->
-<div id="whatsappModal" class="modal" aria-hidden="true" role="dialog">
+ <!-- WhatsApp Modal -->
+<div id="whatsappModal" class="modal" aria-hidden="true" role="dialog" style="display:none;">
   <div class="modal-inner">
     <button class="close" aria-label="Close">&times;</button>
     <p class="modal-caption">QR → WhatsApp Connect</p>
-    <img id="whatsappQR" class="modal-content" src="./images/whatsapp qr.jpg" alt="WhatsApp QR for K-Medi Spring">
+    <img id="whatsappQR" class="modal-content"
+         src="images/whatsapp_qr.jpg"
+         alt="WhatsApp QR for K-Medi Spring">
     <p class="modal-id">WhatsApp：+82-10-4903-3123</p>
   </div>
 </div>
 
-  
   <!-- 모달 + 비디오 초기화 스크립트 -->
   <script>
   document.addEventListener('DOMContentLoaded', function () {
-    // 비디오 세팅
-    const v = document.getElementById("introVideo");
+    /* ====================
+       1) 비디오 세팅
+       ==================== */
+    const v = document.getElementById('introVideo');
     if (v) {
       try { v.playbackRate = 0.33; } catch(e) {}
       v.muted = true;
       v.volume = 0;
     }
 
-    // 비디오용 모달
-    var modal = document.getElementById('wechatModal');
-    var trigger = document.getElementById('wechat-icon');
-    var qrImg = document.getElementById('wechatQR');
+    /* ====================
+       2) WeChat QR 모달
+       ==================== */
+    const wechatModal  = document.getElementById('wechatModal');
+    const wechatIcon   = document.getElementById('wechat-icon');
+    const wechatClose  = wechatModal ? wechatModal.querySelector('.close') : null;
 
-    <script>
-document.addEventListener('DOMContentLoaded', function () {
+    if (wechatModal && wechatIcon) {
+      // 열기
+      wechatIcon.addEventListener('click', function (e) {
+        e.preventDefault();
+        wechatModal.style.display = 'flex';
+        document.body.classList.add('modal-open');
+      });
 
-  /* ============================
-     WhatsApp QR 모달 연결
-     ============================ */
+      // 닫기 버튼(있다면)
+      if (wechatClose) {
+        wechatClose.addEventListener('click', function () {
+          wechatModal.style.display = 'none';
+          document.body.classList.remove('modal-open');
+        });
+      }
 
-  const whatsappIcon  = document.getElementById('whatsapp-icon');
-  const whatsappModal = document.getElementById('whatsappModal');
-  const whatsappClose = whatsappModal?.querySelector('.close');
-
-  if (whatsappIcon && whatsappModal) {
-    // 열기
-    whatsappIcon.addEventListener('click', function (e) {
-      e.preventDefault();
-      whatsappModal.style.display = 'flex';
-      document.body.classList.add('modal-open');
-    });
-
-    // 닫기 버튼
-    if (whatsappClose) {
-      whatsappClose.addEventListener('click', function () {
-        whatsappModal.style.display = 'none';
-        document.body.classList.remove('modal-open');
+      // 바깥 클릭 닫기
+      wechatModal.addEventListener('click', function (e) {
+        if (e.target === wechatModal) {
+          wechatModal.style.display = 'none';
+          document.body.classList.remove('modal-open');
+        }
       });
     }
 
-    // 바깥 클릭 닫기
-    whatsappModal.addEventListener('click', function (e) {
-      if (e.target === whatsappModal) {
-        whatsappModal.style.display = 'none';
-        document.body.classList.remove('modal-open');
+    /* ============================
+       3) WhatsApp QR 모달
+       ============================ */
+    const whatsappIcon  = document.getElementById('whatsapp-icon');
+    const whatsappModal = document.getElementById('whatsappModal');
+    const whatsappClose = whatsappModal ? whatsappModal.querySelector('.close') : null;
+
+    if (whatsappIcon && whatsappModal) {
+      // 열기
+      whatsappIcon.addEventListener('click', function (e) {
+        e.preventDefault();
+        whatsappModal.style.display = 'flex';
+        document.body.classList.add('modal-open');
+      });
+
+      // 닫기 버튼
+      if (whatsappClose) {
+        whatsappClose.addEventListener('click', function () {
+          whatsappModal.style.display = 'none';
+          document.body.classList.remove('modal-open');
+        });
       }
-    });
-  }
 
-});
-</script>
+      // 바깥 클릭 닫기
+      whatsappModal.addEventListener('click', function (e) {
+        if (e.target === whatsappModal) {
+          whatsappModal.style.display = 'none';
+          document.body.classList.remove('modal-open');
+        }
+      });
+    }
 
-    
+  });
+  </script>
+
     function openModal(e){
       if(e) e.preventDefault();
       // QR 캐시 무효화 (버전)
@@ -494,6 +519,7 @@ document.addEventListener('DOMContentLoaded', function () {
   
 </body>
 </html>
+
 
 
 
