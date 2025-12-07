@@ -3393,6 +3393,14 @@ legend { font-weight: 600; margin-bottom: .75rem; }
   }
 }
 
+/* === 사이드바 검색창 높이/패딩 재조정 === */
+#query {
+  padding: 0.4rem 0.75rem !important;  /* 위아래 패딩 확 줄이기 */
+  font-size: 14px;                     /* 검색 글씨 크기 */
+  height: auto;                        /* 높이 자동 */
+  box-sizing: border-box;
+}
+
 
 
 
