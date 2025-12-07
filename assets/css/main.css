@@ -3336,5 +3336,83 @@ legend { font-weight: 600; margin-bottom: .75rem; }
   }
 }
 
+/* ============================
+   [KMS FIX] 모바일 햄버거 토글 복원
+   - main.js 기본(#sidebar.inactive) 구조 존중
+   - 데스크톱: 원래 사이드바 그대로, 토글 숨김
+   - 모바일: 오른쪽 오프캔버스 + 상단 우측 햄버거 버튼
+   ============================ */
+
+/* 0. 공통: 토글 버튼 모양 */
+#sidebar .toggle {
+  position: fixed;
+  top: 0.75rem;
+  right: 0.75rem;
+  width: 2.5rem;
+  height: 2.5rem;
+  border-radius: 999px;
+  background: #0077B6;
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 11000;
+  text-indent: -9999px; /* 텍스트는 숨기고 아이콘만 */
+}
+
+/* 햄버거 아이콘 */
+#sidebar .toggle:before {
+  content: "\f0c9"; /* Font Awesome 햄버거 */
+  font-family: "Font Awesome 5 Free";
+  font-weight: 900;
+  text-indent: 0;
+}
+
+/* 1. 데스크톱(원래 에디토리얼 레이아웃 유지) */
+@media screen and (min-width: 981px) {
+  #sidebar {
+    position: relative;
+    right: auto;
+    width: 26em;
+    height: auto;
+    box-shadow: none;
+    transform: none;
+  }
+
+  #sidebar .toggle {
+    display: none; /* 데스크톱에서는 햄버거 숨김 */
+  }
+}
+
+/* 2. 모바일/태블릿: 오른쪽 오프캔버스 + 슬라이드 */
+@media screen and (max-width: 980px) {
+  #sidebar {
+    position: fixed;
+    top: 0;
+    right: 0;
+    width: 320px;
+    height: 100vh;
+    background: #ffffff;
+    box-shadow: -3px 0 12px rgba(0, 0, 0, 0.12);
+    z-index: 10000;
+    transition: transform 0.28s ease;
+    transform: translateX(100%); /* 기본: 화면 밖 */
+  }
+
+  /* main.js 기본 동작: #sidebar.inactive 붙었다/빠졌다 */
+  #sidebar.inactive {
+    transform: translateX(100%); /* 닫힘 상태 */
+  }
+
+  #sidebar:not(.inactive) {
+    transform: translateX(0); /* 열림 상태 */
+  }
+
+  /* 모바일일 때만 토글 보이기 */
+  #sidebar .toggle {
+    display: flex;
+  }
+}
+
 
 
