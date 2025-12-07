@@ -2659,7 +2659,7 @@ a:hover { color: var(--hover); }
 body p,
 .inner p,
 #banner .content p {
-  font-size: 18px;          /* 기본 16px보다 약간 큼 */
+  font-size: 24px;          /* 기본 16px보다 약간 큼 */
   line-height: 1.9;
   color: #222;              /* 진한 회색 */
   letter-spacing: 0.01em;
@@ -2667,7 +2667,7 @@ body p,
 
 /* 중국어(zh-CN) 페이지 전용 보정 */
 html[lang="zh-CN"] p {
-  font-size: 19px;
+  font-size: 24px;
   line-height: 1.9;
 }
 
@@ -3413,6 +3413,7 @@ legend { font-weight: 600; margin-bottom: .75rem; }
     display: flex;
   }
 }
+
 
 
 
