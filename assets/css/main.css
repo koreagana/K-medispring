@@ -2659,29 +2659,30 @@ a:hover { color: var(--hover); }
 /* === 본문 글자 + 폰트 재정의 (2025-12-07 by 로니) === */
 
 /* ▶ 본문 p, .inner p, 배너 안 p 전부 여기가 최종 답 */
-body p,
-.inner p,
+
+/* === 메인 본문 글자 + 폰트 재정의 === */
+#main .inner p,
 #banner .content p {
-  font-family: "Roboto Slab",        /* 위에 있는 “韩国医疗·康养·身心疗愈”랑 맞추기 */
+  font-family: "Roboto Slab",
                "SourceHanSerifCN",
                "Pretendard",
                "Noto Sans CJK SC",
                "PingFang SC",
                "Microsoft YaHei",
                serif;
-  font-size: 32px;       /* ✅ 기존 18px → 32px (대략 두 배 느낌) */
-  line-height: 2;        /* 줄 간격 넉넉하게 */
+  font-size: 32px;      /* 본문 크게 */
+  line-height: 2;
   color: #222;
   letter-spacing: 0.01em;
 }
 
-/* 🇨🇳 중국어 페이지용: 한자는 조금 더 크게 */
-html[lang="zh-CN"] body p,
-html[lang="zh-CN"] .inner p,
+/* 중국어 페이지 전용(메인 본문만) */
+html[lang="zh-CN"] #main .inner p,
 html[lang="zh-CN"] #banner .content p {
-  font-size: 34px;       /* 32px보다 살짝 업 */
+  font-size: 34px;
   line-height: 2.05;
 }
+
 
 /* 배너 안의 서브 타이틀(“韩国医疗·康养·身心疗愈”)과 본문을 같은 폰트로 강제 */
 #banner .content h2,
@@ -3438,6 +3439,7 @@ legend { font-weight: 600; margin-bottom: .75rem; }
     display: flex;
   }
 }
+
 
 
 
