@@ -1372,30 +1372,30 @@ input[type="radio"] + label:before {
     .image.main img {
       width: 100%; }
 
-/* 프로필 이미지 컨테이너 */
-a.image {
+/* =========================
+   프로필 사진 전용 스타일
+   ========================= */
+
+/* 프로필 이미지 래퍼 */
+a.image.profile {
   display: block;
-  width: 50%;              /* ✅ 반 크기 */
-  margin: 0 auto;          /* ✅ 가운데 정렬 */
+  width: 50%;          /* 반 크기 */
+  margin: 0 auto;      /* 가운데 정렬 */
   overflow: hidden;
 }
 
-/* 이미지 자체 */
-a.image img {
+/* 이미지 */
+a.image.profile img {
   display: block;
   width: 100%;
   height: auto;
-
-  /* 기존 트랜지션 유지 */
   transition: transform 0.2s ease;
 }
 
-/* 호버 효과 */
-a.image:hover img {
+/* 호버 효과 유지 */
+a.image.profile:hover img {
   transform: scale(1.075);
 }
-
-
 
 /* List */
 ol {
@@ -3327,6 +3327,7 @@ legend { font-weight: 600; margin-bottom: .75rem; }
     line-height: 1.6 !important;
   }
 }
+
 
 
 
