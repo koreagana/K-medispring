@@ -2830,23 +2830,6 @@ body.is-menu-visible #menu{ right: 0; }
   padding: 0 !important;
 }
 
-/* ✅ (핵심) ul/li에 붙는 구분선(회색 줄) 제거 */
-#menu ul{
-  list-style: none;
-  margin: 0;
-  padding: 0;
-  border: 0 !important;
-}
-#menu ul.links{
-  border: 0 !important;
-}
-#menu ul.links li{
-  border-top: 0 !important;     /* 회색 구분선 제거 */
-  padding: 0 !important;
-}
-#menu ul.links li a{
-  padding: .85rem 0;            /* 항목 간격은 깔끔하게 유지 */
-}
 
 /* ===== Step 3 (需要 / 不需要) ===== */
 .svc-group{
@@ -3297,6 +3280,7 @@ legend{ font-weight: 600; margin-bottom: .75rem; }
 #sidebar > .inner > *:last-child {
   border-bottom: none;
 }
+
 
 
 
