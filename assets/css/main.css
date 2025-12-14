@@ -118,7 +118,7 @@ body {
 body, input, select, textarea {
   color: #333;
   font-family: "Source Han Serif CN", "Noto Serif KR", serif;
-  font-size: 20pt;   /* 나중에 16pt로 변경 가능 */
+  font-size: 14pt;   /* 나중에 16pt로 변경 가능 */
   font-weight: 400;
   line-height: 1.8;  /* 줄 간격 여유롭게 */
 }
@@ -1565,7 +1565,6 @@ input[type="reset"],
 input[type="button"],
 button,
 .button {
-  ...
 }
 
 input[type="submit"],
@@ -2028,17 +2027,6 @@ html[lang="ko"] .button {
   #search form input[type="text"] {
     padding-right: 2.75em; }
 
-
-	
- /* 🔹 브랜드 블루 추가 */
-  height: inherit;
-  left: 0;
-  line-height: inherit;
-  position: absolute;
-  text-indent: 0;
-  top: 0;
-  width: inherit;
-}
 
 /* --- Fix SNS icons drifting below the blue line (Editorial) --- */
 #header {
@@ -3028,12 +3016,6 @@ legend{ font-weight: 600; margin-bottom: .75rem; }
   }
 }
 
-/* ==========================
-   Sidebar + Toggle FINAL (by Ronnie 2025-12-07)
-   - 데스크톱: 왼쪽 고정 사이드바
-   - 모바일: 오른쪽에서 슬라이드 인
-   - 토글 버튼: 화면 오른쪽 위에 고정
-   ========================== */
 
 /* 🔹 공통 Sidebar 기본 스타일 (주로 데스크톱) */
 #sidebar {
@@ -3298,5 +3280,95 @@ h1, h2, h3, h4, h5, h6{
 .button, a.button, .actions .button{
   font-family: var(--heading-latin), var(--cjk-serif);
 }
+/* =========================
+   FINAL — Typography + Menu (single source of truth)
+   ========================= */
+
+:root{
+  --body-latin: "Roboto", -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif;
+  --heading-latin: "Merriweather", Georgia, "Times New Roman", serif;
+
+  --cjk-sans: "PingFang SC","Microsoft YaHei","Noto Sans CJK SC",
+              "Apple SD Gothic Neo","Noto Sans KR","Malgun Gothic",sans-serif;
+
+  --cjk-serif: "Source Han Serif CN","Noto Serif CJK SC","AppleMyungjo","Batang",serif;
+
+  --brand: #4E97D1;
+}
+
+/* body 기본 */
+body, input, select, textarea{
+  font-family: var(--body-latin), var(--cjk-sans);
+  font-size: 11pt;          /* Editorial 기본 흐름 */
+  line-height: 1.65;
+  color: #333;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* 헤딩 */
+h1,h2,h3,h4,h5,h6{
+  font-family: var(--heading-latin), var(--cjk-serif);
+  font-weight: 700;
+  line-height: 1.35;
+  color: #3d4449;
+}
+
+/* 링크 */
+a{ color: var(--brand); text-decoration:none; }
+a:hover{ color: var(--brand); }
+
+/* 헤더 밑줄 유지 */
+#header{ border-bottom: 5px solid var(--brand) !important; }
+
+/* =========================
+   MENU (모바일 오프캔버스 + 데스크톱 고정)
+   ========================= */
+
+/* 모바일 기본: 숨김 -> body.is-menu-visible 로 열림 */
+#menu{
+  position: fixed;
+  top: 0;
+  right: -320px;
+  width: 320px;
+  height: 100vh;
+  background: #fff;
+  box-shadow: -3px 0 12px rgba(0,0,0,.12);
+  transition: right .28s ease;
+  z-index: 10000;
+  padding: 2rem 1.5rem;
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+}
+body.is-menu-visible #menu{ right: 0; }
+
+/* 메뉴 링크 가독성 */
+#menu ul{ list-style:none; padding:0; margin:0; }
+#menu ul a, #menu ul span{
+  border-bottom:0;
+  display:block;
+  padding:.7em 0;
+  font-family: var(--body-latin), var(--cjk-sans);
+  font-size: 1.15em;
+  letter-spacing: .04em;
+  color:#222;
+}
+#menu ul a:hover, #menu ul span:hover{ color: var(--brand); }
+
+/* 데스크톱: 사이드바로 복귀 */
+@media (min-width: 981px){
+  #menu{
+    position: static !important;
+    right: auto !important;
+    width: auto !important;
+    height: auto !important;
+    box-shadow: none !important;
+    padding: 0 !important;
+    overflow: visible !important;
+    background: transparent !important;
+  }
+  body.is-menu-visible #menu{ right:auto !important; }
+}
+
 
 
