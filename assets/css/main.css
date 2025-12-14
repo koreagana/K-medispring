@@ -2530,21 +2530,6 @@ html[lang="ko"] .button {
 /* (4) 팝업 열릴 때 배경 스크롤 잠금 */
 body.modal-open{ overflow:hidden; }
 
-
-/* ===== 삼선 색상 (유지) ===== */
-/* 여기에 삼선 관련 색상 정의가 있다면 그대로 두고, 밑줄 부분만 정리 */
-
-#menu header.major h2 {
-  display: none !important; /* 제목 자체도 완전히 숨김 */
-}
-
-/* 탐색 제목(探索) 밑줄 제거 */
-#menu header.major h2::after {
-  content: none !important;
-  display: none !important;
-}
-
-
 .hero-media{
   position: relative;
   width: 100%;
@@ -2828,7 +2813,7 @@ html[lang="zh-CN"] .inner li {
 }
 
 /* ===== Ronnie fix: ensure mobile menu visible ===== */
-#menu {
+#menu{
   position: fixed;
   top: 0;
   right: -320px;
@@ -2841,27 +2826,59 @@ html[lang="zh-CN"] .inner li {
   overflow-y: auto;
   -webkit-overflow-scrolling: touch;
   padding: 2rem 1.5rem;
+
+  /* 글씨 선명도(깨져보임 완화) */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
 }
 
-body.is-menu-visible #menu {
-  right: 0;
-}
+body.is-menu-visible #menu{ right: 0; }
 
-#menu a {
+/* 링크 기본 */
+#menu a{
   color: #111 !important;
   text-decoration: none;
   display: block;
-  margin: .5rem 0;
+  margin: 0;              /* ✅ 불필요한 여백 제거 */
+  border-bottom: 0 !important;
+}
+
+/* ✅ (핵심) MENU 제목/파란선/회색선 제거: header.major 계열 숨김 */
+#menu header.major,
+#menu .major{
+  display: none !important;
+  border: 0 !important;
+  margin: 0 !important;
+  padding: 0 !important;
+}
+
+/* ✅ (핵심) ul/li에 붙는 구분선(회색 줄) 제거 */
+#menu ul{
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  border: 0 !important;
+}
+#menu ul.links{
+  border: 0 !important;
+}
+#menu ul.links li{
+  border-top: 0 !important;     /* 회색 구분선 제거 */
+  padding: 0 !important;
+}
+#menu ul.links li a{
+  padding: .85rem 0;            /* 항목 간격은 깔끔하게 유지 */
 }
 
 /* ===== Step 3 (需要 / 不需要) ===== */
-.svc-group {
+.svc-group{
   border: 1px solid #eee;
   background: #fff;
   padding: 1rem;
   border-radius: .5rem;
 }
-.svc-row {
+.svc-row{
   display: flex;
   flex-wrap: wrap;
   align-items: center;
@@ -2869,12 +2886,13 @@ body.is-menu-visible #menu {
   margin: .5rem 0;
   line-height: 1.5;
 }
-.need input { margin-right: .25rem; }
+.need input{ margin-right: .25rem; }
 .need input:checked + span,
-.need input:checked {
-  accent-color: #0044cc; /* 체크박스 파란색 */
+.need input:checked{
+  accent-color: #0044cc;
 }
-legend { font-weight: 600; margin-bottom: .75rem; }
+legend{ font-weight: 600; margin-bottom: .75rem; }
+
 
 /* ✅ 라디오/체크박스 강제 노출 (iOS 포함) */
 .k-form-section input[type="radio"],
@@ -3327,6 +3345,7 @@ legend { font-weight: 600; margin-bottom: .75rem; }
     line-height: 1.6 !important;
   }
 }
+
 
 
 
