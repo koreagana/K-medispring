@@ -3292,7 +3292,7 @@ h1, h2, h3, h4, h5, h6{
 .button, a.button, .actions .button{
   font-family: var(--heading-latin), var(--cjk-serif);
 }
-
+<link rel="stylesheet" href="assets/css/kms-sidebar-fix.css">
 /* =========================
    Sidebar 구분선 최종 복구
    ========================= */
