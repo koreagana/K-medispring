@@ -551,20 +551,6 @@ mene<!DOCTYPE HTML>
   <script src="assets/js/util.js"></script>
   <script src="assets/js/main.js"></script>
 
-  <!-- 현재 페이지 메뉴 활성화 -->
-  <script>
-  (function(){
-    var path = location.pathname.replace(/\/K-medispring\/?/, '/');
-    document.querySelectorAll('#menu a[href]').forEach(function(a){
-      try {
-        var u = new URL(a.getAttribute('href'), location.origin);
-        if (u.pathname === path || u.pathname === location.pathname){
-          a.setAttribute('aria-current','page');
-        }
-      } catch(e){}
-    });
-  })();
-  </script>
 
 </body>
 </html>
