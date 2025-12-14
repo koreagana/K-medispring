@@ -42,60 +42,6 @@
     .button.primary:hover{ background:var(--hover); border-color:var(--hover); }
     .major:after{ background-color:var(--brand); }
   </style>
-
-  <style id="mobile-nav-fix">
-/* 모바일에서 #menu를 화면 위로 끌어올리고 오프캔버스처럼 보이게 */
-@media (max-width: 1180px){
-  /* 메뉴 패널 */
-  #menu{
-    position: fixed !important;
-    top: 0; 
-    right: -320px;                 /* 필요하면 left:-320px 로 바꿔도 됨 */
-    width: 320px; 
-    height: 100vh;
-    background: #fff;
-    box-shadow: -3px 0 12px rgba(0,0,0,.15);
-    z-index: 10000 !important;     /* 어떤 요소 위에서도 보이게 */
-    overflow-y: auto;
-    transition: right .28s ease;   /* left 를 쓰면 right 대신 left 로 변경 */
-    -webkit-overflow-scrolling: touch;
-  }
-
-  /* 토글 후 열림 상태 */
-  body.is-menu-visible #menu{
-    right: 0;                      /* left를 쓰면 left:0 */
-  }
-
-  /* 백드롭(어두운 배경) */
-  body.is-menu-visible::before{
-    content: "";
-    position: fixed; 
-    inset: 0;
-    background: rgba(0,0,0,.32);
-    z-index: 9999;
-  }
-
-  /* 혹시 템플릿 기본 CSS가 리스트를 숨기고 있으면 강제 노출 */
-  #menu ul{ 
-    display: block !important; 
-    visibility: visible !important; 
-    opacity: 1 !important;
-    margin: 0; 
-    padding: 1rem 1.25rem;
-  }
-  #menu ul li{ 
-    list-style: none; 
-    border-bottom: 1px solid rgba(0,0,0,.08);
-  }
-  #menu ul li a{ 
-    display: block; 
-    padding: .9rem 0; 
-    text-decoration: none;
-  }
-}
-</style>
-
-
 </head>
 
 <body class="is-preload">
@@ -114,27 +60,35 @@
           <!-- SNS icons -->
           <ul class="icons">
             <li>
-              <a href="#" id="wechat-icon" class="icon brands fa-weixin" title="WeChat: e-gana"><span class="label">WeChat</span></a>
+              <a href="#" id="wechat-icon" class="icon brands fa-weixin" title="WeChat: e-gana">
+                <span class="label">WeChat</span>
+              </a>
             </li>
             <li>
-              <a href="https://www.xiaohongshu.com/user/profile/550972467" target="_blank" class="icon" title="小红书">
+              <a href="https://www.xiaohongshu.com/user/profile/550972467" target="_blank" class="icon" title="小红书" rel="noopener">
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" width="20" height="20" aria-hidden="true">
                   <rect width="100" height="100" rx="20" ry="20" fill="#FF2442"/>
                   <text x="50%" y="60%" text-anchor="middle" fill="#fff" font-size="30" font-family="sans-serif" font-weight="bold">小红书</text>
                 </svg>
               </a>
             </li>
-            <li><a href="https://www.instagram.com/jiana2734/" target="_blank" class="icon brands fa-instagram" title="Instagram"><span class="label">Instagram</span></a></li>
-            <li><a href="mailto:egana@kmedispring.com" class="icon solid fa-envelope" title="Email"><span class="label">Email</span></a></li>
+            <li>
+              <a href="https://www.instagram.com/jiana2734/" target="_blank" class="icon brands fa-instagram" title="Instagram" rel="noopener">
+                <span class="label">Instagram</span>
+              </a>
+            </li>
+            <li>
+              <a href="mailto:egana@kmedispring.com" class="icon solid fa-envelope" title="Email">
+                <span class="label">Email</span>
+              </a>
+            </li>
           </ul>
-          
-          <!-- ✅ Mobile Menu Toggle -->
-  <a href="#menu" class="menuToggle" aria-label="打开菜单">
-    <span>菜单</span>
-  </a>
-</header>
 
-        <!-- Page title -->
+          <!-- ✅ Editorial 기본 토글(이게 살아있어야 모바일 메뉴가 열림) -->
+          <a href="#menu" class="toggle" aria-label="打开菜单">菜单</a>
+        </header>
+
+        <!-- Banner -->
         <section id="banner" class="alt">
           <div class="content">
             <header>
@@ -157,7 +111,7 @@
         <section>
           <header class="major"><h2>核心模块</h2></header>
 
-          <div class="posts"><!-- 2 x 2 카드형 -->
+          <div class="posts">
             <article>
               <h3>检测与评估</h3>
               <p>血液、激素、微量元素等指标结合生活方式问卷，制定目标与节律。</p>
@@ -191,34 +145,42 @@
             </article>
           </div>
         </section>
-    
+
       </div><!-- /.inner -->
     </div><!-- /#main -->
 
     <!-- ===== Sidebar ===== -->
-  <div id="sidebar">
-  <div class="inner">
+    <div id="sidebar">
+      <div class="inner">
 
-    <!-- ✅ 검색 -->
-    <section id="search" class="alt">
-      <form method="get" action="#">
-        <input type="search" name="query" id="query" placeholder="搜索..." />
-      </form>
-    </section>
+        <!-- Search -->
+        <section id="search" class="alt">
+          <form method="get" action="#">
+            <input type="search" name="query" id="query" placeholder="搜索..." />
+          </form>
+        </section>
 
-    <!-- ✅ 여기에 네비 메뉴 추가 -->
-    <nav id="main-nav">
-      <ul>
-        <li><a href="/index.html">首页</a></li>
-        <li><a href="/wellness.html">大健康</a></li>
-        <li><a href="/skin.html">皮肤·医美</a></li>
-        <li><a href="/tour.html">市区观光</a></li>
-        <li><a href="/about.html">关于我们</a></li>
-        <li><a href="/contact.html">联系我们</a></li>
-      </ul>
-    </nav>
+        <!-- ✅ 중요: Editorial은 이 nav id="menu"가 ‘모바일 메뉴 본체’ -->
+        <nav id="menu">
+          <header class="major"><h2>菜单</h2></header>
+          <ul>
+            <li><a href="index.html">首页</a></li>
+            <li><a href="wellness.html">大健康</a></li>
+            <li><a href="stemcell.html">干细胞</a></li>
+            <li><a href="skin.html">皮肤医美</a></li>
+            <li><a href="surgery.html">整形医美</a></li>
+            <li><a href="woman.html">女性护理中心</a></li>
+            <li><a href="man.html">男性健康中心</a></li>
+            <li><a href="vip.html">接送服务</a></li>
+            <li><a href="tour.html">市区观光</a></li>
+            <li><a href="living.html">生活服务</a></li>
+            <li><a href="kplan.html">定制医疗观光方案</a></li>
+            <li><a href="about.html">关于我们</a></li>
+            <li><a href="contact.html">联系方式</a></li>
+          </ul>
+        </nav>
 
-        <!-- About / Partners (선택: 메인과 동일) -->
+        <!-- About / Partners -->
         <section>
           <header class="major"><h2>关于我们</h2></header>
           <p style="text-align:center; color:#777;">合作伙伴</p>
@@ -240,19 +202,15 @@
           </ul>
         </section>
 
-<!-- 💙 감성형 ending note -->
-<section class="ending-note" aria-label="ending note">
-  <hr class="ending-note__divider">
-  <p class="ending-note__copy">© 2025 汉江春天 한강애봄 版权所有</p>
-</section>
-
+        <section class="ending-note" aria-label="ending note">
+          <hr class="ending-note__divider">
+          <p class="ending-note__copy">© 2025 汉江春天 한강애봄 版权所有</p>
+        </section>
 
       </div><!-- /.inner -->
     </div><!-- /#sidebar -->
   </div><!-- /#wrapper -->
 
-
-<!-- (이 아래에) WeChat QR Modal … -->
   <!-- WeChat QR Modal -->
   <div id="wechatModal" class="modal" aria-hidden="true" role="dialog" style="display:none;">
     <div class="modal-inner">
@@ -262,43 +220,35 @@
     </div>
   </div>
 
-  <!-- 템플릿 기본 스크립트 (순서 유지) -->
-<script src="/assets/js/jquery.min.js"></script>
-<script src="/assets/js/browser.min.js"></script>
-<script src="/assets/js/breakpoints.min.js"></script>
-<script src="/assets/js/util.js"></script>
-<script src="/assets/js/main.js"></script>
+  <!-- 템플릿 기본 스크립트 (순서 유지, 경로에 / 붙이지 말기) -->
+  <script src="assets/js/jquery.min.js"></script>
+  <script src="assets/js/browser.min.js"></script>
+  <script src="assets/js/breakpoints.min.js"></script>
+  <script src="assets/js/util.js"></script>
+  <script src="assets/js/main.js"></script>
 
-<!-- K-MediSpring 커스텀: 왼쪽 사이드바 네비만 사용 (오프캔버스 제거) -->
-<script>
-(function () {
-  // 1) 경로 정규화 (GitHub Pages 하위 경로 대응)
-  var path = location.pathname.replace(/\/K-medispring\/?$/, '/');
-  if (path === '/' || path === '') path = '/index.html';
+  <!-- WeChat modal (필요하면) -->
+  <script>
+    (function(){
+      var icon = document.getElementById('wechat-icon');
+      var modal = document.getElementById('wechatModal');
+      if(!icon || !modal) return;
 
-  // 2) 사이드바 네비 현재 페이지 활성화 (#main-nav 기준)
-  document.querySelectorAll('#main-nav a[href]').forEach(function (a) {
-    try {
-      var href = a.getAttribute('href') || '';
-      var u = new URL(href, location.origin);
-      var p = u.pathname.replace(/\/K-medispring\/?$/, '/');
-      if (p === '/' || p === '') p = '/index.html';
+      icon.addEventListener('click', function(e){
+        e.preventDefault();
+        modal.style.display = 'block';
+        modal.setAttribute('aria-hidden','false');
+        document.body.classList.add('modal-open');
+      });
 
-      if (p === path) {
-        a.setAttribute('aria-current', 'page');
-        var li = a.closest('li');
-        if (li) li.classList.add('active');
-      }
-    } catch (e) { /* no-op */ }
-  });
-
-  // 3) 과거 오프캔버스 흔적 제거(안전)
-  document.body.classList.remove('is-menu-visible');  // 남아있을 수 있는 클래스 제거
-  // 혹시 헤더에 남아있을 수 있는 토글 앵커/클래스 정리
-  document.querySelectorAll('a[href="#menu"], .menuToggle').forEach(function (el) {
-    el.remove();
-  });
-})();
-</script>
+      modal.addEventListener('click', function(e){
+        if(e.target === modal){
+          modal.style.display = 'none';
+          modal.setAttribute('aria-hidden','true');
+          document.body.classList.remove('modal-open');
+        }
+      });
+    })();
+  </script>
 </body>
 </html>
