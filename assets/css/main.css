@@ -1599,44 +1599,61 @@ table {
 
 /* === CTA: 定制医疗观光方案 버튼 스타일 (리디아 커스텀 버전) === */
 
+/* =========================
+   Primary / Action Buttons
+   ========================= */
+
 .button,
 .actions .button,
-a.button {
-  font-family: 'Source Han Serif CN', 'Noto Serif KR', serif;
+a.button,
+a.button.primary {
+
+  /* 👉 글씨체 (Roboto Slab 계열로 통일) */
+  font-family: "Roboto Slab", "Source Han Serif CN", "Noto Serif KR", serif;
   font-weight: 700;
-  font-size: 15pt !important;   /* 글자 크기 업 */
-  letter-spacing: 0.05em;
-  border-radius: 6px;
-  padding: 0.55em 1.5em;       /* 버튼 높이 줄이기 */
-  line-height: 1.4em;          /* 글씨 중앙 맞춤 */
+
+  /* 👉 글씨 크기 */
+  font-size: 18px !important;
+  letter-spacing: 0.06em;
+
+  /* 👉 버튼 크기 */
+  padding: 0.9em 2.2em;
+  min-height: 64px;
+
+  line-height: 1.2;
+  border-radius: 10px;
+
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  transition: all 0.25s ease;
+
+  transition:
+    background-color .25s ease,
+    color .25s ease,
+    transform .15s ease;
 }
 
-/* 기본 컬러 (톤 다운된 블루) */
+/* 기본 Primary 컬러 */
 .button.primary,
 .actions .button.primary {
-  background: #4E97D1;   /* 기존보다 채도 ↓, 명도 ↓ */
+  background: #4E97D1;
   border-color: #0E5E94;
-  color: #fff;
+  color: #ffffff;
 }
 
-/* 호버 시 색상 */
+/* Hover */
 .button.primary:hover,
 .actions .button.primary:hover {
-  background: #2077AD;   /* 한 단계 밝은 블루 */
+  background: #2077AD;
   border-color: #2077AD;
   transform: translateY(-1px);
 }
 
-/* 클릭 후 포커스 */
+/* Focus */
 .button.primary:focus {
   outline: none;
   box-shadow: 0 0 0 3px rgba(14, 94, 148, 0.3);
 }
-
 
 /* ==========================
    ↓ 여기부터 기존 원본 코드 유지 ↓
@@ -3306,6 +3323,7 @@ legend{ font-weight: 600; margin-bottom: .75rem; }
 #sidebar > .inner > *:last-child {
   border-bottom: none;
 }
+
 
 
 
