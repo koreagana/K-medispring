@@ -3282,6 +3282,23 @@ legend{ font-weight: 600; margin-bottom: .75rem; }
 }
 
 
+/* =========================
+   Restore original CN hero title
+   ========================= */
+
+/* 메인 브랜드 중국어 타이틀 */
+.hero-title,
+#main h1,
+.page-title {
+  font-family: "Source Han Serif CN",
+               "Noto Serif CJK SC",
+               "Songti SC",
+               "SimSun",
+               serif;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+}
+
 
 
 
