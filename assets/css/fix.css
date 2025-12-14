@@ -1,69 +1,107 @@
 /* =========================================================
-   fix.css — Sidebar / Menu visual recovery (do not edit main.css)
+   fix.css (K-Medi Spring)
+   목적: sidebar 구분선/로고/메뉴(#menu) 모바일·아이패드 표시 안정화
+   main.css는 수정하지 않고 여기서 덮어쓴다
    ========================================================= */
 
-/* 1) 사이드바 섹션 구분선(회색 라인) 복구 */
+/* 0) 안전장치: 변수 없을 때도 색 나오게 */
+:root {
+  --brand: #0077B6;
+  --line: rgba(210, 215, 217, 0.75);
+}
+
+/* 1) Sidebar 섹션 구분선(회색 라인) 복구 */
 #sidebar .inner > section {
-  border-top: solid 2px rgba(210, 215, 217, 0.75);
+  border-top: solid 2px var(--line);
   margin-top: 2rem;
   padding-top: 2rem;
 }
-
-/* 첫 섹션은 구분선 제거 */
 #sidebar .inner > section:first-of-type {
   border-top: none;
   margin-top: 0;
   padding-top: 0;
 }
 
-/* 2) nav#menu (대카테고리) 리스트 강제 표시 + 기본 스타일 복구 */
-#menu {
+/* 2) 로고 섹션(네가 쓰는 id=sidebar-brand) */
+#sidebar-brand {
+  padding: 1.8rem 1.5rem 1.1rem;
+  text-align: center;
+  border-top: none !important;
+  border-bottom: none !important;
+}
+#sidebar-brand .sidebar-logo img {
   display: block;
+  max-width: 140px;
+  height: auto;
+  margin: 0 auto;
 }
 
+/* 3) 메뉴 영역: “안 보이는” 문제를 강제 해결 */
+#menu { border-top: none !important; }
+
+/* ul.links 여백 */
 #menu .links {
-  display: block;
-  list-style: none;
-  margin: 0;
   padding: 0 1.5rem 1.5rem;
+  margin: 0;
+  list-style: none;
 }
 
+/* 핵심: 글자/표시 강제(투명/0폰트/숨김 다 잡아버림) */
 #menu .links li {
   margin: 0;
   padding: 0;
+  border-top: 1px solid rgba(210, 215, 217, 0.45);
+}
+#menu .links li:first-child {
+  border-top: none;
 }
 
 #menu .links li a {
-  display: block;
-  color: #333 !important;              /* ✅ 글자 안 보이는 문제 방지 */
+  display: block !important;
+  padding: 0.65rem 0 !important;
+
+  /* “안보임” 방지 3종 세트 */
+  color: #333 !important;
+  font-size: 1.05rem !important;
+  opacity: 1 !important;
+  visibility: visible !important;
+
   text-decoration: none !important;
-  padding: 0.7rem 0;
-  border-bottom: solid 1px rgba(210, 215, 217, 0.75);
   line-height: 1.35;
 }
 
-#menu .links li:last-child a {
-  border-bottom: none;
-}
-
+/* hover / 현재 페이지 강조 */
 #menu .links li a:hover {
-  color: #2a7dbf !important;
+  color: var(--brand) !important;
 }
-
-/* 현재 페이지 강조(aria-current) */
 #menu a[aria-current="page"] {
-  color: #2a7dbf !important;
-  font-weight: 600;
+  color: var(--brand) !important;
+  font-weight: 700 !important;
 }
 
-/* 3) 모바일/아이패드(사이드바가 패널처럼 동작할 때) 안정화 */
-@media screen and (max-width: 980px) {
-  #sidebar {
-    background: #f5f6f7;
-  }
+/* 4) (선택) 메뉴 타이틀을 쓰고 싶을 때만
+   <li class="menu-title"><a ...>MENU</a></li> 같은 구조일 때 적용됨 */
+#menu .menu-title a {
+  font-size: 1.1rem !important;
+  font-weight: 800 !important;
+  color: #222 !important;
+  position: relative;
+  padding-bottom: 0.35rem !important;
+  display: inline-block !important;
+}
+#menu .menu-title a::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -2px;
+  width: 2.5rem;
+  height: 2px;
+  background: var(--brand);
+}
 
-  #menu .links {
-    padding-left: 1.25rem;
-    padding-right: 1.25rem;
-  }
+/* 5) 모바일(<=980px)에서 sidebar 가독성 */
+@media screen and (max-width: 980px) {
+  #sidebar { background: #f5f6f7; }
+  #menu .links { padding-left: 1.25rem; padding-right: 1.25rem; }
+  #menu .links li a { font-size: 1.05rem !important; }
 }
