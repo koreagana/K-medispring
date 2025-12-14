@@ -3239,17 +3239,19 @@ legend{ font-weight: 600; margin-bottom: .75rem; }
   color: #4E97D1;
 }
 
-/* 1차 메뉴 li : 밑줄형 구분선 */
+/* === Sidebar menu original separators (restore) === */
 #menu > ul > li {
   border-top: 1px solid rgba(210, 215, 217, 0.75);
-  margin: 0.5em 0 0 0;
-  padding: 0.5em 0 0 0;
+  margin-top: 0.75em;
+  padding-top: 0.75em;
 }
+
 #menu > ul > li:first-child {
   border-top: 0;
   margin-top: 0;
   padding-top: 0;
 }
+
 
 /* 현재 활성 링크 */
 #menu > ul li.active > a,
@@ -3360,6 +3362,20 @@ legend{ font-weight: 600; margin-bottom: .75rem; }
 /* 브랜드 섹션 제목(h2/h3)과 같은 폰트로 강제하고 싶으면 */
 #sidebar .profile-caption{
   font-family: "Roboto Slab","Source Han Serif CN","Noto Serif KR",serif;
+}
+
+/* =========================
+   Restore sidebar separators
+   ========================= */
+
+#sidebar > .inner > * {
+  border-bottom: solid 1px rgba(210, 215, 217, 0.75);
+  padding-bottom: 1.5rem;
+  margin-bottom: 1.5rem;
+}
+
+#sidebar > .inner > *:last-child {
+  border-bottom: none;
 }
 
 
