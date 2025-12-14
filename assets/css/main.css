@@ -1,128 +1,85 @@
 /* ============================
    FONT SETTINGS (로니 & 리디아 2025.10.11)
    ============================ */
+/* =========================
+   Fonts (Local) + Typography
+   Editorial-like: Body = Sans, Headings = Serif
+   ========================= */
 
-/* Pretendard Regular */
-@font-face {
-  font-family: 'Pretendard';
-  src: url('../fonts/Pretendard-Regular.ttf') format('truetype');
-  font-weight: 400;
-  font-style: normal;
-  font-display: swap;
-}
-
-/* Pretendard Bold */
-@font-face {
-  font-family: 'Pretendard';
-  src: url('../fonts/Pretendard-Bold.ttf') format('truetype');
-  font-weight: 700;
-  font-style: normal;
-  font-display: swap;
-}
-
-/* Source Han Serif CN (Simplified Chinese) */
-@font-face {
-  font-family: 'SourceHanSerifCN';
-  src: url('../fonts/SourceHanSerifCN-Light.otf') format('opentype');
-  font-weight: 300;
-  font-style: normal;
-  font-display: swap;
-}
-
-@font-face {
-  font-family: 'SourceHanSerifCN';
-  src: url('../fonts/SourceHanSerifCN-Medium.otf') format('opentype');
-  font-weight: 500;
-  font-style: normal;
-  font-display: swap;
-}
-
-@font-face {
-  font-family: 'SourceHanSerifCN';
-  src: url('../fonts/SourceHanSerifCN-Bold.otf') format('opentype');
-  font-weight: 700;
-  font-style: normal;
-  font-display: swap;
-}
-
-/* ===== 기존 Merriweather & Roboto ===== */
-@font-face {
-  font-family: "Merriweather";
-  src: url("../fonts/Merriweather-VariableFont_opsz,wdth,wght.ttf") format("truetype");
-  font-weight: 300 700;
-  font-style: normal;
-  font-display: swap;
-}
-
+/* Roboto (Body) */
 @font-face {
   font-family: "Roboto";
   src: url("../fonts/Roboto-VariableFont_wdth,wght.ttf") format("truetype");
-  font-weight: 300 700;
+  font-weight: 100 900;
   font-style: normal;
   font-display: swap;
 }
 
-/* Merriweather */
+/* Merriweather (Headings) */
 @font-face {
   font-family: "Merriweather";
   src: url("../fonts/Merriweather-VariableFont_opsz,wdth,wght.ttf") format("truetype");
-  font-weight: 300 700;
+  font-weight: 300 900;
   font-style: normal;
   font-display: swap;
 }
 
-/* Roboto */
+/* (옵션) Roboto Slab 파일이 실제로 폴더에 없으면 쓰지 말 것
 @font-face {
-  font-family: "Roboto";
-  src: url("../fonts/Roboto-VariableFont_wdth,wght.ttf") format("truetype");
-  font-weight: 300 700;
+  font-family: "Roboto Slab";
+  src: url("../fonts/RobotoSlab-VariableFont_wght.ttf") format("truetype");
+  font-weight: 200 900;
   font-style: normal;
   font-display: swap;
 }
+*/
 
-
-/* ===== Typography: EN = Editorial look, ZH = Baidu-style ===== */
-
-/* 현재 템플릿의 영문 질감 유지용 스택 */
 :root{
-  --en-heading: "Merriweather", Georgia, "Times New Roman", serif;
-  --en-body: "Source Sans Pro", -apple-system, BlinkMacSystemFont, "Segoe UI",
-             Roboto, "Helvetica Neue", Arial, sans-serif;
+  /* CJK 폴백(중문/한글) */
+  --cjk-sans: "PingFang SC","Microsoft YaHei","Noto Sans CJK SC",
+              "Source Han Sans SC","Apple SD Gothic Neo","Noto Sans KR",
+              "Malgun Gothic",sans-serif;
+
+  --cjk-serif: "Source Han Serif CN","Noto Serif CJK SC","Songti SC",
+               "AppleMyungjo","Batang",serif;
+
+  /* Editorial 감성: 본문은 산세리프, 제목은 세리프 */
+  --body-font: "Roboto", -apple-system, BlinkMacSystemFont, "Segoe UI",
+               Arial, sans-serif;
+
+  --heading-font: "Merriweather", Georgia, "Times New Roman", serif;
 }
 
-/* ✅ 폰트 변수 정의 */
-:root {
-  /* 중국어(간체) 스택 */
-  --zh-sc: "PingFang SC","Microsoft YaHei","Noto Sans CJK SC",
-           "Source Han Sans SC","Heiti SC","SimHei",sans-serif;
-
-  /* 영문 본문/헤딩 스택 (로컬 우선, 시스템 폴백) */
-  --en-body: "Pretendard","Roboto","Open Sans",system-ui,-apple-system,
-             "Segoe UI",Arial,sans-serif;
-  --en-heading: "Merriweather","Roboto Slab","Times New Roman",serif;
-}
-
-/* 페이지 기본 폰트: 라틴은 EN, CJK는 자동 ZH 폴백 */
-html[lang="zh-CN"] body {
-  font-family: var(--en-body), var(--zh-sc);
+/* 기본: 라틴은 Roboto, CJK는 자동 폴백 */
+body{
+  font-family: var(--body-font), var(--cjk-sans);
   line-height: 1.65;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  color: #333;
 }
 
-/* 제목은 Merriweather 질감 유지 + 중문 보강 */
-h1, h2, h3, h4, h5, h6 {
-  font-family: var(--en-heading), var(--zh-sc);
+/* 제목: Merriweather 기반 + CJK 보강(필요시 serif 폴백) */
+h1, h2, h3, h4, h5, h6{
+  font-family: var(--heading-font), var(--cjk-serif);
   font-weight: 700;
+  letter-spacing: 0.02em;
 }
 
-/* 영문 전용: <span lang="en">Text</span> */
-:lang(en) { font-family: var(--en-body), var(--zh-sc); }
+/* 중문 본문이 너무 ‘깨져 보이면’ 산세리프 우선 유지 */
+:lang(zh), :lang(zh-CN), :lang(zh-Hans){
+  font-family: var(--body-font), var(--cjk-sans);
+}
 
-/* ✅ 외부 import는 제거: Font Awesome은 <head>에서 link로, Google Fonts는 미사용(차단 가능성) */
-/* @import url(fontawesome-all.min.css);  ← 삭제 */
-/* @import url("https://fonts.googleapis.com/..."); ← 삭제 */
+/* (선택) 사이드바/메뉴도 본문과 같은 산세리프로 통일 */
+#menu, #sidebar{
+  font-family: var(--body-font), var(--cjk-sans);
+}
 
+/* (선택) 버튼은 제목 계열 느낌을 살짝 섞고 싶으면 */
+.button, a.button, .actions .button{
+  font-family: var(--heading-font), var(--cjk-serif);
+}
 
 /*
 	Editorial by HTML5 UP
@@ -3323,6 +3280,7 @@ legend{ font-weight: 600; margin-bottom: .75rem; }
 #sidebar > .inner > *:last-child {
   border-bottom: none;
 }
+
 
 
 
