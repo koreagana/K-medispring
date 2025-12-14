@@ -3123,86 +3123,6 @@ legend{ font-weight: 600; margin-bottom: .75rem; }
   width: 26em;
 }
 
-/* 🔹 Sidebar 섹션들 사이 구분선 */
-#sidebar > .inner > * {
-  border-bottom: solid 2px rgba(210, 215, 217, 0.75);
-  margin: 0 0 3.5em 0;
-  padding: 0 0 3.5em 0;
-}
-#sidebar > .inner > * > :last-child { margin-bottom: 0; }
-#sidebar > .inner > *:last-child {
-  border-bottom: 0;
-  margin-bottom: 0;
-  padding-bottom: 0;
-}
-
-/* 🔹 회색 밴드 섹션 (검색/공지 같은 박스) */
-#sidebar > .inner > .alt {
-  background-color: #eff1f2;
-  border-bottom: 0;
-  margin: -2.22222em 0 4.44444em -2.22222em;
-  padding: 2.22222em;
-  width: calc(100% + 4.44444em);
-}
-
-/* 🔹 헤딩 크기 살짝 조정 */
-#sidebar h2 { font-size: 1.38889em; }
-
-/* ==========================
-   Sidebar 검색창 (Search)
-   ========================== */
-
-/* 검색 섹션 전체 박스 */
-#sidebar #search {
-  margin-bottom: 1.5rem;
-}
-
-/* 회색 배경 박스 */
-#sidebar #search.alt {
-  background: var(--sidebar-bg, #f5f5f5);
-  border-radius: 8px;
-  padding: 1rem;
-}
-
-/* 검색 인풋 */
-#sidebar #search input[type="search"] {
-  width: 100%;
-  max-width: 100%;
-  background: #fff;
-  border-radius: 6px;
-  border: 1px solid rgba(0,0,0,0.1);
-  padding: 0.5rem 0.75rem;
-  box-shadow: none;
-  font-size: 0.95rem;
-  color: #333;
-  box-sizing: border-box;
-  transition: border-color 0.2s ease;
-}
-
-/* 포커스 시 파란 테두리 */
-#sidebar #search input[type="search"]:focus {
-  outline: none;
-  border-color: #0077B6;
-}
-
-/* 돋보기 아이콘 (폼 ::before) */
-#sidebar #search form {
-  position: relative;
-}
-#sidebar #search form:before {
-  /* Font Awesome 돋보기 아이콘 */
-  font-family: 'Font Awesome 5 Free';
-  font-weight: 900;
-  content: '\f002';
-  position: absolute;
-  right: 0.75rem;
-  top: 50%;
-  transform: translateY(-50%) scaleX(-1); /* 왼→오 대칭 */
-  color: #7f888f;
-  opacity: .4;
-  pointer-events: none;
-}
-
 /* ==========================
    Menu (사이드바 메뉴 리스트)
    ========================== */
@@ -3377,6 +3297,7 @@ legend{ font-weight: 600; margin-bottom: .75rem; }
 #sidebar > .inner > *:last-child {
   border-bottom: none;
 }
+
 
 
 
