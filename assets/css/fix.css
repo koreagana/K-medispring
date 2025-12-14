@@ -43,3 +43,26 @@
   color: var(--brand);
   font-weight: 600;
 }
+/* =========================
+   MOBILE / TABLET: 메뉴 강제 표시
+   ========================= */
+@media screen and (max-width: 980px) {
+
+  /* 사이드바 자체는 유지 */
+  #sidebar {
+    display: block !important;
+  }
+
+  /* 메뉴 강제 표시 */
+  #menu {
+    display: block !important;
+  }
+
+  #menu ul.links {
+    display: block !important;
+  }
+
+  #menu ul.links li {
+    display: list-item !important;
+  }
+}
