@@ -3323,48 +3323,6 @@ legend{ font-weight: 600; margin-bottom: .75rem; }
   }
 }
 
-/* =========================
-   Ronnie: Profile (sidebar)
-   ========================= */
-
-/* 프로필 이미지: 가운데 + 반 크기 */
-#sidebar a.image.profile {
-  display: block;
-  width: 50%;
-  max-width: 220px;      /* 너무 커지지 않게 안전장치 */
-  margin: 0 auto;
-  overflow: hidden;
-}
-
-/* 이미지 자체 */
-#sidebar a.image.profile img {
-  display: block;
-  width: 100%;
-  height: auto;
-}
-
-/* 호버 확대(원하면 유지) */
-#sidebar a.image.profile:hover img {
-  transform: scale(1.075);
-}
-
-
-/* 프로필 캡션: 브랜드 헤딩 폰트 따라가기 */
-#sidebar .profile-caption{
-  font-family: inherit;
-  font-weight: 700;
-  font-size: 1.1rem;
-  text-align: center;
-  margin: .75rem 0 0;
-}
-
-/* 브랜드 섹션 제목(h2/h3)과 같은 폰트로 강제하고 싶으면 */
-#sidebar .profile-caption{
-  font-family: "Roboto Slab","Source Han Serif CN","Noto Serif KR",serif;
-}
-
-
-
 
 
 
