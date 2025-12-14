@@ -35,7 +35,7 @@
   <link rel="stylesheet" href="assets/css/main.css?v=20251027" />
   <noscript><link rel="stylesheet" href="assets/css/noscript.css?v=20251027" /></noscript>
 
-  <!-- Page tiny overrides (선택) -->
+  <!-- (선택) 페이지별 컬러만 아주 작게 -->
   <style>
     :root { --brand:#0077B6; --hover:#2088C2; --line:#A0C4DE; }
     .button.primary{ background:var(--brand); border-color:var(--brand); }
@@ -45,19 +45,18 @@
 </head>
 
 <body class="is-preload">
-  <div id="wrapper" class="with-sticky">
+  <div id="wrapper">
 
     <!-- ===== Main ===== -->
     <div id="main">
       <div class="inner">
 
-        <!-- Header -->
+        <!-- Header (메인페이지 구조 그대로) -->
         <header id="header">
           <a href="index.html" class="logo">
             <img src="images/logo_ch.png" alt="汉江春天 로고" class="logo-img">
           </a>
 
-          <!-- SNS icons -->
           <ul class="icons">
             <li>
               <a href="#" id="wechat-icon" class="icon brands fa-weixin" title="WeChat: e-gana">
@@ -72,20 +71,9 @@
                 </svg>
               </a>
             </li>
-            <li>
-              <a href="https://www.instagram.com/jiana2734/" target="_blank" class="icon brands fa-instagram" title="Instagram" rel="noopener">
-                <span class="label">Instagram</span>
-              </a>
-            </li>
-            <li>
-              <a href="mailto:egana@kmedispring.com" class="icon solid fa-envelope" title="Email">
-                <span class="label">Email</span>
-              </a>
-            </li>
+            <li><a href="https://www.instagram.com/jiana2734/" target="_blank" class="icon brands fa-instagram" title="Instagram" rel="noopener"><span class="label">Instagram</span></a></li>
+            <li><a href="mailto:egana@kmedispring.com" class="icon solid fa-envelope" title="Email"><span class="label">Email</span></a></li>
           </ul>
-
-          <!-- ✅ Editorial 기본 토글(이게 살아있어야 모바일 메뉴가 열림) -->
-          <a href="#menu" class="toggle" aria-label="打开菜单">菜单</a>
         </header>
 
         <!-- Banner -->
@@ -103,11 +91,11 @@
             </ul>
           </div>
           <span class="image object hero-media">
-            <img src="images/wellness/hero_wellness.png" alt="功能医学与综合健康管理" style="width:100%;height:auto;display:block">
+            <img src="images/wellness/hero_wellness.png" alt="功能医学与综合健康管理" />
           </span>
         </section>
 
-        <!-- Section: 4 blocks -->
+        <!-- Section -->
         <section>
           <header class="major"><h2>核心模块</h2></header>
 
@@ -146,21 +134,19 @@
           </div>
         </section>
 
-      </div><!-- /.inner -->
-    </div><!-- /#main -->
+      </div>
+    </div>
 
-    <!-- ===== Sidebar ===== -->
+    <!-- ===== Sidebar (메인페이지 구조: nav#menu 필수) ===== -->
     <div id="sidebar">
       <div class="inner">
 
-        <!-- Search -->
         <section id="search" class="alt">
           <form method="get" action="#">
             <input type="search" name="query" id="query" placeholder="搜索..." />
           </form>
         </section>
 
-        <!-- ✅ 중요: Editorial은 이 nav id="menu"가 ‘모바일 메뉴 본체’ -->
         <nav id="menu">
           <header class="major"><h2>菜单</h2></header>
           <ul>
@@ -171,16 +157,14 @@
             <li><a href="surgery.html">整形医美</a></li>
             <li><a href="woman.html">女性护理中心</a></li>
             <li><a href="man.html">男性健康中心</a></li>
-            <li><a href="vip.html">接送服务</a></li>
             <li><a href="tour.html">市区观光</a></li>
-            <li><a href="living.html">生活服务</a></li>
+            <li><a href="service.html">生活服务</a></li>
             <li><a href="kplan.html">定制医疗观光方案</a></li>
             <li><a href="about.html">关于我们</a></li>
             <li><a href="contact.html">联系方式</a></li>
           </ul>
         </nav>
 
-        <!-- About / Partners -->
         <section>
           <header class="major"><h2>关于我们</h2></header>
           <p style="text-align:center; color:#777;">合作伙伴</p>
@@ -192,7 +176,6 @@
           </div>
         </section>
 
-        <!-- Contact -->
         <section>
           <header class="major"><h2>联系方式</h2></header>
           <ul class="contact">
@@ -207,9 +190,10 @@
           <p class="ending-note__copy">© 2025 汉江春天 한강애봄 版权所有</p>
         </section>
 
-      </div><!-- /.inner -->
-    </div><!-- /#sidebar -->
-  </div><!-- /#wrapper -->
+      </div>
+    </div>
+
+  </div>
 
   <!-- WeChat QR Modal -->
   <div id="wechatModal" class="modal" aria-hidden="true" role="dialog" style="display:none;">
@@ -220,33 +204,27 @@
     </div>
   </div>
 
-  <!-- 템플릿 기본 스크립트 (순서 유지, 경로에 / 붙이지 말기) -->
+  <!-- Scripts (앞에 / 붙이지 말기) -->
   <script src="assets/js/jquery.min.js"></script>
   <script src="assets/js/browser.min.js"></script>
   <script src="assets/js/breakpoints.min.js"></script>
   <script src="assets/js/util.js"></script>
   <script src="assets/js/main.js"></script>
 
-  <!-- WeChat modal (필요하면) -->
+  <!-- 현재 페이지 하이라이트(선택) -->
   <script>
     (function(){
-      var icon = document.getElementById('wechat-icon');
-      var modal = document.getElementById('wechatModal');
-      if(!icon || !modal) return;
+      var path = location.pathname;
+      // GitHub Pages 하위경로 제거
+      path = path.replace(/^\/K-medispring\//, "/");
+      if (path === "/" || path === "") path = "/index.html";
 
-      icon.addEventListener('click', function(e){
-        e.preventDefault();
-        modal.style.display = 'block';
-        modal.setAttribute('aria-hidden','false');
-        document.body.classList.add('modal-open');
-      });
-
-      modal.addEventListener('click', function(e){
-        if(e.target === modal){
-          modal.style.display = 'none';
-          modal.setAttribute('aria-hidden','true');
-          document.body.classList.remove('modal-open');
-        }
+      document.querySelectorAll('#menu a[href]').forEach(function(a){
+        var href = a.getAttribute('href') || '';
+        var p = new URL(href, location.origin).pathname;
+        p = p.replace(/^\/K-medispring\//, "/");
+        if (p === "/" || p === "") p = "/index.html";
+        if (p === path) a.setAttribute('aria-current','page');
       });
     })();
   </script>
