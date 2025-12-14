@@ -3028,30 +3028,56 @@ legend{ font-weight: 600; margin-bottom: .75rem; }
     overflow: visible;
   }
 
-  #menu > ul { margin: 0; padding: 0; list-style: none; }
-  #menu > ul > li {
-    background: none !important;
-    border: none !important;
-    border-top: 1px solid rgba(210,215,217,.75) !important;
-    margin: .5em 0 0 0 !important;
-    padding: .5em 0 0 0 !important;
-    border-radius: 0 !important;
-  }
-  #menu > ul > li:first-child { border-top: 0; margin-top: 0; padding-top: 0; }
-  #menu > ul a {
-    display: block;
-    padding: .9rem .5rem;
-    background: none !important;
-    color: #222;
-    text-decoration: none;
-  }
-  #menu > ul a:hover { color: #0b66c3 !important; background: none !important; }
-  #menu > ul li.active > a,
-  #menu > ul a[aria-current="page"] {
-    color: #0b66c3;
-    font-weight: 600;
-    background: none;
-  }
+/* =========================
+   Sidebar menu separators (FINAL)
+   ========================= */
+
+#menu > ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+/* 1차 메뉴 구분선 (원래 보이던 회색 줄) */
+#menu > ul > li {
+  background: none;
+  border-top: 1px solid rgba(210, 215, 217, 0.75);
+  margin: 0.5em 0 0 0;
+  padding: 0.5em 0 0 0;
+}
+
+/* 첫 항목은 선 없음 */
+#menu > ul > li:first-child {
+  border-top: 0;
+  margin-top: 0;
+  padding-top: 0;
+}
+
+/* 링크 스타일 */
+#menu > ul > li > a {
+  display: block;
+  padding: .9rem .5rem;
+  background: none;
+  color: #222;
+  text-decoration: none;
+  font-family: 'Source Han Serif CN','Noto Serif KR',serif;
+  font-size: 1.6em;
+  font-weight: 500;
+}
+
+/* hover */
+#menu > ul > li > a:hover {
+  color: #4E97D1;
+  background: none;
+}
+
+/* 현재 페이지 */
+#menu > ul > li.active > a,
+#menu > ul > li > a[aria-current="page"] {
+  color: #4E97D1;
+  font-weight: 600;
+}
+
 
   /* 본문 레이아웃 반응형 */
   #main { position: relative; z-index: 2; }
@@ -3280,6 +3306,7 @@ legend{ font-weight: 600; margin-bottom: .75rem; }
 #sidebar > .inner > *:last-child {
   border-bottom: none;
 }
+
 
 
 
