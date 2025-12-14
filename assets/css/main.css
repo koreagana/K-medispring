@@ -24,63 +24,6 @@
   font-display: swap;
 }
 
-/* (옵션) Roboto Slab 파일이 실제로 폴더에 없으면 쓰지 말 것
-@font-face {
-  font-family: "Roboto Slab";
-  src: url("../fonts/RobotoSlab-VariableFont_wght.ttf") format("truetype");
-  font-weight: 200 900;
-  font-style: normal;
-  font-display: swap;
-}
-*/
-
-:root{
-  /* CJK 폴백(중문/한글) */
-  --cjk-sans: "PingFang SC","Microsoft YaHei","Noto Sans CJK SC",
-              "Source Han Sans SC","Apple SD Gothic Neo","Noto Sans KR",
-              "Malgun Gothic",sans-serif;
-
-  --cjk-serif: "Source Han Serif CN","Noto Serif CJK SC","Songti SC",
-               "AppleMyungjo","Batang",serif;
-
-  /* Editorial 감성: 본문은 산세리프, 제목은 세리프 */
-  --body-font: "Roboto", -apple-system, BlinkMacSystemFont, "Segoe UI",
-               Arial, sans-serif;
-
-  --heading-font: "Merriweather", Georgia, "Times New Roman", serif;
-}
-
-/* 기본: 라틴은 Roboto, CJK는 자동 폴백 */
-body{
-  font-family: var(--body-font), var(--cjk-sans);
-  line-height: 1.65;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  color: #333;
-}
-
-/* 제목: Merriweather 기반 + CJK 보강(필요시 serif 폴백) */
-h1, h2, h3, h4, h5, h6{
-  font-family: var(--heading-font), var(--cjk-serif);
-  font-weight: 700;
-  letter-spacing: 0.02em;
-}
-
-/* 중문 본문이 너무 ‘깨져 보이면’ 산세리프 우선 유지 */
-:lang(zh), :lang(zh-CN), :lang(zh-Hans){
-  font-family: var(--body-font), var(--cjk-sans);
-}
-
-/* (선택) 사이드바/메뉴도 본문과 같은 산세리프로 통일 */
-#menu, #sidebar{
-  font-family: var(--body-font), var(--cjk-sans);
-}
-
-/* (선택) 버튼은 제목 계열 느낌을 살짝 섞고 싶으면 */
-.button, a.button, .actions .button{
-  font-family: var(--heading-font), var(--cjk-serif);
-}
-
 /*
 	Editorial by HTML5 UP
 	html5up.net | @ajlkn
@@ -3281,29 +3224,62 @@ legend{ font-weight: 600; margin-bottom: .75rem; }
   border-bottom: none;
 }
 
-
 /* =========================
-   Restore original CN hero title
+   Typography (ONE source of truth)
+   Editorial 원본 느낌 복구 + CJK 안정 폴백
    ========================= */
 
-/* 메인 브랜드 중국어 타이틀 */
-.hero-title,
-#main h1,
-.page-title {
-  font-family: "Source Han Serif CN",
-               "Noto Serif CJK SC",
-               "Songti SC",
-               "SimSun",
-               serif;
+:root{
+  /* 원본 Editorial 느낌:
+     - 본문: Source Sans Pro (없으면 시스템 sans)
+     - 제목: Roboto Slab (없으면 Merriweather/serif)
+  */
+  --body-latin: "Source Sans Pro", -apple-system, BlinkMacSystemFont, "Segoe UI",
+                Roboto, "Helvetica Neue", Arial, sans-serif;
+
+  --heading-latin: "Roboto Slab", "Merriweather", Georgia, "Times New Roman", serif;
+
+  /* CJK(중/한) 폴백: 산세리프/세리프 분리 */
+  --cjk-sans: "PingFang SC","Microsoft YaHei","Noto Sans CJK SC",
+              "Source Han Sans SC","Apple SD Gothic Neo","Noto Sans KR",
+              "Malgun Gothic",sans-serif;
+
+  --cjk-serif: "Source Han Serif CN","Noto Serif CJK SC","Songti SC",
+               "AppleMyungjo","Batang",serif;
+}
+
+/* 기본 본문 */
+body{
+  font-family: var(--body-latin), var(--cjk-sans);
+  line-height: 1.65;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  color: #333;
+}
+
+/* 기본 제목(원본 Editorial처럼 slab/serif 느낌) */
+h1, h2, h3, h4, h5, h6{
+  font-family: var(--heading-latin), var(--cjk-serif);
   font-weight: 700;
   letter-spacing: 0.02em;
 }
 
+/* 한자 큰 타이틀(“汉江春天” 같은 느낌) — 예쁘게 보이던 세리프 유지 */
+#banner h1,
+#sidebar #sidebar-brand h2,
+#sidebar #sidebar-brand h1{
+  font-family: var(--heading-latin), var(--cjk-serif);
+}
 
+/* 메뉴/사이드바는 본문 산세리프로 깔끔하게 */
+#menu, #sidebar{
+  font-family: var(--body-latin), var(--cjk-sans);
+}
 
-
-
-
+/* 버튼은 제목계열로(원하면 유지) */
+.button, a.button, .actions .button{
+  font-family: var(--heading-latin), var(--cjk-serif);
+}
 
 
 
