@@ -48,3 +48,78 @@
     background: #f5f6f7;
   }
 }
+
+/* =========================================================
+   fix.css
+   목적: Sidebar 메뉴/구분선/모바일 깨짐 복구
+   작성일: 2025-12-15
+========================================================= */
+
+/* -----------------------------------------
+   1. Sidebar 섹션 구분선 복구
+----------------------------------------- */
+#sidebar .inner > section {
+  border-top: 2px solid rgba(210, 215, 217, 0.75);
+  margin-top: 2rem;
+  padding-top: 2rem;
+}
+
+/* 첫 섹션은 구분선 제거 */
+#sidebar .inner > section:first-of-type {
+  border-top: none;
+  margin-top: 0;
+  padding-top: 0;
+}
+
+/* -----------------------------------------
+   2. 메뉴(nav#menu) 기본 구조 안정화
+----------------------------------------- */
+#menu {
+  margin: 0;
+  padding: 0;
+}
+
+/* 메뉴 리스트 여백 */
+#menu .links {
+  list-style: none;
+  padding: 0 1.5rem 1.5rem;
+  margin: 0;
+}
+
+/* 메뉴 항목 */
+#menu .links li {
+  padding: 0.4rem 0;
+}
+
+/* 메뉴 링크 기본 색 */
+#menu .links a {
+  color: #333;
+  text-decoration: none;
+  display: block;
+  font-weight: 400;
+}
+
+/* hover */
+#menu .links a:hover {
+  color: #2a7dbf;
+}
+
+/* 현재 페이지 강조 */
+#menu a[aria-current="page"] {
+  color: #2a7dbf;
+  font-weight: 600;
+}
+
+/* -----------------------------------------
+   3. 모바일 / 아이패드 안정화
+----------------------------------------- */
+@media screen and (max-width: 980px) {
+
+  #sidebar {
+    background: #f5f6f7;
+  }
+
+  #menu .links {
+    padding: 0 1.25rem 1.25rem;
+  }
+}
