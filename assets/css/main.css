@@ -2447,7 +2447,7 @@ body.modal-open{ overflow:hidden; }
 .hero-media { position: relative; z-index: 0; }
 .hero-media video { display: block; width: 100%; height: auto; object-fit: cover; }
 /* 헤더/메뉴 아이콘을 비디오 위로 올리기 */
-#header, .menuToggle, .toggle, .logo { position: relative; z-index: 2; }
+#header, .logo { position: relative; z-index: 2; }
 .hero-media video { pointer-events: none; }
 
 /* ================================
