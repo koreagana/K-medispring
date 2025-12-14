@@ -2450,31 +2450,36 @@ body.modal-open{ overflow:hidden; }
 #header, .menuToggle, .toggle, .logo { position: relative; z-index: 2; }
 .hero-media video { pointer-events: none; }
 
-
 /* ================================
-   🌊 한강애봄 헤더 & 밑줄 정리 최종본
+   🌊 한강애봄 헤더 & 섹션 제목 밑줄 (수정본)
    ================================ */
 
-/* 1️⃣ 상단 헤더(#header) 굵은 파란선 (모든 페이지 공통 유지) */
-#header {
-  border-bottom: 5px solid #4E97D1 !important; /* 브랜드 시그니처 라인 */
+/* 1) 상단 헤더(#header) 파란 라인 유지 */
+#header{
+  border-bottom: 5px solid #4E97D1 !important;
   padding: 6em 0 1em 0 !important;
 }
 
-/* 2️⃣ 본문 섹션 제목 밑줄 제거 (중복 밑줄 방지) */
-header.major > :last-child {
-  border-bottom: 0 !important;
-  padding-bottom: 0 !important;
-  margin-bottom: 1.5em !important;
+/* 2) (전역) major 헤더 밑줄을 '삭제'가 아니라 '브랜드색으로 복구' */
+header.major > :last-child{
+  border-bottom: solid 3px #4E97D1 !important;  /* 원본 느낌 + 한강애봄 블루 */
+  display: inline-block;                         /* 밑줄이 글자 길이만큼 */
+  padding-bottom: .5em !important;
+  margin: 0 0 1.5em 0 !important;                /* 제목 아래 공간 */
 }
 
-/* 3️⃣ 전역 header 밑줄 규칙 완전 무력화 */
+/* 3) (전역) inner header 무력화 삭제 — 원본 동작 살림
+   → 기존에 넣었던 .inner header / :after 제거 효과를 되돌림 */
 .inner header,
-.inner header:after {
-  border-bottom: 0 !important;
-  box-shadow: none !important;
+.inner header:after{
+  border-bottom: none;
+  box-shadow: none;
 }
 
+/* 4) (사이드바 Contact) ‘联系方式’ 위쪽 공간을 원본처럼 확보 */
+#sidebar section header.major{
+  margin-top: 2.5em;   /* 필요하면 2em~3.5em 사이로 조절 */
+}
 
 
 /* =========================================================
@@ -3293,3 +3298,4 @@ h1, h2, h3, h4, h5, h6{
 .button, a.button, .actions .button{
   font-family: var(--heading-latin), var(--cjk-serif);
 }
+
