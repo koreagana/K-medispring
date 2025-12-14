@@ -2478,7 +2478,7 @@ header.major > :last-child{
 
 /* 4) (사이드바 Contact) ‘联系方式’ 위쪽 공간을 원본처럼 확보 */
 #sidebar section header.major{
-  margin-top: 2.5em;   /* 필요하면 2em~3.5em 사이로 조절 */
+  margin-top: 4em;   /* 필요하면 2em~3.5em 사이로 조절 */
 }
 
 
@@ -3298,4 +3298,5 @@ h1, h2, h3, h4, h5, h6{
 .button, a.button, .actions .button{
   font-family: var(--heading-latin), var(--cjk-serif);
 }
+
 
