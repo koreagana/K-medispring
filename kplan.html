@@ -76,6 +76,32 @@
     .kitems{list-style:none;margin:0;padding:0;display:grid;gap:.4rem;grid-template-columns:repeat(auto-fit,minmax(230px,1fr))}
     .kitems label{font-weight:400}
     #kplan-search{border-color:#99b9d6}
+
+    /* ✅ Step2 라디오 6개 UI */
+.kplan-radio6{
+  display:grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: .7rem 1rem;
+  padding: .85rem 1rem;
+  border: 1px solid #e5e7eb;
+  border-radius: 12px;
+  background:#fff;
+}
+.kplan-radio6 label{
+  display:flex;
+  align-items:center;
+  gap:.55rem;
+  padding:.55rem .65rem;
+  border-radius:10px;
+  cursor:pointer;
+}
+.kplan-radio6 input[type="radio"]{
+  transform: scale(1.05);
+}
+@media (max-width: 736px){
+  .kplan-radio6{ grid-template-columns: 1fr; }
+}
+
   </style>
 </head>
 
@@ -187,17 +213,21 @@
                 </div>
               </div>
 
-              <!-- Step 2 医疗需求（可多选） -->
               <h3>Step 2 · 医疗需求（可多选）</h3>
 
-              <!-- 검색창 -->
-              <div class="field">
-                <label>快速搜索（输入关键词即可过滤）</label>
-                <input id="kplan-search" type="text" placeholder="例：热玛吉 / 线雕 / 干细胞 / NK / 隆鼻 / 小阴唇…" />
-              </div>
+          <!-- ✅ Step2: 6개 카테고리 라디오 (아코디언 제거) -->
+<div class="field">
+  <label>请选择关注领域（单选）</label>
+  <div class="kplan-radio6" role="radiogroup" aria-label="医疗需求分类">
+    <label><input type="radio" name="need_category" value="皮肤医美" required> 皮肤医美</label>
+    <label><input type="radio" name="need_category" value="大健康（功能医学）"> 大健康（功能医学）</label>
+    <label><input type="radio" name="need_category" value="干细胞/再生"> 干细胞/再生</label>
+    <label><input type="radio" name="need_category" value="整形外科"> 整形外科</label>
+    <label><input type="radio" name="need_category" value="女性中心"> 女性中心</label>
+    <label><input type="radio" name="need_category" value="男性健康"> 男性健康</label>
+  </div>
+</div>
 
-              <!-- 카테고리 & 항목 렌더 영역 -->
-              <div id="kplan-cats" class="kcat"></div>
 
            <!-- ===== Step 3 · 旅行服务（可选） ===== -->
 <section id="step3" class="k-form-section">
@@ -252,16 +282,20 @@
       </section>
       <!-- ========================= ✅ 폼 섹션 끝 ========================= -->
 
-     <script>
+   <script>
   document.getElementById('kplan-form').addEventListener('submit', function (e) {
     e.preventDefault();
-    alert('谢谢！您的信息将通过邮箱发送，我们会尽快与您联系。');
+
+    const cat = document.querySelector('input[name="need_category"]:checked');
+    const travel = document.getElementById('travelServicesSummary')?.value || '';
+
+    let msg = '谢谢！您的信息将通过邮箱发送，我们会尽快与您联系。';
+    if (cat) msg += '\n\n选择领域：' + cat.value;
+    if (travel) msg += '\n旅行服务：' + travel;
+
+    alert(msg);
   });
 </script>
-      </div><!-- .inner -->
-    </div><!-- #main -->
-
-
 
         <!-- Footer -->
         <footer>
@@ -313,132 +347,6 @@
       });
     });
 
-    /* ====== K-PLAN 데이터/렌더 ====== */
-    const KDATA = {
-      skin:{name:'皮肤科',subs:{
-        lifting:['Ulthera 超声提升（Ulthera）','Thermage 热玛吉紧肤（Thermage）','线雕提拉（Thread lifting）'],
-        laser:['皮秒激光（色斑/痘印）','复合激光紧致 & 纹理/弹力改善','痤疮·疤痕激光','红血丝/血管激光'],
-        booster_inject:['Rejuran PN（丽珠兰）','皮肤水光/焕亮（Skin Booster）'],
-        microneedle:['黄金微针','射频微针'],
-        pore_texture:['毛孔缩小（含LDM等）','肌理改善方案'],
-        hair:['植发（FUE 无痕）']
-      }},
-      fx:{name:'大健康（功能医学）',subs:{
-        core_panels:['营养代谢分析（有机酸 OAT）','线粒体功能检测','端粒（Telomere）检测','阿尔茨海默症风险血检'],
-        immune_hormone:['激素平衡/全套谱','NK 细胞活性检测'],
-        toxins_metabolic:['重金属/毒性金属检测','代谢综合征·肥胖管理'],
-        microbiome_sleep:['肠道微生态（微生物组）检测','睡眠·压力评估（肾上腺/皮质醇）'],
-        vascular_bone:['动脉弹性/血管年龄','骨密度','同型半胱氨酸'],
-        iv_therapy:['静脉营养（IV）治疗','免疫增强注射：Thymosin α1（扎达新/国产制剂）']
-      }},
-      stem:{name:'干细胞/再生',subs:{
-        antiaging_iv:['干细胞静脉输注（IV）','外泌体治疗'],
-        tissue_regen:['软骨/关节再生干细胞','皮肤再生干细胞','神经再生干细胞'],
-        hair:['干细胞 + PRP 脱发再生'],
-        combo:['干细胞 + ECM 重塑','干细胞 + 基因/组织工程','干细胞 + NK 联合'],
-        source:['自体脂肪来源 MSC','自体骨髓来源 MSC','脐带血/胎盘·脐带膜 MSC']
-      }},
-      plastic:{name:'整形外科',subs:{
-        eye:['埋线双眼皮（非切开）','部分切开','全切双眼皮','开内眼角','开外/下眼角','眼型矫正/上睑下垂','上/下睑手术','眼袋脂肪重新分配','提眉术','卧蚕手术','眼部修复'],
-        nose:['硅胶/膨体隆鼻','驼峰鼻/朝天鼻矫正','鼻中隔软骨鼻尖塑形','鼻翼缩小','隆鼻修复','鼻中隔偏曲矫正','混合型隆鼻','自体软骨/AlloDerm 移植'],
-        contour:['颧骨内推','下颌角切除','T截骨/长脸矫正','下巴假体','贵族手术（鼻基底填充）','双下巴吸脂/轮廓提升','轮廓针/收紧（如 Shurink/Refit）','迷你轮廓提升'],
-        lifting:['热玛吉/超声刀/Refit/Secret','Max 拉皮','Mini 拉皮','额/颈/中面部提拉','线雕（PDO 等）','脂肪移植联合提升','射频紧肤'],
-        filler_botox:['玻尿酸（唇/法令纹/下巴/颧/鼻/面颊/额）','肉毒（咬肌/斜方肌/小腿/鱼尾纹/眉间/口角）','皮肤肉毒（Skin Botox）','水光炸弹（注射）'],
-        fat_lipo:['面部脂肪移植（微脂/干细胞联合）','部位脂肪移植（法令/泪沟/额/面颊/下巴）','吸脂（腹/大腿/手臂/腰/小腿）','吸脂后射频管理','髋凹（Hip-dip）矫正'],
-        breast_body:['隆胸（假体）','胸部脂肪移植/混合隆胸','乳房上提/缩小','乳头内陷/乳晕缩小/副乳','假体取出/置换','男性女乳矫正','腹部拉皮','臂/大腿/臀部提升','臀部上提','骨盆/臀部填充','胸罩线吸脂'],
-        etc:['嘴角上提/唇部缩小/唇填充','酒窝成形','耳部整形（招风耳/切耳/耳垂）','疤痕缩小/瘢痕疙瘩/简单缝合','腋臭/多汗/微波热凝（MiraDry）','纹身/痣/老年斑/太田痣去除','修复/异物取出']
-      }},
-      female:{name:'女性中心',subs:{
-        gyne_surgery:['名器质性整形（盆底重建）','阴道口整形（1/3）','阴道紧缩（整形）','小阴唇整形（全切）','小阴唇边缘修整（翼部）','阴蒂包皮成形（露出）','阴蒂皱褶去除','阴蒂提升','会阴皱褶整形','大阴唇整形','大阴唇脂肪移植/吸脂','阴道紧致激光','阴道填充（填充剂）','乳头/乳晕美白','大阴唇美白','私密综合美白'],
-        gyne_checkup:['炎症检测','小便检查','性病检测 12 项','HPV','女性激素全套','甲状腺功能（选）','上腹/心脏/肾膀胱 超声','乳腺/子宫/卵巢 超声（选）','骨密度','同型半胱氨酸','有机酸检测（OAT）','NK 细胞活性检测']
-      }},
-      male:{name:'男性健康',subs:{
-        urology_surgery:['包皮环切','输精管结扎/复通','精索静脉曲张手术','泌尿重建（尿道/阴茎）'],
-        andrology:['阴茎增粗/加长','阴茎弯曲矫正（佩罗尼）','阴茎假体植入','龟头增大','阴茎填充/脂肪移植'],
-        ed_prostate:['勃起功能障碍综合治疗','前列腺增生微创（如 UroLift）'],
-        hormone_vaccine:['低睾酮治疗（睾酮补充）','HPV 疫苗/男性性病筛查'],
-        body_wellness:['男性体成分/代谢健康管理','体型塑形（吸脂/运动医学联动）']
-      }}
-    };
-
-    const $cats=document.getElementById('kplan-cats');
-    const $search=document.getElementById('kplan-search');
-
-    function mapGroupName(key){
-      const m={
-        lifting:'提升/紧致', laser:'激光/嫩肤', booster_inject:'注射·皮肤修复',
-        microneedle:'微针', pore_texture:'毛孔/纹理', hair:'毛发',
-        core_panels:'核心评估', immune_hormone:'免疫/激素', toxins_metabolic:'毒素/代谢',
-        microbiome_sleep:'肠道/睡眠压力', vascular_bone:'血管/骨骼', iv_therapy:'静脉营养/免疫',
-        antiaging_iv:'抗衰/静脉', tissue_regen:'组织再生', combo:'联合疗法', source:'来源',
-        eye:'眼部', nose:'鼻部', contour:'轮廓', filler_botox:'填充/肉毒',
-        fat_lipo:'吸脂/脂肪移植', breast_body:'胸体/躯干', etc:'其他',
-        gyne_surgery:'妇科整形', gyne_checkup:'妇科检查',
-        urology_surgery:'泌尿外科', andrology:'男科', ed_prostate:'ED/前列腺',
-        hormone_vaccine:'激素/疫苗', body_wellness:'体成分/健康'
-      };
-      return m[key]||key;
-    }
-
-    function renderCats(filterText=''){
-      $cats.innerHTML='';
-      const kw=filterText.trim().toLowerCase();
-
-      Object.entries(KDATA).forEach(([cid,cobj])=>{
-        const wrap=document.createElement('section');
-        wrap.className='kcat-cat';
-
-        const hd=document.createElement('div');
-        hd.className='kcat-hd';
-        hd.innerHTML=`<h4>${cobj.name}</h4><span aria-hidden="true">＋</span>`;
-        wrap.appendChild(hd);
-
-        const bd=document.createElement('div');
-        bd.className='kcat-bd';
-
-        Object.entries(cobj.subs).forEach(([gid,items])=>{
-          const groupMatch=items.some(txt=>txt.toLowerCase().includes(kw));
-          if(kw && !groupMatch) return;
-
-          const g=document.createElement('div');
-          g.className='kgroup';
-          const gtitle=document.createElement('h5');
-          gtitle.textContent=mapGroupName(gid);
-          g.appendChild(gtitle);
-
-          const ul=document.createElement('ul');
-          ul.className='kitems';
-          items.filter(txt=>!kw || txt.toLowerCase().includes(kw)).forEach(txt=>{
-            const li=document.createElement('li');
-            li.innerHTML=`<label><input type="checkbox" name="proc" value="${cobj.name} / ${gtitle.textContent} / ${txt}"> ${txt}</label>`;
-            ul.appendChild(li);
-          });
-          if(ul.children.length) g.appendChild(ul);
-          bd.appendChild(g);
-        });
-
-        hd.addEventListener('click', ()=>{
-          const open=bd.classList.toggle('open');
-          hd.querySelector('span').textContent=open?'－':'＋';
-        });
-
-        if(kw){ bd.classList.add('open'); hd.querySelector('span').textContent='－'; }
-
-        wrap.appendChild(bd);
-        if(bd.children.length) $cats.appendChild(wrap);
-      });
-    }
-
-    $search.addEventListener('input', e=>renderCats(e.target.value));
-    renderCats();
-
-    document.getElementById('kplan-form').addEventListener('submit', function(e){
-      e.preventDefault();
-      const picked=[...document.querySelectorAll('input[name="proc"]:checked')].map(i=>i.value);
-      alert('已提交！我们会尽快与您联系。\\n\\n选择：\\n- ' + picked.join('\\n- '));
-      // TODO: 네이버 메일 연동(서버/앱스) 연결 시 여기서 fetch/POST
-    });
-  </script>
 
   <!-- HTML5 UP scripts -->
   <script src="/assets/js/jquery.min.js"></script>
