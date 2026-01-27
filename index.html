@@ -1,19 +1,222 @@
 <!DOCTYPE HTML>
-<!--
-  汉江春天(한강애봄) · Main Page (Editorial 레이아웃 버전)
-  - HTML5 UP Editorial 구조 유지: Header / Banner / Sections / Sidebar
-  - CSS는 assets/css/main.css 그대로 사용
-  - SNS 아이콘 유지(WeChat/小红书/Instagram/Email)
--->
 <html lang="zh-CN">
 <head>
-  <title>汉江春天 · 韩国医疗观光与大健康平台</title>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
-  <link rel="stylesheet" href="assets/css/main.css" />
+  <title>汉江春天</title>
 
-  <!-- (선택) 파비콘/OG는 네가 쓰던 걸 그대로 붙여도 됨 -->
+  <!-- GitHub Pages용 base 경로 -->
+  <script>
+    (function () {
+      var project = "/K-medispring/";
+      var isGhPages = location.hostname.endsWith("github.io");
+      var base = document.createElement("base");
+      base.href = isGhPages ? project : "/";
+      document.head.appendChild(base);
+    })();
+  </script>
+
+  <!-- Meta Tags -->
   <meta name="description" content="汉江春天 · 韩国医疗观光与大健康平台" />
+  <meta property="og:title" content="汉江春天" />
+  <meta property="og:description" content="专注于韩国医疗、皮肤医美、干细胞、健康管理与高端定制旅行" />
+  <meta property="og:image" content="https://kmedispring.com/images/preview.jpg" />
+  <meta property="og:url" content="https://kmedispring.com/index.html" />
+  <meta name="twitter:card" content="summary_large_image" />
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/x-icon" href="images/favicon.ico?v=20251012">
+  <link rel="icon" type="image/png" sizes="32x32" href="images/favicon-32.png?v=20251012">
+  <link rel="icon" type="image/png" sizes="16x16" href="images/favicon-16.png?v=20251012">
+  <link rel="apple-touch-icon" sizes="180x180" href="images/apple-touch-icon.png?v=20251012">
+
+  <!-- CSS -->
+  <link rel="stylesheet" href="assets/css/fontawesome-all.min.css?v=20251027" />
+  <link rel="stylesheet" href="assets/css/main.css?v=20251027" />
+  <noscript><link rel="stylesheet" href="assets/css/noscript.css?v=20251027" /></noscript>
+
+  <!-- 커스텀 스타일 -->
+  <style>
+    :root {
+      --brand: #0077B6;
+      --hover: #2088C2;
+      --deep:  #1565A0;
+      --line:  #A0C4DE;
+    }
+
+    /* 메뉴 링크 컬러 */
+    #menu a { 
+      color: #333 !important; 
+      text-decoration: none !important; 
+      transition: color .25s ease !important; 
+    }
+    #menu a:hover { color: var(--hover) !important; }
+    #menu a[aria-current="page"] { 
+      color: var(--brand) !important; 
+      font-weight: 600 !important; 
+    }
+
+    /* 메인 섹션 제목 밑줄 색 */
+    .major:after { background-color: var(--brand) !important; }
+
+    /* 주요 버튼 색 */
+    .button.primary,
+    .actions .button.primary { 
+      background: var(--brand) !important; 
+      border-color: var(--brand) !important; 
+    }
+    .button.primary:hover { 
+      background: var(--hover) !important; 
+      border-color: var(--hover) !important; 
+    }
+
+    /* 구분선 색 */
+    hr,
+    .inner .divider { border-color: var(--line) !important; }
+
+    /* 본문 타이포 (반응형) */
+    #main p,
+    #main li {
+      font-size: 20px;
+      line-height: 1.8;
+      color: #6f7a82;
+    }
+    #main h1,
+    #main h2,
+    #main h3 {
+      color: #333;
+    }
+    @media (max-width: 736px) {
+      #main p,
+      #main li {
+        font-size: 16px;
+        line-height: 1.7;
+      }
+    }
+
+    .modal-open { overflow: hidden; }
+
+    /* QR 모달 공통 스타일 */
+    .modal {
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,.6);
+      display: none;
+      align-items: center;
+      justify-content: center;
+      z-index: 10000;
+    }
+    .modal-inner {
+      background: #fff;
+      border-radius: 10px;
+      padding: 1.5rem 1.75rem;
+      max-width: 320px;
+      width: 90%;
+      text-align: center;
+      position: relative;
+      box-shadow: 0 12px 30px rgba(0,0,0,.25);
+    }
+    .modal .close {
+      position: absolute;
+      right: 0.75rem;
+      top: 0.5rem;
+      border: none;
+      background: none;
+      font-size: 1.5rem;
+      cursor: pointer;
+    }
+    .modal-caption {
+      font-weight: 600;
+      margin-bottom: .75rem;
+    }
+    .modal-id {
+      font-size: .9rem;
+      color: #555;
+      margin-top: .5rem;
+    }
+    .modal-content {
+      max-width: 100%;
+      height: auto;
+      display: block;
+      margin: 0 auto;
+    }
+/* =========================
+   Sidebar 로고 + MENU 타이틀
+   ========================= */
+
+/* 로고 영역: 가운데 정렬 + 위/아래 선 제거 */
+#sidebar-brand {
+  padding: 1.8rem 1.5rem 1.1rem;
+  text-align: center;
+  border-top: none !important;
+  border-bottom: none !important;
+}
+
+/* 로고 이미지 크기 & 중앙 정렬 */
+#sidebar-brand .sidebar-logo img {
+  display: block;
+  max-width: 140px;
+  height: auto;
+  margin: 0 auto;
+}
+
+/* 메뉴 전체 위의 회색 라인 제거 */
+#menu {
+  border-top: none !important;
+}
+
+/* 메뉴 리스트 좌우 여백 */
+#menu .links {
+  padding: 0 1.5rem 1.5rem;
+}
+
+/* MENU 첫 줄(타이틀) 스타일 */
+#menu .menu-title a {
+  font-size: 1.1rem !important;
+  font-weight: 700 !important;
+  color: #222 !important;
+  position: relative;
+  padding-bottom: 0.3rem;
+  display: inline-block;
+}
+
+/* MENU 밑 파란 밑줄 */
+#menu .menu-title a::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -2px;
+  width: 2.5rem;
+  height: 2px;
+  background: var(--brand);
+}
+
+
+/* =========================
+   Header 로고 (K-Medi Spring)
+   ========================= */
+#header .logo {
+  font-family: "Roboto Slab", "Source Han Serif CN", "Noto Serif KR", serif;
+  font-size: 1.6rem;
+  font-weight: 700;
+  text-decoration: none;
+  color: #333;
+  letter-spacing: 0.02em;
+}
+
+#header .logo .brand-main {
+  font-weight: 700;
+  color: #333;
+}
+
+#header .logo .brand-sub {
+  font-weight: 400;
+  color: #888;
+  margin-left: 0.35rem;
+}
+
+
+  </style>
 </head>
 
 <body class="is-preload">
@@ -21,197 +224,190 @@
   <!-- Wrapper -->
   <div id="wrapper">
 
-    <!-- Main -->
+    <!-- Main (오른쪽 콘텐츠 영역) -->
     <div id="main">
       <div class="inner">
 
         <!-- Header -->
-        <header id="header">
-          <a href="index.html" class="logo"><strong>汉江春天</strong> · K-Medi Spring</a>
+       <header id="header">
+  <a href="index.html" class="logo">
+    <span class="brand-main">K-Medi</span>
+    <span class="brand-sub">Spring</span>
+  </a>
 
-          <!-- ✅ SNS icons (유지) -->
+          <!-- SNS icons -->
           <ul class="icons">
-            <li><a href="#" id="wechat-icon" class="icon brands fa-weixin" title="WeChat: e-gana"><span class="label">WeChat</span></a></li>
-
-            <!-- 小红书: 기존처럼 svg 아이콘 쓰고 싶으면 여기 교체 -->
-            <li><a href="https://www.xiaohongshu.com/user/profile/550972467" target="_blank" rel="noopener" class="icon" title="小红书"><span class="label">小红书</span></a></li>
-
-            <li><a href="https://www.instagram.com/jiana2734/" target="_blank" rel="noopener" class="icon brands fa-instagram" title="Instagram"><span class="label">Instagram</span></a></li>
-            <li><a href="mailto:egana@kmedispring.com" class="icon solid fa-envelope" title="Email"><span class="label">Email</span></a></li>
+            <li>
+              <a href="#" id="wechat-icon" class="icon brands fa-weixin" title="WeChat: e-gana">
+                <span class="label">WeChat</span>
+              </a>
+            </li>
+            <li>
+              <a href="#" id="whatsapp-icon" class="icon brands fa-whatsapp" title="WhatsApp">
+                <span class="label">WhatsApp</span>
+              </a>
+            </li>
+            <li>
+              <a href="mailto:egana@kmedispring.com" class="icon solid fa-envelope" title="Email">
+                <span class="label">Email</span>
+              </a>
+            </li>
           </ul>
         </header>
 
         <!-- Banner -->
-        <section id="banner">
+        <section id="banner" class="alt" aria-labelledby="siteTitle">
           <div class="content">
             <header>
-              <h1>汉江春天</h1>
-              <p>韩国医疗观光与大健康平台 · 医疗对接 · 预约 · 翻译陪同 · 行程安排</p>
+              <h1 id="siteTitle">汉江春天</h1>
+              <h2 style="margin-top:.25em; font-size:2rem; font-weight:400;">
+                韩国医疗·康养·身心疗愈
+              </h2>
             </header>
-
             <p>
-              我们做的事很传统：把复杂的医疗信息讲清楚，把行程安排做扎实。<br/>
-              你只要提出需求，剩下的我们来对接、确认、推进。
+              “汉江春天”是一家获得韩国政府正式许可的医疗旅游公司。公司负责人拥有韩国医疗机构的正式执照，并具备多年从事医疗旅游领域的丰富经验。我们在韩国整合了顶级、最优质的医疗与健康资源，总部位于首尔市中心的钟路区。
+              “汉江春天”的核心优势在于为中国客户提供量身定制的“一站式”医疗旅游解决方案，无论是就医、康养还是休闲体验，都力求让客户享受到最安心、最满意的服务体验。
+              “汉江春天”，愿成为您在韩国最值得信赖的朋友。
             </p>
 
             <ul class="actions">
-              <li><a href="kplan.html" class="button big primary">定制医疗观光方案</a></li>
-              <li><a href="#fields" class="button big">查看专业领域</a></li>
+              <li>
+                <a href="kplan.html" class="button primary" data-i18n="navKplan">
+                  定制医疗观光方案
+                </a>
+              </li>
             </ul>
           </div>
 
-          <span class="image object">
-            <!-- ✅ 배너 이미지/영상은 나중에 교체 가능 -->
-            <img src="images/pic10.jpg" alt="" />
+          <!-- Hero video -->
+          <span class="image object hero-media">
+            <video id="introVideo" autoplay muted loop playsinline preload="metadata"
+                   style="width:100%;height:60vh;object-fit:cover;display:block">
+              <source src="https://kmedispring.com/videos/intro_v1.mp4.mp4?v=4#t=0.01" type="video/mp4">
+            </video>
           </span>
         </section>
 
-        <!-- Section: 专业领域 (6개 카테고리) -->
-        <section id="fields">
-          <header class="major">
-            <h2>专业领域</h2>
-          </header>
-
+        <!-- 品牌理念 -->
+        <section>
+          <header class="major"><h2>品牌理念</h2></header>
           <div class="features">
+
             <article>
-              <span class="icon solid fa-heartbeat"></span>
+              <span class="icon fa-gem"></span>
               <div class="content">
-                <h3>大健康</h3>
-                <p>功能医学评估、代谢与免疫管理、疲劳与抗衰策略，适合长期健康规划。</p>
-                <ul class="actions">
-                  <li><a href="wellness.html" class="button">了解更多</a></li>
-                </ul>
+                <h3>诚信医疗 · 真心相连</h3>
+                <p>我们不仅仅是做医疗观光，更致力于传递韩国医疗的真诚。<br>
+                以透明的流程与正规许可为基础，只推荐值得信赖的医疗机构。</p>
               </div>
             </article>
 
             <article>
-              <span class="icon solid fa-dna"></span>
+              <span class="icon solid fa-paper-plane"></span>
               <div class="content">
-                <h3>干细胞</h3>
-                <p>再生与修复方向的医疗咨询与对接，按需求匹配机构与方案沟通。</p>
-                <ul class="actions">
-                  <li><a href="stemcell.html" class="button">了解更多</a></li>
-                </ul>
+                <h3>让韩国医疗的美，走向世界</h3>
+                <p>我们致力于将韩国先进的皮肤美容与健康管理技术，传递给世界各地的客户，<br>
+                让每一位客户都能体验到“健康之美”的真正价值。</p>
               </div>
             </article>
 
             <article>
-              <span class="icon solid fa-sparkles"></span>
+              <span class="icon solid fa-rocket"></span>
               <div class="content">
-                <h3>皮肤医美</h3>
-                <p>色斑、毛孔、痘疤、紧致提升、皮肤修复与维护方案，重视过程与恢复管理。</p>
-                <ul class="actions">
-                  <li><a href="derm.html" class="button">了解更多</a></li>
-                </ul>
+                <h3>韩医与西医的协同力量</h3>
+                <p>通过韩医与西医的协作治疗，实现身心同疗的真正健康，<br>
+                带来从根本焕新的疗愈体验。</p>
               </div>
             </article>
 
             <article>
-              <span class="icon solid fa-user-md"></span>
+              <span class="icon solid fa-signal"></span>
               <div class="content">
-                <h3>整形医美</h3>
-                <p>眼鼻轮廓、脂肪移植、吸脂塑形等项目，强调沟通、评估与安全。</p>
-                <ul class="actions">
-                  <li><a href="surgery.html" class="button">了解更多</a></li>
-                </ul>
+                <h3>专属定制的医疗旅游方案</h3>
+                <p>根据每位客户的健康状况与目标，提供诊疗、住宿、接送、康复一站式服务，<br>
+                打造最安心、最贴心的健康之旅。</p>
               </div>
             </article>
 
-            <article>
-              <span class="icon solid fa-venus"></span>
-              <div class="content">
-                <h3>女性护理中心</h3>
-                <p>私密管理、妇科检查与综合护理，对接专业机构并协助隐私沟通。</p>
-                <ul class="actions">
-                  <li><a href="woman.html" class="button">了解更多</a></li>
-                </ul>
-              </div>
-            </article>
-
-            <article>
-              <span class="icon solid fa-mars"></span>
-              <div class="content">
-                <h3>男性健康中心</h3>
-                <p>男科与泌尿方向咨询与对接，注重信息确认与流程安排。</p>
-                <ul class="actions">
-                  <li><a href="man.html" class="button">了解更多</a></li>
-                </ul>
-              </div>
-            </article>
           </div>
         </section>
 
-        <!-- Section: 我们怎么做 (3단계) -->
+        <!-- 专业领域 · 一站式医疗体验 -->
         <section>
-          <header class="major">
-            <h2>我们的工作方式</h2>
-          </header>
+          <header class="major"><h2>专业领域 · 一站式医疗体验</h2></header>
 
           <div class="posts">
+
             <article>
-              <a href="kplan.html" class="image"><img src="images/pic01.jpg" alt="" /></a>
-              <h3>1) 需求确认</h3>
-              <p>先把你的目标说清楚：想改善什么、计划来韩时间、预算范围与恢复期。</p>
+              <h3>大健康</h3>
+              <p>以功能医学检测、激素检测、重金属检测为基础，系统分析体质与生活方式，并整合饮食、睡眠与压力管理，提供全方位健康方案。不只是治疗，更是让身心回到平衡的“重启护理”。</p>
               <ul class="actions">
-                <li><a href="kplan.html" class="button">填写需求表</a></li>
+                <li><a href="wellness.html" class="button">了解更多</a></li>
               </ul>
             </article>
 
             <article>
-              <a href="#" class="image"><img src="images/pic02.jpg" alt="" /></a>
-              <h3>2) 机构匹配</h3>
-              <p>按需求匹配医院/诊所，确认可行性、流程与注意事项，避免“到了才发现不合适”。</p>
+              <h3>干细胞</h3>
+              <p>采用先进干细胞技术，聚焦抗衰与组织再生，从细胞层面激活修复力。同提升皮肤状态、免疫与能量系统，带来由内而外的青春焕新体验。</p>
               <ul class="actions">
-                <li><a href="derm.html" class="button">看案例方向</a></li>
+                <li><a href="stemcell.html" class="button">了解更多</a></li>
               </ul>
             </article>
 
             <article>
-              <a href="#" class="image"><img src="images/pic03.jpg" alt="" /></a>
-              <h3>3) 行程落地</h3>
-              <p>预约、翻译陪同、接送与复诊动线一起安排。该省心的地方，一点也不节省。</p>
+              <h3>皮肤医美</h3>
+              <p>专业皮肤科与韩医协作诊疗，针对痤疮、色斑、皱纹、弹力等问题进行分层分析与治疗。结合个性化修复方案，重启肌底健康，恢复澄净与弹润。</p>
               <ul class="actions">
-                <li><a href="transfer.html" class="button">接送服务</a></li>
+                <li><a href="derm.html" class="button">了解更多</a></li>
               </ul>
             </article>
+
+            <article>
+              <h3>整形医美</h3>
+              <p>依托韩国先进医美与资深专家团队，以精细技术实现自然与和谐的改变。不止于外在调整，更关注自信与情绪疗愈，塑造内外兼修的美。</p>
+              <ul class="actions">
+                <li><a href="surgery.html" class="button">了解更多</a></li>
+              </ul>
+            </article>
+
+            <article>
+              <h3>女性护理中心</h3>
+              <p>根据女性不同生命阶段，进行激素平衡管理、产后修复与皮肤体型护理。帮助找回专属节律，让美与健康共振，回归轻盈与从容。</p>
+              <ul class="actions">
+                <li><a href="woman.html" class="button">了解更多</a></li>
+              </ul>
+            </article>
+
+            <article>
+              <h3>男性健康中心</h3>
+              <p>从功能医学视角评估压力、疲劳与体力下降等问题，提供个性化恢复方案。以活力提升、激素平衡与疲劳修复为核心，实现真正的能量回归。</p>
+              <ul class="actions">
+                <li><a href="man.html" class="button">了解更多</a></li>
+              </ul>
+            </article>
+
           </div>
         </section>
 
-        <!-- Section: 轻量信任文案 -->
-        <section>
-          <header class="major">
-            <h2>为什么是汉江春天</h2>
-          </header>
-          <p>
-            你会发现：真正让体验变好的，不是“说得多”，而是“确认得细”。<br/>
-            我们把确认当成习惯：项目、费用范围、恢复期、禁忌与术后管理，一项项对齐再推进。
-          </p>
-          <ul class="actions">
-            <li><a href="kplan.html" class="button primary">现在开始定制</a></li>
-          </ul>
-        </section>
+      </div><!-- .inner (main) -->
+    </div><!-- #main -->
 
+   <!-- Sidebar (왼쪽 카테고리 + 정보) -->
+<div id="sidebar">
+  <div class="inner">
+
+    <!-- Sidebar Brand + Menu -->
+    <section id="sidebar-brand">
+      <!-- ★ 여기 div 한 겹 씌움 -->
+      <div class="sidebar-logo">
+        <a href="index.html" class="logo">
+          <img src="images/logo_ch.png" alt="汉江春天 로고">
+        </a>
       </div>
-    </div>
+    </section>
 
-    <!-- Sidebar -->
-    <div id="sidebar">
-      <div class="inner">
-
-        <!-- Search -->
-        <section id="search" class="alt">
-          <form method="get" action="#">
-            <input type="search" name="query" id="query" placeholder="搜索" aria-label="搜索" />
-          </form>
-        </section>
-
-        <!-- Menu -->
         <nav id="menu">
-          <header class="major">
-            <h2>菜单</h2>
-          </header>
-          <ul>
-            <li><a href="index.html">首页</a></li>
+          <ul class="links">
             <li><a href="wellness.html">大健康</a></li>
             <li><a href="stemcell.html">干细胞</a></li>
             <li><a href="derm.html">皮肤医美</a></li>
@@ -221,89 +417,173 @@
             <li><a href="transfer.html">接送服务</a></li>
             <li><a href="tour.html">市区观光</a></li>
             <li><a href="lifestyle.html">生活服务</a></li>
-            <li><a href="kplan.html"><strong>定制医疗观光方案</strong></a></li>
+            <li><a href="kplan.html" data-i18n="navKplan">定制医疗观光方案</a></li>
           </ul>
         </nav>
 
-        <!-- About -->
-        <section>
-          <header class="major">
-            <h2>关于我们</h2>
-          </header>
-          <p>
-            汉江春天（한강애봄）专注于韩国医疗观光与大健康服务。<br/>
-            机构对接、预约、翻译陪同与行程安排，一站式推进。
-          </p>
-        </section>
-
         <!-- Contact -->
         <section>
-          <header class="major">
-            <h2>联系方式</h2>
-          </header>
-          <p>如果你对韩国医疗、健康管理或合作有兴趣，欢迎通过微信或邮件联系。</p>
+          <header class="major"><h2>联系方式</h2></header>
+          <p>我们相信，美丽与健康，源于真诚的交流。如果你对韩国医疗、健康管理或合作有兴趣，欢迎通过微信或邮件与我们联系。</p>
           <ul class="contact">
-            <li class="icon solid fa-envelope"><a href="mailto:egana@kmedispring.com">egana@kmedispring.com</a></li>
+            <li class="icon solid fa-envelope"><a href="mailto:egana@kmedispring.com">邮箱：egana@kmedispring.com</a></li>
             <li class="icon solid fa-phone">(82) 10-4903-3123</li>
-            <li class="icon solid fa-home">韩国 首尔特别市 城北区 东小门路 63号 6层</li>
+            <li class="icon solid fa-home">韩国 首尔特别市 城北区 东小门路 63号 6层 (邮编：02845)</li>
           </ul>
         </section>
 
         <!-- Footer -->
         <footer id="footer">
-          <p class="copyright">
-            © 2025 汉江春天 한강애봄. Design: HTML5 UP.
+          <p style="text-align:center; font-size:0.9em; color:#666;">
+            © 2025 汉江春天 한강애봄 版权所有。模板设计：HTML5 UP。
           </p>
         </footer>
 
-      </div>
-    </div>
+      </div><!-- .inner(sidebar) -->
+    </div><!-- #sidebar -->
 
+  </div><!-- #wrapper -->
+
+  <!-- WeChat QR Modal -->
+  <div id="wechatModal" class="modal" aria-hidden="true" role="dialog">
+    <div class="modal-inner">
+      <button class="close" aria-label="Close">&times;</button>
+      <p class="modal-caption">扫描二维码添加微信</p>
+      <img id="wechatQR" class="modal-content" src="images/qr_weixin.jpg" alt="WeChat QR for e-gana" />
+      <p class="modal-id">WeChat ID：e-gana</p>
+    </div>
   </div>
 
-  <!-- ✅ WeChat QR Modal (CSS는 나중에 main.css에 맞춰 정리해도 됨) -->
-  <div id="wechatModal" style="display:none;">
-    <div style="background:#fff; max-width:360px; margin:10vh auto; padding:18px; border-radius:12px;">
-      <p style="margin:0 0 10px 0;">扫描二维码添加微信</p>
-      <img src="images/qr_weixin.jpg" alt="WeChat QR" style="width:100%; height:auto; display:block;" />
-      <p style="margin:10px 0 0 0;">WeChat ID：e-gana</p>
-      <p style="margin:12px 0 0 0;"><a href="#" id="wechatClose">关闭</a></p>
+  <!-- WhatsApp Modal -->
+  <div id="whatsappModal" class="modal" aria-hidden="true" role="dialog">
+    <div class="modal-inner">
+      <button class="close" aria-label="Close">&times;</button>
+      <p class="modal-caption">QR → WhatsApp Connect</p>
+      <img id="whatsappQR" class="modal-content"
+           src="images/whatsapp_qr.jpg"
+           alt="WhatsApp QR for K-Medi Spring">
+      <p class="modal-id">WhatsApp：+82-10-4903-3123</p>
     </div>
   </div>
 
-  <!-- Scripts -->
+  <!-- 비디오 + 모달 스크립트 -->
+  <script>
+  document.addEventListener('DOMContentLoaded', function () {
+
+    /* 1) 인트로 비디오 */
+    const v = document.getElementById('introVideo');
+    if (v) {
+      try { v.playbackRate = 0.33; } catch(e) {}
+      v.muted = true;
+      v.volume = 0;
+    }
+
+    /* 2) WeChat 모달 */
+    const wechatModal  = document.getElementById('wechatModal');
+    const wechatIcon   = document.getElementById('wechat-icon');
+    const wechatQR     = document.getElementById('wechatQR');
+    const wechatClose  = wechatModal ? wechatModal.querySelector('.close') : null;
+
+    function openWeChat(e){
+      if (e) e.preventDefault();
+      if (wechatQR){
+        wechatQR.src = wechatQR.src.split('?')[0] + '?v=' + Date.now();
+      }
+      if (wechatModal){
+        wechatModal.style.display = 'flex';
+        wechatModal.setAttribute('aria-hidden', 'false');
+      }
+      document.body.classList.add('modal-open');
+    }
+    function closeWeChat(){
+      if (wechatModal){
+        wechatModal.style.display = 'none';
+        wechatModal.setAttribute('aria-hidden', 'true');
+      }
+      document.body.classList.remove('modal-open');
+    }
+
+    if (wechatIcon)  wechatIcon.addEventListener('click', openWeChat);
+    if (wechatClose) wechatClose.addEventListener('click', closeWeChat);
+    if (wechatModal){
+      wechatModal.addEventListener('click', function(e){
+        if (e.target === wechatModal) closeWeChat();
+      });
+    }
+
+    /* 3) WhatsApp 모달 */
+    const whatsappModal = document.getElementById('whatsappModal');
+    const whatsappIcon  = document.getElementById('whatsapp-icon');
+    const whatsappQR    = document.getElementById('whatsappQR');
+    const whatsappClose = whatsappModal ? whatsappModal.querySelector('.close') : null;
+
+    function openWhatsApp(e){
+      if (e) e.preventDefault();
+      if (whatsappQR){
+        whatsappQR.src = whatsappQR.src.split('?')[0] + '?v=' + Date.now();
+      }
+      if (whatsappModal){
+        whatsappModal.style.display = 'flex';
+        whatsappModal.setAttribute('aria-hidden','false');
+      }
+      document.body.classList.add('modal-open');
+    }
+    function closeWhatsApp(){
+      if (whatsappModal){
+        whatsappModal.style.display = 'none';
+        whatsappModal.setAttribute('aria-hidden','true');
+      }
+      document.body.classList.remove('modal-open');
+    }
+
+    if (whatsappIcon)  whatsappIcon.addEventListener('click', openWhatsApp);
+    if (whatsappClose) whatsappClose.addEventListener('click', closeWhatsApp);
+    if (whatsappModal){
+      whatsappModal.addEventListener('click', function(e){
+        if (e.target === whatsappModal) closeWhatsApp();
+      });
+    }
+
+    /* 4) ESC 키로 모두 닫기 */
+    document.addEventListener('keydown', function (e) {
+      if (e.key === 'Escape') {
+        closeWeChat();
+        closeWhatsApp();
+      }
+    });
+
+  });
+  </script>
+
+  <!-- 템플릿 기본 스크립트 5총사 -->
   <script src="assets/js/jquery.min.js"></script>
   <script src="assets/js/browser.min.js"></script>
   <script src="assets/js/breakpoints.min.js"></script>
   <script src="assets/js/util.js"></script>
   <script src="assets/js/main.js"></script>
 
-  <!-- WeChat Modal JS -->
+  <!-- 현재 페이지 메뉴 활성화 -->
   <script>
-    (function(){
-      var modal = document.getElementById('wechatModal');
-      var openBtn = document.getElementById('wechat-icon');
-      var closeBtn = document.getElementById('wechatClose');
-
-      function openModal(e){
-        if(e) e.preventDefault();
-        if(modal) modal.style.display = 'block';
-      }
-      function closeModal(e){
-        if(e) e.preventDefault();
-        if(modal) modal.style.display = 'none';
-      }
-
-      if(openBtn) openBtn.addEventListener('click', openModal);
-      if(closeBtn) closeBtn.addEventListener('click', closeModal);
-      if(modal) modal.addEventListener('click', function(e){
-        if(e.target === modal) closeModal(e);
-      });
-      document.addEventListener('keydown', function(e){
-        if(e.key === 'Escape') closeModal(e);
-      });
-    })();
+  (function(){
+    var path = location.pathname.replace(/\/K-medispring\/?/, '/');
+    document.querySelectorAll('#menu a[href]').forEach(function(a){
+      try {
+        var u = new URL(a.getAttribute('href'), location.origin);
+        if (u.pathname === path || u.pathname === location.pathname){
+          a.setAttribute('aria-current','page');
+        }
+      } catch(e){}
+    });
+  })();
   </script>
 
 </body>
 </html>
+
+
+
+
+
+
+
+
