@@ -2,6 +2,7 @@
 <!--
   2025/10/11 가나와 로니가 같이 만들기 시작함
   정리본: 로니가 리디아 대신 깔끔하게 정리한 파일 (kplan.html)
+  ✅ 2026/01/27 로니 정리: Step2 라디오 6개(아코디언 삭제) + 중앙 좁은 레이아웃 + 구조/태그/스크립트 정리
 -->
 <html lang="zh-CN">
 <head>
@@ -30,11 +31,13 @@
   <meta property="og:url" content="https://kmedispring.com/kplan.html" />
   <meta name="twitter:card" content="summary_large_image" />
 
-  <!-- Custom Style (페이지 전용) -->
+  <!-- ✅ Custom Style (kplan 전용) -->
   <style>
     :root{
       --brand:#0077B6; --hover:#2088C2; --deep:#1565A0; --line:#A0C4DE;
+      --card:#ffffff; --soft:#f6f9fc; --shadow:0 10px 36px rgba(0,0,0,.06);
     }
+
     /* 네비 컬러/버튼 */
     #menu a{color:#333!important; text-decoration:none!important; transition:color .25s ease!important;}
     #menu a:hover{color:var(--hover)!important;}
@@ -45,91 +48,157 @@
     hr,.inner .divider{border-color:var(--line)!important;}
     .modal-open{overflow:hidden;}
 
-    /* 본문 가독성 업그레이드 */
-    .inner p{font-size:1.15rem; line-height:1.85; color:#222; letter-spacing:.015em;}
-    @media (max-width: 980px){ .inner p{font-size:1.08rem; line-height:1.8;} }
-
-    /* K-Plan 레이아웃 */
-    .kplan-form .fields{display:flex;flex-wrap:wrap;gap:1.4rem}
-    .kplan-form .field{flex:1 1 46%;min-width:250px}
-    .kplan-form label{font-weight:600;color:#333;margin-bottom:.35rem;display:block}
-    .kplan-form input[type="text"],.kplan-form select,.kplan-form textarea{
-      width:100%;border:1px solid #cfcfcf;border-radius:8px;padding:.75rem;font-size:1rem;box-sizing:border-box
+    /* ✅ 페이지 중앙에 “작게” (대화창 느낌) */
+    #kplan-page #main > .inner{
+      max-width: 820px !important;
+      margin: 0 auto !important;
+      padding: 2.2rem 2rem 3rem !important;
     }
-    .kplan-form textarea{resize:vertical}
-    .kplan-form .checkboxes{list-style:none;margin:0;padding:0;display:grid;gap:.55rem}
-    .kplan-form .checkboxes.two-col{grid-template-columns:repeat(auto-fit,minmax(220px,1fr))}
+    @media (max-width: 980px){
+      #kplan-page #main > .inner{
+        max-width: 94vw !important;
+        padding: 1.2rem .9rem 2rem !important;
+      }
+    }
+
+    /* 본문 가독성 */
+    #kplan-page .inner p{font-size:1.08rem; line-height:1.85; color:#222; letter-spacing:.01em;}
+    @media (max-width: 980px){ #kplan-page .inner p{font-size:1.02rem;} }
+
+    /* ✅ 폼을 카드로: ‘열면 기분 좋아지게’ */
+    #kplan-page .kplan-card{
+      background:var(--card);
+      border-radius:18px;
+      box-shadow:var(--shadow);
+      padding:2rem 2.2rem 2.4rem;
+    }
+    @media (max-width: 736px){
+      #kplan-page .kplan-card{ padding:1.3rem 1.1rem 1.6rem; border-radius:16px; }
+    }
+
+    /* Step 간격 */
+    #kplan-page h3{ margin: 2.4rem 0 1rem; }
+    #kplan-page h3:first-of-type{ margin-top: 1.3rem; }
+
+    /* 폼 필드 레이아웃 (HTML5UP과 충돌 최소화: kplan 안에서만) */
+    #kplan-page .kplan-form .fields{display:flex;flex-wrap:wrap;gap:1.2rem}
+    #kplan-page .kplan-form .field{flex:1 1 46%;min-width:260px}
+    #kplan-page .kplan-form label{font-weight:700;color:#111;margin-bottom:.35rem;display:block}
+    #kplan-page .kplan-form input[type="text"],
+    #kplan-page .kplan-form select,
+    #kplan-page .kplan-form textarea{
+      width:100%;
+      border:1px solid #d6d6d6;
+      border-radius:10px;
+      padding:.8rem .85rem;
+      font-size:1rem;
+      box-sizing:border-box;
+      background:#fff;
+      transition:border-color .2s ease, box-shadow .2s ease;
+    }
+    #kplan-page .kplan-form input[type="text"]:focus,
+    #kplan-page .kplan-form select:focus,
+    #kplan-page .kplan-form textarea:focus{
+      border-color:var(--line);
+      box-shadow:0 0 0 4px rgba(32,136,194,.12);
+      outline:none;
+    }
+    #kplan-page .kplan-form textarea{resize:vertical}
     @media (max-width:736px){
-      .kplan-form .field{flex:1 1 100%}
-      .kplan-form .checkboxes.two-col{grid-template-columns:1fr}
+      #kplan-page .kplan-form .field{flex:1 1 100%}
     }
-
-    /* 카테고리 아코디언 */
-    .kcat{display:grid;gap:1rem;margin-top:.6rem}
-    .kcat-cat{border:1px solid #e2e6ea;border-radius:10px;overflow:hidden;background:#fff}
-    .kcat-hd{display:flex;justify-content:space-between;align-items:center;padding:.85rem 1rem;cursor:pointer;background:#f7fafc}
-    .kcat-hd h4{margin:0;font-size:1.05rem}
-    .kcat-bd{display:none;padding:.6rem 1rem .9rem;gap:1rem}
-    .kcat-bd.open{display:grid}
-    .kgroup{border-top:1px dashed #e5e7eb;padding-top:.6rem;margin-top:.4rem}
-    .kgroup h5{margin:.2rem 0 .5rem;font-size:.95rem;color:#0f172a}
-    .kitems{list-style:none;margin:0;padding:0;display:grid;gap:.4rem;grid-template-columns:repeat(auto-fit,minmax(230px,1fr))}
-    .kitems label{font-weight:400}
-    #kplan-search{border-color:#99b9d6}
 
     /* ✅ Step2 라디오 6개 UI */
-.kplan-radio6{
-  display:grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: .7rem 1rem;
-  padding: .85rem 1rem;
-  border: 1px solid #e5e7eb;
-  border-radius: 12px;
-  background:#fff;
-}
-.kplan-radio6 label{
-  display:flex;
-  align-items:center;
-  gap:.55rem;
-  padding:.55rem .65rem;
-  border-radius:10px;
-  cursor:pointer;
-}
-.kplan-radio6 input[type="radio"]{
-  transform: scale(1.05);
-}
-@media (max-width: 736px){
-  .kplan-radio6{ grid-template-columns: 1fr; }
-}
+    #kplan-page .kplan-radio6{
+      display:grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: .7rem 1rem;
+      padding: .95rem 1rem;
+      border: 1px solid #e5e7eb;
+      border-radius: 14px;
+      background: var(--soft);
+      margin-top:.6rem;
+    }
+    #kplan-page .kplan-radio6 label{
+      display:flex;
+      align-items:center;
+      gap:.6rem;
+      padding:.7rem .75rem;
+      border-radius:12px;
+      cursor:pointer;
+      background:#fff;
+      border:1px solid rgba(0,0,0,.06);
+      transition: transform .15s ease, border-color .15s ease, box-shadow .15s ease;
+      font-weight:600;
+    }
+    #kplan-page .kplan-radio6 label:hover{
+      transform: translateY(-1px);
+      border-color: rgba(0,119,182,.25);
+      box-shadow: 0 8px 18px rgba(0,0,0,.06);
+    }
+    #kplan-page .kplan-radio6 input[type="radio"]{ transform: scale(1.05); }
+    @media (max-width: 736px){
+      #kplan-page .kplan-radio6{ grid-template-columns: 1fr; }
+    }
 
+    /* Step3 서비스 그룹(간단 정돈) */
+    #kplan-page .svc-group{
+      border:1px solid #e5e7eb;
+      border-radius:14px;
+      background:#fff;
+      padding:1rem 1rem .7rem;
+    }
+    #kplan-page .svc-group legend{
+      font-weight:700;
+      color:#111;
+      padding:0 .4rem;
+    }
+    #kplan-page .svc-row{
+      display:flex;
+      align-items:center;
+      gap:.8rem;
+      padding:.7rem .2rem;
+      border-top:1px dashed #e9edf2;
+      flex-wrap:wrap;
+    }
+    #kplan-page .svc-row:first-of-type{ border-top:none; }
+    #kplan-page .svc-label{
+      min-width: 120px;
+      font-weight:700;
+      color:#111;
+    }
+    #kplan-page .svc-row label.need{
+      display:flex;
+      align-items:center;
+      gap:.35rem;
+      padding:.35rem .6rem;
+      border-radius:10px;
+      background:var(--soft);
+      border:1px solid rgba(0,0,0,.06);
+      cursor:pointer;
+    }
+    #kplan-page .svc-row input[type="radio"]{ transform: scale(1.02); }
+
+    /* 상단 설명문 “기분 좋게” */
+    #kplan-page .kplan-lead{
+      margin-top:.6rem;
+      color:#334155;
+    }
+    #kplan-page .kplan-tip{
+      margin:.6rem 0 0;
+      font-size:.95rem;
+      color:#64748b;
+    }
   </style>
 </head>
-
-<!-- ✅ kplan 전용: 좌/우 여백 2cm 확보 -->
-<style>
-  /* 데스크톱: 좌우 2cm */
-  #kplan-page #main > .inner{
-    padding-left: 2cm !important;
-    padding-right: 2cm !important;
-  }
-
-  /* 모바일: 너무 좁아지지 않게 자동 축소 */
-  @media (max-width: 980px){
-    #kplan-page #main > .inner{
-      padding-left: 1rem !important;
-      padding-right: 1rem !important;
-    }
-  }
-</style>
 
 <body id="kplan-page" class="is-preload" lang="zh-CN">
   <!-- Wrapper -->
   <div id="wrapper">
 
-    <!-- Main (✅ 폼은 여기 안에 있어야 함) -->
+    <!-- Main -->
     <div id="main">
       <div class="inner">
-
 
         <!-- Header -->
         <header id="header">
@@ -140,7 +209,7 @@
           <!-- Hamburger / Menu toggle -->
           <a href="#menu" class="toggle" aria-label="Open Menu"></a>
 
-          <!-- SNS icons -->
+          <!-- ✅ SNS icons (절대 삭제 금지) -->
           <ul class="icons">
             <li>
               <a href="#" id="wechat-icon" class="icon brands fa-weixin" title="WeChat: e-gana">
@@ -148,7 +217,7 @@
               </a>
             </li>
             <li>
-              <a href="https://www.xiaohongshu.com/user/profile/550972467" target="_blank" class="icon" title="小红书">
+              <a href="https://www.xiaohongshu.com/user/profile/550972467" target="_blank" class="icon" title="小红书" rel="noopener">
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" width="20" height="20" aria-hidden="true">
                   <rect width="100" height="100" rx="20" ry="20" fill="#FF2442"/>
                   <text x="50%" y="60%" text-anchor="middle" fill="#fff" font-size="30" font-family="sans-serif" font-weight="bold">小红书</text>
@@ -157,7 +226,7 @@
               </a>
             </li>
             <li>
-              <a href="https://www.instagram.com/jiana2734/" target="_blank" class="icon brands fa-instagram" title="Instagram">
+              <a href="https://www.instagram.com/jiana2734/" target="_blank" class="icon brands fa-instagram" title="Instagram" rel="noopener">
                 <span class="label">Instagram</span>
               </a>
             </li>
@@ -169,28 +238,31 @@
           </ul>
         </header>
 
-        <!-- ========================= K-PLAN FORM (Main Content) ========================= -->
-          <section id="kplan" class="kplan-band">
-          <div class="inner">
-            <header class="major">
-              <h2>定制医疗观光方案</h2>
-              <p>填写下列信息并勾选感兴趣的项目。提交后，我们将在 24 小时内与您确认细节。</p>
-            </header>
+        <!-- ========================= K-PLAN FORM ========================= -->
+        <section id="kplan" class="kplan-band">
+          <header class="major">
+            <h2>定制医疗观光方案</h2>
+            <p class="kplan-lead">填写下列信息并选择感兴趣的方向。提交后，我们将在 24 小时内与您确认细节。</p>
+            <p class="kplan-tip">提示：先选一个方向也可以，我们会根据您的情况再细化方案。</p>
+          </header>
 
+          <div class="kplan-card">
+            <!-- ✅ mailto 제거: 경고/불안정 방지 -->
+            <form id="kplan-form" class="kplan-form" autocomplete="on">
 
-            <form id="kplan-form" class="kplan-form" action="mailto:2gana@naver.com" method="post" enctype="text/plain" autocomplete="on">
-
-            <!-- Step 1 基本信息 -->
+              <!-- Step 1 基本信息 -->
               <h3>Step 1 · 基本信息</h3>
               <div class="fields">
                 <div class="field half">
                   <label>姓名</label>
                   <input type="text" name="name" placeholder="中文或英文姓名" required />
                 </div>
+
                 <div class="field half">
                   <label>国家 / 居住地</label>
                   <input type="text" name="country" placeholder="例：中国 / 上海" required />
                 </div>
+
                 <div class="field half">
                   <label>联系方式</label>
                   <select name="contact_type">
@@ -199,10 +271,12 @@
                     <option value="email">Email</option>
                   </select>
                 </div>
+
                 <div class="field half">
                   <label>联系方式内容</label>
                   <input type="text" name="contact_value" placeholder="输入 WeChat ID / 电话 / 邮箱" />
                 </div>
+
                 <div class="field half">
                   <label>偏好语言</label>
                   <select name="language">
@@ -213,89 +287,136 @@
                 </div>
               </div>
 
-              <h3>Step 2 · 医疗需求（可多选）</h3>
+              <!-- Step 2 -->
+              <h3>Step 2 · 医疗需求</h3>
+              <p style="margin:-.2rem 0 1rem; color:#64748b;">请选择关注领域（单选）</p>
 
-          <!-- ✅ Step2: 6개 카테고리 라디오 (아코디언 제거) -->
-<div class="field">
-  <label>请选择关注领域（单选）</label>
-  <div class="kplan-radio6" role="radiogroup" aria-label="医疗需求分类">
-    <label><input type="radio" name="need_category" value="皮肤医美" required> 皮肤医美</label>
-    <label><input type="radio" name="need_category" value="大健康（功能医学）"> 大健康（功能医学）</label>
-    <label><input type="radio" name="need_category" value="干细胞/再生"> 干细胞/再生</label>
-    <label><input type="radio" name="need_category" value="整形外科"> 整形外科</label>
-    <label><input type="radio" name="need_category" value="女性中心"> 女性中心</label>
-    <label><input type="radio" name="need_category" value="男性健康"> 男性健康</label>
-  </div>
-</div>
+              <div class="field">
+                <div class="kplan-radio6" role="radiogroup" aria-label="医疗需求分类">
+                  <label><input type="radio" name="need_category" value="皮肤医美" required> 皮肤医美</label>
+                  <label><input type="radio" name="need_category" value="大健康（功能医学）"> 大健康（功能医学）</label>
+                  <label><input type="radio" name="need_category" value="干细胞/再生"> 干细胞/再生</label>
+                  <label><input type="radio" name="need_category" value="整形外科"> 整形外科</label>
+                  <label><input type="radio" name="need_category" value="女性中心"> 女性中心</label>
+                  <label><input type="radio" name="need_category" value="男性健康"> 男性健康</label>
+                </div>
+              </div>
 
+              <!-- Step 3 -->
+              <section id="step3" class="k-form-section">
+                <h3>Step 3 · 旅行服务（可选）</h3>
 
-           <!-- ===== Step 3 · 旅行服务（可选） ===== -->
-<section id="step3" class="k-form-section">
-  <h3>Step 3 · 旅行服务（可选）</h3>
+                <fieldset class="svc-group">
+                  <legend>请选择各项服务是否需要：</legend>
 
-  <fieldset class="svc-group">
-    <legend>请选择各项服务是否需要：</legend>
+                  <div class="svc-row">
+                    <span class="svc-label">机场接送：</span>
+                    <label class="need" for="airport_yes">
+                      <input id="airport_yes" type="radio" name="airport" value="需要">需要
+                    </label>
+                    <label class="need" for="airport_no">
+                      <input id="airport_no" type="radio" name="airport" value="不需要">不需要
+                    </label>
+                  </div>
 
-  <div class="svc-row">
-  <span class="svc-label">机场接送：</span>
-  <label class="need" for="airport_yes">
-    <input id="airport_yes" type="radio" name="airport" value="需要">需要
-  </label>
-  <label class="need" for="airport_no">
-    <input id="airport_no" type="radio" name="airport" value="不需要">不需要
-  </label>
-</div>
+                  <div class="svc-row">
+                    <span class="svc-label">酒店预订：</span>
+                    <label class="need" for="hotel_yes">
+                      <input id="hotel_yes" type="radio" name="hotel" value="需要">需要
+                    </label>
+                    <label class="need" for="hotel_no">
+                      <input id="hotel_no" type="radio" name="hotel" value="不需要">不需要
+                    </label>
+                  </div>
 
-<div class="svc-row">
-  <span class="svc-label">酒店预订：</span>
-  <label class="need" for="hotel_yes">
-    <input id="hotel_yes" type="radio" name="hotel" value="需要">需要
-  </label>
-  <label class="need" for="hotel_no">
-    <input id="hotel_no" type="radio" name="hotel" value="不需要">不需要
-  </label>
-</div>
+                  <div class="svc-row">
+                    <span class="svc-label">市区观光：</span>
+                    <label class="need" for="tour_yes">
+                      <input id="tour_yes" type="radio" name="tour" value="需要">需要
+                    </label>
+                    <label class="need" for="tour_no">
+                      <input id="tour_no" type="radio" name="tour" value="不需要">不需要
+                    </label>
+                  </div>
 
-<div class="svc-row">
-  <span class="svc-label">市区观光：</span>
-  <label class="need" for="tour_yes">
-    <input id="tour_yes" type="radio" name="tour" value="需要">需要
-  </label>
-  <label class="need" for="tour_no">
-    <input id="tour_no" type="radio" name="tour" value="不需要">不需要
-  </label>
-</div>
+                  <div class="svc-row">
+                    <span class="svc-label">医疗陪同／翻译：</span>
+                    <label class="need" for="translation_yes">
+                      <input id="translation_yes" type="radio" name="translation" value="需要">需要
+                    </label>
+                    <label class="need" for="translation_no">
+                      <input id="translation_no" type="radio" name="translation" value="不需要">不需要
+                    </label>
+                  </div>
 
-<div class="svc-row">
-  <span class="svc-label">医疗陪同／翻译：</span>
-  <label class="need" for="translation_yes">
-    <input id="translation_yes" type="radio" name="translation" value="需要">需要
-  </label>
-  <label class="need" for="translation_no">
-    <input id="translation_no" type="radio" name="translation" value="不需要">不需要
-  </label>
-</div>
+                  <input type="hidden" id="travelServicesSummary" name="travel_services_summary">
+                </fieldset>
+              </section>
 
-  <input type="hidden" id="travelServicesSummary" name="travel_services_summary">
-        
-  </form>
-      </section>
-      <!-- ========================= ✅ 폼 섹션 끝 ========================= -->
+              <!-- CTA -->
+              <ul class="actions" style="margin-top:1.6rem;">
+                <li><button type="submit" class="button primary">提交</button></li>
+                <li><button type="reset" class="button">重置</button></li>
+              </ul>
 
-   <script>
-  document.getElementById('kplan-form').addEventListener('submit', function (e) {
-    e.preventDefault();
+            </form>
+          </div>
+        </section>
+        <!-- ========================= ✅ 폼 섹션 끝 ========================= -->
 
-    const cat = document.querySelector('input[name="need_category"]:checked');
-    const travel = document.getElementById('travelServicesSummary')?.value || '';
+      </div><!-- .inner -->
+    </div><!-- #main -->
 
-    let msg = '谢谢！您的信息将通过邮箱发送，我们会尽快与您联系。';
-    if (cat) msg += '\n\n选择领域：' + cat.value;
-    if (travel) msg += '\n旅行服务：' + travel;
+    <!-- Sidebar -->
+    <div id="sidebar">
+      <div class="inner">
 
-    alert(msg);
-  });
-</script>
+        <!-- Search -->
+        <section id="search" class="alt">
+          <form method="get" action="#">
+            <input type="search" name="query" id="query" placeholder="搜索" aria-label="搜索" />
+          </form>
+        </section>
+
+        <!-- Menu -->
+        <nav id="menu">
+          <ul>
+            <li><a href="index.html">首页</a></li>
+            <li><a href="wellness.html">大健康</a></li>
+            <li><a href="stemcell.html">干细胞</a></li>
+            <li><a href="derm.html">皮肤医美</a></li>
+            <li><a href="surgery.html">整形医美</a></li>
+            <li><a href="woman.html">女性护理中心</a></li>
+            <li><a href="man.html">男性健康中心</a></li>
+            <li><a href="transfer.html">接送服务</a></li>
+            <li><a href="tour.html">市区观光</a></li>
+            <li><a href="lifestyle.html">生活服务</a></li>
+            <li><a href="kplan.html" class="active" data-i18n="navKplan">定制医疗观光方案</a></li>
+          </ul>
+        </nav>
+
+        <!-- About / Partners -->
+        <section>
+          <header class="major"><h2>关于我们</h2></header>
+          <p style="text-align:center; color:#777;">合作伙伴</p>
+          <div class="mini-posts">
+            <article>
+              <a href="#" class="image profile"><img src="images/gana.png" alt="汉江春天 代表" /></a>
+              <p style="text-align:center; font-size:1em; margin-top:.5em;">汉江春天 代表</p>
+            </article>
+          </div>
+        </section>
+
+        <!-- Contact -->
+        <section>
+          <header class="major"><h2>联系方式</h2></header>
+          <p>我们相信，美丽与健康，源于真诚的交流。如果你对韩国医疗、健康管理或合作有兴趣，欢迎通过微信或邮件与我们联系。</p>
+          <ul class="contact">
+            <li class="icon solid fa-envelope"><a href="mailto:egana@kmedispring.com">邮箱：egana@kmedispring.com</a></li>
+            <li class="icon solid fa-phone">(82) 10-4903-3123</li>
+            <li class="icon solid fa-home">韩国 首尔特别市 城北区 东小门路 63号 6层(邮编：02845)</li>
+          </ul>
+        </section>
 
         <!-- Footer -->
         <footer>
@@ -321,7 +442,7 @@
   <!-- Page Scripts -->
   <script>
     document.addEventListener('DOMContentLoaded', function () {
-      // Modal
+      // WeChat Modal
       var modal = document.getElementById('wechatModal');
       var trigger = document.getElementById('wechat-icon');
       var qrImg = document.getElementById('wechatQR');
@@ -345,65 +466,58 @@
       document.addEventListener('keydown', function (e) {
         if (e.key === 'Escape') closeModal();
       });
-    });
 
+      // Step3 hidden summary sync
+      (function(){
+        var rows = document.querySelectorAll('#step3 .svc-row');
+        var hidden = document.getElementById('travelServicesSummary');
+        if (!rows.length || !hidden) return;
 
-  <!-- HTML5 UP scripts -->
-  <script src="/assets/js/jquery.min.js"></script>
-  <script src="/assets/js/browser.min.js"></script>
-  <script src="/assets/js/breakpoints.min.js"></script>
-  <script src="/assets/js/util.js"></script>
-  <script src="/assets/js/main.js"></script>
-  
-  <script>
-(function(){
-  var rows = document.querySelectorAll('#step3 .svc-row');
-  var hidden = document.getElementById('travelServicesSummary');
-  if (!rows.length || !hidden) return;
+        function sync(){
+          var summary = [];
+          rows.forEach(function(row){
+            var labelText = (row.querySelector('.svc-label') || {}).textContent || '';
+            var name = row.querySelector('input[type=radio]') ? row.querySelector('input[type=radio]').name : '';
+            if (!name) return;
+            var checked = row.querySelector('input[name="'+name+'"]:checked');
+            if (checked){
+              summary.push(labelText.trim() + checked.value);
+            }
+          });
+          hidden.value = summary.join(' / ');
+        }
 
-  function sync(){
-    var summary = [];
-    rows.forEach(function(row){
-      var label = row.querySelector('label:first-child');
-      var name = row.querySelector('input[type=radio]').name;
-      var checked = row.querySelector('input[name="'+name+'"]:checked');
-      if (checked){
-        summary.push(label.textContent.trim() + checked.value);
+        document.querySelectorAll('#step3 input[type=radio]').forEach(function(r){
+          r.addEventListener('change', sync, {passive:true});
+        });
+        sync();
+      })();
+
+      // Submit alert (Step2 + Step3 요약 포함)
+      var form = document.getElementById('kplan-form');
+      if (form){
+        form.addEventListener('submit', function (e) {
+          e.preventDefault();
+
+          var cat = document.querySelector('input[name="need_category"]:checked');
+          var travel = (document.getElementById('travelServicesSummary') || {}).value || '';
+
+          var msg = '谢谢！您的信息将通过邮箱发送，我们会尽快与您联系。';
+          if (cat) msg += '\n\n选择领域：' + cat.value;
+          if (travel) msg += '\n旅行服务：' + travel;
+
+          alert(msg);
+        });
       }
     });
-    hidden.value = summary.join(' / ');
-  }
+  </script>
 
-  document.querySelectorAll('#step3 input[type=radio]').forEach(function(r){
-    r.addEventListener('change', sync, {passive:true});
-  });
-  sync();
-})();
-</script>
+  <!-- HTML5 UP scripts -->
+  <script src="assets/js/jquery.min.js"></script>
+  <script src="assets/js/browser.min.js"></script>
+  <script src="assets/js/breakpoints.min.js"></script>
+  <script src="assets/js/util.js"></script>
+  <script src="assets/js/main.js"></script>
 
 </body>
 </html>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
