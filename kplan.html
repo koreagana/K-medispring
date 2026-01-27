@@ -229,76 +229,21 @@
 </div>
 
   <input type="hidden" id="travelServicesSummary" name="travel_services_summary">
-</section>
-        <!-- ========================= ✅ 폼 섹션 끝 ========================= -->
+        
+  </form>
+      </section>
+      <!-- ========================= ✅ 폼 섹션 끝 ========================= -->
 
-        <script>
-      document.getElementById('kplan-form').addEventListener('submit', function() {
-      alert('谢谢！您的信息将通过邮箱发送，我们会尽快与您联系。');
-      });
-      </script>
- 
+     <script>
+  document.getElementById('kplan-form').addEventListener('submit', function (e) {
+    e.preventDefault();
+    alert('谢谢！您的信息将通过邮箱发送，我们会尽快与您联系。');
+  });
+</script>
       </div><!-- .inner -->
     </div><!-- #main -->
 
-    <!-- Sidebar (메뉴/소개/연락처/푸터) -->
-    <div id="sidebar">
-      <div class="inner">
 
-        <!-- Search -->
-        <section id="search" class="alt">
-          <form method="get" action="#">
-            <input type="search" name="query" id="query" placeholder="搜索" aria-label="搜索" />
-          </form>
-        </section>
-
-        <!-- Menu -->
-        <nav id="menu">
-          <ul>
-            <li><a href="index.html">首页</a></li>
-            <li><a href="wellness.html">大健康</a></li>
-            <li><a href="stemcell.html">干细胞</a></li>
-            <li><a href="derm.html">皮肤医美</a></li>
-            <li><a href="surgery.html">整形医美</a></li>
-            <li><a href="woman.html">女性护理中心</a></li>
-            <li><a href="man.html">男性健康中心</a></li>
-            <li><a href="transfer.html">接送服务</a></li>
-            <li><a href="tour.html">市区观光</a></li>
-            <li><a href="lifestyle.html">生活服务</a></li>
-            <li><a href="kplan.html" class="active" data-i18n="navKplan">定制医疗观光方案</a></li>
-          </ul>
-        </nav>
-
-        <!-- About / Partners -->
-        <section>
-          <header class="major"><h2>关于我们</h2></header>
-          <p style="text-align:center; color:#777;">合作伙伴</p>
-          <div class="mini-posts">
-            <article>
-              <a href="#" class="image profile"><img src="images/gana.png" alt="汉江春天 代表" /></a>
-              <p style="text-align:center; font-size:1em; margin-top:.5em;">汉江春天 代表</p>
-            </article>
-            <article>
-              <a href="#" class="image"><img src="images/pic08.jpg" alt="" /></a>
-              <p>Aenean ornare velit lacus...</p>
-            </article>
-            <article>
-              <a href="#" class="image"><img src="images/pic09.jpg" alt="" /></a>
-              <p>Aenean ornare velit lacus...</p>
-            </article>
-          </div>
-        </section>
-
-        <!-- Contact -->
-        <section>
-          <header class="major"><h2>联系方式</h2></header>
-          <p>我们相信，美丽与健康，源于真诚的交流。如果你对韩国医疗、健康管理或合作有兴趣，欢迎通过微信或邮件与我们联系。</p>
-          <ul class="contact">
-            <li class="icon solid fa-envelope"><a href="mailto:egana@kmedispring.com">邮箱：egana@kmedispring.com</a></li>
-            <li class="icon solid fa-phone">(82) 10-4903-3123</li>
-            <li class="icon solid fa-home">韩国 首尔特别市 城北区 东小门路 63号 6层(邮编：02845)</li>
-          </ul>
-        </section>
 
         <!-- Footer -->
         <footer>
