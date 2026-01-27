@@ -1,17 +1,21 @@
 <!DOCTYPE HTML>
 <!--
-  한강애봄 · K-Plan (Editorial 원본 레이아웃 유지 버전)
-  ✅ 사용자가 준 Editorial 원본 디자인 구조(배너/섹션/사이드바)를 그대로 두고,
-  ✅ “배너” 자리에 K-Plan 안내 + 폼(선택 많게, 라디오 중심)만 꽂아 넣은 HTML
-  ⚠️ CSS는 지금 건드리지 않음(assets/css/main.css 그대로 사용)
+  汉江春天(한강애봄) · Main Page (Editorial 레이아웃 버전)
+  - HTML5 UP Editorial 구조 유지: Header / Banner / Sections / Sidebar
+  - CSS는 assets/css/main.css 그대로 사용
+  - SNS 아이콘 유지(WeChat/小红书/Instagram/Email)
 -->
 <html lang="zh-CN">
 <head>
-  <title>汉江春天 · 定制医疗观光方案</title>
+  <title>汉江春天 · 韩国医疗观光与大健康平台</title>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
   <link rel="stylesheet" href="assets/css/main.css" />
+
+  <!-- (선택) 파비콘/OG는 네가 쓰던 걸 그대로 붙여도 됨 -->
+  <meta name="description" content="汉江春天 · 韩国医疗观光与大健康平台" />
 </head>
+
 <body class="is-preload">
 
   <!-- Wrapper -->
@@ -21,366 +25,176 @@
     <div id="main">
       <div class="inner">
 
-        <!-- Header (한강애봄 버전) -->
+        <!-- Header -->
         <header id="header">
           <a href="index.html" class="logo"><strong>汉江春天</strong> · K-Medi Spring</a>
-          <!-- ✅ SNS 아이콘 유지 (네가 쓰는 걸로 갈아끼워도 됨) -->
+
+          <!-- ✅ SNS icons (유지) -->
           <ul class="icons">
-            <li><a href="#" id="wechat-icon" class="icon brands fa-weixin"><span class="label">WeChat</span></a></li>
-            <li><a href="https://www.xiaohongshu.com/user/profile/550972467" target="_blank" rel="noopener" class="icon"><span class="label">小红书</span></a></li>
-            <li><a href="https://www.instagram.com/jiana2734/" target="_blank" rel="noopener" class="icon brands fa-instagram"><span class="label">Instagram</span></a></li>
-            <li><a href="mailto:egana@kmedispring.com" class="icon solid fa-envelope"><span class="label">Email</span></a></li>
+            <li><a href="#" id="wechat-icon" class="icon brands fa-weixin" title="WeChat: e-gana"><span class="label">WeChat</span></a></li>
+
+            <!-- 小红书: 기존처럼 svg 아이콘 쓰고 싶으면 여기 교체 -->
+            <li><a href="https://www.xiaohongshu.com/user/profile/550972467" target="_blank" rel="noopener" class="icon" title="小红书"><span class="label">小红书</span></a></li>
+
+            <li><a href="https://www.instagram.com/jiana2734/" target="_blank" rel="noopener" class="icon brands fa-instagram" title="Instagram"><span class="label">Instagram</span></a></li>
+            <li><a href="mailto:egana@kmedispring.com" class="icon solid fa-envelope" title="Email"><span class="label">Email</span></a></li>
           </ul>
         </header>
 
-        <!-- Banner (원본 디자인 핵심: 왼쪽 content + 오른쪽 이미지) -->
+        <!-- Banner -->
         <section id="banner">
           <div class="content">
             <header>
-              <h1>定制医疗观光方案</h1>
-              <p>填写信息并选择项目，我们将在 24 小时内与您确认细节。</p>
+              <h1>汉江春天</h1>
+              <p>韩国医疗观光与大健康平台 · 医疗对接 · 预约 · 翻译陪同 · 行程安排</p>
             </header>
 
             <p>
-              先随便选几项也可以。<br/>
-              我们会根据你的需求，组合成最合适的韩国医疗行程：医疗 + 皮肤医美 + 大健康 + 接送/翻译/观光。
+              我们做的事很传统：把复杂的医疗信息讲清楚，把行程安排做扎实。<br/>
+              你只要提出需求，剩下的我们来对接、确认、推进。
             </p>
 
             <ul class="actions">
-              <li><a href="#kplan-form" class="button big">开始填写</a></li>
+              <li><a href="kplan.html" class="button big primary">定制医疗观光方案</a></li>
+              <li><a href="#fields" class="button big">查看专业领域</a></li>
             </ul>
           </div>
 
           <span class="image object">
-            <!-- ✅ 배너 이미지는 기존 자산 그대로 / 나중에 한강애봄 이미지로 바꾸면 됨 -->
+            <!-- ✅ 배너 이미지/영상은 나중에 교체 가능 -->
             <img src="images/pic10.jpg" alt="" />
           </span>
         </section>
 
-        <!-- Section: K-Plan Form (원본 디자인의 section 스타일 그대로) -->
-        <section id="kplan-form">
+        <!-- Section: 专业领域 (6개 카테고리) -->
+        <section id="fields">
           <header class="major">
-            <h2>填写表单</h2>
+            <h2>专业领域</h2>
           </header>
 
-          <!-- ✅ 폼: 선택 많게(라디오 중심 + 일부 체크박스) -->
-          <form id="planForm" method="post" action="#">
-
-            <!-- Step 1 -->
-            <h3>Step 1 · 基本信息</h3>
-            <div class="row gtr-uniform">
-              <div class="col-6 col-12-xsmall">
-                <label>姓名</label>
-                <input type="text" name="name" placeholder="中文或英文姓名" required />
-              </div>
-              <div class="col-6 col-12-xsmall">
-                <label>国家 / 居住地</label>
-                <input type="text" name="country" placeholder="例：中国 / 上海" required />
-              </div>
-
-              <div class="col-6 col-12-xsmall">
-                <label>联系方式</label>
-                <select name="contact_type">
-                  <option value="wechat">WeChat</option>
-                  <option value="phone">手机号</option>
-                  <option value="email">Email</option>
-                </select>
-              </div>
-              <div class="col-6 col-12-xsmall">
-                <label>联系方式内容</label>
-                <input type="text" name="contact_value" placeholder="输入 WeChat ID / 电话 / 邮箱" />
-              </div>
-
-              <div class="col-12">
-                <label>备注（可选）</label>
-                <textarea name="note" rows="3" placeholder="例如：想要的效果/预算/来韩时间/既往治疗史…"></textarea>
-              </div>
-            </div>
-
-            <hr />
-
-            <!-- Step 2 -->
-            <h3>Step 2 · 医疗需求（可多选）</h3>
-            <p style="margin-top:-0.5rem;">每一类先选一个“最关心的”，其它细项我们回访时再补齐。</p>
-
-            <!-- 2-1 皮肤医美 -->
-            <h4>皮肤医美（单选）</h4>
-            <div class="row gtr-uniform">
-              <div class="col-6 col-12-xsmall">
-                <input type="radio" id="skin1" name="skin_pick" value="Ulthera 超声提升" />
-                <label for="skin1">Ulthera 超声提升</label>
-              </div>
-              <div class="col-6 col-12-xsmall">
-                <input type="radio" id="skin2" name="skin_pick" value="Thermage 热玛吉紧肤" />
-                <label for="skin2">Thermage 热玛吉紧肤</label>
-              </div>
-              <div class="col-6 col-12-xsmall">
-                <input type="radio" id="skin3" name="skin_pick" value="皮秒激光（色斑/痘印）" />
-                <label for="skin3">皮秒激光（色斑/痘印）</label>
-              </div>
-              <div class="col-6 col-12-xsmall">
-                <input type="radio" id="skin4" name="skin_pick" value="痤疮·疤痕激光" />
-                <label for="skin4">痤疮·疤痕激光</label>
-              </div>
-              <div class="col-6 col-12-xsmall">
-                <input type="radio" id="skin5" name="skin_pick" value="毛孔/肌理改善" />
-                <label for="skin5">毛孔 / 肌理改善</label>
-              </div>
-              <div class="col-6 col-12-xsmall">
-                <input type="radio" id="skin6" name="skin_pick" value="水光/皮肤修复（Skin Booster）" />
-                <label for="skin6">水光 / 皮肤修复（Skin Booster）</label>
-              </div>
-            </div>
-
-            <hr />
-
-            <!-- 2-2 大健康 -->
-            <h4>大健康（功能医学）（单选）</h4>
-            <div class="row gtr-uniform">
-              <div class="col-6 col-12-xsmall">
-                <input type="radio" id="fx1" name="fx_pick" value="营养代谢分析（OAT）" />
-                <label for="fx1">营养代谢分析（OAT）</label>
-              </div>
-              <div class="col-6 col-12-xsmall">
-                <input type="radio" id="fx2" name="fx_pick" value="NK 细胞活性检测" />
-                <label for="fx2">NK 细胞活性检测</label>
-              </div>
-              <div class="col-6 col-12-xsmall">
-                <input type="radio" id="fx3" name="fx_pick" value="睡眠·压力评估（皮质醇）" />
-                <label for="fx3">睡眠·压力评估（皮质醇）</label>
-              </div>
-              <div class="col-6 col-12-xsmall">
-                <input type="radio" id="fx4" name="fx_pick" value="重金属/毒性金属检测" />
-                <label for="fx4">重金属 / 毒性金属检测</label>
-              </div>
-              <div class="col-6 col-12-xsmall">
-                <input type="radio" id="fx5" name="fx_pick" value="端粒检测（Telomere）" />
-                <label for="fx5">端粒检测（Telomere）</label>
-              </div>
-              <div class="col-6 col-12-xsmall">
-                <input type="radio" id="fx6" name="fx_pick" value="静脉营养（IV）" />
-                <label for="fx6">静脉营养（IV）</label>
-              </div>
-            </div>
-
-            <hr />
-
-            <!-- 2-3 干细胞 -->
-            <h4>干细胞/再生（单选）</h4>
-            <div class="row gtr-uniform">
-              <div class="col-6 col-12-xsmall">
-                <input type="radio" id="stem1" name="stem_pick" value="干细胞静脉输注（IV）" />
-                <label for="stem1">干细胞静脉输注（IV）</label>
-              </div>
-              <div class="col-6 col-12-xsmall">
-                <input type="radio" id="stem2" name="stem_pick" value="外泌体治疗" />
-                <label for="stem2">外泌体治疗</label>
-              </div>
-              <div class="col-6 col-12-xsmall">
-                <input type="radio" id="stem3" name="stem_pick" value="关节/软骨再生" />
-                <label for="stem3">关节 / 软骨再生</label>
-              </div>
-              <div class="col-6 col-12-xsmall">
-                <input type="radio" id="stem4" name="stem_pick" value="皮肤再生" />
-                <label for="stem4">皮肤再生</label>
-              </div>
-              <div class="col-6 col-12-xsmall">
-                <input type="radio" id="stem5" name="stem_pick" value="干细胞 + NK 联合" />
-                <label for="stem5">干细胞 + NK 联合</label>
-              </div>
-              <div class="col-6 col-12-xsmall">
-                <input type="radio" id="stem6" name="stem_pick" value="自体脂肪 MSC" />
-                <label for="stem6">自体脂肪 MSC</label>
-              </div>
-            </div>
-
-            <hr />
-
-            <!-- 2-4 整形外科 -->
-            <h4>整形外科（单选）</h4>
-            <div class="row gtr-uniform">
-              <div class="col-6 col-12-xsmall">
-                <input type="radio" id="ps1" name="plastic_pick" value="双眼皮" />
-                <label for="ps1">双眼皮</label>
-              </div>
-              <div class="col-6 col-12-xsmall">
-                <input type="radio" id="ps2" name="plastic_pick" value="隆鼻" />
-                <label for="ps2">隆鼻</label>
-              </div>
-              <div class="col-6 col-12-xsmall">
-                <input type="radio" id="ps3" name="plastic_pick" value="轮廓/下颌线" />
-                <label for="ps3">轮廓 / 下颌线</label>
-              </div>
-              <div class="col-6 col-12-xsmall">
-                <input type="radio" id="ps4" name="plastic_pick" value="吸脂" />
-                <label for="ps4">吸脂</label>
-              </div>
-              <div class="col-6 col-12-xsmall">
-                <input type="radio" id="ps5" name="plastic_pick" value="脂肪移植" />
-                <label for="ps5">脂肪移植</label>
-              </div>
-              <div class="col-6 col-12-xsmall">
-                <input type="radio" id="ps6" name="plastic_pick" value="肉毒/玻尿酸" />
-                <label for="ps6">肉毒 / 玻尿酸</label>
-              </div>
-            </div>
-
-            <hr />
-
-            <!-- 2-5 女性中心 -->
-            <h4>女性中心（单选）</h4>
-            <div class="row gtr-uniform">
-              <div class="col-6 col-12-xsmall">
-                <input type="radio" id="f1" name="female_pick" value="阴道紧致激光" />
-                <label for="f1">阴道紧致激光</label>
-              </div>
-              <div class="col-6 col-12-xsmall">
-                <input type="radio" id="f2" name="female_pick" value="小阴唇整形" />
-                <label for="f2">小阴唇整形</label>
-              </div>
-              <div class="col-6 col-12-xsmall">
-                <input type="radio" id="f3" name="female_pick" value="私密美白" />
-                <label for="f3">私密美白</label>
-              </div>
-              <div class="col-6 col-12-xsmall">
-                <input type="radio" id="f4" name="female_pick" value="HPV" />
-                <label for="f4">HPV</label>
-              </div>
-              <div class="col-6 col-12-xsmall">
-                <input type="radio" id="f5" name="female_pick" value="女性激素全套" />
-                <label for="f5">女性激素全套</label>
-              </div>
-              <div class="col-6 col-12-xsmall">
-                <input type="radio" id="f6" name="female_pick" value="性病检测（12项）" />
-                <label for="f6">性病检测（12项）</label>
-              </div>
-            </div>
-
-            <hr />
-
-            <!-- 2-6 男性健康 -->
-            <h4>男性健康（单选）</h4>
-            <div class="row gtr-uniform">
-              <div class="col-6 col-12-xsmall">
-                <input type="radio" id="m1" name="male_pick" value="包皮环切" />
-                <label for="m1">包皮环切</label>
-              </div>
-              <div class="col-6 col-12-xsmall">
-                <input type="radio" id="m2" name="male_pick" value="ED 综合治疗" />
-                <label for="m2">ED 综合治疗</label>
-              </div>
-              <div class="col-6 col-12-xsmall">
-                <input type="radio" id="m3" name="male_pick" value="前列腺微创" />
-                <label for="m3">前列腺微创</label>
-              </div>
-              <div class="col-6 col-12-xsmall">
-                <input type="radio" id="m4" name="male_pick" value="男性体成分/代谢管理" />
-                <label for="m4">男性体成分 / 代谢管理</label>
-              </div>
-              <div class="col-6 col-12-xsmall">
-                <input type="radio" id="m5" name="male_pick" value="HPV 疫苗/筛查" />
-                <label for="m5">HPV 疫苗 / 筛查</label>
-              </div>
-              <div class="col-6 col-12-xsmall">
-                <input type="radio" id="m6" name="male_pick" value="增粗/加长" />
-                <label for="m6">增粗 / 加长</label>
-              </div>
-            </div>
-
-            <hr />
-
-            <!-- Step 3 -->
-            <h3>Step 3 · 旅行服务（可选）</h3>
-
-            <div class="row gtr-uniform">
-              <div class="col-12">
-                <input type="radio" id="airport_yes" name="airport" value="需要">
-                <label for="airport_yes">机场接送：需要</label>
-              </div>
-              <div class="col-12">
-                <input type="radio" id="airport_no" name="airport" value="不需要">
-                <label for="airport_no">机场接送：不需要</label>
-              </div>
-
-              <div class="col-12">
-                <input type="radio" id="hotel_yes" name="hotel" value="需要">
-                <label for="hotel_yes">酒店预订：需要</label>
-              </div>
-              <div class="col-12">
-                <input type="radio" id="hotel_no" name="hotel" value="不需要">
-                <label for="hotel_no">酒店预订：不需要</label>
-              </div>
-
-              <div class="col-12">
-                <input type="radio" id="tour_yes" name="tour" value="需要">
-                <label for="tour_yes">市区观光：需要</label>
-              </div>
-              <div class="col-12">
-                <input type="radio" id="tour_no" name="tour" value="不需要">
-                <label for="tour_no">市区观光：不需要</label>
-              </div>
-
-              <div class="col-12">
-                <input type="radio" id="trans_yes" name="translation" value="需要">
-                <label for="trans_yes">医疗陪同／翻译：需要</label>
-              </div>
-              <div class="col-12">
-                <input type="radio" id="trans_no" name="translation" value="不需要">
-                <label for="trans_no">医疗陪同／翻译：不需要</label>
-              </div>
-            </div>
-
-            <hr />
-
-            <ul class="actions">
-              <li><button type="submit" class="button primary">提交</button></li>
-              <li><button type="reset" class="button">重置</button></li>
-            </ul>
-
-          </form>
-        </section>
-
-        <!-- Section: 信任感(원본의 features 느낌만 텍스트로) -->
-        <section>
-          <header class="major">
-            <h2>我们能为你做什么</h2>
-          </header>
           <div class="features">
             <article>
-              <span class="icon solid fa-hospital"></span>
+              <span class="icon solid fa-heartbeat"></span>
               <div class="content">
-                <h3>正规医疗机构对接</h3>
-                <p>根据需求匹配适合的医院/诊所与医生，并协助预约与沟通。</p>
+                <h3>大健康</h3>
+                <p>功能医学评估、代谢与免疫管理、疲劳与抗衰策略，适合长期健康规划。</p>
+                <ul class="actions">
+                  <li><a href="wellness.html" class="button">了解更多</a></li>
+                </ul>
               </div>
             </article>
+
             <article>
-              <span class="icon solid fa-language"></span>
+              <span class="icon solid fa-dna"></span>
               <div class="content">
-                <h3>中文沟通与翻译陪同</h3>
-                <p>医疗沟通不靠“感觉”，重要信息全程确认与记录。</p>
+                <h3>干细胞</h3>
+                <p>再生与修复方向的医疗咨询与对接，按需求匹配机构与方案沟通。</p>
+                <ul class="actions">
+                  <li><a href="stemcell.html" class="button">了解更多</a></li>
+                </ul>
               </div>
             </article>
+
             <article>
-              <span class="icon solid fa-car"></span>
+              <span class="icon solid fa-sparkles"></span>
               <div class="content">
-                <h3>接送与行程安排</h3>
-                <p>机场接送、酒店、观光、复诊动线一并考虑，让行程更省心。</p>
+                <h3>皮肤医美</h3>
+                <p>色斑、毛孔、痘疤、紧致提升、皮肤修复与维护方案，重视过程与恢复管理。</p>
+                <ul class="actions">
+                  <li><a href="derm.html" class="button">了解更多</a></li>
+                </ul>
               </div>
             </article>
+
             <article>
-              <span class="icon solid fa-shield-alt"></span>
+              <span class="icon solid fa-user-md"></span>
               <div class="content">
-                <h3>信息透明</h3>
-                <p>治疗范围、流程、注意事项提前说明，不让你踩坑。</p>
+                <h3>整形医美</h3>
+                <p>眼鼻轮廓、脂肪移植、吸脂塑形等项目，强调沟通、评估与安全。</p>
+                <ul class="actions">
+                  <li><a href="surgery.html" class="button">了解更多</a></li>
+                </ul>
+              </div>
+            </article>
+
+            <article>
+              <span class="icon solid fa-venus"></span>
+              <div class="content">
+                <h3>女性护理中心</h3>
+                <p>私密管理、妇科检查与综合护理，对接专业机构并协助隐私沟通。</p>
+                <ul class="actions">
+                  <li><a href="woman.html" class="button">了解更多</a></li>
+                </ul>
+              </div>
+            </article>
+
+            <article>
+              <span class="icon solid fa-mars"></span>
+              <div class="content">
+                <h3>男性健康中心</h3>
+                <p>男科与泌尿方向咨询与对接，注重信息确认与流程安排。</p>
+                <ul class="actions">
+                  <li><a href="man.html" class="button">了解更多</a></li>
+                </ul>
               </div>
             </article>
           </div>
+        </section>
+
+        <!-- Section: 我们怎么做 (3단계) -->
+        <section>
+          <header class="major">
+            <h2>我们的工作方式</h2>
+          </header>
+
+          <div class="posts">
+            <article>
+              <a href="kplan.html" class="image"><img src="images/pic01.jpg" alt="" /></a>
+              <h3>1) 需求确认</h3>
+              <p>先把你的目标说清楚：想改善什么、计划来韩时间、预算范围与恢复期。</p>
+              <ul class="actions">
+                <li><a href="kplan.html" class="button">填写需求表</a></li>
+              </ul>
+            </article>
+
+            <article>
+              <a href="#" class="image"><img src="images/pic02.jpg" alt="" /></a>
+              <h3>2) 机构匹配</h3>
+              <p>按需求匹配医院/诊所，确认可行性、流程与注意事项，避免“到了才发现不合适”。</p>
+              <ul class="actions">
+                <li><a href="derm.html" class="button">看案例方向</a></li>
+              </ul>
+            </article>
+
+            <article>
+              <a href="#" class="image"><img src="images/pic03.jpg" alt="" /></a>
+              <h3>3) 行程落地</h3>
+              <p>预约、翻译陪同、接送与复诊动线一起安排。该省心的地方，一点也不节省。</p>
+              <ul class="actions">
+                <li><a href="transfer.html" class="button">接送服务</a></li>
+              </ul>
+            </article>
+          </div>
+        </section>
+
+        <!-- Section: 轻量信任文案 -->
+        <section>
+          <header class="major">
+            <h2>为什么是汉江春天</h2>
+          </header>
+          <p>
+            你会发现：真正让体验变好的，不是“说得多”，而是“确认得细”。<br/>
+            我们把确认当成习惯：项目、费用范围、恢复期、禁忌与术后管理，一项项对齐再推进。
+          </p>
+          <ul class="actions">
+            <li><a href="kplan.html" class="button primary">现在开始定制</a></li>
+          </ul>
         </section>
 
       </div>
     </div>
 
-    <!-- Sidebar (한강애봄 메뉴로 교체) -->
+    <!-- Sidebar -->
     <div id="sidebar">
       <div class="inner">
 
@@ -407,16 +221,19 @@
             <li><a href="transfer.html">接送服务</a></li>
             <li><a href="tour.html">市区观光</a></li>
             <li><a href="lifestyle.html">生活服务</a></li>
-            <li><a href="kplan.html">定制医疗观光方案</a></li>
+            <li><a href="kplan.html"><strong>定制医疗观光方案</strong></a></li>
           </ul>
         </nav>
 
-        <!-- Section -->
+        <!-- About -->
         <section>
           <header class="major">
             <h2>关于我们</h2>
           </header>
-          <p>汉江春天 · 韩国医疗观光与大健康平台。我们提供医院对接、预约、翻译陪同与行程安排。</p>
+          <p>
+            汉江春天（한강애봄）专注于韩国医疗观光与大健康服务。<br/>
+            机构对接、预约、翻译陪同与行程安排，一站式推进。
+          </p>
         </section>
 
         <!-- Contact -->
@@ -424,10 +241,11 @@
           <header class="major">
             <h2>联系方式</h2>
           </header>
+          <p>如果你对韩国医疗、健康管理或合作有兴趣，欢迎通过微信或邮件联系。</p>
           <ul class="contact">
             <li class="icon solid fa-envelope"><a href="mailto:egana@kmedispring.com">egana@kmedispring.com</a></li>
             <li class="icon solid fa-phone">(82) 10-4903-3123</li>
-            <li class="icon solid fa-home">서울특별시 성북구 동소문로 63, 6F</li>
+            <li class="icon solid fa-home">韩国 首尔特别市 城北区 东小门路 63号 6层</li>
           </ul>
         </section>
 
@@ -443,6 +261,16 @@
 
   </div>
 
+  <!-- ✅ WeChat QR Modal (CSS는 나중에 main.css에 맞춰 정리해도 됨) -->
+  <div id="wechatModal" style="display:none;">
+    <div style="background:#fff; max-width:360px; margin:10vh auto; padding:18px; border-radius:12px;">
+      <p style="margin:0 0 10px 0;">扫描二维码添加微信</p>
+      <img src="images/qr_weixin.jpg" alt="WeChat QR" style="width:100%; height:auto; display:block;" />
+      <p style="margin:10px 0 0 0;">WeChat ID：e-gana</p>
+      <p style="margin:12px 0 0 0;"><a href="#" id="wechatClose">关闭</a></p>
+    </div>
+  </div>
+
   <!-- Scripts -->
   <script src="assets/js/jquery.min.js"></script>
   <script src="assets/js/browser.min.js"></script>
@@ -450,36 +278,31 @@
   <script src="assets/js/util.js"></script>
   <script src="assets/js/main.js"></script>
 
-  <!-- ✅ Submit alert (메일/서버 연결 전, 임시) -->
+  <!-- WeChat Modal JS -->
   <script>
-    document.getElementById('planForm').addEventListener('submit', function(e){
-      e.preventDefault();
+    (function(){
+      var modal = document.getElementById('wechatModal');
+      var openBtn = document.getElementById('wechat-icon');
+      var closeBtn = document.getElementById('wechatClose');
 
-      function picked(name){
-        const el = document.querySelector('input[name="'+name+'"]:checked');
-        return el ? el.value : '';
+      function openModal(e){
+        if(e) e.preventDefault();
+        if(modal) modal.style.display = 'block';
+      }
+      function closeModal(e){
+        if(e) e.preventDefault();
+        if(modal) modal.style.display = 'none';
       }
 
-      const list = [];
-      const s1 = picked('skin_pick'); if (s1) list.push('皮肤医美：' + s1);
-      const s2 = picked('fx_pick'); if (s2) list.push('大健康：' + s2);
-      const s3 = picked('stem_pick'); if (s3) list.push('干细胞：' + s3);
-      const s4 = picked('plastic_pick'); if (s4) list.push('整形：' + s4);
-      const s5 = picked('female_pick'); if (s5) list.push('女性：' + s5);
-      const s6 = picked('male_pick'); if (s6) list.push('男性：' + s6);
-
-      const travel = [];
-      const a = picked('airport'); if (a) travel.push('机场接送：' + a);
-      const h = picked('hotel'); if (h) travel.push('酒店预订：' + h);
-      const t = picked('tour'); if (t) travel.push('市区观光：' + t);
-      const tr = picked('translation'); if (tr) travel.push('医疗陪同/翻译：' + tr);
-
-      let msg = '谢谢！我们已收到你的信息，会尽快联系你。';
-      if (list.length) msg += '\n\n已选项目：\n- ' + list.join('\n- ');
-      if (travel.length) msg += '\n\n旅行服务：\n- ' + travel.join('\n- ');
-
-      alert(msg);
-    });
+      if(openBtn) openBtn.addEventListener('click', openModal);
+      if(closeBtn) closeBtn.addEventListener('click', closeModal);
+      if(modal) modal.addEventListener('click', function(e){
+        if(e.target === modal) closeModal(e);
+      });
+      document.addEventListener('keydown', function(e){
+        if(e.key === 'Escape') closeModal(e);
+      });
+    })();
   </script>
 
 </body>
