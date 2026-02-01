@@ -1,10 +1,9 @@
 <!DOCTYPE HTML>
 <!--
   汉江春天 · K-Plan (Editorial layout safe)
-  - Mobile hamburger restored (requires #sidebar + #menu + main.js)
-  - No search box (logo instead)
-  - Blue checkbox/radio style (Editorial label:before recolor)
-  - Summary font bigger
+  - Mobile hamburger restored (requires #sidebar + main.js)
+  - Sidebar includes menu + contact + footer
+  - Removed duplicate template script imports (critical)
 -->
 <html lang="zh-CN">
 <head>
@@ -12,7 +11,7 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
 
-  <!-- (선택) GitHub Pages base 경로 자동 보정: index.html과 동일하게 쓰고 싶으면 유지 -->
+  <!-- GitHub Pages base -->
   <script>
     (function () {
       var project = "/K-medispring/";
@@ -23,10 +22,9 @@
     })();
   </script>
 
-  <!-- ✅ Editorial 기본 CSS -->
-  <link rel="stylesheet" href="assets/css/main.css" />
-  <!-- ✅ FontAwesome (아이콘/체크박스 glyph 안정) -->
+  <!-- Editorial CSS -->
   <link rel="stylesheet" href="assets/css/fontawesome-all.min.css" />
+  <link rel="stylesheet" href="assets/css/main.css" />
 
   <style>
     :root{
@@ -35,13 +33,9 @@
       --hga-blue-bg: rgba(30,107,214,0.06);
     }
 
-    /* =========================
-       Sidebar: Search 제거 + 로고만
-       ========================= */
-    /* search 섹션이 혹시 남아있어도 숨김 */
+    /* Sidebar: Search 제거 + 로고만 */
     #sidebar #search{ display:none !important; }
 
-    /* 로고 영역 */
     #sidebar-brand{
       padding: 1.8rem 1.5rem 1.1rem;
       text-align:center;
@@ -54,16 +48,10 @@
       margin:0 auto;
     }
 
-    /* ✅ "大健康 위 회색 2줄" 원인 = #menu 기본 border-top + section separator
-       -> menu/top 라인 제거 */
+    /* Menu 상단 라인 제거 */
     #menu{ border-top: 0 !important; }
-    /* 메뉴 리스트 여백 */
-    #menu .links{ padding: 0 1.5rem 1.5rem; }
 
-    /* =========================
-       K-Plan: 체크/라디오 파란색 (Editorial 방식)
-       Editorial은 input + label:before로 박스 그림
-       ========================= */
+    /* K-Plan: 체크/라디오 파란색 (Editorial label:before 방식) */
     #planForm input[type="checkbox"] + label:before,
     #planForm input[type="radio"] + label:before{
       border-color: var(--hga-blue-weak) !important;
@@ -84,7 +72,7 @@
     .kplan-step3 label{ margin-bottom: 6px; display:block; }
     .kplan-step3 .pair{ display:flex; gap:18px; flex-wrap:wrap; }
 
-    /* ✅ Summary Box (제출 버튼 위) */
+    /* Summary Box */
     #selectedBox{
       border: 1px solid rgba(30,107,214,0.30);
       background: var(--hga-blue-bg);
@@ -98,7 +86,6 @@
       display:inline-block;
       margin-bottom: 8px;
     }
-    /* ✅ “보이지가 않아” 해결: 요약 글씨 크게 */
     #selectedSummary,
     #selectedSummary li{
       font-size: 18px;
@@ -109,11 +96,6 @@
     #selectedSummary .empty{
       opacity:.7;
       font-weight:500;
-    }
-
-    /* (선택) 배너 설명 문단이 과하게 볼드면 여기서 눌러줌 */
-    #banner .content p{
-      font-weight: 400 !important;
     }
   </style>
 </head>
@@ -129,6 +111,10 @@
 
         <header id="header">
           <a href="index.html" class="logo"><strong>汉江春天</strong> · K-Medi Spring</a>
+
+          <!-- ✅ 모바일 햄버거: 사이드바 전체(메뉴+연락+풋터)를 여는 토글 -->
+          <a href="#sidebar" class="toggle"></a>
+
           <ul class="icons">
             <li><a href="#" id="wechat-icon" class="icon brands fa-weixin"><span class="label">WeChat</span></a></li>
             <li><a href="#" id="whatsapp-icon" class="icon brands fa-whatsapp"><span class="label">WhatsApp</span></a></li>
@@ -466,12 +452,11 @@
     </div><!-- #main -->
 
     <!-- =======================
-         Sidebar  (⭐ 이게 있어야 모바일 햄버거가 살아남)
+         Sidebar (메뉴+연락+풋터 전부)
          ======================= -->
     <div id="sidebar">
       <div class="inner">
 
-        <!-- 로고(검색 대신) -->
         <section id="sidebar-brand">
           <div class="sidebar-logo">
             <a href="index.html" class="logo">
@@ -480,9 +465,9 @@
           </div>
         </section>
 
-        <!-- Menu -->
         <nav id="menu">
-          <ul class="links">
+          <header class="major"><h2>菜单</h2></header>
+          <ul>
             <li><a href="index.html">首页</a></li>
             <li><a href="wellness.html">大健康</a></li>
             <li><a href="stemcell.html">干细胞</a></li>
@@ -497,7 +482,6 @@
           </ul>
         </nav>
 
-        <!-- Contact -->
         <section>
           <header class="major"><h2>联系方式</h2></header>
           <p>
@@ -511,7 +495,6 @@
           </ul>
         </section>
 
-        <!-- Footer -->
         <footer id="footer">
           <p style="text-align:center; font-size:0.9em; color:#666;">
             © 2025 汉江春天 한강애봄 版权所有。模板设计：HTML5 UP。
@@ -523,7 +506,7 @@
 
   </div><!-- #wrapper -->
 
-  <!-- Scripts (⭐ 이 순서 그대로) -->
+  <!-- ✅ Scripts (딱 1번만, 이 순서 그대로) -->
   <script src="assets/js/jquery.min.js"></script>
   <script src="assets/js/browser.min.js"></script>
   <script src="assets/js/breakpoints.min.js"></script>
@@ -568,7 +551,7 @@
       summaryEl.innerHTML = '<ul>' + lines.map(x => '<li>' + x + '</li>').join('') + '</ul>';
     }
 
-    // Step3: 需要 vs 不需要 (같은 그룹 1개만)
+    // Step3: 같은 그룹 1개만 선택
     form.addEventListener('change', function(e){
       const el = e.target;
       if (el && el.type === 'checkbox') {
@@ -601,5 +584,6 @@
 
     renderSummary();
   </script>
+
 </body>
 </html>
