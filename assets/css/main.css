@@ -2685,22 +2685,6 @@ legend{ font-weight: 600; margin-bottom: .75rem; }
   padding: 1.25rem 1.25rem 1rem 1.25rem;
 }
 
-/* 1) 토글: 글자 숨기고 삼선(FA) 표시 */
-a.toggle{
-  font-size: 0 !important;
-  text-decoration: none;
-}
-a.toggle::before{
-  content:"\f0c9";
-  font-family:"Font Awesome 5 Free";
-  font-weight:900;
-  font-size:18px;
-  line-height:48px;
-  color:#333;
-  display:block;
-  text-align:center;
-}
-
 /* 2) 모바일/아이패드: #sidebar를 슬라이드 패널로 */
 @media (max-width:1180px){
 
@@ -3088,25 +3072,6 @@ body{
   line-height: 1.85;
   font-weight: 500;
 }
-
-@media (max-width: 980px){
-  #header > .toggle{
-    display: block !important;
-    position: relative;
-    z-index: 10001;
-  }
-
-  #header > .toggle:before{
-    color: var(--brand) !important;
-  }
-  #header > .toggle:hover:before{
-    color: var(--hover) !important;
-  }
-  body.is-menu-visible #header > .toggle:before{
-    color: var(--deep) !important;
-  }
-}
-
 /* header.major 바로 아래 설명 문단 전용 */
 header.major + p{
   margin-top: -1.2rem;   /* 제목과 더 붙이기 */
@@ -3172,40 +3137,10 @@ h1, h2, h3, h4, h5, h6{
   font-size: 1rem !important;
 }
 
-/* === Toggle hamburger (FontAwesome) === */
-a.toggle{
-  font-size: 0 !important;      /* Toggle 글자 숨김 */
-  text-decoration: none;
-}
-
-a.toggle::before{
-  content: "\f0c9";             /* FontAwesome bars */
-  font-family: "Font Awesome 5 Free";
-  font-weight: 900;
-  font-size: 18px;
-  line-height: 48px;
-  color: #333;
-}
-
 /* ================================
    KMS: Hamburger icon (FontAwesome)
    ================================ */
 
-a.toggle{
-  font-size: 0 !important;      /* 'Toggle' 글자 숨김 */
-  text-decoration: none;
-}
-
-a.toggle::before{
-  content: "\f0c9";             /* FontAwesome bars */
-  font-family: "Font Awesome 5 Free";
-  font-weight: 900;
-  font-size: 18px;
-  line-height: 48px;
-  color: #333;
-  display: block;
-  text-align: center;
-}
 /* 기본: 하위 메뉴 숨김 */
 #sidebar nav ul ul{
   display: none;
@@ -3237,9 +3172,6 @@ a.toggle::before{
   min-width: 0;
 }
 
-/* 오른쪽 묶음(토글 + 아이콘들)은 오른쪽으로 */
-#header .toggle,
-
 /* ✅ "상단 네비/오른쪽 영역" 폭을 2/3로 제한 */
 #header > :not(.logo){
   max-width: 66.666% !important;
@@ -3252,13 +3184,6 @@ a.toggle::before{
   }
 }
 
-/* 모바일에서 토글(햄버거) 항상 보이게 + 헤더 위에 뜨게 */
-@media (max-width: 980px){
-  #header > .toggle{
-    position: relative !important;
-    z-index: 10002 !important;
-  }
-}
 /* =========================================================
    Header / Icons / Toggle  (FINAL - keep only this)
    ========================================================= */
@@ -3503,5 +3428,6 @@ a.toggle:hover {
     padding-left: 0 !important;
   }
 }
+
 
 
