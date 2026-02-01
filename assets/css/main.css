@@ -1,9 +1,7 @@
 /* ============================
    FONT SETTINGS (로니 & 리디아 2025.10.11)
    ============================ */
-/* =========================
-   Font Face – 汉江春天
-   ========================= */
+
 @font-face {
   font-family: 'HJS-Serif';
   src: url('../fonts/SourceHanSerifCN-Light.otf') format('opentype');
@@ -128,10 +126,19 @@ body {
 /* Type */
 body, input, select, textarea {
   color: #333;
-  font-family: "Source Han Serif CN", "Noto Serif KR", serif;
-  font-size: 20pt;   /* 나중에 16pt로 변경 가능 */
+  font-family: "Pretendard", "PingFang SC", "Microsoft YaHei",
+               -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
+  font-size: 16px;      /* ✅ 20pt → 16px */
   font-weight: 400;
-  line-height: 1.8;  /* 줄 간격 여유롭게 */
+  line-height: 1.75;
+}
+
+/* 모바일 */
+@media (max-width: 980px){
+  body, input, select, textarea{
+    font-size: 14px;    /* ✅ 모바일에서 과대 방지 */
+    line-height: 1.65;
+  }
 }
 
 
@@ -171,14 +178,12 @@ p {
 
 h1, h2, h3, h4, h5, h6 {
   color: #3d4449;
-  font-family: "Roboto Slab", serif;
+  /* font-family 제거 */
   font-weight: 700;
   line-height: 1.5;
-  margin: 0 0 1em 0; }
-  h1 a, h2 a, h3 a, h4 a, h5 a, h6 a {
-    color: inherit;
-    text-decoration: none;
-    border-bottom: 0; }
+  margin: 0 0 1em 0;
+}
+
 
 h1 {
   font-size: 4em;
@@ -3351,4 +3356,5 @@ header.major + p{
     line-height: 1.65;    /* ✅ 줄간도 살짝 넉넉히 */
   }
 }
+
 
