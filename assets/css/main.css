@@ -3423,5 +3423,36 @@ h1, h2, h3, h4, h5, h6{
   #header .logo .brand-en{ letter-spacing: 0.08em; font-size: 0.9em; }
 }
 
+/* =========================
+   🚑 NAV EMERGENCY FIX
+   ========================= */
+
+/* 사이드바 자체 */
+#sidebar{
+  display: block !important;
+  visibility: visible !important;
+  opacity: 1 !important;
+}
+
+/* 메뉴 */
+#menu{
+  display: block !important;
+  position: relative !important;
+  right: auto !important;
+  left: auto !important;
+  transform: none !important;
+  width: auto !important;
+  height: auto !important;
+  overflow: visible !important;
+}
+
+/* 데스크톱에서는 항상 보이게 */
+@media screen and (min-width: 981px){
+  #sidebar{
+    position: relative !important;
+    transform: none !important;
+  }
+}
+
 
 
