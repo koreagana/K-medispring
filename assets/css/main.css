@@ -3389,66 +3389,64 @@ a.toggle::before{
   padding-left: 0;
 }
 /* =================================================
-   Menu Toggle (Editorial style · All Devices) - FINAL
+   Toggle FIX: force top-left (even if flex/layout fights)
    ================================================= */
 
-/* 토글: 화면 좌측 상단 고정 (헤더/아이콘과 분리) */
 a.toggle {
   position: fixed !important;
-  top: 20px;
-  left: 20px;
-  z-index: 10001;
+  top: 18px !important;
+  left: 18px !important;
+  right: auto !important;
+  bottom: auto !important;
 
-  width: 44px;
-  height: 44px;
+  z-index: 100000 !important;
 
-  background: rgba(234, 234, 234, 0.95);
-  border-radius: 8px;
+  width: 44px !important;
+  height: 44px !important;
 
-  text-decoration: none;
-  outline: 0;
-  -webkit-tap-highlight-color: transparent;
+  display: block !important;
+  float: none !important;
+
+  background: rgba(234, 234, 234, 0.95) !important;
+  border-radius: 8px !important;
+
+  text-decoration: none !important;
+
+  /* 헤더/아이콘 줄 영향 완전 차단 */
+  margin: 0 !important;
+  padding: 0 !important;
+
+  /* flex 아이템으로 취급되는 경우 차단 */
+  flex: none !important;
+  align-self: auto !important;
+
+  /* 혹시 transform으로 밀려난 경우 초기화 */
+  transform: none !important;
 }
 
 /* 햄버거 아이콘 */
 a.toggle::before {
-  content: '';
-  position: absolute;
-  top: 50%;
-  left: 50%;
+  content: '' !important;
+  position: absolute !important;
+  top: 50% !important;
+  left: 50% !important;
 
-  width: 22px;
-  height: 2px;
-  background: #666;
+  width: 22px !important;
+  height: 2px !important;
 
-  transform: translate(-50%, -50%);
+  background: #666 !important;
+  transform: translate(-50%, -50%) !important;
+
   box-shadow:
     0 -7px 0 0 #666,
-    0  7px 0 0 #666;
+    0  7px 0 0 #666 !important;
 }
 
-/* hover/active */
+/* hover */
 a.toggle:hover {
-  background: rgba(222, 222, 222, 0.95);
+  background: rgba(222, 222, 222, 0.95) !important;
 }
 
-a.toggle:active {
-  transform: translateY(1px);
-}
-
-/* ✅ 헤더 밀어내기는 "모바일/좁은 화면에서만" 적용 */
-@media screen and (max-width: 980px) {
-  #header {
-    padding-left: 72px;
-  }
-}
-
-/* ✅ 넓은 화면(PC)에서는 헤더 원래대로 */
-@media screen and (min-width: 981px) {
-  #header {
-    padding-left: 0;
-  }
-}
 /* =================================================
    DESKTOP ONLY FIX (>=1100px)
    sidebar 320px + bullets off + inner scroll
@@ -3505,4 +3503,5 @@ a.toggle:active {
     padding-left: 0 !important;
   }
 }
+
 
