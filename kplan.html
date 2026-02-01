@@ -1,9 +1,11 @@
 <!DOCTYPE HTML>
 <!--
   汉江春天 · K-Plan (Editorial layout safe version)
-  - Sidebar/nav restored
-  - FontAwesome included (fixes checkbox/radio glyph issues)
-  - Blue-only selection UI + blue summary box (above submit)
+  - Sidebar restored (same structure as index)
+  - No search section
+  - Remove grey double separators above menu
+  - Blue-only checkbox/radio UI (no black X)
+  - Summary box BEFORE submit, and summary text enlarged
 -->
 <html lang="zh-CN">
 <head>
@@ -11,44 +13,96 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
 
-  <!-- ✅ Editorial 기본 CSS -->
-  <link rel="stylesheet" href="assets/css/main.css" />
-  <!-- ✅ 중요: FontAwesome (체크/라디오/아이콘 깨짐 방지) -->
+  <!-- (선택) GitHub Pages용 base 경로: 인덱스랑 맞추고 싶으면 유지 -->
+  <script>
+    (function () {
+      var project = "/K-medispring/";
+      var isGhPages = location.hostname.endsWith("github.io");
+      var base = document.createElement("base");
+      base.href = isGhPages ? project : "/";
+      document.head.appendChild(base);
+    })();
+  </script>
+
+  <!-- ✅ FontAwesome 먼저 -->
   <link rel="stylesheet" href="assets/css/fontawesome-all.min.css" />
+  <!-- ✅ Editorial main -->
+  <link rel="stylesheet" href="assets/css/main.css" />
 
   <style>
-    /* ===========================
-      K-Plan : HanGangAebom Blue UI
-      (keep Editorial structure, just recolor)
-    ============================ */
-
     :root{
       --hga-blue: #1e6bd6;
       --hga-blue-weak: rgba(30,107,214,0.45);
       --hga-blue-bg: rgba(30,107,214,0.06);
     }
 
-    /* ✅ Editorial 체크/라디오 박스는 label:before로 그림 → 그걸 파란색으로만 바꾼다 */
+    /* =========================================
+       Sidebar: index처럼 (search 없음 + 로고/메뉴)
+       ========================================= */
+
+    /* 로고 영역 */
+    #sidebar-brand{
+      padding: 1.8rem 1.5rem 1.1rem;
+      text-align: center;
+
+      /* ✅ 로고 아래 회색 라인 제거 */
+      border-bottom: 0 !important;
+      margin-bottom: 0 !important;
+      padding-bottom: 1.1rem !important;
+    }
+
+    #sidebar-brand .sidebar-logo img{
+      display:block;
+      max-width:140px;
+      height:auto;
+      margin:0 auto;
+    }
+
+    /* ✅ 메뉴 맨 위 회색 라인 제거(대건강 위 2줄 원인 제거) */
+    #menu{
+      border-top: 0 !important;
+      margin-top: 0 !important;
+      padding-top: 0 !important;
+    }
+
+    /* 메뉴 좌우 여백 */
+    #menu .links{
+      padding: 0 1.5rem 1.5rem;
+    }
+
+    /* =========================================
+       K-Plan: Blue-only checkbox/radio (Editorial 방식)
+       - Editorial은 input 자체가 아니라 label:before로 박스를 그림
+       ========================================= */
+
+    /* 기본 박스(미선택) */
     #planForm input[type="checkbox"] + label:before,
     #planForm input[type="radio"] + label:before{
       border-color: var(--hga-blue-weak) !important;
       box-shadow: none !important;
     }
 
+    /* 선택 상태 */
     #planForm input[type="checkbox"]:checked + label:before,
     #planForm input[type="radio"]:checked + label:before{
       background: var(--hga-blue) !important;
       border-color: var(--hga-blue) !important;
-      color: #fff !important; /* FontAwesome check color */
+      color: #fff !important; /* 체크 표시 색 */
     }
 
-    /* ✅ hover도 검정 느낌 없애기 */
+    /* hover도 파란 느낌만 */
     #planForm input[type="checkbox"] + label:hover:before,
     #planForm input[type="radio"] + label:hover:before{
       border-color: var(--hga-blue) !important;
     }
 
-    /* ✅ 요약 박스(제출 버튼 위) : 블루 톤 */
+    /* Step3 정리 */
+    .kplan-step3 label{ margin-bottom:6px; display:block; }
+    .kplan-step3 .pair{ display:flex; gap:18px; flex-wrap:wrap; }
+
+    /* =========================================
+       Summary Box (提交 앞)
+       ========================================= */
     #selectedBox{
       border: 1px solid rgba(30,107,214,0.30);
       background: var(--hga-blue-bg);
@@ -62,25 +116,23 @@
       display: inline-block;
       margin-bottom: 6px;
     }
-    #selectedSummary{
-      line-height: 1.7;
-      color: var(--hga-blue);
-    }
-    #selectedSummary .empty{
-      opacity: 0.65;
-      color: var(--hga-blue);
-    }
-    #selectedSummary ul{
-      margin: 0;
-      padding-left: 1.1rem;
-    }
+
+    /* ✅ 요약 글자 크게(“需要” 급으로 보이게) */
+    #selectedSummary,
     #selectedSummary li{
       color: var(--hga-blue);
+      font-size: 18px;     /* 핵심 */
+      line-height: 1.85;
+      font-weight: 500;
     }
-
-    /* (선택) Step3 줄바꿈 간격 약간 정리 */
-    .kplan-step3 label{ margin-bottom: 6px; display:block; }
-    .kplan-step3 .pair{ display:flex; gap:18px; flex-wrap:wrap; }
+    #selectedSummary .empty{
+      opacity: 0.70;
+      font-weight: 500;
+    }
+    #selectedSummary ul{
+      margin:0;
+      padding-left:1.1rem;
+    }
   </style>
 </head>
 
@@ -91,6 +143,7 @@
     <div id="main">
       <div class="inner">
 
+        <!-- Header -->
         <header id="header">
           <a href="index.html" class="logo"><strong>汉江春天</strong> · K-Medi Spring</a>
           <ul class="icons">
@@ -101,6 +154,7 @@
           </ul>
         </header>
 
+        <!-- Banner -->
         <section id="banner">
           <div class="content">
             <header>
@@ -123,6 +177,7 @@
           </span>
         </section>
 
+        <!-- Form -->
         <section id="kplan-form">
           <header class="major">
             <h2>填写表单</h2>
@@ -167,6 +222,7 @@
             <h3>Step 2 · 医疗需求（可多选）</h3>
             <p style="margin-top:-0.5rem;">每一类先选一个“最关心的”，其它细项我们回访时再补齐。</p>
 
+            <!-- 皮肤 -->
             <h4>皮肤医美</h4>
             <div class="row gtr-uniform">
               <div class="col-6 col-12-xsmall">
@@ -197,6 +253,7 @@
 
             <hr />
 
+            <!-- 大健康 -->
             <h4>大健康（功能医学）</h4>
             <div class="row gtr-uniform">
               <div class="col-6 col-12-xsmall">
@@ -227,6 +284,7 @@
 
             <hr />
 
+            <!-- 干细胞 -->
             <h4>干细胞/再生</h4>
             <div class="row gtr-uniform">
               <div class="col-6 col-12-xsmall">
@@ -257,6 +315,7 @@
 
             <hr />
 
+            <!-- 整形 -->
             <h4>整形外科</h4>
             <div class="row gtr-uniform">
               <div class="col-6 col-12-xsmall">
@@ -287,6 +346,7 @@
 
             <hr />
 
+            <!-- 女性 -->
             <h4>女性中心</h4>
             <div class="row gtr-uniform">
               <div class="col-6 col-12-xsmall">
@@ -317,6 +377,7 @@
 
             <hr />
 
+            <!-- 男性 -->
             <h4>男性健康</h4>
             <div class="row gtr-uniform">
               <div class="col-6 col-12-xsmall">
@@ -412,7 +473,7 @@
 
             <hr />
 
-            <!-- ✅ Summary Box (above actions) -->
+            <!-- Summary -->
             <div id="selectedBox">
               <strong>已选内容</strong>
               <div id="selectedSummary">
@@ -428,108 +489,72 @@
           </form>
         </section>
 
-        <section>
-          <header class="major">
-            <h2>我们能为你做什么</h2>
-          </header>
-          <div class="features">
-            <article>
-              <span class="icon solid fa-hospital"></span>
-              <div class="content">
-                <h3>正规医疗机构对接</h3>
-                <p>根据需求匹配适合的医院/诊所与医生，并协助预约与沟通。</p>
-              </div>
-            </article>
-            <article>
-              <span class="icon solid fa-language"></span>
-              <div class="content">
-                <h3>中文沟通与翻译陪同</h3>
-                <p>医疗沟通不靠“感觉”，重要信息全程确认与记录。</p>
-              </div>
-            </article>
-            <article>
-              <span class="icon solid fa-car"></span>
-              <div class="content">
-                <h3>接送与行程安排</h3>
-                <p>机场接送、酒店、观光、复诊动线一并考虑，让行程更省心。</p>
-              </div>
-            </article>
-            <article>
-              <span class="icon solid fa-shield-alt"></span>
-              <div class="content">
-                <h3>信息透明</h3>
-                <p>治疗范围、流程、注意事项提前说明，不让你踩坑。</p>
-              </div>
-            </article>
+      </div><!-- .inner -->
+    </div><!-- #main -->
+
+    <!-- Sidebar (index와 동일 구조) -->
+    <div id="sidebar">
+      <div class="inner">
+
+        <!-- Sidebar Brand (로고) -->
+        <section id="sidebar-brand">
+          <div class="sidebar-logo">
+            <a href="index.html" class="logo">
+              <img src="images/logo_ch.png" alt="汉江春天 로고">
+            </a>
           </div>
         </section>
 
-      </div>
-    </div>
+        <!-- Menu -->
+        <nav id="menu">
+          <ul class="links">
+            <li><a href="wellness.html">大健康</a></li>
+            <li><a href="stemcell.html">干细胞</a></li>
+            <li><a href="derm.html">皮肤医美</a></li>
+            <li><a href="surgery.html">整形医美</a></li>
+            <li><a href="woman.html">女性护理中心</a></li>
+            <li><a href="man.html">男性健康中心</a></li>
+            <li><a href="transfer.html">接送服务</a></li>
+            <li><a href="tour.html">市区观光</a></li>
+            <li><a href="lifestyle.html">生活服务</a></li>
+            <li><a href="kplan.html">定制医疗观光方案</a></li>
+          </ul>
+        </nav>
 
- <!-- Sidebar (왼쪽 카테고리 + 정보) -->
-<div id="sidebar">
-  <div class="inner">
+        <!-- Contact -->
+        <section>
+          <header class="major"><h2>联系方式</h2></header>
+          <p>
+            我们相信，美丽与健康，源于真诚的交流。
+            如果你对韩国医疗、健康管理或合作有兴趣，欢迎通过微信或邮件与我们联系。
+          </p>
+          <ul class="contact">
+            <li class="icon solid fa-envelope"><a href="mailto:egana@kmedispring.com">邮箱：egana@kmedispring.com</a></li>
+            <li class="icon solid fa-phone">(82) 10-4903-3123</li>
+            <li class="icon solid fa-home">韩国 首尔特别市 城北区 东小门路 63号 6层 (邮编：02845)</li>
+          </ul>
+        </section>
 
-    <!-- Sidebar Brand (로고) -->
-    <section id="sidebar-brand">
-      <div class="sidebar-logo">
-        <a href="index.html" class="logo">
-          <img src="images/logo_ch.png" alt="汉江春天 로고">
-        </a>
-      </div>
-    </section>
+        <!-- Footer -->
+        <footer id="footer">
+          <p style="text-align:center; font-size:0.9em; color:#666;">
+            © 2025 汉江春天 한강애봄 版权所有。模板设计：HTML5 UP。
+          </p>
+        </footer>
 
-    <!-- Menu -->
-    <nav id="menu">
-      <ul class="links">
-        <li><a href="wellness.html">大健康</a></li>
-        <li><a href="stemcell.html">干细胞</a></li>
-        <li><a href="derm.html">皮肤医美</a></li>
-        <li><a href="surgery.html">整形医美</a></li>
-        <li><a href="woman.html">女性护理中心</a></li>
-        <li><a href="man.html">男性健康中心</a></li>
-        <li><a href="transfer.html">接送服务</a></li>
-        <li><a href="tour.html">市区观光</a></li>
-        <li><a href="lifestyle.html">生活服务</a></li>
-        <li><a href="kplan.html" data-i18n="navKplan">定制医疗观光方案</a></li>
-      </ul>
-    </nav>
+      </div><!-- .inner -->
+    </div><!-- #sidebar -->
 
-    <!-- Contact -->
-    <section>
-      <header class="major"><h2>联系方式</h2></header>
-      <p>
-        我们相信，美丽与健康，源于真诚的交流。
-        如果你对韩国医疗、健康管理或合作有兴趣，欢迎通过微信或邮件与我们联系。
-      </p>
-      <ul class="contact">
-        <li class="icon solid fa-envelope"><a href="mailto:egana@kmedispring.com">邮箱：egana@kmedispring.com</a></li>
-        <li class="icon solid fa-phone">(82) 10-4903-3123</li>
-        <li class="icon solid fa-home">韩国 首尔特别市 城北区 东小门路 63号 6层 (邮编：02845)</li>
-      </ul>
-    </section>
+  </div><!-- #wrapper -->
 
-    <!-- Footer -->
-    <footer id="footer">
-      <p style="text-align:center; font-size:0.9em; color:#666;">
-        © 2025 汉江春天 한강애봄 版权所有。模板设计：HTML5 UP。
-      </p>
-    </footer>
-</div><!-- .inner -->
-</div><!-- #sidebar -->
-</div><!-- #wrapper -->
-
-
-
-  <!-- Scripts -->
+  <!-- Scripts (템플릿 기본) -->
   <script src="assets/js/jquery.min.js"></script>
   <script src="assets/js/browser.min.js"></script>
   <script src="assets/js/breakpoints.min.js"></script>
   <script src="assets/js/util.js"></script>
   <script src="assets/js/main.js"></script>
 
-  <!-- K-Plan script -->
+  <!-- K-Plan logic -->
   <script>
     const form = document.getElementById('planForm');
     const summaryEl = document.getElementById('selectedSummary');
@@ -537,8 +562,6 @@
     function pickedMany(name){
       return Array.from(document.querySelectorAll('input[name="'+name+'"]:checked')).map(el => el.value);
     }
-
-    // Step3는 checkbox지만 data-excl 그룹 내 1개만 (需要 vs 不需要)
     function pickedExcl(groupName){
       const el = document.querySelector('input[data-excl="'+groupName+'"]:checked');
       return el ? el.value : '';
@@ -547,12 +570,12 @@
     function renderSummary(){
       const lines = [];
 
-      const skin = pickedMany('skin_pick');     if (skin.length) lines.push('皮肤医美：' + skin.join('、'));
-      const fx = pickedMany('fx_pick');         if (fx.length) lines.push('大健康：' + fx.join('、'));
-      const stem = pickedMany('stem_pick');     if (stem.length) lines.push('干细胞：' + stem.join('、'));
-      const plastic = pickedMany('plastic_pick'); if (plastic.length) lines.push('整形：' + plastic.join('、'));
-      const female = pickedMany('female_pick'); if (female.length) lines.push('女性：' + female.join('、'));
-      const male = pickedMany('male_pick');     if (male.length) lines.push('男性：' + male.join('、'));
+      const skin = pickedMany('skin_pick');        if (skin.length) lines.push('皮肤医美：' + skin.join('、'));
+      const fx = pickedMany('fx_pick');            if (fx.length) lines.push('大健康：' + fx.join('、'));
+      const stem = pickedMany('stem_pick');        if (stem.length) lines.push('干细胞：' + stem.join('、'));
+      const plastic = pickedMany('plastic_pick');  if (plastic.length) lines.push('整形：' + plastic.join('、'));
+      const female = pickedMany('female_pick');    if (female.length) lines.push('女性：' + female.join('、'));
+      const male = pickedMany('male_pick');        if (male.length) lines.push('男性：' + male.join('、'));
 
       const travel = [];
       const a = pickedExcl('airport');       if (a) travel.push('机场接送：' + a);
@@ -566,19 +589,19 @@
         return;
       }
 
-      summaryEl.innerHTML =
-        '<ul>' + lines.map(x => '<li>' + x + '</li>').join('') + '</ul>';
+      summaryEl.innerHTML = '<ul>' + lines.map(x => '<li>' + x + '</li>').join('') + '</ul>';
     }
 
-    // ✅ 첫 로드 시: 브라우저가 이전 선택을 복원해도 전부 해제
     window.addEventListener('DOMContentLoaded', function(){
+      // 브라우저 자동 복원 방지: 로드시 선택 해제
       form.querySelectorAll('input[type="checkbox"], input[type="radio"]').forEach(el => el.checked = false);
       renderSummary();
     });
 
-    // change: Step3 상호배타 + 요약 갱신
     form.addEventListener('change', function(e){
       const el = e.target;
+
+      // Step3: data-excl 그룹은 1개만
       if (el && el.type === 'checkbox') {
         const group = el.getAttribute('data-excl');
         if (group && el.checked) {
@@ -590,12 +613,10 @@
       renderSummary();
     });
 
-    // reset: 요약 초기화
     form.addEventListener('reset', function(){
       setTimeout(renderSummary, 0);
     });
 
-    // submit: 임시 alert
     form.addEventListener('submit', function(e){
       e.preventDefault();
       renderSummary();
@@ -606,7 +627,6 @@
 
       let msg = '谢谢！我们已收到你的信息，会尽快联系你。';
       if (text) msg += '\n\n' + text.replace(/\n\n+/g, '\n');
-
       alert(msg);
     });
 
