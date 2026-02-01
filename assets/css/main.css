@@ -3319,40 +3319,68 @@ body{
 #sidebar ul li {
   padding-left: 0;
 }
-/* =================================================
-   Toggle FIX: force top-left (even if flex/layout fights)
-   ================================================= */
+/* ==============================
+   KMS: Fixed Blue Menu Strip (FINAL)
+   ============================== */
 
-a.toggle {
-  position: fixed !important;
-  top: 18px !important;
-  left: 18px !important;
-  right: auto !important;
-  bottom: auto !important;
+html, body{
+  margin: 0 !important;
+  padding: 0 !important;
+}
 
-  z-index: 100000 !important;
-
-  width: 44px !important;
-  height: 44px !important;
-
+/* 상단 고정 파란 선 */
+a.toggle{
   display: block !important;
-  float: none !important;
+  opacity: 1 !important;
+  visibility: visible !important;
 
-  background: rgba(234, 234, 234, 0.95) !important;
-  border-radius: 8px !important;
+  position: fixed !important;
+  top: 0 !important;
+  left: 0 !important;
+  right: 0 !important;
+
+  width: 100% !important;
+  height: 18px !important;              /* 얇고 굵은 선 */
+
+  background: #4E97D1 !important;       /* 한강애봄 블루 */
+  z-index: 999999 !important;
 
   text-decoration: none !important;
 
-  /* 헤더/아이콘 줄 영향 완전 차단 */
-  margin: 0 !important;
-  padding: 0 !important;
+  /* 좌상단 버튼 스타일 잔재 제거 */
+  bottom: auto !important;
+}
 
-  /* flex 아이템으로 취급되는 경우 차단 */
-  flex: none !important;
-  align-self: auto !important;
+/* 가운데 텍스트 */
+a.toggle::before{
+  content: "菜单  MENU" !important;
 
-  /* 혹시 transform으로 밀려난 경우 초기화 */
-  transform: none !important;
+  position: absolute !important;
+  left: 50% !important;
+  top: 50% !important;
+  transform: translate(-50%,-50%) !important;
+
+  padding: 0 14px !important;
+  background: #fff !important;
+
+  font-family: "Pretendard","PingFang SC","Microsoft YaHei","Noto Sans CJK SC",sans-serif !important;
+  font-size: 13px !important;
+  font-weight: 800 !important;
+  letter-spacing: .18em !important;
+  color: #4E97D1 !important;
+  white-space: nowrap !important;
+}
+
+/* 본문 가림 방지 */
+body{
+  padding-top: 18px !important;
+}
+
+/* PC(>=1100px) */
+@media screen and (min-width: 1100px){
+  a.toggle{ height: 22px !important; }
+  a.toggle::before{ font-size: 14px !important; }
+  body{ padding-top: 22px !important; }
 }
 
 /* =================================================
@@ -3403,6 +3431,7 @@ a.toggle {
     padding-left: 0 !important;
   }
 }
+
 
 
 
