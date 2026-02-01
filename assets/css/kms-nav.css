@@ -272,3 +272,32 @@ a.toggle:after{
     transform: translateX(0);
   }
 }
+/* =========================
+   Sidebar Brand Logo Guard
+   (로고 폭 제한 안 하면 화면을 먹어버림)
+   ========================= */
+
+#sidebar-brand{
+  padding: 1.8rem 1.5rem 1.1rem;
+  text-align: center;
+  border-top: 0 !important;
+}
+
+#sidebar-brand .logo{
+  display: inline-block;
+  border-bottom: 0;
+}
+
+#sidebar-brand img{
+  display: block;
+  width: 100%;
+  max-width: 160px;   /* ✅ 여기 숫자만 취향대로 (140~180 추천) */
+  height: auto;
+  margin: 0 auto;
+}
+
+/* 혹시 다른 이미지도 터지는 걸 방지 */
+#sidebar img{
+  max-width: 100%;
+  height: auto;
+}
