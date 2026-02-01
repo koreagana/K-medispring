@@ -3385,4 +3385,46 @@ h1, h2, h3, h4, h5, h6{
   font-size: 1rem !important;
 }
 
+/* =========================
+   Header Brand Typography
+   - 汉江春天 (CN) : 단단하고 또렷하게
+   - dot         : 얇고 은은하게
+   - K-Medi Spring(EN): 세련된 산세리프 + 자간
+   ========================= */
+
+/* CN */
+#header .logo .brand-cn{
+  font-family: "Pretendard","PingFang SC","Microsoft YaHei","Noto Sans CJK SC",
+               -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Arial,sans-serif !important;
+  font-weight: 800 !important;
+  font-size: 1.35rem;
+  letter-spacing: 0.04em;
+  color: #3d4449;
+}
+
+/* dot */
+#header .logo .brand-dot{
+  font-family: inherit;
+  font-weight: 400;
+  opacity: 0.55;
+  margin: 0 0.15em;
+}
+
+/* EN */
+#header .logo .brand-en{
+  font-family: "Pretendard",-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,
+               "Helvetica Neue",Arial,sans-serif !important;
+  font-weight: 600 !important;
+  letter-spacing: 0.10em;    /* ✅ 영문 세련됨의 핵심 */
+  text-transform: none;
+  color: #3d4449;
+  opacity: 0.88;             /* ✅ CN보다 살짝 뒤로 */
+   font-size: 1.35rem;         /* ✅ 서브 브랜드 느낌 */
+}
+
+/* 모바일에서 한 줄이 빡빡하면 살짝 정리 */
+@media@media (max-width: 980px){
+  #header .logo .brand-cn{ letter-spacing: 0.02em; }
+  #header .logo .brand-en{ letter-spacing: 0.08em; font-size: 0.9em; }
+}
 
