@@ -3353,7 +3353,7 @@ a.toggle{
   right: 0 !important;
 
   width: 100vw !important;              /* ✅ 화면 전체 */
-  height: 18px !important;
+  height: 40px !important;
 
   background: #4E97D1 !important;       /* ✅ 한강애봄 블루 */
   border-radius: 0 !important;          /* ✅ 둥근 버튼 제거 */
@@ -3399,7 +3399,7 @@ body{
 @media (min-width: 1100px){
   a.toggle{ height: 22px !important; }
   a.toggle::before{ font-size: 14px !important; }
-  body{ padding-top: 22px !important; }
+  body{ padding-top: 44px !important; }
 }
 
 /* =================================================
@@ -3450,6 +3450,7 @@ body{
     padding-left: 0 !important;
   }
 }
+
 
 
 
