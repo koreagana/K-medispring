@@ -3154,67 +3154,55 @@ body{
   color: #333;
 }
 
-/* 모바일 */
-@media (max-width: 736px){
+/* 모바일 본문 타이포 (중국어 기준) */
+@media (max-width: 980px){
   #main p,
   #main li{
-    font-size: 16px;
-    line-height: 1.8;
+    font-size: 14px;
+    line-height: 1.65;
   }
 }
+/* 섹션 타이틀(major)만 정확히 키우기 */
+#main header.major > h2{ font-size: 1.65rem; }
+#main header.major > h3{ font-size: 1.25rem; }
+#main header.major > h4{ font-size: 1.10rem; }
 
-/* ---------- 2) Headings (섹션 제목) : 작다 문제 해결 ---------- */
-h1, h2, h3, h4, h5, h6{
-  font-family: var(--heading-latin), var(--cjk-serif);
-  font-weight: 700;
-  letter-spacing: 0.02em;
-  color: #222;
+@media (max-width: 980px){
+  #main header.major > h2{ font-size: 1.35rem; }
+  #main header.major > h3{ font-size: 1.15rem; }
 }
 
-/* Editorial 섹션 타이틀(关于我们/品牌理念 등) 더 크게 */
-#main h2{ font-size: 1.65rem; }
-#main h3{ font-size: 1.25rem; }
-#main h4{ font-size: 1.10rem; }
 
-@media (max-width: 736px){
-  #main h2{ font-size: 1.35rem; }
-  #main h3{ font-size: 1.15rem; }
-}
-
-/* ---------- 3) Banner: “두 줄” 고정 (汉江春天 + 韩国医疗·康养·身心疗愈) ---------- */
-/* ✅ 이 두 줄은 변치 않게: 폰트/굵기/크기/행간 고정 */
-#banner header h1{
-  font-family: var(--heading-latin), var(--cjk-serif) !important;
-  font-weight: 700 !important;
-  font-size: 3.1rem !important;
-  line-height: 1.15 !important;
-  margin: 0 0 .35rem 0;
-  color: #222 !important;
-}
-
-#banner header h2{
-  font-family: var(--body-latin), var(--cjk-serif) !important;
-  font-weight: 500 !important;
-  font-size: 1.35rem !important;
-  line-height: 1.35 !important;
-  margin: 0 0 1.1rem 0;
-  color: #333 !important;
-}
-
-/* 배너 소개문(“汉江春天 是一家…”) 볼드로 보이는 문제 방지 */
+/* 배너 소개문(“汉江春天 是一家…”) — 볼드처럼 안 보이게 */
 #banner .content p{
-  font-family: var(--body-latin), var(--cjk-serif);
-  font-size: 18px;
-  line-height: 1.95;
-  font-weight: 400; /* ✅ 여기서 볼드 방지 */
+  font-size: 16px;
+  line-height: 1.75;
+  font-weight: 400;
   color: #333;
 }
 
-@media (max-width: 736px){
-  #banner header h1{ font-size: 2.35rem !important; }
-  #banner header h2{ font-size: 1.1rem !important; }
-  #banner .content p{ font-size: 16px; line-height: 1.85; }
+/* 배너 타이틀(两行) — 크기/줄간만 조정 */
+#banner header h1{
+  font-size: 2.2rem;
+  line-height: 1.15;
+  margin: 0 0 .35rem 0;
 }
+#banner header h2{
+  font-size: 1.15rem;
+  line-height: 1.35;
+  margin: 0 0 1rem 0;
+}
+
+/* 모바일/아이패드 */
+@media (max-width: 980px){
+  #banner .content p{
+    font-size: 14px;
+    line-height: 1.65;
+  }
+  #banner header h1{ font-size: 1.85rem; }
+  #banner header h2{ font-size: 1.0rem; }
+}
+
 
 /* ---------- 4) Features 설명 텍스트 (브랜드 철학 4칸) ---------- */
 .features article p{
@@ -3286,4 +3274,5 @@ h1, h2, h3, h4, h5, h6{
     color: var(--deep) !important;
   }
 }
+
 
