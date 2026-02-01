@@ -3320,7 +3320,7 @@ body{
   padding-left: 0;
 }
 /* ==============================
-   KMS: Fixed Blue Menu Strip (FINAL)
+   FIX: Real Fixed Blue Strip Toggle
    ============================== */
 
 html, body{
@@ -3328,8 +3328,11 @@ html, body{
   padding: 0 !important;
 }
 
-/* 상단 고정 파란 선 */
+/* 템플릿이 토글에 주는 배경/버튼 스타일 싹 제거 */
 a.toggle{
+  -webkit-appearance: none !important;
+  appearance: none !important;
+
   display: block !important;
   opacity: 1 !important;
   visibility: visible !important;
@@ -3339,16 +3342,21 @@ a.toggle{
   left: 0 !important;
   right: 0 !important;
 
-  width: 100% !important;
-  height: 18px !important;              /* 얇고 굵은 선 */
+  width: 100vw !important;              /* ✅ 화면 전체 */
+  height: 18px !important;
 
-  background: #4E97D1 !important;       /* 한강애봄 블루 */
-  z-index: 999999 !important;
+  background: #4E97D1 !important;       /* ✅ 한강애봄 블루 */
+  border-radius: 0 !important;          /* ✅ 둥근 버튼 제거 */
+  box-shadow: none !important;
 
+  margin: 0 !important;
+  padding: 0 !important;
+
+  z-index: 2147483647 !important;       /* ✅ 무조건 최상단 */
   text-decoration: none !important;
 
-  /* 좌상단 버튼 스타일 잔재 제거 */
-  bottom: auto !important;
+  /* 혹시 transform으로 밀려나는 경우 차단 */
+  transform: none !important;
 }
 
 /* 가운데 텍스트 */
@@ -3358,7 +3366,7 @@ a.toggle::before{
   position: absolute !important;
   left: 50% !important;
   top: 50% !important;
-  transform: translate(-50%,-50%) !important;
+  transform: translate(-50%, -50%) !important;
 
   padding: 0 14px !important;
   background: #fff !important;
@@ -3368,7 +3376,9 @@ a.toggle::before{
   font-weight: 800 !important;
   letter-spacing: .18em !important;
   color: #4E97D1 !important;
+
   white-space: nowrap !important;
+  box-shadow: none !important;
 }
 
 /* 본문 가림 방지 */
@@ -3376,8 +3386,7 @@ body{
   padding-top: 18px !important;
 }
 
-/* PC(>=1100px) */
-@media screen and (min-width: 1100px){
+@media (min-width: 1100px){
   a.toggle{ height: 22px !important; }
   a.toggle::before{ font-size: 14px !important; }
   body{ padding-top: 22px !important; }
@@ -3431,6 +3440,7 @@ body{
     padding-left: 0 !important;
   }
 }
+
 
 
 
