@@ -3449,3 +3449,60 @@ a.toggle:active {
     padding-left: 0;
   }
 }
+/* =================================================
+   DESKTOP ONLY FIX (>=1100px)
+   sidebar 320px + bullets off + inner scroll
+   ================================================= */
+
+@media screen and (min-width: 1100px) {
+
+  /* 1) Editorial 기본 flex(24em) 강제 무력화 */
+  #sidebar {
+    width: 320px !important;
+    min-width: 320px !important;
+    max-width: 320px !important;
+    flex: 0 0 320px !important;
+  }
+
+  /* 2) wrapper/main이 어떤 방식이든 따라오게 2중 안전장치 */
+  #wrapper {
+    padding-left: 320px !important;
+  }
+  #main {
+    margin-left: 0 !important; /* wrapper padding-left 쓰는 구조면 margin-left는 0이 맞음 */
+    width: calc(100% - 320px) !important;
+  }
+
+  /* 3) 사이드바 안에 메뉴+소개+연락+푸터가 다 보여야 함 (스크롤) */
+  #sidebar,
+  #sidebar .inner {
+    height: 100vh !important;
+    overflow-y: auto !important;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  /* 4) 블릿(•) 완전 제거: list-style + li::before 둘 다 */
+  #sidebar ul,
+  #sidebar nav ul,
+  #sidebar #menu ul,
+  #menu ul {
+    list-style: none !important;
+    margin: 0 !important;
+    padding: 0 !important;
+  }
+
+  #sidebar ul li::before,
+  #sidebar nav ul li::before,
+  #sidebar #menu ul li::before,
+  #menu ul li::before {
+    content: none !important;
+  }
+
+  #sidebar ul li,
+  #sidebar nav ul li,
+  #sidebar #menu ul li,
+  #menu ul li {
+    padding-left: 0 !important;
+  }
+}
+
