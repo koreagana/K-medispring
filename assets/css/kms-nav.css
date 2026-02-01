@@ -301,3 +301,4 @@ a.toggle:after{
   max-width: 100%;
   height: auto;
 }
+#sidebar{ overflow-x: hidden; }
