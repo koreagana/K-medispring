@@ -1,9 +1,10 @@
 <!DOCTYPE HTML>
 <!--
   한강애봄 · K-Plan (Editorial 원본 레이아웃 유지 버전)
-  ✅ 사용자가 준 Editorial 원본 디자인 구조(배너/섹션/사이드바)를 그대로 두고,
-  ✅ “배너” 자리에 K-Plan 안내 + 폼(선택 많게, 라디오 중심)만 꽂아 넣은 HTML
-  ⚠️ CSS는 지금 건드리지 않음(assets/css/main.css 그대로 사용)
+  ✅ Editorial 레이아웃 유지
+  ✅ 체크/라디오 UI 한강애봄 블루로 통일
+  ✅ 요약 박스는 提交 바로 위
+  ✅ 첫 로드 시 자동 체크 해제(브라우저 복원 방지)
 -->
 <html lang="zh-CN">
 <head>
@@ -13,68 +14,94 @@
   <link rel="stylesheet" href="assets/css/main.css" />
 
   <style>
-  /* ===== K-Plan: blue check UI override (avoid black X) ===== */
-  #planForm input[type="checkbox"],
-  #planForm input[type="radio"]{
-    -webkit-appearance: none;
-    appearance: none;
-    width: 18px;
-    height: 18px;
-    margin: 0 10px 0 0;
-    vertical-align: middle;
-    display: inline-grid;
-    place-content: center;
+    /* ===========================
+      K-Plan : HanGangAebom Blue UI
+    ============================ */
 
-    background: #fff !important;
-    border: 1.6px solid rgba(0,0,0,0.28) !important;
-    box-shadow: none !important;
+    /* ✅ 체크/라디오를 블루 체크로 (검정 X 제거) */
+    #planForm input[type="checkbox"],
+    #planForm input[type="radio"]{
+      -webkit-appearance: none;
+      appearance: none;
+      width: 18px;
+      height: 18px;
+      margin: 0 10px 0 0;
+      vertical-align: middle;
+      display: inline-grid;
+      place-content: center;
 
-    cursor: pointer;
-    transform: translateY(1px);
-  }
+      background: #fff;
+      border: 1.6px solid rgba(30,107,214,0.45); /* ✅ 파란 테두리 */
+      box-shadow: none;
 
-  /* checkbox square */
-  #planForm input[type="checkbox"]{
-    border-radius: 5px;
-  }
+      cursor: pointer;
+      transform: translateY(1px);
+    }
 
-  /* radio circle */
-  #planForm input[type="radio"]{
-    border-radius: 999px;
-  }
+    /* checkbox square */
+    #planForm input[type="checkbox"]{ border-radius: 5px; }
 
-  /* checked: blue background + white checkmark */
-  #planForm input[type="checkbox"]:checked,
-  #planForm input[type="radio"]:checked{
-    background: #1e6bd6 !important;            /* 파란색 */
-    border-color: #1e6bd6 !important;
-  }
+    /* radio circle */
+    #planForm input[type="radio"]{ border-radius: 999px; }
 
-  #planForm input[type="checkbox"]:checked::after,
-  #planForm input[type="radio"]:checked::after{
-    content: "✓";
-    color: #fff;
-    font-size: 13px;
-    line-height: 1;
-    font-weight: 800;
-  }
+    /* checked: blue background + white checkmark */
+    #planForm input[type="checkbox"]:checked,
+    #planForm input[type="radio"]:checked{
+      background: #1e6bd6;            /* ✅ 한강애봄 블루 */
+      border-color: #1e6bd6;
+    }
 
-  /* focus (keyboard) */
-  #planForm input[type="checkbox"]:focus,
-  #planForm input[type="radio"]:focus{
-    outline: 3px solid rgba(30,107,214,0.25);
-    outline-offset: 2px;
-  }
+    #planForm input[type="checkbox"]:checked::after,
+    #planForm input[type="radio"]:checked::after{
+      content: "✓";
+      color: #fff;
+      font-size: 13px;
+      line-height: 1;
+      font-weight: 800;
+    }
 
-  /* label alignment (nice and clean) */
-  #planForm .row.gtr-uniform .col-6 label,
-  #planForm .row.gtr-uniform .col-12 label{
-    cursor: pointer;
-  }
-</style>
+    /* focus (keyboard) */
+    #planForm input[type="checkbox"]:focus,
+    #planForm input[type="radio"]:focus{
+      outline: 3px solid rgba(30,107,214,0.22);
+      outline-offset: 2px;
+    }
 
-  
+    /* label cursor */
+    #planForm label{ cursor: pointer; }
+
+    /* ✅ Summary Box (제출 버튼 바로 위) : 블루 톤 */
+    #selectedBox{
+      border: 1px solid rgba(30,107,214,0.30);
+      background: rgba(30,107,214,0.05);
+      padding: 14px 16px;
+      border-radius: 8px;
+      margin: 0 0 1rem 0;
+    }
+    #selectedBox strong{
+      color: #1e6bd6;
+      font-size: 0.95rem;
+      display: inline-block;
+      margin-bottom: 6px;
+    }
+    #selectedSummary{
+      line-height: 1.7;
+      color: #1e6bd6;
+    }
+    #selectedSummary .empty{
+      opacity: 0.65;
+      color: #1e6bd6;
+    }
+    #selectedSummary ul{
+      margin: 0;
+      padding-left: 1.1rem;
+    }
+    #selectedSummary li{
+      color: #1e6bd6;
+    }
+  </style>
 </head>
+
 <body class="is-preload">
 
   <!-- Wrapper -->
@@ -84,10 +111,9 @@
     <div id="main">
       <div class="inner">
 
-        <!-- Header (한강애봄 버전) -->
+        <!-- Header -->
         <header id="header">
           <a href="index.html" class="logo"><strong>汉江春天</strong> · K-Medi Spring</a>
-          <!-- ✅ SNS 아이콘 유지 (네가 쓰는 걸로 갈아끼워도 됨) -->
           <ul class="icons">
             <li><a href="#" id="wechat-icon" class="icon brands fa-weixin"><span class="label">WeChat</span></a></li>
             <li><a href="https://www.xiaohongshu.com/user/profile/550972467" target="_blank" rel="noopener" class="icon"><span class="label">小红书</span></a></li>
@@ -96,7 +122,7 @@
           </ul>
         </header>
 
-        <!-- Banner (원본 디자인 핵심: 왼쪽 content + 오른쪽 이미지) -->
+        <!-- Banner -->
         <section id="banner">
           <div class="content">
             <header>
@@ -109,25 +135,22 @@
               我们会根据你的需求，组合成最合适的韩国医疗行程：医疗 + 皮肤医美 + 大健康 + 接送/翻译/观光。
             </p>
 
-            
             <ul class="actions">
               <li><a href="#kplan-form" class="button big">开始填写</a></li>
             </ul>
           </div>
 
           <span class="image object">
-            <!-- ✅ 배너 이미지는 기존 자산 그대로 / 나중에 한강애봄 이미지로 바꾸면 됨 -->
             <img src="images/pic10.jpg" alt="" />
           </span>
         </section>
 
-        <!-- Section: K-Plan Form (원본 디자인의 section 스타일 그대로) -->
+        <!-- Form Section -->
         <section id="kplan-form">
           <header class="major">
             <h2>填写表单</h2>
           </header>
 
-          <!-- ✅ 폼: 선택 많게(라디오 중심 + 일부 체크박스) -->
           <form id="planForm" method="post" action="#">
 
             <!-- Step 1 -->
@@ -170,30 +193,12 @@
             <!-- 2-1 皮肤医美 -->
             <h4>皮肤医美</h4>
             <div class="row gtr-uniform">
-              <div class="col-6 col-12-xsmall">
-                <input type="checkbox" id="skin1" name="skin_pick" value="Ulthera 超声提升" />
-                <label for="skin1">Ulthera 超声提升</label>
-              </div>
-              <div class="col-6 col-12-xsmall">
-                <input type="checkbox" id="skin2" name="skin_pick" value="Thermage 热玛吉紧肤" />
-                <label for="skin2">Thermage 热玛吉紧肤</label>
-              </div>
-              <div class="col-6 col-12-xsmall">
-                <input type="checkbox" id="skin3" name="skin_pick" value="皮秒激光（色斑/痘印）" />
-                <label for="skin3">皮秒激光（色斑/痘印）</label>
-              </div>
-              <div class="col-6 col-12-xsmall">
-                <input type="checkbox" id="skin4" name="skin_pick" value="痤疮·疤痕激光" />
-                <label for="skin4">痤疮·疤痕激光</label>
-              </div>
-              <div class="col-6 col-12-xsmall">
-                <input type="checkbox" id="skin5" name="skin_pick" value="毛孔/肌理改善" />
-                <label for="skin5">毛孔 / 肌理改善</label>
-              </div>
-              <div class="col-6 col-12-xsmall">
-                <input type="checkbox" id="skin6" name="skin_pick" value="水光/皮肤修复（Skin Booster）" />
-                <label for="skin6">水光 / 皮肤修复（Skin Booster）</label>
-              </div>
+              <div class="col-6 col-12-xsmall"><input type="checkbox" id="skin1" name="skin_pick" value="Ulthera 超声提升" /><label for="skin1">Ulthera 超声提升</label></div>
+              <div class="col-6 col-12-xsmall"><input type="checkbox" id="skin2" name="skin_pick" value="Thermage 热玛吉紧肤" /><label for="skin2">Thermage 热玛吉紧肤</label></div>
+              <div class="col-6 col-12-xsmall"><input type="checkbox" id="skin3" name="skin_pick" value="皮秒激光（色斑/痘印）" /><label for="skin3">皮秒激光（色斑/痘印）</label></div>
+              <div class="col-6 col-12-xsmall"><input type="checkbox" id="skin4" name="skin_pick" value="痤疮·疤痕激光" /><label for="skin4">痤疮·疤痕激光</label></div>
+              <div class="col-6 col-12-xsmall"><input type="checkbox" id="skin5" name="skin_pick" value="毛孔/肌理改善" /><label for="skin5">毛孔 / 肌理改善</label></div>
+              <div class="col-6 col-12-xsmall"><input type="checkbox" id="skin6" name="skin_pick" value="水光/皮肤修复（Skin Booster）" /><label for="skin6">水光 / 皮肤修复（Skin Booster）</label></div>
             </div>
 
             <hr />
@@ -201,30 +206,12 @@
             <!-- 2-2 大健康 -->
             <h4>大健康（功能医学）</h4>
             <div class="row gtr-uniform">
-              <div class="col-6 col-12-xsmall">
-                <input type="checkbox" id="fx1" name="fx_pick" value="营养代谢分析（OAT）" />
-                <label for="fx1">营养代谢分析（OAT）</label>
-              </div>
-              <div class="col-6 col-12-xsmall">
-                <input type="checkbox" id="fx2" name="fx_pick" value="NK 细胞活性检测" />
-                <label for="fx2">NK 细胞活性检测</label>
-              </div>
-              <div class="col-6 col-12-xsmall">
-                <input type="checkbox" id="fx3" name="fx_pick" value="睡眠·压力评估（皮质醇）" />
-                <label for="fx3">睡眠·压力评估（皮质醇）</label>
-              </div>
-              <div class="col-6 col-12-xsmall">
-                <input type="checkbox" id="fx4" name="fx_pick" value="重金属/毒性金属检测" />
-                <label for="fx4">重金属 / 毒性金属检测</label>
-              </div>
-              <div class="col-6 col-12-xsmall">
-                <input type="checkbox" id="fx5" name="fx_pick" value="端粒检测（Telomere）" />
-                <label for="fx5">端粒检测（Telomere）</label>
-              </div>
-              <div class="col-6 col-12-xsmall">
-                <input type="checkbox" id="fx6" name="fx_pick" value="静脉营养（IV）" />
-                <label for="fx6">静脉营养（IV）</label>
-              </div>
+              <div class="col-6 col-12-xsmall"><input type="checkbox" id="fx1" name="fx_pick" value="营养代谢分析（OAT）" /><label for="fx1">营养代谢分析（OAT）</label></div>
+              <div class="col-6 col-12-xsmall"><input type="checkbox" id="fx2" name="fx_pick" value="NK 细胞活性检测" /><label for="fx2">NK 细胞活性检测</label></div>
+              <div class="col-6 col-12-xsmall"><input type="checkbox" id="fx3" name="fx_pick" value="睡眠·压力评估（皮质醇）" /><label for="fx3">睡眠·压力评估（皮质醇）</label></div>
+              <div class="col-6 col-12-xsmall"><input type="checkbox" id="fx4" name="fx_pick" value="重金属/毒性金属检测" /><label for="fx4">重金属 / 毒性金属检测</label></div>
+              <div class="col-6 col-12-xsmall"><input type="checkbox" id="fx5" name="fx_pick" value="端粒检测（Telomere）" /><label for="fx5">端粒检测（Telomere）</label></div>
+              <div class="col-6 col-12-xsmall"><input type="checkbox" id="fx6" name="fx_pick" value="静脉营养（IV）" /><label for="fx6">静脉营养（IV）</label></div>
             </div>
 
             <hr />
@@ -232,30 +219,12 @@
             <!-- 2-3 干细胞 -->
             <h4>干细胞/再生</h4>
             <div class="row gtr-uniform">
-              <div class="col-6 col-12-xsmall">
-                <input type="checkbox" id="stem1" name="stem_pick" value="干细胞静脉输注（IV）" />
-                <label for="stem1">干细胞静脉输注（IV）</label>
-              </div>
-              <div class="col-6 col-12-xsmall">
-                <input type="checkbox" id="stem2" name="stem_pick" value="外泌体治疗" />
-                <label for="stem2">外泌体治疗</label>
-              </div>
-              <div class="col-6 col-12-xsmall">
-                <input type="checkbox" id="stem3" name="stem_pick" value="关节/软骨再生" />
-                <label for="stem3">关节 / 软骨再生</label>
-              </div>
-              <div class="col-6 col-12-xsmall">
-                <input type="checkbox" id="stem4" name="stem_pick" value="皮肤再生" />
-                <label for="stem4">皮肤再生</label>
-              </div>
-              <div class="col-6 col-12-xsmall">
-                <input type="checkbox" id="stem5" name="stem_pick" value="干细胞 + NK 联合" />
-                <label for="stem5">干细胞 + NK 联合</label>
-              </div>
-              <div class="col-6 col-12-xsmall">
-                <input type="checkbox" id="stem6" name="stem_pick" value="自体脂肪 MSC" />
-                <label for="stem6">自体脂肪 MSC</label>
-              </div>
+              <div class="col-6 col-12-xsmall"><input type="checkbox" id="stem1" name="stem_pick" value="干细胞静脉输注（IV）" /><label for="stem1">干细胞静脉输注（IV）</label></div>
+              <div class="col-6 col-12-xsmall"><input type="checkbox" id="stem2" name="stem_pick" value="外泌体治疗" /><label for="stem2">外泌体治疗</label></div>
+              <div class="col-6 col-12-xsmall"><input type="checkbox" id="stem3" name="stem_pick" value="关节/软骨再生" /><label for="stem3">关节 / 软骨再生</label></div>
+              <div class="col-6 col-12-xsmall"><input type="checkbox" id="stem4" name="stem_pick" value="皮肤再生" /><label for="stem4">皮肤再生</label></div>
+              <div class="col-6 col-12-xsmall"><input type="checkbox" id="stem5" name="stem_pick" value="干细胞 + NK 联合" /><label for="stem5">干细胞 + NK 联合</label></div>
+              <div class="col-6 col-12-xsmall"><input type="checkbox" id="stem6" name="stem_pick" value="自体脂肪 MSC" /><label for="stem6">自体脂肪 MSC</label></div>
             </div>
 
             <hr />
@@ -263,30 +232,12 @@
             <!-- 2-4 整形外科 -->
             <h4>整形外科</h4>
             <div class="row gtr-uniform">
-              <div class="col-6 col-12-xsmall">
-                <input type="checkbox" id="ps1" name="plastic_pick" value="双眼皮" />
-                <label for="ps1">双眼皮</label>
-              </div>
-              <div class="col-6 col-12-xsmall">
-                <input type="checkbox" id="ps2" name="plastic_pick" value="隆鼻" />
-                <label for="ps2">隆鼻</label>
-              </div>
-              <div class="col-6 col-12-xsmall">
-                <input type="checkbox" id="ps3" name="plastic_pick" value="轮廓/下颌线" />
-                <label for="ps3">轮廓 / 下颌线</label>
-              </div>
-              <div class="col-6 col-12-xsmall">
-                <input type="checkbox" id="ps4" name="plastic_pick" value="吸脂" />
-                <label for="ps4">吸脂</label>
-              </div>
-              <div class="col-6 col-12-xsmall">
-                <input type="checkbox" id="ps5" name="plastic_pick" value="脂肪移植" />
-                <label for="ps5">脂肪移植</label>
-              </div>
-              <div class="col-6 col-12-xsmall">
-                <input type="checkbox" id="ps6" name="plastic_pick" value="肉毒/玻尿酸" />
-                <label for="ps6">肉毒 / 玻尿酸</label>
-              </div>
+              <div class="col-6 col-12-xsmall"><input type="checkbox" id="ps1" name="plastic_pick" value="双眼皮" /><label for="ps1">双眼皮</label></div>
+              <div class="col-6 col-12-xsmall"><input type="checkbox" id="ps2" name="plastic_pick" value="隆鼻" /><label for="ps2">隆鼻</label></div>
+              <div class="col-6 col-12-xsmall"><input type="checkbox" id="ps3" name="plastic_pick" value="轮廓/下颌线" /><label for="ps3">轮廓 / 下颌线</label></div>
+              <div class="col-6 col-12-xsmall"><input type="checkbox" id="ps4" name="plastic_pick" value="吸脂" /><label for="ps4">吸脂</label></div>
+              <div class="col-6 col-12-xsmall"><input type="checkbox" id="ps5" name="plastic_pick" value="脂肪移植" /><label for="ps5">脂肪移植</label></div>
+              <div class="col-6 col-12-xsmall"><input type="checkbox" id="ps6" name="plastic_pick" value="肉毒/玻尿酸" /><label for="ps6">肉毒 / 玻尿酸</label></div>
             </div>
 
             <hr />
@@ -294,30 +245,12 @@
             <!-- 2-5 女性中心 -->
             <h4>女性中心</h4>
             <div class="row gtr-uniform">
-              <div class="col-6 col-12-xsmall">
-                <input type="checkbox" id="f1" name="female_pick" value="阴道紧致激光" />
-                <label for="f1">阴道紧致激光</label>
-              </div>
-              <div class="col-6 col-12-xsmall">
-                <input type="checkbox" id="f2" name="female_pick" value="小阴唇整形" />
-                <label for="f2">小阴唇整形</label>
-              </div>
-              <div class="col-6 col-12-xsmall">
-                <input type="checkbox" id="f3" name="female_pick" value="私密美白" />
-                <label for="f3">私密美白</label>
-              </div>
-              <div class="col-6 col-12-xsmall">
-                <input type="checkbox" id="f4" name="female_pick" value="HPV" />
-                <label for="f4">HPV</label>
-              </div>
-              <div class="col-6 col-12-xsmall">
-                <input type="checkbox" id="f5" name="female_pick" value="女性激素全套" />
-                <label for="f5">女性激素全套</label>
-              </div>
-              <div class="col-6 col-12-xsmall">
-                <input type="checkbox" id="f6" name="female_pick" value="性病检测（12项）" />
-                <label for="f6">性病检测（12项）</label>
-              </div>
+              <div class="col-6 col-12-xsmall"><input type="checkbox" id="f1" name="female_pick" value="阴道紧致激光" /><label for="f1">阴道紧致激光</label></div>
+              <div class="col-6 col-12-xsmall"><input type="checkbox" id="f2" name="female_pick" value="小阴唇整形" /><label for="f2">小阴唇整形</label></div>
+              <div class="col-6 col-12-xsmall"><input type="checkbox" id="f3" name="female_pick" value="私密美白" /><label for="f3">私密美白</label></div>
+              <div class="col-6 col-12-xsmall"><input type="checkbox" id="f4" name="female_pick" value="HPV" /><label for="f4">HPV</label></div>
+              <div class="col-6 col-12-xsmall"><input type="checkbox" id="f5" name="female_pick" value="女性激素全套" /><label for="f5">女性激素全套</label></div>
+              <div class="col-6 col-12-xsmall"><input type="checkbox" id="f6" name="female_pick" value="性病检测（12项）" /><label for="f6">性病检测（12项）</label></div>
             </div>
 
             <hr />
@@ -325,120 +258,74 @@
             <!-- 2-6 男性健康 -->
             <h4>男性健康</h4>
             <div class="row gtr-uniform">
-              <div class="col-6 col-12-xsmall">
-                <input type="checkbox" id="m1" name="male_pick" value="包皮环切" />
-                <label for="m1">包皮环切</label>
-              </div>
-              <div class="col-6 col-12-xsmall">
-                <input type="checkbox" id="m2" name="male_pick" value="ED 综合治疗" />
-                <label for="m2">ED 综合治疗</label>
-              </div>
-              <div class="col-6 col-12-xsmall">
-                <input type="checkbox" id="m3" name="male_pick" value="前列腺微创" />
-                <label for="m3">前列腺微创</label>
-              </div>
-              <div class="col-6 col-12-xsmall">
-                <input type="checkbox" id="m4" name="male_pick" value="男性体成分/代谢管理" />
-                <label for="m4">男性体成分 / 代谢管理</label>
-              </div>
-              <div class="col-6 col-12-xsmall">
-                <input type="checkbox" id="m5" name="male_pick" value="HPV 疫苗/筛查" />
-                <label for="m5">HPV 疫苗 / 筛查</label>
-              </div>
-              <div class="col-6 col-12-xsmall">
-                <input type="checkbox" id="m6" name="male_pick" value="增粗/加长" />
-                <label for="m6">增粗 / 加长</label>
-              </div>
+              <div class="col-6 col-12-xsmall"><input type="checkbox" id="m1" name="male_pick" value="包皮环切" /><label for="m1">包皮环切</label></div>
+              <div class="col-6 col-12-xsmall"><input type="checkbox" id="m2" name="male_pick" value="ED 综合治疗" /><label for="m2">ED 综合治疗</label></div>
+              <div class="col-6 col-12-xsmall"><input type="checkbox" id="m3" name="male_pick" value="前列腺微创" /><label for="m3">前列腺微创</label></div>
+              <div class="col-6 col-12-xsmall"><input type="checkbox" id="m4" name="male_pick" value="男性体成分/代谢管理" /><label for="m4">男性体成分 / 代谢管理</label></div>
+              <div class="col-6 col-12-xsmall"><input type="checkbox" id="m5" name="male_pick" value="HPV 疫苗/筛查" /><label for="m5">HPV 疫苗 / 筛查</label></div>
+              <div class="col-6 col-12-xsmall"><input type="checkbox" id="m6" name="male_pick" value="增粗/加长" /><label for="m6">增粗 / 加长</label></div>
             </div>
 
             <hr />
 
-         <!-- Step 3 -->
-<h3>Step 3 · 旅行服务（可选）</h3>
+            <!-- Step 3 -->
+            <h3>Step 3 · 旅行服务（可选）</h3>
+            <div class="row gtr-uniform">
 
-<div class="row gtr-uniform">
+              <div class="col-12">
+                <label style="display:block; margin-bottom:6px;">机场接送</label>
+                <div style="display:flex; gap:18px; flex-wrap:wrap;">
+                  <div><input type="checkbox" id="airport_need" name="airport" value="需要" data-excl="airport"><label for="airport_need">需要</label></div>
+                  <div><input type="checkbox" id="airport_none" name="airport" value="不需要" data-excl="airport"><label for="airport_none">不需要</label></div>
+                </div>
+              </div>
 
-  <!-- 机场接送 -->
-  <div class="col-12">
-    <label style="display:block; margin-bottom:6px;">机场接送</label>
-    <div style="display:flex; gap:18px; flex-wrap:wrap;">
-      <div>
-        <input type="checkbox" id="airport_need" name="airport" value="需要" data-excl="airport">
-        <label for="airport_need">需要</label>
-      </div>
-      <div>
-        <input type="checkbox" id="airport_none" name="airport" value="不需要" data-excl="airport">
-        <label for="airport_none">不需要</label>
-      </div>
-    </div>
-  </div>
+              <div class="col-12">
+                <label style="display:block; margin-bottom:6px;">酒店预订</label>
+                <div style="display:flex; gap:18px; flex-wrap:wrap;">
+                  <div><input type="checkbox" id="hotel_need" name="hotel" value="需要" data-excl="hotel"><label for="hotel_need">需要</label></div>
+                  <div><input type="checkbox" id="hotel_none" name="hotel" value="不需要" data-excl="hotel"><label for="hotel_none">不需要</label></div>
+                </div>
+              </div>
 
-  <!-- 酒店预订 -->
-  <div class="col-12">
-    <label style="display:block; margin-bottom:6px;">酒店预订</label>
-    <div style="display:flex; gap:18px; flex-wrap:wrap;">
-      <div>
-        <input type="checkbox" id="hotel_need" name="hotel" value="需要" data-excl="hotel">
-        <label for="hotel_need">需要</label>
-      </div>
-      <div>
-        <input type="checkbox" id="hotel_none" name="hotel" value="不需要" data-excl="hotel">
-        <label for="hotel_none">不需要</label>
-      </div>
-    </div>
-  </div>
+              <div class="col-12">
+                <label style="display:block; margin-bottom:6px;">市区观光</label>
+                <div style="display:flex; gap:18px; flex-wrap:wrap;">
+                  <div><input type="checkbox" id="tour_need" name="tour" value="需要" data-excl="tour"><label for="tour_need">需要</label></div>
+                  <div><input type="checkbox" id="tour_none" name="tour" value="不需要" data-excl="tour"><label for="tour_none">不需要</label></div>
+                </div>
+              </div>
 
-  <!-- 市区观光 -->
-  <div class="col-12">
-    <label style="display:block; margin-bottom:6px;">市区观光</label>
-    <div style="display:flex; gap:18px; flex-wrap:wrap;">
-      <div>
-        <input type="checkbox" id="tour_need" name="tour" value="需要" data-excl="tour">
-        <label for="tour_need">需要</label>
-      </div>
-      <div>
-        <input type="checkbox" id="tour_none" name="tour" value="不需要" data-excl="tour">
-        <label for="tour_none">不需要</label>
-      </div>
-    </div>
-  </div>
+              <div class="col-12">
+                <label style="display:block; margin-bottom:6px;">医疗陪同／翻译</label>
+                <div style="display:flex; gap:18px; flex-wrap:wrap;">
+                  <div><input type="checkbox" id="trans_need" name="translation" value="需要" data-excl="translation"><label for="trans_need">需要</label></div>
+                  <div><input type="checkbox" id="trans_none" name="translation" value="不需要" data-excl="translation"><label for="trans_none">不需要</label></div>
+                </div>
+              </div>
 
-  <!-- 医疗陪同／翻译 -->
-  <div class="col-12">
-    <label style="display:block; margin-bottom:6px;">医疗陪同／翻译</label>
-    <div style="display:flex; gap:18px; flex-wrap:wrap;">
-      <div>
-        <input type="checkbox" id="trans_need" name="translation" value="需要" data-excl="translation">
-        <label for="trans_need">需要</label>
-      </div>
-      <div>
-        <input type="checkbox" id="trans_none" name="translation" value="不需要" data-excl="translation">
-        <label for="trans_none">不需要</label>
-      </div>
-    </div>
-  </div>
+            </div>
 
-</div>
+            <hr />
 
-<hr />
+            <!-- ✅ Summary Box (提交 바로 위) -->
+            <div id="selectedBox">
+              <strong>已选内容</strong>
+              <div id="selectedSummary">
+                <span class="empty">还未选择。先勾选几项也可以。</span>
+              </div>
+            </div>
 
-<!-- ✅ 선택 요약 박스 (提交 버튼 위) -->
-<div id="selectedBox" style="border:1px solid rgba(0,0,0,0.2); padding:12px 14px; border-radius:6px; margin: 0 0 1rem 0;">
-  <strong>已选内容</strong>
-  <div id="selectedSummary" style="margin-top:8px; line-height:1.7;">
-    <span style="opacity:0.7;">还未选择。先勾选几项也可以。</span>
-  </div>
-</div>
-
-<ul class="actions">
-  <li><button type="submit" class="button primary">提交</button></li>
-  <li><button type="reset" class="button">重置</button></li>
-</ul>
+            <!-- Actions -->
+            <ul class="actions">
+              <li><button type="submit" class="button primary">提交</button></li>
+              <li><button type="reset" class="button">重置</button></li>
+            </ul>
 
           </form>
         </section>
 
-        <!-- Section: 信任感(원본의 features 느낌만 텍스트로) -->
+        <!-- Section: 信任感 -->
         <section>
           <header class="major">
             <h2>我们能为你做什么</h2>
@@ -478,22 +365,18 @@
       </div>
     </div>
 
-    <!-- Sidebar (한강애봄 메뉴로 교체) -->
+    <!-- Sidebar -->
     <div id="sidebar">
       <div class="inner">
 
-        <!-- Search -->
         <section id="search" class="alt">
           <form method="get" action="#">
             <input type="search" name="query" id="query" placeholder="搜索" aria-label="搜索" />
           </form>
         </section>
 
-        <!-- Menu -->
         <nav id="menu">
-          <header class="major">
-            <h2>菜单</h2>
-          </header>
+          <header class="major"><h2>菜单</h2></header>
           <ul>
             <li><a href="index.html">首页</a></li>
             <li><a href="wellness.html">大健康</a></li>
@@ -509,19 +392,13 @@
           </ul>
         </nav>
 
-        <!-- Section -->
         <section>
-          <header class="major">
-            <h2>关于我们</h2>
-          </header>
+          <header class="major"><h2>关于我们</h2></header>
           <p>汉江春天 · 韩国医疗观光与大健康平台。我们提供医院对接、预约、翻译陪同与行程安排。</p>
         </section>
 
-        <!-- Contact -->
         <section>
-          <header class="major">
-            <h2>联系方式</h2>
-          </header>
+          <header class="major"><h2>联系方式</h2></header>
           <ul class="contact">
             <li class="icon solid fa-envelope"><a href="mailto:egana@kmedispring.com">egana@kmedispring.com</a></li>
             <li class="icon solid fa-phone">(82) 10-4903-3123</li>
@@ -529,11 +406,8 @@
           </ul>
         </section>
 
-        <!-- Footer -->
         <footer id="footer">
-          <p class="copyright">
-            © 2025 汉江春天 한강애봄. Design: HTML5 UP.
-          </p>
+          <p class="copyright">© 2025 汉江春天 한강애봄. Design: HTML5 UP.</p>
         </footer>
 
       </div>
@@ -541,117 +415,114 @@
 
   </div>
 
-<!-- Scripts (템플릿 기본) -->
-<script src="assets/js/jquery.min.js"></script>
-<script src="assets/js/browser.min.js"></script>
-<script src="assets/js/breakpoints.min.js"></script>
-<script src="assets/js/util.js"></script>
-<script src="assets/js/main.js"></script>
+  <!-- Scripts (template) -->
+  <script src="assets/js/jquery.min.js"></script>
+  <script src="assets/js/browser.min.js"></script>
+  <script src="assets/js/breakpoints.min.js"></script>
+  <script src="assets/js/util.js"></script>
+  <script src="assets/js/main.js"></script>
 
-<!-- ✅ K-Plan 폼 전용 스크립트 (맨 마지막) -->
-<script>
-  const form = document.getElementById('planForm');
-  const summaryEl = document.getElementById('selectedSummary');
+  <!-- K-Plan Script -->
+  <script>
+    const form = document.getElementById('planForm');
+    const summaryEl = document.getElementById('selectedSummary');
 
-  function pickedOne(name){
-    const el = document.querySelector('input[name="'+name+'"]:checked');
-    return el ? el.value : '';
-  }
-
-  function pickedMany(name){
-    return Array.from(document.querySelectorAll('input[name="'+name+'"]:checked'))
-      .map(el => el.value);
-  }
-
-  function renderSummary(){
-    const lines = [];
-
-    const skin = pickedMany('skin_pick');
-    if (skin.length) lines.push('皮肤医美：' + skin.join('、'));
-
-    const fx = pickedMany('fx_pick');
-    if (fx.length) lines.push('大健康：' + fx.join('、'));
-
-    const stem = pickedMany('stem_pick');
-    if (stem.length) lines.push('干细胞：' + stem.join('、'));
-
-    const plastic = pickedMany('plastic_pick');
-    if (plastic.length) lines.push('整形：' + plastic.join('、'));
-
-    const female = pickedMany('female_pick');
-    if (female.length) lines.push('女性：' + female.join('、'));
-
-    const male = pickedMany('male_pick');
-    if (male.length) lines.push('男性：' + male.join('、'));
-
-    const travel = [];
-    const a  = pickedOne('airport');     if (a)  travel.push('机场接送：' + a);
-    const h  = pickedOne('hotel');       if (h)  travel.push('酒店预订：' + h);
-    const t  = pickedOne('tour');        if (t)  travel.push('市区观光：' + t);
-    const tr = pickedOne('translation'); if (tr) travel.push('医疗陪同/翻译：' + tr);
-
-    if (travel.length) lines.push('旅行服务：' + travel.join('、'));
-
-    if (!lines.length){
-      summaryEl.innerHTML = '<span style="opacity:0.7;">还未选择。先勾选几项也可以。</span>';
-      return;
+    function pickedOne(name){
+      const el = document.querySelector('input[name="'+name+'"]:checked');
+      return el ? el.value : '';
     }
 
-    summaryEl.innerHTML =
-      '<ul style="margin:0; padding-left:1.1rem;">' +
-      lines.map(x => '<li>' + x + '</li>').join('') +
-      '</ul>';
-  }
+    function pickedMany(name){
+      return Array.from(document.querySelectorAll('input[name="'+name+'"]:checked'))
+        .map(el => el.value);
+    }
 
-  // ✅ 첫 로드 시: 브라우저 복원 체크 전부 해제
-  window.addEventListener('DOMContentLoaded', function(){
-    form.querySelectorAll('input[type="checkbox"], input[type="radio"]').forEach(el => {
-      el.checked = false;
-    });
-    renderSummary();
-  });
+    function renderSummary(){
+      const lines = [];
 
-  // ✅ change: Step3(需要/不需要) 상호배타 + 요약 갱신
-  form.addEventListener('change', function(e){
-    const el = e.target;
+      const skin = pickedMany('skin_pick');
+      if (skin.length) lines.push('皮肤医美：' + skin.join('、'));
 
-    // Step3: checkbox지만 한 개만 선택되게 (data-excl 있는 것만 적용)
-    if (el && el.type === 'checkbox') {
-      const group = el.getAttribute('data-excl');
-      if (group && el.checked) {
-        document.querySelectorAll('input[type="checkbox"][data-excl="'+group+'"]').forEach(x => {
-          if (x !== el) x.checked = false;
-        });
+      const fx = pickedMany('fx_pick');
+      if (fx.length) lines.push('大健康：' + fx.join('、'));
+
+      const stem = pickedMany('stem_pick');
+      if (stem.length) lines.push('干细胞：' + stem.join('、'));
+
+      const plastic = pickedMany('plastic_pick');
+      if (plastic.length) lines.push('整形：' + plastic.join('、'));
+
+      const female = pickedMany('female_pick');
+      if (female.length) lines.push('女性：' + female.join('、'));
+
+      const male = pickedMany('male_pick');
+      if (male.length) lines.push('男性：' + male.join('、'));
+
+      // Step3 (checkbox지만 data-excl로 한 개만 남게 됨)
+      const travel = [];
+      const a  = pickedOne('airport');      if (a)  travel.push('机场接送：' + a);
+      const h  = pickedOne('hotel');        if (h)  travel.push('酒店预订：' + h);
+      const t  = pickedOne('tour');         if (t)  travel.push('市区观光：' + t);
+      const tr = pickedOne('translation');  if (tr) travel.push('医疗陪同/翻译：' + tr);
+
+      if (travel.length) lines.push('旅行服务：' + travel.join('、'));
+
+      if (!lines.length){
+        summaryEl.innerHTML = '<span class="empty">还未选择。先勾选几项也可以。</span>';
+        return;
       }
+
+      summaryEl.innerHTML =
+        '<ul>' +
+        lines.map(x => '<li>' + x + '</li>').join('') +
+        '</ul>';
     }
 
-    renderSummary();
-  });
+    // ✅ 첫 로드 시: 브라우저가 이전 선택을 복원해도 전부 해제
+    window.addEventListener('DOMContentLoaded', function(){
+      form.querySelectorAll('input[type="checkbox"], input[type="radio"]').forEach(el => {
+        el.checked = false;
+      });
+      renderSummary();
+    });
 
-  // ✅ 최초 1회 렌더
-  renderSummary();
+    // ✅ change: Step3(需要/不需要) 상호배타 + 요약 갱신
+    form.addEventListener('change', function(e){
+      const el = e.target;
 
-  // ✅ 제출 시 alert
-  form.addEventListener('submit', function(e){
-    e.preventDefault();
-    renderSummary();
+      // data-excl 있는 checkbox만 "한 개만" 남기기
+      if (el && el.type === 'checkbox') {
+        const group = el.getAttribute('data-excl');
+        if (group && el.checked) {
+          document.querySelectorAll('input[type="checkbox"][data-excl="'+group+'"]').forEach(x => {
+            if (x !== el) x.checked = false;
+          });
+        }
+      }
 
-    const tmp = document.createElement('div');
-    tmp.innerHTML = summaryEl.innerHTML;
-    const text = tmp.innerText.trim();
+      renderSummary();
+    });
 
-    let msg = '谢谢！我们已收到你的信息，会尽快联系你。';
-    if (text) msg += '\n\n' + text.replace(/\n\n+/g, '\n');
+    // ✅ 제출 시 alert
+    form.addEventListener('submit', function(e){
+      e.preventDefault();
+      renderSummary();
 
-    alert(msg);
-  });
+      const tmp = document.createElement('div');
+      tmp.innerHTML = summaryEl.innerHTML;
+      const text = tmp.innerText.trim();
 
-  // ✅ 리셋 시 요약 초기화
-  form.addEventListener('reset', function(){
-    setTimeout(renderSummary, 0);
-  });
-</script>
+      let msg = '谢谢！我们已收到你的信息，会尽快联系你。';
+      if (text) msg += '\n\n' + text.replace(/\n\n+/g, '\n');
 
+      alert(msg);
+    });
+
+    // ✅ 리셋 시 요약 초기화
+    form.addEventListener('reset', function(){
+      setTimeout(renderSummary, 0);
+    });
+  </script>
 
 </body>
 </html>
