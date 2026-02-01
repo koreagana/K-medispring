@@ -1974,6 +1974,7 @@ html[lang="ko"] .button {
 
 /* Main */
 #main {
+  font-size: 1em;   /* ✅ 1.1em → 1em (본문 줄이기) */
   -moz-flex-grow: 1;
   -webkit-flex-grow: 1;
   -ms-flex-grow: 1;
@@ -1982,8 +1983,10 @@ html[lang="ko"] .button {
   -webkit-flex-shrink: 1;
   -ms-flex-shrink: 1;
   flex-shrink: 1;
-  width: 100%; }
-  #main > .inner {
+  width: 100%;
+}
+
+	#main > .inner {
     padding: 0 6em 0.1em 6em ;
     margin: 0 auto;
     max-width: 110em; }
@@ -3426,5 +3429,6 @@ a.toggle::before{
   display: block;
   text-align: center;
 }
+
 
 
