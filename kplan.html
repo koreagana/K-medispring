@@ -297,53 +297,87 @@
 
             <hr />
 
-            <!-- Step 3 -->
-            <h3>Step 3 · 旅行服务（可选）</h3>
+         <!-- Step 3 -->
+<h3>Step 3 · 旅行服务（可选）</h3>
 
-            <div class="row gtr-uniform">
-              <div class="col-12">
-                <input type="radio" id="airport_yes" name="airport" value="需要">
-                <label for="airport_yes">机场接送：需要</label>
-              </div>
-              <div class="col-12">
-                <input type="radio" id="airport_no" name="airport" value="不需要">
-                <label for="airport_no">机场接送：不需要</label>
-              </div>
+<div class="row gtr-uniform">
 
-              <div class="col-12">
-                <input type="radio" id="hotel_yes" name="hotel" value="需要">
-                <label for="hotel_yes">酒店预订：需要</label>
-              </div>
-              <div class="col-12">
-                <input type="radio" id="hotel_no" name="hotel" value="不需要">
-                <label for="hotel_no">酒店预订：不需要</label>
-              </div>
+  <!-- 机场接送 -->
+  <div class="col-12">
+    <label style="display:block; margin-bottom:6px;">机场接送</label>
+    <div style="display:flex; gap:18px; flex-wrap:wrap;">
+      <div>
+        <input type="checkbox" id="airport_need" name="airport" value="需要" data-excl="airport">
+        <label for="airport_need">需要</label>
+      </div>
+      <div>
+        <input type="checkbox" id="airport_none" name="airport" value="不需要" data-excl="airport">
+        <label for="airport_none">不需要</label>
+      </div>
+    </div>
+  </div>
 
-              <div class="col-12">
-                <input type="radio" id="tour_yes" name="tour" value="需要">
-                <label for="tour_yes">市区观光：需要</label>
-              </div>
-              <div class="col-12">
-                <input type="radio" id="tour_no" name="tour" value="不需要">
-                <label for="tour_no">市区观光：不需要</label>
-              </div>
+  <!-- 酒店预订 -->
+  <div class="col-12">
+    <label style="display:block; margin-bottom:6px;">酒店预订</label>
+    <div style="display:flex; gap:18px; flex-wrap:wrap;">
+      <div>
+        <input type="checkbox" id="hotel_need" name="hotel" value="需要" data-excl="hotel">
+        <label for="hotel_need">需要</label>
+      </div>
+      <div>
+        <input type="checkbox" id="hotel_none" name="hotel" value="不需要" data-excl="hotel">
+        <label for="hotel_none">不需要</label>
+      </div>
+    </div>
+  </div>
 
-              <div class="col-12">
-                <input type="radio" id="trans_yes" name="translation" value="需要">
-                <label for="trans_yes">医疗陪同／翻译：需要</label>
-              </div>
-              <div class="col-12">
-                <input type="radio" id="trans_no" name="translation" value="不需要">
-                <label for="trans_no">医疗陪同／翻译：不需要</label>
-              </div>
-            </div>
+  <!-- 市区观光 -->
+  <div class="col-12">
+    <label style="display:block; margin-bottom:6px;">市区观光</label>
+    <div style="display:flex; gap:18px; flex-wrap:wrap;">
+      <div>
+        <input type="checkbox" id="tour_need" name="tour" value="需要" data-excl="tour">
+        <label for="tour_need">需要</label>
+      </div>
+      <div>
+        <input type="checkbox" id="tour_none" name="tour" value="不需要" data-excl="tour">
+        <label for="tour_none">不需要</label>
+      </div>
+    </div>
+  </div>
 
-            <hr />
+  <!-- 医疗陪同／翻译 -->
+  <div class="col-12">
+    <label style="display:block; margin-bottom:6px;">医疗陪同／翻译</label>
+    <div style="display:flex; gap:18px; flex-wrap:wrap;">
+      <div>
+        <input type="checkbox" id="trans_need" name="translation" value="需要" data-excl="translation">
+        <label for="trans_need">需要</label>
+      </div>
+      <div>
+        <input type="checkbox" id="trans_none" name="translation" value="不需要" data-excl="translation">
+        <label for="trans_none">不需要</label>
+      </div>
+    </div>
+  </div>
 
-            <ul class="actions">
-              <li><button type="submit" class="button primary">提交</button></li>
-              <li><button type="reset" class="button">重置</button></li>
-            </ul>
+</div>
+
+<hr />
+
+<!-- ✅ 선택 요약 박스 (提交 버튼 위) -->
+<div id="selectedBox" style="border:1px solid rgba(0,0,0,0.2); padding:12px 14px; border-radius:6px; margin: 0 0 1rem 0;">
+  <strong>已选内容</strong>
+  <div id="selectedSummary" style="margin-top:8px; line-height:1.7;">
+    <span style="opacity:0.7;">还未选择。先勾选几项也可以。</span>
+  </div>
+</div>
+
+<ul class="actions">
+  <li><button type="submit" class="button primary">提交</button></li>
+  <li><button type="reset" class="button">重置</button></li>
+</ul>
 
           </form>
         </section>
@@ -463,13 +497,13 @@
   const form = document.getElementById('planForm');
   const summaryEl = document.getElementById('selectedSummary');
 
-  // ✅ 라디오(단일)
+  // ✅ 라디오/단일 선택값 읽기 (Step3가 checkbox여도, 같은 name에서 1개만 체크되게 만들기 때문에 그대로 사용 가능)
   function pickedOne(name){
     const el = document.querySelector('input[name="'+name+'"]:checked');
     return el ? el.value : '';
   }
 
-  // ✅ 체크박스(다중)
+  // ✅ 체크박스(다중) 선택값 읽기 (Step2)
   function pickedMany(name){
     return Array.from(document.querySelectorAll('input[name="'+name+'"]:checked'))
       .map(el => el.value);
@@ -497,7 +531,7 @@
     const male = pickedMany('male_pick');
     if (male.length) lines.push('男性：' + male.join('、'));
 
-    // Step3 (라디오: 단일)
+    // Step3 (需要/不需要) — 한 항목당 1개만 체크되도록 제어하니까 pickedOne 사용 가능
     const travel = [];
     const a  = pickedOne('airport');     if (a)  travel.push('机场接送：' + a);
     const h  = pickedOne('hotel');       if (h)  travel.push('酒店预订：' + h);
@@ -512,25 +546,38 @@
       return;
     }
 
-    summaryEl.innerHTML = '<ul style="margin:0; padding-left:1.1rem;">'
-      + lines.map(x => '<li>' + x + '</li>').join('')
-      + '</ul>';
+    summaryEl.innerHTML =
+      '<ul style="margin:0; padding-left:1.1rem;">' +
+      lines.map(x => '<li>' + x + '</li>').join('') +
+      '</ul>';
   }
 
-  // ✅ 선택 변경 시마다 업데이트
-  form.addEventListener('change', renderSummary);
+  // ✅ change 이벤트 한 번으로 처리 (Step3 상호배타 + 요약 갱신)
+  form.addEventListener('change', function(e){
+    const el = e.target;
+
+    // Step3: checkbox지만 "한 개만" 선택되게 (需要 vs 不需要)
+    // ※ Step2 체크박스에는 data-excl이 없으니 영향 없음
+    if (el && el.type === 'checkbox') {
+      const group = el.getAttribute('data-excl');
+      if (group && el.checked) {
+        document.querySelectorAll('input[type="checkbox"][data-excl="'+group+'"]').forEach(x => {
+          if (x !== el) x.checked = false;
+        });
+      }
+    }
+
+    renderSummary();
+  });
 
   // ✅ 최초 1회 렌더
   renderSummary();
 
-  // ✅ 제출 시 alert (기존 로직 유지 + 요약 재사용)
+  // ✅ 제출 시 alert
   form.addEventListener('submit', function(e){
     e.preventDefault();
-
-    // 최신 요약 반영
     renderSummary();
 
-    // alert용 텍스트 만들기
     const tmp = document.createElement('div');
     tmp.innerHTML = summaryEl.innerHTML;
     const text = tmp.innerText.trim();
@@ -546,6 +593,8 @@
     setTimeout(renderSummary, 0);
   });
 </script>
+
+
 
 
 
