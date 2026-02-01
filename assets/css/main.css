@@ -3053,19 +3053,35 @@ body{
   color: #333;
 }
 
-/* ---------- 6) Sidebar separators (라인 중복 방지: 이 방식 하나만) ---------- */
+/* ---------- 6) Sidebar separators (라인 + 여백 정리: PC 기준) ---------- */
+
+/* 공통 */
 #sidebar .inner > section{
   border-top: 1px solid rgba(210, 215, 217, 0.75);
   margin-top: 2rem;
   padding-top: 2rem;
+
+  /* ✅ 좌우 여백 추가 (붙어 보이는 문제 해결) */
+  padding-left: 18px;
+  padding-right: 18px;
 }
+
+/* 첫 섹션 예외 */
 #sidebar .inner > section:first-of-type{
   border-top: none;
   margin-top: 0;
   padding-top: 0;
 }
 
-/* ---------- 7) K-Plan summary text (요약 박스 글자 키우기) ---------- */
+/* PC에서만 여백을 조금 더 고급스럽게 */
+@media screen and (min-width: 1100px){
+  #sidebar .inner > section{
+    padding-left: 22px;
+    padding-right: 22px;
+  }
+}
+
+	/* ---------- 7) K-Plan summary text (요약 박스 글자 키우기) ---------- */
 #selectedSummary,
 #selectedSummary li{
   font-size: 18px;     /* ✅ “需要” 수준으로 보이게 */
@@ -3396,14 +3412,6 @@ a.toggle:hover {
     width: calc(100% - 320px) !important;
   }
 
-  /* 3) 사이드바 안에 메뉴+소개+연락+푸터가 다 보여야 함 (스크롤) */
-  #sidebar,
-  #sidebar .inner {
-    height: 100vh !important;
-    overflow-y: auto !important;
-    -webkit-overflow-scrolling: touch;
-  }
-
   /* 4) 블릿(•) 완전 제거: list-style + li::before 둘 다 */
   #sidebar ul,
   #sidebar nav ul,
@@ -3428,6 +3436,7 @@ a.toggle:hover {
     padding-left: 0 !important;
   }
 }
+
 
 
 
