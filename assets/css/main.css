@@ -2,27 +2,38 @@
    FONT SETTINGS (로니 & 리디아 2025.10.11)
    ============================ */
 /* =========================
-   Fonts (Local) + Typography
-   Editorial-like: Body = Sans, Headings = Serif
+   Font Face – 汉江春天
    ========================= */
-
-/* Roboto (Body) */
 @font-face {
-  font-family: "Roboto";
-  src: url("../fonts/Roboto-VariableFont_wdth,wght.ttf") format("truetype");
-  font-weight: 100 900;
+  font-family: 'HJS-Serif';
+  src: url('../fonts/SourceHanSerifCN-Light.otf') format('opentype');
+  font-weight: 300;
   font-style: normal;
-  font-display: swap;
+}
+@font-face {
+  font-family: 'HJS-Serif';
+  src: url('../fonts/SourceHanSerifCN-Medium.otf') format('opentype');
+  font-weight: 500;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'HJS-Serif';
+  src: url('../fonts/SourceHanSerifCN-Bold.otf') format('opentype');
+  font-weight: 700;
+  font-style: normal;
 }
 
-/* Merriweather (Headings) */
 @font-face {
-  font-family: "Merriweather";
-  src: url("../fonts/Merriweather-VariableFont_opsz,wdth,wght.ttf") format("truetype");
-  font-weight: 300 900;
-  font-style: normal;
-  font-display: swap;
+  font-family: 'HJS-Sans';
+  src: url('../fonts/Pretendard-Regular.ttf') format('truetype');
+  font-weight: 400;
 }
+@font-face {
+  font-family: 'HJS-Sans';
+  src: url('../fonts/Pretendard-Bold.ttf') format('truetype');
+  font-weight: 700;
+}
+
 
 /*
 	Editorial by HTML5 UP
@@ -3122,23 +3133,27 @@ legend{ font-weight: 600; margin-bottom: .75rem; }
 /* ---------- 0) Font variables ---------- */
 :root{
   --brand: #0077B6;
+  --hover: #2088C2;
+  --deep:  #1565A0;
 
-  /* Latin */
-  --body-latin: "Source Sans Pro",-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;
-  --heading-latin: "Roboto Slab","Merriweather",Georgia,"Times New Roman",serif;
+  /* UI / Body Sans (readability first) */
+  --ui-sans: "Pretendard","PingFang SC","Microsoft YaHei","Noto Sans CJK SC","Source Han Sans SC",
+             -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;
 
-  /* CJK Sans (menu/short UI) */
-  --cjk-sans: "PingFang SC","Microsoft YaHei","Noto Sans CJK SC","Source Han Sans SC",
-              "Apple SD Gothic Neo","Noto Sans KR","Malgun Gothic",sans-serif;
+  /* CJK Serif (brand headings) */
+  --brand-serif: "Source Han Serif CN","Source Han Serif SC","Noto Serif SC","Noto Serif CJK SC",
+                 "Songti SC","SimSun","AppleMyungjo","Batang",serif;
 
-  /* CJK Serif (brand text/body paragraphs) */
-  --cjk-serif: "Source Han Serif SC","Source Han Serif CN","Noto Serif SC","Noto Serif CJK SC",
-               "Songti SC","SimSun","AppleMyungjo","Batang",serif;
+  /* (호환 유지용: 기존 변수명도 살려둠) */
+  --body-latin: var(--ui-sans);
+  --heading-latin: var(--brand-serif);
+  --cjk-sans: var(--ui-sans);
+  --cjk-serif: var(--brand-serif);
 }
 
 /* ---------- 1) Global body (기본 본문) ---------- */
 body{
-  font-family: var(--body-latin), var(--cjk-serif);
+  font-family: var(--ui-sans);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   color: #333;
@@ -3147,7 +3162,7 @@ body{
 /* 기본 본문 크기: “눈 2.0도 안보여” 방지 */
 #main p,
 #main li{
-  font-family: var(--body-latin), var(--cjk-serif);
+  font-family: var(--ui-sans);
   font-size: 18px;
   line-height: 1.9;
   font-weight: 400;
@@ -3162,6 +3177,17 @@ body{
     line-height: 1.65;
   }
 }
+
+/* ✅ 헤딩: 원본 Roboto Slab 탈출 (중국어 브랜드 톤으로 고정) */
+#main h1, #main h2, #main h3, #main h4, #main h5, #main h6,
+#sidebar h1, #sidebar h2, #sidebar h3, #sidebar h4, #sidebar h5, #sidebar h6{
+  font-family: var(--brand-serif);
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  color: #222;
+  line-height: 1.25;
+}
+
 /* 섹션 타이틀(major)만 정확히 키우기 */
 #main header.major > h2{ font-size: 1.65rem; }
 #main header.major > h3{ font-size: 1.25rem; }
@@ -3175,6 +3201,7 @@ body{
 
 /* 배너 소개문(“汉江春天 是一家…”) — 볼드처럼 안 보이게 */
 #banner .content p{
+  font-family: var(--ui-sans);
   font-size: 16px;
   line-height: 1.75;
   font-weight: 400;
@@ -3183,11 +3210,13 @@ body{
 
 /* 배너 타이틀(两行) — 크기/줄간만 조정 */
 #banner header h1{
+  font-family: var(--brand-serif);
   font-size: 2.2rem;
   line-height: 1.15;
   margin: 0 0 .35rem 0;
 }
 #banner header h2{
+  font-family: var(--brand-serif);
   font-size: 1.15rem;
   line-height: 1.35;
   margin: 0 0 1rem 0;
@@ -3206,28 +3235,28 @@ body{
 
 /* ---------- 4) Features 설명 텍스트 (브랜드 철학 4칸) ---------- */
 .features article p{
-  font-family: var(--body-latin), var(--cjk-serif) !important;
-  font-size: 17px !important;
-  line-height: 1.85 !important;
-  font-weight: 400 !important;
-  color: #333 !important;
+  font-family: var(--ui-sans);
+  font-size: 17px;
+  line-height: 1.85;
+  font-weight: 400;
+  color: #333;
 }
 @media (max-width: 736px){
   .features article p{
-    font-size: 15px !important;
-    line-height: 1.75 !important;
+    font-size: 15px;
+    line-height: 1.75;
   }
 }
 
 /* ---------- 5) Sidebar typography (菜单/联系方式) ---------- */
 /* 메뉴는 또렷하게 sans */
 #menu{
-  font-family: var(--body-latin), var(--cjk-sans);
+  font-family: var(--ui-sans);
 }
 
 /* 연락처 문단 + 라인(메일/전화/주소)도 “본문과 같은” 크기로 키움 */
 #sidebar section p{
-  font-family: var(--body-latin), var(--cjk-serif);
+  font-family: var(--ui-sans);
   font-size: 16px;
   line-height: 1.85;
   color: #333;
@@ -3236,7 +3265,7 @@ body{
 #sidebar ul.contact li,
 #sidebar ul.contact li a,
 #sidebar ul.contact li span{
-  font-family: var(--body-latin), var(--cjk-serif);
+  font-family: var(--ui-sans);
   font-size: 16px;        /* ✅ 너무 작던 문제 해결 */
   line-height: 1.85;
   font-weight: 400;
@@ -3280,6 +3309,5 @@ body{
     color: var(--deep) !important;
   }
 }
-
 
 
