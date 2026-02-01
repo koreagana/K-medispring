@@ -178,3 +178,88 @@ a.toggle:after{
 #main > .inner > section:first-of-type{
   padding-top: 1.2rem;
 }
+
+/* ====== FORCE SHOW MENU (nav#menu) ====== */
+#sidebar nav#menu{
+  display: block !important;
+  visibility: visible !important;
+  height: auto !important;
+  overflow: visible !important;
+}
+
+#sidebar nav#menu > ul{
+  display: block !important;
+  height: auto !important;
+  overflow: visible !important;
+}
+
+/* =========================
+   Readability Fix (본문 가독성)
+   ========================= */
+
+/* 전체 기본 폰트 크기 */
+body{
+  font-size: 14px;        /* ✅ 최소 인간 가독선 */
+  line-height: 1.75;     /* 의료/설명 텍스트 필수 */
+  color: #2f2f2f;
+}
+
+/* 본문 텍스트 */
+#main p,
+#main li{
+  font-size: 14px;
+  line-height: 1.8;
+}
+
+/* 모바일은 더 크게 */
+@media (max-width: 736px){
+  body,
+  #main p,
+  #main li{
+    font-size: 15px;
+  }
+}
+
+/* 작은 설명 텍스트가 더 작아지지 않게 */
+#main .features p,
+#main .posts p{
+  font-size: 14px;
+}
+
+/* =========================
+   Sidebar Background (원본 느낌 회색)
+   ========================= */
+
+#sidebar{
+  background: #f5f6f7; /* ✅ Editorial 원본 계열 */
+}
+
+/* 메뉴 영역 살짝 구분 */
+#sidebar nav#menu{
+  background: transparent;
+}
+
+/* 메뉴 구분선 */
+#sidebar nav#menu ul li{
+  border-bottom: 1px solid #e3e6e8;
+}
+
+/* 메뉴 텍스트 */
+#sidebar nav#menu a{
+  font-size: 14px;       /* 메뉴도 본문급 */
+  padding: 0.85rem 0;
+  color: #333;
+}
+
+/* =========================
+   Heading Scale Fix
+   ========================= */
+
+#main h1{ font-size: 2.1rem; }
+#main h2{ font-size: 1.6rem; }
+#main h3{ font-size: 1.2rem; }
+
+@media (max-width: 736px){
+  #main h1{ font-size: 1.75rem; }
+  #main h2{ font-size: 1.45rem; }
+}
