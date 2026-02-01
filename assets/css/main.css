@@ -2202,7 +2202,7 @@ html[lang="ko"] .button {
   position: fixed;
   top: 0; right: -320px;
   width: 320px; height: 100%;
-  background: #fff;
+  background: #fff;-
   box-shadow: -3px 0 12px rgba(0,0,0,.12);
   transition: right .28s ease;
   z-index: 10000;
@@ -3376,12 +3376,35 @@ h1, h2, h3, h4, h5, h6{
 
 /* 모바일에서는 살짝 더 큼직하게 */
 @media (max-width: 980px){
-  #sidebar #menu ul li a{
+  #sidebar nav ul li a{
     font-size: 16px !important;
     padding: 0.85em 0 !important;
   }
 }
+
 #sidebar{
   font-size: 1rem !important;
 }
+
+/* === Toggle hamburger (FontAwesome) === */
+a.toggle{
+  font-size: 0 !important;      /* Toggle 글자 숨김 */
+  text-decoration: none;
+}
+
+a.toggle::before{
+  content: "\f0c9";             /* FontAwesome bars */
+  font-family: "Font Awesome 5 Free";
+  font-weight: 900;
+  font-size: 18px;
+  line-height: 48px;
+  color: #333;
+}
+
+/* === KMS: kill #menu (we use #sidebar only) === */
+#menu { display: none !important; }
+#menu * { all: unset !important; }
+#menu { position: static !important; width: auto !important; height: auto !important; }
+#menu.is-open { right: auto !important; }
+
 
