@@ -3407,4 +3407,24 @@ a.toggle::before{
 #menu { position: static !important; width: auto !important; height: auto !important; }
 #menu.is-open { right: auto !important; }
 
+/* ================================
+   KMS: Hamburger icon (FontAwesome)
+   ================================ */
+
+a.toggle{
+  font-size: 0 !important;      /* 'Toggle' 글자 숨김 */
+  text-decoration: none;
+}
+
+a.toggle::before{
+  content: "\f0c9";             /* FontAwesome bars */
+  font-family: "Font Awesome 5 Free";
+  font-weight: 900;
+  font-size: 18px;
+  line-height: 48px;
+  color: #333;
+  display: block;
+  text-align: center;
+}
+
 
