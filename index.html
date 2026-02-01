@@ -30,129 +30,116 @@
   <link rel="icon" type="image/png" sizes="16x16" href="images/favicon-16.png?v=20251012">
   <link rel="apple-touch-icon" sizes="180x180" href="images/apple-touch-icon.png?v=20251012">
 
-  <!-- CSS -->
+  <!-- CSS (템플릿 기본) -->
   <link rel="stylesheet" href="assets/css/fontawesome-all.min.css?v=20251027" />
   <link rel="stylesheet" href="assets/css/main.css?v=20251027" />
   <noscript><link rel="stylesheet" href="assets/css/noscript.css?v=20251027" /></noscript>
 
-  <!-- 커스텀 스타일 (일단 여기까지. CSS는 다음 턴에서 "단일본"으로 정리하자) -->
+  <!-- ✅ 커스텀은 “필요한 것만” -->
   <style>
-    :root {
-      --brand: #0077B6;
-      --hover: #2088C2;
-      --deep:  #1565A0;
-      --line:  #A0C4DE;
+    :root{
+      --brand:#0077B6;
+      --hover:#2088C2;
+      --deep:#1565A0;
+      --line:#A0C4DE;
     }
 
-  /* =========================
-   Color / UI (Menu, Major line, Buttons, Divider)
-   ========================= */
+    /* Header 로고 텍스트(기본만) */
+    #header .logo{
+      text-decoration:none;
+      color:#333;
+      white-space:nowrap;
+    }
+    #header .logo .brand-cn{ font-weight:800; letter-spacing:.04em; }
+    #header .logo .brand-dot{ opacity:.6; padding:0 .25em; }
+    #header .logo .brand-en{ font-weight:500; letter-spacing:.10em; }
 
-/* 메뉴 링크 컬러 */
-#menu a{
-  color: #333 !important;
-  text-decoration: none !important;
-  transition: color .25s ease !important;
-}
-#menu a:hover{
-  color: var(--hover) !important;
-}
-#menu a[aria-current="page"]{
-  color: var(--brand) !important;
-  font-weight: 600 !important;
-}
+    /* ✅ 사이드바 로고 이미지 폭 제한 (이거 없으면 로고가 화면 덮는다) */
+    #sidebar-brand{
+      padding: 1.8rem 1.5rem 1.1rem;
+      text-align: center;
+      border-top: 0 !important;
+    }
+    #sidebar-brand img{
+      display:block;
+      max-width:140px;
+      width:100%;
+      height:auto;
+      margin:0 auto;
+    }
 
-/* 메인 섹션 제목 밑줄 색 */
-.major:after{
-  background-color: var(--brand) !important;
-}
+    /* 메뉴 링크 컬러 */
+    #menu a{
+      color:#333 !important;
+      text-decoration:none !important;
+      transition: color .25s ease !important;
+    }
+    #menu a:hover{ color: var(--hover) !important; }
+    #menu a[aria-current="page"]{
+      color: var(--brand) !important;
+      font-weight: 600 !important;
+    }
 
-/* 주요 버튼 색 */
-.button.primary,
-.actions .button.primary{
-  background: var(--brand) !important;
-  border-color: var(--brand) !important;
-}
-.button.primary:hover,
-.actions .button.primary:hover{
-  background: var(--hover) !important;
-  border-color: var(--hover) !important;
-}
+    /* 섹션 타이틀 밑줄 / 버튼 / 구분선 */
+    .major:after{ background-color: var(--brand) !important; }
+    .button.primary,
+    .actions .button.primary{
+      background: var(--brand) !important;
+      border-color: var(--brand) !important;
+    }
+    .button.primary:hover,
+    .actions .button.primary:hover{
+      background: var(--hover) !important;
+      border-color: var(--hover) !important;
+    }
+    hr{ border-color: var(--line) !important; color: var(--line) !important; }
 
-/* 구분선 색 (hr는 color도 같이 잡아주는 게 안전) */
-hr{
-  border-color: var(--line) !important;
-  color: var(--line) !important;
-}
-.inner .divider{
-  border-color: var(--line) !important;
-}
+    /* ✅ 히어로 미디어(비디오/이미지) 높이 고정 */
+    .hero-media video{
+      width:100%;
+      height:60vh;
+      object-fit:cover;
+      display:block;
+      border-radius: .375rem;
+    }
 
-.modal-open{
-  overflow: hidden;
-}
-
-/* =========================
-   QR 모달 공통 스타일
-   ========================= */
-.modal{
-  position: fixed;
-  inset: 0;
-  background: rgba(0,0,0,.6);
-  display: none;
-  align-items: center;
-  justify-content: center;
-  z-index: 10000;
-}
-.modal-inner{
-  background: #fff;
-  border-radius: 10px;
-  padding: 1.5rem 1.75rem;
-  max-width: 320px;
-  width: 90%;
-  text-align: center;
-  position: relative;
-  box-shadow: 0 12px 30px rgba(0,0,0,.25);
-}
-.modal .close{
-  position: absolute;
-  right: 0.75rem;
-  top: 0.5rem;
-  border: none;
-  background: none;
-  font-size: 1.5rem;
-  cursor: pointer;
-}
-.modal-caption{
-  font-weight: 600;
-  margin-bottom: .75rem;
-}
-.modal-id{
-  font-size: .9rem;
-  color: #555;
-  margin-top: .5rem;
-}
-.modal-content{
-  max-width: 100%;
-  height: auto;
-  display: block;
-  margin: 0 auto;
-}
-
-/* =========================
-   Header 로고 (링크 기본)
-   - 로고 폰트/크기는 로니.css에서 관리하기 권장
-   ========================= */
-#header .logo{
-  text-decoration: none;
-  color: #333;
-}
-
+    /* 모달 공통 */
+    .modal-open{ overflow:hidden; }
+    .modal{
+      position:fixed;
+      inset:0;
+      background:rgba(0,0,0,.6);
+      display:none;
+      align-items:center;
+      justify-content:center;
+      z-index:10000;
+    }
+    .modal-inner{
+      background:#fff;
+      border-radius:10px;
+      padding:1.5rem 1.75rem;
+      max-width:320px;
+      width:90%;
+      text-align:center;
+      position:relative;
+      box-shadow:0 12px 30px rgba(0,0,0,.25);
+    }
+    .modal .close{
+      position:absolute;
+      right:.75rem;
+      top:.5rem;
+      border:none;
+      background:none;
+      font-size:1.5rem;
+      cursor:pointer;
+    }
+    .modal-caption{ font-weight:600; margin-bottom:.75rem; }
+    .modal-id{ font-size:.9rem; color:#555; margin-top:.5rem; }
+    .modal-content{ max-width:100%; height:auto; display:block; margin:0 auto; }
+  </style>
 </head>
-</style>
-<body class="is-preload">
 
-  <!-- Wrapper -->
+<body class="is-preload">
   <div id="wrapper">
 
     <!-- Main -->
@@ -160,16 +147,16 @@ hr{
       <div class="inner">
 
         <!-- Header -->
-   <header id="header">
-  <a href="index.html" class="logo">
-    <strong class="brand-cn">汉江春天</strong>
-    <span class="brand-dot"> · </span>
-    <span class="brand-en">K-Medi Spring</span>
-  </a>
+        <header id="header">
+          <a href="index.html" class="logo">
+            <strong class="brand-cn">汉江春天</strong>
+            <span class="brand-dot">·</span>
+            <span class="brand-en">K-Medi Spring</span>
+          </a>
 
-  <!-- ✅ 모바일 햄버거: 사이드바 전체(메뉴+연락+풋터)를 여는 토글 -->
-  <a href="#sidebar" class="toggle"></a>
-          <!-- SNS icons -->
+          <!-- ✅ 모바일 햄버거 (템플릿 원리대로 #sidebar 토글) -->
+          <a href="#sidebar" class="toggle"></a>
+
           <ul class="icons">
             <li>
               <a href="#" id="wechat-icon" class="icon brands fa-weixin" title="WeChat: e-gana">
@@ -194,9 +181,7 @@ hr{
           <div class="content">
             <header>
               <h1 id="siteTitle">汉江春天</h1>
-              <h2 style="margin-top:.25em; font-size:2rem; font-weight:400;">
-                韩国医疗·康养·身心疗愈
-              </h2>
+              <p>韩国医疗·康养·身心疗愈</p>
             </header>
 
             <p>
@@ -206,18 +191,12 @@ hr{
             </p>
 
             <ul class="actions">
-              <li>
-                <a href="kplan.html" class="button primary" data-i18n="navKplan">
-                  定制医疗观光方案
-                </a>
-              </li>
+              <li><a href="kplan.html" class="button primary" data-i18n="navKplan">定制医疗观光方案</a></li>
             </ul>
           </div>
 
-          <!-- Hero video -->
           <span class="image object hero-media">
-            <video id="introVideo" autoplay muted loop playsinline preload="metadata"
-                   style="width:100%;height:60vh;object-fit:cover;display:block">
+            <video id="introVideo" autoplay muted loop playsinline preload="metadata">
               <source src="https://kmedispring.com/videos/intro_v1.mp4.mp4?v=4#t=0.01" type="video/mp4">
             </video>
           </span>
@@ -267,84 +246,65 @@ hr{
           </div>
         </section>
 
-        <!-- 专业领域 · 一站式医疗体验 -->
+        <!-- 专业领域 -->
         <section>
           <header class="major"><h2>专业领域 · 一站式医疗体验</h2></header>
-
           <div class="posts">
 
             <article>
               <h3>大健康</h3>
               <p>以功能医学检测、激素检测、重金属检测为基础，系统分析体质与生活方式，并整合饮食、睡眠与压力管理，提供全方位健康方案。不只是治疗，更是让身心回到平衡的“重启护理”。</p>
-              <ul class="actions">
-                <li><a href="wellness.html" class="button">了解更多</a></li>
-              </ul>
+              <ul class="actions"><li><a href="wellness.html" class="button">了解更多</a></li></ul>
             </article>
 
             <article>
               <h3>干细胞</h3>
               <p>采用先进干细胞技术，聚焦抗衰与组织再生，从细胞层面激活修复力。同提升皮肤状态、免疫与能量系统，带来由内而外的青春焕新体验。</p>
-              <ul class="actions">
-                <li><a href="stemcell.html" class="button">了解更多</a></li>
-              </ul>
+              <ul class="actions"><li><a href="stemcell.html" class="button">了解更多</a></li></ul>
             </article>
 
             <article>
               <h3>皮肤医美</h3>
               <p>专业皮肤科与韩医协作诊疗，针对痤疮、色斑、皱纹、弹力等问题进行分层分析与治疗。结合个性化修复方案，重启肌底健康，恢复澄净与弹润。</p>
-              <ul class="actions">
-                <li><a href="derm.html" class="button">了解更多</a></li>
-              </ul>
+              <ul class="actions"><li><a href="derm.html" class="button">了解更多</a></li></ul>
             </article>
 
             <article>
               <h3>整形医美</h3>
               <p>依托韩国先进医美与资深专家团队，以精细技术实现自然与和谐的改变。不止于外在调整，更关注自信与情绪疗愈，塑造内外兼修的美。</p>
-              <ul class="actions">
-                <li><a href="surgery.html" class="button">了解更多</a></li>
-              </ul>
+              <ul class="actions"><li><a href="surgery.html" class="button">了解更多</a></li></ul>
             </article>
 
             <article>
               <h3>女性护理中心</h3>
               <p>根据女性不同生命阶段，进行激素平衡管理、产后修复与皮肤体型护理。帮助找回专属节律，让美与健康共振，回归轻盈与从容。</p>
-              <ul class="actions">
-                <li><a href="woman.html" class="button">了解更多</a></li>
-              </ul>
+              <ul class="actions"><li><a href="woman.html" class="button">了解更多</a></li></ul>
             </article>
 
             <article>
               <h3>男性健康中心</h3>
               <p>从功能医学视角评估压力、疲劳与体力下降等问题，提供个性化恢复方案。以活力提升、激素平衡与疲劳修复为核心，实现真正的能量回归。</p>
-              <ul class="actions">
-                <li><a href="man.html" class="button">了解更多</a></li>
-              </ul>
+              <ul class="actions"><li><a href="man.html" class="button">了解更多</a></li></ul>
             </article>
 
           </div>
         </section>
 
-      </div><!-- .inner -->
-    </div><!-- #main -->
+      </div>
+    </div>
 
     <!-- Sidebar -->
     <div id="sidebar">
       <div class="inner">
 
-        <!-- Sidebar Brand -->
         <section id="sidebar-brand">
-          <div class="sidebar-logo">
-            <a href="index.html" class="logo">
-              <img src="images/logo_ch.png" alt="汉江春天 로고">
-            </a>
-          </div>
+          <a href="index.html" class="logo">
+            <img src="images/logo_ch.png" alt="汉江春天 로고">
+          </a>
         </section>
 
-        <!-- ✅ Menu (원본 구조) -->
         <nav id="menu">
-          <header class="major">
-            <h2>菜单</h2>
-          </header>
+          <header class="major"><h2>菜单</h2></header>
           <ul>
             <li><a href="wellness.html">大健康</a></li>
             <li><a href="stemcell.html">干细胞</a></li>
@@ -359,7 +319,6 @@ hr{
           </ul>
         </nav>
 
-        <!-- Contact -->
         <section>
           <header class="major"><h2>联系方式</h2></header>
           <p>我们相信，美丽与健康，源于真诚的交流。如果你对韩国医疗、健康管理或合作有兴趣，欢迎通过微信或邮件与我们联系。</p>
@@ -370,19 +329,18 @@ hr{
           </ul>
         </section>
 
-        <!-- Footer -->
         <footer id="footer">
           <p style="text-align:center; font-size:0.9em; color:#666;">
             © 2025 汉江春天 한강애봄 版权所有。模板设计：HTML5 UP。
           </p>
         </footer>
 
-      </div><!-- .inner -->
-    </div><!-- #sidebar -->
+      </div>
+    </div>
 
-  </div><!-- #wrapper -->
+  </div>
 
-  <!-- WeChat QR Modal -->
+  <!-- WeChat Modal -->
   <div id="wechatModal" class="modal" aria-hidden="true" role="dialog">
     <div class="modal-inner">
       <button class="close" aria-label="Close">&times;</button>
@@ -402,11 +360,18 @@ hr{
     </div>
   </div>
 
-  <!-- 비디오 + 모달 스크립트 -->
+  <!-- 템플릿 기본 스크립트 (이 순서 유지) -->
+  <script src="assets/js/jquery.min.js"></script>
+  <script src="assets/js/browser.min.js"></script>
+  <script src="assets/js/breakpoints.min.js"></script>
+  <script src="assets/js/util.js"></script>
+  <script src="assets/js/main.js"></script>
+
+  <!-- 비디오 + 모달 -->
   <script>
     document.addEventListener('DOMContentLoaded', function () {
 
-      /* 1) 인트로 비디오 */
+      // Intro video
       const v = document.getElementById('introVideo');
       if (v) {
         try { v.playbackRate = 0.33; } catch(e) {}
@@ -414,32 +379,30 @@ hr{
         v.volume = 0;
       }
 
-      /* 2) WeChat 모달 */
-      const wechatModal  = document.getElementById('wechatModal');
-      const wechatIcon   = document.getElementById('wechat-icon');
-      const wechatQR     = document.getElementById('wechatQR');
-      const wechatClose  = wechatModal ? wechatModal.querySelector('.close') : null;
+      // WeChat
+      const wechatModal = document.getElementById('wechatModal');
+      const wechatIcon  = document.getElementById('wechat-icon');
+      const wechatQR    = document.getElementById('wechatQR');
+      const wechatClose = wechatModal ? wechatModal.querySelector('.close') : null;
 
       function openWeChat(e){
         if (e) e.preventDefault();
-        if (wechatQR){
-          wechatQR.src = wechatQR.src.split('?')[0] + '?v=' + Date.now();
-        }
+        if (wechatQR) wechatQR.src = wechatQR.src.split('?')[0] + '?v=' + Date.now();
         if (wechatModal){
           wechatModal.style.display = 'flex';
-          wechatModal.setAttribute('aria-hidden', 'false');
+          wechatModal.setAttribute('aria-hidden','false');
         }
         document.body.classList.add('modal-open');
       }
       function closeWeChat(){
         if (wechatModal){
           wechatModal.style.display = 'none';
-          wechatModal.setAttribute('aria-hidden', 'true');
+          wechatModal.setAttribute('aria-hidden','true');
         }
         document.body.classList.remove('modal-open');
       }
 
-      if (wechatIcon)  wechatIcon.addEventListener('click', openWeChat);
+      if (wechatIcon) wechatIcon.addEventListener('click', openWeChat);
       if (wechatClose) wechatClose.addEventListener('click', closeWeChat);
       if (wechatModal){
         wechatModal.addEventListener('click', function(e){
@@ -447,7 +410,7 @@ hr{
         });
       }
 
-      /* 3) WhatsApp 모달 */
+      // WhatsApp
       const whatsappModal = document.getElementById('whatsappModal');
       const whatsappIcon  = document.getElementById('whatsapp-icon');
       const whatsappQR    = document.getElementById('whatsappQR');
@@ -455,9 +418,7 @@ hr{
 
       function openWhatsApp(e){
         if (e) e.preventDefault();
-        if (whatsappQR){
-          whatsappQR.src = whatsappQR.src.split('?')[0] + '?v=' + Date.now();
-        }
+        if (whatsappQR) whatsappQR.src = whatsappQR.src.split('?')[0] + '?v=' + Date.now();
         if (whatsappModal){
           whatsappModal.style.display = 'flex';
           whatsappModal.setAttribute('aria-hidden','false');
@@ -472,7 +433,7 @@ hr{
         document.body.classList.remove('modal-open');
       }
 
-      if (whatsappIcon)  whatsappIcon.addEventListener('click', openWhatsApp);
+      if (whatsappIcon) whatsappIcon.addEventListener('click', openWhatsApp);
       if (whatsappClose) whatsappClose.addEventListener('click', closeWhatsApp);
       if (whatsappModal){
         whatsappModal.addEventListener('click', function(e){
@@ -480,9 +441,9 @@ hr{
         });
       }
 
-      /* 4) ESC 키로 모두 닫기 */
-      document.addEventListener('keydown', function (e) {
-        if (e.key === 'Escape') {
+      // ESC
+      document.addEventListener('keydown', function(e){
+        if (e.key === 'Escape'){
           closeWeChat();
           closeWhatsApp();
         }
@@ -490,13 +451,6 @@ hr{
 
     });
   </script>
-
-  <!-- 템플릿 기본 스크립트 5총사 (반드시 이 순서) -->
-  <script src="assets/js/jquery.min.js"></script>
-  <script src="assets/js/browser.min.js"></script>
-  <script src="assets/js/breakpoints.min.js"></script>
-  <script src="assets/js/util.js"></script>
-  <script src="assets/js/main.js"></script>
 
   <!-- 현재 페이지 메뉴 활성화 -->
   <script>
@@ -515,11 +469,3 @@ hr{
 
 </body>
 </html>
-
-
-
-
-
-
-
-
