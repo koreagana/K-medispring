@@ -3323,3 +3323,31 @@ header.major + p{
 }
 
 
+/* =========================
+   Sidebar 대카테고리 (메뉴)
+   ========================= */
+#menu,
+#menu ul,
+#menu ul li,
+#menu ul li a{
+  font-family: "Pretendard","PingFang SC","Microsoft YaHei",
+               "Noto Sans CJK SC",-apple-system,BlinkMacSystemFont,
+               "Segoe UI",Roboto,Arial,sans-serif;
+  font-weight: 500;
+  letter-spacing: 0.02em;
+}
+
+/* 메뉴 항목 크기 & 간격 */
+#menu ul li a{
+  font-size: 15px;
+  line-height: 1.6;
+}
+
+/* 모바일에서는 살짝 더 또렷하게 */
+@media (max-width: 980px){
+  #menu ul li a{
+    font-size: 14px;
+    font-weight: 500;
+  }
+}
+
