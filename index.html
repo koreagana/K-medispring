@@ -75,23 +75,27 @@
     .inner .divider{ border-color: var(--line) !important; }
 
     /* 본문 타이포 (반응형) */
-    #main p,
-    #main li{
-      font-size: 16px;
-      line-height: 1.85;
-      color: #6f7a82;
-    }
-    #main h1,
-    #main h2,
-    #main h3{ color: #333; }
+#main p,
+#main li{
+  font-size: 15px;
+  line-height: 1.75;
+  color: #6f7a82;
+}
 
-    @media (max-width: 736px){
-      #main p,
-      #main li{
-        font-size: 12px;
-        line-height: 1.2;
-      }
-    }
+#main h1,
+#main h2,
+#main h3{
+  color: #333;
+}
+
+/* 모바일만 살짝 컴팩트 */
+@media (max-width: 736px){
+  #main p,
+  #main li{
+    font-size: 12px;
+    line-height: 1.2;
+  }
+}
 
     .modal-open{ overflow: hidden; }
 
@@ -554,6 +558,7 @@
 
 </body>
 </html>
+
 
 
 
