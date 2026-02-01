@@ -31,11 +31,11 @@
   <link rel="apple-touch-icon" sizes="180x180" href="images/apple-touch-icon.png?v=20251012">
 
   <!-- CSS -->
-  <link rel="stylesheet" href="assets/css/fontawesome-all.min.css?v=20251027" />
-  <link rel="stylesheet" href="assets/css/main.css?v=20251027" />
-  <noscript><link rel="stylesheet" href="assets/css/noscript.css?v=20251027" /></noscript>
-
-  <!-- 커스텀 스타일 (일단 여기까지. CSS는 다음 턴에서 "단일본"으로 정리하자) -->
+ <link rel="stylesheet" href="assets/css/fontawesome-all.min.css?v=20251027" />
+<link rel="stylesheet" href="assets/css/main.css?v=20251027" />
+<noscript>
+  <link rel="stylesheet" href="assets/css/noscript.css?v=20251027" />
+</noscript>
   <style>
     :root {
       --brand: #0077B6;
@@ -156,8 +156,6 @@
       margin: 0 auto;
     }
 
-    /* (중요) nav#menu는 원본 구조(header.major + ul)로 돌아왔으니 .links 관련 스타일 제거 */
-    /* #menu .links { ... }  <-- 삭제됨 */
 
     /* =========================
        Header 로고 (K-Medi Spring)
@@ -200,7 +198,8 @@
   </a>
 
   <!-- ✅ 모바일 햄버거: 사이드바 전체(메뉴+연락+풋터)를 여는 토글 -->
-  <a href="#sidebar" class="toggle"></a>
+     <a href="#sidebar" class="toggle">Toggle</a>
+
           <!-- SNS icons -->
           <ul class="icons">
             <li>
@@ -547,6 +546,7 @@
 
 </body>
 </html>
+
 
 
 
