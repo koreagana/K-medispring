@@ -1154,7 +1154,7 @@ input[type="radio"] {
     padding-left: 2.4em;
     padding-right: 0.75em;
     position: relative; }
-    input[type="checkbox"] + label:before,
+   input[type="checkbox"] + label:before,
     input[type="radio"] + label:before {
       -moz-osx-font-smoothing: grayscale;
       -webkit-font-smoothing: antialiased;
@@ -1181,7 +1181,7 @@ input[type="radio"] {
       text-align: center;
       top: 0;
       width: 2.0625em; }
-  input[type="checkbox"]:checked + label:before,
+   input[type="checkbox"]:checked + label:before,
   input[type="radio"]:checked + label:before {
     background: #3d4449;
     border-color: #3d4449;
@@ -1189,8 +1189,8 @@ input[type="radio"] {
     content: '\f00c'; }
   input[type="checkbox"]:focus + label:before,
   input[type="radio"]:focus + label:before {
-    border-color: #4E97D1;
-    box-shadow: 0 0 0 1px #4E97D1; }
+    border-color: #f56a6a;
+    box-shadow: 0 0 0 1px #f56a6a; }
 
 input[type="checkbox"] + label:before {
   border-radius: 0.375em; }
@@ -1288,7 +1288,18 @@ input[type="radio"] + label:before {
     .image.main img {
       width: 100%; }
 
-
+a.image {
+  overflow: hidden; }
+  a.image img {
+    -moz-transition: -moz-transform 0.2s ease;
+    -webkit-transition: -webkit-transform 0.2s ease;
+    -ms-transition: -ms-transform 0.2s ease;
+    transition: transform 0.2s ease; }
+  a.image:hover img {
+    -moz-transform: scale(1.075);
+    -webkit-transform: scale(1.075);
+    -ms-transform: scale(1.075);
+    transform: scale(1.075); }
 
 /* List */
 ol {
@@ -1409,7 +1420,7 @@ ul.contact {
       font-family: 'Font Awesome 5 Free';
       font-weight: 400; }
     ul.contact li:before {
-      color: #4E97D1;
+      color: #f56a6a;
       display: inline-block;
       font-size: 1.5em;
       height: 1.125em;
@@ -1454,7 +1465,7 @@ ul.pagination {
       padding: 0 0.5em;
       text-align: center; }
       ul.pagination li > .page.active {
-        background-color: #4E97D1;
+        background-color: #f56a6a;
         color: #ffffff !important; }
         ul.pagination li > .page.active:hover {
           background-color: #f67878; }
@@ -1512,78 +1523,6 @@ table {
       border-top: 0; }
 
 /* Button */
-
-/* === CTA: 定制医疗观光方案 버튼 스타일 (리디아 커스텀 버전) === */
-
-/* =========================
-   Primary / Action Buttons
-   ========================= */
-
-.button,
-.actions .button,
-a.button,
-a.button.primary {
-
-  /* 👉 글씨체 (Roboto Slab 계열로 통일) */
-  font-family: "Roboto Slab", "Source Han Serif CN", "Noto Serif KR", serif;
-  font-weight: 700;
-
-  /* 👉 글씨 크기 */
-  font-size: 18px !important;
-  letter-spacing: 0.06em;
-
-  /* 👉 버튼 크기 */
-  padding: 0.9em 2.2em;
-  min-height: 64px;
-
-  line-height: 1.2;
-  border-radius: 10px;
-
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-
-  transition:
-    background-color .25s ease,
-    color .25s ease,
-    transform .15s ease;
-}
-
-/* 기본 Primary 컬러 */
-.button.primary,
-.actions .button.primary {
-  background: #4E97D1;
-  border-color: #0E5E94;
-  color: #ffffff;
-}
-
-/* Hover */
-.button.primary:hover,
-.actions .button.primary:hover {
-  background: #2077AD;
-  border-color: #2077AD;
-  transform: translateY(-1px);
-}
-
-/* Focus */
-.button.primary:focus {
-  outline: none;
-  box-shadow: 0 0 0 3px rgba(14, 94, 148, 0.3);
-}
-
-/* ==========================
-   ↓ 여기부터 기존 원본 코드 유지 ↓
-   ========================== */
-
-/* Button */
-input[type="submit"],
-input[type="reset"],
-input[type="button"],
-button,
-.button {
-  ...
-}
-
 input[type="submit"],
 input[type="reset"],
 input[type="button"],
@@ -1600,8 +1539,8 @@ button,
   background-color: transparent;
   border-radius: 0.375em;
   border: 0;
-  box-shadow: inset 0 0 0 2px #4E97D1;
-  color: #4E97D1 !important;
+  box-shadow: inset 0 0 0 2px #f56a6a;
+  color: #f56a6a !important;
   cursor: pointer;
   display: inline-block;
   font-family: "Roboto Slab", serif;
@@ -1658,7 +1597,7 @@ button,
   input[type="button"].primary,
   button.primary,
   .button.primary {
-    background-color: #4E97D1;
+    background-color: #f56a6a;
     box-shadow: none;
     color: #ffffff !important; }
     input[type="submit"].primary:hover,
@@ -1685,30 +1624,6 @@ button,
     pointer-events: none;
     opacity: 0.25; }
 
-/* ==========================
-   ↓ 기존 버튼 코드 끝나는 부분 ↓
-   ========================== */
-input[type="submit"].disabled, 
-input[type="submit"]:disabled,
-.button:disabled {
-  pointer-events: none;
-  opacity: 0.25;
-}
-
-/* ==========================
-   다국어 버튼 폰트 설정 (by 리디아 & 로니)
-   ========================== */
-html[lang="zh"] .button {
-  font-family: 'SourceHanSerifCN', serif;
-}
-html[lang="en"] .button {
-  font-family: 'Merriweather', serif;
-}
-html[lang="ko"] .button {
-  font-family: 'Pretendard', sans-serif;
-}
-
-	
 /* Mini Posts */
 .mini-posts article {
   border-top: solid 1px rgba(210, 215, 217, 0.75);
@@ -1771,7 +1686,7 @@ html[lang="ko"] .button {
       text-align: center;
       width: 10em; }
       .features article .icon:before {
-        color: #4E97D1;
+        color: #f56a6a;
         font-size: 2.75rem;
         position: relative;
         top: 0.05em; }
@@ -2044,74 +1959,198 @@ html[lang="ko"] .button {
   #search form input[type="text"] {
     padding-right: 2.75em; }
 
+#sidebar {
+  -moz-flex-grow: 0;
+  -webkit-flex-grow: 0;
+  -ms-flex-grow: 0;
+  flex-grow: 0;
+  -moz-flex-shrink: 0;
+  -webkit-flex-shrink: 0;
+  -ms-flex-shrink: 0;
+  flex-shrink: 0;
+  -moz-transition: margin-left 0.5s ease, box-shadow 0.5s ease;
+  -webkit-transition: margin-left 0.5s ease, box-shadow 0.5s ease;
+  -ms-transition: margin-left 0.5s ease, box-shadow 0.5s ease;
+  transition: margin-left 0.5s ease, box-shadow 0.5s ease;
+  background-color: #f5f6f7;
+  font-size: 0.9em;
+  position: relative;
+  width: 26em; }
+  #sidebar h2 {
+    font-size: 1.38889em; }
+  #sidebar > .inner {
+    padding: 2.22222em 2.22222em 2.44444em 2.22222em ;
+    position: relative;
+    width: 26em; }
+    #sidebar > .inner > * {
+      border-bottom: solid 2px rgba(210, 215, 217, 0.75);
+      margin: 0 0 3.5em 0;
+      padding: 0 0 3.5em 0; }
+      #sidebar > .inner > * > :last-child {
+        margin-bottom: 0; }
+      #sidebar > .inner > *:last-child {
+        border-bottom: 0;
+        margin-bottom: 0;
+        padding-bottom: 0; }
+    #sidebar > .inner > .alt {
+      background-color: #eff1f2;
+      border-bottom: 0;
+      margin: -2.22222em 0 4.44444em -2.22222em;
+      padding: 2.22222em;
+      width: calc(100% + 4.44444em); }
+  #sidebar .toggle {
+    text-decoration: none;
+    -moz-transition: left 0.5s ease;
+    -webkit-transition: left 0.5s ease;
+    -ms-transition: left 0.5s ease;
+    transition: left 0.5s ease;
+    -webkit-tap-highlight-color: rgba(255, 255, 255, 0);
+    border: 0;
+    display: block;
+    height: 7.5em;
+    left: 26em;
+    line-height: 7.5em;
+    outline: 0;
+    overflow: hidden;
+    position: absolute;
+    text-align: center;
+    text-indent: -15em;
+    white-space: nowrap;
+    top: 0;
+    width: 6em;
+    z-index: 10000; }
+    #sidebar .toggle:before {
+      -moz-osx-font-smoothing: grayscale;
+      -webkit-font-smoothing: antialiased;
+      display: inline-block;
+      font-style: normal;
+      font-variant: normal;
+      text-rendering: auto;
+      line-height: 1;
+      text-transform: none !important;
+      font-family: 'Font Awesome 5 Free';
+      font-weight: 900; }
+    #sidebar .toggle:before {
+      content: '\f0c9';
+      font-size: 2rem;
+      height: inherit;
+      left: 0;
+      line-height: inherit;
+      position: absolute;
+      text-indent: 0;
+      top: 0;
+      width: inherit; }
+  #sidebar.inactive {
+    margin-left: -26em; }
+  @media screen and (max-width: 1680px) {
+    #sidebar {
+      width: 24em; }
+      #sidebar > .inner {
+        padding: 1.66667em 1.66667em 1.33333em 1.66667em ;
+        width: 24em; }
+        #sidebar > .inner > .alt {
+          margin: -1.66667em 0 3.33333em -1.66667em;
+          padding: 1.66667em;
+          width: calc(100% + 3.33333em); }
+      #sidebar .toggle {
+        height: 6.25em;
+        left: 24em;
+        line-height: 6.25em;
+        text-indent: -5em;
+        width: 5em; }
+        #sidebar .toggle:before {
+          font-size: 1.5rem; }
+      #sidebar.inactive {
+        margin-left: -24em; } }
+  @media screen and (max-width: 1280px) {
+    #sidebar {
+      box-shadow: 0 0 5em 0 rgba(0, 0, 0, 0.175);
+      height: 100%;
+      left: 0;
+      position: fixed;
+      top: 0;
+      z-index: 10000; }
+      #sidebar.inactive {
+        box-shadow: none; }
+      #sidebar > .inner {
+        -webkit-overflow-scrolling: touch;
+        height: 100%;
+        left: 0;
+        overflow-x: hidden;
+        overflow-y: auto;
+        position: absolute;
+        top: 0; }
+        #sidebar > .inner:after {
+          content: '';
+          display: block;
+          height: 4em;
+          width: 100%; }
+      #sidebar .toggle {
+        text-indent: -6em;
+        width: 6em; }
+        #sidebar .toggle:before {
+          font-size: 1.5rem;
+          margin-left: 0.4375em; }
+      body.is-preload #sidebar {
+        display: none; } }
+  @media screen and (max-width: 736px) {
+    #sidebar .toggle {
+      text-indent: -7.25em;
+      width: 7.25em; }
+      #sidebar .toggle:before {
+        color: #7f888f;
+        margin-left: 0.0625em;
+        margin-top: -0.25em;
+        font-size: 1.1rem;
+        z-index: 1; }
+      #sidebar .toggle:after {
+        background: rgba(222, 225, 226, 0.75);
+        border-radius: 0.375em;
+        content: '';
+        height: 3.5em;
+        left: 1em;
+        position: absolute;
+        top: 1em;
+        width: 5em; } }
 
-	
- /* 🔹 브랜드 블루 추가 */
-  height: inherit;
-  left: 0;
-  line-height: inherit;
-  position: absolute;
-  text-indent: 0;
-  top: 0;
-  width: inherit;
-}
-
-/* --- Fix SNS icons drifting below the blue line (Editorial) --- */
+/* Header */
 #header {
-  display: flex;               /* 이미 flex지만, 명시적으로 덮어쓰기 */
-  align-items: center;         /* 수직 가운데 정렬 */
-  flex-wrap: nowrap;           /* 줄바꿈 금지 */
-}
-
-#header > * {
-  margin: 0;                   /* 제목/아이콘 아래 여백 제거 */
-  flex: 0 0 auto;              /* 필요 이상으로 늘어나지 않게 */
-}
-
-#header .logo {
-  flex: 1 1 auto;              /* 로고는 남는 공간 차지 */
-}
-
-#header .icons {
-  margin: 0;
-  display: flex;               /* 아이콘을 가로로 */
-  gap: .75rem;                 /* 아이콘 간격 */
-  align-items: center;
-  text-align: right;           /* 네 스타일 유지 */
-}
-
-/* 모바일 때 absolute 강제 배치가 흐름을 깨면 줄 세움 유지 */
-@media screen and (max-width: 736px) {
+  display: -moz-flex;
+  display: -webkit-flex;
+  display: -ms-flex;
+  display: flex;
+  border-bottom: solid 5px #f56a6a;
+  padding: 6em 0 1em 0;
+  position: relative; }
+  #header > * {
+    -moz-flex: 1;
+    -webkit-flex: 1;
+    -ms-flex: 1;
+    flex: 1;
+    margin-bottom: 0; }
+  #header .logo {
+    border-bottom: 0;
+    color: inherit;
+    font-family: "Roboto Slab", serif;
+    font-size: 1.125em; }
   #header .icons {
-    position: static;          /* 기존 absolute 해제 */
-    height: auto;
-    line-height: normal;
-  }
-}
+    text-align: right; }
+  @media screen and (max-width: 1680px) {
+    #header {
+      padding-top: 5em; } }
+  @media screen and (max-width: 736px) {
+    #header {
+      padding-top: 6.5em; }
+      #header .logo {
+        font-size: 1.25em;
+        margin: 0; }
+      #header .icons {
+        height: 5em;
+        line-height: 5em;
+        position: absolute;
+        right: -0.5em;
+        top: 0; } }
 
-	/* 헤더 로고 이미지 크기/정렬 — 기존 레이아웃 그대로 */
-#header .logo {
-  border-bottom: 0;           /* 링크 밑줄(점선) 방지: 안전장치 */
-}
-
-#header .logo img.logo-img {
-  height: 42px;               /* 현재 텍스트 로고 크기와 비슷한 시각 크기 */
-  width: auto;                /* 비율 유지 */
-  display: inline-block;
-  vertical-align: middle;     /* 아이콘/텍스트 높이와 균형 */
-  margin-top: -2px;           /* 시각 중심 보정(원본에 따라 0 ~ -3px 조정 가능) */
-  object-fit: contain;        /* 안전 */
-}
-
-/* 모바일에서 조금만 더 작게 */
-@media screen and (max-width: 736px) {
-  #header .logo img.logo-img {
-    height: 24px;
-    margin-top: -1px;
-  }
-}
-
-	
 /* Banner */
 #banner {
   padding: 6em 0 4em 0 ;
@@ -2193,24 +2232,10 @@ html[lang="ko"] .button {
 /* Footer */
 #footer .copyright {
   color: #9fa3a6;
-  font-size: 1.2em; }
+  font-size: 0.9em; }
   #footer .copyright a {
     color: inherit; }
 
-/* 슬라이드 패널 기본 */
-#menu {
-  position: fixed;
-  top: 0; right: -320px;
-  width: 320px; height: 100%;
-  background: #fff;
-  box-shadow: -3px 0 12px rgba(0,0,0,.12);
-  transition: right .28s ease;
-  z-index: 10000;
-  padding: 2rem 1.5rem;
-}
-#menu.is-open { right: 0; }
-
-	
 /* Menu */
 #menu ul {
   -moz-user-select: none;
@@ -2225,20 +2250,15 @@ html[lang="ko"] .button {
   margin-bottom: 0;
   padding: 0;
   text-transform: uppercase; }
-
-	#menu ul a, #menu ul span {
-  border-bottom: 0;
-  color: inherit;
-  cursor: pointer;
-  display: block;
-  font-size: 1.6em; /* ✅ 기존 0.9em → 1.2em (글씨 더 큼) */
-  font-family: 'Source Han Serif CN', 'Noto Serif KR', serif;
-  font-weight: 500;
-  padding: 0.7em 0;
-}
-	
+  #menu ul a, #menu ul span {
+    border-bottom: 0;
+    color: inherit;
+    cursor: pointer;
+    display: block;
+    font-size: 0.9em;
+    padding: 0.625em 0; }
     #menu ul a:hover, #menu ul span:hover {
-      color: #4E97D1; }
+      color: #f56a6a; }
     #menu ul a.opener, #menu ul span.opener {
       -moz-transition: color 0.2s ease-in-out;
       -webkit-transition: color 0.2s ease-in-out;
@@ -2268,7 +2288,7 @@ html[lang="ko"] .button {
         position: absolute;
         right: 0; }
       #menu ul a.opener:hover:before, #menu ul span.opener:hover:before {
-        color: #4E97D1; }
+        color: #f56a6a; }
       #menu ul a.opener.active + ul, #menu ul span.opener.active + ul {
         display: block; }
       #menu ul a.opener.active:before, #menu ul span.opener.active:before {
@@ -2295,226 +2315,3 @@ html[lang="ko"] .button {
     border-top: 0;
     margin-top: 0;
     padding-top: 0; }
-
-
-/* =========================================================
-   K-Medi Spring — SIDEBAR + HEADER + MODAL (ONE PACK)
-   붙이는 위치: /assets/css/main.css 맨 아래
-   목적: (1) 네비 안 사라지게 (2) 메뉴 글씨 본문보다 작지 않게
-        (3) 헤더 로고 폰트 정리 (4) 모달은 기본형 1벌만
-========================================================= */
-
-/* ---------- 0) Variables ---------- */
-:root{
-  --brand: #0077B6;
-  --hover: #2088C2;
-  --deep:  #1565A0;
-  --line:  rgba(210, 215, 217, 0.75);
-
-  --ui-sans: "Pretendard","PingFang SC","Microsoft YaHei","Noto Sans CJK SC",
-             -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Arial,sans-serif;
-
-  --brand-serif: "Source Han Serif CN","Noto Serif SC","Noto Serif KR",
-                 Georgia,"Times New Roman",serif;
-}
-
-/* ---------- 1) Baseline (본문 크기 과도 확장 방지) ---------- */
-body{
-  font-family: var(--ui-sans);
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-}
-
-/* 본문은 “원본 톤 + 살짝만” */
-#main p, #main li{
-  font-size: 18px;
-  line-height: 1.9;
-  color: #333;
-}
-@media (max-width: 980px){
-  #main p, #main li{
-    font-size: 15px;
-    line-height: 1.75;
-  }
-}
-
-/* 제목은 세리프로 정리 */
-#main h1,#main h2,#main h3,#main h4,#main h5,#main h6,
-#sidebar h1,#sidebar h2,#sidebar h3,#sidebar h4,#sidebar h5,#sidebar h6{
-  font-family: var(--brand-serif);
-  font-weight: 600;
-  letter-spacing: .02em;
-  color:#222;
-}
-
-/* ---------- 2) Header brand (汉江春天 · K-Medi Spring) ---------- */
-#header .logo{
-  text-decoration:none;
-  color:#3d4449;
-  white-space: nowrap;
-}
-#header .logo .brand-cn{
-  font-family: var(--ui-sans);
-  font-weight: 800;
-  font-size: 1.55rem;
-  letter-spacing: 0.03em;
-}
-#header .logo .brand-dot{
-  opacity: .55;
-  margin: 0 .15em;
-}
-#header .logo .brand-en{
-  font-family: var(--ui-sans);
-  font-weight: 600;
-  font-size: 1.15rem;
-  letter-spacing: 0.10em;
-  opacity: .88;
-}
-@media (max-width: 980px){
-  #header .logo .brand-cn{ font-size: 1.35rem; letter-spacing: .02em; }
-  #header .logo .brand-en{ font-size: 1.0rem; letter-spacing: .08em; }
-}
-
-/* ---------- 3) Sidebar must show (네비 실종 방지) ---------- */
-#sidebar{
-  display:block;
-  visibility:visible;
-  opacity:1;
-  font-size: 1rem; /* 사이드바 전체 스케일 */
-}
-
-/* ---------- 4) Sidebar menu typography (대카테고리) ---------- */
-#sidebar #menu,
-#sidebar #menu ul,
-#sidebar #menu li,
-#sidebar #menu a{
-  font-family: var(--ui-sans);
-  letter-spacing: .02em;
-}
-
-#sidebar #menu a{
-  font-size: 17px;         /* ✅ 본문보다 작아지지 않게 */
-  font-weight: 600;
-  line-height: 1.7;
-  padding: .78em 0;
-  color:#333;
-  text-decoration:none;
-  border-bottom: 0;
-}
-@media (max-width: 980px){
-  #sidebar #menu a{
-    font-size: 16px;
-    line-height: 1.75;
-    padding: .88em 0;
-  }
-}
-
-/* 메뉴 구분선은 1벌만 */
-#sidebar #menu > ul > li{
-  border-top: 1px solid var(--line);
-  margin-top: .75em;
-  padding-top: .75em;
-  background: none;
-}
-#sidebar #menu > ul > li:first-child{
-  border-top: 0;
-  margin-top: 0;
-  padding-top: 0;
-}
-
-/* 메뉴 컬러/현재페이지 */
-#sidebar #menu a:hover{ color: var(--hover); }
-#sidebar #menu a[aria-current="page"]{
-  color: var(--brand);
-  font-weight: 700;
-}
-
-/* ---------- 5) Sidebar contact (联系方式) ---------- */
-#sidebar section p,
-#sidebar ul.contact li,
-#sidebar ul.contact li a{
-  font-family: var(--ui-sans);
-  font-size: 16px;
-  line-height: 1.85;
-  color:#333;
-}
-
-/* Sidebar 섹션 구분선: 이것만 */
-#sidebar .inner > section{
-  border-top: 1px solid var(--line);
-  margin-top: 2rem;
-  padding-top: 2rem;
-}
-#sidebar .inner > section:first-of-type{
-  border-top: none;
-  margin-top: 0;
-  padding-top: 0;
-}
-
-/* ---------- 6) UI colors (버튼/major 라인) ---------- */
-.major:after{ background-color: var(--brand) !important; }
-
-.button.primary,
-.actions .button.primary{
-  background: var(--brand) !important;
-  border-color: var(--brand) !important;
-}
-.button.primary:hover,
-.actions .button.primary:hover{
-  background: var(--hover) !important;
-  border-color: var(--hover) !important;
-}
-
-/* ---------- 7) Hero media (중복 제거 1벌) ---------- */
-.hero-media{
-  position: relative;
-  z-index: 0;
-}
-.hero-media video{
-  display:block;
-  width:100%;
-  height:60vh;
-  object-fit:cover;
-  pointer-events:none;
-}
-@media (max-width: 980px){
-  .hero-media video{ height: 48vw; }
-}
-
-/* ---------- 8) Modal (기본형 1벌만 유지) ---------- */
-body.modal-open{ overflow:hidden; }
-
-.modal{
-  position: fixed;
-  inset: 0;
-  background: rgba(0,0,0,.6);
-  display: none;
-  align-items: center;
-  justify-content: center;
-  z-index: 10000;
-}
-.modal-inner{
-  background: #fff;
-  border-radius: 10px;
-  padding: 1.5rem 1.75rem;
-  max-width: 320px;
-  width: 90%;
-  text-align: center;
-  position: relative;
-  box-shadow: 0 12px 30px rgba(0,0,0,.25);
-}
-.modal .close{
-  position: absolute;
-  right: 0.75rem;
-  top: 0.5rem;
-  border: none;
-  background: none;
-  font-size: 1.5rem;
-  cursor: pointer;
-}
-.modal-caption{ font-weight: 600; margin-bottom: .75rem; }
-.modal-id{ font-size: .9rem; color: #555; margin-top: .5rem; }
-.modal-content{ max-width: 100%; height:auto; display:block; margin:0 auto; }
-
-/* ---------- 9) Icon hover (중복 제거: WeChat만) ---------- */
-.icons .fa-weixin:hover{ color:#09b83e !important; }
