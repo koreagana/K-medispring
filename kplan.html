@@ -46,6 +46,14 @@
               我们会根据你的需求，组合成最合适的韩国医疗行程：医疗 + 皮肤医美 + 大健康 + 接送/翻译/观光。
             </p>
 
+            <!-- ✅ 선택 요약 박스 (提交 버튼 위) -->
+<div id="selectedBox" style="border:1px solid rgba(0,0,0,0.2); padding:12px 14px; border-radius:6px; margin: 0 0 1rem 0;">
+  <strong>已选内容</strong>
+  <div id="selectedSummary" style="margin-top:8px; line-height:1.7;">
+    <span style="opacity:0.7;">还未选择。先勾选几项也可以。</span>
+  </div>
+</div>
+            
             <ul class="actions">
               <li><a href="#kplan-form" class="button big">开始填写</a></li>
             </ul>
@@ -107,27 +115,27 @@
             <h4>皮肤医美（单选）</h4>
             <div class="row gtr-uniform">
               <div class="col-6 col-12-xsmall">
-                <input type="radio" id="skin1" name="skin_pick" value="Ulthera 超声提升" />
+                <input type="checkbox" id="skin1" name="skin_pick" value="Ulthera 超声提升" />
                 <label for="skin1">Ulthera 超声提升</label>
               </div>
               <div class="col-6 col-12-xsmall">
-                <input type="radio" id="skin2" name="skin_pick" value="Thermage 热玛吉紧肤" />
+                <input type="checkbox" id="skin2" name="skin_pick" value="Thermage 热玛吉紧肤" />
                 <label for="skin2">Thermage 热玛吉紧肤</label>
               </div>
               <div class="col-6 col-12-xsmall">
-                <input type="radio" id="skin3" name="skin_pick" value="皮秒激光（色斑/痘印）" />
+                <input type="checkbox" id="skin3" name="skin_pick" value="皮秒激光（色斑/痘印）" />
                 <label for="skin3">皮秒激光（色斑/痘印）</label>
               </div>
               <div class="col-6 col-12-xsmall">
-                <input type="radio" id="skin4" name="skin_pick" value="痤疮·疤痕激光" />
+                <input type="checkbox" id="skin4" name="skin_pick" value="痤疮·疤痕激光" />
                 <label for="skin4">痤疮·疤痕激光</label>
               </div>
               <div class="col-6 col-12-xsmall">
-                <input type="radio" id="skin5" name="skin_pick" value="毛孔/肌理改善" />
+                <input type="checkbox" id="skin5" name="skin_pick" value="毛孔/肌理改善" />
                 <label for="skin5">毛孔 / 肌理改善</label>
               </div>
               <div class="col-6 col-12-xsmall">
-                <input type="radio" id="skin6" name="skin_pick" value="水光/皮肤修复（Skin Booster）" />
+                <input type="checkbox" id="skin6" name="skin_pick" value="水光/皮肤修复（Skin Booster）" />
                 <label for="skin6">水光 / 皮肤修复（Skin Booster）</label>
               </div>
             </div>
@@ -138,27 +146,27 @@
             <h4>大健康（功能医学）（单选）</h4>
             <div class="row gtr-uniform">
               <div class="col-6 col-12-xsmall">
-                <input type="radio" id="fx1" name="fx_pick" value="营养代谢分析（OAT）" />
+                <input type="checkbox" id="fx1" name="fx_pick" value="营养代谢分析（OAT）" />
                 <label for="fx1">营养代谢分析（OAT）</label>
               </div>
               <div class="col-6 col-12-xsmall">
-                <input type="radio" id="fx2" name="fx_pick" value="NK 细胞活性检测" />
+                <input type="checkbox" id="fx2" name="fx_pick" value="NK 细胞活性检测" />
                 <label for="fx2">NK 细胞活性检测</label>
               </div>
               <div class="col-6 col-12-xsmall">
-                <input type="radio" id="fx3" name="fx_pick" value="睡眠·压力评估（皮质醇）" />
+                <input type="checkbox" id="fx3" name="fx_pick" value="睡眠·压力评估（皮质醇）" />
                 <label for="fx3">睡眠·压力评估（皮质醇）</label>
               </div>
               <div class="col-6 col-12-xsmall">
-                <input type="radio" id="fx4" name="fx_pick" value="重金属/毒性金属检测" />
+                <input type="checkbox" id="fx4" name="fx_pick" value="重金属/毒性金属检测" />
                 <label for="fx4">重金属 / 毒性金属检测</label>
               </div>
               <div class="col-6 col-12-xsmall">
-                <input type="radio" id="fx5" name="fx_pick" value="端粒检测（Telomere）" />
+                <input type="checkbox" id="fx5" name="fx_pick" value="端粒检测（Telomere）" />
                 <label for="fx5">端粒检测（Telomere）</label>
               </div>
               <div class="col-6 col-12-xsmall">
-                <input type="radio" id="fx6" name="fx_pick" value="静脉营养（IV）" />
+                <input type="checkbox" id="fx6" name="fx_pick" value="静脉营养（IV）" />
                 <label for="fx6">静脉营养（IV）</label>
               </div>
             </div>
@@ -169,27 +177,27 @@
             <h4>干细胞/再生（单选）</h4>
             <div class="row gtr-uniform">
               <div class="col-6 col-12-xsmall">
-                <input type="radio" id="stem1" name="stem_pick" value="干细胞静脉输注（IV）" />
+                <input type="checkbox" id="stem1" name="stem_pick" value="干细胞静脉输注（IV）" />
                 <label for="stem1">干细胞静脉输注（IV）</label>
               </div>
               <div class="col-6 col-12-xsmall">
-                <input type="radio" id="stem2" name="stem_pick" value="外泌体治疗" />
+                <input type="checkbox" id="stem2" name="stem_pick" value="外泌体治疗" />
                 <label for="stem2">外泌体治疗</label>
               </div>
               <div class="col-6 col-12-xsmall">
-                <input type="radio" id="stem3" name="stem_pick" value="关节/软骨再生" />
+                <input type="checkbox" id="stem3" name="stem_pick" value="关节/软骨再生" />
                 <label for="stem3">关节 / 软骨再生</label>
               </div>
               <div class="col-6 col-12-xsmall">
-                <input type="radio" id="stem4" name="stem_pick" value="皮肤再生" />
+                <input type="checkbox" id="stem4" name="stem_pick" value="皮肤再生" />
                 <label for="stem4">皮肤再生</label>
               </div>
               <div class="col-6 col-12-xsmall">
-                <input type="radio" id="stem5" name="stem_pick" value="干细胞 + NK 联合" />
+                <input type="checkbox" id="stem5" name="stem_pick" value="干细胞 + NK 联合" />
                 <label for="stem5">干细胞 + NK 联合</label>
               </div>
               <div class="col-6 col-12-xsmall">
-                <input type="radio" id="stem6" name="stem_pick" value="自体脂肪 MSC" />
+                <input type="checkbox" id="stem6" name="stem_pick" value="自体脂肪 MSC" />
                 <label for="stem6">自体脂肪 MSC</label>
               </div>
             </div>
@@ -200,27 +208,27 @@
             <h4>整形外科（单选）</h4>
             <div class="row gtr-uniform">
               <div class="col-6 col-12-xsmall">
-                <input type="radio" id="ps1" name="plastic_pick" value="双眼皮" />
+                <input type="checkbox" id="ps1" name="plastic_pick" value="双眼皮" />
                 <label for="ps1">双眼皮</label>
               </div>
               <div class="col-6 col-12-xsmall">
-                <input type="radio" id="ps2" name="plastic_pick" value="隆鼻" />
+                <input type="checkbox" id="ps2" name="plastic_pick" value="隆鼻" />
                 <label for="ps2">隆鼻</label>
               </div>
               <div class="col-6 col-12-xsmall">
-                <input type="radio" id="ps3" name="plastic_pick" value="轮廓/下颌线" />
+                <input type="checkbox" id="ps3" name="plastic_pick" value="轮廓/下颌线" />
                 <label for="ps3">轮廓 / 下颌线</label>
               </div>
               <div class="col-6 col-12-xsmall">
-                <input type="radio" id="ps4" name="plastic_pick" value="吸脂" />
+                <input type="checkbox" id="ps4" name="plastic_pick" value="吸脂" />
                 <label for="ps4">吸脂</label>
               </div>
               <div class="col-6 col-12-xsmall">
-                <input type="radio" id="ps5" name="plastic_pick" value="脂肪移植" />
+                <input type="checkbox" id="ps5" name="plastic_pick" value="脂肪移植" />
                 <label for="ps5">脂肪移植</label>
               </div>
               <div class="col-6 col-12-xsmall">
-                <input type="radio" id="ps6" name="plastic_pick" value="肉毒/玻尿酸" />
+                <input type="checkbox" id="ps6" name="plastic_pick" value="肉毒/玻尿酸" />
                 <label for="ps6">肉毒 / 玻尿酸</label>
               </div>
             </div>
@@ -231,27 +239,27 @@
             <h4>女性中心（单选）</h4>
             <div class="row gtr-uniform">
               <div class="col-6 col-12-xsmall">
-                <input type="radio" id="f1" name="female_pick" value="阴道紧致激光" />
+                <input type="checkbox" id="f1" name="female_pick" value="阴道紧致激光" />
                 <label for="f1">阴道紧致激光</label>
               </div>
               <div class="col-6 col-12-xsmall">
-                <input type="radio" id="f2" name="female_pick" value="小阴唇整形" />
+                <input type="checkbox" id="f2" name="female_pick" value="小阴唇整形" />
                 <label for="f2">小阴唇整形</label>
               </div>
               <div class="col-6 col-12-xsmall">
-                <input type="radio" id="f3" name="female_pick" value="私密美白" />
+                <input type="checkbox" id="f3" name="female_pick" value="私密美白" />
                 <label for="f3">私密美白</label>
               </div>
               <div class="col-6 col-12-xsmall">
-                <input type="radio" id="f4" name="female_pick" value="HPV" />
+                <input type="checkbox" id="f4" name="female_pick" value="HPV" />
                 <label for="f4">HPV</label>
               </div>
               <div class="col-6 col-12-xsmall">
-                <input type="radio" id="f5" name="female_pick" value="女性激素全套" />
+                <input type="checkbox" id="f5" name="female_pick" value="女性激素全套" />
                 <label for="f5">女性激素全套</label>
               </div>
               <div class="col-6 col-12-xsmall">
-                <input type="radio" id="f6" name="female_pick" value="性病检测（12项）" />
+                <input type="checkbox" id="f6" name="female_pick" value="性病检测（12项）" />
                 <label for="f6">性病检测（12项）</label>
               </div>
             </div>
@@ -262,27 +270,27 @@
             <h4>男性健康（单选）</h4>
             <div class="row gtr-uniform">
               <div class="col-6 col-12-xsmall">
-                <input type="radio" id="m1" name="male_pick" value="包皮环切" />
+                <input type="checkbox" id="m1" name="male_pick" value="包皮环切" />
                 <label for="m1">包皮环切</label>
               </div>
               <div class="col-6 col-12-xsmall">
-                <input type="radio" id="m2" name="male_pick" value="ED 综合治疗" />
+                <input type="checkbox" id="m2" name="male_pick" value="ED 综合治疗" />
                 <label for="m2">ED 综合治疗</label>
               </div>
               <div class="col-6 col-12-xsmall">
-                <input type="radio" id="m3" name="male_pick" value="前列腺微创" />
+                <input type="checkbox" id="m3" name="male_pick" value="前列腺微创" />
                 <label for="m3">前列腺微创</label>
               </div>
               <div class="col-6 col-12-xsmall">
-                <input type="radio" id="m4" name="male_pick" value="男性体成分/代谢管理" />
+                <input type="checkbox" id="m4" name="male_pick" value="男性体成分/代谢管理" />
                 <label for="m4">男性体成分 / 代谢管理</label>
               </div>
               <div class="col-6 col-12-xsmall">
-                <input type="radio" id="m5" name="male_pick" value="HPV 疫苗/筛查" />
+                <input type="checkbox" id="m5" name="male_pick" value="HPV 疫苗/筛查" />
                 <label for="m5">HPV 疫苗 / 筛查</label>
               </div>
               <div class="col-6 col-12-xsmall">
-                <input type="radio" id="m6" name="male_pick" value="增粗/加长" />
+                <input type="checkbox" id="m6" name="male_pick" value="增粗/加长" />
                 <label for="m6">增粗 / 加长</label>
               </div>
             </div>
@@ -443,44 +451,103 @@
 
   </div>
 
-  <!-- Scripts -->
-  <script src="assets/js/jquery.min.js"></script>
-  <script src="assets/js/browser.min.js"></script>
-  <script src="assets/js/breakpoints.min.js"></script>
-  <script src="assets/js/util.js"></script>
-  <script src="assets/js/main.js"></script>
+ <!-- Scripts (템플릿 기본) -->
+<script src="assets/js/jquery.min.js"></script>
+<script src="assets/js/browser.min.js"></script>
+<script src="assets/js/breakpoints.min.js"></script>
+<script src="assets/js/util.js"></script>
+<script src="assets/js/main.js"></script>
 
-  <!-- ✅ Submit alert (메일/서버 연결 전, 임시) -->
-  <script>
-    document.getElementById('planForm').addEventListener('submit', function(e){
-      e.preventDefault();
+<!-- ✅ K-Plan 폼 전용 스크립트 (맨 마지막) -->
+<script>
+  const form = document.getElementById('planForm');
+  const summaryEl = document.getElementById('selectedSummary');
 
-      function picked(name){
-        const el = document.querySelector('input[name="'+name+'"]:checked');
-        return el ? el.value : '';
-      }
+  // ✅ 라디오(단일)
+  function pickedOne(name){
+    const el = document.querySelector('input[name="'+name+'"]:checked');
+    return el ? el.value : '';
+  }
 
-      const list = [];
-      const s1 = picked('skin_pick'); if (s1) list.push('皮肤医美：' + s1);
-      const s2 = picked('fx_pick'); if (s2) list.push('大健康：' + s2);
-      const s3 = picked('stem_pick'); if (s3) list.push('干细胞：' + s3);
-      const s4 = picked('plastic_pick'); if (s4) list.push('整形：' + s4);
-      const s5 = picked('female_pick'); if (s5) list.push('女性：' + s5);
-      const s6 = picked('male_pick'); if (s6) list.push('男性：' + s6);
+  // ✅ 체크박스(다중)
+  function pickedMany(name){
+    return Array.from(document.querySelectorAll('input[name="'+name+'"]:checked'))
+      .map(el => el.value);
+  }
 
-      const travel = [];
-      const a = picked('airport'); if (a) travel.push('机场接送：' + a);
-      const h = picked('hotel'); if (h) travel.push('酒店预订：' + h);
-      const t = picked('tour'); if (t) travel.push('市区观光：' + t);
-      const tr = picked('translation'); if (tr) travel.push('医疗陪同/翻译：' + tr);
+  function renderSummary(){
+    const lines = [];
 
-      let msg = '谢谢！我们已收到你的信息，会尽快联系你。';
-      if (list.length) msg += '\n\n已选项目：\n- ' + list.join('\n- ');
-      if (travel.length) msg += '\n\n旅行服务：\n- ' + travel.join('\n- ');
+    // Step2 (체크박스: 다중)
+    const skin = pickedMany('skin_pick');
+    if (skin.length) lines.push('皮肤医美：' + skin.join('、'));
 
-      alert(msg);
-    });
-  </script>
+    const fx = pickedMany('fx_pick');
+    if (fx.length) lines.push('大健康：' + fx.join('、'));
+
+    const stem = pickedMany('stem_pick');
+    if (stem.length) lines.push('干细胞：' + stem.join('、'));
+
+    const plastic = pickedMany('plastic_pick');
+    if (plastic.length) lines.push('整形：' + plastic.join('、'));
+
+    const female = pickedMany('female_pick');
+    if (female.length) lines.push('女性：' + female.join('、'));
+
+    const male = pickedMany('male_pick');
+    if (male.length) lines.push('男性：' + male.join('、'));
+
+    // Step3 (라디오: 단일)
+    const travel = [];
+    const a  = pickedOne('airport');     if (a)  travel.push('机场接送：' + a);
+    const h  = pickedOne('hotel');       if (h)  travel.push('酒店预订：' + h);
+    const t  = pickedOne('tour');        if (t)  travel.push('市区观光：' + t);
+    const tr = pickedOne('translation'); if (tr) travel.push('医疗陪同/翻译：' + tr);
+
+    if (travel.length) lines.push('旅行服务：' + travel.join('、'));
+
+    // 출력
+    if (!lines.length){
+      summaryEl.innerHTML = '<span style="opacity:0.7;">还未选择。先勾选几项也可以。</span>';
+      return;
+    }
+
+    summaryEl.innerHTML = '<ul style="margin:0; padding-left:1.1rem;">'
+      + lines.map(x => '<li>' + x + '</li>').join('')
+      + '</ul>';
+  }
+
+  // ✅ 선택 변경 시마다 업데이트
+  form.addEventListener('change', renderSummary);
+
+  // ✅ 최초 1회 렌더
+  renderSummary();
+
+  // ✅ 제출 시 alert (기존 로직 유지 + 요약 재사용)
+  form.addEventListener('submit', function(e){
+    e.preventDefault();
+
+    // 최신 요약 반영
+    renderSummary();
+
+    // alert용 텍스트 만들기
+    const tmp = document.createElement('div');
+    tmp.innerHTML = summaryEl.innerHTML;
+    const text = tmp.innerText.trim();
+
+    let msg = '谢谢！我们已收到你的信息，会尽快联系你。';
+    if (text) msg += '\n\n' + text.replace(/\n\n+/g, '\n');
+
+    alert(msg);
+  });
+
+  // ✅ 리셋 시 요약 초기화
+  form.addEventListener('reset', function(){
+    setTimeout(renderSummary, 0);
+  });
+</script>
+
+
 
 </body>
 </html>
