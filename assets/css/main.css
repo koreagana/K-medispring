@@ -2041,22 +2041,6 @@ html[lang="ko"] .button {
   flex: 1 1 auto;              /* 로고는 남는 공간 차지 */
 }
 
-#header .icons {
-  margin: 0;
-  display: flex;               /* 아이콘을 가로로 */
-  gap: .75rem;                 /* 아이콘 간격 */
-  align-items: center;
-  text-align: right;           /* 네 스타일 유지 */
-}
-
-/* 모바일 때 absolute 강제 배치가 흐름을 깨면 줄 세움 유지 */
-@media screen and (max-width: 736px) {
-  #header .icons {
-    position: static;          /* 기존 absolute 해제 */
-    height: auto;
-    line-height: normal;
-  }
-}
 
 	/* 헤더 로고 이미지 크기/정렬 — 기존 레이아웃 그대로 */
 #header .logo {
@@ -2368,10 +2352,6 @@ header.major > :last-child{
 }
 #header .actions .button.small:hover { background: var(--hover); transform: translateY(-1px); }
 
-/* 2) 헤더 아이콘 미세정렬 & 호버 */
-#header .icons { display:flex; gap:.5rem; margin-left:.25rem; }
-#header .icons a { color:#666; transition: color .2s ease, transform .15s ease; }
-#header .icons a:hover { color: var(--brand); transform: translateY(-1px); }
 
 /* 3) 모바일에서 헤더 CTA 숨김 (메뉴에 이미 항목 있음) */
 @media (max-width: 736px){
@@ -3141,34 +3121,33 @@ header.major + p{
 
 
 /* =========================
-   Sidebar 대카테고리 (메뉴)
+   Sidebar 메뉴 폰트/가독성 (FINAL)
    ========================= */
-#sidebar,
-#sidebar nav,
-#sidebar nav ul,
-#sidebar nav ul li,
-#sidebar nav ul li a{
+
+/* 사이드바 전체 기본 폰트 */
+#sidebar{
   font-family: "Pretendard","PingFang SC","Microsoft YaHei",
                "Noto Sans CJK SC",-apple-system,BlinkMacSystemFont,
                "Segoe UI",Roboto,Arial,sans-serif;
-  font-weight: 500;
   letter-spacing: 0.02em;
 }
 
-/* 메뉴 항목 크기 & 간격 */
-#sidebar nav ul li a{
+/* 메뉴 링크만: 굵기/크기/줄간격 */
+#sidebar nav#menu a{
+  font-weight: 500;
   font-size: 15px;
   line-height: 1.6;
 }
 
-/* 모바일에서는 살짝 더 또렷하게 */
+/* 모바일에서는 더 또렷하게 */
 @media (max-width: 980px){
-  #sidebar nav ul li a{
-    font-size: 15px;      /* 모바일도 15 고정 */
-    font-weight: 600;     /* 메뉴는 조금 더 단단하게 */
-    line-height: 1.65;    /* 줄간 여유 */
+  #sidebar nav#menu a{
+    font-size: 15px;
+    font-weight: 600;
+    line-height: 1.65;
   }
 }
+
 /* =========================
    Headings (제목/섹션 타이틀)
    - CJK는 Source Han Serif
@@ -3237,32 +3216,40 @@ a.toggle::before{
   display: block;
 }
 
-/* =========================
-   Ronnie FINAL: header overlap fix
-   (main.css 맨 아래에 추가)
-   ========================= */
-
-/* 헤더 과한 패딩 제거 + 높이 안정화 */
+/* 헤더 과한 패딩 제거 + 높이 안정화 + 정렬 고정 */
 #header{
-  padding: 2.2em 0 1.0em 0 !important;   /* ✅ 기존 6em 제거 */
+  padding: 2.2em 0 1.0em 0 !important;
   margin: 0 !important;
   min-height: 0 !important;
-}
 
-/* 헤더 내부 정렬 고정 (로고 왼쪽, 아이콘/토글 오른쪽) */
-#header{
-  display:flex !important;
-  align-items:center !important;
+  display: flex !important;
+  align-items: center !important;
   justify-content: space-between !important;
   gap: 1rem !important;
+
+  position: relative;
+  z-index: 1000;
 }
 
-/* 아이콘 줄바꿈 방지 */
-#header .icons{
-  display:flex !important;
-  align-items:center !important;
-  flex-wrap: nowrap !important;
-  margin: 0 !important;
+/* 로고는 왼쪽 고정 */
+#header .logo{
+  flex: 0 0 auto;
+  min-width: 0;
+}
+
+/* 오른쪽 묶음(토글 + 아이콘들)은 오른쪽으로 */
+#header .toggle,
+
+/* ✅ "상단 네비/오른쪽 영역" 폭을 2/3로 제한 */
+#header > :not(.logo){
+  max-width: 66.666% !important;
+}
+
+/* ✅ 모바일/아이패드에서는 제한 해제 */
+@media (max-width: 980px){
+  #header > :not(.logo){
+    max-width: 100% !important;
+  }
 }
 
 /* 모바일에서 토글(햄버거) 항상 보이게 + 헤더 위에 뜨게 */
@@ -3272,6 +3259,108 @@ a.toggle::before{
     z-index: 10002 !important;
   }
 }
+/* =========================================================
+   Header / Icons / Toggle  (FINAL - keep only this)
+   ========================================================= */
+
+/* 1) 헤더: 한 줄 정렬 고정 */
+#header{
+  display: flex !important;
+  align-items: center !important;
+  justify-content: space-between !important;
+  gap: 1rem !important;
+
+  padding: 2.2em 0 1.0em 0 !important;
+  margin: 0 !important;
+  min-height: 0 !important;
+}
+
+/* 2) 로고 영역이 길어져도 오른쪽(토글+아이콘) 침범 못하게 */
+#header .logo{
+  flex: 1 1 auto !important;
+  min-width: 0 !important;
+}
+
+/* 3) 오른쪽 묶음(토글 + 아이콘)은 고정폭 */
+#header .toggle,
+#header .icons{
+  flex: 0 0 auto !important;
+}
+
+/* 4) 아이콘: 가로 정렬 + 줄바꿈 방지 + 오른쪽 정렬 유지 */
+#header .icons{
+  margin: 0 !important;
+  display: flex !important;
+  align-items: center !important;
+  flex-wrap: nowrap !important;
+  gap: .75rem !important;
+  justify-content: flex-end !important;
+}
+
+/* 5) 토글 텍스트(“Toggle”) 안 보이게 + 햄버거 아이콘으로 교체 */
+#header a.toggle{
+  position: relative !important;
+  width: 2.75em !important;
+  height: 2.75em !important;
+  line-height: 2.75em !important;
+
+  overflow: hidden !important;
+  text-indent: 9999px !important;  /* 글자 숨김 */
+  white-space: nowrap !important;
+}
+
+/* FontAwesome 햄버거 */
+#header a.toggle:before{
+  content: "\f0c9";
+  font-family: "Font Awesome 5 Free";
+  font-weight: 900;
+
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-items: center;
+
+  text-indent: 0;
+  color: #666;
+}
+
+#header a.toggle:hover:before{
+  color: var(--brand);
+}
+
+/* =========================================================
+   Sidebar/Menu list bullet 제거 + 간격 정리
+   ========================================================= */
+
+/* 메뉴 ul 점(•) 제거 */
+#sidebar ul.menu-list,
+#sidebar nav#menu ul,
+#sidebar .links ul{
+  list-style: none !important;
+  padding-left: 0 !important;
+  margin-left: 0 !important;
+}
+
+/* 혹시 li에 마커/들여쓰기 들어가면 같이 제거 */
+#sidebar ul.menu-list li,
+#sidebar nav#menu ul li,
+#sidebar .links ul li{
+  padding-left: 0 !important;
+}
+
+/* =========================================================
+   (옵션) 상단 네비 "카테고리 영역" 2/3로 줄이기
+   - 현재 화면에서 왼쪽 사이드(카테고리)가 너무 넓을 때만 적용
+   ========================================================= */
+@media (min-width: 981px){
+  /* 사이드바 폭을 화면의 33% 정도로 제한 -> 결과적으로 메인은 66% 느낌 */
+  #sidebar{
+    width: 33vw !important;
+    max-width: 360px !important; /* 너무 커지는 것 방지 */
+  }
+}
+
+
 
 
 
