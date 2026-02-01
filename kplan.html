@@ -1,11 +1,10 @@
 <!DOCTYPE HTML>
 <!--
-  汉江春天 · K-Plan (Editorial layout safe version)
-  - Sidebar restored (same structure as index)
-  - No search section
-  - Remove grey double separators above menu
-  - Blue-only checkbox/radio UI (no black X)
-  - Summary box BEFORE submit, and summary text enlarged
+  汉江春天 · K-Plan (Editorial layout safe)
+  - Mobile hamburger restored (requires #sidebar + #menu + main.js)
+  - No search box (logo instead)
+  - Blue checkbox/radio style (Editorial label:before recolor)
+  - Summary font bigger
 -->
 <html lang="zh-CN">
 <head>
@@ -13,7 +12,7 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
 
-  <!-- (선택) GitHub Pages용 base 경로: 인덱스랑 맞추고 싶으면 유지 -->
+  <!-- (선택) GitHub Pages base 경로 자동 보정: index.html과 동일하게 쓰고 싶으면 유지 -->
   <script>
     (function () {
       var project = "/K-medispring/";
@@ -24,10 +23,10 @@
     })();
   </script>
 
-  <!-- ✅ FontAwesome 먼저 -->
-  <link rel="stylesheet" href="assets/css/fontawesome-all.min.css" />
-  <!-- ✅ Editorial main -->
+  <!-- ✅ Editorial 기본 CSS -->
   <link rel="stylesheet" href="assets/css/main.css" />
+  <!-- ✅ FontAwesome (아이콘/체크박스 glyph 안정) -->
+  <link rel="stylesheet" href="assets/css/fontawesome-all.min.css" />
 
   <style>
     :root{
@@ -36,21 +35,18 @@
       --hga-blue-bg: rgba(30,107,214,0.06);
     }
 
-    /* =========================================
-       Sidebar: index처럼 (search 없음 + 로고/메뉴)
-       ========================================= */
+    /* =========================
+       Sidebar: Search 제거 + 로고만
+       ========================= */
+    /* search 섹션이 혹시 남아있어도 숨김 */
+    #sidebar #search{ display:none !important; }
 
     /* 로고 영역 */
     #sidebar-brand{
       padding: 1.8rem 1.5rem 1.1rem;
-      text-align: center;
-
-      /* ✅ 로고 아래 회색 라인 제거 */
-      border-bottom: 0 !important;
-      margin-bottom: 0 !important;
-      padding-bottom: 1.1rem !important;
+      text-align:center;
+      border: 0 !important;
     }
-
     #sidebar-brand .sidebar-logo img{
       display:block;
       max-width:140px;
@@ -58,51 +54,37 @@
       margin:0 auto;
     }
 
-    /* ✅ 메뉴 맨 위 회색 라인 제거(대건강 위 2줄 원인 제거) */
-    #menu{
-      border-top: 0 !important;
-      margin-top: 0 !important;
-      padding-top: 0 !important;
-    }
+    /* ✅ "大健康 위 회색 2줄" 원인 = #menu 기본 border-top + section separator
+       -> menu/top 라인 제거 */
+    #menu{ border-top: 0 !important; }
+    /* 메뉴 리스트 여백 */
+    #menu .links{ padding: 0 1.5rem 1.5rem; }
 
-    /* 메뉴 좌우 여백 */
-    #menu .links{
-      padding: 0 1.5rem 1.5rem;
-    }
-
-    /* =========================================
-       K-Plan: Blue-only checkbox/radio (Editorial 방식)
-       - Editorial은 input 자체가 아니라 label:before로 박스를 그림
-       ========================================= */
-
-    /* 기본 박스(미선택) */
+    /* =========================
+       K-Plan: 체크/라디오 파란색 (Editorial 방식)
+       Editorial은 input + label:before로 박스 그림
+       ========================= */
     #planForm input[type="checkbox"] + label:before,
     #planForm input[type="radio"] + label:before{
       border-color: var(--hga-blue-weak) !important;
       box-shadow: none !important;
     }
-
-    /* 선택 상태 */
     #planForm input[type="checkbox"]:checked + label:before,
     #planForm input[type="radio"]:checked + label:before{
       background: var(--hga-blue) !important;
       border-color: var(--hga-blue) !important;
-      color: #fff !important; /* 체크 표시 색 */
+      color:#fff !important;
     }
-
-    /* hover도 파란 느낌만 */
     #planForm input[type="checkbox"] + label:hover:before,
     #planForm input[type="radio"] + label:hover:before{
       border-color: var(--hga-blue) !important;
     }
 
-    /* Step3 정리 */
-    .kplan-step3 label{ margin-bottom:6px; display:block; }
+    /* Step3 간격 */
+    .kplan-step3 label{ margin-bottom: 6px; display:block; }
     .kplan-step3 .pair{ display:flex; gap:18px; flex-wrap:wrap; }
 
-    /* =========================================
-       Summary Box (提交 앞)
-       ========================================= */
+    /* ✅ Summary Box (제출 버튼 위) */
     #selectedBox{
       border: 1px solid rgba(30,107,214,0.30);
       background: var(--hga-blue-bg);
@@ -112,26 +94,26 @@
     }
     #selectedBox strong{
       color: var(--hga-blue);
-      font-size: 0.95rem;
-      display: inline-block;
-      margin-bottom: 6px;
+      font-size: 1rem;
+      display:inline-block;
+      margin-bottom: 8px;
     }
-
-    /* ✅ 요약 글자 크게(“需要” 급으로 보이게) */
+    /* ✅ “보이지가 않아” 해결: 요약 글씨 크게 */
     #selectedSummary,
     #selectedSummary li{
-      color: var(--hga-blue);
-      font-size: 18px;     /* 핵심 */
-      line-height: 1.85;
+      font-size: 18px;
+      line-height: 1.9;
       font-weight: 500;
+      color: var(--hga-blue);
     }
     #selectedSummary .empty{
-      opacity: 0.70;
-      font-weight: 500;
+      opacity:.7;
+      font-weight:500;
     }
-    #selectedSummary ul{
-      margin:0;
-      padding-left:1.1rem;
+
+    /* (선택) 배너 설명 문단이 과하게 볼드면 여기서 눌러줌 */
+    #banner .content p{
+      font-weight: 400 !important;
     }
   </style>
 </head>
@@ -139,22 +121,21 @@
 <body class="is-preload">
   <div id="wrapper">
 
-    <!-- Main -->
+    <!-- =======================
+         Main
+         ======================= -->
     <div id="main">
       <div class="inner">
 
-        <!-- Header -->
         <header id="header">
           <a href="index.html" class="logo"><strong>汉江春天</strong> · K-Medi Spring</a>
           <ul class="icons">
             <li><a href="#" id="wechat-icon" class="icon brands fa-weixin"><span class="label">WeChat</span></a></li>
-            <li><a href="https://www.xiaohongshu.com/user/profile/550972467" target="_blank" rel="noopener" class="icon"><span class="label">小红书</span></a></li>
-            <li><a href="https://www.instagram.com/jiana2734/" target="_blank" rel="noopener" class="icon brands fa-instagram"><span class="label">Instagram</span></a></li>
+            <li><a href="#" id="whatsapp-icon" class="icon brands fa-whatsapp"><span class="label">WhatsApp</span></a></li>
             <li><a href="mailto:egana@kmedispring.com" class="icon solid fa-envelope"><span class="label">Email</span></a></li>
           </ul>
         </header>
 
-        <!-- Banner -->
         <section id="banner">
           <div class="content">
             <header>
@@ -177,7 +158,6 @@
           </span>
         </section>
 
-        <!-- Form -->
         <section id="kplan-form">
           <header class="major">
             <h2>填写表单</h2>
@@ -222,7 +202,6 @@
             <h3>Step 2 · 医疗需求（可多选）</h3>
             <p style="margin-top:-0.5rem;">每一类先选一个“最关心的”，其它细项我们回访时再补齐。</p>
 
-            <!-- 皮肤 -->
             <h4>皮肤医美</h4>
             <div class="row gtr-uniform">
               <div class="col-6 col-12-xsmall">
@@ -253,7 +232,6 @@
 
             <hr />
 
-            <!-- 大健康 -->
             <h4>大健康（功能医学）</h4>
             <div class="row gtr-uniform">
               <div class="col-6 col-12-xsmall">
@@ -284,7 +262,6 @@
 
             <hr />
 
-            <!-- 干细胞 -->
             <h4>干细胞/再生</h4>
             <div class="row gtr-uniform">
               <div class="col-6 col-12-xsmall">
@@ -315,7 +292,6 @@
 
             <hr />
 
-            <!-- 整形 -->
             <h4>整形外科</h4>
             <div class="row gtr-uniform">
               <div class="col-6 col-12-xsmall">
@@ -346,7 +322,6 @@
 
             <hr />
 
-            <!-- 女性 -->
             <h4>女性中心</h4>
             <div class="row gtr-uniform">
               <div class="col-6 col-12-xsmall">
@@ -377,7 +352,6 @@
 
             <hr />
 
-            <!-- 男性 -->
             <h4>男性健康</h4>
             <div class="row gtr-uniform">
               <div class="col-6 col-12-xsmall">
@@ -410,7 +384,6 @@
 
             <!-- Step 3 -->
             <h3>Step 3 · 旅行服务（可选）</h3>
-
             <div class="row gtr-uniform kplan-step3">
 
               <div class="col-12">
@@ -492,11 +465,13 @@
       </div><!-- .inner -->
     </div><!-- #main -->
 
-    <!-- Sidebar (index와 동일 구조) -->
+    <!-- =======================
+         Sidebar  (⭐ 이게 있어야 모바일 햄버거가 살아남)
+         ======================= -->
     <div id="sidebar">
       <div class="inner">
 
-        <!-- Sidebar Brand (로고) -->
+        <!-- 로고(검색 대신) -->
         <section id="sidebar-brand">
           <div class="sidebar-logo">
             <a href="index.html" class="logo">
@@ -508,6 +483,7 @@
         <!-- Menu -->
         <nav id="menu">
           <ul class="links">
+            <li><a href="index.html">首页</a></li>
             <li><a href="wellness.html">大健康</a></li>
             <li><a href="stemcell.html">干细胞</a></li>
             <li><a href="derm.html">皮肤医美</a></li>
@@ -517,7 +493,7 @@
             <li><a href="transfer.html">接送服务</a></li>
             <li><a href="tour.html">市区观光</a></li>
             <li><a href="lifestyle.html">生活服务</a></li>
-            <li><a href="kplan.html">定制医疗观光方案</a></li>
+            <li><a href="kplan.html" aria-current="page">定制医疗观光方案</a></li>
           </ul>
         </nav>
 
@@ -547,14 +523,14 @@
 
   </div><!-- #wrapper -->
 
-  <!-- Scripts (템플릿 기본) -->
+  <!-- Scripts (⭐ 이 순서 그대로) -->
   <script src="assets/js/jquery.min.js"></script>
   <script src="assets/js/browser.min.js"></script>
   <script src="assets/js/breakpoints.min.js"></script>
   <script src="assets/js/util.js"></script>
   <script src="assets/js/main.js"></script>
 
-  <!-- K-Plan logic -->
+  <!-- K-Plan summary script -->
   <script>
     const form = document.getElementById('planForm');
     const summaryEl = document.getElementById('selectedSummary');
@@ -562,6 +538,7 @@
     function pickedMany(name){
       return Array.from(document.querySelectorAll('input[name="'+name+'"]:checked')).map(el => el.value);
     }
+
     function pickedExcl(groupName){
       const el = document.querySelector('input[data-excl="'+groupName+'"]:checked');
       return el ? el.value : '';
@@ -570,38 +547,30 @@
     function renderSummary(){
       const lines = [];
 
-      const skin = pickedMany('skin_pick');        if (skin.length) lines.push('皮肤医美：' + skin.join('、'));
-      const fx = pickedMany('fx_pick');            if (fx.length) lines.push('大健康：' + fx.join('、'));
-      const stem = pickedMany('stem_pick');        if (stem.length) lines.push('干细胞：' + stem.join('、'));
-      const plastic = pickedMany('plastic_pick');  if (plastic.length) lines.push('整形：' + plastic.join('、'));
-      const female = pickedMany('female_pick');    if (female.length) lines.push('女性：' + female.join('、'));
-      const male = pickedMany('male_pick');        if (male.length) lines.push('男性：' + male.join('、'));
+      const skin = pickedMany('skin_pick');       if (skin.length) lines.push('皮肤医美：' + skin.join('、'));
+      const fx = pickedMany('fx_pick');           if (fx.length) lines.push('大健康：' + fx.join('、'));
+      const stem = pickedMany('stem_pick');       if (stem.length) lines.push('干细胞：' + stem.join('、'));
+      const plastic = pickedMany('plastic_pick'); if (plastic.length) lines.push('整形：' + plastic.join('、'));
+      const female = pickedMany('female_pick');   if (female.length) lines.push('女性：' + female.join('、'));
+      const male = pickedMany('male_pick');       if (male.length) lines.push('男性：' + male.join('、'));
 
       const travel = [];
-      const a = pickedExcl('airport');       if (a) travel.push('机场接送：' + a);
-      const h = pickedExcl('hotel');         if (h) travel.push('酒店预订：' + h);
-      const t = pickedExcl('tour');          if (t) travel.push('市区观光：' + t);
-      const tr = pickedExcl('translation');  if (tr) travel.push('医疗陪同/翻译：' + tr);
+      const a = pickedExcl('airport');        if (a) travel.push('机场接送：' + a);
+      const h = pickedExcl('hotel');          if (h) travel.push('酒店预订：' + h);
+      const t = pickedExcl('tour');           if (t) travel.push('市区观光：' + t);
+      const tr = pickedExcl('translation');   if (tr) travel.push('医疗陪同/翻译：' + tr);
       if (travel.length) lines.push('旅行服务：' + travel.join('、'));
 
       if (!lines.length){
         summaryEl.innerHTML = '<span class="empty">还未选择。先勾选几项也可以。</span>';
         return;
       }
-
       summaryEl.innerHTML = '<ul>' + lines.map(x => '<li>' + x + '</li>').join('') + '</ul>';
     }
 
-    window.addEventListener('DOMContentLoaded', function(){
-      // 브라우저 자동 복원 방지: 로드시 선택 해제
-      form.querySelectorAll('input[type="checkbox"], input[type="radio"]').forEach(el => el.checked = false);
-      renderSummary();
-    });
-
+    // Step3: 需要 vs 不需要 (같은 그룹 1개만)
     form.addEventListener('change', function(e){
       const el = e.target;
-
-      // Step3: data-excl 그룹은 1개만
       if (el && el.type === 'checkbox') {
         const group = el.getAttribute('data-excl');
         if (group && el.checked) {
@@ -632,6 +601,5 @@
 
     renderSummary();
   </script>
-
 </body>
 </html>
