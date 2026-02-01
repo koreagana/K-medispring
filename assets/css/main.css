@@ -3193,26 +3193,41 @@ h1, h2, h3, h4, h5, h6{
   }
 }
 /* =================================================
-   K-Medi Spring Fixed Top Menu Strip
+   K-Medi Spring Fixed Top Menu Strip (FINAL)
    - 얇고 굵은 한강애봄 블루 라인
    - 중앙 "菜单  MENU"
-   - PC / Mobile 동일 컨셉
+   - PC / Mobile 동일
    ================================================= */
 
-/* 상단 고정 파란 라인 */
+html, body{
+  margin: 0 !important;
+  padding: 0 !important;
+}
+
+/* 상단 고정 파란 선 */
 a.toggle{
+  display: block !important;
+  visibility: visible !important;
+  opacity: 1 !important;
+
   position: fixed !important;
   top: 0 !important;
   left: 0 !important;
   right: 0 !important;
 
-  width: 100% !important;
-  height: 18px !important;              /* 얇지만 존재감 있는 굵기 */
+  width: 100vw !important;
+  height: 18px !important;
 
-  background: #4E97D1 !important;       /* ✅ 한강애봄 고유 파란색 */
-  z-index: 100000 !important;
+  background: #4E97D1 !important; /* 한강애봄 블루 */
 
-  display: block !important;
+  border: 0 !important;
+  border-radius: 0 !important;
+  box-shadow: none !important;
+
+  margin: 0 !important;
+  padding: 0 !important;
+
+  z-index: 2147483647 !important;
   text-decoration: none !important;
 }
 
@@ -3226,13 +3241,14 @@ a.toggle::before{
   transform: translate(-50%, -50%) !important;
 
   padding: 0 14px !important;
-  background: #ffffff !important;       /* 파란 선을 끊고 글자 띄우기 */
+  background: #fff !important;
 
   font-family: "Pretendard","PingFang SC","Microsoft YaHei","Noto Sans CJK SC",sans-serif !important;
   font-size: 13px !important;
   font-weight: 800 !important;
   letter-spacing: .18em !important;
   color: #4E97D1 !important;
+
   white-space: nowrap !important;
 }
 
@@ -3241,22 +3257,16 @@ a.toggle:hover::before{
   color: #2f6fa3 !important;
 }
 
-/* 상단 고정바 때문에 본문 밀기 */
+/* 본문 밀기 */
 body{
   padding-top: 18px !important;
 }
 
-/* PC(1100px 이상)에서 살짝 더 안정감 */
-@media screen and (min-width: 1100px){
-  a.toggle{
-    height: 22px !important;
-  }
-  a.toggle::before{
-    font-size: 14px !important;
-  }
-  body{
-    padding-top: 22px !important;
-  }
+/* PC (>=1100px) */
+@media (min-width: 1100px){
+  a.toggle{ height: 22px !important; }
+  a.toggle::before{ font-size: 14px !important; }
+  body{ padding-top: 22px !important; }
 }
 
 /* =========================================================
@@ -3440,6 +3450,7 @@ body{
     padding-left: 0 !important;
   }
 }
+
 
 
 
