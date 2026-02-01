@@ -140,18 +140,6 @@ body, input, select, textarea {
     line-height: 1.65;
   }
 }
-
-
-  @media screen and (max-width: 1680px) {
-    body, input, select, textarea {
-      font-size: 11pt; } }
-  @media screen and (max-width: 1280px) {
-    body, input, select, textarea {
-      font-size: 10pt; } }
-  @media screen and (max-width: 360px) {
-    body, input, select, textarea {
-      font-size: 9pt; } }
-
 a {
   -moz-transition: color 0.2s ease-in-out, border-bottom-color 0.2s ease-in-out;
   -webkit-transition: color 0.2s ease-in-out, border-bottom-color 0.2s ease-in-out;
@@ -2435,30 +2423,12 @@ a:hover { color: var(--hover); }
 
 /* ▶ 본문 p, .inner p, 배너 안 p 전부 여기가 최종 답 */
 
-/* === 메인 본문 글자 + 폰트 재정의 === */
-#main .inner p,
-#banner .content p {
-  font-family: "Roboto Slab",
-               "SourceHanSerifCN",
-               "Pretendard",
-               "Noto Sans CJK SC",
-               "PingFang SC",
-               "Microsoft YaHei",
-               serif;
-  font-size: 28px;      /* 본문 크게 */
-  line-height: 2;
-  color: #222;
-  letter-spacing: 0.01em;
-}
-
 /* 중국어 페이지 전용(메인 본문만) */
 html[lang="zh-CN"] #main .inner p,
 html[lang="zh-CN"] #banner .content p {
   font-size: 28px;
   line-height: 2.05;
 }
-
-
 
 /* 배너 안의 서브 타이틀(“韩国医疗·康养·身心疗愈”)과 본문을 같은 폰트로 강제 */
 #banner .content h2,
@@ -2977,11 +2947,6 @@ a.toggle::before{
   line-height: 1.2;
 }
 
-/* =========================================================
-   HanGangAebom – Typography & Sidebar (single source of truth)
-   ✅ 중복 제거 최종본: 이것 하나만 유지
-   ========================================================= */
-
 /* ---------- 0) Font variables ---------- */
 :root{
   --brand: #0077B6;
@@ -3271,6 +3236,7 @@ a.toggle::before{
 #sidebar nav a.opener.active + ul{
   display: block;
 }
+
 
 
 
