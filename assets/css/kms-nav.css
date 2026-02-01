@@ -1,1 +1,180 @@
+/* =========================
+   KMS Global Nav (kms-nav.css)
+   목표:
+   1) 전체화면(Full width) 레이아웃
+   2) 넓은 메뉴(사이드바)
+   3) 헤더 여유 + 모바일 삼선(햄버거) 크게/깔끔하게
+   ========================= */
 
+/* ---------- 0) 변수(원하면 나중에만 조절) ---------- */
+:root{
+  --kms-accent: #4E97D1;     /* 헤더 밑줄 컬러 */
+  --kms-sidebar-w: 360px;    /* ✅ 메뉴 넓이 (이미지처럼 넉넉하게) */
+  --kms-header-py: 2.4rem;   /* ✅ 헤더 위아래 여유 */
+  --kms-header-pb: 1.2rem;
+  --kms-header-border: 4px;
+}
+
+/* ---------- 1) 전체화면: main의 inner 폭 제한 풀기 ---------- */
+/* Editorial은 #main > .inner 에 max-width 걸려있음 */
+#main > .inner{
+  max-width: none !important;
+  width: 100% !important;
+  /* ✅ 좌우 여백은 “전체화면인데 숨 쉴 공간” 정도만 */
+  padding-left: 3.2rem !important;
+  padding-right: 3.2rem !important;
+}
+
+/* 너무 넓어 보이면 데스크톱만 살짝 줄일 수도 있어(취향) */
+@media (min-width: 1280px){
+  #main > .inner{
+    padding-left: 4rem !important;
+    padding-right: 4rem !important;
+  }
+}
+
+/* 모바일에서는 좌우 패딩 줄이기 */
+@media (max-width: 736px){
+  #main > .inner{
+    padding-left: 1.35rem !important;
+    padding-right: 1.35rem !important;
+  }
+}
+
+/* ---------- 2) 메뉴(사이드바) 넓게 ---------- */
+/* Editorial 기본: #sidebar 고정 폭. 그걸 넓혀줌 */
+#sidebar{
+  width: var(--kms-sidebar-w) !important;
+}
+
+/* 사이드바 안쪽 패딩도 넉넉하게(이미지 느낌) */
+#sidebar > .inner{
+  padding: 2.25rem 2rem !important;
+}
+
+/* 본문이 사이드바만큼 밀려나도록(데스크톱) */
+@media (min-width: 981px){
+  #main{
+    margin-left: var(--kms-sidebar-w) !important;
+  }
+}
+
+/* ---------- 3) 헤더 넓게 + 삼선 포함 여유 ---------- */
+#header{
+  display: flex;
+  align-items: center;
+  gap: .75rem;
+
+  border-bottom: var(--kms-header-border) solid var(--kms-accent);
+  padding: var(--kms-header-py) 0 var(--kms-header-pb) 0 !important;
+
+  position: relative;
+  z-index: 1000;
+}
+
+/* 로고/브랜드 줄 맞추기 */
+#header .logo{
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  gap: .35rem;
+  min-width: 180px;
+}
+
+/* 아이콘 줄이 헤더 오른쪽 끝으로 */
+#header .icons{
+  margin-left: auto;
+}
+
+/* ---------- 4) 모바일 햄버거(삼선) — Toggle 글자 완전 숨김 ---------- */
+/* (원본 Editorial 필수 요소) <a href="#sidebar" class="toggle">Toggle</a>
+   이 HTML은 남겨두고, css로 “아이콘”으로만 보이게 만들자. */
+a.toggle{
+  -webkit-tap-highlight-color: transparent;
+  text-decoration: none;
+  border-bottom: 0;
+
+  /* PC에서는 기본 숨김, 모바일에서만 표시 */
+  display: none;
+
+  position: absolute;
+  top: 1.35rem;   /* ✅ 헤더 여유에 맞춰 위치 */
+  left: 0;        /* inner 패딩 기준에서 시작 */
+  width: 3.25rem;
+  height: 3.25rem;
+  z-index: 10001;
+
+  /* ✅ "Toggle" 글자 안 보이게 */
+  font-size: 0;
+  color: transparent;
+  overflow: hidden;
+}
+
+/* 삼선 3줄 */
+a.toggle:before,
+a.toggle:after{
+  content: "";
+  position: absolute;
+  left: 0.85rem;
+  right: 0.85rem;
+  height: 2px;
+  background: #e86b6b; /* 이미지처럼 살짝 핑크/레드 톤 */
+  border-radius: 2px;
+}
+
+a.toggle:before{
+  top: 1.10rem;
+  box-shadow: 0 0.55rem 0 0 #e86b6b; /* 가운데 줄 */
+}
+
+a.toggle:after{
+  top: 2.20rem;
+}
+
+/* 모바일에서만 토글 표시 */
+@media (max-width: 980px){
+  a.toggle{ display: block; }
+
+  /* 모바일에선 본문 margin-left 해제(사이드바는 오프캔버스니까) */
+  #main{ margin-left: 0 !important; }
+
+  /* 모바일 헤더에서 토글이 왼쪽에 있으니 로고 살짝 밀어주기(겹침 방지) */
+  #header{
+    padding-left: 4rem !important; /* ✅ 삼선 버튼 공간 확보 */
+  }
+}
+
+/* ---------- 5) 모바일 오프캔버스(사이드바) ---------- */
+/* main.js가 body.is-menu-visible 토글해준다는 전제 */
+@media (max-width: 980px){
+  #sidebar{
+    position: fixed !important;
+    top: 0;
+    left: 0;
+
+    /* ✅ “넓은 메뉴” 유지 */
+    width: var(--kms-sidebar-w) !important;
+    height: 100vh;
+
+    /* 기본은 화면 밖 */
+    transform: translateX(calc(-1 * var(--kms-sidebar-w)));
+    transition: transform .28s ease;
+
+    background: #f5f6f7;
+    z-index: 10000;
+    overflow-y: auto;
+    box-shadow: 3px 0 14px rgba(0,0,0,.12);
+  }
+
+  body.is-menu-visible #sidebar{
+    transform: translateX(0);
+  }
+}
+/* =========================
+   Header spacing polish
+   ========================= */
+
+/* 헤더 아래 첫 섹션 상단 여백 */
+#main > .inner > section:first-of-type{
+  padding-top: 1.2rem;
+}
