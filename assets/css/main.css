@@ -3388,4 +3388,51 @@ a.toggle::before{
 #sidebar ul li {
   padding-left: 0;
 }
+/* =================================================
+   Menu Toggle (Editorial style · All Devices)
+   ================================================= */
+
+/* 토글 기본 위치: 화면 좌측 상단 고정 */
+a.toggle {
+  position: fixed !important;
+  top: 20px;
+  left: 20px;
+  z-index: 10001;
+
+  width: 44px;
+  height: 44px;
+
+  background: #eaeaea;
+  border-radius: 6px;
+
+  text-decoration: none;
+}
+
+/* 햄버거 아이콘 (Editorial 원본 방식) */
+a.toggle::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+
+  width: 22px;
+  height: 2px;
+  background: #777;
+
+  transform: translate(-50%, -50%);
+  box-shadow:
+    0 -7px 0 0 #777,
+    0  7px 0 0 #777;
+}
+
+/* hover 시 살짝 강조 */
+a.toggle:hover {
+  background: #dedede;
+}
+
+/* 헤더 아이콘 줄과 겹칠 경우 대비용 여백 */
+#header {
+  padding-left: 72px;
+}
+
 
