@@ -3431,4 +3431,16 @@ a.toggle::before{
 }
 
 
+/* === KMS: opener works inside #sidebar (not #menu) === */
+
+/* 기본: 하위 메뉴 숨김 */
+#sidebar nav ul ul{
+  display: none;
+}
+
+/* opener 활성화 시 하위 메뉴 표시 */
+#sidebar nav a.opener.active + ul{
+  display: block;
+}
+
 
