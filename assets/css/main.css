@@ -2200,122 +2200,6 @@ html[lang="ko"] .button {
   #footer .copyright a {
     color: inherit; }
 
-/* 슬라이드 패널 기본 */
-#menu {
-  position: fixed;
-  top: 0; right: -320px;
-  width: 320px; height: 100%;
-  background: #fff;-
-  box-shadow: -3px 0 12px rgba(0,0,0,.12);
-  transition: right .28s ease;
-  z-index: 10000;
-  padding: 2rem 1.5rem;
-}
-#menu.is-open { right: 0; }
-
-	
-/* Menu */
-#menu ul {
-  -moz-user-select: none;
-  -webkit-user-select: none;
-  -ms-user-select: none;
-  user-select: none;
-  color: #3d4449;
-  font-family: "Roboto Slab", serif;
-  font-weight: 400;
-  letter-spacing: 0.075em;
-  list-style: none;
-  margin-bottom: 0;
-  padding: 0;
-  text-transform: uppercase; }
-
-	#menu ul a, #menu ul span {
-  border-bottom: 0;
-  color: inherit;
-  cursor: pointer;
-  display: block;
-  font-size: 1.6em; /* ✅ 기존 0.9em → 1.2em (글씨 더 큼) */
-  font-family: 'Source Han Serif CN', 'Noto Serif KR', serif;
-  font-weight: 500;
-  padding: 0.7em 0;
-}
-	
-    #menu ul a:hover, #menu ul span:hover {
-      color: #4E97D1; }
-    #menu ul a.opener, #menu ul span.opener {
-      -moz-transition: color 0.2s ease-in-out;
-      -webkit-transition: color 0.2s ease-in-out;
-      -ms-transition: color 0.2s ease-in-out;
-      transition: color 0.2s ease-in-out;
-      text-decoration: none;
-      -webkit-tap-highlight-color: rgba(255, 255, 255, 0);
-      position: relative; }
-      #menu ul a.opener:before, #menu ul span.opener:before {
-        -moz-osx-font-smoothing: grayscale;
-        -webkit-font-smoothing: antialiased;
-        display: inline-block;
-        font-style: normal;
-        font-variant: normal;
-        text-rendering: auto;
-        line-height: 1;
-        text-transform: none !important;
-        font-family: 'Font Awesome 5 Free';
-        font-weight: 900; }
-      #menu ul a.opener:before, #menu ul span.opener:before {
-        -moz-transition: color 0.2s ease-in-out, -moz-transform 0.2s ease-in-out;
-        -webkit-transition: color 0.2s ease-in-out, -webkit-transform 0.2s ease-in-out;
-        -ms-transition: color 0.2s ease-in-out, -ms-transform 0.2s ease-in-out;
-        transition: color 0.2s ease-in-out, transform 0.2s ease-in-out;
-        color: #9fa3a6;
-        content: '\f078';
-        position: absolute;
-        right: 0; }
-      #menu ul a.opener:hover:before, #menu ul span.opener:hover:before {
-        color: #4E97D1; }
-      #menu ul a.opener.active + ul, #menu ul span.opener.active + ul {
-        display: block; }
-      #menu ul a.opener.active:before, #menu ul span.opener.active:before {
-        -moz-transform: rotate(-180deg);
-        -webkit-transform: rotate(-180deg);
-        -ms-transform: rotate(-180deg);
-        transform: rotate(-180deg); }
-
-#menu > ul > li {
-  border-top: solid 1px rgba(210, 215, 217, 0.75);
-  margin: 0.5em 0 0 0;
-  padding: 0.5em 0 0 0; }
-  #menu > ul > li > ul {
-    color: #9fa3a6;
-    display: none;
-    margin: 0.5em 0 1.5em 0;
-    padding-left: 1em; }
-    #menu > ul > li > ul a, #menu > ul > li > ul span {
-      font-size: 0.8em; }
-    #menu > ul > li > ul > li {
-      margin: 0.125em 0 0 0;
-      padding: 0.125em 0 0 0; }
-  #menu > ul > li:first-child {
-    border-top: 0;
-    margin-top: 0;
-    padding-top: 0; }
-
-
-/* ===== 데스크톱(≥981px): 사이드바 기본 노출 ===== */
-@media (min-width: 981px) {
-  #menu {
-    position: static !important;
-    right: auto !important;
-    width: auto !important;
-    height: auto !important;
-    box-shadow: none !important;
-    padding: 0 !important;
-    overflow: visible !important;
-    display: block !important;
-  }
-  body.is-menu-visible #menu { right: auto !important; }
-}
-
-	
 	/* Language switch (Header)2025/10/11 */
 .lang-switch{
   display:flex; align-items:center; gap:.5rem; margin-left:1rem;
@@ -2537,17 +2421,17 @@ header.major > :last-child{
 #banner .actions .button.primary:hover { background: var(--hover); }
 
 /* 5) 오프캔버스 메뉴 링크 가독성 + 포커스 */
-#menu .links li a {
+#sidebar .links li a {
   display:block; padding:.8rem .9rem; border-radius: 10px;
   text-decoration:none; color:#222; transition: background .15s ease, color .2s ease;
 }
-#menu .links li a:hover,
-#menu .links li a:focus { background: rgba(0,0,0,.04); color: var(--deep); outline: none; }
+#sidebar .links li a:hover,
+#sidebar .links li a:focus { background: rgba(0,0,0,.04); color: var(--deep); outline: none; }
 
 /* 6) 현재 페이지 활성 표시 (JS로 .active 붙는 경우) */
-#menu a.active,
+#sidebar a.active,
 #nav a.active { color: var(--brand); font-weight:600; }
-#menu a.active { background: rgba(0,119,182,.08); border-radius:10px; }
+#sidebar a.active { background: rgba(0,119,182,.08); border-radius:10px; }
 
 /* 7) 구분선/얇은 라인 톤다운 */
 hr, .inner .divider { border-color: var(--line); }
@@ -2730,31 +2614,30 @@ html[lang="zh-CN"] .inner li {
   line-height: 1.9;
 }
 
-/* ===== Ronnie fix: ensure mobile menu visible ===== */
-#menu{
-  position: fixed;
-  top: 0;
-  right: -320px;
-  width: 320px;
-  height: 100vh;
-  background: #ffffff;
-  box-shadow: -3px 0 12px rgba(0,0,0,.12);
-  transition: right .3s ease;
-  z-index: 9999;
-  overflow-y: auto;
-  -webkit-overflow-scrolling: touch;
-  padding: 2rem 1.5rem;
+/* ===== Ronnie fix: mobile sidebar off-canvas ===== */
+@media (max-width: 1180px){
+  #sidebar{
+    position: fixed;
+    top: 0;
+    left: -320px;
+    width: 320px;
+    height: 100vh;
+    background: #ffffff;
+    box-shadow: 3px 0 12px rgba(0,0,0,.12);
+    transition: left .3s ease;
+    z-index: 9999;
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
+    padding: 2rem 1.5rem;
+  }
 
-  /* 글씨 선명도(깨져보임 완화) */
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-rendering: optimizeLegibility;
+  body.is-menu-visible #sidebar{
+    left: 0;
+  }
 }
-
-body.is-menu-visible #menu{ right: 0; }
-
+ 
 /* 링크 기본 */
-#menu a{
+#sidebar a{
   color: #111 !important;
   text-decoration: none;
   display: block;
@@ -2762,16 +2645,14 @@ body.is-menu-visible #menu{ right: 0; }
   border-bottom: 0 !important;
 }
 
-/* ✅ (핵심) MENU 제목/파란선/회색선 제거: header.major 계열 숨김 */
-#menu header.major,
-#menu .major{
+/* ✅ (핵심) 메뉴 안 제목/선(header.major) 제거 */
+#sidebar header.major,
+#sidebar .major{
   display: none !important;
   border: 0 !important;
   margin: 0 !important;
   padding: 0 !important;
 }
-
-
 /* ===== Step 3 (需要 / 不需要) ===== */
 .svc-group{
   border: 1px solid #eee;
@@ -2869,71 +2750,88 @@ legend{ font-weight: 600; margin-bottom: .75rem; }
 }
 
 
-/* 메뉴 영역 */
-#menu {
+/* 메뉴 영역 (사이드바 기준) */
+#sidebar nav{
   background: var(--sidebar-bg);
   border-radius: 0.5rem;
   padding: 1.25rem 1.25rem 1rem 1.25rem;
 }
 
-/* ===== Sidebar Menu : 회색 밴드 + 밑줄형 ===== */
-
-/* li 카드 배경/외곽선 없애고 밑줄만 */
-#menu > ul li {
-  background: transparent;                 /* 카드 흰배경 제거 */
-  border: none;                            /* 테두리 제거 */
-  border-bottom: 1px solid rgba(0,0,0,0.10);/* 진회색 밑줄 */
-  border-radius: 0;
-  margin: 0;                               /* 카드 간격 제거 */
-  transition: color .2s ease;              /* 배경 전환 제거 */
-}
-#menu > ul li:last-child { border-bottom: none; }
-
-/* 링크 레이아웃(라인형) */
-#menu > ul a {
-  display: block;
-  padding: 0.9rem 0.5rem;                  /* 좌우 살짝 여백 */
+/* 1) 토글: 글자 숨기고 삼선(FA) 표시 */
+a.toggle{
+  font-size: 0 !important;
   text-decoration: none;
-  color: #222;
-  background: none;                        /* 혹시 남아있을 배경 무효화 */
+}
+a.toggle::before{
+  content:"\f0c9";
+  font-family:"Font Awesome 5 Free";
+  font-weight:900;
+  font-size:18px;
+  line-height:48px;
+  color:#333;
+  display:block;
+  text-align:center;
 }
 
-/* hover: 글씨만 포인트 컬러, 배경 변화 없음 */
-#menu > ul a:hover {
-  color: #0b66c3;
-  background: none;
-}
+/* 2) 모바일/아이패드: #sidebar를 슬라이드 패널로 */
+@media (max-width:1180px){
 
-/* 활성 항목(선택된 메뉴) 강조 */
-#menu > ul li.active > a,
-#menu > ul a[aria-current="page"] {
-  color: #0b66c3;
-  font-weight: 600;
-  background: none;
-}
-
-/* 사이드바 밴드 색은 #f5f5f5 유지 (이미 적용돼 있으면 생략 가능) */
-#menu { background: #f5f5f5; }
-
-	
-
-	
-
-
-
-  /* 메뉴: 라인형(원본 톤) */
-  #menu{ background:#f5f5f5; padding: 1.25rem 1rem; border-radius: 6px; }
-  #menu > ul > li{
-    background: none !important;
-    border: none !important;
-    border-top: 1px solid rgba(210,215,217,.75) !important;
-    margin: .5em 0 0 0 !important;
-    padding: .5em 0 0 0 !important;
-    border-radius: 0 !important;
+  /* 사이드바를 화면 밖으로 */
+  #sidebar{
+    position: fixed !important;
+    top: 0 !important;
+    left: -320px !important;
+    width: 320px !important;
+    height: 100vh !important;
+    background: #f5f5f5 !important;
+    box-shadow: 3px 0 12px rgba(0,0,0,.12) !important;
+    transition: left .28s ease !important;
+    z-index: 10000 !important;
+    overflow-y: auto !important;
+    -webkit-overflow-scrolling: touch;
+    padding: 2rem 1.5rem !important;
   }
-  #menu > ul > li:first-child{ border-top:0; margin-top:0; padding-top:0; }
-  #menu > ul a{ background:none !important; }
-  #menu > ul a:hover{ color:#0b66c3 !important; background:none !important; }
+
+  /* 열릴 때 */
+  body.is-menu-visible #sidebar{
+    left: 0 !important;
+  }
+
+  /* 본문은 메뉴와 독립 */
+  #main{
+    width: 100% !important;
+  }
+
+  /* (선택) 메뉴 펼침/접힘(opener) */
+  #sidebar nav ul ul{ display:none; }
+  #sidebar nav a.opener.active + ul{ display:block; }
+
+  /* (선택) 라인형 메뉴 스타일 */
+  #sidebar nav > ul li{
+    background: transparent !important;
+    border: none !important;
+    border-bottom: 1px solid rgba(0,0,0,0.10) !important;
+    margin: 0 !important;
+    padding: 0 !important;
+  }
+  #sidebar nav > ul li:last-child{ border-bottom:none !important; }
+
+  #sidebar nav > ul a{
+    display:block;
+    padding:.9rem .5rem;
+    text-decoration:none !important;
+    color:#222 !important;
+    background:none !important;
+    border-bottom:0 !important;
+  }
+  #sidebar nav > ul a:hover{ color:#0b66c3 !important; background:none !important; }
+  #sidebar nav > ul li.active > a,
+  #sidebar nav > ul a[aria-current="page"]{
+    color:#0b66c3 !important;
+    font-weight:600 !important;
+  }
+}
+
 
   /* K-Plan 폼 카드 느낌(선택사항) */
   .kplan-shell{
@@ -2955,47 +2853,38 @@ legend{ font-weight: 600; margin-bottom: .75rem; }
 @media screen and (min-width: 981px) {
 
 
-  /* 메뉴 원본형 */
-  #menu {
-    position: static;
-    width: auto;
-    height: auto;
-    background: transparent;
-    box-shadow: none;
-    padding: 0;
-    transform: none;
-    transition: none;
-    z-index: auto;
-    overflow: visible;
-  }
-
+ 
 /* =========================
    Sidebar menu separators (FINAL)
    ========================= */
 
-#menu > ul {
+#sidebar nav > ul{
   margin: 0;
   padding: 0;
   list-style: none;
 }
 
-/* 1차 메뉴 구분선 (원래 보이던 회색 줄) */
-#menu > ul > li {
+/* 1차 메뉴 구분선 (사이드바 기준) */
+#sidebar nav > ul > li{
   background: none;
   border-top: 1px solid rgba(210, 215, 217, 0.75);
   margin: 0.5em 0 0 0;
   padding: 0.5em 0 0 0;
 }
 
-/* 첫 항목은 선 없음 */
-#menu > ul > li:first-child {
+#sidebar nav > ul > li:first-child{
   border-top: 0;
   margin-top: 0;
   padding-top: 0;
 }
-
-/* 링크 스타일 */
-#menu > ul > li > a {
+/* 첫 항목은 선 없음 (사이드바 기준) */
+#sidebar nav > ul > li:first-child{
+  border-top: 0;
+  margin-top: 0;
+  padding-top: 0;
+}
+/* 링크 스타일 (사이드바 기준) */
+#sidebar nav > ul > li > a{
   display: block;
   padding: .9rem .5rem;
   background: none;
@@ -3005,16 +2894,14 @@ legend{ font-weight: 600; margin-bottom: .75rem; }
   font-size: 1.6em;
   font-weight: 500;
 }
-
-/* hover */
-#menu > ul > li > a:hover {
+/* hover (사이드바 기준) */
+#sidebar nav > ul > li > a:hover{
   color: #4E97D1;
   background: none;
 }
-
-/* 현재 페이지 */
-#menu > ul > li.active > a,
-#menu > ul > li > a[aria-current="page"] {
+/* 현재 페이지 (사이드바 기준) */
+#sidebar nav > ul > li.active > a,
+#sidebar nav > ul > li > a[aria-current="page"]{
   color: #4E97D1;
   font-weight: 600;
 }
@@ -3070,9 +2957,12 @@ legend{ font-weight: 600; margin-bottom: .75rem; }
 /* ==========================
    Menu (사이드바 메뉴 리스트)
    ========================== */
+/* =========================
+   Sidebar menu (final)
+   ========================= */
 
 /* 메뉴 전체 UL */
-#menu ul {
+#sidebar nav ul{
   user-select: none;
   color: #3d4449;
   font-family: "Roboto Slab", serif;
@@ -3085,41 +2975,40 @@ legend{ font-weight: 600; margin-bottom: .75rem; }
 }
 
 /* 메뉴 링크 1줄씩 */
-#menu ul a,
-#menu ul span {
+#sidebar nav ul a,
+#sidebar nav ul span{
   border-bottom: 0;
   color: inherit;
   cursor: pointer;
   display: block;
-  font-size: 1.6em;   /* 네가 키워달라 했던 부분 유지 */
+  font-size: 1.6em;   /* 요청한 크기 유지 */
   font-family: 'Source Han Serif CN', 'Noto Serif KR', serif;
   font-weight: 500;
   padding: 0.7em 0;
 }
 
 /* hover 색상 */
-#menu ul a:hover,
-#menu ul span:hover {
+#sidebar nav ul a:hover,
+#sidebar nav ul span:hover{
   color: #4E97D1;
 }
 
-/* === Sidebar menu original separators (restore) === */
-#menu > ul > li {
+/* 1차 메뉴 구분선 */
+#sidebar nav > ul > li{
   border-top: 1px solid rgba(210, 215, 217, 0.75);
   margin-top: 0.75em;
   padding-top: 0.75em;
 }
 
-#menu > ul > li:first-child {
+#sidebar nav > ul > li:first-child{
   border-top: 0;
   margin-top: 0;
   padding-top: 0;
 }
 
-
 /* 현재 활성 링크 */
-#menu > ul li.active > a,
-#menu > ul a[aria-current="page"] {
+#sidebar nav > ul li.active > a,
+#sidebar nav > ul a[aria-current="page"]{
   color: #0b66c3;
   font-weight: 600;
 }
@@ -3256,11 +3145,11 @@ body{
   }
 }
 
-/* ---------- 5) Sidebar typography (菜单/联系方式) ---------- */
-/* 메뉴는 또렷하게 sans */
-#menu{
+/* 메뉴는 또렷하게 sans (사이드바 기준) */
+#sidebar{
   font-family: var(--ui-sans);
 }
+
 
 /* 연락처 문단 + 라인(메일/전화/주소)도 “본문과 같은” 크기로 키움 */
 #sidebar section p{
@@ -3334,10 +3223,11 @@ header.major + p{
 /* =========================
    Sidebar 대카테고리 (메뉴)
    ========================= */
-#menu,
-#menu ul,
-#menu ul li,
-#menu ul li a{
+#sidebar,
+#sidebar nav,
+#sidebar nav ul,
+#sidebar nav ul li,
+#sidebar nav ul li a{
   font-family: "Pretendard","PingFang SC","Microsoft YaHei",
                "Noto Sans CJK SC",-apple-system,BlinkMacSystemFont,
                "Segoe UI",Roboto,Arial,sans-serif;
@@ -3346,20 +3236,19 @@ header.major + p{
 }
 
 /* 메뉴 항목 크기 & 간격 */
-#menu ul li a{
+#sidebar nav ul li a{
   font-size: 15px;
   line-height: 1.6;
 }
 
 /* 모바일에서는 살짝 더 또렷하게 */
 @media (max-width: 980px){
-  #menu ul li a{
-    font-size: 15px;      /* ✅ 모바일도 15 고정 */
-    font-weight: 600;     /* ✅ 메뉴는 조금 더 단단하게 */
-    line-height: 1.65;    /* ✅ 줄간 여유 */
+  #sidebar nav ul li a{
+    font-size: 15px;      /* 모바일도 15 고정 */
+    font-weight: 600;     /* 메뉴는 조금 더 단단하게 */
+    line-height: 1.65;    /* 줄간 여유 */
   }
 }
-
 /* =========================
    Headings (제목/섹션 타이틀)
    - CJK는 Source Han Serif
@@ -3370,12 +3259,7 @@ h1, h2, h3, h4, h5, h6{
                "Source Han Serif CN","Noto Serif KR",
                Georgia,"Times New Roman",serif;
 }
-/* Sidebar 메뉴 클릭영역/가독성 복구 */
-#sidebar #menu ul li a{
-  font-size: 15px !important;
-  line-height: 1.65 !important;
-  padding: 0.75em 0 !important;   /* ✅ 클릭영역 키우기 */
-}
+
 
 /* 모바일에서는 살짝 더 큼직하게 */
 @media (max-width: 980px){
@@ -3404,12 +3288,6 @@ a.toggle::before{
   color: #333;
 }
 
-/* === KMS: kill #menu (we use #sidebar only) === */
-#menu { display: none !important; }
-#menu * { all: unset !important; }
-#menu { position: static !important; width: auto !important; height: auto !important; }
-#menu.is-open { right: auto !important; }
-
 /* ================================
    KMS: Hamburger icon (FontAwesome)
    ================================ */
@@ -3429,9 +3307,12 @@ a.toggle::before{
   display: block;
   text-align: center;
 }
-
-
-/* === KMS: opener works inside #sidebar (not #menu) === */
+<li>
+  <a class="opener">대카테고리</a>
+  <ul>
+    <li>서브메뉴</li>
+  </ul>
+</li>
 
 /* 기본: 하위 메뉴 숨김 */
 #sidebar nav ul ul{
@@ -3442,5 +3323,6 @@ a.toggle::before{
 #sidebar nav a.opener.active + ul{
   display: block;
 }
+
 
 
