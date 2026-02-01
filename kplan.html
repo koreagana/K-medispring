@@ -13,94 +13,107 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
   <link rel="stylesheet" href="assets/css/main.css" />
 
-  <style>
-    /* ===========================
-      K-Plan : HanGangAebom Blue UI
-    ============================ */
+<style>
+  /* ===========================
+    K-Plan : HanGangAebom Blue UI
+  ============================ */
 
-    /* ✅ 체크/라디오를 블루 체크로 (검정 X 제거) */
-    #planForm input[type="checkbox"],
-    #planForm input[type="radio"]{
-      -webkit-appearance: none;
-      appearance: none;
-      width: 18px;
-      height: 18px;
-      margin: 0 10px 0 0;
-      vertical-align: middle;
-      display: inline-grid;
-      place-content: center;
+  /* ✅ 체크/라디오를 블루 체크로 (검정 X 제거) */
+  #planForm input[type="checkbox"],
+  #planForm input[type="radio"]{
+    -webkit-appearance: none;
+    appearance: none;
+    width: 18px;
+    height: 18px;
+    margin: 0 10px 0 0;
+    vertical-align: middle;
+    display: inline-grid;
+    place-content: center;
 
-      background: #fff;
-      border: 1.6px solid rgba(30,107,214,0.45); /* ✅ 파란 테두리 */
-      box-shadow: none;
+    background: #fff !important;
+    border: 1.6px solid rgba(30,107,214,0.45) !important; /* ✅ 파란 테두리 */
+    box-shadow: none !important;
 
-      cursor: pointer;
-      transform: translateY(1px);
-    }
+    cursor: pointer;
+    transform: translateY(1px);
+  }
 
-    /* checkbox square */
-    #planForm input[type="checkbox"]{ border-radius: 5px; }
+  /* checkbox square */
+  #planForm input[type="checkbox"]{ border-radius: 5px; }
 
-    /* radio circle */
-    #planForm input[type="radio"]{ border-radius: 999px; }
+  /* radio circle */
+  #planForm input[type="radio"]{ border-radius: 999px; }
 
-    /* checked: blue background + white checkmark */
-    #planForm input[type="checkbox"]:checked,
-    #planForm input[type="radio"]:checked{
-      background: #1e6bd6;            /* ✅ 한강애봄 블루 */
-      border-color: #1e6bd6;
-    }
+  /* checked: blue background + white checkmark */
+  #planForm input[type="checkbox"]:checked,
+  #planForm input[type="radio"]:checked{
+    background: #1e6bd6 !important;  /* ✅ 한강애봄 블루 */
+    border-color: #1e6bd6 !important;
+  }
 
-    #planForm input[type="checkbox"]:checked::after,
-    #planForm input[type="radio"]:checked::after{
-      content: "✓";
-      color: #fff;
-      font-size: 13px;
-      line-height: 1;
-      font-weight: 800;
-    }
+  #planForm input[type="checkbox"]:checked::after,
+  #planForm input[type="radio"]:checked::after{
+    content: "✓";
+    color: #fff;
+    font-size: 13px;
+    line-height: 1;
+    font-weight: 800;
+  }
 
-    /* focus (keyboard) */
-    #planForm input[type="checkbox"]:focus,
-    #planForm input[type="radio"]:focus{
-      outline: 3px solid rgba(30,107,214,0.22);
-      outline-offset: 2px;
-    }
+  /* focus (keyboard) */
+  #planForm input[type="checkbox"]:focus,
+  #planForm input[type="radio"]:focus{
+    outline: 3px solid rgba(30,107,214,0.22);
+    outline-offset: 2px;
+  }
 
-    /* label cursor */
-    #planForm label{ cursor: pointer; }
+  /* ✅ 폼 안에서 '체크 항목 label'만 포인터 */
+  #planForm input + label{ cursor: pointer; }
 
-    /* ✅ Summary Box (제출 버튼 바로 위) : 블루 톤 */
-    #selectedBox{
-      border: 1px solid rgba(30,107,214,0.30);
-      background: rgba(30,107,214,0.05);
-      padding: 14px 16px;
-      border-radius: 8px;
-      margin: 0 0 1rem 0;
-    }
-    #selectedBox strong{
-      color: #1e6bd6;
-      font-size: 0.95rem;
-      display: inline-block;
-      margin-bottom: 6px;
-    }
-    #selectedSummary{
-      line-height: 1.7;
-      color: #1e6bd6;
-    }
-    #selectedSummary .empty{
-      opacity: 0.65;
-      color: #1e6bd6;
-    }
-    #selectedSummary ul{
-      margin: 0;
-      padding-left: 1.1rem;
-    }
-    #selectedSummary li{
-      color: #1e6bd6;
-    }
-  </style>
-</head>
+  /* ✅ Summary Box (제출 버튼 바로 위) : 블루 톤 */
+  #selectedBox{
+    border: 1px solid rgba(30,107,214,0.30);
+    background: rgba(30,107,214,0.05);
+    padding: 14px 16px;
+    border-radius: 8px;
+    margin: 0 0 1rem 0;
+  }
+  #selectedBox strong{
+    color: #1e6bd6;
+    font-size: 0.95rem;
+    display: inline-block;
+    margin-bottom: 6px;
+  }
+  #selectedSummary{
+    line-height: 1.7;
+    color: #1e6bd6;
+  }
+  #selectedSummary .empty{
+    opacity: 0.65;
+    color: #1e6bd6;
+  }
+  #selectedSummary ul{
+    margin: 0;
+    padding-left: 1.1rem;
+  }
+  #selectedSummary li{
+    color: #1e6bd6;
+  }
+
+  /* === Editorial 기본 체크/X 아이콘 완전 제거 (input + label 둘 다) === */
+  #planForm input[type="checkbox"]::before,
+  #planForm input[type="checkbox"]::after,
+  #planForm input[type="radio"]::before,
+  #planForm input[type="radio"]::after,
+  #planForm label::before,
+  #planForm label::after{
+    content: none !important;
+    background: none !important;
+    border: 0 !important;
+    box-shadow: none !important;
+  }
+</style>
+
 
 <body class="is-preload">
 
@@ -366,14 +379,56 @@
     </div>
 
     <!-- Sidebar -->
-    <div id="sidebar">
-      <div class="inner">
+   /* =========================
+   Sidebar 로고 + MENU 타이틀
+   ========================= */
 
-        <section id="search" class="alt">
-          <form method="get" action="#">
-            <input type="search" name="query" id="query" placeholder="搜索" aria-label="搜索" />
-          </form>
-        </section>
+/* 로고 영역: 가운데 정렬 + 위/아래 선 제거 */
+#sidebar-brand {
+  padding: 1.8rem 1.5rem 1.1rem;
+  text-align: center;
+  border-top: none !important;
+  border-bottom: none !important;
+}
+
+/* 로고 이미지 크기 & 중앙 정렬 */
+#sidebar-brand .sidebar-logo img {
+  display: block;
+  max-width: 140px;
+  height: auto;
+  margin: 0 auto;
+}
+
+/* 메뉴 전체 위의 회색 라인 제거 */
+#menu {
+  border-top: none !important;
+}
+
+/* 메뉴 리스트 좌우 여백 */
+#menu .links {
+  padding: 0 1.5rem 1.5rem;
+}
+
+/* MENU 첫 줄(타이틀) 스타일 */
+#menu .menu-title a {
+  font-size: 1.1rem !important;
+  font-weight: 700 !important;
+  color: #222 !important;
+  position: relative;
+  padding-bottom: 0.3rem;
+  display: inline-block;
+}
+
+/* MENU 밑 파란 밑줄 */
+#menu .menu-title a::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -2px;
+  width: 2.5rem;
+  height: 2px;
+  background: var(--brand);
+}
 
         <nav id="menu">
           <header class="major"><h2>菜单</h2></header>
