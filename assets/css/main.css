@@ -2193,7 +2193,7 @@ html[lang="ko"] .button {
 /* Footer */
 #footer .copyright {
   color: #9fa3a6;
-  font-size: 0.9em; }
+  font-size: 1.2em; }
   #footer .copyright a {
     color: inherit; }
 
@@ -2297,19 +2297,17 @@ html[lang="ko"] .button {
     padding-top: 0; }
 
 
-/* ===== 데스크톱(≥981px): 사이드바 기본 노출 ===== */
-@media (min-width: 981px) {
-  #menu {
-    position: static !important;
+/* ===== 데스크톱(≥981px): 사이드바는 항상 기본 레이아웃으로 ===== */
+@media (min-width: 981px){
+  #sidebar{
+    transform: none !important;
+    position: relative !important;   /* 원본이 fixed/relative 무엇이든, 여기서 굳이 바꿀 필요 없으면 삭제 가능 */
+    left: auto !important;
     right: auto !important;
-    width: auto !important;
-    height: auto !important;
-    box-shadow: none !important;
-    padding: 0 !important;
-    overflow: visible !important;
-    display: block !important;
   }
-  body.is-menu-visible #menu { right: auto !important; }
+  body.is-menu-visible #sidebar{
+    transform: none !important;
+  }
 }
 
 	
@@ -3424,5 +3422,6 @@ h1, h2, h3, h4, h5, h6{
   #header .logo .brand-cn{ letter-spacing: 0.02em; }
   #header .logo .brand-en{ letter-spacing: 0.08em; font-size: 0.9em; }
 }
+
 
 
