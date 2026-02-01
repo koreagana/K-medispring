@@ -109,13 +109,6 @@
               我们会根据你的需求，组合成最合适的韩国医疗行程：医疗 + 皮肤医美 + 大健康 + 接送/翻译/观光。
             </p>
 
-            <!-- ✅ 선택 요약 박스 (提交 버튼 위) -->
-<div id="selectedBox" style="border:1px solid rgba(0,0,0,0.2); padding:12px 14px; border-radius:6px; margin: 0 0 1rem 0;">
-  <strong>已选内容</strong>
-  <div id="selectedSummary" style="margin-top:8px; line-height:1.7;">
-    <span style="opacity:0.7;">还未选择。先勾选几项也可以。</span>
-  </div>
-</div>
             
             <ul class="actions">
               <li><a href="#kplan-form" class="button big">开始填写</a></li>
@@ -548,7 +541,7 @@
 
   </div>
 
- <!-- Scripts (템플릿 기본) -->
+<!-- Scripts (템플릿 기본) -->
 <script src="assets/js/jquery.min.js"></script>
 <script src="assets/js/browser.min.js"></script>
 <script src="assets/js/breakpoints.min.js"></script>
@@ -557,7 +550,6 @@
 
 <!-- ✅ K-Plan 폼 전용 스크립트 (맨 마지막) -->
 <script>
-  <script>
   const form = document.getElementById('planForm');
   const summaryEl = document.getElementById('selectedSummary');
 
@@ -611,7 +603,7 @@
       '</ul>';
   }
 
-  // ✅ 첫 로드 시: 브라우저가 이전 선택을 복원해도 전부 해제
+  // ✅ 첫 로드 시: 브라우저 복원 체크 전부 해제
   window.addEventListener('DOMContentLoaded', function(){
     form.querySelectorAll('input[type="checkbox"], input[type="radio"]').forEach(el => {
       el.checked = false;
@@ -619,11 +611,11 @@
     renderSummary();
   });
 
-  // ✅ change 이벤트: Step3(需要/不需要) 상호배타 + 요약 갱신
+  // ✅ change: Step3(需要/不需要) 상호배타 + 요약 갱신
   form.addEventListener('change', function(e){
     const el = e.target;
 
-    // Step3: checkbox지만 "한 개만" 선택되게
+    // Step3: checkbox지만 한 개만 선택되게 (data-excl 있는 것만 적용)
     if (el && el.type === 'checkbox') {
       const group = el.getAttribute('data-excl');
       if (group && el.checked) {
@@ -636,7 +628,7 @@
     renderSummary();
   });
 
-  // ✅ 최초 1회 렌더 (혹시 DOMContentLoaded 전에 스크립트가 실행되는 환경 대비)
+  // ✅ 최초 1회 렌더
   renderSummary();
 
   // ✅ 제출 시 alert
