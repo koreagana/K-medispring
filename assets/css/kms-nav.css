@@ -302,3 +302,28 @@ a.toggle:after{
   height: auto;
 }
 #sidebar{ overflow-x: hidden; }
+/* =========================
+   Sidebar Logo Hard Guard (필수 보험)
+   - 어떤 페이지든 사이드바 이미지가 화면 먹지 못하게
+   ========================= */
+
+/* 사이드바 안의 모든 이미지 폭 제한 */
+#sidebar img{
+  max-width: 160px !important;
+  width: 100% !important;
+  height: auto !important;
+  display: block;
+  margin: 0 auto;
+}
+
+/* 로고 섹션이 있든 없든 중앙정렬 */
+#sidebar .logo{
+  border-bottom: 0 !important;
+  display: block;
+  text-align: center;
+}
+
+/* 가로 스크롤/삐져나옴 방지 */
+#sidebar{
+  overflow-x: hidden !important;
+}
