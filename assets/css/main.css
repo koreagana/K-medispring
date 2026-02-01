@@ -3313,7 +3313,7 @@ body{
   }
 
   #main {
-    margin-left: 320px;
+    margin-left: 0px;
   }
 }
 /* =========================
@@ -3417,15 +3417,6 @@ body{
     flex: 0 0 320px !important;
   }
 
-  /* 2) wrapper/main이 어떤 방식이든 따라오게 2중 안전장치 */
-  #wrapper {
-    padding-left: 320px !important;
-  }
-  #main {
-    margin-left: 0 !important; /* wrapper padding-left 쓰는 구조면 margin-left는 0이 맞음 */
-    width: calc(100% - 320px) !important;
-  }
-
   /* 4) 블릿(•) 완전 제거: list-style + li::before 둘 다 */
   #sidebar ul,
   #sidebar nav ul,
@@ -3450,6 +3441,7 @@ body{
     padding-left: 0 !important;
   }
 }
+
 
 
 
