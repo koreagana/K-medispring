@@ -3351,10 +3351,19 @@ header.major + p{
 /* 모바일에서는 살짝 더 또렷하게 */
 @media (max-width: 980px){
   #menu ul li a{
-    font-size: 15px;      /* ✅ 14 → 15로 복구 */
+    font-size: 15px;      /* ✅ 모바일도 15 고정 */
     font-weight: 600;     /* ✅ 메뉴는 조금 더 단단하게 */
-    line-height: 1.65;    /* ✅ 줄간도 살짝 넉넉히 */
+    line-height: 1.65;    /* ✅ 줄간 여유 */
   }
 }
 
-
+/* =========================
+   Headings (제목/섹션 타이틀)
+   - CJK는 Source Han Serif
+   - 영문/숫자는 Roboto Slab/Merriweather로 자연스럽게
+   ========================= */
+h1, h2, h3, h4, h5, h6{
+  font-family: "Roboto Slab","Merriweather",
+               "Source Han Serif CN","Noto Serif KR",
+               Georgia,"Times New Roman",serif;
+}
