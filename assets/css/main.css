@@ -1574,16 +1574,6 @@ a.button.primary {
 /* ==========================
    ↓ 여기부터 기존 원본 코드 유지 ↓
    ========================== */
-
-/* Button */
-input[type="submit"],
-input[type="reset"],
-input[type="button"],
-button,
-.button {
-  ...
-}
-
 input[type="submit"],
 input[type="reset"],
 input[type="button"],
@@ -2046,18 +2036,6 @@ html[lang="ko"] .button {
     width: 2em; }
   #search form input[type="text"] {
     padding-right: 2.75em; }
-
-
-	
- /* 🔹 브랜드 블루 추가 */
-  height: inherit;
-  left: 0;
-  line-height: inherit;
-  position: absolute;
-  text-indent: 0;
-  top: 0;
-  width: inherit;
-}
 
 /* --- Fix SNS icons drifting below the blue line (Editorial) --- */
 #header {
@@ -2854,88 +2832,65 @@ a.toggle::before{
 
 
  
-/* =========================
-   Sidebar menu separators (FINAL)
-   ========================= */
-
-#sidebar nav > ul{
-  margin: 0;
-  padding: 0;
-  list-style: none;
-}
-
-/* 1차 메뉴 구분선 (사이드바 기준) */
-#sidebar nav > ul > li{
-  background: none;
-  border-top: 1px solid rgba(210, 215, 217, 0.75);
-  margin: 0.5em 0 0 0;
-  padding: 0.5em 0 0 0;
-}
-
-#sidebar nav > ul > li:first-child{
-  border-top: 0;
-  margin-top: 0;
-  padding-top: 0;
-}
-/* 첫 항목은 선 없음 (사이드바 기준) */
-#sidebar nav > ul > li:first-child{
-  border-top: 0;
-  margin-top: 0;
-  padding-top: 0;
-}
-/* 링크 스타일 (사이드바 기준) */
-#sidebar nav > ul > li > a{
-  display: block;
-  padding: .9rem .5rem;
-  background: none;
-  color: #222;
-  text-decoration: none;
-  font-family: 'Source Han Serif CN','Noto Serif KR',serif;
-  font-size: 1.6em;
-  font-weight: 500;
-}
-/* hover (사이드바 기준) */
-#sidebar nav > ul > li > a:hover{
-  color: #4E97D1;
-  background: none;
-}
-/* 현재 페이지 (사이드바 기준) */
-#sidebar nav > ul > li.active > a,
-#sidebar nav > ul > li > a[aria-current="page"]{
-  color: #4E97D1;
-  font-weight: 600;
-}
-
-
-  /* 본문 레이아웃 반응형 */
-  #main { position: relative; z-index: 2; }
-  #main > .inner {
-    margin: 0 auto;
-    padding: 0 2rem 3rem 2rem;
-  }
-
-/* 화면별 폭 조정 — 단순화 */
 @media screen and (min-width: 981px) {
-  #main > .inner {
-    max-width: 100%;
-    margin: 0;
-    padding: 0 2rem 3rem; /* 좌우 살짝 여백만 */
+
+  /* Sidebar menu separators (FINAL) */
+  #sidebar nav > ul{ margin:0; padding:0; list-style:none; }
+
+  #sidebar nav > ul > li{
+    background:none;
+    border-top:1px solid rgba(210,215,217,.75);
+    margin:.5em 0 0 0;
+    padding:.5em 0 0 0;
+  }
+
+  #sidebar nav > ul > li:first-child{
+    border-top:0;
+    margin-top:0;
+    padding-top:0;
+  }
+
+  #sidebar nav > ul > li > a{
+    display:block;
+    padding:.9rem .5rem;
+    background:none;
+    color:#222;
+    text-decoration:none;
+    font-family:'Source Han Serif CN','Noto Serif KR',serif;
+    font-size:1.6em;
+    font-weight:500;
+  }
+
+  #sidebar nav > ul > li > a:hover{
+    color:#4E97D1;
+    background:none;
+  }
+
+  #sidebar nav > ul > li.active > a,
+  #sidebar nav > ul > li > a[aria-current="page"]{
+    color:#4E97D1;
+    font-weight:600;
+  }
+
+  /* 본문 레이아웃 */
+  #main{ position:relative; z-index:2; }
+  #main > .inner{
+    max-width:100%;
+    margin:0;
+    padding:0 2rem 3rem;
+  }
+
+  /* K-Plan 폼 카드 */
+  .kplan-shell{
+    background:#fff;
+    border:1px solid rgba(0,0,0,.06);
+    border-radius:10px;
+    box-shadow:0 1px 6px rgba(0,0,0,.06);
+    padding:1.5rem;
   }
 }
 
-
-  /* K-Plan 폼 카드 느낌 */
-  .kplan-shell {
-    background: #fff;
-    border: 1px solid rgba(0,0,0,.06);
-    border-radius: 10px;
-    box-shadow: 0 1px 6px rgba(0,0,0,.06);
-    padding: 1.5rem;
-  }
-}
-
-
-/* 🔹 공통 Sidebar 기본 스타일 (주로 데스크톱) */
+	/* 🔹 공통 Sidebar 기본 스타일 (주로 데스크톱) */
 #sidebar {
   /* sidebar 자체 박스 */
   flex-grow: 0;          /* 본문보다 커지지 않게 */
@@ -3307,13 +3262,6 @@ a.toggle::before{
   display: block;
   text-align: center;
 }
-<li>
-  <a class="opener">대카테고리</a>
-  <ul>
-    <li>서브메뉴</li>
-  </ul>
-</li>
-
 /* 기본: 하위 메뉴 숨김 */
 #sidebar nav ul ul{
   display: none;
@@ -3323,6 +3271,7 @@ a.toggle::before{
 #sidebar nav a.opener.active + ul{
   display: block;
 }
+
 
 
 
