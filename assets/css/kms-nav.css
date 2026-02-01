@@ -1,42 +1,39 @@
-/* =========================
-   KMS Global Nav (kms-nav.css)
-   목표:
-   1) 전체화면(Full width) 레이아웃
-   2) 넓은 메뉴(사이드바) + 원본 느낌 회색 배경
-   3) 헤더 여유 + 모바일 삼선(햄버거) 크게/깔끔하게
-   4) 가독성(본문 14px / 모바일 15px)
-   ========================= */
+/* =========================================================
+   KMS Global Navigation  (assets/css/kms-nav.css)
+   - Full width layout
+   - Wide sidebar (grey)
+   - Airy header (roomy)
+   - Mobile hamburger + off-canvas sidebar
+   - Readability: body 14px (mobile 15px)
+   ========================================================= */
 
-/* ---------- 0) 변수 ---------- */
+/* -------------------------
+   0) Variables
+   ------------------------- */
 :root{
-  --kms-accent: #4E97D1;      /* 헤더 밑줄 컬러 */
-  --kms-sidebar-w: 360px;     /* 사이드바 넓이 */
-  --kms-header-py: 2.4rem;    /* 헤더 상단 여유 */
-  --kms-header-pb: 1.2rem;    /* 헤더 하단 여유 */
-  --kms-header-border: 4px;   /* 헤더 하단 라인 */
-  --kms-sidebar-bg: #f5f6f7;  /* ✅ 원본 느낌 회색 */
-  --kms-menu-line: #e3e6e8;   /* 메뉴 구분선 */
+  --kms-accent: #4E97D1;        /* header underline */
+  --kms-sidebar-w: 360px;       /* sidebar width */
+  --kms-sidebar-bg: #f5f6f7;    /* sidebar grey */
+  --kms-menu-line: #e3e6e8;     /* menu divider */
+  --kms-text: #2f2f2f;
+  --kms-hamburger: #e86b6b;     /* hamburger color */
 }
 
-/* =========================
-   1) Readability Fix (가독성)
-   ========================= */
-
-/* 전체 기본 가독 */
+/* -------------------------
+   1) Readability (글씨 크기 / 줄간격)
+   ------------------------- */
 body{
-  font-size: 14px;        /* ✅ 최소 14px */
-  line-height: 1.75;      /* ✅ 설명 텍스트에 필수 */
-  color: #2f2f2f;
+  font-size: 14px;
+  line-height: 1.75;
+  color: var(--kms-text);
 }
 
-/* 본문 텍스트는 확실히 14px 유지 */
 #main p,
 #main li{
   font-size: 14px;
   line-height: 1.8;
 }
 
-/* 모바일은 더 크게 */
 @media (max-width: 736px){
   body,
   #main p,
@@ -45,11 +42,233 @@ body{
   }
 }
 
-/* 작은 설명 텍스트가 더 작아지지 않게 */
+/* 작은 설명이 작아지지 않게 */
 #main .features p,
 #main .posts p{
   font-size: 14px;
 }
 
-/* 제목 스케일 (너무 작게 안 가게) */
-#main
+/* 제목 크기(너무 작지 않게) */
+#main h1{ font-size: 2.1rem; }
+#main h2{ font-size: 1.6rem; }
+#main h3{ font-size: 1.2rem; }
+
+@media (max-width: 736px){
+  #main h1{ font-size: 1.75rem; }
+  #main h2{ font-size: 1.45rem; }
+}
+
+/* -------------------------
+   2) Full width layout
+   (Editorial: #main > .inner max-width 해제)
+   ------------------------- */
+#main > .inner{
+  max-width: none !important;
+  width: 100% !important;
+  padding-left: 3.2rem !important;
+  padding-right: 3.2rem !important;
+}
+
+@media (min-width: 1280px){
+  #main > .inner{
+    padding-left: 4rem !important;
+    padding-right: 4rem !important;
+  }
+}
+
+@media (max-width: 736px){
+  #main > .inner{
+    padding-left: 1.35rem !important;
+    padding-right: 1.35rem !important;
+  }
+}
+
+/* 헤더 아래 첫 섹션 숨 쉴 공간 */
+#main > .inner > section:first-of-type{
+  padding-top: 1.2rem;
+}
+
+/* -------------------------
+   3) Sidebar (wide + grey)
+   ------------------------- */
+#sidebar{
+  width: var(--kms-sidebar-w) !important;
+  background: var(--kms-sidebar-bg);
+}
+
+#sidebar > .inner{
+  padding: 2.25rem 2rem !important;
+}
+
+/* 데스크톱: 본문을 사이드바 폭만큼 밀기 */
+@media (min-width: 981px){
+  #main{
+    margin-left: var(--kms-sidebar-w) !important;
+  }
+}
+
+/* -------------------------
+   4) Menu (force show + spacing)
+   - 네비가 안 보이는 문제 방지
+   ------------------------- */
+#sidebar nav#menu{
+  display: block !important;
+  visibility: visible !important;
+  height: auto !important;
+  overflow: visible !important;
+}
+
+#sidebar nav#menu > ul{
+  display: block !important;
+  height: auto !important;
+  overflow: visible !important;
+}
+
+/* 메뉴 구분선 */
+#sidebar nav#menu ul li{
+  border-bottom: 1px solid var(--kms-menu-line);
+}
+
+/* 메뉴 링크: 크기/간격 넉넉하게 */
+#sidebar nav#menu a{
+  font-size: 14px;
+  padding: 0.85rem 0.75rem;
+  color: #333;
+  text-decoration: none;
+}
+
+/* -------------------------
+   5) Header (airy, wide, clean)
+   - “시원시원한 헤더” 핵심
+   ------------------------- */
+#header{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  padding: 2.6rem 0 1.4rem 0 !important;
+  border-bottom: 4px solid var(--kms-accent);
+
+  position: relative;
+  z-index: 1000;
+}
+
+/* 로고(브랜드) */
+#header .logo{
+  display: flex;
+  align-items: baseline;
+  gap: .5rem;
+  min-width: 240px;
+  white-space: nowrap;
+
+  text-decoration: none;
+  border-bottom: 0;
+}
+
+/* 아이콘: 오른쪽 끝 / 간격 넓게 */
+#header .icons{
+  display: flex;
+  align-items: center;
+  gap: 1.1rem;
+  margin: 0;
+}
+
+/* 아이콘 크기 살짝 키우기 */
+#header .icons a{
+  font-size: 1.05rem;
+}
+
+/* -------------------------
+   6) Hamburger Toggle (mobile)
+   - HTML: <a href="#sidebar" class="toggle"></a>
+   ------------------------- */
+a.toggle{
+  -webkit-tap-highlight-color: transparent;
+  text-decoration: none;
+  border-bottom: 0;
+
+  /* PC에서는 숨김, 모바일에서만 보이게 */
+  display: none;
+
+  position: absolute;
+  top: 1.6rem;
+  left: 0;
+  width: 3.25rem;
+  height: 3.25rem;
+  z-index: 10001;
+
+  /* 텍스트 제거 */
+  font-size: 0;
+  color: transparent;
+  overflow: hidden;
+}
+
+/* 햄버거 3줄 */
+a.toggle:before,
+a.toggle:after{
+  content: "";
+  position: absolute;
+  left: 0.85rem;
+  right: 0.85rem;
+  height: 2px;
+  background: var(--kms-hamburger);
+  border-radius: 2px;
+}
+
+a.toggle:before{
+  top: 1.10rem;
+  box-shadow: 0 0.55rem 0 0 var(--kms-hamburger);
+}
+
+a.toggle:after{
+  top: 2.20rem;
+}
+
+/* 모바일 헤더/토글 배치 */
+@media (max-width: 980px){
+  a.toggle{ display: block; }
+
+  /* 모바일은 본문 margin-left 해제 */
+  #main{ margin-left: 0 !important; }
+
+  /* 토글 자리 확보해서 로고와 겹침 방지 */
+  #header{
+    padding: 2.2rem 0 1.2rem 0 !important;
+    padding-left: 4.25rem !important;
+  }
+
+  #header .logo{
+    min-width: 0;
+  }
+
+  #header .icons{
+    gap: .95rem;
+  }
+}
+
+/* -------------------------
+   7) Mobile Off-canvas Sidebar
+   - main.js가 body.is-menu-visible 토글해준다는 전제
+   ------------------------- */
+@media (max-width: 980px){
+  #sidebar{
+    position: fixed !important;
+    top: 0;
+    left: 0;
+
+    width: var(--kms-sidebar-w) !important;
+    height: 100vh;
+
+    transform: translateX(calc(-1 * var(--kms-sidebar-w)));
+    transition: transform .28s ease;
+
+    background: var(--kms-sidebar-bg);
+    z-index: 10000;
+    overflow-y: auto;
+    box-shadow: 3px 0 14px rgba(0,0,0,.12);
+  }
+
+  body.is-menu-visible #sidebar{
+    transform: translateX(0);
+  }
+}
