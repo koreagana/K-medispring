@@ -3310,4 +3310,16 @@ body{
   }
 }
 
+/* header.major 바로 아래 설명 문단 전용 */
+header.major + p{
+  margin-top: -1.2rem;   /* 제목과 더 붙이기 */
+  margin-bottom: 2rem;
+
+  font-family: var(--ui-sans);
+  font-size: 0.95rem;
+  line-height: 1.75;
+  font-weight: 400;
+  color: #555;
+}
+
 
