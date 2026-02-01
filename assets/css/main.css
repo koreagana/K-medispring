@@ -3316,3 +3316,75 @@ h1, h2, h3, h4, h5, h6{
   padding: 0 1.5rem 1.5rem;
 }
 
+/* ===== HanGangAebom Chinese Typography ===== */
+
+/* 중국어 본문용 */
+body {
+  font-family: "Source Han Serif SC", "Noto Serif SC",
+               "Songti SC", "SimSun", serif;
+}
+
+/* 슬로건 / 서브카피 */
+.tagline,
+.subtext,
+#banner p,
+#banner .content p {
+  font-size: 1.05rem;
+  font-weight: 500;
+  letter-spacing: 0.02em;
+  color: #333;
+}
+/* ==================================================
+   HanGangAebom – Chinese Body Text (Brand Philosophy)
+   ================================================== */
+
+/* 설명형 본문, 브랜드 철학, 소개 문단 */
+#main p,
+#main article p,
+#main .content p,
+#main .features p,
+#main section p {
+  font-family: "Source Han Serif SC", "Noto Serif SC",
+               "Songti SC", "SimSun", serif;
+  font-size: 1rem;              /* ≈ 16px */
+  font-weight: 400;
+  line-height: 1.85;
+  color: #333;
+}
+
+/* 브랜드 철학 섹션 제목 옆 설명 (조금 더 강조) */
+#main .features article h3 + p {
+  font-size: 1.02rem;
+  font-weight: 500;
+}
+/* ==================================================
+   HanGangAebom – Contact Section Typography
+   ================================================== */
+
+/* 联系方式 설명 문단 */
+#sidebar section p {
+  font-family: "Source Han Serif SC", "Noto Serif SC",
+               "Songti SC", "SimSun", serif;
+  font-size: 1rem;          /* 본문과 동일 */
+  font-weight: 400;
+  line-height: 1.85;
+  color: #333;
+}
+
+/* 이메일 / 전화 / 주소 라인 */
+#sidebar ul.contact li {
+  font-family: "Source Han Serif SC", "Noto Serif SC",
+               "Songti SC", "SimSun", serif;
+  font-size: 0.95rem;       /* 본문보다 살짝 작게 */
+  font-weight: 400;
+  line-height: 1.8;
+  color: #333;
+}
+
+/* 아이콘 옆 텍스트 정렬 안정화 */
+#sidebar ul.contact li span,
+#sidebar ul.contact li a {
+  font-family: inherit;
+  color: inherit;
+}
+
