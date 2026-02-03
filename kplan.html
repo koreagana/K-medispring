@@ -620,6 +620,105 @@
 
     renderSummary();
   </script>
+<!-- WeChat QR Modal -->
+<div id="wechatModal" class="modal" aria-hidden="true" role="dialog">
+  <div class="modal-inner" role="document">
+    <button class="close" aria-label="Close">&times;</button>
+    <p class="modal-caption">扫描二维码添加微信</p>
+    <img id="wechatQR" class="modal-content" src="images/qr_weixin.jpg" alt="WeChat QR for e-gana" />
+    <p class="modal-id">WeChat ID：e-gana</p>
+  </div>
+</div>
+
+<!-- WhatsApp Modal -->
+<div id="whatsappModal" class="modal" aria-hidden="true" role="dialog">
+  <div class="modal-inner" role="document">
+    <button class="close" aria-label="Close">&times;</button>
+    <p class="modal-caption">QR → WhatsApp Connect</p>
+    <img id="whatsappQR" class="modal-content" src="images/whatsapp_qr.jpg" alt="WhatsApp QR for K-Medi Spring" />
+    <p class="modal-id">WhatsApp：+82-10-4903-3123</p>
+  </div>
+</div>
+
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+
+  /* WeChat */
+  const wechatModal  = document.getElementById('wechatModal');
+  const wechatIcon   = document.getElementById('wechat-icon');
+  const wechatQR     = document.getElementById('wechatQR');
+  const wechatClose  = wechatModal ? wechatModal.querySelector('.close') : null;
+
+  function openWeChat(e){
+    if (e) e.preventDefault();
+    if (wechatQR){
+      wechatQR.src = wechatQR.src.split('?')[0] + '?v=' + Date.now();
+    }
+    if (wechatModal){
+      wechatModal.style.display = 'flex';
+      wechatModal.setAttribute('aria-hidden', 'false');
+    }
+    document.body.classList.add('modal-open');
+  }
+  function closeWeChat(){
+    if (wechatModal){
+      wechatModal.style.display = 'none';
+      wechatModal.setAttribute('aria-hidden', 'true');
+    }
+    document.body.classList.remove('modal-open');
+  }
+
+  if (wechatIcon)  wechatIcon.addEventListener('click', openWeChat);
+  if (wechatClose) wechatClose.addEventListener('click', closeWeChat);
+  if (wechatModal){
+    wechatModal.addEventListener('click', function(e){
+      if (e.target === wechatModal) closeWeChat();
+    });
+  }
+
+  /* WhatsApp */
+  const whatsappModal = document.getElementById('whatsappModal');
+  const whatsappIcon  = document.getElementById('whatsapp-icon');
+  const whatsappQR    = document.getElementById('whatsappQR');
+  const whatsappClose = whatsappModal ? whatsappModal.querySelector('.close') : null;
+
+  function openWhatsApp(e){
+    if (e) e.preventDefault();
+    if (whatsappQR){
+      whatsappQR.src = whatsappQR.src.split('?')[0] + '?v=' + Date.now();
+    }
+    if (whatsappModal){
+      whatsappModal.style.display = 'flex';
+      whatsappModal.setAttribute('aria-hidden','false');
+    }
+    document.body.classList.add('modal-open');
+  }
+  function closeWhatsApp(){
+    if (whatsappModal){
+      whatsappModal.style.display = 'none';
+      whatsappModal.setAttribute('aria-hidden','true');
+    }
+    document.body.classList.remove('modal-open');
+  }
+
+  if (whatsappIcon)  whatsappIcon.addEventListener('click', openWhatsApp);
+  if (whatsappClose) whatsappClose.addEventListener('click', closeWhatsApp);
+  if (whatsappModal){
+    whatsappModal.addEventListener('click', function(e){
+      if (e.target === whatsappModal) closeWhatsApp();
+    });
+  }
+
+  /* ESC closes all */
+  document.addEventListener('keydown', function (e) {
+    if (e.key === 'Escape') {
+      closeWeChat();
+      closeWhatsApp();
+    }
+  });
+
+});
+</script>
 
 </body>
 </html>
