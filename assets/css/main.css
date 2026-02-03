@@ -3171,6 +3171,18 @@ a.toggle{
   display:block !important;
 }
 
+/* 1) #sidebar > .inner 가 아직 26em이면 폭이 다시 벌어짐 */
+#sidebar > .inner{
+  width:80% !important;
+  box-sizing:border-box !important;
+}
+
+/* 2) 데스크탑에서 #main 이 밀려나오거나 가로스크롤 생기면 방지 */
+#main{
+  min-width:0 !important;
+}
+
+
 /* 데스크탑에서도 상단 고정 유지 */
 @media (min-width: 981px){
   a.toggle{
@@ -3181,7 +3193,6 @@ a.toggle{
     z-index:10001 !important;
   }
 }
-
 
 /* iPad+모바일(980px 이하)에서만 토글 표시 */
 @media (max-width: 980px){
@@ -3285,8 +3296,4 @@ a.toggle{
     padding-top:0 !important;   /* 모바일 토글용 padding-top 제거 */
   }
 
-  /* 모바일 토글은 PC에서 숨김 */
-  a.toggle{ display:none !important; }
-}
-
-
+  
