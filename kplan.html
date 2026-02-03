@@ -7,11 +7,8 @@
 -->
 <html lang="zh-CN">
 <head>
-  <title>汉江春天 · 定制医疗观光方案</title>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
 
-  <!-- GitHub Pages base -->
+  <!-- GitHub Pages base (HEAD 최상단) -->
   <script>
     (function () {
       var project = "/K-medispring/";
@@ -22,11 +19,16 @@
     })();
   </script>
 
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+  <title>汉江春天 · 定制医疗观光方案</title>
+
   <!-- Editorial CSS -->
   <link rel="stylesheet" href="assets/css/fontawesome-all.min.css" />
   <link rel="stylesheet" href="assets/css/main.css" />
-  <link rel="stylesheet" href="assets/css/kplan-agi.css">
+  <link rel="stylesheet" href="assets/css/kplan-agi.css" />
 
+  <!-- K-Plan inline overrides (short only) -->
   <style>
     :root{
       --hga-blue: #1e6bd6;
@@ -49,10 +51,14 @@
       margin:0 auto;
     }
 
-    /* Menu 상단 라인 제거 */
-    #menu{ border-top: 0 !important; }
+    /* Menu 상단 라인 제거 (Editorial 안전 범위) */
+    #sidebar nav#menu,
+    #sidebar nav#menu > header,
+    #sidebar nav#menu ul{
+      border-top: 0 !important;
+    }
 
-    /* K-Plan: 체크/라디오 파란색 (Editorial label:before 방식) */
+    /* K-Plan: 체크/라디오 컬러 */
     #planForm input[type="checkbox"] + label:before,
     #planForm input[type="radio"] + label:before{
       border-color: var(--hga-blue-weak) !important;
@@ -69,7 +75,7 @@
       border-color: var(--hga-blue) !important;
     }
 
-    /* Step3 간격 */
+    /* Step3 */
     .kplan-step3 label{ margin-bottom: 6px; display:block; }
     .kplan-step3 .pair{ display:flex; gap:18px; flex-wrap:wrap; }
 
@@ -87,8 +93,7 @@
       display:inline-block;
       margin-bottom: 8px;
     }
-    #selectedSummary,
-    #selectedSummary li{
+    #selectedSummary{
       font-size: 18px;
       line-height: 1.9;
       font-weight: 500;
@@ -99,9 +104,10 @@
       font-weight:500;
     }
   </style>
+
 </head>
 
-<body class="is-preload">
+  <body class="is-preload">
   <div id="wrapper">
 
     <!-- =======================
