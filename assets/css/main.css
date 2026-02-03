@@ -2169,3 +2169,94 @@ header.major > :last-child{
   }
 }
 
+/* =========================
+   FINAL HEADER FIX
+   ========================= */
+
+/* 1. PC에서는 toggle 완전 숨김 */
+@media (min-width: 981px){
+  a.toggle{ display:none !important; }
+}
+
+/* 2. 헤더를 ‘진짜 상단 바’로 */
+#header{
+  background:#fff;
+  border-bottom:4px solid #4E97D1; /* ← PC 파란 줄 */
+  padding:1.6em 2em 1.2em 2em;
+}
+
+/* 로고 + SNS 정렬 */
+#header{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:1rem;
+}
+
+/* SNS 아이콘 오른쪽 */
+#header .icons{
+  margin-left:auto;
+}
+
+/* =========================
+   MOBILE ONLY
+   ========================= */
+@media (max-width:980px){
+
+  /* 모바일에서는 헤더 줄 얇게 */
+  #header{
+    border-bottom:2px solid #4E97D1;
+    padding:1.2em 1.2em 1em;
+  }
+
+  /* 모바일 SNS 오른쪽 끝 */
+  #header .icons{
+    justify-content:flex-end;
+  }
+
+  /* toggle은 햄버거 버튼 역할만 */
+  a.toggle{
+    display:block !important;
+    top:12px;
+    left:12px;
+  }
+}
+/* =========================
+   HEADER FIX (SAFE)
+   ========================= */
+
+/* ❌ PC에서 toggle 숨김은 절대 금지 */
+/*
+@media (min-width: 981px){
+  a.toggle{ display:none !important; }
+}
+*/
+
+/* 헤더는 흰 배경 + 얇은 선(아주 얇게) */
+#header{
+  background:#fff !important;
+  border-bottom:0.7px solid rgba(78,151,209,.55) !important; /* ✅ 얇은 선 */
+  padding:1.6em 2em 1.2em 2em !important;
+
+  display:flex !important;
+  align-items:center !important;
+  justify-content:space-between !important;
+  gap:1rem !important;
+}
+
+/* SNS 아이콘 오른쪽 */
+#header .icons{
+  margin-left:auto !important;
+}
+
+/* MOBILE ONLY */
+@media (max-width:980px){
+  #header{
+    padding:1.2em 1.2em 1em !important;
+    border-bottom:0.7px solid rgba(78,151,209,.55) !important; /* 모바일도 얇은 선 유지 */
+  }
+  #header .icons{
+    justify-content:flex-end !important;
+  }
+}
+
