@@ -1592,7 +1592,7 @@ button,
   text-align: center;
   text-decoration: none;
   text-transform: uppercase;
-  white-space: nowrap; }
+  }
   input[type="submit"]:hover,
   input[type="reset"]:hover,
   input[type="button"]:hover,
@@ -3258,4 +3258,5 @@ html, body { overflow-x: hidden; }
   /* 클릭 느낌 살짝 */
   a.toggle:active{ transform: translateY(1px); }
 }
+
 
