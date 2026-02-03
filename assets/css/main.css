@@ -2899,628 +2899,312 @@ legend{ font-weight: 600; margin-bottom: .75rem; }
    1) 상단 로고 텍스트(汉江春天) 크게
    ============================== */
 #header h1 a {
-  font-size: 38px;     /* 로고 느낌 크게 */
+  font-size: 30px;     /* 로고 느낌 크게 */
   font-weight: 600;
   line-height: 1.2;
 }
-
-/* ---------- 0) Font variables ---------- */
-:root{
-  --brand: #0077B6;
-  --hover: #2088C2;
-  --deep:  #1565A0;
-
-  /* UI / Body Sans (readability first) */
-  --ui-sans: "Pretendard","PingFang SC","Microsoft YaHei","Noto Sans CJK SC","Source Han Sans SC",
-             -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;
-
-  /* CJK Serif (brand headings) */
-  --brand-serif: "Source Han Serif CN","Source Han Serif SC","Noto Serif SC","Noto Serif CJK SC",
-                 "Songti SC","SimSun","AppleMyungjo","Batang",serif;
-
-  /* (호환 유지용: 기존 변수명도 살려둠) */
-  --body-latin: var(--ui-sans);
-  --heading-latin: var(--brand-serif);
-  --cjk-sans: var(--ui-sans);
-  --cjk-serif: var(--brand-serif);
-}
-
-/* ---------- 1) Global body (기본 본문) ---------- */
-body{
-  font-family: var(--ui-sans);
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  color: #333;
-}
-
-/* 기본 본문 크기: “눈 2.0도 안보여” 방지 */
-#main p,
-#main li{
-  font-family: var(--ui-sans);
-  font-size: 18px;
-  line-height: 1.9;
-  font-weight: 400;
-  color: #333;
-}
-
-/* 모바일 본문 타이포 (중국어 기준) */
-@media (max-width: 980px){
-  #main p,
-  #main li{
-    font-size: 14px;
-    line-height: 1.65;
-  }
-}
-
-/* ✅ 헤딩: 원본 Roboto Slab 탈출 (중국어 브랜드 톤으로 고정) */
-#main h1, #main h2, #main h3, #main h4, #main h5, #main h6,
-#sidebar h1, #sidebar h2, #sidebar h3, #sidebar h4, #sidebar h5, #sidebar h6{
-  font-family: var(--brand-serif);
-  font-weight: 600;
-  letter-spacing: 0.02em;
-  color: #222;
-  line-height: 1.25;
-}
-
-/* 섹션 타이틀(major)만 정확히 키우기 */
-#main header.major > h2{ font-size: 1.65rem; }
-#main header.major > h3{ font-size: 1.25rem; }
-#main header.major > h4{ font-size: 1.10rem; }
-
-@media (max-width: 980px){
-  #main header.major > h2{ font-size: 1.35rem; }
-  #main header.major > h3{ font-size: 1.15rem; }
-}
-
-
-/* 배너 소개문(“汉江春天 是一家…”) — 볼드처럼 안 보이게 */
-#banner .content p{
-  font-family: var(--ui-sans);
-  font-size: 16px;
-  line-height: 1.75;
-  font-weight: 400;
-  color: #333;
-}
-
-/* 배너 타이틀(两行) — 크기/줄간만 조정 */
-#banner header h1{
-  font-family: var(--brand-serif);
-  font-size: 2.2rem;
-  line-height: 1.15;
-  margin: 0 0 .35rem 0;
-}
-#banner header h2{
-  font-family: var(--brand-serif);
-  font-size: 1.15rem;
-  line-height: 1.35;
-  margin: 0 0 1rem 0;
-}
-
-/* 모바일/아이패드 */
-@media (max-width: 980px){
-  #banner .content p{
-    font-size: 14px;
-    line-height: 1.65;
-  }
-  #banner header h1{ font-size: 1.85rem; }
-  #banner header h2{ font-size: 1.0rem; }
-}
-
-
-/* ---------- 4) Features 설명 텍스트 (브랜드 철학 4칸) ---------- */
-.features article p{
-  font-family: var(--ui-sans);
-  font-size: 17px;
-  line-height: 1.85;
-  font-weight: 400;
-  color: #333;
-}
-@media (max-width: 736px){
-  .features article p{
-    font-size: 15px;
-    line-height: 1.75;
-  }
-}
-
-/* 메뉴는 또렷하게 sans (사이드바 기준) */
-#sidebar{
-  font-family: var(--ui-sans);
-}
-
-
-/* 연락처 문단 + 라인(메일/전화/주소)도 “본문과 같은” 크기로 키움 */
-#sidebar section p{
-  font-family: var(--ui-sans);
-  font-size: 16px;
-  line-height: 1.85;
-  color: #333;
-}
-
-#sidebar ul.contact li,
-#sidebar ul.contact li a,
-#sidebar ul.contact li span{
-  font-family: var(--ui-sans);
-  font-size: 16px;        /* ✅ 너무 작던 문제 해결 */
-  line-height: 1.85;
-  font-weight: 400;
-  color: #333;
-}
-
-/* ---------- 6) Sidebar separators (라인 + 여백 정리: PC 기준) ---------- */
-
-/* 공통 */
-#sidebar .inner > section{
-  border-top: 1px solid rgba(210, 215, 217, 0.75);
-  margin-top: 2rem;
-  padding-top: 2rem;
-
-  /* ✅ 좌우 여백 추가 (붙어 보이는 문제 해결) */
-  padding-left: 18px;
-  padding-right: 18px;
-}
-
-/* 첫 섹션 예외 */
-#sidebar .inner > section:first-of-type{
-  border-top: none;
-  margin-top: 0;
-  padding-top: 0;
-}
-
-/* PC에서만 여백을 조금 더 고급스럽게 */
-@media screen and (min-width: 1100px){
-  #sidebar .inner > section{
-    padding-left: 22px;
-    padding-right: 22px;
-  }
-}
-
-	/* ---------- 7) K-Plan summary text (요약 박스 글자 키우기) ---------- */
-#selectedSummary,
-#selectedSummary li{
-  font-size: 18px;     /* ✅ “需要” 수준으로 보이게 */
-  line-height: 1.85;
-  font-weight: 500;
-}
-/* header.major 바로 아래 설명 문단 전용 */
-header.major + p{
-  margin-top: -1.2rem;   /* 제목과 더 붙이기 */
-  margin-bottom: 2rem;
-
-  font-family: var(--ui-sans);
-  font-size: 0.95rem;
-  line-height: 1.75;
-  font-weight: 400;
-  color: #555;
-}
-
-
-/* =========================
-   Sidebar 메뉴 폰트/가독성 (FINAL)
-   ========================= */
-
-/* 사이드바 전체 기본 폰트 */
-#sidebar{
-  font-family: "Pretendard","PingFang SC","Microsoft YaHei",
-               "Noto Sans CJK SC",-apple-system,BlinkMacSystemFont,
-               "Segoe UI",Roboto,Arial,sans-serif;
-  letter-spacing: 0.02em;
-}
-
-/* 메뉴 링크만: 굵기/크기/줄간격 */
-#sidebar nav#menu a{
-  font-weight: 500;
-  font-size: 15px;
-  line-height: 1.6;
-}
-
-/* 모바일에서는 더 또렷하게 */
-@media (max-width: 980px){
-  #sidebar nav#menu a{
-    font-size: 15px;
-    font-weight: 600;
-    line-height: 1.65;
-  }
-}
-
-/* =========================
-   Headings (제목/섹션 타이틀)
-   - CJK는 Source Han Serif
-   - 영문/숫자는 Roboto Slab/Merriweather로 자연스럽게
-   ========================= */
-h1, h2, h3, h4, h5, h6{
-  font-family: "Roboto Slab","Merriweather",
-               "Source Han Serif CN","Noto Serif KR",
-               Georgia,"Times New Roman",serif;
-}
-
-
-/* 모바일에서는 살짝 더 큼직하게 */
-@media (max-width: 980px){
-  #sidebar nav ul li a{
-    font-size: 16px !important;
-    padding: 0.85em 0 !important;
-  }
-}
-
-#sidebar{
-  font-size: 1rem !important;
-}
-
-/* ================================
-   KMS: Hamburger icon (FontAwesome)
-   ================================ */
-
-/* 기본: 하위 메뉴 숨김 */
-#sidebar nav ul ul{
-  display: none;
-}
-
-/* opener 활성화 시 하위 메뉴 표시 */
-#sidebar nav a.opener.active + ul{
-  display: block;
-}
-
-/* 헤더 과한 패딩 제거 + 높이 안정화 + 정렬 고정 */
-#header{
-  padding: 2.2em 0 1.0em 0 !important;
-  margin: 0 !important;
-  min-height: 0 !important;
-
-  display: flex !important;
-  align-items: center !important;
-  justify-content: space-between !important;
-  gap: 1rem !important;
-
-  position: relative;
-  z-index: 1000;
-}
-
-/* 로고는 왼쪽 고정 */
-#header .logo{
-  flex: 0 0 auto;
-  min-width: 0;
-}
-
-/* ✅ "상단 네비/오른쪽 영역" 폭을 2/3로 제한 */
-#header > :not(.logo){
-  max-width: 66.666% !important;
-}
-
-/* ✅ 모바일/아이패드에서는 제한 해제 */
-@media (max-width: 980px){
-  #header > :not(.logo){
-    max-width: 100% !important;
-  }
-}
-/* =========================================================
-   KMS ONE FINAL (Index + K-Plan 공통) — REVISED 2026-02-03
-   - Blue MENU bar full-width (PC/Mobile)
-   - Header clickable (WeChat/WhatsApp) — no overlay blocking
-   - Desktop Sidebar fixed 320px / Mobile Off-canvas
-   - Remove unwanted horizontal/bottom scrollbars
-   - Typography "middle" (base 14px + lead 15.5px)
+ /* =========================================================
+   KMS FINAL — ONE BLOCK (Index + K-Plan 공통)
    붙이는 위치: assets/css/main.css 맨 아래
+   목적:
+   - PC: 왼쪽 회색 사이드바 고정(바짝 붙게) + 메인 오른쪽
+   - Mobile/iPad(<=980): 상단 파란 MENU 바 + 오프캔버스 사이드바
+   - 불필요한 가로/아래 스크롤 제거
+   - 본문 타이포 “중간”으로 안정
    ========================================================= */
 
-/* 0) 가로/아래 스크롤 원천 차단 */
+
+/* ---------- A) RESET / OVERFLOW KILL ---------- */
 html, body{
-  margin: 0 !important;
-  padding: 0 !important;
-  overflow-x: hidden !important;
+  margin:0 !important;
+  padding:0 !important;
+  overflow-x:hidden !important;
 }
 
-#wrapper{
-  width: 100% !important;
-  max-width: 100% !important;
-  min-width: 0 !important;
-  overflow-x: clip !important; /* ✅ 불필요 가로 스크롤 더 강하게 차단 */
-}
-
-#main, #main .inner{
-  max-width: 100% !important;
-  min-width: 0 !important;
+#wrapper, #main, #main .inner{
+  max-width:100% !important;
+  min-width:0 !important;
 }
 
 img, video, iframe{
-  max-width: 100% !important;
-  height: auto !important;
+  max-width:100% !important;
+  height:auto !important;
 }
 
-/* 1) 상단 파란 MENU 바 (PC/모바일 공통)
-   ✅ 중요: 파란바가 아이콘 클릭을 가로채지 않게 z-index를 "헤더보다 낮게" */
-a.toggle{
-  -webkit-appearance: none !important;
-  appearance: none !important;
 
-  display: block !important;
-  position: fixed !important;
-  top: 0 !important;
-  left: 0 !important;
-  right: 0 !important;
+/* ---------- B) FONT SYSTEM (네가 쓰던 톤 유지) ---------- */
+:root{
+  --brand:#0077B6;
+  --hover:#2088C2;
+  --deep:#1565A0;
 
-  width: auto !important;        /* ✅ 100vw 금지 */
-  max-width: 100% !important;
-  height: 34px !important;
-  background: #4E97D1 !important;
+  --ui-sans:"Pretendard","PingFang SC","Microsoft YaHei","Noto Sans CJK SC","Source Han Sans SC",
+            -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;
 
-  margin: 0 !important;
-  padding: 0 !important;
-  border: 0 !important;
-  border-radius: 0 !important;
-  box-shadow: none !important;
-
-  z-index: 9000 !important;      /* ✅ 너무 높게(2147483647) 쓰지 말기 */
-  text-decoration: none !important;
-
-  font-size: 0 !important;       /* ✅ Toggle 글자 튀어나옴 방지 */
-  transform: none !important;
+  --brand-serif:"Source Han Serif CN","Source Han Serif SC","Noto Serif SC","Noto Serif CJK SC",
+                "Songti SC","SimSun","AppleMyungjo","Batang",serif;
 }
 
-a.toggle::before{
-  content: "菜单  MENU" !important;
-
-  position: absolute !important;
-  left: 50% !important;
-  top: 50% !important;
-  transform: translate(-50%, -50%) !important;
-
-  padding: 0 14px !important;
-  background: #fff !important;
-
-  font-family: "Pretendard","PingFang SC","Microsoft YaHei","Noto Sans CJK SC",sans-serif !important;
-  font-size: 13px !important;
-  font-weight: 800 !important;
-  letter-spacing: .18em !important;
-  color: #4E97D1 !important;
-  white-space: nowrap !important;
-}
-
-a.toggle:hover::before{
-  color: #2f6fa3 !important;
-}
-
-/* ✅ 파란바 때문에 본문이 가려지지 않도록 */
 body{
-  padding-top: 34px !important;
+  font-family:var(--ui-sans) !important;
+  -webkit-font-smoothing:antialiased;
+  -moz-osx-font-smoothing:grayscale;
+  color:#333;
 }
 
-/* 2) 헤더(#header) — 파란바 아래로 확실히 내려오고 클릭 살아있게 */
-#header{
-  position: relative !important;
-  z-index: 10000 !important;     /* ✅ 파란바(9000)보다 위 */
-  margin-top: 34px !important;   /* ✅ 헤더가 파란바 뒤로 말려 올라가는 것 방지 */
-  background: #fff !important;
-}
 
-/* (선택) 헤더에 얇은 선 유지하고 싶으면 */
-#header{
-  border-bottom: 0.7px solid rgba(78,151,209,.55) !important;
-}
-
-/* 3) TYPO: “중간” 크기 고정 */
+/* ---------- C) TYPO (중간 크기: 기본 15 / 리드 16.5) ---------- */
 #main p,
 #main li,
 #main .inner p,
 #main .inner li,
 #main section p,
 #main section li{
-  font-size: 14px !important;
-  line-height: 1.65 !important;
-  color: #6f7a82 !important;
+  font-family:var(--ui-sans) !important;
+  font-size:15px !important;
+  line-height:1.75 !important;
+  font-weight:400 !important;
+  color:#333 !important;
 }
 
-/* ✅ 소개문단만 조금 크게: HTML에서 <p class="lead-text"> 로 적용 */
+/* 리드 문단(브랜드 소개만 살짝 큼) */
 #main p.lead-text{
-  font-size: 15.5px !important;
-  line-height: 1.75 !important;
-  color: #3d4449 !important;
-  max-width: 52em !important;
-  margin-bottom: 1.6em !important;
+  font-size:16.5px !important;
+  line-height:1.85 !important;
+  color:#2f3438 !important;
+  max-width:52em !important;
+  margin-bottom:1.6em !important;
 }
 
-/* 모바일에서는 기본을 살짝 키움 */
-@media (max-width: 980px){
-  #header{
-    margin-top: 34px !important; /* 유지 */
-  }
+/* 헤딩은 브랜드 세리프 */
+#main h1,#main h2,#main h3,#main h4,#main h5,#main h6,
+#sidebar h1,#sidebar h2,#sidebar h3,#sidebar h4,#sidebar h5,#sidebar h6{
+  font-family:var(--brand-serif) !important;
+  font-weight:600 !important;
+  letter-spacing:.02em !important;
+  color:#222 !important;
+  line-height:1.25 !important;
+}
 
+/* 모바일은 너무 작아지지 않게 */
+@media (max-width:980px){
   #main p,
   #main li,
   #main .inner p,
   #main .inner li,
   #main section p,
   #main section li{
-    font-size: 14.5px !important;
-    line-height: 1.7 !important;
+    font-size:15px !important;
+    line-height:1.75 !important;
   }
   #main p.lead-text{
-    font-size: 16px !important;
+    font-size:16.5px !important;
   }
 }
 
-/* 4) 메뉴 블릿(•) 완전 제거 */
+
+/* ---------- D) SIDEBAR MENU (블릿 제거 + 또렷하게) ---------- */
+#sidebar,
+#sidebar nav,
+#sidebar nav ul,
+#sidebar nav ul li,
+#sidebar nav ul li a{
+  font-family:var(--ui-sans) !important;
+  letter-spacing:.02em !important;
+}
+
+#sidebar nav#menu a{
+  font-weight:600 !important;
+  font-size:15px !important;
+  line-height:1.65 !important;
+}
+
+/* Editorial 블릿(•) 완전 제거 */
 #sidebar ul,
 #sidebar nav ul,
 #sidebar #menu ul,
 #menu ul{
-  list-style: none !important;
-  margin: 0 !important;
-  padding-left: 0 !important;
+  list-style:none !important;
+  margin:0 !important;
+  padding-left:0 !important;
 }
-
 #sidebar ul li,
 #sidebar nav ul li,
 #sidebar #menu ul li,
 #menu ul li{
-  padding-left: 0 !important;
+  padding-left:0 !important;
 }
-
 #sidebar ul li::before,
 #sidebar nav ul li::before,
 #sidebar #menu ul li::before,
 #menu ul li::before{
-  content: none !important;
+  content:none !important;
 }
 
+
 /* =========================================================
-   5) DESKTOP / iPad: Sidebar 320px 고정 + 메인 밀기
+   E) DESKTOP / iPad 가로모드 (>=981px)
+   - 왼쪽 회색바(사이드바) 고정
+   - 메인은 오른쪽으로 정확히 밀기
+   - 상단 파란 토글바는 숨김
    ========================================================= */
-@media (min-width: 981px){
+@media (min-width:981px){
 
+  /* PC에서는 토글바 숨김 */
+  a.toggle{ display:none !important; }
+
+  /* body padding-top 제거 (모바일 토글용이므로) */
+  body{ padding-top:0 !important; }
+
+  /* Sidebar: 왼쪽에 바짝 붙게 + 고정 */
   #sidebar{
-    position: fixed !important;
-    top: 34px !important;                    /* ✅ 파란바 아래 */
-    left: 0 !important;
+    position:fixed !important;
+    top:0 !important;
+    left:0 !important;
 
-    width: 320px !important;
-    min-width: 320px !important;
-    max-width: 320px !important;
-    flex: 0 0 320px !important;
+    width:320px !important;
+    min-width:320px !important;
+    max-width:320px !important;
 
-    height: calc(100vh - 34px) !important;
-    overflow-y: auto !important;
-    overflow-x: hidden !important;
-    -webkit-overflow-scrolling: touch !important;
+    height:100vh !important;
+    overflow-y:auto !important;
+    overflow-x:hidden !important;
 
-    background: #f2f2f2 !important;
-    z-index: 9500 !important;                /* ✅ 파란바(9000)보단 위, 헤더(10000)보단 아래 */
+    background:#f2f2f2 !important; /* ✅ 너가 원한 회색바 */
+    z-index:1000 !important;
   }
 
+  /* Wrapper를 사이드바만큼 밀기 (진짜 2컬럼) */
   #wrapper{
-    padding-left: 320px !important;
+    padding-left:320px !important;
   }
 
   #main{
-    width: 100% !important;
-    min-width: 0 !important;
+    width:100% !important;
+    min-width:0 !important;
   }
+
+  /* 혹시 flex 잔재로 튀어나오면 안전하게 */
+  #wrapper{ overflow-x:hidden !important; }
 }
 
+
 /* =========================================================
-   6) MOBILE: Sidebar off-canvas (햄버거 슬라이드)
+   F) MOBILE / iPhone / iPad 세로 (<=980px)
+   - 상단 파란 MENU 바 (토글)
+   - 사이드바 off-canvas (왼쪽에서 슬라이드)
+   - 스크롤바(오른쪽/아래) 제거
    ========================================================= */
-@media (max-width: 980px){
+@media (max-width:980px){
 
+  /* 모바일에서 wrapper는 flex 금지 (오버플로우/스크롤바 원흉) */
   #wrapper{
-    padding-left: 0 !important;
+    display:block !important;
+    padding-left:0 !important;
+    overflow-x:hidden !important;
   }
 
+  /* 상단 파란 MENU 바 */
+  a.toggle{
+    -webkit-appearance:none !important;
+    appearance:none !important;
+
+    display:block !important;
+    position:fixed !important;
+    top:0 !important;
+    left:0 !important;
+    right:0 !important;
+
+    width:auto !important;        /* ✅ 100vw 금지 */
+    height:34px !important;
+    background:#4E97D1 !important;
+
+    margin:0 !important;
+    padding:0 !important;
+    border:0 !important;
+    border-radius:0 !important;
+    box-shadow:none !important;
+
+    z-index:9999 !important;
+    text-decoration:none !important;
+    font-size:0 !important;       /* Toggle 글자 튀어나옴 방지 */
+    transform:none !important;
+  }
+
+  a.toggle::before{
+    content:"菜单  MENU" !important;
+    position:absolute !important;
+    left:50% !important;
+    top:50% !important;
+    transform:translate(-50%,-50%) !important;
+
+    padding:0 14px !important;
+    background:#fff !important;
+
+    font-family:var(--ui-sans) !important;
+    font-size:13px !important;
+    font-weight:800 !important;
+    letter-spacing:.18em !important;
+    color:#4E97D1 !important;
+    white-space:nowrap !important;
+  }
+
+  /* 파란바 아래로 전체 콘텐츠 내리기 */
+  body{
+    padding-top:34px !important;
+  }
+
+  /* Sidebar off-canvas */
   #sidebar{
-    position: fixed !important;
-    top: 34px !important;
-    left: -320px !important;
-    width: min(86vw, 320px) !important;
-    height: calc(100vh - 34px) !important;
+    position:fixed !important;
+    top:34px !important;                  /* 파란바 아래 */
+    left:-320px !important;               /* 숨김 */
+    width:min(86vw, 320px) !important;
+    height:calc(100vh - 34px) !important;
 
-    background: #f2f2f2 !important;
-    overflow-y: auto !important;
-    overflow-x: hidden !important;
+    background:#f2f2f2 !important;
+    overflow-y:auto !important;
+    overflow-x:hidden !important;
 
-    z-index: 9500 !important;
-    transition: left .28s ease !important;
-    -webkit-overflow-scrolling: touch !important;
+    z-index:10000 !important;
+    transition:left .28s ease !important;
+    -webkit-overflow-scrolling:touch !important;
   }
 
+  /* 메뉴 열릴 때 */
   body.is-menu-visible #sidebar{
-    left: 0 !important;
+    left:0 !important;
   }
 
+  /* 메뉴 열리면 뒤 스크롤 잠금 */
   body.is-menu-visible{
-    overflow: hidden !important;
-  }
-}
-/* =========================================================
-   K-Medi Spring - Desktop / Mobile Split Layout (HARD FIX)
-   - Desktop(>=981px): sidebar fixed, main shifted
-   - Mobile(<=980px): off-canvas menu, main full width
-   - Prevent overlay on ALL devices
-   ========================================================= */
-
-/* 0) 안전장치: 이상한 폭/겹침 방지 */
-html, body{
-  overflow-x: hidden;
-}
-
-/* 1) 기본: wrapper를 확실히 레이아웃 컨테이너로 고정 */
-#wrapper{
-  display: flex;
-  min-height: 100vh;
-  width: 100%;
-}
-
-/* =========================
-   DESKTOP (PC) >= 981px
-   ========================= */
-@media (min-width: 981px){
-
-  /* 모바일 토글(햄버거/상단바) 무조건 숨김 */
-  a.toggle{
-    display: none !important;
+    overflow:hidden !important;
   }
 
-  /* 사이드바는 “고정 폭” + “스크롤 가능” */
-  #sidebar{
-    position: fixed !important;
-    top: 0;
-    left: 0;
-    height: 100vh;
-    width: 345px !important;      /* 너 캡처에서 nav 폭이 344.89px */
-    overflow-y: auto;
-    z-index: 1000;
-    background: #ffffff;
-  }
-
-  /* 메인은 사이드바 폭만큼 무조건 밀어 */
+  /* 메인은 풀폭 */
   #main{
-    margin-left: 345px !important;
-    width: calc(100% - 345px) !important;
-    min-width: 0;                 /* flex 깨짐 방지 */
-  }
-
-  /* 메인 내부 패딩은 템플릿 기본 유지 or 살짝 정리 */
-  #main > .inner{
-    padding: 3rem 4rem;
+    width:100% !important;
+    min-width:0 !important;
   }
 }
 
-/* =========================
-   MOBILE / iPad <= 980px
-   ========================= */
-@media (max-width: 980px){
 
-  /* 모바일에서는 메인 풀폭 */
-  #main{
-    margin-left: 0 !important;
-    width: 100% !important;
-  }
-
-  /* 사이드바는 off-canvas로 빼기 */
-  #sidebar{
-    position: fixed !important;
-    top: 0 !important;
-    left: auto !important;
-    right: -320px !important;
-    width: 320px !important;
-    height: 100vh !important;
-
-    overflow-y: auto !important;
-    background: #fff !important;
-    z-index: 10000 !important;
-
-    transition: right .28s ease !important;
-    -webkit-overflow-scrolling: touch;
-  }
-
-  /* 메뉴 열렸을 때 */
-  body.is-menu-visible #sidebar{
-    right: 0 !important;
-  }
-
-  /* 모바일에서 토글(햄버거/상단바)은 보여야 함 */
-  a.toggle{
-    display: block !important;
-    visibility: visible !important;
-    opacity: 1 !important;
-    z-index: 10001 !important;
-  }
+/* ---------- G) HEADER / ICON CLICK SAFETY ---------- */
+/* 헤더/아이콘 클릭이 레이어에 막히지 않게 */
+#header{
+  position:relative !important;
+  z-index:2000 !important;
+  background:#fff !important;
 }
+
+/* 아이콘 줄은 클릭 잘 되게 */
+#header .icons{
+  position:relative !important;
+  z-index:3000 !important;
+}
+
+/* (선택) 헤더 밑 얇은 라인 */
+#header{
+  border-bottom:0.7px solid rgba(78,151,209,.55) !important;
+}
+
