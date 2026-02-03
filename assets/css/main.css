@@ -1590,7 +1590,6 @@ button,
   padding: 0 2.25em;
   text-align: center;
   text-decoration: none;
-  text-transform: uppercase;
   }
   input[type="submit"]:hover,
   input[type="reset"]:hover,
@@ -2839,7 +2838,6 @@ legend{ font-weight: 600; margin-bottom: .75rem; }
   list-style: none;
   margin-bottom: 0;
   padding: 0;
-  text-transform: uppercase;
 }
 
 /* 메뉴 링크 1줄씩 */
@@ -3150,7 +3148,6 @@ body.is-menu-visible #sidebar{
     font-family:var(--ui-sans) !important;
     font-size:13px !important;
     font-weight:800 !important;
-    letter-spacing:.18em !important;
     color:#4E97D1 !important;
     white-space:normal !important;
   }
@@ -3264,6 +3261,7 @@ html, body { overflow-x: hidden; }
   /* 클릭 느낌 살짝 */
   a.toggle:active{ transform: translateY(1px); }
 }
+
 
 
 
