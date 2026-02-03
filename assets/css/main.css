@@ -1938,17 +1938,20 @@ html[lang="ko"] .button {
           .posts article:last-child:after {
             display: none; } }
 
-/* Wrapper */
-#wrapper {
-  display: -moz-flex;
-  display: -webkit-flex;
-  display: -ms-flex;
-  display: flex;
-  -moz-flex-direction: row-reverse;
-  -webkit-flex-direction: row-reverse;
-  -ms-flex-direction: row-reverse;
-  flex-direction: row-reverse;
-  min-height: 100vh; }
+@media (max-width: 980px){
+  #wrapper{
+    display: block !important;
+    flex-direction: initial !important;
+  }
+  #main, #sidebar{
+    width: 100% !important;
+    min-width: 0 !important;
+  }
+  html, body{
+    overflow-x: hidden !important;
+  }
+}
+
 
 /* Main */
 #main {
@@ -2307,18 +2310,50 @@ body.modal-open{ overflow:hidden; }
    🌊 한강애봄 헤더 & 섹션 제목 밑줄 (수정본)
    ================================ */
 
-/* 1) 상단 헤더(#header) 파란 라인 유지 */
+/* =========================================
+   TOP BAR (MENU) : 풀-블리드 + 더 굵게
+   ========================================= */
+
+/* 1) 상단 헤더를 화면 끝까지(PC/모바일 모두) */
 #header{
-  border-bottom: 7px solid #4E97D1 !important;
-  padding: 6em 0 1em 0 !important;
+  /* 풀-블리드(컨테이너 밖으로 뻗기) */
+  width: 100vw !important;
+  margin-left: calc(50% - 50vw) !important;
+  margin-right: calc(50% - 50vw) !important;
+
+  /* 바탕(파란 띠) + 여백 */
+  background: #4E97D1 !important;
+  padding: 0.9rem 0 !important;   /* MENU 바 두께(여기서 조절) */
+
+  /* 아래 ‘굵은 구분 바’ */
+  border-bottom: 10px solid #4E97D1 !important; /* 더 굵게(원하면 12px) */
+
+  position: relative;
+  z-index: 1000;
 }
 
-/* 2) (전역) major 헤더 밑줄을 '삭제'가 아니라 '브랜드색으로 복구' */
+/* 2) #header 안쪽 콘텐츠(로고/아이콘)가 원래 레이아웃대로 보이게 */
+#header > *{
+  max-width: 1200px;     /* 기존 사이트 폭 감각 유지 */
+  margin: 0 auto;
+  padding: 0 1.5rem;     /* 좌우 안전 여백 */
+}
+
+/* 3) #header 안에 글자/아이콘 색이 묻히면 대비 확보(선택) */
+#header, #header a, #header .logo{
+  color: #fff !important;
+}
+
+/* =========================================
+   MAJOR TITLE underline : 얇고 깔끔하게
+   ========================================= */
+
+/* major 헤더 밑줄은 ‘얇게’ + 글자 길이만 */
 header.major > :last-child{
-  border-bottom: solid 1px #4E97D1 !important;  /* 원본 느낌 + 한강애봄 블루 */
-  display: inline-block;                         /* 밑줄이 글자 길이만큼 */
-  padding-bottom: .5em !important;
-  margin: 0 0 1.5em 0 !important;                /* 제목 아래 공간 */
+  border-bottom: solid 1px rgba(78,151,209,.55) !important;
+  display: inline-block !important;
+  padding-bottom: .45em !important;
+  margin: 0 0 1.4em 0 !important;
 }
 
 /* 3) (전역) inner header 무력화 삭제 — 원본 동작 살림
@@ -3523,6 +3558,7 @@ img, video, iframe {
     overflow: hidden !important;
   }
 }
+
 
 
 
