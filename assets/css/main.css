@@ -2300,7 +2300,7 @@ body.modal-open{ overflow:hidden; }
 /* 1) 상단 헤더(#header) 파란 라인 유지 */
 #header{
   border-bottom: 5px solid #4E97D1 !important;
-  padding: 6em 0 1em 0 !important;
+  padding: 2em 0 1em 0 !important;
 }
 
 /* 2) (전역) major 헤더 밑줄을 '삭제'가 아니라 '브랜드색으로 복구' */
@@ -3287,6 +3287,7 @@ html, body { overflow-x: hidden; }
   /* 클릭 느낌 살짝 */
   a.toggle:active{ transform: translateY(1px); }
 }
+
 
 
 
