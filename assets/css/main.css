@@ -3515,7 +3515,46 @@ body, #wrapper, #main { background: #fff !important; }
   }
 }
 
+/* =========================
+   SIDEBAR FIX (PC + iPad + Mobile)
+   로니 2026-02-03
+   ========================= */
 
+/* 공통: 사이드바를 화면에 고정 */
+#sidebar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 320px;
+  height: 100vh;
+  overflow-y: auto;
+  background: #f2f2f2; /* 회색바 */
+  z-index: 10001;
+}
+
+/* 메인 콘텐츠는 사이드바만큼 밀기 (PC/iPad) */
+#wrapper {
+  padding-left: 320px;
+}
+
+/* =========================
+   MOBILE (햄버거 슬라이드)
+   ========================= */
+@media screen and (max-width: 980px) {
+
+  #sidebar {
+    left: -320px;
+    transition: left 0.3s ease;
+  }
+
+  body.is-menu-visible #sidebar {
+    left: 0;
+  }
+
+  #wrapper {
+    padding-left: 0;
+  }
+}
 
 
 
