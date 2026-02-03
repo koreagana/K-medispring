@@ -2042,15 +2042,18 @@ html[lang="ko"] .button {
 }
 
 /* === LOGO SIZE FIX (FINAL) === */
-#header a.logo img{
-  height: 18px !important;   /* PC */
-  width: auto !important;
-  display: block !important;
+/* Header 로고 크기 제어 (HTML: #header a.logo img 기준) */
+#header .logo img{
+  width: auto;
+  height: 40%;        /* ← 여기서 퍼센트로 조절 */
+  max-height: 48px;   /* 안전 상한 */
 }
 
-@media (max-width: 980px){
-  #header a.logo img{
-    height: 16px !important; /* 모바일 */
+/* 모바일 */
+@media (max-width: 736px){
+  #header .logo img{
+    height: 32%;
+    max-height: 36px;
   }
 }
 
@@ -3302,6 +3305,7 @@ html, body { overflow-x: hidden; }
   /* 클릭 느낌 살짝 */
   a.toggle:active{ transform: translateY(1px); }
 }
+
 
 
 
