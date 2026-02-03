@@ -2309,13 +2309,13 @@ body.modal-open{ overflow:hidden; }
 
 /* 1) 상단 헤더(#header) 파란 라인 유지 */
 #header{
-  border-bottom: 5px solid #4E97D1 !important;
+  border-bottom: 7px solid #4E97D1 !important;
   padding: 6em 0 1em 0 !important;
 }
 
 /* 2) (전역) major 헤더 밑줄을 '삭제'가 아니라 '브랜드색으로 복구' */
 header.major > :last-child{
-  border-bottom: solid 3px #4E97D1 !important;  /* 원본 느낌 + 한강애봄 블루 */
+  border-bottom: solid 1px #4E97D1 !important;  /* 원본 느낌 + 한강애봄 블루 */
   display: inline-block;                         /* 밑줄이 글자 길이만큼 */
   padding-bottom: .5em !important;
   margin: 0 0 1.5em 0 !important;                /* 제목 아래 공간 */
@@ -3523,6 +3523,7 @@ img, video, iframe {
     overflow: hidden !important;
   }
 }
+
 
 
 
