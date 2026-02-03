@@ -2048,7 +2048,7 @@ html[lang="ko"] .button {
 }
 
 #header .logo img.logo-img {
-  height: 42px;               /* 현재 텍스트 로고 크기와 비슷한 시각 크기 */
+  height: 24px;               /* 현재 텍스트 로고 크기와 비슷한 시각 크기 */
   width: auto;                /* 비율 유지 */
   display: inline-block;
   vertical-align: middle;     /* 아이콘/텍스트 높이와 균형 */
@@ -2059,7 +2059,7 @@ html[lang="ko"] .button {
 /* 모바일에서 조금만 더 작게 */
 @media screen and (max-width: 736px) {
   #header .logo img.logo-img {
-    height: 24px;
+    height: 20px;
     margin-top: -1px;
   }
 }
@@ -2356,7 +2356,7 @@ header.major > :last-child{
 /* 3) 모바일에서 헤더 CTA 숨김 (메뉴에 이미 항목 있음) */
 @media (max-width: 736px){
   #header .actions { display:none; }
-  #header .logo-img { height: 64px; }
+  #header .logo-img { height: 24px; }
 }
 
 /* 4) 배너 CTA 버튼 강조 (배너 영역의 actions 공통) */
@@ -2395,9 +2395,6 @@ a:hover { color: var(--hover); }
 /* 10) 푸터/본문 버튼 공통 작게 다듬기 */
 .button { border-radius: 10px; }
 .actions .button { padding:.6rem 1.05rem; }
-
-/* 11) 로고가 줄 바뀜으로 내려가지 않게(폭 좁을 때) */
-#header .logo { min-width: 140px; }
 
 /* === 본문 글자 + 폰트 재정의 (2025-12-07 by 로니) === */
 
@@ -3276,6 +3273,7 @@ html, body { overflow-x: hidden; }
   /* 클릭 느낌 살짝 */
   a.toggle:active{ transform: translateY(1px); }
 }
+
 
 
 
