@@ -3192,184 +3192,70 @@ h1, h2, h3, h4, h5, h6{
     max-width: 100% !important;
   }
 }
-/* =================================================
-   K-Medi Spring Fixed Top Menu Strip (FINAL)
-   - 얇고 굵은 한강애봄 블루 라인
-   - 중앙 "菜单  MENU"
-   - PC / Mobile 동일
-   ================================================= */
+/* =========================================================
+   KMS ONE FINAL (Index + K-Plan 공통) — REVISED 2026-02-03
+   - Blue MENU bar full-width (PC/Mobile)
+   - Header clickable (WeChat/WhatsApp) — no overlay blocking
+   - Desktop Sidebar fixed 320px / Mobile Off-canvas
+   - Remove unwanted horizontal/bottom scrollbars
+   - Typography "middle" (base 14px + lead 15.5px)
+   붙이는 위치: assets/css/main.css 맨 아래
+   ========================================================= */
 
+/* 0) 가로/아래 스크롤 원천 차단 */
 html, body{
   margin: 0 !important;
   padding: 0 !important;
+  overflow-x: hidden !important;
 }
 
-/* 상단 고정 파란 선 */
-a.toggle{
-  display: block !important;
-  visibility: visible !important;
-  opacity: 1 !important;
-
-  position: fixed !important;
-  top: 0 !important;
-  left: 0 !important;
-  right: 0 !important;
-
-  width: 100vw !important;
-  height: 18px !important;
-
-  background: #4E97D1 !important; /* 한강애봄 블루 */
-
-  border: 0 !important;
-  border-radius: 0 !important;
-  box-shadow: none !important;
-
-  margin: 0 !important;
-  padding: 0 !important;
-
-  z-index: 2147483647 !important;
-  text-decoration: none !important;
+#wrapper{
+  width: 100% !important;
+  max-width: 100% !important;
+  min-width: 0 !important;
+  overflow-x: clip !important; /* ✅ 불필요 가로 스크롤 더 강하게 차단 */
 }
 
-/* 중앙 메뉴 텍스트 */
-a.toggle::before{
-  content: "菜单  MENU" !important;
-
-  position: absolute !important;
-  left: 50% !important;
-  top: 50% !important;
-  transform: translate(-50%, -50%) !important;
-
-  padding: 0 14px !important;
-  background: #fff !important;
-
-  font-family: "Pretendard","PingFang SC","Microsoft YaHei","Noto Sans CJK SC",sans-serif !important;
-  font-size: 13px !important;
-  font-weight: 800 !important;
-  letter-spacing: .18em !important;
-  color: #4E97D1 !important;
-
-  white-space: nowrap !important;
+#main, #main .inner{
+  max-width: 100% !important;
+  min-width: 0 !important;
 }
 
-/* hover */
-a.toggle:hover::before{
-  color: #2f6fa3 !important;
+img, video, iframe{
+  max-width: 100% !important;
+  height: auto !important;
 }
 
-/* 본문 밀기 */
-body{
-  padding-top: 18px !important;
-}
-
-/* PC (>=1100px) */
-@media (min-width: 1100px){
-  a.toggle{ height: 22px !important; }
-  a.toggle::before{ font-size: 14px !important; }
-  body{ padding-top: 22px !important; }
-}
-
-/* =========================================================
-   Sidebar/Menu list bullet 제거 + 간격 정리
-   ========================================================= */
-
-/* 메뉴 ul 점(•) 제거 */
-#sidebar ul.menu-list,
-#sidebar nav#menu ul,
-#sidebar .links ul{
-  list-style: none !important;
-  padding-left: 0 !important;
-  margin-left: 0 !important;
-}
-
-/* 혹시 li에 마커/들여쓰기 들어가면 같이 제거 */
-#sidebar ul.menu-list li,
-#sidebar nav#menu ul li,
-#sidebar .links ul li{
-  padding-left: 0 !important;
-}
-
-/* =========================================================
-   (옵션) 상단 네비 "카테고리 영역" 2/3로 줄이기
-   - 현재 화면에서 왼쪽 사이드(카테고리)가 너무 넓을 때만 적용
-   ========================================================= */
-@media (min-width: 981px){
-  /* 사이드바 폭을 화면의 33% 정도로 제한 -> 결과적으로 메인은 66% 느낌 */
-  #sidebar{
-    width: 33vw !important;
-    max-width: 360px !important; /* 너무 커지는 것 방지 */
-  }
-}
-
-/* =========================
-   Desktop Sidebar Width Fix
-   ========================= */
-
-@media screen and (min-width: 1100px) {
-  #sidebar {
-    width: 320px;
-    min-width: 320px;
-    max-width: 320px;
-  }
-
-  #main {
-    margin-left: 0px;
-  }
-}
-/* =========================
-   Sidebar Menu Bullet Reset
-   ========================= */
-
-#sidebar ul {
-  list-style: none;
-  margin: 0;
-  padding: 0;
-}
-
-#sidebar ul li {
-  padding-left: 0;
-}
-/* ==============================
-   FIX: Real Fixed Blue Strip Toggle
-   ============================== */
-
-html, body{
-  margin: 0 !important;
-  padding: 0 !important;
-}
-
-/* 템플릿이 토글에 주는 배경/버튼 스타일 싹 제거 */
+/* 1) 상단 파란 MENU 바 (PC/모바일 공통)
+   ✅ 중요: 파란바가 아이콘 클릭을 가로채지 않게 z-index를 "헤더보다 낮게" */
 a.toggle{
   -webkit-appearance: none !important;
   appearance: none !important;
 
   display: block !important;
-  opacity: 1 !important;
-  visibility: visible !important;
-
   position: fixed !important;
   top: 0 !important;
   left: 0 !important;
   right: 0 !important;
 
-  width: 100vw !important;              /* ✅ 화면 전체 */
-  height: 40px !important;
-
-  background: #4E97D1 !important;       /* ✅ 한강애봄 블루 */
-  border-radius: 0 !important;          /* ✅ 둥근 버튼 제거 */
-  box-shadow: none !important;
+  width: auto !important;        /* ✅ 100vw 금지 */
+  max-width: 100% !important;
+  height: 34px !important;
+  background: #4E97D1 !important;
 
   margin: 0 !important;
   padding: 0 !important;
+  border: 0 !important;
+  border-radius: 0 !important;
+  box-shadow: none !important;
 
-  z-index: 2147483647 !important;       /* ✅ 무조건 최상단 */
+  z-index: 9000 !important;      /* ✅ 너무 높게(2147483647) 쓰지 말기 */
   text-decoration: none !important;
 
-  /* 혹시 transform으로 밀려나는 경우 차단 */
+  font-size: 0 !important;       /* ✅ Toggle 글자 튀어나옴 방지 */
   transform: none !important;
 }
 
-/* 가운데 텍스트 */
 a.toggle::before{
   content: "菜单  MENU" !important;
 
@@ -3386,180 +3272,160 @@ a.toggle::before{
   font-weight: 800 !important;
   letter-spacing: .18em !important;
   color: #4E97D1 !important;
-
   white-space: nowrap !important;
-  box-shadow: none !important;
 }
 
-/* 본문 가림 방지 */
+a.toggle:hover::before{
+  color: #2f6fa3 !important;
+}
+
+/* ✅ 파란바 때문에 본문이 가려지지 않도록 */
 body{
-  padding-top: 18px !important;
+  padding-top: 34px !important;
 }
 
-@media (min-width: 1100px){
-  a.toggle{ height: 22px !important; }
-  a.toggle::before{ font-size: 14px !important; }
-  body{ padding-top: 44px !important; }
+/* 2) 헤더(#header) — 파란바 아래로 확실히 내려오고 클릭 살아있게 */
+#header{
+  position: relative !important;
+  z-index: 10000 !important;     /* ✅ 파란바(9000)보다 위 */
+  margin-top: 34px !important;   /* ✅ 헤더가 파란바 뒤로 말려 올라가는 것 방지 */
+  background: #fff !important;
 }
 
-/* =================================================
-   DESKTOP ONLY FIX (>=1100px)
-   sidebar 320px + bullets off + inner scroll
-   ================================================= */
-
-@media screen and (min-width: 1100px) {
-
-  /* 1) Editorial 기본 flex(24em) 강제 무력화 */
-  #sidebar {
-    width: 320px !important;
-    min-width: 320px !important;
-    max-width: 320px !important;
-    flex: 0 0 320px !important;
-  }
-
-  /* 4) 블릿(•) 완전 제거: list-style + li::before 둘 다 */
-  #sidebar ul,
-  #sidebar nav ul,
-  #sidebar #menu ul,
-  #menu ul {
-    list-style: none !important;
-    margin: 0 !important;
-    padding: 0 !important;
-  }
-
-  #sidebar ul li::before,
-  #sidebar nav ul li::before,
-  #sidebar #menu ul li::before,
-  #menu ul li::before {
-    content: none !important;
-  }
-
-  #sidebar ul li,
-  #sidebar nav ul li,
-  #sidebar #menu ul li,
-  #menu ul li {
-    padding-left: 0 !important;
-  }
+/* (선택) 헤더에 얇은 선 유지하고 싶으면 */
+#header{
+  border-bottom: 0.7px solid rgba(78,151,209,.55) !important;
 }
 
-/* ======================================
-   PC 하단 ‘층층(단차)’ 느낌 정리
-   ====================================== */
-
-/* 메인 배경을 완전 화이트로 고정 */
-body, #wrapper, #main { background: #fff !important; }
-
-/* 메인 컨텐츠 박스가 ‘떠 보이는’ 효과 제거(있다면) */
-#main .inner{
-  background: transparent !important;
-  box-shadow: none !important;
-}
-
-/* 섹션 구분선(회색 줄) 약하게/제거 */
-#sidebar .major > :last-child,
-#sidebar section,
-#sidebar .inner section{
-  border-bottom: none !important;
-}
-
-/* sidebar 자체 회색을 흰색으로 맞추고 싶으면(선택) */
-#sidebar{ background: #fff !important; }
-
-#main p{
-  font-size: 0.9rem;
-  line-height: 1.65;
-  color: #555;
-}
-
-@media (max-width: 980px){
-  #main p{
-    font-size: 0.85rem;
-  }
-}
-
-/* =========================================================
-   KMS FINAL TYPO — Body text size lock (Index + K-Plan)
-   붙이는 위치: assets/css/main.css 맨 아래
-   ========================================================= */
-
-/* 0) 혹시 모를 “더 센 선언”을 전부 이겨버리는 본문 타이포 고정 */
+/* 3) TYPO: “중간” 크기 고정 */
 #main p,
 #main li,
 #main .inner p,
 #main .inner li,
 #main section p,
 #main section li{
-  font-size: 13px !important;
-  line-height: 1.5 !important;
+  font-size: 14px !important;
+  line-height: 1.65 !important;
   color: #6f7a82 !important;
 }
 
-/* 1) 배너/히어로 문단도 메인과 동일하게 맞추고 싶으면(원하면 유지) */
-#banner .content p{
-  font-size: 13px !important;
-  line-height: 1.5 !important;
-  color: #6f7a82 !important;
+/* ✅ 소개문단만 조금 크게: HTML에서 <p class="lead-text"> 로 적용 */
+#main p.lead-text{
+  font-size: 15.5px !important;
+  line-height: 1.75 !important;
+  color: #3d4449 !important;
+  max-width: 52em !important;
+  margin-bottom: 1.6em !important;
 }
 
-/* 2) 모바일에서는 13px이 너무 작을 수 있으니 살짝만 업 */
+/* 모바일에서는 기본을 살짝 키움 */
 @media (max-width: 980px){
+  #header{
+    margin-top: 34px !important; /* 유지 */
+  }
+
   #main p,
   #main li,
   #main .inner p,
   #main .inner li,
   #main section p,
-  #main section li,
-  #banner .content p{
-    font-size: 14px !important;
-    line-height: 1.6 !important;
+  #main section li{
+    font-size: 14.5px !important;
+    line-height: 1.7 !important;
+  }
+  #main p.lead-text{
+    font-size: 16px !important;
   }
 }
 
-/* =========================
-   SIDEBAR FIX (PC + iPad + Mobile)
-   로니 2026-02-03
-   ========================= */
-
-/* 공통: 사이드바를 화면에 고정 */
-#sidebar {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 320px;
-  height: 100vh;
-  overflow-y: auto;
-  background: #f2f2f2; /* 회색바 */
-  z-index: 10001;
+/* 4) 메뉴 블릿(•) 완전 제거 */
+#sidebar ul,
+#sidebar nav ul,
+#sidebar #menu ul,
+#menu ul{
+  list-style: none !important;
+  margin: 0 !important;
+  padding-left: 0 !important;
 }
 
-/* 메인 콘텐츠는 사이드바만큼 밀기 (PC/iPad) */
-#wrapper {
-  padding-left: 320px;
+#sidebar ul li,
+#sidebar nav ul li,
+#sidebar #menu ul li,
+#menu ul li{
+  padding-left: 0 !important;
 }
 
-/* =========================
-   MOBILE (햄버거 슬라이드)
-   ========================= */
-@media screen and (max-width: 980px) {
+#sidebar ul li::before,
+#sidebar nav ul li::before,
+#sidebar #menu ul li::before,
+#menu ul li::before{
+  content: none !important;
+}
 
-  #sidebar {
-    left: -320px;
-    transition: left 0.3s ease;
+/* =========================================================
+   5) DESKTOP / iPad: Sidebar 320px 고정 + 메인 밀기
+   ========================================================= */
+@media (min-width: 981px){
+
+  #sidebar{
+    position: fixed !important;
+    top: 34px !important;                    /* ✅ 파란바 아래 */
+    left: 0 !important;
+
+    width: 320px !important;
+    min-width: 320px !important;
+    max-width: 320px !important;
+    flex: 0 0 320px !important;
+
+    height: calc(100vh - 34px) !important;
+    overflow-y: auto !important;
+    overflow-x: hidden !important;
+    -webkit-overflow-scrolling: touch !important;
+
+    background: #f2f2f2 !important;
+    z-index: 9500 !important;                /* ✅ 파란바(9000)보단 위, 헤더(10000)보단 아래 */
   }
 
-  body.is-menu-visible #sidebar {
-    left: 0;
+  #wrapper{
+    padding-left: 320px !important;
   }
 
-  #wrapper {
-    padding-left: 0;
+  #main{
+    width: 100% !important;
+    min-width: 0 !important;
   }
 }
 
+/* =========================================================
+   6) MOBILE: Sidebar off-canvas (햄버거 슬라이드)
+   ========================================================= */
+@media (max-width: 980px){
 
+  #wrapper{
+    padding-left: 0 !important;
+  }
 
+  #sidebar{
+    position: fixed !important;
+    top: 34px !important;
+    left: -320px !important;
+    width: min(86vw, 320px) !important;
+    height: calc(100vh - 34px) !important;
 
+    background: #f2f2f2 !important;
+    overflow-y: auto !important;
+    overflow-x: hidden !important;
 
+    z-index: 9500 !important;
+    transition: left .28s ease !important;
+    -webkit-overflow-scrolling: touch !important;
+  }
 
+  body.is-menu-visible #sidebar{
+    left: 0 !important;
+  }
 
-
+  body.is-menu-visible{
+    overflow: hidden !important;
+  }
+}
