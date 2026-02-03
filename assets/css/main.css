@@ -3429,3 +3429,98 @@ body{
     overflow: hidden !important;
   }
 }
+/* =========================================================
+   K-Medi Spring - Desktop / Mobile Split Layout (HARD FIX)
+   - Desktop(>=981px): sidebar fixed, main shifted
+   - Mobile(<=980px): off-canvas menu, main full width
+   - Prevent overlay on ALL devices
+   ========================================================= */
+
+/* 0) 안전장치: 이상한 폭/겹침 방지 */
+html, body{
+  overflow-x: hidden;
+}
+
+/* 1) 기본: wrapper를 확실히 레이아웃 컨테이너로 고정 */
+#wrapper{
+  display: flex;
+  min-height: 100vh;
+  width: 100%;
+}
+
+/* =========================
+   DESKTOP (PC) >= 981px
+   ========================= */
+@media (min-width: 981px){
+
+  /* 모바일 토글(햄버거/상단바) 무조건 숨김 */
+  a.toggle{
+    display: none !important;
+  }
+
+  /* 사이드바는 “고정 폭” + “스크롤 가능” */
+  #sidebar{
+    position: fixed !important;
+    top: 0;
+    left: 0;
+    height: 100vh;
+    width: 345px !important;      /* 너 캡처에서 nav 폭이 344.89px */
+    overflow-y: auto;
+    z-index: 1000;
+    background: #ffffff;
+  }
+
+  /* 메인은 사이드바 폭만큼 무조건 밀어 */
+  #main{
+    margin-left: 345px !important;
+    width: calc(100% - 345px) !important;
+    min-width: 0;                 /* flex 깨짐 방지 */
+  }
+
+  /* 메인 내부 패딩은 템플릿 기본 유지 or 살짝 정리 */
+  #main > .inner{
+    padding: 3rem 4rem;
+  }
+}
+
+/* =========================
+   MOBILE / iPad <= 980px
+   ========================= */
+@media (max-width: 980px){
+
+  /* 모바일에서는 메인 풀폭 */
+  #main{
+    margin-left: 0 !important;
+    width: 100% !important;
+  }
+
+  /* 사이드바는 off-canvas로 빼기 */
+  #sidebar{
+    position: fixed !important;
+    top: 0 !important;
+    left: auto !important;
+    right: -320px !important;
+    width: 320px !important;
+    height: 100vh !important;
+
+    overflow-y: auto !important;
+    background: #fff !important;
+    z-index: 10000 !important;
+
+    transition: right .28s ease !important;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  /* 메뉴 열렸을 때 */
+  body.is-menu-visible #sidebar{
+    right: 0 !important;
+  }
+
+  /* 모바일에서 토글(햄버거/상단바)은 보여야 함 */
+  a.toggle{
+    display: block !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+    z-index: 10001 !important;
+  }
+}
