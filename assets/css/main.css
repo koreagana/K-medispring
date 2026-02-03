@@ -2041,37 +2041,20 @@ html[lang="ko"] .button {
   flex: 1 1 auto;              /* 로고는 남는 공간 차지 */
 }
 
-/* === LOGO SIZE FIX (FINAL) === */
 /* Header 로고 크기 제어 (HTML: #header a.logo img 기준) */
 #header .logo img{
   width: auto;
-  height: 40%;        /* ← 여기서 퍼센트로 조절 */
+  height: 20%;        /* ← 여기서 퍼센트로 조절 */
   max-height: 48px;   /* 안전 상한 */
 }
 
 /* 모바일 */
 @media (max-width: 736px){
   #header .logo img{
-    height: 32%;
+    height: 10%;
     max-height: 36px;
   }
 }
-
-/* 로고를 퍼센트 기준으로 */
-#header .logo img{
-  width: 60% !important;   /* 필요하면 50~70%로 조절 */
-  height: auto !important;
-  max-width: 100% !important;
-  object-fit: contain !important;
-}
-
-/* 모바일 */
-@media (max-width: 736px){
-  #header .logo img{
-    width: 50% !important;
-  }
-}
-
 	
 /* Banner */
 #banner {
@@ -2824,30 +2807,43 @@ legend{ font-weight: 600; margin-bottom: .75rem; }
     padding:1.5rem;
   }
 }
-
-	/* 🔹 공통 Sidebar 기본 스타일 (주로 데스크톱) */
-#sidebar {
-  /* sidebar 자체 박스 */
-  flex-grow: 0;          /* 본문보다 커지지 않게 */
-  flex-shrink: 0;        /* 줄어들지 않게 */
-  background-color: #f5f5f5;
-  font-size: 1em;
-  position: relative;
-  width: 26em;
-  z-index: 1;            /* 메인(#main) 보다 한 단계 아래 */
-}
-
-/* 🔹 Sidebar 안쪽 여백/구조 */
-#sidebar > .inner {
-  padding: 2.22222em 2.22222em 2.44444em 2.22222em;
-  position: relative;
-  width: 26em;
-}
-
 /* =========================
-   Sidebar menu (final)
+   Sidebar (PC 기본)
    ========================= */
+#sidebar{
+  background-color:#f5f5f5;
+  width:300px;              /* ⬅ 가로폭 축소 (26em 제거) */
+  flex:0 0 300px;           /* grow/shrink 정리 */
+  position:relative;
+  z-index:1;
+}
 
+/* Sidebar 내부 컨테이너 */
+#sidebar > .inner{
+  width:100%;               /* 고정 em 제거 */
+  padding:1.5rem 1.25rem;   /* 여백 슬림화 */
+  box-sizing:border-box;
+}
+
+/* Sidebar 로고 */
+#sidebar .logo img{
+  max-width:70%;
+  height:auto;
+  display:block;
+  margin:0 auto;
+}
+
+/* PC에서 Sidebar 고정 표시 */
+@media (min-width:981px){
+  #sidebar{
+    position:sticky;
+    top:0;
+    height:100vh;
+    overflow-y:auto;
+  }
+}
+
+	
 /* 메뉴 전체 UL */
 #sidebar nav ul{
   user-select: none;
@@ -3292,4 +3288,5 @@ a.toggle{
   /* 모바일 토글은 PC에서 숨김 */
   a.toggle{ display:none !important; }
 }
+
 
