@@ -3442,6 +3442,29 @@ body{
   }
 }
 
+/* ======================================
+   PC 하단 ‘층층(단차)’ 느낌 정리
+   ====================================== */
+
+/* 메인 배경을 완전 화이트로 고정 */
+body, #wrapper, #main { background: #fff !important; }
+
+/* 메인 컨텐츠 박스가 ‘떠 보이는’ 효과 제거(있다면) */
+#main .inner{
+  background: transparent !important;
+  box-shadow: none !important;
+}
+
+/* 섹션 구분선(회색 줄) 약하게/제거 */
+#sidebar .major > :last-child,
+#sidebar section,
+#sidebar .inner section{
+  border-bottom: none !important;
+}
+
+/* sidebar 자체 회색을 흰색으로 맞추고 싶으면(선택) */
+#sidebar{ background: #fff !important; }
+
 
 
 
