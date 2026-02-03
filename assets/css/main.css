@@ -2054,6 +2054,21 @@ html[lang="ko"] .button {
   }
 }
 
+/* 로고를 퍼센트 기준으로 */
+#header .logo img{
+  width: 60% !important;   /* 필요하면 50~70%로 조절 */
+  height: auto !important;
+  max-width: 100% !important;
+  object-fit: contain !important;
+}
+
+/* 모바일 */
+@media (max-width: 736px){
+  #header .logo img{
+    width: 50% !important;
+  }
+}
+
 	
 /* Banner */
 #banner {
@@ -3287,6 +3302,7 @@ html, body { overflow-x: hidden; }
   /* 클릭 느낌 살짝 */
   a.toggle:active{ transform: translateY(1px); }
 }
+
 
 
 
