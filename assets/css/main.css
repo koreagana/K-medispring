@@ -3465,6 +3465,18 @@ body, #wrapper, #main { background: #fff !important; }
 /* sidebar 자체 회색을 흰색으로 맞추고 싶으면(선택) */
 #sidebar{ background: #fff !important; }
 
+#main p{
+  font-size: 0.9rem;
+  line-height: 1.65;
+  color: #555;
+}
+
+@media (max-width: 980px){
+  #main p{
+    font-size: 0.85rem;
+  }
+}
+
 
 
 
