@@ -2048,19 +2048,14 @@ html[lang="ko"] .button {
 }
 
 #header .logo img.logo-img {
-  height: 24px;               /* 현재 텍스트 로고 크기와 비슷한 시각 크기 */
-  width: auto;                /* 비율 유지 */
-  display: inline-block;
-  vertical-align: middle;     /* 아이콘/텍스트 높이와 균형 */
-  margin-top: -2px;           /* 시각 중심 보정(원본에 따라 0 ~ -3px 조정 가능) */
-  object-fit: contain;        /* 안전 */
+  height: 18px;      /* ← 지금보다 확실히 작아짐 */
+  margin-top: -1px;  /* 살짝만 보정 */
 }
 
-/* 모바일에서 조금만 더 작게 */
 @media screen and (max-width: 736px) {
   #header .logo img.logo-img {
-    height: 20px;
-    margin-top: -1px;
+    height: 16px;
+    margin-top: 0;
   }
 }
 
@@ -3273,6 +3268,7 @@ html, body { overflow-x: hidden; }
   /* 클릭 느낌 살짝 */
   a.toggle:active{ transform: translateY(1px); }
 }
+
 
 
 
