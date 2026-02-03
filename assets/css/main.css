@@ -2058,6 +2058,20 @@ html[lang="ko"] .button {
     margin-top: 0;
   }
 }
+/* ✅ 로고 크기 강제 (class 없어도 적용) */
+#header .logo img{
+  height: 18px !important;
+  width: auto !important;
+  display: inline-block !important;
+  vertical-align: middle !important;
+  object-fit: contain !important;
+}
+
+@media (max-width: 736px){
+  #header .logo img{
+    height: 16px !important;
+  }
+}
 
 	
 /* Banner */
@@ -3268,6 +3282,7 @@ html, body { overflow-x: hidden; }
   /* 클릭 느낌 살짝 */
   a.toggle:active{ transform: translateY(1px); }
 }
+
 
 
 
