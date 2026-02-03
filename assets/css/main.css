@@ -3021,9 +3021,11 @@ body{
 
 #sidebar nav#menu a{
   font-weight:600 !important;
-  font-size:1em !important;
-  line-height:1.65 !important;
+  font-size:1em !important;     /* 기준 크기 */
+  line-height:1.4 !important;  /* 1.65 → 조금만 줄여서 안정감 */
+  white-space: normal !important; /* ⭐ 줄바꿈 허용 */
 }
+
 
 /* Editorial 블릿(•) 완전 제거 */
 #sidebar ul,
@@ -3282,6 +3284,7 @@ html, body { overflow-x: hidden; }
   /* 클릭 느낌 살짝 */
   a.toggle:active{ transform: translateY(1px); }
 }
+
 
 
 
