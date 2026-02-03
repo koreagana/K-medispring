@@ -2044,15 +2044,15 @@ html[lang="ko"] .button {
 /* Header 로고 크기 제어 (HTML: #header a.logo img 기준) */
 #header .logo img{
   width: auto;
-  height: 20%;        /* ← 여기서 퍼센트로 조절 */
-  max-height: 48px;   /* 안전 상한 */
+  height: 15%;        /* ← 여기서 퍼센트로 조절 */
+  max-height: 40px;   /* 안전 상한 */
 }
 
 /* 모바일 */
 @media (max-width: 736px){
   #header .logo img{
     height: 10%;
-    max-height: 36px;
+    max-height: 30px;
   }
 }
 	
@@ -2827,7 +2827,7 @@ legend{ font-weight: 600; margin-bottom: .75rem; }
 
 /* Sidebar 로고 */
 #sidebar .logo img{
-  max-width:70%;
+  max-width:50%;
   height:auto;
   display:block;
   margin:0 auto;
@@ -3297,3 +3297,4 @@ a.toggle{
   }
 
   
+
