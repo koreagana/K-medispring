@@ -3295,6 +3295,20 @@ a.toggle{
     padding-left:320px !important;
     padding-top:0 !important;   /* 모바일 토글용 padding-top 제거 */
   }
+/* 모바일 메뉴 닫기 버튼 */
+#menu .close,
+#menu .toggle,
+#menu .menu-close {
+  position: fixed;
+  top: 14px;
+  left: 14px;
+  z-index: 10001;
+  pointer-events: auto;
+}
 
+/* 메뉴 자체 */
+#menu {
+  z-index: 10000;
+}
   
 
