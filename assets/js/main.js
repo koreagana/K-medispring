@@ -87,15 +87,7 @@
     }, 200);
   });
 
-  /* =========================
-     바깥 클릭 → 닫기
-     ========================= */
-  $body.on('click touchend', function () {
-    if (!isMobile()) return;
-    if ($body.hasClass('is-menu-visible')) {
-      closeMenu();
-    }
-  });
+  
 
   /* =========================
      ESC → 닫기
