@@ -255,7 +255,48 @@
             </video>
           </span>
         </section>
+<section class="agi-gateway">
+  <div class="agi-card">
+    <div class="agi-top">
+      <div>
+        <div class="agi-eyebrow">AGI DECISION</div>
+        <h2 class="agi-headline">K-Plan 자동 분기</h2>
+      </div>
+    </div>
 
+    <p class="agi-sub">목적을 선택하면 추천 플랜이 즉시 바뀜</p>
+
+    <div class="agi-grid">
+      <div class="agi-choices">
+        <label class="agi-choice">
+          <input type="radio" name="agi" value="skin">
+          <span class="agi-chip">피부·리프팅</span>
+          <span class="agi-hint">레이저·안티에이징</span>
+        </label>
+        <label class="agi-choice">
+          <input type="radio" name="agi" value="stem">
+          <span class="agi-chip">재생·줄기세포</span>
+          <span class="agi-hint">NK·세포치료</span>
+        </label>
+        <label class="agi-choice">
+          <input type="radio" name="agi" value="checkup">
+          <span class="agi-chip">정밀검진</span>
+          <span class="agi-hint">VIP 건강검진</span>
+        </label>
+        <label class="agi-choice">
+          <input type="radio" name="agi" value="wellness">
+          <span class="agi-chip">웰니스</span>
+          <span class="agi-hint">힐링·대사·면역</span>
+        </label>
+      </div>
+
+      <div class="agi-panel">
+        <div class="agi-label">AGI OUTPUT</div>
+        <div class="agi-output" id="agiOutput">선택 대기 중</div>
+      </div>
+    </div>
+  </div>
+</section>
         <!-- 品牌理念 -->
         <section>
           <header class="major"><h2>品牌理念</h2></header>
@@ -554,7 +595,18 @@
       });
     })();
   </script>
+const agiMap = {
+  skin: '리프팅·레이저 중심 K-Plan 추천',
+  stem: '합법 재생·NK 기반 K-Plan 추천',
+  checkup: '대학병원 연계 정밀검진 K-Plan',
+  wellness: '치유·대사 웰니스 K-Plan'
+};
 
+document.querySelectorAll('.agi-choice input').forEach(el=>{
+  el.addEventListener('change', e=>{
+    document.getElementById('agiOutput').textContent = agiMap[e.target.value];
+  });
+});
 </body>
 </html>
 
