@@ -3299,23 +3299,36 @@ a.toggle{
   z-index: 10000;
 }
   
-/* K-PLAN HERO TYPO */
+/* ===============================
+   K-PLAN HERO TYPO (BANNER)
+   =============================== */
+
 #hero-typo{
   min-height: 55vh;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  overflow:hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
   margin: 0 0 2.5rem 0;
 
-  background: linear-gradient(120deg,#2F6FA8,#4E97D1,#F2A6B3);
+  background: linear-gradient(
+    120deg,
+    #2F6FA8,
+    #4E97D1,
+    #F2A6B3
+  );
   background-size: 200% 200%;
   animation: kplanBgFlow 10s ease infinite;
+
   border-radius: 14px;
 }
 
-.hero-inner{ text-align:center; padding: 2.2rem 1.2rem; }
+.hero-inner{
+  text-align: center;
+  padding: 2.2rem 1.2rem;
+}
 
+/* 텍스트 공통 */
 .hero-line{
   font-size: clamp(1.8rem, 5.2vw, 3.3rem);
   font-weight: 800;
@@ -3323,20 +3336,23 @@ a.toggle{
   margin: .65em 0;
 }
 
-/* 중국어/한국어 교차 */
+/* 중국어 / 한국어 교차 */
 .hero-line .zh,
 .hero-line .ko{
-  display:block;
+  display: block;
   opacity: 0;
   transform: translateY(14px);
   filter: blur(6px);
-  will-change: transform, opacity, filter;
+  will-change: opacity, transform, filter;
 }
 
+/* 중국어 */
 .hero-line .zh{
   color: rgba(255,255,255,.95);
   animation: kplanZh 6s ease infinite;
 }
+
+/* 한국어 */
 .hero-line .ko{
   color: rgba(255,255,255,.72);
   animation: kplanKo 6s ease infinite;
@@ -3348,24 +3364,58 @@ a.toggle{
 .delay-3 .zh, .delay-3 .ko{ animation-delay: 1.4s; }
 .delay-4 .zh, .delay-4 .ko{ animation-delay: 2.0s; }
 
+/* 배경 흐름 */
 @keyframes kplanBgFlow{
-  0%{background-position:0% 50%}
-  50%{background-position:100% 50%}
-  100%{background-position:0% 50%}
+  0%{ background-position: 0% 50%; }
+  50%{ background-position: 100% 50%; }
+  100%{ background-position: 0% 50%; }
 }
 
+/* 중국어 등장 */
 @keyframes kplanZh{
-  0%,10%{opacity:0; transform:translateY(14px); filter:blur(6px)}
-  20%,45%{opacity:1; transform:translateY(0); filter:blur(0)}
-  55%,100%{opacity:0; transform:translateY(-10px); filter:blur(6px)}
-}
-@keyframes kplanKo{
-  0%,45%{opacity:0; transform:translateY(14px); filter:blur(6px)}
-  55%,80%{opacity:1; transform:translateY(0); filter:blur(0)}
-  90%,100%{opacity:0; transform:translateY(-10px); filter:blur(6px)}
+  0%,10%{
+    opacity: 0;
+    transform: translateY(14px);
+    filter: blur(6px);
+  }
+  20%,45%{
+    opacity: 1;
+    transform: translateY(0);
+    filter: blur(0);
+  }
+  55%,100%{
+    opacity: 0;
+    transform: translateY(-10px);
+    filter: blur(6px);
+  }
 }
 
-/* 모바일에서 높이만 살짝 줄임 */
+/* 한국어 등장 */
+@keyframes kplanKo{
+  0%,45%{
+    opacity: 0;
+    transform: translateY(14px);
+    filter: blur(6px);
+  }
+  55%,80%{
+    opacity: 1;
+    transform: translateY(0);
+    filter: blur(0);
+  }
+  90%,100%{
+    opacity: 0;
+    transform: translateY(-10px);
+    filter: blur(6px);
+  }
+}
+
+/* 모바일 최적화 */
 @media (max-width: 736px){
-  #hero-typo{ min-height: 42vh; border-radius: 12px; }
+  #hero-typo{
+    min-height: 42vh;
+    border-radius: 12px;
+  }
+  .hero-line{
+    font-size: clamp(1.4rem, 6vw, 2.2rem);
+  }
 }
