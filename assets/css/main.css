@@ -1129,17 +1129,20 @@ input[type="radio"] {
   opacity: 0;
   width: 1em;
   z-index: -1; }
+  
   input[type="checkbox"] + label,
-  input[type="radio"] + label {
-    text-decoration: none;
-    color: #7f888f;
-    cursor: pointer;
-    display: inline-block;
-    font-size: 1em;
-    font-weight: 400;
-    padding-left: 2.4em;
-    padding-right: 0.75em;
-    position: relative; }
+input[type="radio"] + label {
+  text-decoration: none;
+  color: #222;        /* ← 변경 */
+  cursor: pointer;
+  display: inline-block;
+  font-size: 1em;     /* 그대로 */
+  font-weight: 500;   /* ← 변경 */
+  padding-left: 2.4em;
+  padding-right: 0.75em;
+  position: relative;
+}
+  
     input[type="checkbox"] + label:before,
     input[type="radio"] + label:before {
       -moz-osx-font-smoothing: grayscale;
