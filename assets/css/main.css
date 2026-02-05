@@ -3299,5 +3299,14 @@ a.toggle{
   z-index: 10000;
 }
   
+/* SNS 아이콘 – 추천 2 조합 */
+#header .icons a,
+#header .icons a i{
+  color: #3D7FB1;   /* 딥 블루 */
+}
 
+/* hover */
+#header .icons a:hover,
+#header .icons a:hover i{
+  color: #6BCF9E;   /* 민트 그린 */
 }
