@@ -133,10 +133,9 @@ body, input, select, textarea {
 }
 
 /* 모바일 */
-@media (max-width: 980px){
-  body, input, select, textarea{
-    font-size: 14px;    /* ✅ 모바일에서 과대 방지 */
-    line-height: 1.65;
+@media (max-width: 980px) {
+  body {
+    font-size: 13px;      /* 모바일 */
   }
 }
 a {
@@ -2411,38 +2410,24 @@ html[lang="zh-CN"] #banner .content p {
 }
 
 
-/* === K-Plan 페이지 전용 폰트 확대 (본문 중심 페이지) === */
-body#kplan-page p,
-body#kplan-page label,
-body#kplan-page select,
-body#kplan-page input,
-body#kplan-page textarea {
-  font-size: 18.5px;         /* 일반보다 크게, 카테고리보다 약간 작게 */
+/* === K-Plan 체크 항목 텍스트 보강 === */
+body#kplan-page label span,
+body#kplan-page .option,
+body#kplan-page .option span {
+  font-size: 18.5px;
   line-height: 1.9;
+  font-weight: 500;   /* 애플 느낌 핵심 */
   color: #222;
 }
 
-/* 모바일 화면에서는 자동으로 약간 더 커지게 */
+/* 모바일 */
 @media screen and (max-width: 768px) {
-  body#kplan-page p,
-  body#kplan-page label,
-  body#kplan-page select,
-  body#kplan-page input,
-  body#kplan-page textarea {
+  body#kplan-page label span,
+  body#kplan-page .option,
+  body#kplan-page .option span {
     font-size: 19px;
-    line-height: 1.95;
   }
 }
-
-/* 회색 배경 밴드(푸터 계열과 자연스럽게) */
-.kplan-band {
-  background: #f5f5f5;           /* ✅ 통일된 따뜻한 회색 (#f5f5f5) */
-  padding: 2.5rem 0;             /* 위아래 여백 */
-  position: relative;
-  z-index: 1;                    /* 오버레이와 레이어 충돌 방지 */
-  border-top: 1px solid rgba(0,0,0,.04);
-}
-
 
 /* 중앙의 하얀 카드 */
 .kplan-shell {
