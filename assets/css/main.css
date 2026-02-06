@@ -2038,7 +2038,7 @@ html[lang="ko"] .button {
 }
 
 #header .logo-img{
-  height:48px;
+  height:24px;
   width:auto;
   display:block;
 }
@@ -2061,15 +2061,9 @@ html[lang="ko"] .button {
 /* 모바일 / iPad mini */
 @media (max-width:768px){
   #header{ padding:0 1rem; }
-  #header .logo-img{ height:44px; }
   #header .icons{ gap:.75rem; }
 }
-/* 📱 작은 모바일 전용 (아이폰 미니/SE 포함) */
-@media (max-width: 480px){
-  #header .logo-img{
-    height: 34px;   /* 지금 큼 → 이 값 줄이면 바로 작아짐 */
-  }
-}
+
 /* Banner */
 #banner {
   padding: 6em 0 4em 0 ;
@@ -3159,7 +3153,7 @@ body.is-menu-visible #sidebar{
 
 /* (선택) 헤더 밑 얇은 라인 */
 #header{
-  border-bottom:0.7px solid rgba(78,151,209,.55) !important;
+  border-bottom:1.3px solid rgba(78,151,209,.55) !important;
 }
 
 /* =========================
