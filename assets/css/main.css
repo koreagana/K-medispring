@@ -3137,7 +3137,6 @@ body.is-menu-visible #sidebar{
   }
 }
 
-/* ---------- G) HEADER / ICON CLICK SAFETY ---------- */
 /* 헤더/아이콘 클릭이 레이어에 막히지 않게 */
 #header{
   position:relative !important;
@@ -3156,10 +3155,6 @@ body.is-menu-visible #sidebar{
   border-bottom:1.3px solid rgba(78,151,209,.55) !important;
 }
 
-/* =========================
-   MENU BAR (Toggle) - CLEAN
-   iPad/모바일에서만 보이게 + 삼선 + 열리면 X
-   ========================= */
 /* ===== Toggle: desktop + mobile 모두 표시 ===== */
 a.toggle{
   display:block !important;
