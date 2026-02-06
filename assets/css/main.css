@@ -2028,36 +2028,43 @@ html[lang="ko"] .button {
     padding-right: 2.75em; }
 
 /* --- Fix SNS icons drifting below the blue line (Editorial) --- */
-#header {
-  display: flex;               /* 이미 flex지만, 명시적으로 덮어쓰기 */
-  align-items: center;         /* 수직 가운데 정렬 */
-  flex-wrap: nowrap;           /* 줄바꿈 금지 */
+/* =========================
+   Header FINAL (중복 정리 완료)
+   ========================= */
+#header{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
 }
 
-#header > * {
-  margin: 0;                   /* 제목/아이콘 아래 여백 제거 */
-  flex: 0 0 auto;              /* 필요 이상으로 늘어나지 않게 */
+#header .logo-img{
+  height:48px;
+  width:auto;
+  display:block;
 }
 
-#header .logo {
-  flex: 1 1 auto;              /* 로고는 남는 공간 차지 */
+/* 오른쪽 묶음 */
+#header .header-right{
+  display:flex;
+  align-items:center;
+  gap:1rem;
 }
 
-/* Header 로고 크기 제어 (HTML: #header a.logo img 기준) */
-#header .logo img{
-  width: auto;
-  height: 15%;        /* ← 여기서 퍼센트로 조절 */
-  max-height: 40px;   /* 안전 상한 */
+#header .icons{
+  display:flex;
+  gap:.9rem;
+  margin:0;
+  padding:0;
+  list-style:none;
 }
 
-/* 모바일 */
-@media (max-width: 736px){
-  #header .logo img{
-    height: 10%;
-    max-height: 30px;
-  }
+/* 모바일 / iPad mini */
+@media (max-width:768px){
+  #header{ padding:0 1rem; }
+  #header .logo-img{ height:44px; }
+  #header .icons{ gap:.75rem; }
 }
-	
+
 /* Banner */
 #banner {
   padding: 6em 0 4em 0 ;
