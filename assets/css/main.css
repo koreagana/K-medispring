@@ -3325,14 +3325,14 @@ a.toggle{
 
 /* 1) Header logo responsive */
 #header .logo img{
-  height: 56px;
+  height: 24px;
   width: auto;
 }
 @media (max-width: 1024px){
-  #header .logo img{ height: 42px; }
+  #header .logo img{ height: 22px; }
 }
 @media (max-width: 768px){
-  #header .logo img{ height: 34px; }
+  #header .logo img{ height: 20px; }
 }
 
 /* 3) Toggle position fix (X 표시) */
