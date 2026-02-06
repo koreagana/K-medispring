@@ -3338,3 +3338,9 @@ a.toggle{
 a.toggle{
   position: fixed !important;
 }
+<!-- ✅ 테스트용 1개만 (정사각형 레인보우 테두리 → 체크하면 한강애봄 블루 + 흰색 체크) -->
+<div class="hga-cbwrap">
+  <input class="hga-cb" type="checkbox" id="hga_cb_test">
+  <label class="hga-cblabel" for="hga_cb_test">水光 / 皮肤修复（Skin Booster）</label>
+</div>
+
