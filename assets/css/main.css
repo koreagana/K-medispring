@@ -3300,6 +3300,7 @@ a.toggle{
   z-index: 10000;
 }
   
+
 /* SNS 아이콘 – 추천 2 조합 */
 #header .icons a,
 #header .icons a i{
@@ -3319,18 +3320,18 @@ a.toggle{
 }
 
 #header .logo-img{
-  height: 24px !important;
-  max-height: 24px !important;
+  height: 30px !important;
+  max-height: 36px !important;
   width: auto !important;
   display: block;
 }
 
 @media (max-width:1024px){
-  #header .logo-img{ height: 22px !important; max-height:22px !important; }
+  #header .logo-img{ height: 20px !important; max-height:22px !important; }
 }
 
 @media (max-width:768px){
-  #header .logo-img{ height: 20px !important; max-height:20px !important; }
+  #header .logo-img{ height: 20px !important; max-height:24px !important; }
 }
 
 /* 3) Toggle position fix (X 표시) */
