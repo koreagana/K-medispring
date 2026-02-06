@@ -3323,29 +3323,25 @@ a.toggle{
   color: #6BCF9E;   /* 민트 그린 */
 }
 
-/* 1) Header logo responsive */
-#header .logo-img{
-  height: 24px;
-  width: auto;
-}
-@media (max-width: 1024px){
-  #header .logo-img{ height: 22px; }
-}
-@media (max-width: 768px){
-  #header .logo-img{ height: 20px; }
-}
-/* 🔥 Header 높이 고정 (로고 커지는 착시 제거) */
+/* ✅ Header 높이 + 로고 최종 고정 */
 #header{
   padding: 0.9rem 0 !important;
   min-height: auto !important;
 }
 
-/* 로고 이미지 확정 고정 */
 #header .logo-img{
   height: 24px !important;
   max-height: 24px !important;
   width: auto !important;
   display: block;
+}
+
+@media (max-width:1024px){
+  #header .logo-img{ height: 22px !important; max-height:22px !important; }
+}
+
+@media (max-width:768px){
+  #header .logo-img{ height: 20px !important; max-height:20px !important; }
 }
 
 /* 3) Toggle position fix (X 표시) */
