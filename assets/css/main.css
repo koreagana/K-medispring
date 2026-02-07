@@ -2682,19 +2682,19 @@ body.modal-open{ overflow:hidden; }
 /* ===== Header logo responsive (force) ===== */
 #header .logo-img{
   height: auto !important;
-  max-height: 38px !important;   /* PC 기본 */
+  max-height: 44px !important;   /* PC 기본 */
   width: auto !important;
   display: block;
 }
 
 /* 태블릿 */
 @media screen and (max-width: 980px){
-  #header .logo-img{ max-height: 34px !important; }
+  #header .logo-img{ max-height: 44px !important; }
 }
 
 /* 모바일 */
 @media screen and (max-width: 736px){
-  #header .logo-img{ max-height: 28px !important; }
+  #header .logo-img{ max-height: 44px !important; }
 }
 
 /* 모바일 헤더: 로고 왼쪽 / SNS 오른쪽 한 줄 정렬 */
