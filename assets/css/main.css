@@ -2991,3 +2991,9 @@ a.toggle{
 #sidebar .sidebar-spacer{
   margin-top: 0 !important;
 }
+
+#header .logo-img{
+  height: 56px !important;
+  width: auto !important;
+  max-height: 56px !important;
+}
