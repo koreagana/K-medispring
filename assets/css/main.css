@@ -2986,5 +2986,28 @@ a.toggle{
   box-shadow: none !important;
 }
 
+/* iPad 전용 레이아웃 보정 */
+@media (min-width: 768px) and (max-width: 1024px) {
+
+  /* 헤더 높이 고정 + 여백 제거 */
+  #header{
+    height: 64px !important;
+    padding: 0 1.2rem !important;
+  }
+
+  /* 메인 콘텐츠 위 공백 제거 */
+  #main{
+    padding-top: 0 !important;
+  }
+
+  #main > .inner{
+    padding-top: 1.5rem !important;
+  }
+
+  /* 사이드바가 본문 밀지 않게 */
+  #sidebar{
+    top: 64px !important;
+  }
+}
 
 
