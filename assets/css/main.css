@@ -2992,3 +2992,19 @@ a.toggle{
 #menu li.active + li > a{
   box-shadow: none;
 }
+
+/* 사이드바 위쪽 여백/섹션 간격 통일 */
+#sidebar .inner{
+  padding-top: 0 !important;
+}
+
+#sidebar .sidebar-spacer{
+  height: 120px !important;   /* 원하는 높이로 고정 */
+  margin: 0 !important;
+  padding: 0 !important;
+}
+
+/* Search 섹션이 있는/없는 페이지 편차 제거 */
+#sidebar section{
+  margin-top: 0 !important;
+}
