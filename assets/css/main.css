@@ -2825,14 +2825,16 @@ a.toggle{
   /* ✅ 글 간격(행간) */
   line-height: 1.35 !important;
 
-  /* ✅ 원본처럼 얇은 구분선 */
-
+/* ✅ 원본처럼 얇은 구분선 */
+#sidebar nav#menu ul li a,
+#sidebar nav#menu ul li span{
+  border-bottom: 0.7px solid rgba(0,0,0,.12) !important;
+}
   /* ✅ 배경/밑줄 제거 */
   background: transparent !important;
   text-decoration: none !important;
   box-shadow: none !important;
 }
-
 /* 5) Hover / Active */
 #sidebar nav#menu ul li a:hover{
   color: var(--hover) !important;
@@ -2985,4 +2987,5 @@ a.toggle{
   outline: none !important;
   box-shadow: none !important;
 }
+
 
