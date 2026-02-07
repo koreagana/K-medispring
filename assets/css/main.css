@@ -2833,13 +2833,6 @@ a.toggle{
   box-shadow: none !important;
 }
 
-/* 4) 한강애봄 파란 1px 라인(원본 ‘accent’ 느낌) */
-#sidebar nav#menu ul li a,
-#sidebar nav#menu ul li span{
-  box-shadow: inset 0 -1px 0 0 var(--brand) !important; /* 1px blue */
-  border-bottom-color: transparent !important;          /* 중복 방지 */
-}
-
 /* 5) Hover / Active */
 #sidebar nav#menu ul li a:hover{
   color: var(--hover) !important;
@@ -2992,3 +2985,4 @@ a.toggle{
   outline: none !important;
   box-shadow: none !important;
 }
+
