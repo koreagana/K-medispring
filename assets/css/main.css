@@ -2442,8 +2442,6 @@ body{
 #menu ul li::before{
   content:none !important;
 }
-
-
 /* =========================================================
    2026 03 07 E) DESKTOP / iPad 가로모드 (>=981px)
    - 왼쪽 회색바(사이드바) 고정
@@ -2981,30 +2979,7 @@ a.toggle{
     width: 260px;      /* 폰에서는 더 좁게 */
   }
 }
-/* Editorial 템플릿용: 첫 메뉴 아이템 위 라인 제거 */
-#menu ul li:first-child{
-  border-top: none;
-}
-/* 首页 아래, 大健康 위에 있는 첫 구분선만 제거 */
-#menu li.active + li{
-  border-top: none;
-}
-#menu li.active + li > a{
-  box-shadow: none;
-}
-
-/* 사이드바 위쪽 여백/섹션 간격 통일 */
-#sidebar .inner{
-  padding-top: 0 !important;
-}
-
-#sidebar .sidebar-spacer{
-  height: 120px !important;   /* 원하는 높이로 고정 */
-  margin: 0 !important;
-  padding: 0 !important;
-}
-
-/* Search 섹션이 있는/없는 페이지 편차 제거 */
-#sidebar section{
-  margin-top: 0 !important;
+/* 첫 번째 메뉴(首页) 아래 라인 제거 */
+#sidebar nav#menu ul li:first-child > a{
+  box-shadow: none !important;
 }
