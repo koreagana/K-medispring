@@ -2713,3 +2713,8 @@ body.modal-open{ overflow:hidden; }
   gap:14px;
   margin-left:auto;
 }
+#header{
+  border-bottom: 1px solid var(--brand) !important;
+  padding-bottom: 12px;
+  margin-bottom: 24px;
+}
