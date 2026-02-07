@@ -2962,7 +2962,7 @@ a.toggle{
   margin-bottom: .6rem; 
   background: #0077B6; /* 한강애봄 블루 */
 }
-/* 首页 아래, 다음 메뉴(大健康) 위 선 제거 */
+/* 首页 아래 (大健康 위) 선만 제거 */
 #menu li.active + li > a{
   border-top: none !important;
 }
