@@ -1,11 +1,80 @@
----
-layout: default
-title: 整形医美
----
+<!DOCTYPE HTML>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+  <title>汉江春天</title>
 
-<header class="main">
-  <h1>整形医美</h1>
+  <!-- GitHub Pages용 base 경로 -->
+  <script>
+    (function () {
+      var project = "/K-medispring/";
+      var isGhPages = location.hostname.endsWith("github.io");
+      var base = document.createElement("base");
+      base.href = isGhPages ? project : "/";
+      document.head.appendChild(base);
+    })();
+  </script>
+
+  <!-- Meta Tags -->
+  <meta name="description" content="汉江春天 · 韩国医疗观光与大健康平台" />
+  <meta property="og:title" content="汉江春天" />
+  <meta property="og:description" content="专注于韩国医疗、皮肤医美、干细胞、健康管理与高端定制旅行" />
+  <meta property="og:image" content="https://kmedispring.com/images/preview.jpg" />
+  <meta property="og:url" content="https://kmedispring.com/index.html" />
+  <meta name="twitter:card" content="summary_large_image" />
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/x-icon" href="images/favicon.ico?v=20251012">
+  <link rel="icon" type="image/png" sizes="32x32" href="images/favicon-32.png?v=20251012">
+  <link rel="icon" type="image/png" sizes="16x16" href="images/favicon-16.png?v=20251012">
+  <link rel="apple-touch-icon" sizes="180x180" href="images/apple-touch-icon.png?v=20251012">
+
+  <!-- CSS -->
+  <link rel="stylesheet" href="assets/css/fontawesome-all.min.css?v=20251027" />
+  <link rel="stylesheet" href="assets/css/main.css?v=20251027" />
+  <noscript>
+    <link rel="stylesheet" href="assets/css/noscript.css?v=20251027" />
+  </noscript>
+</head>
+
+<body class="is-preload">
+
+  <!-- Wrapper -->
+  <div id="wrapper">
+
+    <!-- Main -->
+    <div id="main">
+      <div class="inner">
+
+<!-- Header -->
+<header id="header">
+  <a href="index.html" class="logo">
+    <img src="images/logo_ch.png" alt="汉江春天" class="logo-img">
+  </a>
+<!-- ✅ 모바일 햄버거: 헤더 안에 있어야 함 -->
+          <a href="#sidebar" class="toggle" aria-label="Menu"></a>
+
+  <!-- SNS icons -->
+  <ul class="icons">
+    <li>
+      <a href="#" id="wechat-icon" class="icon brands fa-weixin" title="WeChat">
+        <span class="label">WeChat</span>
+      </a>
+    </li>
+    <li>
+      <a href="#" id="whatsapp-icon" class="icon brands fa-whatsapp" title="WhatsApp">
+        <span class="label">WhatsApp</span>
+      </a>
+    </li>
+    <li>
+      <a href="mailto:egana@kmedispring.com" class="icon solid fa-envelope" title="Email">
+        <span class="label">Email</span>
+      </a>
+    </li>
+  </ul>
 </header>
+
 
 <!-- Hero (임시: 업로드 전까지 section_skin.png 사용) -->
 <!-- 아래 줄의 hero_surgery.png는 이미지 업로드 후 주석을 풀어 사용하세요. -->
@@ -63,11 +132,98 @@ title: 整形医美
 </div>
 -->
 
-<!-- CTA -->
-<div class="box">
-  <p>需要一份更稳妥与自然的整形医美方案？点击开始 1:1 咨询。</p>
-  <ul class="actions">
-    <li><a href="{{ site.baseurl }}/custom-trip.html" class="button primary">定制我的整形方案</a></li>
-    <!-- <li><a href="{{ site.baseurl }}/hospitals.html" class="button alt">查看合作医院</a></li> -->
+<!-- ===== Sidebar ===== -->
+   <div id="sidebar">
+  <div class="inner">
+
+    <section id="sidebar-brand">
+      <div class="sidebar-logo">
+        <a href="index.html" class="logo">
+          <img src="images/logo_ch.png" alt="汉江春天 로고">
+        </a>
+      </div>
+    </section>
+
+   <nav id="menu">
+  <ul>
+    <li><a href="index.html">首页</a></li>
+    <li><a href="wellness.html">大健康</a></li>
+    <li><a href="stemcell.html">干细胞</a></li>
+    <li><a href="derm.html">皮肤医美</a></li>
+    <li><a href="surgery.html">整形医美</a></li>
+    <li><a href="woman.html">女性护理中心</a></li>
+    <li><a href="man.html">男性健康中心</a></li>
+    <li><a href="transfer.html">接送服务</a></li>
+    <li><a href="tour.html">市区观光</a></li>
+    <li><a href="lifestyle.html">生活服务</a></li>
+    <li><a href="kplan.html" aria-current="page">定制医疗观光方案</a></li>
   </ul>
-</div>
+</nav>
+  <br>
+  <br>
+   
+  <!-- About -->
+<section class="menu-extra">
+  <header class="major">
+    <h2 class="about-title">关于我们</h2>
+  </header>
+  <p>
+    我们相信，美丽与健康，源于真诚的交流。如果你对韩国医疗、健康管理或合作有兴趣，欢迎通过微信或邮件与我们联系。
+  </p>
+</section>
+
+    <!-- Contact -->
+    <section>
+      <header class="major"><h3>联系方式</h3></header>
+      <ul class="contact">
+        <li class="icon solid fa-envelope">
+          <a href="mailto:egana@kmedispring.com">邮箱：egana@kmedispring.com</a>
+        </li>
+        <li class="icon solid fa-phone">(82) 10-4903-3123</li>
+        <li class="icon solid fa-home">韩国 首尔特别市 城北区 东小门路 63号 6层 (邮编：02845)</li>
+      </ul>
+    </section>
+
+    <!-- Footer -->
+    <footer id="footer">
+      <p style="text-align:center; font-size:0.9em; color:#666;">
+        © 2025 汉江春天 한강애봄 版权所有。模板设计：HTML5 UP。
+      </p>
+    </footer>
+
+  </div><!-- .inner -->
+</div><!-- #sidebar -->
+
+  </div><!-- #wrapper -->
+
+  <!-- WeChat QR Modal -->
+  <div id="wechatModal" class="modal" aria-hidden="true" role="dialog">
+    <div class="modal-inner">
+      <button class="close" aria-label="Close">&times;</button>
+      <p class="modal-caption">扫描二维码添加微信</p>
+      <img id="wechatQR" class="modal-content" src="images/qr_weixin.jpg" alt="WeChat QR for e-gana" />
+      <p class="modal-id">WeChat ID：e-gana</p>
+    </div>
+  </div>
+
+  <!-- WhatsApp Modal -->
+  <div id="whatsappModal" class="modal" aria-hidden="true" role="dialog">
+    <div class="modal-inner">
+      <button class="close" aria-label="Close">&times;</button>
+      <p class="modal-caption">QR → WhatsApp Connect</p>
+      <img id="whatsappQR" class="modal-content" src="images/whatsapp_qr.jpg" alt="WhatsApp QR for K-Medi Spring">
+      <p class="modal-id">WhatsApp：+82-10-4903-3123</p>
+    </div>
+  </div>
+
+  <!-- 템플릿 기본 스크립트 5총사 (반드시 이 순서) -->
+ <script src="assets/js/jquery.min.js"></script>
+<script src="assets/js/browser.min.js"></script>
+<script src="assets/js/breakpoints.min.js"></script>
+<script src="assets/js/util.js"></script>
+<script src="assets/js/main.js"></script>
+<script src="assets/js/modals.js"></script>
+
+</body>
+</html>
+
