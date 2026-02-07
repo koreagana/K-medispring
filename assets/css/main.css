@@ -2983,3 +2983,11 @@ a.toggle{
 #sidebar nav#menu ul li:first-child > a{
   box-shadow: none !important;
 }
+
+#sidebar > .inner{
+  padding-top: 0 !important;
+}
+
+#sidebar .sidebar-spacer{
+  margin-top: 0 !important;
+}
