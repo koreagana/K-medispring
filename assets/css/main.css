@@ -2438,601 +2438,220 @@ body{
 #menu ul li::before{
   content:none !important;
 }
+
 /* =========================================================
-   2026 03 07 E) DESKTOP / iPad 가로모드 (>=981px)
-   - 왼쪽 회색바(사이드바) 고정
-   - 메인은 오른쪽으로 정확히 밀기
-   - 상단 파란 토글바는 숨김
-   ========================================================= */
+   KMS LAYOUT FIX (PC + iPad + Mobile) — FINAL CLEAN PACK
+   붙이는 위치: assets/css/main.css 맨 아래
+   (기존에 넣었던 981px/토글/사이드바 관련 커스텀 블록들은 전부 삭제하고 이것만 남겨)
+========================================================= */
+
+:root{
+  --brand:#0077B6;
+  --hover:#2088C2;
+  --line:rgba(0,0,0,.12);
+}
+
+/* ---- safety ---- */
+html, body{ overflow-x:hidden; }
+#wrapper, #main, #sidebar{ min-width:0; }
+img, video, iframe{ max-width:100%; height:auto; }
+
+/* =========================================================
+   1) DESKTOP (>=981px): sidebar always visible
+========================================================= */
 @media (min-width:981px){
 
-  /* PC에서는 토글바 숨김 */
+  /* mobile toggle bar hidden */
   a.toggle{ display:none !important; }
 
-  /* body padding-top 제거 (모바일 토글용이므로) */
   body{ padding-top:0 !important; }
 
-/* ✅ 토글 열리면 사이드바 보이기 (HTML5UP Editorial 기본 방식) */
-body.is-menu-visible #sidebar{
-  transform: translateX(0);
-}
-
-/* ✅ 메뉴 글씨: 잘림 방지(줄바꿈 허용) */
-#sidebar nav#menu a{
-  white-space: normal !important;
-  overflow-wrap: break-word !important; /* 긴 단어/중국어도 강제로 줄바꿈 */
-  word-break: break-word !important;
-}
-
-/* PC에서는 항상 고정 사이드바 + 본문을 밀어서 2컬럼 */
-@media (min-width: 981px){
+  /* fixed sidebar */
   #sidebar{
-    transform: none;               /* 항상 보이게 */
-    width: 320px;
-  }
-  #wrapper{
-    padding-left: 320px;           /* ✅ 본문 밀기 */
-  }
-  body.is-menu-visible #sidebar{
-    transform: none;               /* PC에서 토글 영향 제거 */
-  }
-}
-
-/* 혹시 가로 스크롤 생기면 안전장치 */
-#wrapper{ overflow-x: hidden; }
-#main{ min-width: 0; width: 100%; }
-
-  /* Sidebar off-canvas */
-  #sidebar{
-    position:fixed !important;
-    top:34px !important;                  /* 파란바 아래 */
-    left:-320px !important;               /* 숨김 */
-    width:min(86vw, 320px) !important;
-    height:calc(100vh - 34px) !important;
-
-    background:#f2f2f2 !important;
-    overflow-y:auto !important;
-    overflow-x:hidden !important;
-
-    z-index:10000 !important;
-    transition:left .28s ease !important;
-    -webkit-overflow-scrolling:touch !important;
-  }
-
-  /* 메뉴 열릴 때 */
-  body.is-menu-visible #sidebar{
-    left:0 !important;
-  }
-
-  /* 메뉴 열리면 뒤 스크롤 잠금 */
-  body.is-menu-visible{
-    overflow:hidden !important;
-  }
-
-  /* 메인은 풀폭 */
-  #main{
-    width:100% !important;
-    min-width:0 !important;
-  }
-}
-
-/* 헤더/아이콘 클릭이 레이어에 막히지 않게 */
-#header{
-  position:relative !important;
-  z-index:2000 !important;
-  background:#fff !important;
-}
-
-/* 아이콘 줄은 클릭 잘 되게 */
-#header .icons{
-  position:relative !important;
-  z-index:3000 !important;
-}
-
-/* (선택) 헤더 밑 얇은 라인 */
-#header{
-  border-bottom:1.3px solid rgba(78,151,209,.55) !important;
-}
-
-/* ===== Toggle: desktop + mobile 모두 표시 ===== */
-a.toggle{
-  display:block !important;
-}
-
-/* 1) #sidebar > .inner 가 아직 26em이면 폭이 다시 벌어짐 */
-#sidebar > .inner{
-  width:80% !important;
-  box-sizing:border-box !important;
-}
-
-/* 2) 데스크탑에서 #main 이 밀려나오거나 가로스크롤 생기면 방지 */
-#main{
-  min-width:0 !important;
-}
-
-/* 데스크탑에서도 상단 고정 유지 */
-@media (min-width: 981px){
-  a.toggle{
     position:fixed !important;
     top:0 !important;
     left:0 !important;
-    right:0 !important;
-    z-index:10001 !important;
+    width:320px !important;
+    height:100vh !important;
+    overflow-y:auto !important;
+    overflow-x:hidden !important;
+    transform:none !important;
+    z-index:1000 !important;
+    background:#f2f2f2 !important;
   }
+
+  /* main pushed right */
+  #wrapper{
+    padding-left:320px !important;
+    padding-top:0 !important;
+  }
+
+  #main{ width:100% !important; min-width:0 !important; }
 }
 
-/* iPad+모바일(980px 이하)에서만 토글 표시 */
-@media (max-width: 980px){
+/* =========================================================
+   2) TABLET + MOBILE (<=980px): top blue bar + off-canvas sidebar
+========================================================= */
+@media (max-width:980px){
 
-  /* 상단 파란 바(클릭 영역) */
+  /* content pushed below top bar */
+  body{ padding-top:56px !important; }
+  #wrapper{ padding-top:0 !important; }
+
+  /* top blue bar clickable */
   a.toggle{
     display:block !important;
     position:fixed !important;
     top:0 !important;
     left:0 !important;
     right:0 !important;
-
     width:100% !important;
     height:56px !important;
-
-    background:#4E97D1 !important;
-    margin:0 !important;
-    padding:0 !important;
+    background:var(--brand) !important;
+    z-index:10001 !important;
 
     border:0 !important;
     border-radius:0 !important;
     box-shadow:none !important;
-
-    z-index:10001 !important;
-
     text-decoration:none !important;
-    overflow:hidden !important;
 
-    /* "Toggle" 글자 완전 숨김 */
     font-size:0 !important;
     line-height:0 !important;
     text-indent:-9999px !important;
+    overflow:hidden !important;
   }
 
-  /* 기본: 삼선(왼쪽) */
+  /* hamburger */
   a.toggle::before{
     content:"" !important;
     position:absolute !important;
     left:16px !important;
     top:50% !important;
     transform:translateY(-50%) !important;
-
     width:28px !important;
     height:2px !important;
     background:rgba(255,255,255,.95) !important;
     border-radius:2px !important;
-
     box-shadow:
       0 -8px 0 rgba(255,255,255,.95),
       0  8px 0 rgba(255,255,255,.95) !important;
   }
 
-  /* ✅ 메뉴 열렸을 때: 삼선 → X */
+  /* open -> X */
   body.is-menu-visible a.toggle::before{
     width:26px !important;
     box-shadow:none !important;
     transform:translateY(-50%) rotate(45deg) !important;
   }
-
   body.is-menu-visible a.toggle::after{
     content:"" !important;
     position:absolute !important;
     left:16px !important;
     top:50% !important;
     transform:translateY(-50%) rotate(-45deg) !important;
-
     width:26px !important;
     height:2px !important;
     background:rgba(255,255,255,.95) !important;
     border-radius:2px !important;
   }
 
-  /* 상단바 때문에 본문이 가려지지 않게 */
-  #wrapper{ padding-top:56px !important; }
-}
-
-/* ===== DESKTOP: sidebar always visible (fix) ===== */
-@media (min-width: 981px){
-
+  /* off-canvas sidebar */
   #sidebar{
-    display:block !important;
     position:fixed !important;
-    top:0 !important;
-    left:0 !important;          /* ✅ PC에서는 무조건 0 */
+    top:56px !important;
+    left:-320px !important;
     width:320px !important;
-    min-width:320px !important;
-    max-width:320px !important;
-
-    height:100vh !important;
+    height:calc(100vh - 56px) !important;
     overflow-y:auto !important;
     overflow-x:hidden !important;
-
-    transform:none !important;  /* 혹시 transform으로 숨겨졌으면 복구 */
-    box-shadow:none !important; /* 원하면 지워도 됨 */
-    z-index:1000 !important;
+    background:#f2f2f2 !important;
+    z-index:10000 !important;
+    transition:left .28s ease !important;
+    -webkit-overflow-scrolling:touch !important;
+    transform:none !important;
   }
+  body.is-menu-visible #sidebar{ left:0 !important; }
 
-  /* 메인 영역을 사이드바만큼 밀기 */
-  #wrapper{
-    padding-left:320px !important;
-    padding-top:0 !important;   /* 모바일 토글용 padding-top 제거 */
-  }
-/* 모바일 메뉴 닫기 버튼 */
-#menu .close,
-#menu .toggle,
-#menu .menu-close {
-  position: fixed;
-  top: 14px;
-  left: 14px;
-  z-index: 10001;
-  pointer-events: auto;
+  /* lock background scroll when menu open */
+  body.is-menu-visible{ overflow:hidden !important; }
 }
 
-/* 메뉴 자체 */
-#menu {
-  z-index: 10000;
-}
-  
-/* SNS 아이콘 – 추천 2 조합 */
-#header .icons a,
-#header .icons a i{
-  color: #3D7FB1;   /* 딥 블루 */
+/* phone narrower sidebar */
+@media (max-width:736px){
+  #sidebar{ width:260px !important; left:-260px !important; }
+  body.is-menu-visible #sidebar{ left:0 !important; }
 }
 
-/* hover */
-#header .icons a:hover,
-#header .icons a:hover i{
-  color: #6BCF9E;   /* 민트 그린 */
-}
-
-/* ✅ Header 높이 + 로고 최종 고정 */
-#header{
-  padding: 0.9rem 0 !important;
-  min-height: auto !important;
-}
-
-#header .logo-img{
-  height: 30px !important;
-  max-height: 36px !important;
-  width: auto !important;
-  display: block;
-}
-
-@media (max-width:1024px){
-  #header .logo-img{ height: 20px !important; max-height:22px !important; }
-}
-
-@media (max-width:768px){
-  #header .logo-img{ height: 20px !important; max-height:24px !important; }
-}
-
-/* 3) Toggle position fix (X 표시) */
-a.toggle{
-  position: fixed !important;
-}
-
-/* 헤더 기본 */
-#header{
-  display:flex !important;
-  align-items:center !important;
-  justify-content:space-between !important;
-  gap: .75rem !important;
-  padding: .9rem 1.2rem !important;
-  border-bottom: 4px solid #4E97D1 !important;   /* 필요 없으면 지워 */
-  background: transparent !important;
-  position: relative !important;
-  z-index: 1000 !important;
-}
-
-/* 로고 */
-#header .logo{
-  display:flex !important;
-  align-items:center !important;
-  gap:.4rem !important;
-  text-decoration:none !important;
-}
-#header .logo-img{
-  height: 30px !important;          /* PC */
-  max-height: 36px !important;
+/* =========================================================
+   3) SIDEBAR MENU (thin dividers + no background/underline)
+========================================================= */
+#sidebar > .inner{
   width:auto !important;
-  display:block !important;
+  padding:20px 20px 16px 20px !important;
+  box-sizing:border-box !important;
 }
 
-/* 오른쪽 묶음 */
-#header .header-right{
-  display:flex !important;
-  align-items:center !important;
-  gap: 1rem !important;
-}
-#header .icons{
-  display:flex !important;
-  gap:.9rem !important;
+#sidebar nav#menu ul{
   margin:0 !important;
   padding:0 !important;
   list-style:none !important;
 }
 
-/* 햄버거/닫기(X) 토글(원본 main.js 동작 유지) */
-#header a.toggle{
-  position: fixed !important;       /* X가 안 뜨는 문제 방지 */
-  top: 1rem !important;
-  left: 1rem !important;
-  z-index: 20000 !important;
-}
-
-/* iPad */
-@media (max-width: 1024px){
-  #header{ padding: .85rem 1rem !important; }
-  #header .logo-img{ height: 24px !important; max-height: 28px !important; }
-  #header .icons{ gap:.8rem !important; }
-}
-
-/* Mobile */
-@media (max-width: 768px){
-  #header{ padding: .8rem .95rem !important; }
-  #header .logo-img{ height: 20px !important; max-height: 24px !important; }
-  #header .icons{ gap:.75rem !important; }
-}
-/* =========================================================
-   KMS Sidebar/Nav — Template-accurate (All pages)
-   paste: assets/css/main.css 맨 아래
-   ========================================================= */
-
-/* 0) Sidebar inner padding = 원본(20 20 16 20) */
-#sidebar > .inner{
-  padding: 20px 20px 16px 20px !important;
-}
-
-/* 1) Menu block spacing */
-#sidebar nav#menu{
-  margin: 0 !important;
-}
-#sidebar nav#menu > header.major{
-  margin: 0 0 18px 0 !important;     /* "Menu" 아래 여백 */
-  padding: 0 !important;
-}
-#sidebar nav#menu > header.major h2{
-  margin: 0 !important;
-  font-size: 1.6rem !important;
-  line-height: 1.2 !important;
-}
-
-/* 2) Menu list reset */
-#sidebar nav#menu ul{
-  margin: 0 !important;
-  padding: 0 !important;
-  list-style: none !important;
-}
-
-/* 3) Menu items = 원본 느낌(좌우 여백 + 얇은 라인) */
 #sidebar nav#menu ul li{
-  padding: 0 !important;
-  margin: 0 !important;
-  border-top: 0 !important;
+  margin:0 !important;
+  padding:0 !important;
 }
+
 #sidebar nav#menu ul li a,
 #sidebar nav#menu ul li span{
-  display: block !important;
+  display:block !important;
+  padding:18px 20px !important;
+  line-height:1.35 !important;
 
-  /* ✅ 원본처럼 좌측/우측 공간 */
-  padding: 18px 20px !important;
+  /* ✅ 원본처럼 얇은 구분선 */
+  border-bottom:0.7px solid var(--line) !important;
 
-  /* ✅ 글 간격(행간) */
-  line-height: 1.35 !important;
-
-/* ✅ 원본처럼 얇은 구분선 */
-#sidebar nav#menu ul li a,
-#sidebar nav#menu ul li span{
-  border-bottom: 0.7px solid rgba(0,0,0,.12) !important;
-}
   /* ✅ 배경/밑줄 제거 */
-  background: transparent !important;
-  text-decoration: none !important;
-  box-shadow: none !important;
+  background:transparent !important;
+  text-decoration:none !important;
+  box-shadow:none !important;
+
+  white-space:normal !important;
+  overflow-wrap:anywhere !important;
+  word-break:break-word !important;
 }
-/* 5) Hover / Active */
-#sidebar nav#menu ul li a:hover{
-  color: var(--hover) !important;
-}
+
+/* Hover / Active */
+#sidebar nav#menu ul li a:hover{ color:var(--hover) !important; }
 #sidebar nav#menu ul li a[aria-current="page"]{
-  color: var(--brand) !important;
-  font-weight: 800 !important;
+  color:var(--brand) !important;
+  font-weight:800 !important;
 }
 
-/* 6) iPad/모바일에서 글 크기만 살짝 다운(원본처럼) */
-@media (max-width: 1024px){
-  #sidebar > .inner{ padding: 18px 18px 14px 18px !important; }
-  #sidebar nav#menu ul li a,
-  #sidebar nav#menu ul li span{
-    padding: 16px 18px !important;
-  }
-}
-@media (max-width: 768px){
-  #sidebar > .inner{ padding: 16px 16px 12px 16px !important; }
-  #sidebar nav#menu ul li a,
-  #sidebar nav#menu ul li span{
-    padding: 15px 16px !important;
-  }
-}
-
-/* 7) (필수) off-canvas 트랜지션은 기존 main.js 동작 유지 */
-@media (max-width: 980px){
-  #sidebar{
-    will-change: transform;
-  }
-}
-
-/* ✅ main.css 맨 아래에 붙여넣기 (QR 모달) */
-.modal-open{ overflow:hidden; }
+/* =========================================================
+   4) MODAL (always hidden unless aria-hidden="false")
+========================================================= */
+body.modal-open{ overflow:hidden; }
 
 .modal{
-  position:fixed;
-  inset:0;
-  background:rgba(0,0,0,.6);
-  display:none;
-  align-items:center;
-  justify-content:center;
-  z-index:10000;
-}
-.modal-inner{
-  background:#fff;
-  border-radius:10px;
-  padding:1.5rem 1.75rem;
-  max-width:320px;
-  width:90%;
-  text-align:center;
-  position:relative;
-  box-shadow:0 12px 30px rgba(0,0,0,.25);
-}
-.modal .close{
-  position:absolute;
-  right:.75rem;
-  top:.5rem;
-  border:none;
-  background:none;
-  font-size:1.5rem;
-  cursor:pointer;
-}
-.modal-caption{
-  font-weight:600;
-  margin-bottom:.75rem;
-}
-.modal-id{
-  font-size:.9rem;
-  color:#555;
-  margin-top:.5rem;
-}
-.modal-content{
-  max-width:100%;
-  height:auto;
-  display:block;
-  margin:0 auto;
-}
-
-/* PC에서 질문(라벨) / 선택지(체크박스) 두 줄로 */
-@media (min-width: 981px){
-  .kplan-step3 .col-12{
-    display: block;
-  }
-
-  .kplan-step3 .col-12 > label{
-    display: block;
-    margin-bottom: 0.6rem;
-    font-weight: 600;
-  }
-
-  .kplan-step3 .pair{
-    display: flex;
-    gap: 2rem;
-  }
-}
-	
-/* 首页만 강조 (볼드 + 한강애봄 컬러 라인) */
-#menu a[href="index.html"]{
-  font-weight: 700;
-}
-#menu a[href="index.html"]::after{
-  content:'';
-  display:block;
-  height:0;
-  margin-top:.7rem;
-  margin-bottom:.6rem;
-}
-
-/* 태블릿 + 모바일 (iPad 포함) */
-@media (max-width: 980px){
-  #sidebar{
-    position: fixed;
-    left: -320px;
-    width: 320px;
-  }
-  body.is-menu-visible #sidebar{
-    left: 0;
-  }
-}
-
-/* 핸드폰 전용 */
-@media (max-width: 736px){
-  #sidebar{
-    width: 260px;      /* 폰에서는 더 좁게 */
-  }
-}
-
-#sidebar > .inner{
-  padding-top: 0 !important;
-}
-
-#sidebar .sidebar-spacer{
-  margin-top: 0 !important;
-}
-
-#header .logo-img{
-  height: 56px !important;
-  width: auto !important;
-  max-height: 56px !important;
-}
-
-.modal .close{
-  outline: none !important;
-  box-shadow: none !important;
-}
-.modal .close:focus{
-  outline: none !important;
-  box-shadow: none !important;
-}
-
-/* iPad 전용 레이아웃 보정 */
-@media (min-width: 768px) and (max-width: 1024px) {
-
-  /* 헤더 높이 고정 + 여백 제거 */
-  #header{
-    height: 64px !important;
-    padding: 0 1.2rem !important;
-  }
-
-  /* 메인 콘텐츠 위 공백 제거 */
-  #main{
-    padding-top: 0 !important;
-  }
-
-  #main > .inner{
-    padding-top: 1.5rem !important;
-  }
-
-  /* 사이드바가 본문 밀지 않게 */
-  #sidebar{
-    top: 64px !important;
-  }
-}
-
-/* ===== MODAL: 절대 본문/사이드바 내용처럼 보이지 않게 ===== */
-.modal{
-  display:none !important;       /* 기본은 무조건 숨김 */
+  display:none !important;
   position:fixed !important;
   inset:0 !important;
-  z-index:20000 !important;
+  background:rgba(0,0,0,.55) !important;
   align-items:center !important;
   justify-content:center !important;
-  background:rgba(0,0,0,.55) !important;
+  z-index:20000 !important;
 }
 
-/* JS가 열 때: wechatModal.style.display='flex' 쓰니까 flex 허용 */
-.modal[aria-hidden="false"]{
-  display:flex !important;
-}
+.modal[aria-hidden="false"]{ display:flex !important; }
 
 .modal .modal-inner{
-  position:relative !important;
   width:min(420px, calc(100% - 48px)) !important;
   background:#fff !important;
   border-radius:12px !important;
   padding:18px 18px 16px !important;
   box-shadow:0 20px 60px rgba(0,0,0,.25) !important;
+  position:relative !important;
 }
 
 .modal .close{
@@ -3046,10 +2665,9 @@ a.toggle{
   font-size:28px !important;
   line-height:36px !important;
   cursor:pointer !important;
+  outline:none !important;
+  box-shadow:none !important;
 }
 
-/* 혹시 모달이 #sidebar 안에 남아있어도 “내용처럼” 안 보이게 */
-#sidebar .modal{
-  display:none !important;
-}
-
+/* if modal accidentally sits inside sidebar, still hide */
+#sidebar .modal{ display:none !important; }
