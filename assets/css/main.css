@@ -2937,13 +2937,11 @@ a.toggle{
   font-weight: 700;
 }
 #menu a[href="index.html"]::after{
-  content: '';
-  display: block;
-  width: 60%;
-  height: 3px;
-  margin-top: .4rem;
-  margin-bottom: .6rem; 
-  background: #0077B6; /* 한강애봄 블루 */
+  content:'';
+  display:block;
+  height:0;
+  margin-top:.7rem;
+  margin-bottom:.6rem;
 }
 
 /* 태블릿 + 모바일 (iPad 포함) */
@@ -2987,5 +2985,6 @@ a.toggle{
   outline: none !important;
   box-shadow: none !important;
 }
+
 
 
