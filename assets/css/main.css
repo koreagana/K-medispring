@@ -2416,23 +2416,6 @@ body{
     font-size:1em !important;
   }
 }
-/* 사이드바 상단 여백 (기존 로고 높이의 약 50%) */
-#sidebar .sidebar-spacer{
-  height: 120px;   /* 필요하면 80~150px로 조절 */
-}
-/* 首页만 강조 (볼드 + 한강애봄 컬러 라인) */
-#menu a[href="index.html"]{
-  font-weight: 700;
-}
-
-#menu a[href="index.html"]::after{
-  content: '';
-  display: block;
-  width: 100%;
-  height: 3px;
-  margin-top: .4rem;
-  background: #0077B6; /* 한강애봄 블루 */
-}
 
 #sidebar nav#menu a{
   white-space: normal !important; /* ⭐ 줄바꿈 허용 */
@@ -2960,6 +2943,24 @@ a.toggle{
     display: flex;
     gap: 2rem;
   }
+}
+	
+/* 사이드바 상단 여백 (기존 로고 높이의 약 50%) */
+#sidebar .sidebar-spacer{
+  height: 120px;   /* 필요하면 80~150px로 조절 */
+}
+/* 首页만 강조 (볼드 + 한강애봄 컬러 라인) */
+#menu a[href="index.html"]{
+  font-weight: 700;
+}
+
+#menu a[href="index.html"]::after{
+  content: '';
+  display: block;
+  width: 100%;
+  height: 3px;
+  margin-top: .4rem;
+  background: #0077B6; /* 한강애봄 블루 */
 }
 
 
