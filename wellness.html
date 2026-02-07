@@ -3,9 +3,9 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
-  <title>大健康 · 汉江春天</title>
+  <title>汉江春天</title>
 
-  <!-- ✅ GitHub Pages용 base 경로 스크립트 -->
+  <!-- GitHub Pages용 base 경로 -->
   <script>
     (function () {
       var project = "/K-medispring/";
@@ -16,33 +16,72 @@
     })();
   </script>
 
-  <!-- Meta -->
-  <meta name="description" content="大健康：功能医学、检测评估、放松修复、运动与生活方式管理 | 汉江春天" />
-  <meta property="og:title" content="大健康 · 汉江春天" />
-  <meta property="og:description" content="以功能医学为基础的综合健康管理：检测评估、放松修复、运动与生活方式建议。" />
-  <meta property="og:image" content="images/wellness/hero_wellness.png" />
-  <meta property="og:url" content="https://kmedispring.com/wellness.html" />
+  <!-- Meta Tags -->
+  <meta name="description" content="汉江春天 · 韩国医疗观光与大健康平台" />
+  <meta property="og:title" content="汉江春天" />
+  <meta property="og:description" content="专注于韩国医疗、皮肤医美、干细胞、健康管理与高端定制旅行" />
+  <meta property="og:image" content="https://kmedispring.com/images/preview.jpg" />
+  <meta property="og:url" content="https://kmedispring.com/index.html" />
   <meta name="twitter:card" content="summary_large_image" />
 
-  <!-- Icons -->
+  <!-- Favicon -->
   <link rel="icon" type="image/x-icon" href="images/favicon.ico?v=20251012">
   <link rel="icon" type="image/png" sizes="32x32" href="images/favicon-32.png?v=20251012">
   <link rel="icon" type="image/png" sizes="16x16" href="images/favicon-16.png?v=20251012">
   <link rel="apple-touch-icon" sizes="180x180" href="images/apple-touch-icon.png?v=20251012">
 
-  <!-- Styles -->
+  <!-- CSS -->
   <link rel="stylesheet" href="assets/css/fontawesome-all.min.css?v=20251027" />
   <link rel="stylesheet" href="assets/css/main.css?v=20251027" />
-  <noscript><link rel="stylesheet" href="assets/css/noscript.css?v=20251027" /></noscript>
-
-  <!-- (선택) 페이지별 컬러만 아주 작게 -->
-  <style>
-    :root { --brand:#0077B6; --hover:#2088C2; --line:#A0C4DE; }
-    .button.primary{ background:var(--brand); border-color:var(--brand); }
-    .button.primary:hover{ background:var(--hover); border-color:var(--hover); }
-    .major:after{ background-color:var(--brand); }
-  </style>
+  <noscript>
+    <link rel="stylesheet" href="assets/css/noscript.css?v=20251027" />
+  </noscript>
 </head>
+
+<body class="is-preload">
+
+  <!-- Wrapper -->
+  <div id="wrapper">
+
+    <!-- Main -->
+    <div id="main">
+      <div class="inner">
+
+<!-- Header -->
+<header id="header">
+  <a href="index.html" class="logo">
+    <img src="images/logo_ch.png" alt="汉江春天" class="logo-img">
+  </a>
+<!-- ✅ 모바일 햄버거: 헤더 안에 있어야 함 -->
+          <a href="#sidebar" class="toggle" aria-label="Menu"></a>
+
+  <!-- SNS icons -->
+  <ul class="icons">
+    <li>
+      <a href="#" id="wechat-icon" class="icon brands fa-weixin" title="WeChat">
+        <span class="label">WeChat</span>
+      </a>
+    </li>
+    <li>
+      <a href="#" id="whatsapp-icon" class="icon brands fa-whatsapp" title="WhatsApp">
+        <span class="label">WhatsApp</span>
+      </a>
+    </li>
+    <li>
+      <a href="mailto:egana@kmedispring.com" class="icon solid fa-envelope" title="Email">
+        <span class="label">Email</span>
+      </a>
+    </li>
+  </ul>
+</header>
+
+
+============
+main 내용 들어가는 곳 
+============
+
+
+
 
 <body class="is-preload">
   <div id="wrapper">
@@ -138,95 +177,190 @@
     </div>
 
     <!-- ===== Sidebar (메인페이지 구조: nav#menu 필수) ===== -->
-    <div id="sidebar">
-      <div class="inner">
+   <div id="sidebar">
+  <div class="inner">
 
-        <section id="search" class="alt">
-          <form method="get" action="#">
-            <input type="search" name="query" id="query" placeholder="搜索..." />
-          </form>
-        </section>
-
-        <nav id="menu">
-          <header class="major"><h2>菜单</h2></header>
-          <ul>
-            <li><a href="index.html">首页</a></li>
-            <li><a href="wellness.html">大健康</a></li>
-            <li><a href="stemcell.html">干细胞</a></li>
-            <li><a href="skin.html">皮肤医美</a></li>
-            <li><a href="surgery.html">整形医美</a></li>
-            <li><a href="woman.html">女性护理中心</a></li>
-            <li><a href="man.html">男性健康中心</a></li>
-            <li><a href="tour.html">市区观光</a></li>
-            <li><a href="service.html">生活服务</a></li>
-            <li><a href="kplan.html">定制医疗观光方案</a></li>
-            <li><a href="about.html">关于我们</a></li>
-            <li><a href="contact.html">联系方式</a></li>
-          </ul>
-        </nav>
-
-        <section>
-          <header class="major"><h2>关于我们</h2></header>
-          <p style="text-align:center; color:#777;">合作伙伴</p>
-          <div class="mini-posts">
-            <article>
-              <a href="#" class="image profile"><img src="images/gana.png" alt="汉江春天 代表" /></a>
-              <p style="text-align:center; font-size:1em; margin-top:.5em;">汉江春天 代表</p>
-            </article>
-          </div>
-        </section>
-
-        <section>
-          <header class="major"><h2>联系方式</h2></header>
-          <ul class="contact">
-            <li class="icon solid fa-envelope"><a href="mailto:egana@kmedispring.com">邮箱：egana@kmedispring.com</a></li>
-            <li class="icon solid fa-phone">(82) 10-4903-3123</li>
-            <li class="icon solid fa-home">韩国 首尔特别市 城北区 东小门路 63号 6层(邮编：02845)</li>
-          </ul>
-        </section>
-
-        <section class="ending-note" aria-label="ending note">
-          <hr class="ending-note__divider">
-          <p class="ending-note__copy">© 2025 汉江春天 한강애봄 版权所有</p>
-        </section>
-
+    <section id="sidebar-brand">
+      <div class="sidebar-logo">
+        <a href="index.html" class="logo">
+          <img src="images/logo_ch.png" alt="汉江春天 로고">
+        </a>
       </div>
-    </div>
+    </section>
 
-  </div>
+   <nav id="menu">
+  <ul>
+    <li><a href="index.html">首页</a></li>
+    <li><a href="wellness.html">大健康</a></li>
+    <li><a href="stemcell.html">干细胞</a></li>
+    <li><a href="derm.html">皮肤医美</a></li>
+    <li><a href="surgery.html">整形医美</a></li>
+    <li><a href="woman.html">女性护理中心</a></li>
+    <li><a href="man.html">男性健康中心</a></li>
+    <li><a href="transfer.html">接送服务</a></li>
+    <li><a href="tour.html">市区观光</a></li>
+    <li><a href="lifestyle.html">生活服务</a></li>
+    <li><a href="kplan.html" aria-current="page">定制医疗观光方案</a></li>
+  </ul>
+</nav>
+  </br>
+  </br>
+   
+  <!-- About -->
+<section class="menu-extra">
+  <header class="major">
+    <h2 class="about-title">关于我们</h2>
+  </header>
+  <p>
+    我们相信，美丽与健康，源于真诚的交流。如果你对韩国医疗、健康管理或合作有兴趣，欢迎通过微信或邮件与我们联系。
+  </p>
+</section>
+
+    <!-- Contact -->
+    <section>
+      <header class="major"><h3>联系方式</h3></header>
+      <ul class="contact">
+        <li class="icon solid fa-envelope">
+          <a href="mailto:egana@kmedispring.com">邮箱：egana@kmedispring.com</a>
+        </li>
+        <li class="icon solid fa-phone">(82) 10-4903-3123</li>
+        <li class="icon solid fa-home">韩国 首尔特别市 城北区 东小门路 63号 6层 (邮编：02845)</li>
+      </ul>
+    </section>
+
+    <!-- Footer -->
+    <footer id="footer">
+      <p style="text-align:center; font-size:0.9em; color:#666;">
+        © 2025 汉江春天 한강애봄 版权所有。模板设计：HTML5 UP。
+      </p>
+    </footer>
+
+  </div><!-- .inner -->
+</div><!-- #sidebar -->
+
+   
+  </div><!-- #wrapper -->
 
   <!-- WeChat QR Modal -->
-  <div id="wechatModal" class="modal" aria-hidden="true" role="dialog" style="display:none;">
+  <div id="wechatModal" class="modal" aria-hidden="true" role="dialog">
     <div class="modal-inner">
+      <button class="close" aria-label="Close">&times;</button>
       <p class="modal-caption">扫描二维码添加微信</p>
       <img id="wechatQR" class="modal-content" src="images/qr_weixin.jpg" alt="WeChat QR for e-gana" />
       <p class="modal-id">WeChat ID：e-gana</p>
     </div>
   </div>
 
-  <!-- Scripts (앞에 / 붙이지 말기) -->
-  <script src="assets/js/jquery.min.js"></script>
-  <script src="assets/js/browser.min.js"></script>
-  <script src="assets/js/breakpoints.min.js"></script>
-  <script src="assets/js/util.js"></script>
-  <script src="assets/js/main.js"></script>
+  <!-- WhatsApp Modal -->
+  <div id="whatsappModal" class="modal" aria-hidden="true" role="dialog">
+    <div class="modal-inner">
+      <button class="close" aria-label="Close">&times;</button>
+      <p class="modal-caption">QR → WhatsApp Connect</p>
+      <img id="whatsappQR" class="modal-content" src="images/whatsapp_qr.jpg" alt="WhatsApp QR for K-Medi Spring">
+      <p class="modal-id">WhatsApp：+82-10-4903-3123</p>
+    </div>
+  </div>
 
-  <!-- 현재 페이지 하이라이트(선택) -->
+  <!-- 비디오 + 모달 스크립트 -->
   <script>
-    (function(){
-      var path = location.pathname;
-      // GitHub Pages 하위경로 제거
-      path = path.replace(/^\/K-medispring\//, "/");
-      if (path === "/" || path === "") path = "/index.html";
+    document.addEventListener('DOMContentLoaded', function () {
 
-      document.querySelectorAll('#menu a[href]').forEach(function(a){
-        var href = a.getAttribute('href') || '';
-        var p = new URL(href, location.origin).pathname;
-        p = p.replace(/^\/K-medispring\//, "/");
-        if (p === "/" || p === "") p = "/index.html";
-        if (p === path) a.setAttribute('aria-current','page');
+      /* 1) 인트로 비디오 */
+      const v = document.getElementById('introVideo');
+      if (v) {
+        try { v.playbackRate = 0.33; } catch(e) {}
+        v.muted = true;
+        v.volume = 0;
+      }
+
+      /* 2) WeChat 모달 */
+      const wechatModal  = document.getElementById('wechatModal');
+      const wechatIcon   = document.getElementById('wechat-icon');
+      const wechatQR     = document.getElementById('wechatQR');
+      const wechatClose  = wechatModal ? wechatModal.querySelector('.close') : null;
+
+      function openWeChat(e){
+        if (e) e.preventDefault();
+        if (wechatQR){
+          wechatQR.src = wechatQR.src.split('?')[0] + '?v=' + Date.now();
+        }
+        if (wechatModal){
+          wechatModal.style.display = 'flex';
+          wechatModal.setAttribute('aria-hidden', 'false');
+        }
+        document.body.classList.add('modal-open');
+      }
+      function closeWeChat(){
+        if (wechatModal){
+          wechatModal.style.display = 'none';
+          wechatModal.setAttribute('aria-hidden', 'true');
+        }
+        document.body.classList.remove('modal-open');
+      }
+
+      if (wechatIcon)  wechatIcon.addEventListener('click', openWeChat);
+      if (wechatClose) wechatClose.addEventListener('click', closeWeChat);
+      if (wechatModal){
+        wechatModal.addEventListener('click', function(e){
+          if (e.target === wechatModal) closeWeChat();
+        });
+      }
+
+      /* 3) WhatsApp 모달 */
+      const whatsappModal = document.getElementById('whatsappModal');
+      const whatsappIcon  = document.getElementById('whatsapp-icon');
+      const whatsappQR    = document.getElementById('whatsappQR');
+      const whatsappClose = whatsappModal ? whatsappModal.querySelector('.close') : null;
+
+      function openWhatsApp(e){
+        if (e) e.preventDefault();
+        if (whatsappQR){
+          whatsappQR.src = whatsappQR.src.split('?')[0] + '?v=' + Date.now();
+        }
+        if (whatsappModal){
+          whatsappModal.style.display = 'flex';
+          whatsappModal.setAttribute('aria-hidden','false');
+        }
+        document.body.classList.add('modal-open');
+      }
+      function closeWhatsApp(){
+        if (whatsappModal){
+          whatsappModal.style.display = 'none';
+          whatsappModal.setAttribute('aria-hidden','true');
+        }
+        document.body.classList.remove('modal-open');
+      }
+
+      if (whatsappIcon)  whatsappIcon.addEventListener('click', openWhatsApp);
+      if (whatsappClose) whatsappClose.addEventListener('click', closeWhatsApp);
+      if (whatsappModal){
+        whatsappModal.addEventListener('click', function(e){
+          if (e.target === whatsappModal) closeWhatsApp();
+        });
+      }
+
+      /* 4) ESC 키로 모두 닫기 */
+      document.addEventListener('keydown', function (e) {
+        if (e.key === 'Escape') {
+          closeWeChat();
+          closeWhatsApp();
+        }
       });
-    })();
+
+    });
   </script>
+
+  <!-- 템플릿 기본 스크립트 5총사 (반드시 이 순서) -->
+ <script src="assets/js/jquery.min.js"></script>
+<script src="assets/js/browser.min.js"></script>
+<script src="assets/js/breakpoints.min.js"></script>
+<script src="assets/js/util.js"></script>
+<script src="assets/js/main.js"></script>
+<script src="assets/js/modals.js"></script>
+
 </body>
 </html>
+
+
+
+
