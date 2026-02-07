@@ -2928,6 +2928,23 @@ a.toggle{
   margin:0 auto;
 }
 
+/* PC에서 질문(라벨) / 선택지(체크박스) 두 줄로 */
+@media (min-width: 981px){
+  .kplan-step3 .col-12{
+    display: block;
+  }
+
+  .kplan-step3 .col-12 > label{
+    display: block;
+    margin-bottom: 0.6rem;
+    font-weight: 600;
+  }
+
+  .kplan-step3 .pair{
+    display: flex;
+    gap: 2rem;
+  }
+}
 
 
 
