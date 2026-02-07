@@ -2027,7 +2027,6 @@ html[lang="ko"] .button {
   #search form input[type="text"] {
     padding-right: 2.75em; }
 
-/* --- Fix SNS icons drifting below the blue line (Editorial) --- */
 /* =========================
    Header FINAL (중복 정리 완료)
    ========================= */
@@ -2327,13 +2326,6 @@ header.major > :last-child{
   border-bottom: none;
   box-shadow: none;
 }
-
-/* 4) (사이드바 Contact) ‘联系方式’ 위쪽 공간을 원본처럼 확보 */
-#sidebar section header.major{
-  margin-top: 4em;   /* 필요하면 2em~3.5em 사이로 조절 */
-}
-
-
 /* =========================================================
    K-MediSpring — Quick polish pack (by Ronnie)
    붙이는 위치: /assets/css/main.css 맨 아래
@@ -2365,19 +2357,6 @@ header.major > :last-child{
 }
 #banner .actions .button.primary:hover { background: var(--hover); }
 
-/* 5) 오프캔버스 메뉴 링크 가독성 + 포커스 */
-#sidebar .links li a {
-  display:block; padding:.8rem .9rem; border-radius: 10px;
-  text-decoration:none; color:#222; transition: background .15s ease, color .2s ease;
-}
-#sidebar .links li a:hover,
-#sidebar .links li a:focus { background: rgba(0,0,0,.04); color: var(--deep); outline: none; }
-
-/* 6) 현재 페이지 활성 표시 (JS로 .active 붙는 경우) */
-#sidebar a.active,
-#nav a.active { color: var(--brand); font-weight:600; }
-#sidebar a.active { background: rgba(0,119,182,.08); border-radius:10px; }
-
 /* 7) 구분선/얇은 라인 톤다운 */
 hr, .inner .divider { border-color: var(--line); }
 
@@ -2396,8 +2375,6 @@ a:hover { color: var(--hover); }
 .actions .button { padding:.6rem 1.05rem; }
 
 /* === 본문 글자 + 폰트 재정의 (2025-12-07 by 로니) === */
-
-/* ▶ 본문 p, .inner p, 배너 안 p 전부 여기가 최종 답 */
 
 /* 중국어 페이지 전용(메인 본문만) */
 html[lang="zh-CN"] #main .inner p,
@@ -2523,46 +2500,6 @@ html[lang="zh-CN"] .inner li {
   font-size: 1.2rem;
   line-height: 1.9;
 }
-
-/* ===== Ronnie fix: mobile sidebar off-canvas ===== */
-@media (max-width: 1180px){
-  #sidebar{
-    position: fixed;
-    top: 0;
-    left: -320px;
-    width: 320px;
-    height: 100vh;
-    background: #ffffff;
-    box-shadow: 3px 0 12px rgba(0,0,0,.12);
-    transition: left .3s ease;
-    z-index: 9999;
-    overflow-y: auto;
-    -webkit-overflow-scrolling: touch;
-    padding: 2rem 1.5rem;
-  }
-
-  body.is-menu-visible #sidebar{
-    left: 0;
-  }
-}
- 
-/* 링크 기본 */
-#sidebar a{
-  color: #111 !important;
-  text-decoration: none;
-  display: block;
-  margin: 0;              /* ✅ 불필요한 여백 제거 */
-  border-bottom: 0 !important;
-}
-
-/* ✅ (핵심) 메뉴 안 제목/선(header.major) 제거 */
-#sidebar header.major,
-#sidebar .major{
-  display: none !important;
-  border: 0 !important;
-  margin: 0 !important;
-  padding: 0 !important;
-}
 /* ===== Step 3 (需要 / 不需要) ===== */
 .svc-group{
   border: 1px solid #eee;
@@ -2650,83 +2587,6 @@ legend{ font-weight: 600; margin-bottom: .75rem; }
   margin-bottom: 1.2rem;
 }
 
-/* ===============================
-   Sidebar + Menu Background Harmonization (ver. #f5f5f5)
-   =============================== */
-
-/* 공통 회색 배경 (따뜻한 아이보리톤) */
-:root {
-  --sidebar-bg: #f5f5f5; /* 카테고리와 검색창 배경 통일 */
-}
-
-
-/* 메뉴 영역 (사이드바 기준) */
-#sidebar nav{
-  background: var(--sidebar-bg);
-  border-radius: 0.5rem;
-  padding: 1.25rem 1.25rem 1rem 1.25rem;
-}
-
-/* 2) 모바일/아이패드: #sidebar를 슬라이드 패널로 */
-@media (max-width:1180px){
-
-  /* 사이드바를 화면 밖으로 */
-  #sidebar{
-    position: fixed !important;
-    top: 0 !important;
-    left: -320px !important;
-    width: 320px !important;
-
-	  background: #f5f5f5 !important;
-    box-shadow: 3px 0 12px rgba(0,0,0,.12) !important;
-    transition: left .28s ease !important;
-    z-index: 10000 !important;
-    overflow-y: auto !important;
-    -webkit-overflow-scrolling: touch;
-    padding: 2rem 1.5rem !important;
-  }
-
-  /* 열릴 때 */
-  body.is-menu-visible #sidebar{
-    left: 0 !important;
-  }
-
-  /* 본문은 메뉴와 독립 */
-  #main{
-    width: 100% !important;
-  }
-
-  /* (선택) 메뉴 펼침/접힘(opener) */
-  #sidebar nav ul ul{ display:none; }
-  #sidebar nav a.opener.active + ul{ display:block; }
-
-  /* (선택) 라인형 메뉴 스타일 */
-  #sidebar nav > ul li{
-    background: transparent !important;
-    border: none !important;
-    border-bottom: 1px solid rgba(0,0,0,0.10) !important;
-    margin: 0 !important;
-    padding: 0 !important;
-  }
-  #sidebar nav > ul li:last-child{ border-bottom:none !important; }
-
-  #sidebar nav > ul a{
-    display:block;
-    padding:.9rem .5rem;
-    text-decoration:none !important;
-    color:#222 !important;
-    background:none !important;
-    border-bottom:0 !important;
-  }
-  #sidebar nav > ul a:hover{ color:#0b66c3 !important; background:none !important; }
-  #sidebar nav > ul li.active > a,
-  #sidebar nav > ul a[aria-current="page"]{
-    color:#0b66c3 !important;
-    font-weight:600 !important;
-  }
-}
-
-
   /* K-Plan 폼 카드 느낌(선택사항) */
   .kplan-shell{
     background:#fff;
@@ -2736,54 +2596,6 @@ legend{ font-weight: 600; margin-bottom: .75rem; }
     padding: 1.5rem;
   }
 }
-
-
-
-/* ===========================
-   NAV + 레이아웃 FINAL PACK (정리 완료)
-   =========================== */
-
-/* 1) 데스크톱: 왼쪽 네비 항상 보이게 + 본문 반응형 폭 조정 */
-@media screen and (min-width: 981px) {
-
-  /* Sidebar menu separators (FINAL) */
-  #sidebar nav > ul{ margin:0; padding:0; list-style:none; }
-
-  #sidebar nav > ul > li{
-    background:none;
-    border-top:1px solid rgba(210,215,217,.75);
-    margin:.5em 0 0 0;
-    padding:.5em 0 0 0;
-  }
-
-  #sidebar nav > ul > li:first-child{
-    border-top:0;
-    margin-top:0;
-    padding-top:0;
-  }
-
-  #sidebar nav > ul > li > a{
-    display:block;
-    padding:.9rem .5rem;
-    background:none;
-    color:#222;
-    text-decoration:none;
-    font-family:'Source Han Serif CN','Noto Serif KR',serif;
-    font-size:1em;
-    font-weight:500;
-  }
-
-  #sidebar nav > ul > li > a:hover{
-    color:#4E97D1;
-    background:none;
-  }
-
-  #sidebar nav > ul > li.active > a,
-  #sidebar nav > ul > li > a[aria-current="page"]{
-    color:#4E97D1;
-    font-weight:600;
-  }
-
   /* 본문 레이아웃 */
   #main{ position:relative; z-index:2; }
   #main > .inner{
@@ -2801,102 +2613,7 @@ legend{ font-weight: 600; margin-bottom: .75rem; }
     padding:1.5rem;
   }
 }
-/* =========================
-   Sidebar (PC 기본)
-   ========================= */
-#sidebar{
-  background-color:#f5f5f5;
-  width:300px;              /* ⬅ 가로폭 축소 (26em 제거) */
-  flex:0 0 300px;           /* grow/shrink 정리 */
-  position:relative;
-  z-index:1;
-}
 
-/* Sidebar 내부 컨테이너 */
-#sidebar > .inner{
-  width:100%;               /* 고정 em 제거 */
-  padding:1.5rem 1.25rem;   /* 여백 슬림화 */
-  box-sizing:border-box;
-}
-
-/* Sidebar 로고 */
-#sidebar .logo img{
-  max-width:50%;
-  height:auto;
-  display:block;
-  margin:0 auto;
-}
-
-/* PC에서 Sidebar 고정 표시 */
-@media (min-width:981px){
-  #sidebar{
-    position:sticky;
-    top:0;
-    height:100vh;
-    overflow-y:auto;
-  }
-}
-
-	
-/* 메뉴 전체 UL */
-#sidebar nav ul{
-  user-select: none;
-  color: #3d4449;
-  font-family: "Roboto Slab", serif;
-  font-weight: 400;
-  letter-spacing: 0.075em;
-  list-style: none;
-  margin-bottom: 0;
-  padding: 0;
-}
-
-/* 메뉴 링크 1줄씩 */
-#sidebar nav ul a,
-#sidebar nav ul span{
-  border-bottom: 0;
-  color: inherit;
-  cursor: pointer;
-  display: block;
-  font-size: 1em;   /* 요청한 크기 유지 */
-  font-family: 'Source Han Serif CN', 'Noto Serif KR', serif;
-  font-weight: 500;
-  padding: 0.7em 0;
-}
-
-/* hover 색상 */
-#sidebar nav ul a:hover,
-#sidebar nav ul span:hover{
-  color: #4E97D1;
-}
-
-/* 1차 메뉴 구분선 */
-#sidebar nav > ul > li{
-  border-top: 1px solid rgba(210, 215, 217, 0.75);
-  margin-top: 0.75em;
-  padding-top: 0.75em;
-}
-
-#sidebar nav > ul > li:first-child{
-  border-top: 0;
-  margin-top: 0;
-  padding-top: 0;
-}
-
-/* 현재 활성 링크 */
-#sidebar nav > ul li.active > a,
-#sidebar nav > ul a[aria-current="page"]{
-  color: #0b66c3;
-  font-weight: 600;
-}
-
-/* ==============================
-   1) 상단 로고 텍스트(汉江春天) 크게
-   ============================== */
-#header h1 a {
-  font-size: 24px;     /* 로고 느낌 크게 */
-  font-weight: 600;
-  line-height: 1.2;
-}
  /* =========================================================
    KMS FINAL — ONE BLOCK (Index + K-Plan 공통)
    붙이는 위치: assets/css/main.css 맨 아래
@@ -3039,7 +2756,7 @@ body{
 
 
 /* =========================================================
-   E) DESKTOP / iPad 가로모드 (>=981px)
+   2026 03 07 E) DESKTOP / iPad 가로모드 (>=981px)
    - 왼쪽 회색바(사이드바) 고정
    - 메인은 오른쪽으로 정확히 밀기
    - 상단 파란 토글바는 숨김
@@ -3051,27 +2768,6 @@ body{
 
   /* body padding-top 제거 (모바일 토글용이므로) */
   body{ padding-top:0 !important; }
-
- /* =========================
-   SIDEBAR LAYOUT (PC fixed / Mobile off-canvas)
-   ========================= */
-
-/* 기본값: 모바일 기준(=본문 밀지 않음) */
-#wrapper{ padding-left:0; }
-#sidebar{
-  position: fixed;
-  top: 0; left: 0;
-  width: 320px;
-
-	overflow-y: auto;
-  overflow-x: hidden;
-  background: #f2f2f2;
-  z-index: 1000;
-
-  /* ✅ 모바일에서는 화면 밖에 숨겨두기 (토글로 열림) */
-  transform: translateX(-100%);
-  transition: transform .28s ease;
-}
 
 /* ✅ 토글 열리면 사이드바 보이기 (HTML5UP Editorial 기본 방식) */
 body.is-menu-visible #sidebar{
@@ -3345,4 +3041,190 @@ a.toggle{
 </div>
 
 
+
+/* =========================================================
+   ✅ KMS HEADER + SIDEBAR (ONE SET) + RESPONSIVE
+   - 붙이는 위치: assets/css/main.css 맨~맨 아래
+   ========================================================= */
+
+/* =========================
+   HEADER (K-Plan 스타일로 통일)
+   ========================= */
+
+/* 헤더 기본 */
+#header{
+  display:flex !important;
+  align-items:center !important;
+  justify-content:space-between !important;
+  gap: .75rem !important;
+  padding: .9rem 1.2rem !important;
+  border-bottom: 4px solid #4E97D1 !important;   /* 필요 없으면 지워 */
+  background: transparent !important;
+  position: relative !important;
+  z-index: 1000 !important;
+}
+
+/* 로고 */
+#header .logo{
+  display:flex !important;
+  align-items:center !important;
+  gap:.4rem !important;
+  text-decoration:none !important;
+}
+#header .logo-img{
+  height: 30px !important;          /* PC */
+  max-height: 36px !important;
+  width:auto !important;
+  display:block !important;
+}
+
+/* 오른쪽 묶음 */
+#header .header-right{
+  display:flex !important;
+  align-items:center !important;
+  gap: 1rem !important;
+}
+#header .icons{
+  display:flex !important;
+  gap:.9rem !important;
+  margin:0 !important;
+  padding:0 !important;
+  list-style:none !important;
+}
+
+/* 햄버거/닫기(X) 토글(원본 main.js 동작 유지) */
+#header a.toggle{
+  position: fixed !important;       /* X가 안 뜨는 문제 방지 */
+  top: 1rem !important;
+  left: 1rem !important;
+  z-index: 20000 !important;
+}
+
+/* iPad */
+@media (max-width: 1024px){
+  #header{ padding: .85rem 1rem !important; }
+  #header .logo-img{ height: 24px !important; max-height: 28px !important; }
+  #header .icons{ gap:.8rem !important; }
+}
+
+/* Mobile */
+@media (max-width: 768px){
+  #header{ padding: .8rem .95rem !important; }
+  #header .logo-img{ height: 20px !important; max-height: 24px !important; }
+  #header .icons{ gap:.75rem !important; }
+}
+
+/* =========================
+   SIDEBAR (=슬라이더) ALL GRAY ONE COLOR
+   - logo + menu + footer 모두 동일 회색
+   ========================= */
+
+/* sidebar 전체 배경 */
+#sidebar{
+  background:#f5f5f5 !important;
+}
+
+/* 원본 inner 패딩 제거(오른쪽 여백 원인) */
+#sidebar > .inner{
+  padding: 0 !important;
+  background:#f5f5f5 !important;
+}
+
+/* 로고 영역 */
+#sidebar .logo{
+  padding: 2.2rem 1.6rem 1.4rem 1.6rem !important;
+  margin: 0 !important;
+  background:#f5f5f5 !important;
+}
+#sidebar .logo img{
+  display:block !important;
+  max-width:72% !important;
+  height:auto !important;
+}
+
+/* 메뉴 영역 */
+#sidebar nav#menu{
+  background:#f5f5f5 !important;
+  margin:0 !important;
+  padding:0 !important;
+  border:0 !important;
+  box-shadow:none !important;
+  border-radius:0 !important;
+}
+
+/* 메뉴 리스트 */
+#sidebar nav#menu ul{
+  margin:0 !important;
+  padding:0 !important;
+  list-style:none !important;
+}
+#sidebar nav#menu ul li{
+  margin:0 !important;
+  padding:0 !important;
+  border-top:1px solid #e1e1e1 !important;
+}
+#sidebar nav#menu ul li:first-child{
+  border-top:0 !important;
+}
+
+/* 메뉴 텍스트 */
+#sidebar nav#menu ul li a,
+#sidebar nav#menu ul li span{
+  display:block !important;
+  padding: 1.35rem 1.6rem !important;
+  font-weight: 800 !important;
+  font-size: 26px !important;
+  line-height: 1.25 !important;
+  color:#111 !important;
+  text-decoration:none !important;
+  border-bottom:0 !important;
+  background:#f5f5f5 !important;
+}
+
+/* hover */
+#sidebar nav#menu ul li a:hover{
+  background:#ededed !important;
+}
+
+/* footer */
+#sidebar #footer,
+#sidebar footer{
+  background:#f5f5f5 !important;
+  padding: 1.6rem 1.6rem 2rem 1.6rem !important;
+  margin:0 !important;
+}
+#sidebar #footer .copyright{
+  color:#8d9397 !important;
+  font-size: .95rem !important;
+}
+#sidebar #footer .copyright a{
+  color:inherit !important;
+}
+
+/* iPad */
+@media (max-width: 1024px){
+  #sidebar .logo{ padding: 2.0rem 1.4rem 1.2rem 1.4rem !important; }
+  #sidebar nav#menu ul li a,
+  #sidebar nav#menu ul li span{
+    padding: 1.15rem 1.35rem !important;
+    font-size: 24px !important;
+  }
+  #sidebar #footer, #sidebar footer{
+    padding: 1.4rem 1.4rem 1.9rem 1.4rem !important;
+  }
+}
+
+/* Mobile */
+@media (max-width: 768px){
+  #sidebar .logo{ padding: 1.7rem 1.2rem 1rem 1.2rem !important; }
+  #sidebar .logo img{ max-width: 78% !important; }
+  #sidebar nav#menu ul li a,
+  #sidebar nav#menu ul li span{
+    padding: 1.05rem 1.2rem !important;
+    font-size: 21px !important;
+  }
+  #sidebar #footer, #sidebar footer{
+    padding: 1.3rem 1.2rem 1.8rem 1.2rem !important;
+  }
+}
 
