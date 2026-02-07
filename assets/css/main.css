@@ -2697,23 +2697,19 @@ body.modal-open{ overflow:hidden; }
   #header .logo-img{ max-height: 28px !important; }
 }
 
-/* ===== Header layout: logo left / sns right ===== */
+/* 모바일 헤더: 로고 왼쪽 / SNS 오른쪽 한 줄 정렬 */
 #header{
-  display:flex !important;
-  align-items:center !important;
-  justify-content:space-between !important;
-  gap:16px !important;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
 }
 
-/* 로고는 왼쪽 고정 */
 #header .logo{
-  flex:0 0 auto !important;
+  margin-right:auto;
 }
 
-/* SNS는 오른쪽 정렬 */
 #header .icons{
-  margin-left:auto !important;
-  display:flex !important;
-  align-items:center !important;
-  gap:12px !important;
+  display:flex;
+  gap:14px;
+  margin-left:auto;
 }
