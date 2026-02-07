@@ -2671,3 +2671,11 @@ body.modal-open{ overflow:hidden; }
 
 /* if modal accidentally sits inside sidebar, still hide */
 #sidebar .modal{ display:none !important; }
+
+/* ✅ 이미지 로고 반응형 (작은 화면에서 자동 축소) */
+#header .logo img,
+#banner .logo img{
+  width: auto !important;
+  max-width: 100% !important;
+  height: clamp(36px, 8vw, 72px) !important;
+}
