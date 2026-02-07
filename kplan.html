@@ -7,6 +7,9 @@
 -->
 <html lang="zh-CN">
 <head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+  <title>汉江春天 · 定制医疗观光方案</title>
 
   <!-- GitHub Pages base (HEAD 최상단) -->
   <script>
@@ -18,10 +21,6 @@
       document.head.appendChild(base);
     })();
   </script>
-
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
-  <title>汉江春天 · 定制医疗观光方案</title>
 
   <!-- Editorial CSS -->
   <link rel="stylesheet" href="assets/css/fontawesome-all.min.css" />
@@ -35,6 +34,7 @@
       --hga-blue-weak: rgba(30,107,214,0.45);
       --hga-blue-bg: rgba(30,107,214,0.06);
     }
+
     /* Sidebar: Search 제거 + 로고만 */
     #sidebar #search{ display:none !important; }
 
@@ -56,109 +56,59 @@
     #sidebar nav#menu ul{
       border-top: 0 !important;
     }
-
-    /* K-Plan: 체크/라디오 컬러 */
-    #planForm input[type="checkbox"] + label:before,
-    #planForm input[type="radio"] + label:before{
-      border-color: var(--hga-blue-weak) !important;
-      box-shadow: none !important;
-    }
-    #planForm input[type="checkbox"]:checked + label:before,
-    #planForm input[type="radio"]:checked + label:before{
-      background: var(--hga-blue) !important;
-      border-color: var(--hga-blue) !important;
-      color:#fff !important;
-    }
-    #planForm input[type="checkbox"] + label:hover:before,
-    #planForm input[type="radio"] + label:hover:before{
-      border-color: var(--hga-blue) !important;
-    }
-
-    /* Step3 */
-    .kplan-step3 label{ margin-bottom: 6px; display:block; }
-    .kplan-step3 .pair{ display:flex; gap:18px; flex-wrap:wrap; }
-
-    /* Summary Box */
-    #selectedBox{
-      border: 1px solid rgba(30,107,214,0.30);
-      background: var(--hga-blue-bg);
-      padding: 14px 16px;
-      border-radius: 8px;
-      margin: 0 0 1rem 0;
-    }
-    #selectedBox strong{
-      color: var(--hga-blue);
-      font-size: 1rem;
-      display:inline-block;
-      margin-bottom: 8px;
-    }
-    #selectedSummary{
-      font-size: 18px;
-      line-height: 1.9;
-      font-weight: 500;
-      color: var(--hga-blue);
-    }
-    #selectedSummary .empty{
-      opacity:.7;
-      font-weight:500;
-    }
   </style>
-
 </head>
 
-  <body class="is-preload">
+ <body class="is-preload">
   <div id="wrapper">
 
-   <!-- ✅ Main -->
-<div id="main">
-  <div class="inner">
-      
-   <!-- ===== Header ===== -->
-<header id="header" class="header-clean">
-
-  <!-- 로고 -->
-  <a href="index.html" class="logo">
-    <img src="images/logo_ch.png" alt="汉江春天" class="logo-img">
-  </a>
-
-  <!-- 오른쪽 영역: 햄버거 + SNS -->
-  <div class="header-right">
-    <!-- 모바일 햄버거 -->
+    <!-- ✅ 모바일 햄버거: 사이드바 전체(메뉴+연락+풋터)를 여는 토글 -->
     <a href="#sidebar" class="toggle" aria-label="Menu"></a>
-      <!-- SNS -->
-      <ul class="icons">
-        <li>
-          <a href="#"
-             id="wechat-icon"
-             class="icon brands fa-weixin"
-             title="WeChat: e-gana"
-             aria-controls="wechatModal"
-             aria-haspopup="dialog"
-             role="button">
-            <span class="label">WeChat</span>
+
+    <!-- Main -->
+    <div id="main">
+      <div class="inner">
+
+        <!-- Header -->
+        <header id="header">
+          <!-- 로고 -->
+          <a href="index.html" class="logo">
+            <img src="images/logo_ch.png" alt="汉江春天" class="logo-img">
           </a>
-        </li>
-        <li>
-          <a href="#"
-             id="whatsapp-icon"
-             class="icon brands fa-whatsapp"
-             title="WhatsApp"
-             aria-controls="whatsappModal"
-             aria-haspopup="dialog"
-             role="button">
-            <span class="label">WhatsApp</span>
-          </a>
-        </li>
-        <li>
-          <a href="mailto:egana@kmedispring.com"
-             class="icon solid fa-envelope"
-             title="Email">
-            <span class="label">Email</span>
-          </a>
-        </li>
-      </ul>
-      
-    </header>
+
+          <!-- SNS icons -->
+          <ul class="icons">
+            <li>
+              <a href="#"
+                 id="wechat-icon"
+                 class="icon brands fa-weixin"
+                 title="WeChat"
+                 aria-controls="wechatModal"
+                 aria-haspopup="dialog"
+                 role="button">
+                <span class="label">WeChat</span>
+              </a>
+            </li>
+            <li>
+              <a href="#"
+                 id="whatsapp-icon"
+                 class="icon brands fa-whatsapp"
+                 title="WhatsApp"
+                 aria-controls="whatsappModal"
+                 aria-haspopup="dialog"
+                 role="button">
+                <span class="label">WhatsApp</span>
+              </a>
+            </li>
+            <li>
+              <a href="mailto:egana@kmedispring.com"
+                 class="icon solid fa-envelope"
+                 title="Email">
+                <span class="label">Email</span>
+              </a>
+            </li>
+          </ul>
+        </header>
 
 <!-- ✅ Banner (index랑 같은 위치/구조) -->
 
@@ -450,71 +400,66 @@
 
       </div><!-- .inner -->
     </div><!-- #main -->
+<!-- =======================
+     Sidebar (메뉴+연락+풋터 전부)
+     ======================= -->
+<div id="sidebar">
+  <div class="inner">
 
-    <!-- =======================
-         Sidebar (메뉴+연락+풋터 전부)
-         ======================= -->
-    <div id="sidebar">
-      <div class="inner">
+    <section id="sidebar-brand">
+      <div class="sidebar-logo">
+        <a href="index.html" class="logo">
+          <img src="images/logo_ch.png" alt="汉江春天 로고">
+        </a>
+      </div>
+    </section>
 
-        <section id="sidebar-brand">
-          <div class="sidebar-logo">
-            <a href="index.html" class="logo">
-              <img src="images/logo_ch.png" alt="汉江春天 로고">
-            </a>
-          </div>
-        </section>
+    <nav id="menu">
+      <header class="major"><h2>菜单</h2></header>
+      <ul>
+        <li><a href="index.html">首页</a></li>
+        <li><a href="wellness.html">大健康</a></li>
+        <li><a href="stemcell.html">干细胞</a></li>
+        <li><a href="derm.html">皮肤医美</a></li>
+        <li><a href="surgery.html">整形医美</a></li>
+        <li><a href="woman.html">女性护理中心</a></li>
+        <li><a href="man.html">男性健康中心</a></li>
+        <li><a href="transfer.html">接送服务</a></li>
+        <li><a href="tour.html">市区观光</a></li>
+        <li><a href="lifestyle.html">生活服务</a></li>
+        <li><a href="kplan.html" aria-current="page">定制医疗观光方案</a></li>
+      </ul>
+    </nav>
 
-        <nav id="menu">
-          <header class="major"><h2>菜单</h2></header>
-          <ul>
-            <li><a href="index.html">首页</a></li>
-            <li><a href="wellness.html">大健康</a></li>
-            <li><a href="stemcell.html">干细胞</a></li>
-            <li><a href="derm.html">皮肤医美</a></li>
-            <li><a href="surgery.html">整形医美</a></li>
-            <li><a href="woman.html">女性护理中心</a></li>
-            <li><a href="man.html">男性健康中心</a></li>
-            <li><a href="transfer.html">接送服务</a></li>
-            <li><a href="tour.html">市区观光</a></li>
-            <li><a href="lifestyle.html">生活服务</a></li>
-            <li><a href="kplan.html" aria-current="page">定制医疗观光方案</a></li>
-          </ul>
-        </nav>
+    <section>
+      <header class="major"><h2>联系方式</h2></header>
+      <p>
+        我们相信，美丽与健康，源于真诚的交流。
+        如果你对韩国医疗、健康管理或合作有兴趣，欢迎通过微信或邮件与我们联系。
+      </p>
+      <ul class="contact">
+        <li class="icon solid fa-envelope"><a href="mailto:egana@kmedispring.com">邮箱：egana@kmedispring.com</a></li>
+        <li class="icon solid fa-phone">(82) 10-4903-3123</li>
+        <li class="icon solid fa-home">韩国 首尔特别市 城北区 东小门路 63号 6层 (邮编：02845)</li>
+      </ul>
+    </section>
 
-        <section>
-          <header class="major"><h2>联系方式</h2></header>
-          <p>
-            我们相信，美丽与健康，源于真诚的交流。
-            如果你对韩国医疗、健康管理或合作有兴趣，欢迎通过微信或邮件与我们联系。
-          </p>
-          <ul class="contact">
-            <li class="icon solid fa-envelope"><a href="mailto:egana@kmedispring.com">邮箱：egana@kmedispring.com</a></li>
-            <li class="icon solid fa-phone">(82) 10-4903-3123</li>
-            <li class="icon solid fa-home">韩国 首尔特别市 城北区 东小门路 63号 6层 (邮编：02845)</li>
-          </ul>
-        </section>
+    <footer id="footer">
+      <p style="text-align:center; font-size:0.9em; color:#666;">
+        © 2025 汉江春天 한강애봄 版权所有。模板设计：HTML5 UP。
+      </p>
+    </footer>
 
-        <footer id="footer">
-          <p style="text-align:center; font-size:0.9em; color:#666;">
-            © 2025 汉江春天 한강애봄 版权所有。模板设计：HTML5 UP。
-          </p>
-        </footer>
+  </div><!-- .inner -->
+</div><!-- #sidebar -->
 
-      </div><!-- .inner -->
-    </div><!-- #sidebar -->
-
-  </div><!-- #wrapper -->
-
-  <script src="assets/js/jquery.min.js"></script>
+<script src="assets/js/jquery.min.js"></script>
 <script src="assets/js/browser.min.js"></script>
 <script src="assets/js/breakpoints.min.js"></script>
 <script src="assets/js/util.js"></script>
 <script src="assets/js/main.js"></script>
 
-<!-- (선택) 너가 만들었던 커스텀 로직 파일이 따로 있으면 그걸 마지막에 -->
-<script src="assets/js/kplan.js"></script>
-
+   
   <!-- K-Plan summary script -->
   <script>
     const form = document.getElementById('planForm');
@@ -586,6 +531,7 @@
 
     renderSummary();
   </script>
+    
 <!-- WeChat QR Modal -->
 <div id="wechatModal" class="modal" aria-hidden="true" role="dialog">
   <div class="modal-inner" role="document">
