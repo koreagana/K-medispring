@@ -2416,11 +2416,13 @@ body{
     font-size:1em !important;
   }
 }
-
+/* 사이드바 상단 여백 (기존 로고 높이의 약 50%) */
+#sidebar .sidebar-spacer{
+  height: 120px;   /* 필요하면 80~150px로 조절 */
+}
 #sidebar nav#menu a{
   white-space: normal !important; /* ⭐ 줄바꿈 허용 */
 }
-
 
 /* Editorial 블릿(•) 완전 제거 */
 #sidebar ul,
@@ -2945,6 +2947,7 @@ a.toggle{
     gap: 2rem;
   }
 }
+
 
 
 
