@@ -3010,4 +3010,46 @@ a.toggle{
   }
 }
 
+/* ===== MODAL: 절대 본문/사이드바 내용처럼 보이지 않게 ===== */
+.modal{
+  display:none !important;       /* 기본은 무조건 숨김 */
+  position:fixed !important;
+  inset:0 !important;
+  z-index:20000 !important;
+  align-items:center !important;
+  justify-content:center !important;
+  background:rgba(0,0,0,.55) !important;
+}
+
+/* JS가 열 때: wechatModal.style.display='flex' 쓰니까 flex 허용 */
+.modal[aria-hidden="false"]{
+  display:flex !important;
+}
+
+.modal .modal-inner{
+  position:relative !important;
+  width:min(420px, calc(100% - 48px)) !important;
+  background:#fff !important;
+  border-radius:12px !important;
+  padding:18px 18px 16px !important;
+  box-shadow:0 20px 60px rgba(0,0,0,.25) !important;
+}
+
+.modal .close{
+  position:absolute !important;
+  top:10px !important;
+  right:10px !important;
+  width:36px !important;
+  height:36px !important;
+  border:0 !important;
+  background:transparent !important;
+  font-size:28px !important;
+  line-height:36px !important;
+  cursor:pointer !important;
+}
+
+/* 혹시 모달이 #sidebar 안에 남아있어도 “내용처럼” 안 보이게 */
+#sidebar .modal{
+  display:none !important;
+}
 
