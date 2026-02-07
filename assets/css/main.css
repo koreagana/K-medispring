@@ -2395,57 +2395,6 @@ html[lang="zh-CN"] #banner .content p {
                serif;   /* ▶ 위·아래 글씨체統一 */
 }
 
-
-/* === K-Plan 체크 항목 텍스트 보강 === */
-body#kplan-page label span,
-body#kplan-page .option,
-body#kplan-page .option span {
-  font-size: 18.5px;
-  line-height: 1.9;
-  font-weight: 500;   /* 애플 느낌 핵심 */
-  color: #222;
-}
-
-/* 모바일 */
-@media screen and (max-width: 768px) {
-  body#kplan-page label span,
-  body#kplan-page .option,
-  body#kplan-page .option span {
-    font-size: 19px;
-  }
-}
-
-/* 중앙의 하얀 카드 */
-.kplan-shell {
-  max-width: 860px;              /* 폼 너비 */
-  margin: 0 auto;                /* 중앙 정렬! */
-  background: #ffffff;
-  border: 1px solid #e6e8eb;
-  border-radius: 14px;
-  padding: 1.2rem 1.2rem 1.6rem;
-  box-shadow: 0 10px 24px rgba(0,0,0,.04);
-}
-
-/* 본문 폼 필드 가독성 */
-.kplan-shell .fields {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 1.25rem;
-}
-.kplan-shell .field { flex: 1 1 46%; min-width: 240px; }
-.kplan-shell label { font-weight: 600; color: #333; margin-bottom: .35rem; display:block; }
-.kplan-shell input[type="text"],
-.kplan-shell select,
-.kplan-shell textarea {
-  width: 100%;
-  border: 1px solid #cfd6de;
-  border-radius: 10px;
-  padding: .72rem .85rem;
-  font-size: 1rem;
-  box-sizing: border-box;
-}
-.kplan-shell textarea { resize: vertical; }
-
 /* 카테고리 아코디언 */
 .kcat { display: grid; gap: 1rem; }
 .kcat-cat { border: 1px solid #e5e7ea; border-radius: 12px; overflow: hidden; background: #fff; }
@@ -2456,20 +2405,6 @@ body#kplan-page .option span {
 .kgroup { border-top:1px dashed #e9edf1; padding-top:.6rem; margin-top:.4rem; }
 .kgroup h5 { margin:.2rem 0 .5rem; font-size:.95rem; color:#0f172a; }
 .kitems { list-style:none; margin:0; padding:0; display:grid; gap:.45rem; grid-template-columns:repeat(auto-fit,minmax(230px,1fr)); }
-
-/* 모바일: 1열 정렬 & 터치 영역 넉넉하게 */
-@media (max-width: 736px) {
-  .kplan-shell { max-width: 94%; padding: 1rem; }
-  .kplan-shell .field { flex: 1 1 100%; min-width: 0; }
-  .kitems { grid-template-columns: 1fr; }
-  .kcat-hd { padding: .8rem .9rem; }
-  .kcat-bd { padding: .55rem .9rem .85rem; }
-}
-
-/* 버튼 정렬 */
-.kplan-shell .actions { text-align: center; margin-top: 1.2rem; }
-.kplan-shell .button.primary { background:#0b66c3; border-color:#0b66c3; color:#fff; }
-.kplan-shell .button.primary:hover { filter: brightness(1.05); }
 
 
 /* ================================
@@ -2587,15 +2522,6 @@ legend{ font-weight: 600; margin-bottom: .75rem; }
   margin-bottom: 1.2rem;
 }
 
-  /* K-Plan 폼 카드 느낌(선택사항) */
-  .kplan-shell{
-    background:#fff;
-    border:1px solid rgba(0,0,0,.06);
-    border-radius:10px;
-    box-shadow: 0 1px 6px rgba(0,0,0,.06);
-    padding: 1.5rem;
-  }
-}
   /* 본문 레이아웃 */
   #main{ position:relative; z-index:2; }
   #main > .inner{
@@ -2603,16 +2529,6 @@ legend{ font-weight: 600; margin-bottom: .75rem; }
     margin:0;
     padding:0 2rem 3rem;
   }
-
-  /* K-Plan 폼 카드 */
-  .kplan-shell{
-    background:#fff;
-    border:1px solid rgba(0,0,0,.06);
-    border-radius:10px;
-    box-shadow:0 1px 6px rgba(0,0,0,.06);
-    padding:1.5rem;
-  }
-}
 
  /* =========================================================
    KMS FINAL — ONE BLOCK (Index + K-Plan 공통)
@@ -3171,13 +3087,14 @@ a.toggle{
 #sidebar nav#menu ul li a,
 #sidebar nav#menu ul li span{
   display:block !important;
-  padding: 1.35rem 1.6rem !important;
+  padding: 1.6rem 1.6rem !important;
   font-weight: 800 !important;
   font-size: 26px !important;
-  line-height: 1.25 !important;
+  line-height: 1.7 !important;
+  text-align: center !important;          /* ⬅︎ 이 줄 추가 */
   color:#111 !important;
   text-decoration:none !important;
-  border-bottom:0 !important;
+  border-bottom:1px solid #4E97D1 !important;
   background:#f5f5f5 !important;
 }
 
@@ -3227,4 +3144,5 @@ a.toggle{
     padding: 1.3rem 1.2rem 1.8rem 1.2rem !important;
   }
 }
+
 
