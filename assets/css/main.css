@@ -3145,4 +3145,51 @@ a.toggle{
   }
 }
 
+/* ✅ main.css 맨 아래에 붙여넣기 (QR 모달) */
+.modal-open{ overflow:hidden; }
+
+.modal{
+  position:fixed;
+  inset:0;
+  background:rgba(0,0,0,.6);
+  display:none;
+  align-items:center;
+  justify-content:center;
+  z-index:10000;
+}
+.modal-inner{
+  background:#fff;
+  border-radius:10px;
+  padding:1.5rem 1.75rem;
+  max-width:320px;
+  width:90%;
+  text-align:center;
+  position:relative;
+  box-shadow:0 12px 30px rgba(0,0,0,.25);
+}
+.modal .close{
+  position:absolute;
+  right:.75rem;
+  top:.5rem;
+  border:none;
+  background:none;
+  font-size:1.5rem;
+  cursor:pointer;
+}
+.modal-caption{
+  font-weight:600;
+  margin-bottom:.75rem;
+}
+.modal-id{
+  font-size:.9rem;
+  color:#555;
+  margin-top:.5rem;
+}
+.modal-content{
+  max-width:100%;
+  height:auto;
+  display:block;
+  margin:0 auto;
+}
+
 
