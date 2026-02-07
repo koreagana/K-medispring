@@ -2984,3 +2984,11 @@ a.toggle{
   max-height: 56px !important;
 }
 
+.modal .close{
+  outline: none !important;
+  box-shadow: none !important;
+}
+.modal .close:focus{
+  outline: none !important;
+  box-shadow: none !important;
+}
