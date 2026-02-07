@@ -2985,3 +2985,10 @@ a.toggle{
 #menu ul li:first-child{
   border-top: none;
 }
+/* 首页 아래, 大健康 위에 있는 첫 구분선만 제거 */
+#menu li.active + li{
+  border-top: none;
+}
+#menu li.active + li > a{
+  box-shadow: none;
+}
