@@ -1,7 +1,119 @@
----
-layout: default
-title: 生活服务
----
+<!DOCTYPE HTML>
+<!--
+  汉江春天 · K-Plan (Editorial layout safe)
+  - Mobile hamburger restored (requires #sidebar + main.js)
+  - Sidebar includes menu + contact + footer
+  - Removed duplicate template script imports (critical)
+-->
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+  <title>汉江春天 · 定制医疗观光方案</title>
+
+  <!-- GitHub Pages base (HEAD 최상단) -->
+  <script>
+    (function () {
+      var project = "/K-medispring/";
+      var isGhPages = location.hostname.endsWith("github.io");
+      var base = document.createElement("base");
+      base.href = isGhPages ? project : "/";
+      document.head.appendChild(base);
+    })();
+  </script>
+
+  <!-- Editorial CSS -->
+  <link rel="stylesheet" href="assets/css/fontawesome-all.min.css" />
+  <link rel="stylesheet" href="assets/css/main.css" />
+  <link rel="stylesheet" href="assets/css/kplan-agi.css" />
+
+  <!-- K-Plan inline overrides (short only) -->
+  <style>
+    :root{
+      --hga-blue: #1e6bd6;
+      --hga-blue-weak: rgba(30,107,214,0.45);
+      --hga-blue-bg: rgba(30,107,214,0.06);
+    }
+
+    /* Sidebar: Search 제거 + 로고만 */
+    #sidebar #search{ display:none !important; }
+
+    #sidebar-brand{
+      padding: 1.8rem 1.5rem 1.1rem;
+      text-align:center;
+      border: 0 !important;
+    }
+    #sidebar-brand .sidebar-logo img{
+      display:block;
+      max-width:140px;
+      height:auto;
+      margin:0 auto;
+    }
+
+    /* Menu 상단 라인 제거 (Editorial 안전 범위) */
+    #sidebar nav#menu,
+    #sidebar nav#menu > header,
+    #sidebar nav#menu ul{
+      border-top: 0 !important;
+    }
+  </style>
+</head>
+
+ <body class="is-preload">
+  <div id="wrapper">
+
+    <!-- ✅ 모바일 햄버거: 사이드바 전체(메뉴+연락+풋터)를 여는 토글 -->
+    <a href="#sidebar" class="toggle" aria-label="Menu"></a>
+
+    <!-- Main -->
+    <div id="main">
+      <div class="inner">
+
+        <!-- Header -->
+        <header id="header">
+          <!-- 로고 -->
+          <a href="index.html" class="logo">
+            <img src="images/logo_ch.png" alt="汉江春天" class="logo-img">
+          </a>
+
+          <!-- SNS icons -->
+          <ul class="icons">
+            <li>
+              <a href="#"
+                 id="wechat-icon"
+                 class="icon brands fa-weixin"
+                 title="WeChat"
+                 aria-controls="wechatModal"
+                 aria-haspopup="dialog"
+                 role="button">
+                <span class="label">WeChat</span>
+              </a>
+            </li>
+            <li>
+              <a href="#"
+                 id="whatsapp-icon"
+                 class="icon brands fa-whatsapp"
+                 title="WhatsApp"
+                 aria-controls="whatsappModal"
+                 aria-haspopup="dialog"
+                 role="button">
+                <span class="label">WhatsApp</span>
+              </a>
+            </li>
+            <li>
+              <a href="mailto:egana@kmedispring.com"
+                 class="icon solid fa-envelope"
+                 title="Email">
+                <span class="label">Email</span>
+              </a>
+            </li>
+          </ul>
+        </header>
+      </br>
+
+<!-- ✅ Banner (index랑 같은 위치/구조) -->
+  <div class="content">
+<br/>
 
 <header class="main">
   <h1>生活服务</h1>
