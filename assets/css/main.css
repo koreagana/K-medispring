@@ -1954,7 +1954,7 @@ html[lang="ko"] .button {
 
 /* Main */
 #main {
-  font-size: 1em;   /* ✅ 1.1em → 1em (본문 줄이기) */
+  font-size: 1.1em;
   -moz-flex-grow: 1;
   -webkit-flex-grow: 1;
   -ms-flex-grow: 1;
@@ -2026,42 +2026,6 @@ html[lang="ko"] .button {
     width: 2em; }
   #search form input[type="text"] {
     padding-right: 2.75em; }
-
-/* =========================
-   Header FINAL (중복 정리 완료)
-   ========================= */
-#header{
-  display:flex;
-  align-items:center;
-  justify-content:space-between;
-}
-
-#header .logo-img{
-  height:24px;
-  width:auto;
-  display:block;
-}
-
-/* 오른쪽 묶음 */
-#header .header-right{
-  display:flex;
-  align-items:center;
-  gap:1rem;
-}
-
-#header .icons{
-  display:flex;
-  gap:.9rem;
-  margin:0;
-  padding:0;
-  list-style:none;
-}
-
-/* 모바일 / iPad mini */
-@media (max-width:768px){
-  #header{ padding:0 1rem; }
-  #header .icons{ gap:.75rem; }
-}
 
 /* Banner */
 #banner {
@@ -2141,13 +2105,6 @@ html[lang="ko"] .button {
     #banner .image {
       max-height: 35vh; } }
 
-/* Footer */
-#footer .copyright {
-  color: #9fa3a6;
-  font-size: 1rem; }
-  #footer .copyright a {
-    color: inherit; }
-
 	/* Language switch (Header)2025/10/11 */
 .lang-switch{
   display:flex; align-items:center; gap:.5rem; margin-left:1rem;
@@ -2166,9 +2123,6 @@ html[lang="ko"] .button {
 .lang-switch a,
 .lang-switch .sep { display: none !important; }
 
-/* WeChat hover 색상 (1개만 유지) */
-.icons .fa-weixin:hover { color: #09b83e !important; }
-	
 /* Xiaohongshu: 기본 회색 → 호버 시 컬러 */
 .icons a[title="小红书"] svg,
 .icons .icon[title="小红书"] svg {
@@ -2181,91 +2135,6 @@ html[lang="ko"] .button {
   filter: none;   /* 본래 #FF2442 */
   opacity: 1;
   transform: scale(1.1);
-}
-
-
-/* === WeChat Modal : 스마트폰 프레임 스타일 + 폴리싱 === */
-.modal{
-  display:none;
-  position:fixed;
-  inset:0;
-  z-index:9999;
-  background:rgba(0,0,0,.7);
-  animation: modalFade .15s ease-out;            /* (2) 페이드 */
-}
-
-/* 스마트폰 프레임 */
-.modal-inner{
-  position:relative;
-  margin:5% auto;
-  width:300px;
-  height:520px;
-  background:#fff;
-  border-radius:40px;
-  padding:30px 20px;
-  text-align:center;
-  box-shadow:0 8px 30px rgba(0,0,0,.28);
-  border:6px solid #e5e5e5;
-  animation: cardPop .2s ease-out;               /* (2) 팝 애니메이션 */
-  outline:none;
-}
-
-/* 상단 스피커바 */
-.modal-inner::before{
-  content:"";
-  position:absolute;
-  top:12px;
-  left:50%;
-  transform:translateX(-50%);
-  width:80px;
-  height:8px;
-  background:#222;
-  border-radius:4px;
-}
-
-/* 하단 제스처 바 (1) */
-.modal-inner::after{
-  content:"";
-  position:absolute;
-  bottom:10px;
-  left:50%;
-  transform:translateX(-50%);
-  width:90px;
-  height:5px;
-  background:#d9d9d9;
-  border-radius:3px;
-}
-
-/* QR 이미지 – 중앙 정렬(살짝 위로) */
-.modal-content{
-  width:90%;
-  height:auto;
-  display:block;
-  margin:40px auto 10px auto;   /* ← 가운데 + 위쪽 여백 조정(하단 치우침 해결) */
-  border-radius:12px;
-}
-
-/* 타이틀/보조 텍스트 */
-.modal-caption{
-  font-size:17px;
-  font-weight:700;
-  color:#111;
-  margin-top:8px;
-}
-.modal-id{
-  font-size:14px;
-  color:#777;
-  margin-top:8px;
-}
-
-/* 닫기 버튼은 사용 안 함 */
-.close{ display:none !important; }
-
-/* (3) 모바일 최적화 */
-@media (max-width:420px){
-  .modal-inner{ width:270px; height:500px; padding:24px 18px; }
-  .modal-content{ margin:36px auto 8px auto; }
-  .modal-caption{ font-size:16px; }
 }
 
 /* (2) 애니메이션 */
@@ -2301,31 +2170,14 @@ body.modal-open{ overflow:hidden; }
 #header, .logo { position: relative; z-index: 2; }
 .hero-media video { pointer-events: none; }
 
-/* ================================
-   🌊 한강애봄 헤더 & 섹션 제목 밑줄 (수정본)
-   ================================ */
-
-/* 1) 상단 헤더(#header) 파란 라인 유지 */
-#header{
-  border-bottom: 5px solid #4E97D1 !important;
-  padding: 2em 0 1em 0 !important;
-}
-
-/* 2) (전역) major 헤더 밑줄을 '삭제'가 아니라 '브랜드색으로 복구' */
+/* (전역) major 헤더 밑줄 – 브랜드색 */
 header.major > :last-child{
-  border-bottom: solid 3px #4E97D1 !important;  /* 원본 느낌 + 한강애봄 블루 */
-  display: inline-block;                         /* 밑줄이 글자 길이만큼 */
+  border-bottom: solid 3px #4E97D1 !important;
+  display: inline-block;
   padding-bottom: .5em !important;
-  margin: 0 0 1.5em 0 !important;                /* 제목 아래 공간 */
+  margin: 0 0 1.5em 0 !important;
 }
 
-/* 3) (전역) inner header 무력화 삭제 — 원본 동작 살림
-   → 기존에 넣었던 .inner header / :after 제거 효과를 되돌림 */
-.inner header,
-.inner header:after{
-  border-bottom: none;
-  box-shadow: none;
-}
 /* =========================================================
    K-MediSpring — Quick polish pack (by Ronnie)
    붙이는 위치: /assets/css/main.css 맨 아래
@@ -2342,7 +2194,6 @@ header.major > :last-child{
   transition: transform .15s ease, background .2s ease;
 }
 #header .actions .button.small:hover { background: var(--hover); transform: translateY(-1px); }
-
 
 /* 3) 모바일에서 헤더 CTA 숨김 (메뉴에 이미 항목 있음) */
 @media (max-width: 736px){
@@ -2394,18 +2245,6 @@ html[lang="zh-CN"] #banner .content p {
                "Microsoft YaHei",
                serif;   /* ▶ 위·아래 글씨체統一 */
 }
-
-/* 카테고리 아코디언 */
-.kcat { display: grid; gap: 1rem; }
-.kcat-cat { border: 1px solid #e5e7ea; border-radius: 12px; overflow: hidden; background: #fff; }
-.kcat-hd { display:flex; justify-content:space-between; align-items:center; padding:.85rem 1rem; background:#f7fafc; cursor:pointer; }
-.kcat-hd h4 { margin:0; font-size:1.05rem; }
-.kcat-bd { display:none; padding:.6rem 1rem .9rem; gap:1rem; }
-.kcat-bd.open { display:grid; }
-.kgroup { border-top:1px dashed #e9edf1; padding-top:.6rem; margin-top:.4rem; }
-.kgroup h5 { margin:.2rem 0 .5rem; font-size:.95rem; color:#0f172a; }
-.kitems { list-style:none; margin:0; padding:0; display:grid; gap:.45rem; grid-template-columns:repeat(auto-fit,minmax(230px,1fr)); }
-
 
 /* ================================
    ✅ 본문 텍스트 가독성 향상
@@ -2478,6 +2317,7 @@ legend{ font-weight: 600; margin-bottom: .75rem; }
   position: static !important;
   opacity: 1 !important;
 }
+
 /* 🔧 Step3 설명문 정렬 및 강조 */
 #step3 legend {
   display: block;
@@ -2490,56 +2330,6 @@ legend{ font-weight: 600; margin-bottom: .75rem; }
   border-bottom: 2px solid #eee;  /* 밑줄 느낌의 라인으로 구분 */
   padding-bottom: 0.4rem;
 }
-
-/* ✨ 입체 은색 프레임 스타일 */
-.k-form-section {
-  background: linear-gradient(180deg, #ffffff 0%, #ffffff 100%);
-  border: 1px solid #c9c9c9;
-  border-radius: 10px;
-  box-shadow:
-    inset 0 1px 1px rgba(255, 255, 255, 0.8),   /* 윗쪽 반사광 */
-    0 1px 4px rgba(180, 180, 180, 0.35),       /* 외곽 그림자 */
-    0 0 6px rgba(220, 220, 220, 0.2);          /* 전체 은빛 윤광 */
-  padding: 1.8rem 1.6rem;
-  margin-bottom: 2rem;
-  transition: box-shadow 0.3s ease;
-}
-
-/* 🪞살짝 반짝 효과 (호버 시) */
-.k-form-section:hover {
-  box-shadow:
-    inset 0 1px 2px rgba(255, 255, 255, 0.85),
-    0 2px 6px rgba(150, 150, 150, 0.4),
-    0 0 10px rgba(210, 210, 210, 0.25);
-}
-
-/* 🔹 Step 제목과 구분선 유지 */
-.k-form-section h3 {
-  color: #333;
-  font-weight: 600;
-  border-bottom: 2px solid #e6e6e6;
-  padding-bottom: 0.4rem;
-  margin-bottom: 1.2rem;
-}
-
-  /* 본문 레이아웃 */
-  #main{ position:relative; z-index:2; }
-  #main > .inner{
-    max-width:100%;
-    margin:0;
-    padding:0 2rem 3rem;
-  }
-
- /* =========================================================
-   KMS FINAL — ONE BLOCK (Index + K-Plan 공통)
-   붙이는 위치: assets/css/main.css 맨 아래
-   목적:
-   - PC: 왼쪽 회색 사이드바 고정(바짝 붙게) + 메인 오른쪽
-   - Mobile/iPad(<=980): 상단 파란 MENU 바 + 오프캔버스 사이드바
-   - 불필요한 가로/아래 스크롤 제거
-   - 본문 타이포 “중간”으로 안정
-   ========================================================= */
-
 
 /* ---------- A) RESET / OVERFLOW KILL ---------- */
 html, body{
@@ -2557,7 +2347,6 @@ img, video, iframe{
   max-width:100% !important;
   height:auto !important;
 }
-
 
 /* ---------- B) FONT SYSTEM (네가 쓰던 톤 유지) ---------- */
 :root{
@@ -2578,7 +2367,6 @@ body{
   -moz-osx-font-smoothing:grayscale;
   color:#333;
 }
-
 
 /* ---------- C) TYPO (중간 크기: 기본 15 / 리드 16.5) ---------- */
 #main p,
@@ -2629,21 +2417,7 @@ body{
   }
 }
 
-
-/* ---------- D) SIDEBAR MENU (블릿 제거 + 또렷하게) ---------- */
-#sidebar,
-#sidebar nav,
-#sidebar nav ul,
-#sidebar nav ul li,
-#sidebar nav ul li a{
-  font-family:var(--ui-sans) !important;
-  letter-spacing:.02em !important;
-}
-
 #sidebar nav#menu a{
-  font-weight:600 !important;
-  font-size:1em !important;     /* 기준 크기 */
-  line-height:1.4 !important;  /* 1.65 → 조금만 줄여서 안정감 */
   white-space: normal !important; /* ⭐ 줄바꿈 허용 */
 }
 
@@ -2949,15 +2723,6 @@ a.toggle{
 a.toggle{
   position: fixed !important;
 }
-<!-- ✅ 테스트용 1개만 (정사각형 레인보우 테두리 → 체크하면 한강애봄 블루 + 흰색 체크) -->
-<div class="hga-cbwrap">
-  <input class="hga-cb" type="checkbox" id="hga_cb_test">
-  <label class="hga-cblabel" for="hga_cb_test">水光 / 皮肤修复（Skin Booster）</label>
-</div>
-
-/* =========================
-   HEADER (K-Plan 스타일로 통일)
-   ========================= */
 
 /* 헤더 기본 */
 #header{
@@ -3069,7 +2834,7 @@ a.toggle{
   line-height: 1.35 !important;
 
   /* ✅ 원본처럼 얇은 구분선 */
-  border-bottom: 1px solid rgba(0,0,0,.12) !important;
+  border-bottom: 0.7px solid rgba(0,0,0,.12) !important;
 
   /* ✅ 배경/밑줄 제거 */
   background: transparent !important;
@@ -3162,6 +2927,7 @@ a.toggle{
   display:block;
   margin:0 auto;
 }
+
 
 
 
