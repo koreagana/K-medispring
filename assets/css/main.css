@@ -2621,7 +2621,7 @@ legend{ font-weight: 600; margin-bottom: .75rem; }
 
 /* ✨ 입체 은색 프레임 스타일 */
 .k-form-section {
-  background: linear-gradient(180deg, #f5f5f5 0%, #ffffff 100%);
+  background: linear-gradient(180deg, #ffffff 0%, #ffffff 100%);
   border: 1px solid #c9c9c9;
   border-radius: 10px;
   box-shadow:
@@ -2656,7 +2656,7 @@ legend{ font-weight: 600; margin-bottom: .75rem; }
 
 /* 공통 회색 배경 (따뜻한 아이보리톤) */
 :root {
-  --sidebar-bg: #f5f5f5; /* 카테고리와 검색창 배경 통일 */
+  --sidebar-bg: #ffffff; /* 카테고리와 검색창 배경 통일 */
 }
 
 
@@ -2677,7 +2677,7 @@ legend{ font-weight: 600; margin-bottom: .75rem; }
     left: -320px !important;
     width: 320px !important;
 
-	  background: #f5f5f5 !important;
+	  background: #ffffff !important;
     box-shadow: 3px 0 12px rgba(0,0,0,.12) !important;
     transition: left .28s ease !important;
     z-index: 10000 !important;
@@ -2805,7 +2805,7 @@ legend{ font-weight: 600; margin-bottom: .75rem; }
    Sidebar (PC 기본)
    ========================= */
 #sidebar{
-  background-color:#f5f5f5;
+  background-color:#ffffff;
   width:300px;              /* ⬅ 가로폭 축소 (26em 제거) */
   flex:0 0 300px;           /* grow/shrink 정리 */
   position:relative;
@@ -3343,4 +3343,5 @@ a.toggle{
   <input class="hga-cb" type="checkbox" id="hga_cb_test">
   <label class="hga-cblabel" for="hga_cb_test">水光 / 皮肤修复（Skin Booster）</label>
 </div>
+
 
