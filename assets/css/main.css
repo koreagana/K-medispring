@@ -2945,9 +2945,9 @@ a.toggle{
   }
 }
 	
-/* 사이드바 상단 여백 (기존 로고 높이의 약 50%) */
+/* 사이드바 상단 여백 */
 #sidebar .sidebar-spacer{
-  height: 30px;   /* 필요하면 80~150px로 조절 */
+  height: 10px;   /* 필요하면 80~150px로 조절 */
 }
 /* 首页만 강조 (볼드 + 한강애봄 컬러 라인) */
 #menu a[href="index.html"]{
@@ -2962,12 +2962,8 @@ a.toggle{
   margin-bottom: .6rem; 
   background: #0077B6; /* 한강애봄 블루 */
 }
-/* 首页 바로 아래 얇은 구분선 제거 */
-#menu li.active{
-  border-top: none !important;
-}
-
-#menu li.active + li{
+/* 首页 아래, 다음 메뉴(大健康) 위 선 제거 */
+#menu li.active + li > a{
   border-top: none !important;
 }
 
