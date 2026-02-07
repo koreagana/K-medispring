@@ -2962,6 +2962,14 @@ a.toggle{
   margin-bottom: .6rem; 
   background: #0077B6; /* 한강애봄 블루 */
 }
+/* 首页 바로 아래 얇은 구분선 제거 */
+#menu li.active{
+  border-top: none !important;
+}
+
+#menu li.active + li{
+  border-top: none !important;
+}
 
 
 
