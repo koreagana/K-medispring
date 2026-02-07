@@ -2679,3 +2679,20 @@ body.modal-open{ overflow:hidden; }
   max-width: 100% !important;
   height: clamp(36px, 8vw, 72px) !important;
 }
+/* ===== Header logo responsive (force) ===== */
+#header .logo-img{
+  height: auto !important;
+  max-height: 38px !important;   /* PC 기본 */
+  width: auto !important;
+  display: block;
+}
+
+/* 태블릿 */
+@media screen and (max-width: 980px){
+  #header .logo-img{ max-height: 34px !important; }
+}
+
+/* 모바일 */
+@media screen and (max-width: 736px){
+  #header .logo-img{ max-height: 28px !important; }
+}
