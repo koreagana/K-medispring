@@ -1,64 +1,102 @@
 /* =========================================================
-   FIX.CSS — Sidebar divider + Mobile off-canvas 안정화
-   (main.css는 건드리지 않고, 여기서만 덮어쓴다)
+   FIX.CSS — Sidebar divider + Mobile off-canvas 안정화 (정리본)
+   - main.css는 그대로 두고, 여기서만 “공통(전페이지)”만 덮어쓴다
+   - 메뉴가 페이지마다 달라지는 원인: .links 의존 / 중복 규칙 / active 기준 혼용
    ========================================================= */
 
-/* 1) Sidebar 섹션 구분선(회색 라인) 복구 */
-#sidebar > .inner > section {
-  border-top: solid 2px rgba(210, 215, 217, 0.75);
+/* ---------------------------------------------------------
+   0) (수정) #menu .links 의존 제거
+   - 어떤 페이지는 <ul class="links">가 없어서 스타일이 안 먹는다
+   - 그래서 .links 규칙은 삭제하거나 무력화한다
+   --------------------------------------------------------- */
+/* ✅ 삭제 권장:
+#menu .links { ... }
+#menu .links a { ... }
+*/
+
+
+/* ---------------------------------------------------------
+   1) Sidebar 섹션 구분선(회색 라인)
+   - 전역 section에 걸리면 페이지마다 section 구조가 달라서 “간격 차이”가 난다
+   - 그래도 유지할 거면 OK. 흔들리면 #menu, 연락 섹션만 타겟팅하도록 바꾸기.
+   --------------------------------------------------------- */
+#sidebar > .inner > section{
+  border-top: solid 2px rgba(210,215,217,.75);
   margin-top: 2rem;
   padding-top: 2rem;
 }
-
-/* 첫 섹션은 라인 제거 */
-#sidebar > .inner > section:first-of-type {
+#sidebar > .inner > section:first-of-type{
   border-top: none;
   margin-top: 0;
   padding-top: 0;
 }
 
-/* 2) 로고 섹션: 가운데 정렬 + 선 제거 */
-#sidebar-brand {
+/* ---------------------------------------------------------
+   2) 로고 섹션
+   - HTML에 #sidebar-brand 가 “항상 존재할 때만” 의미 있음
+   --------------------------------------------------------- */
+#sidebar-brand{
   padding: 1.8rem 1.5rem 1.1rem;
   text-align: center;
   border-top: none !important;
   border-bottom: none !important;
 }
-
-#sidebar-brand .sidebar-logo img {
+#sidebar-brand .sidebar-logo img{
   display: block;
   max-width: 140px;
   height: auto;
   margin: 0 auto;
 }
 
-/* 3) 메뉴 자체 위쪽 선은 제거(섹션 라인이 대신 구분해줌) */
-#menu {
+/* ---------------------------------------------------------
+   3) (수정) 메뉴 공통 스타일 — 구조에 상관없이 적용
+   - .links 대신 #menu > ul 기준으로 통일
+   --------------------------------------------------------- */
+#menu{
   border-top: none !important;
 }
 
-/* 메뉴 리스트 좌우 여백 */
-#menu .links {
+/* ✅ 모든 페이지에서 동일하게 먹는 메뉴 여백 */
+#menu > ul{
   padding: 0 1.5rem 1.5rem;
   margin: 0;
 }
 
-/* 링크 기본 */
-#menu .links a {
+/* ✅ 링크 기본 */
+#menu a{
   text-decoration: none;
 }
 
-/* 현재 페이지 강조 (aria-current="page") */
-#menu a[aria-current="page"] {
-  font-weight: 600;
+/* ✅ active 통일: li.active + aria-current 둘 다 지원 */
+#menu li.active > a,
+#menu a[aria-current="page"]{
+  font-weight: 700;
 }
 
-/* 4) 모바일/태블릿에서 “메뉴가 페이지에 박히는 컬럼 현상” 방지
-      - 사이드바를 오프캔버스(슬라이드 인)로 강제 */
-@media screen and (max-width: 980px) {
+/* ---------------------------------------------------------
+   4) (추가) 헤더(로고/SNS) 한 줄 정렬 — 전페이지 공통
+   - 페이지마다 header 모양이 다르면 이걸 fix.css에 두는 게 맞다
+   --------------------------------------------------------- */
+#header{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 1px solid var(--brand) !important;
+  padding-bottom: 12px;
+  margin-bottom: 24px;
+}
+#header .logo{ margin-right: auto; }
+#header .icons{
+  display: flex;
+  gap: 14px;
+  margin-left: auto;
+}
 
-  /* 사이드바를 화면 밖으로 빼두고(닫힘 상태) */
-  #sidebar {
+/* ---------------------------------------------------------
+   5) 모바일/태블릿 오프캔버스(슬라이드 인) — 유지
+   --------------------------------------------------------- */
+@media screen and (max-width: 980px){
+  #sidebar{
     position: fixed !important;
     top: 0 !important;
     right: -23em !important;
@@ -70,28 +108,7 @@
     transition: right 0.25s ease !important;
     -webkit-overflow-scrolling: touch;
   }
-
-  /* main.js가 body.is-menu-visible 붙이면 열림 */
-  body.is-menu-visible #sidebar {
+  body.is-menu-visible #sidebar{
     right: 0 !important;
   }
-
-  /* (중요) “메뉴 강제 표시” 같은 건 하지 않는다.
-     메뉴는 사이드바가 열릴 때만 보이는 게 정상. */
-}
-/* 메뉴 리스트 여백: .links 없어도 적용 */
-#menu > ul{
-  padding: 0 1.5rem 1.5rem;
-  margin: 0;
-}
-
-/* 링크 기본 */
-#menu a{
-  text-decoration: none;
-}
-
-/* 현재 페이지 강조: active + aria-current 둘 다 */
-#menu li.active > a,
-#menu a[aria-current="page"]{
-  font-weight: 700;
 }
