@@ -2791,5 +2791,12 @@ body.modal-open{ overflow:hidden; }
   #header .logo-img{ max-height: 44px !important; }
 }
 
+@media (max-width:980px){
+  #main > .inner{
+    padding-left:0 !important;
+    padding-right:0 !important;
+  }
+}
+
 
 
