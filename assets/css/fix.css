@@ -163,3 +163,13 @@
   #sidebar{ width: 260px !important; right: -260px !important; }
   body.is-menu-visible #sidebar{ right: 0 !important; }
 }
+@media (min-width:981px){
+  #sidebar{
+    position:relative !important;
+    left:auto !important;
+    right:auto !important;
+    top:auto !important;
+    transform:none !important;
+    display:block !important;
+  }
+}
