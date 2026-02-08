@@ -1,24 +1,11 @@
 /* =========================================================
-   FIX.CSS — Sidebar divider + Mobile off-canvas 안정화 (정리본)
+   FIX.CSS — Sidebar divider + Mobile off-canvas 안정화 (최종 통합본)
    - main.css는 그대로 두고, 여기서만 “공통(전페이지)”만 덮어쓴다
-   - 메뉴가 페이지마다 달라지는 원인: .links 의존 / 중복 규칙 / active 기준 혼용
+   - 포인트: .links 의존 제거 / active 밑줄을 아래(border-bottom)로 통일
    ========================================================= */
 
 /* ---------------------------------------------------------
-   0) (수정) #menu .links 의존 제거
-   - 어떤 페이지는 <ul class="links">가 없어서 스타일이 안 먹는다
-   - 그래서 .links 규칙은 삭제하거나 무력화한다
-   --------------------------------------------------------- */
-/* ✅ 삭제 권장:
-#menu .links { ... }
-#menu .links a { ... }
-*/
-
-
-/* ---------------------------------------------------------
    1) Sidebar 섹션 구분선(회색 라인)
-   - 전역 section에 걸리면 페이지마다 section 구조가 달라서 “간격 차이”가 난다
-   - 그래도 유지할 거면 OK. 흔들리면 #menu, 연락 섹션만 타겟팅하도록 바꾸기.
    --------------------------------------------------------- */
 #sidebar > .inner > section{
   border-top: solid 2px rgba(210,215,217,.75);
@@ -32,8 +19,7 @@
 }
 
 /* ---------------------------------------------------------
-   2) 로고 섹션
-   - HTML에 #sidebar-brand 가 “항상 존재할 때만” 의미 있음
+   2) 로고 섹션: 가운데 정렬 + 선 제거
    --------------------------------------------------------- */
 #sidebar-brand{
   padding: 1.8rem 1.5rem 1.1rem;
@@ -49,41 +35,48 @@
 }
 
 /* ---------------------------------------------------------
-   3) (수정) 메뉴 공통 스타일 — 구조에 상관없이 적용
-   - .links 대신 #menu > ul 기준으로 통일
+   3) 메뉴 공통 스타일 — 구조에 상관없이 적용
+   - .links 규칙은 사용하지 않는다
    --------------------------------------------------------- */
 #menu{
   border-top: none !important;
 }
 
-/* ✅ 모든 페이지에서 동일하게 먹는 메뉴 여백 */
+/* 메뉴 리스트 여백(모든 페이지 동일) */
 #menu > ul{
   padding: 0 1.5rem 1.5rem;
   margin: 0;
 }
 
-/* ✅ 링크 기본 */
+/* 링크 기본 */
 #menu a{
   text-decoration: none;
 }
 
-/* ✅ active 통일: li.active + aria-current 둘 다 지원 */
+/* 현재 페이지 강조: li.active + aria-current 둘 다 지원
+   ✅ 파란 줄은 "아래"에 생기게(border-bottom) */
 #menu li.active > a,
 #menu a[aria-current="page"]{
+  display: block;
+  margin: 1.5rem 0;
   font-weight: 700;
+
+  padding-bottom: 1rem;                  /* 글자 ↔ 밑줄 간격 */
+  border-bottom: 2px solid var(--brand); /* ✅ 밑줄 */
+  border-top: 0 !important;              /* ✅ 위줄 방지 */
 }
 
 /* ---------------------------------------------------------
-   4) (추가) 헤더(로고/SNS) 한 줄 정렬 — 전페이지 공통
-   - 페이지마다 header 모양이 다르면 이걸 fix.css에 두는 게 맞다
+   4) 헤더(로고/SNS) 한 줄 정렬 — 전페이지 공통
    --------------------------------------------------------- */
 #header{
   display: flex;
   align-items: center;
   justify-content: space-between;
+
   border-bottom: 1px solid var(--brand) !important;
-  padding-bottom: 12px;
-  margin-bottom: 24px;
+  padding-bottom: 12px;  /* 로고/아이콘 ↔ 라인 간격 */
+  margin-bottom: 24px;   /* 라인 ↔ 아래 콘텐츠 간격 */
 }
 #header .logo{ margin-right: auto; }
 #header .icons{
@@ -93,7 +86,7 @@
 }
 
 /* ---------------------------------------------------------
-   5) 모바일/태블릿 오프캔버스(슬라이드 인) — 유지
+   5) 모바일/태블릿 오프캔버스(슬라이드 인)
    --------------------------------------------------------- */
 @media screen and (max-width: 980px){
   #sidebar{
