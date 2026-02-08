@@ -2740,6 +2740,14 @@ body.modal-open{ overflow:hidden; }
 .modal-id{
   text-align:center;
 }
+.modal-inner{
+  text-align:center;
+}
+
+.modal-content{
+  display:block;
+  margin:0 auto;
+}
 
 .modal[aria-hidden="false"]{ display:flex !important; }
 
@@ -2952,6 +2960,7 @@ body.is-menu-visible{ overflow:hidden !important; }
 @media (max-width:736px){
   #sidebar{ width:260px !important; left:-260px !important; }
 }
+
 
 
 
