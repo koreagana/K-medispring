@@ -2066,9 +2066,9 @@ html[lang="ko"] .button {
   width: 100%;
 }
 
-/* ===== main / inner : 모든 기기 공통 상단 공백 제거 ===== */
+/* ===== main / inner : 좌우 여백 통일 ===== */
 #main > .inner{
-  padding: 0 6em 0.1em 6em;
+  padding: 0 18px 0.1em 18px;   /* ← 여기만 관리 */
   margin: 0 auto;
   max-width: 110em;
 }
@@ -2093,11 +2093,15 @@ html[lang="ko"] .button {
   }
 }
 
+/* ===== 1680px 이하 ===== */
+@media screen and (max-width:1680px){
+  #main > .inner > section{
+    padding: 0 0 3em 0;
+  }
+}
+
 /* ===== 1280px 이하 ===== */
 @media screen and (max-width:1280px){
-  #main > .inner{
-    padding: 0 4em 0.1em 4em;
-  }
   #main > .inner > section{
     padding: 0 0 2em 0;
   }
@@ -2105,13 +2109,11 @@ html[lang="ko"] .button {
 
 /* ===== 736px 이하 (모바일) ===== */
 @media screen and (max-width:736px){
-  #main > .inner{
-    padding: 0 2em 0.1em 2em;
-  }
   #main > .inner > section{
     padding: 0 0 1em 0;
   }
 }
+
 	
 /* Sidebar */
 #search form {
@@ -2966,6 +2968,7 @@ body.is-menu-visible{ overflow:hidden !important; }
 @media (max-width:736px){
   #sidebar{ width:260px !important; left:-260px !important; }
 }
+
 
 
 
