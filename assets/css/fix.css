@@ -1,12 +1,8 @@
 /* =========================================================
-   FIX.CSS — Sidebar divider + Mobile off-canvas 안정화 (최종 통합본)
-   - main.css는 그대로 두고, 여기서만 “공통(전페이지)”만 덮어쓴다
-   - 포인트: .links 의존 제거 / active 밑줄을 아래(border-bottom)로 통일
+   FIX.CSS — Sidebar divider + Mobile off-canvas 안정화 (정리본)
    ========================================================= */
 
-/* ---------------------------------------------------------
-   1) Sidebar 섹션 구분선(회색 라인)
-   --------------------------------------------------------- */
+/* 1) Sidebar 섹션 구분선 */
 #sidebar > .inner > section{
   border-top: solid 2px rgba(210,215,217,.75);
   margin-top: 2rem;
@@ -18,9 +14,7 @@
   padding-top: 0;
 }
 
-/* ---------------------------------------------------------
-   2) 로고 섹션: 가운데 정렬 + 선 제거
-   --------------------------------------------------------- */
+/* 2) 로고 섹션: 가운데 정렬 + 선 제거 */
 #sidebar-brand{
   padding: 1.8rem 1.5rem 1.1rem;
   text-align: center;
@@ -34,82 +28,28 @@
   margin: 0 auto;
 }
 
-/* ---------------------------------------------------------
-   3) 메뉴 공통 스타일 — 구조에 상관없이 적용
-   - .links 규칙은 사용하지 않는다
-   --------------------------------------------------------- */
-#menu{
-  border-top: none !important;
-}
+/* 3) 메뉴 공통 */
+#menu{ border-top: none !important; }
 
-/* 메뉴 리스트 여백(모든 페이지 동일) */
 #menu > ul{
   padding: 0 1.5rem 1.5rem;
   margin: 0;
 }
 
-/* 링크 기본 */
-#menu a{
-  text-decoration: none;
-}
+#menu a{ text-decoration: none; }
 
-/* 현재 페이지 강조: li.active + aria-current 둘 다 지원
-   ✅ 파란 줄은 "아래"에 생기게(border-bottom) */
+/* active 밑줄(링크형) */
 #menu li.active > a,
 #menu a[aria-current="page"]{
   display: block;
   margin: 1.5rem 0;
   font-weight: 700;
-
-  padding-bottom: 1rem;                  /* 글자 ↔ 밑줄 간격 */
-  border-bottom: 2px solid var(--brand); /* ✅ 밑줄 */
-  border-top: 0 !important;              /* ✅ 위줄 방지 */
+  padding-bottom: 1rem;
+  border-bottom: 2px solid var(--brand);
+  border-top: 0 !important;
 }
 
-/* ---------------------------------------------------------
-   4) 헤더(로고/SNS) 한 줄 정렬 — 전페이지 공통
-   --------------------------------------------------------- */
-#header{
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-
-  border-bottom: 1px solid var(--brand) !important;
-  padding-bottom: 12px;  /* 로고/아이콘 ↔ 라인 간격 */
-  margin-bottom: 24px;   /* 라인 ↔ 아래 콘텐츠 간격 */
-}
-#header .logo{ margin-right: auto; }
-#header .icons{
-  display: flex;
-  gap: 14px;
-  margin-left: auto;
-}
-
-/* ---------------------------------------------------------
-   5) 모바일/태블릿 오프캔버스(슬라이드 인)
-   --------------------------------------------------------- */
-@media screen and (max-width: 980px){
-  #sidebar{
-    position: fixed !important;
-    top: 0 !important;
-    right: -23em !important;
-    width: 23em !important;
-    height: 100% !important;
-    overflow-y: auto !important;
-    z-index: 10000 !important;
-    background: #ffffff !important;
-    transition: right 0.25s ease !important;
-    -webkit-overflow-scrolling: touch;
-  }
-  body.is-menu-visible #sidebar{
-    right: 0 !important;
-  }
-}
-@media (max-width:980px){
-  #wrapper{ padding-left:0 !important; margin-left:0 !important; }
-  #main{ margin-left:0 !important; }
-  #main > .inner{ padding-left:0 !important; padding-right:0 !important; }
-}
+/* active 밑줄(H3형: 首页) */
 #menu li.active .menu-home{
   margin: 1.5rem 0;
   padding-bottom: 1rem;
@@ -118,31 +58,55 @@
   color: #222;
   border-bottom: 2px solid var(--brand);
 }
-/* =========================
-   PC(>=981px): sidebar 항상 보이게
-   ========================= */
-@media screen and (min-width: 981px){
+
+/* 4) 헤더(로고/SNS) 한 줄 정렬 */
+#header{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 1px solid var(--brand) !important;
+  padding-bottom: 12px;
+  margin-bottom: 24px;
+}
+#header .logo{ margin-right: auto; }
+#header .icons{
+  display: flex;
+  gap: 14px;
+  margin-left: auto;
+}
+
+/* =========================================================
+   PC (>=981px): Sidebar 항상 보이게
+   ========================================================= */
+@media (min-width:981px){
   #sidebar{
     position: relative !important;
-    right: auto !important;
     left: auto !important;
+    right: auto !important;
     top: auto !important;
     width: 23em !important;
     height: auto !important;
     transform: none !important;
+    display: block !important;
     transition: none !important;
     z-index: auto !important;
   }
-  body.is-menu-visible #sidebar{ right:auto !important; left:auto !important; }
   a.toggle{ display:none !important; }
+  body.is-menu-visible #sidebar{ left:auto !important; right:auto !important; }
 }
 
-/* =========================
-   Tablet+Mobile(<=980px): off-canvas
-   ========================= */
-@media screen and (max-width: 980px){
+/* =========================================================
+   Tablet + Mobile (<=980px): Off-canvas (RIGHT)
+   ========================================================= */
+@media (max-width:980px){
   a.toggle{ display:block !important; }
 
+  /* 데스크톱 왼쪽 여백 제거 */
+  #wrapper{ padding-left:0 !important; margin-left:0 !important; }
+  #main{ margin-left:0 !important; }
+  #main > .inner{ padding-left:0 !important; padding-right:0 !important; }
+
+  /* Sidebar slide-in */
   #sidebar{
     position: fixed !important;
     top: 56px !important;
@@ -154,22 +118,16 @@
     background: #ffffff !important;
     transition: right 0.25s ease !important;
     -webkit-overflow-scrolling: touch;
+    transform: none !important;
   }
-  body.is-menu-visible #sidebar{ right: 0 !important; }
+  body.is-menu-visible #sidebar{ right:0 !important; }
+
+  /* lock bg scroll */
+  body.is-menu-visible{ overflow:hidden !important; }
 }
 
-/* phone narrower */
+/* Phone (<=736px) narrower */
 @media (max-width:736px){
-  #sidebar{ width: 260px !important; right: -260px !important; }
-  body.is-menu-visible #sidebar{ right: 0 !important; }
-}
-@media (min-width:981px){
-  #sidebar{
-    position:relative !important;
-    left:auto !important;
-    right:auto !important;
-    top:auto !important;
-    transform:none !important;
-    display:block !important;
-  }
+  #sidebar{ width:260px !important; right:-260px !important; }
+  body.is-menu-visible #sidebar{ right:0 !important; }
 }
