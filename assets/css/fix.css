@@ -1,8 +1,13 @@
 /* =========================================================
-   FIX.CSS — Sidebar divider + Mobile off-canvas 안정화 (정리본)
+   FIX.CSS (FINAL) — PC 고정 사이드바 + 모바일/태블릿 오프캔버스
+   - 중복 미디어쿼리/중복 sidebar 규칙 제거
+   - PC에서는 사이드바 항상 보임
+   - <=980px 에서는 상단 파란바 + 햄버거/엑스 + 슬라이드 메뉴
    ========================================================= */
 
-/* 1) Sidebar 섹션 구분선 */
+/* ---------------------------------------------------------
+   1) Sidebar 섹션 구분선
+   --------------------------------------------------------- */
 #sidebar > .inner > section{
   border-top: solid 2px rgba(210,215,217,.75);
   margin-top: 2rem;
@@ -14,7 +19,9 @@
   padding-top: 0;
 }
 
-/* 2) 로고 섹션: 가운데 정렬 + 선 제거 */
+/* ---------------------------------------------------------
+   2) 로고 섹션
+   --------------------------------------------------------- */
 #sidebar-brand{
   padding: 1.8rem 1.5rem 1.1rem;
   text-align: center;
@@ -28,20 +35,20 @@
   margin: 0 auto;
 }
 
-/* 3) 메뉴 공통 */
+/* ---------------------------------------------------------
+   3) 메뉴 공통
+   --------------------------------------------------------- */
 #menu{ border-top: none !important; }
-
 #menu > ul{
   padding: 0 1.5rem 1.5rem;
   margin: 0;
 }
-
 #menu a{ text-decoration: none; }
 
 /* active 밑줄(링크형) */
 #menu li.active > a,
 #menu a[aria-current="page"]{
-  display: block;
+  display:block;
   margin: 1.5rem 0;
   font-weight: 700;
   padding-bottom: 1rem;
@@ -59,75 +66,157 @@
   border-bottom: 2px solid var(--brand);
 }
 
-/* 4) 헤더(로고/SNS) 한 줄 정렬 */
+/* ---------------------------------------------------------
+   4) 헤더 한 줄 정렬
+   --------------------------------------------------------- */
 #header{
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
   border-bottom: 1px solid var(--brand) !important;
-  padding-bottom: 12px;
-  margin-bottom: 24px;
+  padding-bottom:12px;
+  margin-bottom:24px;
 }
-#header .logo{ margin-right: auto; }
+#header .logo{ margin-right:auto; }
 #header .icons{
-  display: flex;
-  gap: 14px;
-  margin-left: auto;
+  display:flex;
+  gap:14px;
+  margin-left:auto;
 }
 
 /* =========================================================
-   PC (>=981px): Sidebar 항상 보이게
+   A) DESKTOP (>=981px): sidebar fixed left, no toggle bar
    ========================================================= */
-@media (min-width:981px){
-  #sidebar{
-    position: relative !important;
-    left: auto !important;
-    right: auto !important;
-    top: auto !important;
-    width: 23em !important;
-    height: auto !important;
-    transform: none !important;
-    display: block !important;
-    transition: none !important;
-    z-index: auto !important;
-  }
+@media screen and (min-width:981px){
+
+  /* 모바일 상단바/토글 완전 제거 */
   a.toggle{ display:none !important; }
-  body.is-menu-visible #sidebar{ left:auto !important; right:auto !important; }
+  body{ padding-top:0 !important; overflow:auto !important; }
+
+  /* PC 사이드바 고정 */
+  #sidebar{
+    position:fixed !important;
+    top:0 !important;
+    left:0 !important;
+    width:320px !important;
+    height:100vh !important;
+    overflow-y:auto !important;
+    overflow-x:hidden !important;
+    transform:none !important;
+    transition:none !important;
+    z-index:1000 !important;
+    background:#f2f2f2 !important;
+  }
+
+  /* 메인 영역 밀기 */
+  #wrapper{
+    padding-left:320px !important;
+    padding-top:0 !important;
+    margin-left:0 !important;
+  }
+
+  #main{ margin-left:0 !important; min-width:0 !important; width:100% !important; }
+
+  /* PC에서 혹시 남아있는 off-canvas 상태 무력화 */
+  body.is-menu-visible #sidebar{ left:0 !important; }
 }
 
 /* =========================================================
-   Tablet + Mobile (<=980px): Off-canvas (RIGHT)
+   B) TABLET + MOBILE (<=980px): top blue bar + off-canvas LEFT
    ========================================================= */
-@media (max-width:980px){
-  a.toggle{ display:block !important; }
+@media screen and (max-width:980px){
 
-  /* 데스크톱 왼쪽 여백 제거 */
+  /* PC용 왼쪽 여백 제거(왼쪽 빈 공간 원인 차단) */
   #wrapper{ padding-left:0 !important; margin-left:0 !important; }
   #main{ margin-left:0 !important; }
   #main > .inner{ padding-left:0 !important; padding-right:0 !important; }
 
-  /* Sidebar slide-in */
-  #sidebar{
-    position: fixed !important;
-    top: 56px !important;
-    right: -23em !important;
-    width: 23em !important;
-    height: calc(100% - 56px) !important;
-    overflow-y: auto !important;
-    z-index: 10000 !important;
-    background: #ffffff !important;
-    transition: right 0.25s ease !important;
-    -webkit-overflow-scrolling: touch;
-    transform: none !important;
-  }
-  body.is-menu-visible #sidebar{ right:0 !important; }
+  /* 콘텐츠를 상단 파란바 아래로 */
+  body{ padding-top:56px !important; }
 
-  /* lock bg scroll */
+  /* 상단 파란바(전체 클릭 영역) */
+  a.toggle{
+    display:block !important;
+    position:fixed !important;
+    top:0 !important;
+    left:0 !important;               /* ✅ 0p 금지 */
+    right:0 !important;
+    width:100% !important;
+    height:56px !important;
+    background:var(--brand) !important;
+    z-index:10001 !important;
+
+    border:0 !important;
+    border-radius:0 !important;
+    box-shadow:none !important;
+    text-decoration:none !important;
+
+    font-size:0 !important;
+    line-height:0 !important;
+    text-indent:-9999px !important;
+    overflow:hidden !important;
+  }
+
+  /* 햄버거 */
+  a.toggle::before{
+    content:"" !important;
+    position:absolute !important;
+    left:16px !important;
+    top:50% !important;
+    transform:translateY(-50%) !important;
+    width:28px !important;
+    height:2px !important;
+    background:rgba(255,255,255,.95) !important;
+    border-radius:2px !important;
+    box-shadow:
+      0 -8px 0 rgba(255,255,255,.95),
+      0  8px 0 rgba(255,255,255,.95) !important;
+  }
+
+  /* open -> X */
+  body.is-menu-visible a.toggle::before{
+    width:28px !important;
+    box-shadow:none !important;
+    transform:translateY(-50%) rotate(45deg) !important;
+  }
+  body.is-menu-visible a.toggle::after{
+    content:"" !important;
+    position:absolute !important;
+    left:16px !important;
+    top:50% !important;
+    width:28px !important;
+    height:2px !important;
+    background:rgba(255,255,255,.95) !important;
+    border-radius:2px !important;
+    transform:translateY(-50%) rotate(-45deg) !important;
+  }
+
+  /* 오프캔버스 사이드바 (LEFT) */
+  #sidebar{
+    position:fixed !important;
+    top:56px !important;
+    left:-320px !important;
+    right:auto !important;
+    width:320px !important;
+    height:calc(100vh - 56px) !important;
+    overflow-y:auto !important;
+    overflow-x:hidden !important;
+    background:#f2f2f2 !important;
+    z-index:10000 !important;
+    transition:left .28s ease !important;
+    -webkit-overflow-scrolling:touch !important;
+    transform:none !important;
+  }
+  body.is-menu-visible #sidebar{ left:0 !important; }
+
+  /* 메뉴 열리면 배경 스크롤 잠금 */
   body.is-menu-visible{ overflow:hidden !important; }
 }
 
-/* Phone (<=736px) narrower */
-@media (max-width:736px){
-  #sidebar{ width:260px !important; right:-260px !important; }
-  body.is-menu-visible #sidebar{ right:0 !important; }
+/* =========================================================
+   C) PHONE (<=736px): narrower sidebar
+   ========================================================= */
+@media screen and (max-width:736px){
+  #sidebar{ width:260px !important; left:-260px !important; }
+  body.is-menu-visible #sidebar{ left:0 !important; }
 }
