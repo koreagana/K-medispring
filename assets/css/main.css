@@ -2596,7 +2596,7 @@ img, video, iframe{ max-width:100%; height:auto; }
     left:0 !important;              /* ✅ fixed: 0p -> 0 */
     right:0 !important;
     width:100% !important;
-    height:56px !important;
+    height:0px !important;
     background:var(--brand) !important;
     z-index:10001 !important;
 
@@ -2964,5 +2964,6 @@ body.is-menu-visible{ overflow:hidden !important; }
 @media (max-width:736px){
   #sidebar{ width:260px !important; left:-260px !important; }
 }
+
 
 
