@@ -2055,31 +2055,53 @@ html[lang="ko"] .button {
   width: 100%;
 }
 
-	#main > .inner {
-    padding: 0 6em 0.1em 6em ;
-    margin: 0 auto;
-    max-width: 110em; }
-    #main > .inner > section {
-      padding: 6em 0 4em 0 ;
-      border-top: solid 2px rgba(210, 215, 217, 0.75); }
-      #main > .inner > section:first-of-type {
-        border-top: 0 !important; }
-  @media screen and (max-width: 1680px) {
-    #main > .inner {
-      padding: 0 5em 0.1em 5em ; }
-      #main > .inner > section {
-        padding: 5em 0 3em 0 ; } }
-  @media screen and (max-width: 1280px) {
-    #main > .inner {
-      padding: 0 4em 0.1em 4em ; }
-      #main > .inner > section {
-        padding: 4em 0 2em 0 ; } }
-  @media screen and (max-width: 736px) {
-    #main > .inner {
-      padding: 0 2em 0.1em 2em ; }
-      #main > .inner > section {
-        padding: 3em 0 1em 0 ; } }
+/* ===== main / inner : 모든 기기 공통 상단 공백 제거 ===== */
+#main > .inner{
+  padding: 0 6em 0.1em 6em;
+  margin: 0 auto;
+  max-width: 110em;
+}
 
+/* 섹션 상단 여백 제거 (하단 여백은 유지) */
+#main > .inner > section{
+  padding: 0 0 4em 0;
+  border-top: solid 2px rgba(210, 215, 217, 0.75);
+}
+
+#main > .inner > section:first-of-type{
+  border-top: 0 !important;
+}
+
+/* ===== 1680px 이하 ===== */
+@media screen and (max-width:1680px){
+  #main > .inner{
+    padding: 0 5em 0.1em 5em;
+  }
+  #main > .inner > section{
+    padding: 0 0 3em 0;
+  }
+}
+
+/* ===== 1280px 이하 ===== */
+@media screen and (max-width:1280px){
+  #main > .inner{
+    padding: 0 4em 0.1em 4em;
+  }
+  #main > .inner > section{
+    padding: 0 0 2em 0;
+  }
+}
+
+/* ===== 736px 이하 (모바일) ===== */
+@media screen and (max-width:736px){
+  #main > .inner{
+    padding: 0 2em 0.1em 2em;
+  }
+  #main > .inner > section{
+    padding: 0 0 1em 0;
+  }
+}
+	
 /* Sidebar */
 #search form {
   text-decoration: none;
@@ -2964,6 +2986,7 @@ body.is-menu-visible{ overflow:hidden !important; }
 @media (max-width:736px){
   #sidebar{ width:260px !important; left:-260px !important; }
 }
+
 
 
 
