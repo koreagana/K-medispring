@@ -2804,8 +2804,8 @@ body.modal-open{ overflow:hidden; }
   justify-content:space-between;
   border-bottom:1px solid var(--brand);
   padding-top:0;          /* ← 4 → 0 */
-  padding-bottom:10px;
-  margin-bottom:10px;
+  padding-bottom:0px;
+  margin-bottom:0px;
 }
 
 #header .logo{ margin-right:auto; }
@@ -2948,6 +2948,7 @@ body.is-menu-visible{ overflow:hidden !important; }
 @media (max-width:736px){
   #sidebar{ width:260px !important; left:-260px !important; }
 }
+
 
 
 
