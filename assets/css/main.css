@@ -2550,16 +2550,18 @@ html, body{ overflow-x:hidden; }
 img, video, iframe{ max-width:100%; height:auto; }
 
 /* =========================================================
-   1) DESKTOP (>=981px): sidebar always visible
-========================================================= */
+   TOGGLE + SIDEBAR (FINAL, NO DUPLICATES)
+   - Desktop(>=981): sidebar fixed left, main pushed right
+   - Tablet/Mobile(<=980): top blue bar + off-canvas LEFT
+   ========================================================= */
+
+/* =========================
+   1) DESKTOP (>=981px)
+   ========================= */
 @media (min-width:981px){
-
-  /* mobile toggle bar hidden */
   a.toggle{ display:none !important; }
-
   body{ padding-top:0 !important; }
 
-  /* fixed sidebar */
   #sidebar{
     position:fixed !important;
     top:0 !important;
@@ -2573,47 +2575,42 @@ img, video, iframe{ max-width:100%; height:auto; }
     background:#f2f2f2 !important;
   }
 
-  /* main pushed right */
   #wrapper{
     padding-left:320px !important;
     padding-top:0 !important;
+    margin-left:0 !important;
   }
 
-  #main{ width:100% !important; min-width:0 !important; }
+  #main{ width:100% !important; min-width:0 !important; margin-left:0 !important; }
+  #main > .inner{ padding-left:0 !important; padding-right:0 !important; }
 }
 
-/* =========================================================
-   2) TABLET + MOBILE (<=980px): top blue bar + off-canvas sidebar
-========================================================= */
+/* =========================
+   2) TABLET + MOBILE (<=980px)
+   ========================= */
 @media (max-width:980px){
 
-  /* ✅ typo fix */
-  a.toggle{ left:0 !important; }
+  /* content pushed below top bar */
+  body{ padding-top:56px !important; }
 
-  /* ✅ kill desktop left gutter */
+  /* kill any desktop gutter */
   #wrapper{
     padding-left:0 !important;
+    padding-top:0 !important;
     margin-left:0 !important;
   }
-  #main{
-    margin-left:0 !important;
-  }
+  #main{ margin-left:0 !important; }
   #main > .inner{
     padding-left:0 !important;
     padding-right:0 !important;
   }
-}
-
-  /* content pushed below top bar */
-  body{ padding-top:56px !important; }
-  #wrapper{ padding-top:0 !important; }
 
   /* top blue bar clickable */
   a.toggle{
     display:block !important;
     position:fixed !important;
     top:0 !important;
-    left:0p !important;
+    left:0 !important;              /* ✅ fixed: 0p -> 0 */
     right:0 !important;
     width:100% !important;
     height:56px !important;
@@ -2649,8 +2646,10 @@ img, video, iframe{ max-width:100%; height:auto; }
 
   /* open -> X */
   body.is-menu-visible a.toggle::before{
-    width:26px !important;
+    width:28px !important;
     box-shadow:none !important;
+    left:16px !important;
+    top:50% !important;
     transform:translateY(-50%) rotate(45deg) !important;
   }
   body.is-menu-visible a.toggle::after{
@@ -2658,18 +2657,19 @@ img, video, iframe{ max-width:100%; height:auto; }
     position:absolute !important;
     left:16px !important;
     top:50% !important;
-    transform:translateY(-50%) rotate(-45deg) !important;
-    width:26px !important;
+    width:28px !important;
     height:2px !important;
     background:rgba(255,255,255,.95) !important;
     border-radius:2px !important;
+    transform:translateY(-50%) rotate(-45deg) !important;
   }
 
-  /* off-canvas sidebar */
+  /* off-canvas sidebar (LEFT) */
   #sidebar{
     position:fixed !important;
     top:56px !important;
     left:-320px !important;
+    right:auto !important;
     width:320px !important;
     height:calc(100vh - 56px) !important;
     overflow-y:auto !important;
@@ -2682,15 +2682,17 @@ img, video, iframe{ max-width:100%; height:auto; }
   }
   body.is-menu-visible #sidebar{ left:0 !important; }
 
-  /* lock background scroll when menu open */
   body.is-menu-visible{ overflow:hidden !important; }
 }
 
-/* phone narrower sidebar */
+/* =========================
+   3) PHONE (<=736px)
+   ========================= */
 @media (max-width:736px){
   #sidebar{ width:260px !important; left:-260px !important; }
   body.is-menu-visible #sidebar{ left:0 !important; }
 }
+
 
 /* =========================================================
    3) SIDEBAR MENU (thin dividers + no background/underline)
@@ -2814,6 +2816,7 @@ body.modal-open{ overflow:hidden; }
     padding-right:0 !important;
   }
 }
+
 
 
 
