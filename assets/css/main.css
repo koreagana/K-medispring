@@ -2571,33 +2571,33 @@ html, body{ overflow-x:hidden; }
 img, video, iframe{ max-width:100%; height:auto; }
 
 /* =========================
-   DESKTOP: toggle 보여주기 + 중앙고정 유지
+   TOGGLE (ALL DEVICES)
    ========================= */
-@media (min-width:981px){
-  a.toggle{ display:block !important; }
-  body{ padding-top:0px !important; }
-}
+a.toggle{ display:block !important; }
+
+/* 상단 토글바 공간 확보 (전 기기 공통) */
+body{ padding-top:56px !important; }
 
 /* main overflow 안전장치 */
 #main{ min-width:0 !important; }
 
-/* 본문은 “지금 크기 그대로” 중앙 고정 */
+/* 본문 중앙 고정 – 현재 크기 유지 */
 #main > .inner{
-  max-width: 1120px !important;   /* 필요하면 980~1200 사이로 조절 */
-  width: 100% !important;
-  margin: 0 auto !important;
-  padding-left: 0 !important;
-  padding-right: 0 !important;
+  max-width:1120px !important;   /* 필요 시 980~1200 */
+  width:100% !important;
+  margin:0 auto !important;
+  padding-left:0 !important;
+  padding-right:0 !important;
 }
 
 /* =========================
    TABLET + MOBILE (<=980px)
    ========================= */
 @media (max-width:980px){
+  body{ padding-top:56px !important; } /* 유지 */
+}
 
-  body{ padding-top:56px !important; }
-
-  /* PC에서 쓰던 여백 완전 제거 */
+/* PC에서 쓰던 여백 완전 제거 */
   #wrapper{
     padding-left:0 !important;
     margin-left:0 !important;
@@ -2605,55 +2605,40 @@ img, video, iframe{ max-width:100%; height:auto; }
   #main{ margin-left:0 !important; }
 
   #main > .inner{
-    padding-left:18 !important;
-    padding-right:18 !important;
+    padding-left:18px !important;
+    padding-right:18px !important;
   }
 }
+/* ===== TOGGLE ===== */
+a.toggle{
+  display:block !important;
+  position:fixed !important;
+  top:0 !important;
+  left:0 !important;
+  right:0 !important;
+  width:100% !important;
+  height:56px !important;          /* ← 0 쓰지 말 것 */
+  background:var(--brand) !important;
+  z-index:10001 !important;
 
-  /* top blue bar clickable */
-  a.toggle{
-    display:block !important;
-    position:fixed !important;
-    top:0 !important;
-    left:0 !important;              /* ✅ fixed: 0p -> 0 */
-    right:0 !important;
-    width:100% !important;
-    height:0px !important;
-    background:var(--brand) !important;
-    z-index:10001 !important;
+  border:0 !important;
+  border-radius:0 !important;
+  box-shadow:none !important;
+  text-decoration:none !important;
 
-    border:0 !important;
-    border-radius:0 !important;
-    box-shadow:none !important;
-    text-decoration:none !important;
+  font-size:0 !important;
+  line-height:0 !important;
+  text-indent:-9999px !important;
+  overflow:hidden !important;
+}
 
-    font-size:0 !important;
-    line-height:0 !important;
-    text-indent:-9999px !important;
-    overflow:hidden !important;
-  }
-
-  /* hamburger */
-  a.toggle::before{
-    content:"" !important;
-    position:absolute !important;
-    left:16px !important;
-    top:50% !important;
-    transform:translateY(-50%) !important;
-    width:28px !important;
-    height:2px !important;
-    background:rgba(255,255,255,.95) !important;
-    border-radius:2px !important;
-    box-shadow:
-      0 -8px 0 rgba(255,255,255,.95),
-      0  8px 0 rgba(255,255,255,.95) !important;
-  }
-/* 메뉴 열려도 삼선 유지 */
-body.is-menu-visible a.toggle::before{
+/* hamburger (항상 동일) */
+a.toggle::before{
   content:"" !important;
   position:absolute !important;
   left:16px !important;
   top:50% !important;
+  transform:translateY(-50%) !important;
   width:28px !important;
   height:2px !important;
   background:rgba(255,255,255,.95) !important;
@@ -2661,21 +2646,19 @@ body.is-menu-visible a.toggle::before{
   box-shadow:
     0 -8px 0 rgba(255,255,255,.95),
     0  8px 0 rgba(255,255,255,.95) !important;
-  transform:translateY(-50%) !important;
 }
 
 body.is-menu-visible a.toggle::after{
   display:none !important;
 }
 
- /* off-canvas sidebar (LEFT) — ALL DEVICES */
+/* ===== SIDEBAR ===== */
 #sidebar{
   position:fixed !important;
-  top:0px !important;
+  top:0 !important;
   left:-320px !important;
-  right:auto !important;
   width:320px !important;
-  height:calc(100vh - 56px) !important;
+  height:100vh !important;          /* ← calc 제거 */
   overflow-y:auto !important;
   overflow-x:hidden !important;
   background:#f2f2f2 !important;
@@ -2687,7 +2670,7 @@ body.is-menu-visible a.toggle::after{
 body.is-menu-visible #sidebar{ left:0 !important; }
 body.is-menu-visible{ overflow:hidden !important; }
 
-/* =========================
+ /* =========================
    3) PHONE (<=736px)
    ========================= */
 @media (max-width:736px){
@@ -2970,5 +2953,6 @@ body.is-menu-visible{ overflow:hidden !important; }
 @media (max-width:736px){
   #sidebar{ width:260px !important; left:-260px !important; }
 }
+
 
 
