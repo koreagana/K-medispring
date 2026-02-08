@@ -2626,7 +2626,7 @@ img, video, iframe{ max-width:100%; height:auto; }
       0 -8px 0 rgba(255,255,255,.95),
       0  8px 0 rgba(255,255,255,.95) !important;
   }
-/* open -> X */
+/* 메뉴 열려도 삼선 유지 (X 제거) */
 body.is-menu-visible a.toggle::before{
   content:"" !important;
   position:absolute !important;
@@ -2636,26 +2636,20 @@ body.is-menu-visible a.toggle::before{
   height:2px !important;
   background:rgba(255,255,255,.95) !important;
   border-radius:2px !important;
-  box-shadow:none !important;
-  transform:translateY(-50%) rotate(45deg) !important;
+  box-shadow:
+    0 -8px 0 rgba(255,255,255,.95),
+    0  8px 0 rgba(255,255,255,.95) !important;
+  transform:translateY(-50%) !important;
 }
 
 body.is-menu-visible a.toggle::after{
-  content:"" !important;
-  position:absolute !important;
-  left:16px !important;
-  top:50% !important;
-  width:28px !important;
-  height:2px !important;
-  background:rgba(255,255,255,.95) !important;
-  border-radius:2px !important;
-  transform:translateY(-50%) rotate(-45deg) !important;
+  display:none !important;
 }
 
  /* off-canvas sidebar (LEFT) — ALL DEVICES */
 #sidebar{
   position:fixed !important;
-  top:56px !important;
+  top:0px !important;
   left:-320px !important;
   right:auto !important;
   width:320px !important;
@@ -2970,4 +2964,5 @@ body.is-menu-visible{ overflow:hidden !important; }
 @media (max-width:736px){
   #sidebar{ width:260px !important; left:-260px !important; }
 }
+
 
