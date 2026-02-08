@@ -105,3 +105,8 @@
     right: 0 !important;
   }
 }
+@media (max-width:980px){
+  #wrapper{ padding-left:0 !important; margin-left:0 !important; }
+  #main{ margin-left:0 !important; }
+  #main > .inner{ padding-left:0 !important; padding-right:0 !important; }
+}
