@@ -2797,20 +2797,22 @@ body.modal-open{ overflow:hidden; }
     padding-right:0 !important;
   }
 }
-
 /* ===== 1) 헤더(로고 + SNS 한 줄) ===== */
 #header{
   display:flex;
   align-items:center;
   justify-content:space-between;
-  border-bottom: 1px solid var(--brand);
-  padding-bottom:12px;
-  margin-bottom:24px;
+  border-bottom:1px solid var(--brand);
+  padding-top:4px;        /* ← 추가 */
+  padding-bottom:8px;
+  margin-bottom:12px;
 }
+
 #header .logo{ margin-right:auto; }
+
 #header .icons{
   display:flex;
-  gap:14px;
+  gap:12px;               /* ↓ 14 → 12 (살짝 컴팩트) */
   margin-left:auto;
 }
 
@@ -2876,7 +2878,7 @@ a.toggle{
   left:0 !important;
   right:0 !important;
   width:100% !important;
-  height:56px !important;
+  height:46px !important;
   background:var(--brand) !important;
   z-index:10001 !important;
   border:0 !important;
@@ -2946,6 +2948,7 @@ body.is-menu-visible{ overflow:hidden !important; }
 @media (max-width:736px){
   #sidebar{ width:260px !important; left:-260px !important; }
 }
+
 
 
 
