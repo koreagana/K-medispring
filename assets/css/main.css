@@ -2790,24 +2790,25 @@ body.modal-open{ overflow:hidden; }
   #header .logo-img{ max-height: 44px !important; }
 }
 
+
 /* 모바일 헤더: 로고 왼쪽 / SNS 오른쪽 한 줄 정렬 */
 #header{
-  display:flex;
-  align-items:center;
-  justify-content:space-between;
-}
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 
-#header .logo{
-  margin-right:auto;
-}
-
-#header .icons{
-  display:flex;
-  gap:14px;
-  margin-left:auto;
-}
-#header{
+  /* 하단 라인 + 여백 */
   border-bottom: 1px solid var(--brand) !important;
   padding-bottom: 12px;
   margin-bottom: 24px;
+}
+
+#header .logo{
+  margin-right: auto;
+}
+
+#header .icons{
+  display: flex;
+  gap: 14px;
+  margin-left: auto;
 }
