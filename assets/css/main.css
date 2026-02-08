@@ -2575,9 +2575,6 @@ img, video, iframe{ max-width:100%; height:auto; }
    ========================= */
 a.toggle{ display:block !important; }
 
-/* 상단 토글바 공간 확보 (전 기기 공통) */
-body{ padding-top:56px !important; }
-
 /* main overflow 안전장치 */
 #main{ min-width:0 !important; }
 
@@ -2819,9 +2816,13 @@ body.modal-open{ overflow:hidden; }
   align-items:center;
   justify-content:space-between;
   border-bottom:1px solid var(--brand);
-  padding-bottom:10px;   
-  margin-bottom:30px;
+
+  /* 공백 정리 */
+  padding-top:0 !important;
+  padding-bottom:0 !important;   /* 선 안쪽 여백 제거 */
+  margin-bottom:30px !important; /* 선 바깥 여백만 유지 */
 }
+
 #header .logo{ margin-right:auto; }
 #header .icons{
   display:flex;
@@ -2954,6 +2955,7 @@ body.is-menu-visible{ overflow:hidden !important; }
 @media (max-width:736px){
   #sidebar{ width:260px !important; left:-260px !important; }
 }
+
 
 
 
