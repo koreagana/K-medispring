@@ -2948,7 +2948,7 @@ body.is-menu-visible a.toggle::after{
   left:-320px !important;
   right:auto !important;
   width:320px !important;
-  height:calc(100vh - 56px) !important;
+  height:100vh !important;
   overflow-y:auto !important;
   overflow-x:hidden !important;
   background:#f2f2f2 !important;
@@ -2964,6 +2964,7 @@ body.is-menu-visible{ overflow:hidden !important; }
 @media (max-width:736px){
   #sidebar{ width:260px !important; left:-260px !important; }
 }
+
 
 
 
