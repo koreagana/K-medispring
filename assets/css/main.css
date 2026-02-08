@@ -2762,8 +2762,7 @@ body.modal-open{ overflow:hidden; }
   box-shadow:none !important;
 }
 
-/* if modal accidentally sits inside sidebar, still hide */
-#sidebar .modal{ display:none !important; }
+#sidebar .modal{ display:none; }   /* !important 제거 */
 
 /* ✅ 이미지 로고 반응형 (작은 화면에서 자동 축소) */
 #header .logo img,
@@ -2948,6 +2947,7 @@ body.is-menu-visible{ overflow:hidden !important; }
 @media (max-width:736px){
   #sidebar{ width:260px !important; left:-260px !important; }
 }
+
 
 
 
