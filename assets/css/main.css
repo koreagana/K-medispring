@@ -2596,7 +2596,7 @@ img, video, iframe{ max-width:100%; height:auto; }
     display:block !important;
     position:fixed !important;
     top:0 !important;
-    left:0 !important;
+    left:0p !important;
     right:0 !important;
     width:100% !important;
     height:56px !important;
@@ -2790,4 +2790,5 @@ body.modal-open{ overflow:hidden; }
 @media screen and (max-width: 736px){
   #header .logo-img{ max-height: 44px !important; }
 }
+
 
