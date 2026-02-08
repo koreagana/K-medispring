@@ -2816,6 +2816,66 @@ body.modal-open{ overflow:hidden; }
     padding-right:0 !important;
   }
 }
+/* =========================================================
+   MOVE FROM fix.css -> main.css (NO DUPLICATES with your existing block)
+   ✅ 아래만 main.css “맨 아래”에 추가
+   ✅ fix.css 링크 삭제해도 됨
+   ========================================================= */
+
+/* ===== 1) 헤더(로고 + SNS 한 줄) ===== */
+#header{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  border-bottom: 1px solid var(--brand);
+  padding-bottom:12px;
+  margin-bottom:24px;
+}
+#header .logo{ margin-right:auto; }
+#header .icons{
+  display:flex;
+  gap:14px;
+  margin-left:auto;
+}
+
+/* ===== 2) 사이드바 섹션 구분선 ===== */
+#sidebar > .inner > section{
+  border-top: solid 2px rgba(210,215,217,.75);
+  margin-top: 2rem;
+  padding-top: 2rem;
+}
+#sidebar > .inner > section:first-of-type{
+  border-top:none;
+  margin-top:0;
+  padding-top:0;
+}
+
+/* ===== 3) 메뉴 공통(여백/밑줄) ===== */
+#menu{ border-top:none !important; }
+#menu > ul{ padding:0 1.5rem 1.5rem; margin:0; }
+#menu a{ text-decoration:none; }
+
+/* active 밑줄 (a 링크형: 다른 페이지들) */
+#menu li.active > a,
+#menu a[aria-current="page"]{
+  display:block;
+  margin:1.5rem 0;
+  font-weight:700;
+  padding-bottom:1rem;
+  border-bottom:2px solid var(--brand);
+  border-top:0;
+}
+
+/* active 밑줄 (H3형: index의 “首页”처럼) */
+#menu li.active .menu-home{
+  margin:1.5rem 0;
+  padding-bottom:1rem;
+  font-size:1.4rem;
+  font-weight:700;
+  color:#222;
+  border-bottom:2px solid var(--brand);
+}
+
 
 
 
