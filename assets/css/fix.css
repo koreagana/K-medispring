@@ -118,3 +118,48 @@
   color: #222;
   border-bottom: 2px solid var(--brand);
 }
+/* =========================
+   PC(>=981px): sidebar 항상 보이게
+   ========================= */
+@media screen and (min-width: 981px){
+  #sidebar{
+    position: relative !important;
+    right: auto !important;
+    left: auto !important;
+    top: auto !important;
+    width: 23em !important;
+    height: auto !important;
+    transform: none !important;
+    transition: none !important;
+    z-index: auto !important;
+  }
+  body.is-menu-visible #sidebar{ right:auto !important; left:auto !important; }
+  a.toggle{ display:none !important; }
+}
+
+/* =========================
+   Tablet+Mobile(<=980px): off-canvas
+   ========================= */
+@media screen and (max-width: 980px){
+  a.toggle{ display:block !important; }
+
+  #sidebar{
+    position: fixed !important;
+    top: 56px !important;
+    right: -23em !important;
+    width: 23em !important;
+    height: calc(100% - 56px) !important;
+    overflow-y: auto !important;
+    z-index: 10000 !important;
+    background: #ffffff !important;
+    transition: right 0.25s ease !important;
+    -webkit-overflow-scrolling: touch;
+  }
+  body.is-menu-visible #sidebar{ right: 0 !important; }
+}
+
+/* phone narrower */
+@media (max-width:736px){
+  #sidebar{ width: 260px !important; right: -260px !important; }
+  body.is-menu-visible #sidebar{ right: 0 !important; }
+}
