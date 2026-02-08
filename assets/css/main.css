@@ -2587,6 +2587,23 @@ img, video, iframe{ max-width:100%; height:auto; }
 ========================================================= */
 @media (max-width:980px){
 
+  /* ✅ typo fix */
+  a.toggle{ left:0 !important; }
+
+  /* ✅ kill desktop left gutter */
+  #wrapper{
+    padding-left:0 !important;
+    margin-left:0 !important;
+  }
+  #main{
+    margin-left:0 !important;
+  }
+  #main > .inner{
+    padding-left:0 !important;
+    padding-right:0 !important;
+  }
+}
+
   /* content pushed below top bar */
   body{ padding-top:56px !important; }
   #wrapper{ padding-top:0 !important; }
@@ -2797,6 +2814,7 @@ body.modal-open{ overflow:hidden; }
     padding-right:0 !important;
   }
 }
+
 
 
 
