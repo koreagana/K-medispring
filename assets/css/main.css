@@ -2033,7 +2033,7 @@ html[lang="ko"] .button {
   display: -webkit-flex;
   display: -ms-flex;
   display: flex;
-  padding-top:5px !important;
+  padding-top:0 !important;
 
   -moz-flex-direction: row-reverse;
   -webkit-flex-direction: row-reverse;
@@ -2959,6 +2959,7 @@ body.is-menu-visible{ overflow:hidden !important; }
 @media (max-width:736px){
   #sidebar{ width:260px !important; left:-260px !important; }
 }
+
 
 
 
