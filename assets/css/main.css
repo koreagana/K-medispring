@@ -2736,6 +2736,11 @@ body.modal-open{ overflow:hidden; }
   z-index:20000 !important;
 }
 
+/* modal text */
+.modal-id{
+  text-align:center;
+}
+
 .modal[aria-hidden="false"]{ display:flex !important; }
 
 .modal .modal-inner{
@@ -2947,6 +2952,7 @@ body.is-menu-visible{ overflow:hidden !important; }
 @media (max-width:736px){
   #sidebar{ width:260px !important; left:-260px !important; }
 }
+
 
 
 
