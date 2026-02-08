@@ -270,29 +270,24 @@
   </div><!-- #wrapper -->
 
   <!-- WeChat QR Modal -->
-  <div id="wechatModal" class="modal" aria-hidden="true" role="dialog">
-    <div class="modal-inner">
-      <button class="close" aria-label="Close">&times;</button>
-      <p class="modal-caption">扫描二维码添加微信</p>
-      <img id="wechatQR" class="modal-content" src="images/qr_weixin.jpg" alt="WeChat QR for e-gana" />
-      <p class="modal-id">WeChat ID：e-gana</p>
-    </div>
+<div id="wechatModal" class="modal" aria-hidden="true" role="dialog">
+  <div class="modal-inner">
+    <button class="close" aria-label="Close">&times;</button>
+    <img
+      id="wechatQR"
+      class="modal-content"
+      src="images/qr_weixin.jpg"
+      alt="WeChat QR e-gana"
+    />
+    <p class="modal-id">
+      WeChat ID：e-gana ｜《汉江春天》医疗旅游咨询公司/韩国卫生部认证机构
+    </p>
   </div>
+</div>  
 
-  <!-- WhatsApp Modal -->
-  <div id="whatsappModal" class="modal" aria-hidden="true" role="dialog">
-    <div class="modal-inner">
-      <button class="close" aria-label="Close">&times;</button>
-      <p class="modal-caption">QR → WhatsApp Connect</p>
-      <img id="whatsappQR" class="modal-content" src="images/whatsapp_qr.jpg" alt="WhatsApp QR for K-Medi Spring">
-      <p class="modal-id">WhatsApp：+82-10-4903-3123</p>
-    </div>
-  </div>
-
-  <!-- 비디오 + 모달 스크립트 -->
+   <!-- 비디오 + 모달 스크립트 -->
   <script>
     document.addEventListener('DOMContentLoaded', function () {
-
       /* 1) 인트로 비디오 */
       const v = document.getElementById('introVideo');
       if (v) {
@@ -300,83 +295,129 @@
         v.muted = true;
         v.volume = 0;
       }
+<!-- =======================================================
+     WhatsApp QR Modal (UPDATED)
+     ======================================================= -->
+<div id="whatsappModal" class="modal" aria-hidden="true" role="dialog">
+  <div class="modal-inner">
+    <button class="close" aria-label="Close">&times;</button>
 
-      /* 2) WeChat 모달 */
-      const wechatModal  = document.getElementById('wechatModal');
-      const wechatIcon   = document.getElementById('wechat-icon');
-      const wechatQR     = document.getElementById('wechatQR');
-      const wechatClose  = wechatModal ? wechatModal.querySelector('.close') : null;
+    <img
+      id="whatsappQR"
+      class="modal-content"
+      src="images/whatsapp_qr.jpg"
+      alt="WhatsApp QR K-Medi Korea"
+    >
 
-      function openWeChat(e){
-        if (e) e.preventDefault();
-        if (wechatQR){
-          wechatQR.src = wechatQR.src.split('?')[0] + '?v=' + Date.now();
-        }
-        if (wechatModal){
-          wechatModal.style.display = 'flex';
-          wechatModal.setAttribute('aria-hidden', 'false');
-        }
-        document.body.classList.add('modal-open');
-      }
-      function closeWeChat(){
-        if (wechatModal){
-          wechatModal.style.display = 'none';
-          wechatModal.setAttribute('aria-hidden', 'true');
-        }
-        document.body.classList.remove('modal-open');
-      }
+    <p class="modal-id">WhatsApp：+82-10-4903-3123 (k-medi korea)</p>
+  </div>
+</div>
 
-      if (wechatIcon)  wechatIcon.addEventListener('click', openWeChat);
-      if (wechatClose) wechatClose.addEventListener('click', closeWeChat);
-      if (wechatModal){
-        wechatModal.addEventListener('click', function(e){
-          if (e.target === wechatModal) closeWeChat();
-        });
-      }
+<script>
+document.addEventListener('DOMContentLoaded', function () {
 
-      /* 3) WhatsApp 모달 */
-      const whatsappModal = document.getElementById('whatsappModal');
-      const whatsappIcon  = document.getElementById('whatsapp-icon');
-      const whatsappQR    = document.getElementById('whatsappQR');
-      const whatsappClose = whatsappModal ? whatsappModal.querySelector('.close') : null;
+  /* =========================
+     WeChat 모달
+     ========================= */
+  const wechatModal  = document.getElementById('wechatModal');
+  const wechatIcon   = document.getElementById('wechat-icon');
+  const wechatQR     = document.getElementById('wechatQR');
+  const wechatClose  = wechatModal ? wechatModal.querySelector('.close') : null;
 
-      function openWhatsApp(e){
-        if (e) e.preventDefault();
-        if (whatsappQR){
-          whatsappQR.src = whatsappQR.src.split('?')[0] + '?v=' + Date.now();
-        }
-        if (whatsappModal){
-          whatsappModal.style.display = 'flex';
-          whatsappModal.setAttribute('aria-hidden','false');
-        }
-        document.body.classList.add('modal-open');
-      }
-      function closeWhatsApp(){
-        if (whatsappModal){
-          whatsappModal.style.display = 'none';
-          whatsappModal.setAttribute('aria-hidden','true');
-        }
-        document.body.classList.remove('modal-open');
-      }
+  /* ✅ [추가] 다른 모달이 열려있으면 먼저 닫기 위해 함수 선언을 위로 */
+  function closeWeChat(){
+    if (wechatModal){
+      wechatModal.style.display = 'none';
+      wechatModal.setAttribute('aria-hidden', 'true');
+    }
+    document.body.classList.remove('modal-open');
+  }
 
-      if (whatsappIcon)  whatsappIcon.addEventListener('click', openWhatsApp);
-      if (whatsappClose) whatsappClose.addEventListener('click', closeWhatsApp);
-      if (whatsappModal){
-        whatsappModal.addEventListener('click', function(e){
-          if (e.target === whatsappModal) closeWhatsApp();
-        });
-      }
+  /* =========================
+     WhatsApp 모달
+     ========================= */
+  const whatsappModal = document.getElementById('whatsappModal');
+  const whatsappIcon  = document.getElementById('whatsapp-icon');
+  const whatsappQR    = document.getElementById('whatsappQR');
+  const whatsappClose = whatsappModal ? whatsappModal.querySelector('.close') : null;
 
-      /* 4) ESC 키로 모두 닫기 */
-      document.addEventListener('keydown', function (e) {
-        if (e.key === 'Escape') {
-          closeWeChat();
-          closeWhatsApp();
-        }
-      });
+  function closeWhatsApp(){
+    if (whatsappModal){
+      whatsappModal.style.display = 'none';
+      whatsappModal.setAttribute('aria-hidden','true');
+    }
+    document.body.classList.remove('modal-open');
+  }
 
+  /* ✅ [수정] open 시 다른 모달 먼저 닫기 */
+  function openWeChat(e){
+    if (e) e.preventDefault();
+    closeWhatsApp(); /* ✅ [추가] */
+
+    if (wechatQR){
+      wechatQR.src = wechatQR.src.split('?')[0] + '?v=' + Date.now();
+    }
+    if (wechatModal){
+      wechatModal.style.display = 'flex';
+      wechatModal.setAttribute('aria-hidden', 'false');
+    }
+    document.body.classList.add('modal-open');
+  }
+
+  function openWhatsApp(e){
+    if (e) e.preventDefault();
+    closeWeChat(); /* ✅ [추가] */
+
+    if (whatsappQR){
+      whatsappQR.src = whatsappQR.src.split('?')[0] + '?v=' + Date.now();
+    }
+    if (whatsappModal){
+      whatsappModal.style.display = 'flex';
+      whatsappModal.setAttribute('aria-hidden','false');
+    }
+    document.body.classList.add('modal-open');
+  }
+
+  /* ✅ 아이콘 클릭 */
+  if (wechatIcon)  wechatIcon.addEventListener('click', openWeChat);
+  if (whatsappIcon) whatsappIcon.addEventListener('click', openWhatsApp);
+
+  /* ✅ [교체] X 버튼 클릭 시 preventDefault 추가 (튐 방지) */
+  if (wechatClose){
+    wechatClose.addEventListener('click', function(e){
+      e.preventDefault(); /* ✅ [추가] */
+      closeWeChat();
     });
-  </script>
+  }
+  if (whatsappClose){
+    whatsappClose.addEventListener('click', function(e){
+      e.preventDefault(); /* ✅ [추가] */
+      closeWhatsApp();
+    });
+  }
+
+  /* ✅ 배경 클릭 닫기 */
+  if (wechatModal){
+    wechatModal.addEventListener('click', function(e){
+      if (e.target === wechatModal) closeWeChat();
+    });
+  }
+  if (whatsappModal){
+    whatsappModal.addEventListener('click', function(e){
+      if (e.target === whatsappModal) closeWhatsApp();
+    });
+  }
+
+  /* ✅ ESC 키로 모두 닫기 */
+  document.addEventListener('keydown', function (e) {
+    if (e.key === 'Escape') {
+      closeWeChat();
+      closeWhatsApp();
+    }
+  });
+
+});
+</script>
 
   <!-- 템플릿 기본 스크립트 5총사 (반드시 이 순서) -->
  <script src="assets/js/jquery.min.js"></script>
@@ -387,3 +428,4 @@
 
 </body>
 </html>
+
