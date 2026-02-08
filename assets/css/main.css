@@ -2385,7 +2385,6 @@ html[lang="zh-CN"] .inner li {
 }
 legend{ font-weight: 600; margin-bottom: .75rem; }
 
-
 /* ✅ 라디오/체크박스 강제 노출 (iOS 포함) */
 .k-form-section input[type="radio"],
 .k-form-section input[type="checkbox"]{
@@ -2830,9 +2829,9 @@ body.modal-open{ overflow:hidden; }
 
 /* ===== 2) 사이드바 섹션 구분선 ===== */
 #sidebar > .inner > section{
-  border-top: solid 2px rgba(210,215,217,.75);
-  margin-top: 2rem;
-  padding-top: 2rem;
+  margin-top: 0;
+  padding-top: 0;
+  border-top: none;
 }
 #sidebar > .inner > section:first-of-type{
   border-top:none;
