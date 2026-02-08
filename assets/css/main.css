@@ -2830,10 +2830,9 @@ body.modal-open{ overflow:hidden; }
   justify-content:space-between;
   border-bottom:1px solid var(--brand);
 
-  /* 공백 정리 */
   padding-top:0 !important;
-  padding-bottom:0 !important;   /* 선 안쪽 여백 제거 */
-  margin-bottom:30px !important; /* 선 바깥 여백만 유지 */
+  padding-bottom:30px !important;   /* ← px 추가 */
+  margin-bottom:30px !important;
 }
 
 #header .logo{ margin-right:auto; }
@@ -2968,6 +2967,7 @@ body.is-menu-visible{ overflow:hidden !important; }
 @media (max-width:736px){
   #sidebar{ width:260px !important; left:-260px !important; }
 }
+
 
 
 
