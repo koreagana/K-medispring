@@ -2772,6 +2772,7 @@ body.modal-open{ overflow:hidden; }
   max-width: 100% !important;
   height: clamp(36px, 8vw, 72px) !important;
 }
+
 /* ===== Header logo responsive (force) ===== */
 #header .logo-img{
   height: auto !important;
@@ -2788,35 +2789,5 @@ body.modal-open{ overflow:hidden; }
 /* 모바일 */
 @media screen and (max-width: 736px){
   #header .logo-img{ max-height: 44px !important; }
-}
-
-
-/* 모바일 헤더: 로고 왼쪽 / SNS 오른쪽 한 줄 정렬 */
-#header{
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-
-  /* 하단 라인 + 여백 */
-  border-bottom: 1px solid var(--brand) !important;
-  padding-bottom: 12px;
-  margin-bottom: 24px;
-}
-
-#header .logo{
-  margin-right: auto;
-}
-
-#header .icons{
-  display: flex;
-  gap: 14px;
-  margin-left: auto;
-}
-#menu li.active > a{
-  display: block;
-  margin: 1.5rem 0;
-  font-weight: 700;
-  padding-top: 1rem;
-  border-top: 2px solid var(--brand);
 }
 
