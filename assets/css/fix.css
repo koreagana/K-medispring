@@ -79,3 +79,19 @@
   /* (중요) “메뉴 강제 표시” 같은 건 하지 않는다.
      메뉴는 사이드바가 열릴 때만 보이는 게 정상. */
 }
+/* 메뉴 리스트 여백: .links 없어도 적용 */
+#menu > ul{
+  padding: 0 1.5rem 1.5rem;
+  margin: 0;
+}
+
+/* 링크 기본 */
+#menu a{
+  text-decoration: none;
+}
+
+/* 현재 페이지 강조: active + aria-current 둘 다 */
+#menu li.active > a,
+#menu a[aria-current="page"]{
+  font-weight: 700;
+}
