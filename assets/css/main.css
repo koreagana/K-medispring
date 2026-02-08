@@ -2836,7 +2836,7 @@ body.modal-open{ overflow:hidden; }
   align-items:center;
   justify-content:space-between;
   border-bottom:1px solid var(--brand);
-  padding-top:0;          /* ← 4 → 0 */
+  padding-bottom:30px;   /* 로고 sns 밑에 공백 */
   padding-bottom:0px;
   margin-bottom:0px;
 }
@@ -2907,7 +2907,7 @@ body{ padding-top:56px !important; }
 #main{ margin-left:0 !important; }
 #main{ min-width:0 !important; }
 
-/* 상단 파란바(삼선) */
+/* ===== 토글 바 (항상 보이게) ===== */
 a.toggle{
   display:block !important;
   position:fixed !important;
@@ -2918,17 +2918,19 @@ a.toggle{
   height:46px !important;
   background:var(--brand) !important;
   z-index:10001 !important;
+
   border:0 !important;
   border-radius:0 !important;
   box-shadow:none !important;
   text-decoration:none !important;
+
   font-size:0 !important;
   line-height:0 !important;
   text-indent:-9999px !important;
   overflow:hidden !important;
 }
 
-/* 삼선 */
+/* ===== 삼선 (항상 보임) ===== */
 a.toggle::before{
   content:"" !important;
   position:absolute !important;
@@ -2943,24 +2945,18 @@ a.toggle::before{
     0 -8px 0 rgba(255,255,255,.95),
     0  8px 0 rgba(255,255,255,.95) !important;
 }
-/* 열리면 X – 흰색 안 나오게 */
-body.is-menu-visible a.toggle::before,
-body.is-menu-visible a.toggle::after{
-  content:"" !important;
-  position:absolute !important;
-  left:16px !important;
-  top:50% !important;
-  width:28px !important;
-  height:2px !important;
-  background:transparent !important;
-  box-shadow:none !important;
+
+/* ===== 메뉴 열려도 삼선 유지 (변형 금지) ===== */
+body.is-menu-visible a.toggle::before{
+  transform:translateY(-50%) !important;
+  background:rgba(255,255,255,.95) !important;
+  box-shadow:
+    0 -8px 0 rgba(255,255,255,.95),
+    0  8px 0 rgba(255,255,255,.95) !important;
 }
 
-body.is-menu-visible a.toggle::before{
-  transform:translateY(-50%) rotate(45deg) !important;
-}
 body.is-menu-visible a.toggle::after{
-  transform:translateY(-50%) rotate(-45deg) !important;
+  display:none !important;
 }
 
 /* 오프캔버스(LEFT) */
@@ -2986,6 +2982,7 @@ body.is-menu-visible{ overflow:hidden !important; }
 @media (max-width:736px){
   #sidebar{ width:260px !important; left:-260px !important; }
 }
+
 
 
 
