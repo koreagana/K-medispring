@@ -2864,6 +2864,10 @@ body.modal-open{ overflow:hidden; }
   color:#222;
   border-bottom:2px solid var(--brand);
 }
+.section-spacer{
+  height: 3rem;
+}
+
 /* =========================
    TOP BAR + OFF-CANVAS (ALL DEVICES)
    ========================= */
@@ -2960,17 +2964,3 @@ body.is-menu-visible{ overflow:hidden !important; }
 @media (max-width:736px){
   #sidebar{ width:260px !important; left:-260px !important; }
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
