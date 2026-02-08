@@ -2033,7 +2033,7 @@ html[lang="ko"] .button {
   display: -webkit-flex;
   display: -ms-flex;
   display: flex;
-  padding-top:56px !important;
+  padding-top:5px !important;
 
   -moz-flex-direction: row-reverse;
   -webkit-flex-direction: row-reverse;
@@ -2834,9 +2834,9 @@ body.modal-open{ overflow:hidden; }
   border-top: none;
 }
 #sidebar > .inner > section:first-of-type{
-  border-top:none;
-  margin-top:0;
-  padding-top:0;
+  margin-top: 0;
+  padding-top: 0;
+  border-top: none;
 }
 
 /* ===== 3) 메뉴 공통(여백/밑줄) ===== */
@@ -2959,6 +2959,7 @@ body.is-menu-visible{ overflow:hidden !important; }
 @media (max-width:736px){
   #sidebar{ width:260px !important; left:-260px !important; }
 }
+
 
 
 
