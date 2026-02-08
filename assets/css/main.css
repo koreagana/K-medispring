@@ -2918,12 +2918,19 @@ a.toggle::before{
     0  8px 0 rgba(255,255,255,.95) !important;
 }
 
-/* 열리면 X */
 body.is-menu-visible a.toggle::before{
+  content:"" !important;
+  position:absolute !important;
+  left:16px !important;
+  top:50% !important;
   width:28px !important;
+  height:2px !important;
+  background:rgba(255,255,255,.95) !important;
+  border-radius:2px !important;
   box-shadow:none !important;
   transform:translateY(-50%) rotate(45deg) !important;
 }
+
 body.is-menu-visible a.toggle::after{
   content:"" !important;
   position:absolute !important;
@@ -2959,6 +2966,7 @@ body.is-menu-visible{ overflow:hidden !important; }
 @media (max-width:736px){
   #sidebar{ width:260px !important; left:-260px !important; }
 }
+
 
 
 
