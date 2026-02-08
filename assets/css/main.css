@@ -2898,7 +2898,7 @@ body.modal-open{ overflow:hidden; }
 }
 
 /* 모든 기기: 상단바 공간 확보 */
-body{ padding-top:0px !important; }
+body{ padding-top:56px !important; }
 #wrapper{ padding-left:0 !important; margin-left:0 !important; }
 #main{ margin-left:0 !important; }
 #main{ min-width:0 !important; }
@@ -2970,4 +2970,5 @@ body.is-menu-visible{ overflow:hidden !important; }
 @media (max-width:736px){
   #sidebar{ width:260px !important; left:-260px !important; }
 }
+
 
