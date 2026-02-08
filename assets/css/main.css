@@ -2626,27 +2626,33 @@ img, video, iframe{ max-width:100%; height:auto; }
       0 -8px 0 rgba(255,255,255,.95),
       0  8px 0 rgba(255,255,255,.95) !important;
   }
+/* open -> X */
+body.is-menu-visible a.toggle::before{
+  content:"" !important;
+  position:absolute !important;
+  left:16px !important;
+  top:50% !important;
+  width:28px !important;
+  height:2px !important;
+  background:rgba(255,255,255,.95) !important;
+  border-radius:2px !important;
+  box-shadow:none !important;
+  transform:translateY(-50%) rotate(45deg) !important;
+}
 
-  /* open -> X */
-  body.is-menu-visible a.toggle::before{
-    width:28px !important;
-    box-shadow:none !important;
-    left:16px !important;
-    top:50% !important;
-    transform:translateY(-50%) rotate(45deg) !important;
-  }
-  body.is-menu-visible a.toggle::after{
-    content:"" !important;
-    position:absolute !important;
-    left:16px !important;
-    top:50% !important;
-    width:28px !important;
-    height:2px !important;
-    background:rgba(255,255,255,.95) !important;
-    border-radius:2px !important;
-    transform:translateY(-50%) rotate(-45deg) !important;
-  }
-/* off-canvas sidebar (LEFT) — ALL DEVICES */
+body.is-menu-visible a.toggle::after{
+  content:"" !important;
+  position:absolute !important;
+  left:16px !important;
+  top:50% !important;
+  width:28px !important;
+  height:2px !important;
+  background:rgba(255,255,255,.95) !important;
+  border-radius:2px !important;
+  transform:translateY(-50%) rotate(-45deg) !important;
+}
+
+ /* off-canvas sidebar (LEFT) — ALL DEVICES */
 #sidebar{
   position:fixed !important;
   top:56px !important;
@@ -2964,3 +2970,4 @@ body.is-menu-visible{ overflow:hidden !important; }
 @media (max-width:736px){
   #sidebar{ width:260px !important; left:-260px !important; }
 }
+
