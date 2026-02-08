@@ -1454,19 +1454,30 @@ ul.actions {
       width: 100%; }
 
 /* Icons */
-ul.icons {
+/* icons — 오른쪽 정렬 + 세로 중앙정렬 */
+ul.icons{
   cursor: default;
   list-style: none;
-  padding-left: 0; }
-  ul.icons li {
-    display: inline-block;
-    padding: 0 1em 0 0; }
-    ul.icons li:last-child {
-      padding-right: 0; }
-    ul.icons li .icon {
-      color: inherit; }
-      ul.icons li .icon:before {
-        font-size: 1.25em; }
+  padding-left: 0;
+  margin: 0;
+  display: flex;            /* 가로 정렬 */
+  align-items: center;      /* 세로 중앙 */
+  margin-left: auto;        /* 오른쪽 정렬 */
+}
+ul.icons li{
+  display: flex;
+  align-items: center;
+  padding: 0 1em 0 0;
+}
+ul.icons li:last-child{
+  padding-right: 0;
+}
+ul.icons li .icon{
+  color: inherit;
+}
+ul.icons li .icon:before{
+  font-size: 1.25em;
+}
 
 /* Contact */
 ul.contact {
@@ -2955,6 +2966,7 @@ body.is-menu-visible{ overflow:hidden !important; }
 @media (max-width:736px){
   #sidebar{ width:260px !important; left:-260px !important; }
 }
+
 
 
 
