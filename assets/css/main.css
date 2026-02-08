@@ -2648,7 +2648,7 @@ img, video, iframe{ max-width:100%; height:auto; }
       0 -8px 0 rgba(255,255,255,.95),
       0  8px 0 rgba(255,255,255,.95) !important;
   }
-/* 메뉴 열려도 삼선 유지 (X 제거) */
+/* 메뉴 열려도 삼선 유지 */
 body.is-menu-visible a.toggle::before{
   content:"" !important;
   position:absolute !important;
@@ -2694,7 +2694,6 @@ body.is-menu-visible{ overflow:hidden !important; }
   #sidebar{ width:260px !important; left:-260px !important; }
   body.is-menu-visible #sidebar{ left:0 !important; }
 }
-
 
 /* =========================================================
    3) SIDEBAR MENU (thin dividers + no background/underline)
@@ -2836,13 +2835,10 @@ body.modal-open{ overflow:hidden; }
   align-items:center;
   justify-content:space-between;
   border-bottom:1px solid var(--brand);
-  padding-bottom:30px;   /* 로고 sns 밑에 공백 */
-  padding-bottom:0px;
-  margin-bottom:0px;
+  padding-bottom:10px;   
+  margin-bottom:30px;
 }
-
 #header .logo{ margin-right:auto; }
-
 #header .icons{
   display:flex;
   gap:12px;               /* ↓ 14 → 12 (살짝 컴팩트) */
@@ -2902,7 +2898,7 @@ body.modal-open{ overflow:hidden; }
 }
 
 /* 모든 기기: 상단바 공간 확보 */
-body{ padding-top:56px !important; }
+body{ padding-top:0px !important; }
 #wrapper{ padding-left:0 !important; margin-left:0 !important; }
 #main{ margin-left:0 !important; }
 #main{ min-width:0 !important; }
@@ -2946,15 +2942,7 @@ a.toggle::before{
     0  8px 0 rgba(255,255,255,.95) !important;
 }
 
-/* ===== 메뉴 열려도 삼선 유지 (변형 금지) ===== */
-body.is-menu-visible a.toggle::before{
-  transform:translateY(-50%) !important;
-  background:rgba(255,255,255,.95) !important;
-  box-shadow:
-    0 -8px 0 rgba(255,255,255,.95),
-    0  8px 0 rgba(255,255,255,.95) !important;
-}
-
+/* 메뉴 열려도 X 안 쓰므로 after 제거 */
 body.is-menu-visible a.toggle::after{
   display:none !important;
 }
@@ -2982,9 +2970,4 @@ body.is-menu-visible{ overflow:hidden !important; }
 @media (max-width:736px){
   #sidebar{ width:260px !important; left:-260px !important; }
 }
-
-
-
-
-
 
