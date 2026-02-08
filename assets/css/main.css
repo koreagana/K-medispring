@@ -2553,7 +2553,7 @@ img, video, iframe{ max-width:100%; height:auto; }
    ========================= */
 @media (min-width:981px){
   a.toggle{ display:block !important; }
-  body{ padding-top:56px !important; }
+  body{ padding-top:0px !important; }
 }
 
 /* main overflow 안전장치 */
@@ -2960,6 +2960,7 @@ body.is-menu-visible{ overflow:hidden !important; }
 @media (max-width:736px){
   #sidebar{ width:260px !important; left:-260px !important; }
 }
+
 
 
 
