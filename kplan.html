@@ -147,38 +147,17 @@
   <a class="choice" href="#">毛孔 / 肌理改善</a>
   <a class="choice" href="#">水光 / 皮肤修复（Skin Booster）</a>
 </div>
-
-            <hr />
-
-            <h4>大健康（功能医学）</h4>
-            <div class="row gtr-uniform">
-              <div class="col-6 col-12-xsmall">
-                <input type="checkbox" class="hga-cb" id="fx1" name="fx_pick" value="营养代谢分析（OAT）" />
-                <label for="fx1">营养代谢分析（OAT）</label>
-              </div>
-              <div class="col-6 col-12-xsmall">
-                <input type="checkbox" class="hga-cb" id="fx2" name="fx_pick" value="NK 细胞活性检测" />
-                <label for="fx2">NK 细胞活性检测</label>
-              </div>
-              <div class="col-6 col-12-xsmall">
-                <input type="checkbox" class="hga-cb" id="fx3" name="fx_pick" value="睡眠·压力评估（皮质醇）" />
-                <label for="fx3">睡眠·压力评估（皮质醇）</label>
-              </div>
-              <div class="col-6 col-12-xsmall">
-                <input type="checkbox" class="hga-cb" id="fx4" name="fx_pick" value="重金属/毒性金属检测" />
-                <label for="fx4">重金属 / 毒性金属检测</label>
-              </div>
-              <div class="col-6 col-12-xsmall">
-                <input type="checkbox" class="hga-cb" id="fx5" name="fx_pick" value="端粒检测（Telomere）" />
-                <label for="fx5">端粒检测（Telomere）</label>
-              </div>
-              <div class="col-6 col-12-xsmall">
-                <input type="checkbox" class="hga-cb" id="fx6" name="fx_pick" value="静脉营养（IV）" />
-                <label for="fx6">静脉营养（IV）</label>
-              </div>
-            </div>
-
-            <hr />
+<hr />
+<!-- ✅ (HTML) 빨간동그라미 ‘大健康（功能医学）’ 항목들만 이것처럼 감싸 -->
+<div class="kplan-choices" id="kplan-wellness" data-group-title="大健康（功能医学）">
+  <a class="choice" href="#">营养代谢分析（OAT）</a>
+  <a class="choice" href="#">NK 细胞活性检测</a>
+  <a class="choice" href="#">睡眠·压力评估（皮质醇）</a>
+  <a class="choice" href="#">重金属 / 毒性金属检测</a>
+  <a class="choice" href="#">端粒检测（Telomere）</a>
+  <a class="choice" href="#">静脉营养（IV）</a>
+</div>        
+   <hr />
 
             <h4>干细胞/再生</h4>
             <div class="row gtr-uniform">
@@ -549,6 +528,86 @@ document.addEventListener('click', (e) => {
   <a class="choice" href="#">端粒检测（Telomere）</a>
   <a class="choice" href="#">静脉营养（IV）</a>
 </div>
+<script>
+/* ✅ (JS) </body> 바로 위 */
+(function(){
+  const groups = [...document.querySelectorAll('.kplan-choices')];
+  const list = document.getElementById('kplanSummaryList');
+  const cnt  = document.getElementById('kplanSummaryCount');
+  const clearBtn = document.getElementById('kplanSummaryClear');
+  if(!groups.length || !list || !cnt || !clearBtn) return;
+
+  // 각 choice에 고유 id 부여(그룹별)
+  groups.forEach((g, gi)=>{
+    [...g.querySelectorAll('.choice')].forEach((a, i)=>{
+      if(!a.dataset.choiceId) a.dataset.choiceId = `g${gi+1}-${i+1}`;
+      a.dataset.groupIndex = String(gi);
+    });
+  });
+
+  function getSelected(){
+    const out = [];
+    groups.forEach((g, gi)=>{
+      const title = g.dataset.groupTitle || '';
+      g.querySelectorAll('.choice.is-selected').forEach(a=>{
+        out.push({
+          id: a.dataset.choiceId,
+          gi,
+          title,
+          text: (a.textContent||'').trim()
+        });
+      });
+    });
+    return out;
+  }
+
+  function render(){
+    const selected = getSelected();
+    cnt.textContent = String(selected.length);
+    list.innerHTML = selected.map(item=>{
+      const tag = item.title ? `<span class="sum-tag">[${item.title}]</span>` : '';
+      return `<li data-id="${item.id}" data-gi="${item.gi}">
+        <span>${tag}${item.text}</span>
+        <button type="button" aria-label="remove">×</button>
+      </li>`;
+    }).join('');
+  }
+
+  // 모든 그룹에서 선택 토글
+  groups.forEach((g)=>{
+    g.addEventListener('click', (e)=>{
+      const a = e.target.closest('.choice');
+      if(!a) return;
+      e.preventDefault();
+      a.classList.toggle('is-selected');
+      render();
+    });
+  });
+
+  // 요약에서 × 누르면 해당 선택 해제
+  list.addEventListener('click', (e)=>{
+    const btn = e.target.closest('button');
+    if(!btn) return;
+    const li = e.target.closest('li');
+    if(!li) return;
+    const id = li.dataset.id;
+    const gi = Number(li.dataset.gi);
+    const g = groups[gi];
+    if(!g) return;
+    const a = g.querySelector(`.choice[data-choice-id="${id}"]`);
+    if(a) a.classList.remove('is-selected');
+    render();
+  });
+
+  // 전체 해제
+  clearBtn.addEventListener('click', ()=>{
+    groups.forEach(g=>g.querySelectorAll('.choice.is-selected').forEach(a=>a.classList.remove('is-selected')));
+    render();
+  });
+
+  render();
+})();
+</script>
 </body>
 </html>
 
