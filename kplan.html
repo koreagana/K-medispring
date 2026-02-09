@@ -530,6 +530,17 @@
 
 <!-- ✅ use external modals.js (remove the inline modal script below) -->
 <script src="assets/js/modals.js"></script>
+
+<script>
+/* ✅ 선택 토글(이 블록만) */
+document.addEventListener('click', (e) => {
+  const a = e.target.closest('#kplan-skin .choice');
+  if(!a) return;
+  e.preventDefault();
+  a.classList.toggle('is-selected');
+});
+</script>
+
 </body>
 </html>
 
