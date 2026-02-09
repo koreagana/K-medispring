@@ -2983,4 +2983,81 @@ body.is-menu-visible{ overflow:hidden !important; }
   }
 }
 
+/* ✅ K-Plan: 皮肤医美 선택지 “눌러보고 싶게” (이 블록만 적용) */
+#kplan-skin{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:14px 18px;
+  margin: 1.2rem 0 1.6rem;
+}
+
+/* 카드 */
+#kplan-skin .choice{
+  position:relative;
+  display:block;
+  padding: 14px 14px;
+  border-radius: 12px;
+  border: 1px solid rgba(78,151,209,.28);
+  background: #fff;
+  text-decoration:none;
+  color: inherit;
+  font-weight: 600;
+  letter-spacing: .01em;
+
+  transform: translateY(0);
+  transition: transform .18s ease, box-shadow .18s ease, border-color .18s ease;
+  -webkit-tap-highlight-color: transparent;
+}
+
+/* “나 눌러봐” 느낌: 아주 미세한 호버/터치 반응 */
+#kplan-skin .choice:hover{
+  transform: translateY(-2px);
+  box-shadow: 0 10px 22px rgba(0,0,0,.08);
+  border-color: rgba(78,151,209,.55);
+}
+
+/* 은은한 흐르는 라인(생기) */
+#kplan-skin .choice::after{
+  content:"";
+  position:absolute;
+  inset:-1px;
+  border-radius: 12px;
+  pointer-events:none;
+  background: linear-gradient(90deg,
+    rgba(78,151,209,0) 0%,
+    rgba(78,151,209,.35) 45%,
+    rgba(78,151,209,0) 85%);
+  opacity:.0;
+  transform: translateX(-40%);
+  transition: opacity .18s ease;
+}
+#kplan-skin .choice:hover::after{
+  opacity:.55;
+  animation: kplanSweep 1.2s ease-in-out infinite;
+}
+@keyframes kplanSweep{
+  0%{ transform: translateX(-55%); }
+  100%{ transform: translateX(55%); }
+}
+
+/* 선택됨(눌렀을 때): 파란 라인 + 살짝 채움 */
+#kplan-skin .choice.is-selected{
+  border-color: rgba(78,151,209,.95);
+  box-shadow: 0 10px 26px rgba(78,151,209,.16);
+  transform: translateY(-1px);
+}
+#kplan-skin .choice.is-selected::before{
+  content:"";
+  position:absolute;
+  left:0; top:0; bottom:0;
+  width: 4px;
+  border-radius: 12px 0 0 12px;
+  background: rgba(78,151,209,.95);
+}
+
+/* 모바일: 1열 */
+@media (max-width:736px){
+  #kplan-skin{ grid-template-columns:1fr; }
+}
+
 
