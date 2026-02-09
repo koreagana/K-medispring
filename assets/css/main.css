@@ -2983,17 +2983,11 @@ body.is-menu-visible{ overflow:hidden !important; }
   }
 }
 
-
-
 /* =========================================================
-   K-PLAN.CSS (FINAL — 통일본)
-   - 선택지 카드(파란 스윕)
-   - Step3(需要/不需要) 가로
-   - Summary 박스(제출 위 / 시원한 여백)
-   - iPad 포함: 980px 이하 하단 고정
+   K-PLAN — CLEAN CSS (중복 제거 + 순서 정리)
    ========================================================= */
 
-/* ---------- 0) 기본 타이포/간격(필요 최소) ---------- */
+/* ---------- 0) 기본 ---------- */
 #kplan-page h3, #kplan-page h4{
   margin: 1.3rem 0 .8rem;
   letter-spacing: .02em;
@@ -3004,22 +2998,13 @@ body.is-menu-visible{ overflow:hidden !important; }
   border-top: 1px solid rgba(0,0,0,.10);
 }
 
-/* ---------- 1) 선택지 카드 그리드 ---------- */
+/* ---------- 1) 선택지 카드(공통) ---------- */
 #kplan-page .kplan-choices{
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 14px 18px;
   margin: .9rem 0 1.4rem;
 }
-
-/* 모바일 기본 1열 */
-@media (max-width:736px){
-  #kplan-page .kplan-choices{
-    grid-template-columns: 1fr;
-  }
-}
-
-/* ---------- 2) 카드(선택지) ---------- */
 #kplan-page .kplan-choices .choice{
   position: relative;
   display: block;
@@ -3038,15 +3023,13 @@ body.is-menu-visible{ overflow:hidden !important; }
   transition: transform .18s ease, box-shadow .18s ease, border-color .18s ease;
   -webkit-tap-highlight-color: transparent;
 }
-
-/* 호버 반응 */
 #kplan-page .kplan-choices .choice:hover{
   transform: translateY(-2px);
   box-shadow: 0 10px 22px rgba(0,0,0,.08);
   border-color: rgba(78,151,209,.55);
 }
 
-/* 파란 스윕 라인 */
+/* 파란 스윕 */
 #kplan-page .kplan-choices .choice::after{
   content:"";
   position: absolute;
@@ -3063,12 +3046,10 @@ body.is-menu-visible{ overflow:hidden !important; }
   transform: translateX(-40%);
   transition: opacity .18s ease;
 }
-
 #kplan-page .kplan-choices .choice:hover::after{
   opacity: .55;
   animation: kplanSweep 1.2s ease-in-out infinite;
 }
-
 @keyframes kplanSweep{
   0%{ transform: translateX(-55%); }
   100%{ transform: translateX(55%); }
@@ -3080,7 +3061,6 @@ body.is-menu-visible{ overflow:hidden !important; }
   box-shadow: 0 10px 26px rgba(78,151,209,.16);
   transform: translateY(-1px);
 }
-
 #kplan-page .kplan-choices .choice.is-selected::before{
   content:"";
   position:absolute;
@@ -3090,26 +3070,43 @@ body.is-menu-visible{ overflow:hidden !important; }
   background: rgba(78,151,209,.95);
 }
 
-/* ---------- 3) Step3 (需要/不需要) 가로 고정 ---------- */
+/* 모바일: 1열 */
+@media (max-width:736px){
+  #kplan-page .kplan-choices{ grid-template-columns: 1fr; }
+}
+
+/* ---------- 2) Step3 (需要/不需要) ---------- */
+#kplan-page .kplan-step3-block{
+  display: grid;
+  gap: 14px;
+  margin: .9rem 0 1.6rem;
+}
+#kplan-page .kplan-step3-label{
+  font-weight: 800;
+  margin: 0 0 10px 0;
+  letter-spacing: .02em;
+}
 #kplan-page .kplan-choices.kplan-step3{
   grid-template-columns: 1fr 1fr;
 }
 #kplan-page .kplan-choices.kplan-step3 .choice{
   text-align: center;
 }
+@media (max-width:736px){
+  #kplan-page .kplan-choices.kplan-step3{ grid-template-columns: 1fr 1fr; }
+}
 
-/* ---------- 4) Summary 박스 (提交 위) ---------- */
+/* ---------- 3) Summary (고정 X, 아래에 자연스럽게) ---------- */
 #kplanSummary{
-  margin: 2.5rem 0 2rem;         /* 위아래 여유 */
-  padding: 22px 20px 18px;       /* 내부 여유 */
+  position: static;
+  margin: 2.5rem 0 2rem;
+  padding: 22px 20px 18px;
   border-radius: 18px;
 
-  background: #f7fbff;           /* 시원한 옅은 블루 */
+  background: #f7fbff;
   border: 1px solid rgba(78,151,209,.25);
   box-shadow: 0 12px 28px rgba(0,0,0,.06);
 }
-
-/* 헤더 */
 #kplanSummary .sum-head{
   display:flex;
   align-items:center;
@@ -3117,27 +3114,19 @@ body.is-menu-visible{ overflow:hidden !important; }
   gap: 10px;
   margin-bottom: 10px;
 }
-
-#kplanSummary .sum-title{
-  font-weight: 800;
-}
-
+#kplanSummary .sum-title{ font-weight: 900; }
 #kplanSummary .sum-count{
   min-width: 28px;
   height: 24px;
   padding: 0 8px;
-
   display:inline-flex;
   align-items:center;
   justify-content:center;
-
   border-radius: 999px;
   border: 1px solid rgba(78,151,209,.45);
   background: rgba(78,151,209,.08);
-  font-weight: 800;
+  font-weight: 900;
 }
-
-/* 안내 문구 */
 #kplanSummary .sum-note{
   margin: 0 0 14px 0;
   line-height: 1.65;
@@ -3145,115 +3134,51 @@ body.is-menu-visible{ overflow:hidden !important; }
   font-size: 15px;
 }
 
-/* 리스트 */
+/* 선택 목록: 4열(가능하면) / 좁으면 자동 흐름 */
 #kplanSummary .sum-list{
   list-style: none;
   margin: 0;
   padding: 0;
-}
 
-#kplanSummary .sum-list li{
-  padding: 10px 12px;
-  margin-bottom: 8px;
-  border-radius: 12px;
-
-  background: #fff;
-  border: 1px solid rgba(0,0,0,.06);
-  font-weight: 650;
-}
-
-#kplanSummary .sum-list .sum-empty{
-  opacity: .7;
-  font-weight: 600;
-}
-
-/* ---------- 5) Summary 따라다니기 ---------- */
-/* PC: 스티키 */
-@media (min-width:981px){
-  #kplanSummary{
-    position: sticky;
-    top: 92px; /* 헤더 아래 */
-  }
-}
-
-/* iPad/모바일: 하단 고정 */
-@media (max-width:980px){
-  #kplanSummary{
-    position: fixed;
-    left: 12px;
-    right: 12px;
-    bottom: 12px;
-    z-index: 9999;
-
-    max-height: 40vh;
-    overflow: auto;
-  }
-
-  /* 하단 박스가 콘텐츠 가리지 않게 */
-  body{
-    padding-bottom: 190px;
-  }
-}
-
-/* ✅ 1) Step2가 끝까지 안 내려가는 문제(하단 고정 Summary가 가림)
-   -> iPad/모바일 구간에서 "본문(.inner)"에 여유 공간을 더 줘 */
-@media (max-width:980px){
-  #main > .inner{
-    padding-bottom: 320px !important; /* ✅ 여기 숫자만 더 키우면 100% 해결됨 */
-  }
-  body{
-    padding-bottom: 0 !important;     /* body padding은 빼도 됨(중복 방지) */
-  }
-
-  /* Summary 박스도 너무 크면 스크롤 방해됨 -> 살짝 줄임 */
-  #kplanSummary{
-    max-height: 34vh !important;
-  }
-}
-
-
-/* ✅ 2) 선택된 항목: 4열 + 작은 X (안되면 자동으로 흐르기) */
-#kplanSummary .sum-list{
   display: grid;
   grid-template-columns: repeat(4, minmax(0, 1fr));
   gap: 8px;
-  margin: 0;
-  padding: 0;
-  list-style: none;
 }
-
-/* 화면 좁으면 자동으로 줄어들게(흐르기) */
 @media (max-width:980px){
   #kplanSummary .sum-list{
     grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
   }
 }
-
 #kplanSummary .sum-list li{
-  margin: 0 !important;
-  padding: 10px 10px !important;
+  margin: 0;
+  padding: 10px 10px;
   border-radius: 12px;
   background: #fff;
   border: 1px solid rgba(0,0,0,.06);
-
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 8px;
-
+  font-weight: 650;
   font-size: 13px;
   line-height: 1.2;
-}
 
-/* 텍스트 줄바꿈 최소화 */
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap: 8px;
+}
 #kplanSummary .sum-list li span{
   min-width: 0;
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
 }
+#kplanSummary .sum-list .sum-empty{
+  grid-column: 1 / -1;
+  opacity: .7;
+  font-weight: 600;
+  display:block;
+  padding: 12px 12px;
+}
 
-/* X 버튼 작게 */
+/* X 버튼(작게) */
 #kplanSummary .sum-list li button{
   width: 22px;
   height: 22px;
@@ -3267,3 +3192,121 @@ body.is-menu-visible{ overflow:hidden !important; }
   opacity: .85;
 }
 #kplanSummary .sum-list li button:hover{ opacity: 1; }
+
+/* 클리어 버튼 */
+#kplanSummary .sum-foot{ margin-top: 12px; }
+#kplanSummary .sum-clear{
+  width: 100%;
+  padding: 12px 14px;
+  border-radius: 14px;
+  border: 1px solid rgba(78,151,209,.35);
+  background: #fff;
+  font-weight: 900;
+  cursor: pointer;
+}
+#kplanSummary .sum-clear:hover{
+  border-color: rgba(78,151,209,.60);
+  background: rgba(78,151,209,.05);
+}
+
+/* ---------- 4) 액션 버튼(提交 / 重新选择 / 取消) ---------- */
+#kplan-page .kplan-actions{
+  display:flex;
+  gap:12px;
+  align-items:center;
+  justify-content:flex-start;
+  margin: 1.6rem 0 0;
+  flex-wrap: wrap;
+}
+#kplan-page .kplan-actions .kbtn{
+  position:relative;
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+
+  padding: 12px 18px;
+  min-width: 120px;
+  border-radius: 14px;
+
+  font-weight: 900;
+  letter-spacing: .02em;
+  text-decoration:none;
+  cursor:pointer;
+  user-select:none;
+  -webkit-tap-highlight-color: transparent;
+
+  border: 1px solid rgba(78,151,209,.28);
+  background: #fff;
+  color:#1f2a33;
+
+  box-shadow: 0 10px 22px rgba(0,0,0,.06);
+  transform: translateY(0);
+  transition: transform .18s ease, box-shadow .18s ease, border-color .18s ease, background .18s ease;
+}
+#kplan-page .kplan-actions .kbtn:hover{
+  transform: translateY(-2px);
+  box-shadow: 0 14px 30px rgba(0,0,0,.10);
+  border-color: rgba(78,151,209,.55);
+}
+
+/* 提交 */
+#kplan-page .kplan-actions .kbtn-primary{
+  border-color: rgba(78,151,209,.70);
+  background: linear-gradient(180deg, rgba(78,151,209,.10), rgba(78,151,209,.04));
+}
+#kplan-page .kplan-actions .kbtn-primary .kbtn-shine{
+  position:absolute;
+  inset:-1px;
+  border-radius:14px;
+  pointer-events:none;
+  opacity:0;
+  background: linear-gradient(90deg,
+    rgba(78,151,209,0) 0%,
+    rgba(78,151,209,.35) 45%,
+    rgba(78,151,209,0) 85%);
+  transform: translateX(-45%);
+  transition: opacity .18s ease;
+}
+#kplan-page .kplan-actions .kbtn-primary:hover .kbtn-shine{
+  opacity:.65;
+  animation: kbtnSweep 1.15s ease-in-out infinite;
+}
+@keyframes kbtnSweep{
+  0%{ transform: translateX(-60%); }
+  100%{ transform: translateX(60%); }
+}
+
+/* 重新选择 */
+#kplan-page .kplan-actions .kbtn-ghost{
+  border-style: dashed;
+  border-color: rgba(0,0,0,.18);
+  box-shadow: none;
+}
+#kplan-page .kplan-actions .kbtn-ghost:hover{
+  border-color: rgba(78,151,209,.55);
+  background: rgba(78,151,209,.04);
+  box-shadow: 0 10px 22px rgba(0,0,0,.06);
+}
+
+/* 取消 */
+#kplan-page .kplan-actions .kbtn-cancel{
+  background: rgba(0,0,0,.02);
+  border-color: rgba(0,0,0,.14);
+  color: rgba(0,0,0,.62);
+  box-shadow: none;
+}
+#kplan-page .kplan-actions .kbtn-cancel:hover{
+  background: rgba(0,0,0,.04);
+  border-color: rgba(0,0,0,.20);
+  color: rgba(0,0,0,.78);
+}
+
+/* 모바일 버튼 3개 균등 */
+@media (max-width:736px){
+  #kplan-page .kplan-actions{ gap:10px; }
+  #kplan-page .kplan-actions .kbtn{
+    flex: 1 1 calc(33.333% - 10px);
+    min-width: 0;
+    padding: 12px 10px;
+  }
+}
