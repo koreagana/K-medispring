@@ -2983,16 +2983,21 @@ body.is-menu-visible{ overflow:hidden !important; }
   }
 }
 
-/* ✅ K-Plan: 皮肤医美 선택지 “눌러보고 싶게” (이 블록만 적용) */
-#kplan-skin{
+/* =========================
+   K-Plan Choices (UNIFIED)
+   - 파란 라인 좌우로 움직이는 버전
+   ========================= */
+
+/* 공통 그리드 */
+.kplan-choices{
   display:grid;
   grid-template-columns:1fr 1fr;
   gap:14px 18px;
-  margin: 1.2rem 0 1.6rem;
+  margin: 1.1rem 0 1.6rem;
 }
 
 /* 카드 */
-#kplan-skin .choice{
+.kplan-choices .choice{
   position:relative;
   display:block;
   padding: 14px 14px;
@@ -3009,15 +3014,15 @@ body.is-menu-visible{ overflow:hidden !important; }
   -webkit-tap-highlight-color: transparent;
 }
 
-/* “나 눌러봐” 느낌: 아주 미세한 호버/터치 반응 */
-#kplan-skin .choice:hover{
+/* 미세 반응 */
+.kplan-choices .choice:hover{
   transform: translateY(-2px);
   box-shadow: 0 10px 22px rgba(0,0,0,.08);
   border-color: rgba(78,151,209,.55);
 }
 
-/* 은은한 흐르는 라인(생기) */
-#kplan-skin .choice::after{
+/* 좌우로 스윕되는 파란 라인 */
+.kplan-choices .choice::after{
   content:"";
   position:absolute;
   inset:-1px;
@@ -3027,11 +3032,11 @@ body.is-menu-visible{ overflow:hidden !important; }
     rgba(78,151,209,0) 0%,
     rgba(78,151,209,.35) 45%,
     rgba(78,151,209,0) 85%);
-  opacity:.0;
+  opacity:0;
   transform: translateX(-40%);
   transition: opacity .18s ease;
 }
-#kplan-skin .choice:hover::after{
+.kplan-choices .choice:hover::after{
   opacity:.55;
   animation: kplanSweep 1.2s ease-in-out infinite;
 }
@@ -3040,13 +3045,13 @@ body.is-menu-visible{ overflow:hidden !important; }
   100%{ transform: translateX(55%); }
 }
 
-/* 선택됨(눌렀을 때): 파란 라인 + 살짝 채움 */
-#kplan-skin .choice.is-selected{
+/* 선택됨 */
+.kplan-choices .choice.is-selected{
   border-color: rgba(78,151,209,.95);
   box-shadow: 0 10px 26px rgba(78,151,209,.16);
   transform: translateY(-1px);
 }
-#kplan-skin .choice.is-selected::before{
+.kplan-choices .choice.is-selected::before{
   content:"";
   position:absolute;
   left:0; top:0; bottom:0;
@@ -3055,11 +3060,24 @@ body.is-menu-visible{ overflow:hidden !important; }
   background: rgba(78,151,209,.95);
 }
 
-/* 모바일: 1열 */
+/* 모바일: 기본은 1열 */
 @media (max-width:736px){
-  #kplan-skin{ grid-template-columns:1fr; }
+  .kplan-choices{ grid-template-columns:1fr; }
 }
-/* ✅ 요약 따라다니기 */
+
+/* ✅ Step 3: 需要 / 不需要 는 항상 가로 2칸 */
+#kplan-step3.kplan-choices{
+  grid-template-columns:1fr 1fr !important;
+}
+@media (max-width:736px){
+  #kplan-step3.kplan-choices{
+    grid-template-columns:1fr 1fr !important;
+  }
+}
+
+/* =========================
+   Summary (FOLLOW)
+   ========================= */
 #kplanSummary{
   border: 1px solid rgba(78,151,209,.28);
   background:#fff;
@@ -3067,6 +3085,7 @@ body.is-menu-visible{ overflow:hidden !important; }
   padding: 14px 14px 12px;
   box-shadow: 0 10px 22px rgba(0,0,0,.06);
 }
+
 @media (min-width:981px){
   #kplanSummary{
     position: sticky;
@@ -3075,6 +3094,7 @@ body.is-menu-visible{ overflow:hidden !important; }
     overflow: auto;
   }
 }
+
 #kplanSummary .sum-head{
   display:flex; align-items:center; justify-content:space-between;
   gap:10px; margin-bottom:10px;
@@ -3095,7 +3115,7 @@ body.is-menu-visible{ overflow:hidden !important; }
   margin-bottom:8px;
   display:flex; align-items:flex-start; justify-content:space-between; gap:10px;
 }
-#kplanSummary .sum-list .sum-tag{
+#kplanSummary .sum-tag{
   font-weight:800; opacity:.65; margin-right:6px;
 }
 #kplanSummary .sum-list button{
@@ -3116,7 +3136,9 @@ body.is-menu-visible{ overflow:hidden !important; }
   border-color: rgba(78,151,209,.65);
   background: rgba(78,151,209,.10);
 }
-@media (max-width:736px){
+
+/* iPad/모바일: 하단 고정 */
+@media (max-width:980px){
   #kplanSummary{
     position: fixed;
     left: 12px; right: 12px; bottom: 12px;
@@ -3125,28 +3147,4 @@ body.is-menu-visible{ overflow:hidden !important; }
     overflow:auto;
   }
   body{ padding-bottom: 180px; }
-}
-
-/* 기존 (max-width:736px) 를 아래로 교체 */
-@media (max-width:980px){
-  #kplanSummary{
-    position: fixed;
-    left: 12px;
-    right: 12px;
-    bottom: 12px;
-    z-index: 9999;
-    max-height: 40vh;
-    overflow:auto;
-  }
-  body{ padding-bottom: 180px; }
-}
-
-/* 이건 그대로(PC에서만 sticky) */
-@media (min-width:981px){
-  #kplanSummary{
-    position: sticky;
-    top: 92px;
-    max-height: calc(100vh - 120px);
-    overflow: auto;
-  }
 }
