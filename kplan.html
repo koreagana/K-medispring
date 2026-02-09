@@ -241,16 +241,81 @@
 
 
 
-<!-- Step 3 : 需要 / 不需要 -->
-<h4>旅行服务（可选）</h4>
-<div class="kplan-choices kplan-step3" data-group-title="旅行服务">
-  <a class="choice single" href="#">需要</a>
-  <a class="choice single" href="#">不需要</a>
+<!-- =========================
+     Step 3 · 旅行服务（可选）(8개, 需要/不需要 2열)
+     ========================= -->
+<h4>Step 3 · 旅行服务（可选）</h4>
+
+<div class="kplan-step3-block">
+
+  <div class="kplan-step3-item" data-group="机场接送">
+    <div class="kplan-step3-label">机场接送</div>
+    <div class="kplan-choices kplan-step3" data-group-title="旅行服务·机场接送">
+      <a class="choice" href="#" data-excl="airport">需要</a>
+      <a class="choice" href="#" data-excl="airport">不需要</a>
+    </div>
+  </div>
+
+  <div class="kplan-step3-item" data-group="酒店预订">
+    <div class="kplan-step3-label">酒店预订</div>
+    <div class="kplan-choices kplan-step3" data-group-title="旅行服务·酒店预订">
+      <a class="choice" href="#" data-excl="hotel">需要</a>
+      <a class="choice" href="#" data-excl="hotel">不需要</a>
+    </div>
+  </div>
+
+  <div class="kplan-step3-item" data-group="市区观光">
+    <div class="kplan-step3-label">市区观光</div>
+    <div class="kplan-choices kplan-step3" data-group-title="旅行服务·市区观光">
+      <a class="choice" href="#" data-excl="tour">需要</a>
+      <a class="choice" href="#" data-excl="tour">不需要</a>
+    </div>
+  </div>
+
+  <div class="kplan-step3-item" data-group="医疗陪同/翻译">
+    <div class="kplan-step3-label">医疗陪同 / 翻译</div>
+    <div class="kplan-choices kplan-step3" data-group-title="旅行服务·医疗陪同/翻译">
+      <a class="choice" href="#" data-excl="trans">需要</a>
+      <a class="choice" href="#" data-excl="trans">不需要</a>
+    </div>
+  </div>
+
+  <div class="kplan-step3-item" data-group="预约代办">
+    <div class="kplan-step3-label">预约代办</div>
+    <div class="kplan-choices kplan-step3" data-group-title="旅行服务·预约代办">
+      <a class="choice" href="#" data-excl="booking">需要</a>
+      <a class="choice" href="#" data-excl="booking">不需要</a>
+    </div>
+  </div>
+
+  <div class="kplan-step3-item" data-group="用车/包车">
+    <div class="kplan-step3-label">用车 / 包车</div>
+    <div class="kplan-choices kplan-step3" data-group-title="旅行服务·用车/包车">
+      <a class="choice" href="#" data-excl="car">需要</a>
+      <a class="choice" href="#" data-excl="car">不需要</a>
+    </div>
+  </div>
+
+  <div class="kplan-step3-item" data-group="购物陪同">
+    <div class="kplan-step3-label">购物陪同</div>
+    <div class="kplan-choices kplan-step3" data-group-title="旅行服务·购物陪同">
+      <a class="choice" href="#" data-excl="shopping">需要</a>
+      <a class="choice" href="#" data-excl="shopping">不需要</a>
+    </div>
+  </div>
+
+  <div class="kplan-step3-item" data-group="术后照护/回访">
+    <div class="kplan-step3-label">术后照护 / 回访</div>
+    <div class="kplan-choices kplan-step3" data-group-title="旅行服务·术后照护/回访">
+      <a class="choice" href="#" data-excl="after">需要</a>
+      <a class="choice" href="#" data-excl="after">不需要</a>
+    </div>
+  </div>
+
 </div>
 
-
 <!-- =========================
-     ✅ Summary (提交 버튼 바로 위에 넣기)
+     Summary (고정 X, 그냥 밑에)
      ========================= -->
 <aside id="kplanSummary" aria-live="polite">
   <div class="sum-head">
@@ -272,7 +337,24 @@
     <button type="button" class="sum-clear" id="kplanSummaryClear">清空选择</button>
   </div>
 </aside>
-      
+
+
+<!-- ✅ 버튼 3개 (提交 / 重新选择 / 取消) -->
+<div class="kplan-actions">
+  <button type="submit" class="kbtn kbtn-primary">
+    <span class="kbtn-shine" aria-hidden="true"></span>
+    提交
+  </button>
+
+  <button type="reset" class="kbtn kbtn-ghost">
+    重新选择
+  </button>
+
+  <a href="index.html" class="kbtn kbtn-cancel" role="button">
+    取消
+  </a>
+</div>
+
 <!-- =======================
      Sidebar (메뉴+연락+풋터 전부)
      ======================= -->
@@ -345,6 +427,105 @@
     <p class="modal-id">WhatsApp：+82-10-4903-3123</p>
   </div>
 </div>
+
+<!-- =========================
+     ✅ Summary (提交 버튼 바로 위에 넣기)
+     ========================= -->
+<aside id="kplanSummary" aria-live="polite">
+  <div class="sum-head">
+    <strong class="sum-title">已选内容</strong>
+    <span class="sum-count" id="kplanSummaryCount">0</span>
+  </div>
+
+  <p class="sum-note">
+    以下是您选择的咨询项目。<br>
+    请确认无误后点击 <b>提交</b> 按钮，<br>
+    我们将尽快为您提供对应的价格与详细说明。
+  </p>
+
+  <ul class="sum-list" id="kplanSummaryList">
+    <li class="sum-empty">还未选择。先点选几项也可以。</li>
+  </ul>
+
+  <div class="sum-foot">
+    <button type="button" class="sum-clear" id="kplanSummaryClear">清空选择</button>
+  </div>
+</aside>
+
+
+<script>
+/* ✅ 전체 선택 + Step3(需要/不需要) 단일선택 + Summary 업데이트 */
+(function(){
+  const groups = [...document.querySelectorAll('.kplan-choices')];
+  const list = document.getElementById('kplanSummaryList');
+  const cnt  = document.getElementById('kplanSummaryCount');
+  const clearBtn = document.getElementById('kplanSummaryClear');
+  if(!groups.length || !list || !cnt || !clearBtn) return;
+
+  // 고유 id 부여
+  groups.forEach((g, gi)=>{
+    [...g.querySelectorAll('.choice')].forEach((a, i)=>{
+      if(!a.dataset.choiceId) a.dataset.choiceId = `g${gi+1}-${i+1}`;
+      a.dataset.groupIndex = String(gi);
+    });
+  });
+
+  function isStep3Group(g){
+    return g.classList.contains('kplan-step3');
+  }
+
+  function render(){
+    const selected = [];
+    groups.forEach((g)=>{
+      const title = g.dataset.groupTitle || '';
+      g.querySelectorAll('.choice.is-selected').forEach(a=>{
+        selected.push({ title, text: (a.textContent||'').trim() });
+      });
+    });
+
+    cnt.textContent = String(selected.length);
+
+    if(!selected.length){
+      list.innerHTML = '<li class="sum-empty">还未选择。先点选几项也可以。</li>';
+      return;
+    }
+
+    list.innerHTML = selected.map(x=>`<li><span>[${x.title}]</span> ${x.text}</li>`).join('');
+  }
+
+  // 클릭 토글
+  groups.forEach((g)=>{
+    g.addEventListener('click', (e)=>{
+      const a = e.target.closest('.choice');
+      if(!a) return;
+      e.preventDefault();
+
+      // Step3: data-excl 기준으로 (需要/不需要) 단일선택
+      if(isStep3Group(g)){
+        const key = a.dataset.excl;
+        if(key){
+          g.querySelectorAll(`.choice[data-excl="${key}"]`).forEach(x=>x.classList.remove('is-selected'));
+          a.classList.add('is-selected');
+          render();
+          return;
+        }
+      }
+
+      a.classList.toggle('is-selected');
+      render();
+    });
+  });
+
+  // 전체 해제
+  clearBtn.addEventListener('click', ()=>{
+    groups.forEach(g=>g.querySelectorAll('.choice.is-selected').forEach(a=>a.classList.remove('is-selected')));
+    render();
+  });
+
+  render();
+})();
+</script>
+
 
 <script>
 /* ✅ </body> 바로 위 */
