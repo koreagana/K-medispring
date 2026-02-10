@@ -3349,68 +3349,69 @@ body.is-menu-visible{ overflow:hidden !important; }
   }
 } 
 
-/* 전체 섹션 배경 및 중앙 정렬 (선택 사항) */
-.apple-banner-section {
-  background-color: #000; /* 검은 배경일 때 오로라가 가장 돋보입니다 */
-  padding: 80px 20px;
-  text-align: center;
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+/* ✅ 위/아래 공백 제거 + 블랙 배경 + 명조체 */
+.apple-banner-section{
+  background:#000;              /* 오로라 잘 보이게 */
+  padding:0;                    /* ✅ 위/아래 공백 0 */
+  margin:0;                     /* ✅ 바깥 공백 0 */
+  text-align:center;
+  font-family: "HJS-Serif","Source Han Serif SC","Noto Serif CJK SC",
+               "Songti SC","STSong","SimSun",serif;  /* ✅ 명조 분위기 */
 }
 
-/* 메인 타이틀 스타일 */
-.main-title {
-  color: #fff;
-  font-size: 3rem;
-  font-weight: 700;
-  margin-bottom: 2rem;
+/* (혹시 section 바깥에서 여백 생기면) */
+#main > .inner > section.apple-banner-section{ padding:0 !important; }
+
+/* ✅ 제목: 원래대로 크게 */
+.main-title{
+  color:#fff;
+  font-size:3rem;
+  font-weight:800;
+  margin:0;                     /* ✅ 제목 위/아래 공백 0 */
+  padding:24px 0 14px;          /* 필요 최소만 */
+  letter-spacing:.02em;
 }
 
-/* 오로라 텍스트 그룹 */
-.aurora-text-group {
-  display: flex;
-  flex-direction: column;
-  gap: 15px;
-  align-items: center;
+/* ✅ 행간/줄간격: 지금의 2/3 수준 */
+.aurora-text-group{
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  gap:10px;                     /* 15px → 10px (약 2/3) */
+  padding:0 0 22px;             /* 하단 최소만 */
+  margin:0;
 }
 
-.aurora-text-group span {
-  font-size: 1.8rem;
-  font-weight: 600;
-  
-  /* 오로라 그라데이션 설정 */
-  background: linear-gradient(
-    to right, 
-    #4facfe 0%, 
-    #00f2fe 20%, 
-    #7000ff 40%, 
-    #ff00de 60%, 
-    #00f2fe 80%, 
+.aurora-text-group span{
+  font-size:1.8rem;
+  font-weight:600;
+  line-height:1.15;             /* ✅ 행간 줄임 */
+  margin:0;
+
+  background:linear-gradient(
+    to right,
+    #4facfe 0%,
+    #00f2fe 20%,
+    #7000ff 40%,
+    #ff00de 60%,
+    #00f2fe 80%,
     #4facfe 100%
   );
-  background-size: 200% auto; /* 애니메이션을 위해 사이즈를 키움 */
-  
-  /* 텍스트에 배경색 입히기 */
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  
-  /* 애니메이션 실행 */
-  animation: aurora-flow 5s linear infinite;
+  background-size:200% auto;
+  -webkit-background-clip:text;
+  -webkit-text-fill-color:transparent;
+  animation:aurora-flow 5s linear infinite;
 }
 
-/* 각 줄마다 애니메이션 시차를 주어 더 자연스럽게 만듭니다 */
-.aurora-text-group span:nth-child(2) { animation-delay: 1s; }
-.aurora-text-group span:nth-child(3) { animation-delay: 2s; }
-.aurora-text-group span:nth-child(4) { animation-delay: 3s; }
+.aurora-text-group span:nth-child(2){animation-delay:1s;}
+.aurora-text-group span:nth-child(3){animation-delay:2s;}
+.aurora-text-group span:nth-child(4){animation-delay:3s;}
 
-/* 오로라가 흐르는 듯한 애니메이션 정의 */
-@keyframes aurora-flow {
-  0% {
-    background-position: 0% center;
-  }
-  100% {
-    background-position: 200% center;
-  }
+@keyframes aurora-flow{
+  0%{background-position:0% center;}
+  100%{background-position:200% center;}
 }
+
 
 .submit-modal{
   position:fixed;
@@ -3489,4 +3490,5 @@ body.is-menu-visible{ overflow:hidden !important; }
   font-size:.75rem;
   color:#999;
 }
+
 
