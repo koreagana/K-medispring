@@ -266,44 +266,22 @@
               <span class="sum-count" id="kplanSummaryCount">0</span>
             </div>
 
-            <p>
-              以下是您选择的咨询项目。<br>
-              请确认无误后点击 <b>提交</b> 按钮，<br>
-              我们将尽快为您提供价格与详细说明。
-            </p>
+         <!-- ✅ (요약/제출 영역) 이 블록으로 교체 -->
+<p>
+  以下是您选择的咨询项目。<br>
+  请确认无误后点击 <b>提交</b> 按钮，<br>
+  我们将尽快为您提供价格与详细说明。
+</p>
 
-            <ul id="summaryList">
-              <li class="empty">还未选择。先点选几项也可以。</li>
-            </ul>
+<ul id="summaryList">
+  <li class="empty">还未选择。先点选几项也可以。</li>
+</ul>
+
+<!-- ✅ 제출 버튼 (id는 그대로 유지) -->
+<button type="button" id="kplanSubmitBtn" class="primary">提交</button>
+           
             
-<div class="kplan-actions">
-  <button type="button" class="btn btn-submit" id="kplanSubmitBtn">提交</button>
-</div>
-            <div class="submit-modal">
-  <div class="submit-card">
-    <div class="check">✓</div>
-
-    <h3>접수가 완료되었습니다</h3>
-
-    <p>
-      빠른 시간 내에 선택하신 진료항목의<br>
-      가격과 병원 정보를 안내드리겠습니다.
-    </p>
-
-    <div class="inputs">
-      <input type="email" placeholder="이메일 주소">
-      <span>또는</span>
-      <input type="text" placeholder="WeChat ID">
-    </div>
-
-    <button class="confirm-btn">확인</button>
-
-    <small>※ 하나만 입력해주셔도 됩니다</small>
-  </div>
-</div>
-
         </div><!-- /#kplan-page -->
-
       </div><!-- /.inner -->
     </div><!-- /#main -->
 
@@ -350,7 +328,39 @@
       </div>
     </div>
 
-  </div><!-- /#wrapper -->
+  </div>
+    
+    <!-- ✅ 아래 2개를 </div><!-- /#wrapper --> 바로 위(또는 body 끝) 에 추가 -->
+
+<!-- ✅ 제출 전: 연락처 입력 모달 -->
+<div id="contactModal" class="kms-modal" aria-hidden="true">
+  <div class="kms-modal__backdrop" data-close="1"></div>
+
+  <div class="kms-modal__card" role="dialog" aria-modal="true" aria-labelledby="contactModalTitle">
+    <button type="button" class="kms-modal__close" aria-label="Close" data-close="1">×</button>
+
+    <h3 id="contactModalTitle" class="kms-modal__title">请留下您的联系方式（任选其一）</h3>
+    <p class="kms-modal__desc">我们将尽快为您提供价格与医院信息</p>
+
+    <div class="kms-modal__inputs">
+      <input id="contactEmail" type="email" inputmode="email" autocomplete="email" placeholder="邮箱地址">
+      <div class="kms-modal__or">或</div>
+      <input id="contactWeChat" type="text" autocomplete="off" placeholder="WeChat ID">
+    </div>
+
+    <div id="contactError" class="kms-modal__error" aria-live="polite"></div>
+
+    <button type="button" id="confirmContactBtn" class="kms-modal__btn">提交</button>
+    <div class="kms-modal__hint">※ 只需填写其中一项即可</div>
+  </div>
+</div>
+
+<!-- ✅ 제출 후: 작은 토스트 -->
+<div id="submitToast" class="kms-toast" aria-hidden="true">
+  <div class="kms-toast__box">提交完成，谢谢</div>
+</div>
+
+    <!-- /#wrapper -->
 
   <!-- Scripts (5총사 + modals) -->
   <script src="assets/js/jquery.min.js"></script>
@@ -386,6 +396,7 @@
      - Summary 자동 반영 + × 삭제 + 清空
      - 提交: 메일로 전송 (leegana@k-medispring.cn)
      ========================= -->
+<!-- ✅ 아래 기존 K-PLAN JS 블록(전체)을 이것으로 통째로 교체 -->
 <script>
 (function(){
   const root = document.getElementById('kplan-page');
@@ -395,8 +406,44 @@
   const list = root.querySelector('#summaryList');
   const cnt  = root.querySelector('#kplanSummaryCount');
   const submitBtn = root.querySelector('#kplanSubmitBtn');
-
   if(!groups.length || !list || !cnt || !submitBtn) return;
+
+  // ✅ 모달/토스트
+  const contactModal = document.getElementById('contactModal');
+  const confirmContactBtn = document.getElementById('confirmContactBtn');
+  const contactEmail = document.getElementById('contactEmail');
+  const contactWeChat = document.getElementById('contactWeChat');
+  const contactError = document.getElementById('contactError');
+  const submitToast = document.getElementById('submitToast');
+
+  let pendingLines = [];
+
+  function openContactModal(){
+    contactError.textContent = '';
+    contactModal.classList.add('is-open');
+    contactModal.setAttribute('aria-hidden','false');
+    setTimeout(()=> (contactEmail.value ? contactWeChat.focus() : contactEmail.focus()), 30);
+  }
+  function closeContactModal(){
+    contactModal.classList.remove('is-open');
+    contactModal.setAttribute('aria-hidden','true');
+  }
+  function showToast(){
+    submitToast.classList.add('is-show');
+    submitToast.setAttribute('aria-hidden','false');
+    setTimeout(()=>{
+      submitToast.classList.remove('is-show');
+      submitToast.setAttribute('aria-hidden','true');
+    }, 1400);
+  }
+
+  // ✅ 아무대나 클릭하면 닫기(백드롭/닫기버튼)
+  contactModal.addEventListener('click', (e)=>{
+    if(e.target && e.target.dataset && e.target.dataset.close === '1') closeContactModal();
+  });
+  document.addEventListener('keydown', (e)=>{
+    if(e.key === 'Escape' && contactModal.classList.contains('is-open')) closeContactModal();
+  });
 
   // a.choice 이동 완전 차단
   root.addEventListener('click', function(e){
@@ -411,9 +458,7 @@
     groups.forEach((g)=>{
       const title = g.dataset.groupTitle || '';
       g.querySelectorAll('.choice.is-selected').forEach(el=>{
-        selected.push(
-          title ? `【${title}】${el.textContent.trim()}` : el.textContent.trim()
-        );
+        selected.push(title ? `【${title}】${el.textContent.trim()}` : el.textContent.trim());
       });
     });
     return selected;
@@ -428,7 +473,6 @@
       list.innerHTML = '<li class="empty">还未选择。先点选几项也可以。</li>';
       return;
     }
-
     list.innerHTML = selected.map(text=>`<li>${text}</li>`).join('');
   }
 
@@ -441,8 +485,7 @@
 
       const key = el.dataset.excl;
       if(key){
-        g.querySelectorAll(`.choice[data-excl="${key}"]`)
-          .forEach(x=>x.classList.remove('is-selected'));
+        g.querySelectorAll(`.choice[data-excl="${key}"]`).forEach(x=>x.classList.remove('is-selected'));
         el.classList.add('is-selected');
       }else{
         el.classList.toggle('is-selected');
@@ -451,7 +494,7 @@
     }, true);
   });
 
-  // 제출 → 메일 전송
+  // ✅ 제출(버튼) = 먼저 연락처 모달
   submitBtn.addEventListener('click', function(e){
     e.preventDefault();
 
@@ -460,16 +503,39 @@
       alert("还未选择。请先点选几项。");
       return;
     }
+    pendingLines = lines;
+    openContactModal();
+  });
+
+  // ✅ 모달 확인 = 검증 후 mailto 실행 + 토스트
+  confirmContactBtn.addEventListener('click', function(){
+    const email = (contactEmail.value || '').trim();
+    const wechat = (contactWeChat.value || '').trim();
+
+    if(!email && !wechat){
+      contactError.textContent = '请填写邮箱地址或 WeChat ID（任选其一）';
+      return;
+    }
 
     const mailTo = "leegana@k-medispring.cn";
     const subject = "K-Plan 咨询申请";
+
+    const contactLine =
+      email ? `联系邮箱：${email}` :
+      wechat ? `WeChat ID：${wechat}` : '';
+
     const body =
 `您好，
 以下是客户选择的咨询项目：
 
-${lines.join("\n")}
+${pendingLines.join("\n")}
+
+${contactLine ? ("\n" + contactLine + "\n") : ""}
 
 请回信提供价格与详细说明。`;
+
+    closeContactModal();
+    showToast();
 
     window.location.href =
       `mailto:${mailTo}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
@@ -478,3 +544,74 @@ ${lines.join("\n")}
   render();
 })();
 </script>
+
+    <!-- ✅ CSS (head의 css 파일에 넣거나, 급하면 body 끝에 style로) -->
+<style>
+.kms-modal{position:fixed; inset:0; z-index:9999; display:none;}
+.kms-modal.is-open{display:block;}
+.kms-modal__backdrop{position:absolute; inset:0; background:rgba(0,0,0,.55);}
+.kms-modal__card{
+  position:relative;
+  width:min(520px,92vw);
+  margin:10vh auto 0;
+  background:#fff;
+  border-radius:18px;
+  padding:28px 22px 22px;
+  box-shadow:0 18px 55px rgba(0,0,0,.28);
+  text-align:center;
+  font-family:"HJS-Serif","Source Han Serif SC","Noto Serif CJK SC","Songti SC","STSong","SimSun",serif;
+}
+.kms-modal__close{
+  position:absolute; top:10px; right:12px;
+  width:40px; height:40px;
+  border:none; background:transparent;
+  font-size:28px; line-height:40px;
+  color:#777; cursor:pointer;
+}
+.kms-modal__title{margin:4px 0 8px; font-size:20px; font-weight:700; color:#111;}
+.kms-modal__desc{margin:0 0 16px; font-size:14px; color:#555; line-height:1.55;}
+.kms-modal__inputs{display:flex; flex-direction:column; gap:10px; margin:8px 0 10px;}
+.kms-modal__inputs input{
+  width:100%;
+  padding:14px 14px;
+  border:1px solid #ddd;
+  border-radius:12px;
+  font-size:16px;
+  outline:none;
+  font-family:inherit;
+}
+.kms-modal__inputs input:focus{border-color:#4E97D1; box-shadow:0 0 0 3px rgba(78,151,209,.15);}
+.kms-modal__or{font-size:12px; color:#888; margin:2px 0;}
+.kms-modal__error{min-height:18px; margin:6px 0 10px; color:#d33; font-size:13px;}
+.kms-modal__btn{
+  width:100%;
+  border:none;
+  border-radius:14px;
+  padding:14px 14px;
+  background:#4E97D1;
+  color:#fff;
+  font-size:16px;
+  font-weight:700;
+  cursor:pointer;
+}
+.kms-modal__hint{margin-top:10px; font-size:12px; color:#999;}
+
+.kms-toast{position:fixed; inset:0; z-index:10000; display:none; pointer-events:none;}
+.kms-toast.is-show{display:block;}
+.kms-toast__box{
+  position:absolute; left:50%; top:10%;
+  transform:translateX(-50%);
+  background:rgba(0,0,0,.78);
+  color:#fff;
+  padding:10px 12px;
+  border-radius:12px;
+  font-size:13px;
+  line-height:1.35;
+  text-align:center;
+  max-width:92vw;
+}
+</style>
+
+
+</body>
+</html>
