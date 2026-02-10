@@ -135,116 +135,63 @@
           
             <hr />
 
-  <!-- Step 2 -->
 <!-- =========================
-     K-PLAN PAGE
+     Step 3 · 旅行服务（可选）
      ========================= -->
-
-<section id="kplan-page">
-
-  <!-- 대건강 -->
-  <h4>大健康（功能医学）</h4>
-  <div class="kplan-choices" data-group-title="大健康">
-    <a class="choice" href="#">营养代谢分析（OAT）</a>
-    <a class="choice" href="#">慢性炎症 / 免疫评估</a>
-    <a class="choice" href="#">睡眠·压力评估（皮质醇）</a>
-    <a class="choice" href="#">重金属 / 毒性金属检测</a>
-    <a class="choice" href="#">肠道菌群检测</a>
-    <a class="choice" href="#">静脉营养（IV）</a>
-  </div>
-
-  <hr />
-
-  <!-- 干细胞 -->
-  <h4>干细胞 / 再生</h4>
-  <div class="kplan-choices" data-group-title="干细胞/再生">
-    <a class="choice" href="#">干细胞静脉输注（IV）</a>
-    <a class="choice" href="#">外泌体治疗</a>
-    <a class="choice" href="#">关节 / 软骨再生</a>
-    <a class="choice" href="#">皮肤再生</a>
-    <a class="choice" href="#">干细胞 + NK 联合</a>
-    <a class="choice" href="#">自体脂肪 MSC</a>
-  </div>
-
-  <hr />
-
-  <!-- 皮肤 -->
-  <h4>皮肤医美</h4>
-  <div class="kplan-choices" data-group-title="皮肤医美">
-    <a class="choice" href="#">Ulthera 超声提升</a>
-    <a class="choice" href="#">Thermage 热玛吉紧肤</a>
-    <a class="choice" href="#">Rejuran 修复针</a>
-    <a class="choice" href="#">肉毒（Botox）</a>
-    <a class="choice" href="#">玻尿酸（Filler）</a>
-    <a class="choice" href="#">皮秒 / 光子嫩肤</a>
-    <a class="choice" href="#">痘疤 / 毛孔修复激光</a>
-    <a class="choice" href="#">水光 / Skin Booster</a>
-  </div>
-
-  <hr />
-
-  <!-- 整形 -->
-  <h4>整形外科</h4>
-  <div class="kplan-choices" data-group-title="整形外科">
-    <a class="choice" href="#">双眼皮</a>
-    <a class="choice" href="#">眼综合 / 眼修复</a>
-    <a class="choice" href="#">隆鼻 / 鼻修复</a>
-    <a class="choice" href="#">面部轮廓 / 下颌线</a>
-    <a class="choice" href="#">提眉 / 眼袋</a>
-    <a class="choice" href="#">吸脂</a>
-    <a class="choice" href="#">脂肪移植</a>
-    <a class="choice" href="#">胸部整形</a>
-  </div>
-
-  <hr />
-<!-- Step 3 -->
-<h4>旅行服务（可选）</h4>
+<h4 class="kplan-section-title">旅行服务（可选）</h4>
 
 <div class="kplan-step3">
 
-  <!-- 1줄: 机场接送 + 酒店预订 -->
+  <!-- Row 1 -->
   <div class="step3-row step3-row-2">
+
     <div class="step3-item">
-      <span>机场接送</span>
-      <div class="kplan-choices step3">
-        <a class="choice" href="#">需要</a>
-        <a class="choice" href="#">不需要</a>
+      <span class="step3-label">机场接送</span>
+      <div class="kplan-choices step3" data-group-title="旅行服务" data-excl="airport">
+        <a class="choice" href="javascript:void(0)" data-excl="airport">需要</a>
+        <a class="choice" href="javascript:void(0)" data-excl="airport">不需要</a>
       </div>
     </div>
 
     <div class="step3-item">
-      <span>酒店预订</span>
-      <div class="kplan-choices step3">
-        <a class="choice" href="#">需要</a>
-        <a class="choice" href="#">不需要</a>
+      <span class="step3-label">酒店预订</span>
+      <div class="kplan-choices step3" data-group-title="旅行服务" data-excl="hotel">
+        <a class="choice" href="javascript:void(0)" data-excl="hotel">需要</a>
+        <a class="choice" href="javascript:void(0)" data-excl="hotel">不需要</a>
       </div>
     </div>
+
   </div>
 
-  <!-- 1줄: 市区观光 + 医疗陪同 / 翻译 -->
+  <!-- Row 2 -->
   <div class="step3-row step3-row-2">
+
     <div class="step3-item">
-      <span>市区观光</span>
-      <div class="kplan-choices step3">
-        <a class="choice" href="#">需要</a>
-        <a class="choice" href="#">不需要</a>
+      <span class="step3-label">市区观光</span>
+      <div class="kplan-choices step3" data-group-title="旅行服务" data-excl="tour">
+        <a class="choice" href="javascript:void(0)" data-excl="tour">需要</a>
+        <a class="choice" href="javascript:void(0)" data-excl="tour">不需要</a>
       </div>
     </div>
 
     <div class="step3-item">
-      <span>医疗陪同 / 翻译</span>
-      <div class="kplan-choices step3">
-        <a class="choice" href="#">需要</a>
-        <a class="choice" href="#">不需要</a>
+      <span class="step3-label">医疗陪同 / 翻译</span>
+      <div class="kplan-choices step3" data-group-title="旅行服务" data-excl="translation">
+        <a class="choice" href="javascript:void(0)" data-excl="translation">需要</a>
+        <a class="choice" href="javascript:void(0)" data-excl="translation">不需要</a>
       </div>
     </div>
+
   </div>
 
 </div>
 
 <hr />
 
-  <!-- Summary -->
+<!-- =========================
+     (다음) Summary 영역 시작
+     ========================= -->      
+        <!-- Summary -->
  <!-- ✅ Summary HTML도 이걸로 통일 (id 꼭 동일) -->
 <div id="kplanSummary">
   <div class="sum-head">
