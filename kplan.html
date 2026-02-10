@@ -342,21 +342,52 @@
   </div>
 </div>
 
+<!-- =========================
+     WhatsApp Modal (그대로 두고)
+     ========================= -->
+<!-- ... (네 왓츠앱 모달 코드) ... -->
+
+
+<!-- =========================
+     K-PLAN JS (정본 1개)
+     - 링크 이동 완전 차단
+     - Step3(需要/不需要) 항목별 단일선택 (data-excl 기준)
+     - Summary 자동 반영 + × 삭제 + 清空
+     - 폼 submit 기본동작 차단(메인으로 튀는 원인 제거)
+     ========================= -->
 <script>
-<script>
-/* ✅ K-PLAN JS (복붙 정본 1개) : 이동 방지 + 선택표시 + Step3 단일선택 + Summary 자동반영 */
 (function(){
-  const groups = Array.from(document.querySelectorAll('.kplan-choices'));
-  const list = document.getElementById('summaryList');
-  const cnt  = document.getElementById('kplanSummaryCount');
-  const clearBtn = document.getElementById('kplanSummaryClear');
+  const root = document.getElementById('kplan-page') || document.querySelector('#kplan-page');
+  if(!root) return;
+
+  const groups = Array.from(root.querySelectorAll('.kplan-choices'));
+  const list = root.querySelector('#summaryList');
+  const cnt  = root.querySelector('#kplanSummaryCount');
+  const clearBtn = root.querySelector('#kplanSummaryClear');
+
   if(!groups.length || !list || !cnt || !clearBtn) return;
 
-  // 고유 id 부여
+  // 0) K-Plan 영역에서 a.choice 이동 완전 차단 (어떤 상황에서도)
+  root.addEventListener('click', function(e){
+    const a = e.target.closest('a.choice');
+    if(!a) return;
+    e.preventDefault();
+  }, true);
+
+  // 1) K-Plan 영역 폼 submit 차단 (提交 눌러도 메인으로 튀는 것 방지)
+  document.addEventListener('submit', function(e){
+    if(e.target && e.target.closest && e.target.closest('#kplan-page')){
+      e.preventDefault();
+      e.stopPropagation();
+    }
+  }, true);
+
+  // 2) 각 choice에 id/gi 부여
   groups.forEach((g, gi)=>{
-    Array.from(g.querySelectorAll('.choice')).forEach((a, i)=>{
-      if(!a.dataset.choiceId) a.dataset.choiceId = `g${gi+1}-${i+1}`;
-      a.dataset.groupIndex = String(gi);
+    const choices = Array.from(g.querySelectorAll('.choice'));
+    choices.forEach((el, i)=>{
+      if(!el.dataset.choiceId) el.dataset.choiceId = `g${gi+1}-${i+1}`;
+      el.dataset.groupIndex = String(gi);
     });
   });
 
@@ -364,12 +395,12 @@
     const selected = [];
     groups.forEach((g, gi)=>{
       const title = g.dataset.groupTitle || '';
-      g.querySelectorAll('.choice.is-selected').forEach(a=>{
+      g.querySelectorAll('.choice.is-selected').forEach(el=>{
         selected.push({
-          id: a.dataset.choiceId,
+          id: el.dataset.choiceId,
           gi,
           title,
-          text: (a.textContent||'').trim()
+          text: (el.textContent || '').trim()
         });
       });
     });
@@ -390,30 +421,33 @@
     }).join('');
   }
 
-  // 카드 클릭 (이동 완전 차단)
+  // 3) 카드 클릭: 일반 토글 / Step3는 data-excl 기준 단일선택
   groups.forEach((g)=>{
     g.addEventListener('click', (e)=>{
-      const a = e.target.closest('.choice');
-      if(!a) return;
+      const el = e.target.closest('.choice');
+      if(!el) return;
       e.preventDefault();
 
-      // Step3(需要/不需要): 같은 컨테이너 안에서 1개만
-      if(g.classList.contains('step3')){
-        g.querySelectorAll('.choice.is-selected').forEach(x=>x.classList.remove('is-selected'));
-        a.classList.add('is-selected');
+      // Step3: data-excl 같은 것끼리 (需要/不需要) 단일선택
+      const key = el.dataset.excl;
+      if(key){
+        g.querySelectorAll(`.choice[data-excl="${key}"]`).forEach(x=>x.classList.remove('is-selected'));
+        el.classList.add('is-selected');
         render();
         return;
       }
 
-      a.classList.toggle('is-selected');
+      // 일반 토글
+      el.classList.toggle('is-selected');
       render();
     }, true);
   });
 
-  // Summary × 제거
+  // 4) Summary × 제거
   list.addEventListener('click', (e)=>{
     const btn = e.target.closest('button');
     if(!btn) return;
+
     const li = btn.closest('li');
     if(!li || li.classList.contains('empty')) return;
 
@@ -422,29 +456,20 @@
     const g = groups[gi];
     if(!g) return;
 
-    const a = g.querySelector(`.choice[data-choice-id="${id}"]`);
-    if(a) a.classList.remove('is-selected');
+    const el = g.querySelector(`.choice[data-choice-id="${id}"]`);
+    if(el) el.classList.remove('is-selected');
     render();
   });
 
-  // 清空
+  // 5) 清空
   clearBtn.addEventListener('click', ()=>{
-    groups.forEach(g=>g.querySelectorAll('.choice.is-selected').forEach(a=>a.classList.remove('is-selected')));
+    groups.forEach(g=>g.querySelectorAll('.choice.is-selected').forEach(el=>el.classList.remove('is-selected')));
     render();
   });
 
   render();
 })();
 </script>
-<script>
-/* ✅ 모든 선택 클릭 시 페이지 이동 완전 차단 */
-document.addEventListener('click', function(e){
-  const a = e.target.closest('.choice');
-  if(!a) return;
-  e.preventDefault();      // 링크 이동 차단
-  e.stopPropagation();     // 상위로 이벤트 전달 차단
-}, true);
-</script>
-        
+
 </body>
 </html>
