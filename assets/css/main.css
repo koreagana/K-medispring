@@ -3345,24 +3345,6 @@ body.is-menu-visible{ overflow:hidden !important; }
 }
 
 /* =========================
-   取消 버튼 (흰 배경 + 파란 글씨)
-   ========================= */
-.kplan-actions .btn-cancel{
-  background:#fff;
-  color:#1e6bd6;
-  font-weight:800;
-  font-size:1.08rem;
-
-  border:2px solid rgba(30,107,214,.35);
-  box-shadow:0 10px 22px rgba(0,0,0,.06);
-}
-.kplan-actions .btn-cancel:hover{
-  transform:translateY(-2px);
-  border-color:#1e6bd6;
-  box-shadow:0 14px 28px rgba(0,0,0,.08);
-}
-
-/* =========================
    Mobile 대응
    ========================= */
 @media (max-width:736px){
@@ -3382,4 +3364,5 @@ body.is-menu-visible{ overflow:hidden !important; }
     min-width:0;
   }
 }
+
 
