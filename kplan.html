@@ -262,11 +262,12 @@
     <li class="empty">还未选择。先点选几项也可以。</li>
   </ul>
 <!-- Buttons -->
-  <div class="kplan-actions">
-    <button class="btn primary">提交</button>
-    <button class="btn ghost" type="reset">重新选择</button>
-  </div>
+ <div class="kplan-actions">
+  <button type="button" class="btn primary" id="kplanSubmitBtn">提交</button>
+  <button type="button" class="btn ghost" id="kplanResetBtn">重新选择</button>
+  <button type="button" class="btn cancel" id="kplanCancelBtn">取消</button>
 </div>
+
 </section>
 
 <!-- =======================
@@ -469,6 +470,24 @@
 
   render();
 })();
+ 
+  // 버튼 동작(이동 금지)
+const submitBtn = document.getElementById('kplanSubmitBtn');
+const resetBtn  = document.getElementById('kplanResetBtn');
+const cancelBtn = document.getElementById('kplanCancelBtn');
+
+if(submitBtn) submitBtn.addEventListener('click', (e)=>{ e.preventDefault(); }, true);
+
+if(resetBtn) resetBtn.addEventListener('click', (e)=>{
+  e.preventDefault();
+  groups.forEach(g=>g.querySelectorAll('.choice.is-selected').forEach(el=>el.classList.remove('is-selected')));
+  render();
+}, true);
+
+if(cancelBtn) cancelBtn.addEventListener('click', (e)=>{
+  e.preventDefault();
+}, true);
+
 </script>
 
 </body>
