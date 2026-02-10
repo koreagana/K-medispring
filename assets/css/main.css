@@ -3411,3 +3411,27 @@ body.is-menu-visible{ overflow:hidden !important; }
     background-position: 200% center;
   }
 }
+
+<div class="submit-modal">
+  <div class="submit-card">
+    <div class="check">✓</div>
+
+    <h3>접수가 완료되었습니다</h3>
+
+    <p>
+      빠른 시간 내에 선택하신 진료항목의<br>
+      가격과 병원 정보를 안내드리겠습니다.
+    </p>
+
+    <div class="inputs">
+      <input type="email" placeholder="이메일 주소">
+      <span>또는</span>
+      <input type="text" placeholder="WeChat ID">
+    </div>
+
+    <button class="confirm-btn">확인</button>
+
+    <small>※ 하나만 입력해주셔도 됩니다</small>
+  </div>
+</div>
+
