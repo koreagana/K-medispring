@@ -436,3 +436,15 @@
   render();
 })();
 </script>
+<script>
+/* ✅ 모든 선택 클릭 시 페이지 이동 완전 차단 */
+document.addEventListener('click', function(e){
+  const a = e.target.closest('.choice');
+  if(!a) return;
+  e.preventDefault();      // 링크 이동 차단
+  e.stopPropagation();     // 상위로 이벤트 전달 차단
+}, true);
+</script>
+        
+</body>
+</html>
