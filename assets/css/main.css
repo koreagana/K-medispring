@@ -3301,38 +3301,50 @@ body.is-menu-visible{ overflow:hidden !important; }
 }
 
 /* =========================
-   提交 버튼 (파란 배경 + 흰 글씨)
+   提交 버튼 수정 버전
    ========================= */
-.kplan-actions .btn-submit{
-  background:#1e6bd6;
-  color:#fff;
-  border:none;
-  font-size:1.18rem;
+.kplan-actions .btn-submit {
+  background: #1e6bd6 !important;
+  color: #ffffff !important; /* 확실한 흰색 강제 */
+  border: none;
+  font-size: 1.18rem;
+  font-weight: 600; /* 글자를 조금 더 두껍게 하여 가독성 확보 */
+  
+  /* 그림자 최적화 */
+  box-shadow: 0 10px 25px rgba(30, 107, 214, 0.4); 
+  
+  /* 글자 선명도 향상 */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  
+  cursor: pointer;
+  padding: 12px 24px; /* 버튼 크기에 따른 여백 조정 필요 시 */
+  border-radius: 50px; /* 이미지처럼 둥근 모양을 위해 추가 */
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  
+  transition: all 0.3s ease;
+}
 
-  box-shadow:0 14px 32px rgba(30,107,214,.38);
-  overflow:hidden; /* 스윕 효과 클리핑 */
+/* 마우스 올렸을 때 효과 (선택사항) */
+.kplan-actions .btn-submit:hover {
+  background: #1659b8 !important;
+  transform: translateY(-2px);
 }
 
 /* =========================
-   Mobile 대응
+   Mobile 대응 (통합 버전)
    ========================= */
-@media (max-width:736px){
-  .kplan-actions{
-    gap:14px;
+@media (max-width: 736px) {
+  /* 버튼 사이의 간격 조정 */
+  .kplan-actions {
+    gap: 14px;
   }
-  .kplan-actions .btn{
-    width:100%;
-    min-width:0;
-  }
-}
 
-/* ===== 모바일 ===== */
-@media (max-width:736px){
-  .kplan-actions .btn{
-    width:100%;
-    min-width:0;
+  /* 버튼을 가로로 가득 차게(100%) 설정 */
+  .kplan-actions .btn {
+    width: 100%;
+    min-width: 0;
   }
 }
-
-
-
