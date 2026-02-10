@@ -363,131 +363,151 @@
   </div>
 
   <!-- =========================
-       K-PLAN JS (정본 1개)
-       - a.choice 이동 완전 차단
-       - Step3: data-excl 기준 단일선택
-       - Summary 자동 반영 + × 삭제 + 清空
-       - 버튼: 提交/取消는 이동 없음, 重新选择는 전체 초기화
-       ========================= -->
-  <script>
-  (function(){
-    const root = document.getElementById('kplan-page');
-    if(!root) return;
+     K-PLAN JS (정본 1개)
+     - a.choice 이동 완전 차단
+     - Step3: data-excl 기준 단일선택
+     - Summary 자동 반영 + × 삭제 + 清空
+     - 提交: 메일로 전송 (leegana@k-medispring.cn)
+     - 取消: 아무것도 안함(이동 없음)
+     ========================= -->
+<script>
+(function(){
+  const root = document.getElementById('kplan-page');
+  if(!root) return;
 
-    const groups = Array.from(root.querySelectorAll('.kplan-choices'));
-    const list = root.querySelector('#summaryList');
-    const cnt  = root.querySelector('#kplanSummaryCount');
-    const clearBtn = root.querySelector('#kplanSummaryClear');
+  const groups = Array.from(root.querySelectorAll('.kplan-choices'));
+  const list = root.querySelector('#summaryList');
+  const cnt  = root.querySelector('#kplanSummaryCount');
+  const clearBtn = root.querySelector('#kplanSummaryClear');
 
-    const submitBtn = root.querySelector('#kplanSubmitBtn');
-    const resetBtn  = root.querySelector('#kplanResetBtn');
-    const cancelBtn = root.querySelector('#kplanCancelBtn');
+  const submitBtn = root.querySelector('#kplanSubmitBtn');
+  const cancelBtn = root.querySelector('#kplanCancelBtn');
 
-    if(!groups.length || !list || !cnt) return;
+  if(!groups.length || !list || !cnt) return;
 
-    // a.choice 이동 완전 차단
-    root.addEventListener('click', function(e){
-      const a = e.target.closest('a.choice');
-      if(!a) return;
-      e.preventDefault();
-    }, true);
+  // a.choice 이동 완전 차단
+  root.addEventListener('click', function(e){
+    const a = e.target.closest('a.choice');
+    if(!a) return;
+    e.preventDefault();
+  }, true);
 
-    // 각 choice에 id/gi 부여
-    groups.forEach((g, gi)=>{
-      const choices = Array.from(g.querySelectorAll('.choice'));
-      choices.forEach((el, i)=>{
-        if(!el.dataset.choiceId) el.dataset.choiceId = `g${gi+1}-${i+1}`;
-        el.dataset.groupIndex = String(gi);
-      });
+  // 각 choice에 id/gi 부여
+  groups.forEach((g, gi)=>{
+    const choices = Array.from(g.querySelectorAll('.choice'));
+    choices.forEach((el, i)=>{
+      if(!el.dataset.choiceId) el.dataset.choiceId = `g${gi+1}-${i+1}`;
+      el.dataset.groupIndex = String(gi);
     });
+  });
 
-    function getSelected(){
-      const selected = [];
-      groups.forEach((g, gi)=>{
-        const title = g.dataset.groupTitle || '';
-        g.querySelectorAll('.choice.is-selected').forEach(el=>{
-          selected.push({
-            id: el.dataset.choiceId,
-            gi,
-            title,
-            text: (el.textContent || '').trim()
-          });
+  function getSelected(){
+    const selected = [];
+    groups.forEach((g, gi)=>{
+      const title = g.dataset.groupTitle || '';
+      g.querySelectorAll('.choice.is-selected').forEach(el=>{
+        selected.push({
+          id: el.dataset.choiceId,
+          gi,
+          title,
+          text: (el.textContent || '').trim()
         });
       });
-      return selected;
+    });
+    return selected;
+  }
+
+  function render(){
+    const selected = getSelected();
+    cnt.textContent = String(selected.length);
+
+    if(!selected.length){
+      list.innerHTML = '<li class="empty">还未选择。先点选几项也可以。</li>';
+      return;
     }
 
-    function render(){
-      const selected = getSelected();
-      cnt.textContent = String(selected.length);
+    list.innerHTML = selected.map(item=>{
+      const tag = item.title ? `[${item.title}] ` : '';
+      return `<li data-id="${item.id}" data-gi="${item.gi}">
+        <span>${tag}${item.text}</span>
+        <button type="button" aria-label="remove">×</button>
+      </li>`;
+    }).join('');
+  }
 
-      if(!selected.length){
-        list.innerHTML = '<li class="empty">还未选择。先点选几项也可以。</li>';
+  // 카드 클릭: 일반 토글 / Step3는 data-excl 단일선택
+  groups.forEach((g)=>{
+    g.addEventListener('click', (e)=>{
+      const el = e.target.closest('.choice');
+      if(!el) return;
+      e.preventDefault();
+
+      const key = el.dataset.excl;
+      if(key){
+        g.querySelectorAll(`.choice[data-excl="${key}"]`).forEach(x=>x.classList.remove('is-selected'));
+        el.classList.add('is-selected');
+        render();
         return;
       }
 
-      list.innerHTML = selected.map(item=>{
-        const tag = item.title ? `[${item.title}] ` : '';
-        return `<li data-id="${item.id}" data-gi="${item.gi}">
-          <span>${tag}${item.text}</span>
-          <button type="button" aria-label="remove">×</button>
-        </li>`;
-      }).join('');
-    }
-
-    // 카드 클릭: 일반 토글 / Step3는 data-excl 단일선택
-    groups.forEach((g)=>{
-      g.addEventListener('click', (e)=>{
-        const el = e.target.closest('.choice');
-        if(!el) return;
-        e.preventDefault();
-
-        const key = el.dataset.excl;
-        if(key){
-          g.querySelectorAll(`.choice[data-excl="${key}"]`).forEach(x=>x.classList.remove('is-selected'));
-          el.classList.add('is-selected');
-          render();
-          return;
-        }
-
-        el.classList.toggle('is-selected');
-        render();
-      }, true);
-    });
-
-    // Summary × 제거
-    list.addEventListener('click', (e)=>{
-      const btn = e.target.closest('button');
-      if(!btn) return;
-
-      const li = btn.closest('li');
-      if(!li || li.classList.contains('empty')) return;
-
-      const gi = Number(li.dataset.gi);
-      const id = li.dataset.id;
-      const g = groups[gi];
-      if(!g) return;
-
-      const el = g.querySelector(`.choice[data-choice-id="${id}"]`);
-      if(el) el.classList.remove('is-selected');
+      el.classList.toggle('is-selected');
       render();
-    });
+    }, true);
+  });
 
-    function clearAll(){
-      groups.forEach(g=>g.querySelectorAll('.choice.is-selected').forEach(el=>el.classList.remove('is-selected')));
-      render();
-    }
+  // Summary × 제거
+  list.addEventListener('click', (e)=>{
+    const btn = e.target.closest('button');
+    if(!btn) return;
 
-    if(clearBtn) clearBtn.addEventListener('click', (e)=>{ e.preventDefault(); clearAll(); }, true);
+    const li = btn.closest('li');
+    if(!li || li.classList.contains('empty')) return;
 
-    // 버튼
-    if(submitBtn) submitBtn.addEventListener('click', (e)=>{ e.preventDefault(); /* TODO: 제출 처리 */ }, true);
-    if(resetBtn)  resetBtn.addEventListener('click', (e)=>{ e.preventDefault(); clearAll(); }, true);
-    if(cancelBtn) cancelBtn.addEventListener('click', (e)=>{ e.preventDefault(); /* TODO: 취소 처리 */ }, true);
+    const gi = Number(li.dataset.gi);
+    const id = li.dataset.id;
+    const g = groups[gi];
+    if(!g) return;
 
+    const el = g.querySelector(`.choice[data-choice-id="${id}"]`);
+    if(el) el.classList.remove('is-selected');
     render();
-  })();
-  </script>
+  });
 
-</body>
-</html>
+  function clearAll(){
+    groups.forEach(g=>g.querySelectorAll('.choice.is-selected').forEach(el=>el.classList.remove('is-selected')));
+    render();
+  }
+
+  if(clearBtn) clearBtn.addEventListener('click', (e)=>{ e.preventDefault(); clearAll(); }, true);
+
+  // 提交: 선택 내용 메일로 전송
+  if(submitBtn) submitBtn.addEventListener('click', (e)=>{
+    e.preventDefault();
+
+    const selected = getSelected();
+    if(!selected.length){
+      alert('请先选择咨询项目。');
+      return;
+    }
+
+    let body = '客户选择的咨询项目：\n\n';
+    selected.forEach(item=>{
+      const tag = item.title ? `【${item.title}】` : '';
+      body += `- ${tag}${item.text}\n`;
+    });
+    body += '\n请确认并回复报价与详细方案。';
+
+    const mailto =
+      'mailto:leegana@k-medispring.cn'
+      + '?subject=' + encodeURIComponent('【K-Plan】定制医疗观光咨询')
+      + '&body=' + encodeURIComponent(body);
+
+    window.location.href = mailto;
+  }, true);
+
+  // 取消: 이동 없음(원하면 여기서 clearAll()로 바꿔도 됨)
+  if(cancelBtn) cancelBtn.addEventListener('click', (e)=>{ e.preventDefault(); }, true);
+
+  render();
+})();
+</script>
