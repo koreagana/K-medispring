@@ -237,23 +237,25 @@
   <hr />
 
   <!-- Summary -->
-  <div id="kplanSummary">
+ <!-- ✅ Summary HTML도 이걸로 통일 (id 꼭 동일) -->
+<div id="kplanSummary">
+  <div class="sum-head">
     <strong>已选内容</strong>
-    <p>
-      以下是您选择的咨询项目。<br>
-      请确认无误后点击 <b>提交</b> 按钮，<br>
-      我们将尽快为您提供价格与详细说明。
-    </p>
-    <ul id="summaryList">
-      <li class="empty">还未选择。先点选几项也可以。</li>
-    </ul>
-  </div>
-<!-- Buttons -->
-  <div class="kplan-actions">
-    <button class="btn primary">提交</button>
-    <button class="btn ghost" type="reset">重新选择</button>
+    <span class="sum-count" id="kplanSummaryCount">0</span>
   </div>
 
+  <p>
+    以下是您选择的咨询项目。<br>
+    请确认无误后点击 <b>提交</b> 按钮，<br>
+    我们将尽快为您提供价格与详细说明。
+  </p>
+
+  <ul id="summaryList">
+    <li class="empty">还未选择。先点选几项也可以。</li>
+  </ul>
+
+  <button type="button" id="kplanSummaryClear">清空选择</button>
+</div>
 </section>
 
 <!-- =======================
@@ -330,26 +332,22 @@
 </div>
 
 <script>
-/* ✅ K-PLAN: 카드 선택 + Step3(需要/不需要) 항목별 단일선택 + Summary(×삭제/清空) */
+<script>
+/* ✅ K-PLAN JS (복붙 정본 1개) : 이동 방지 + 선택표시 + Step3 단일선택 + Summary 자동반영 */
 (function(){
   const groups = Array.from(document.querySelectorAll('.kplan-choices'));
-  const list = document.getElementById('kplanSummaryList');
+  const list = document.getElementById('summaryList');
   const cnt  = document.getElementById('kplanSummaryCount');
   const clearBtn = document.getElementById('kplanSummaryClear');
   if(!groups.length || !list || !cnt || !clearBtn) return;
 
-  // 고유 id 부여 (그룹/항목 고정)
+  // 고유 id 부여
   groups.forEach((g, gi)=>{
-    const choices = Array.from(g.querySelectorAll('.choice'));
-    choices.forEach((a, i)=>{
+    Array.from(g.querySelectorAll('.choice')).forEach((a, i)=>{
       if(!a.dataset.choiceId) a.dataset.choiceId = `g${gi+1}-${i+1}`;
       a.dataset.groupIndex = String(gi);
     });
   });
-
-  function isStep3Group(g){
-    return g.classList.contains('kplan-step3');
-  }
 
   function render(){
     const selected = [];
@@ -368,12 +366,12 @@
     cnt.textContent = String(selected.length);
 
     if(!selected.length){
-      list.innerHTML = '<li class="sum-empty">还未选择。先点选几项也可以。</li>';
+      list.innerHTML = '<li class="empty">还未选择。先点选几项也可以。</li>';
       return;
     }
 
     list.innerHTML = selected.map(item=>{
-      const tag = item.title ? `<span class="sum-tag">[${item.title}]</span> ` : '';
+      const tag = item.title ? `[${item.title}] ` : '';
       return `<li data-id="${item.id}" data-gi="${item.gi}">
         <span>${tag}${item.text}</span>
         <button type="button" aria-label="remove">×</button>
@@ -381,36 +379,32 @@
     }).join('');
   }
 
-  // 카드 클릭
+  // 카드 클릭 (이동 완전 차단)
   groups.forEach((g)=>{
     g.addEventListener('click', (e)=>{
       const a = e.target.closest('.choice');
       if(!a) return;
       e.preventDefault();
 
-      // Step3: 같은 data-excl 키 안에서는 단일선택 (需要/不需要)
-      if(isStep3Group(g)){
-        const key = a.dataset.excl;
-        if(key){
-          g.querySelectorAll(`.choice[data-excl="${key}"]`).forEach(x=>x.classList.remove('is-selected'));
-          a.classList.add('is-selected');
-          render();
-          return;
-        }
+      // Step3(需要/不需要): 같은 컨테이너 안에서 1개만
+      if(g.classList.contains('step3')){
+        g.querySelectorAll('.choice.is-selected').forEach(x=>x.classList.remove('is-selected'));
+        a.classList.add('is-selected');
+        render();
+        return;
       }
 
-      // 일반: 토글
       a.classList.toggle('is-selected');
       render();
-    });
+    }, true);
   });
 
-  // Summary에서 ×로 제거
+  // Summary × 제거
   list.addEventListener('click', (e)=>{
     const btn = e.target.closest('button');
     if(!btn) return;
     const li = btn.closest('li');
-    if(!li) return;
+    if(!li || li.classList.contains('empty')) return;
 
     const gi = Number(li.dataset.gi);
     const id = li.dataset.id;
@@ -422,7 +416,7 @@
     render();
   });
 
-  // 清空选择
+  // 清空
   clearBtn.addEventListener('click', ()=>{
     groups.forEach(g=>g.querySelectorAll('.choice.is-selected').forEach(a=>a.classList.remove('is-selected')));
     render();
@@ -431,5 +425,3 @@
   render();
 })();
 </script>
-   
-  
