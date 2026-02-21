@@ -3,28 +3,32 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
-  <title>汉江春天</title>
+  <title>汉江春天 · 大健康</title>
 
-  <!-- GitHub Pages용 base 경로 -->
+  <!-- ✅ Base: GitHub Pages(/K-medispring/) + Custom domain(kmedispring.com) 모두 대응 -->
   <script>
     (function () {
       var project = "/K-medispring/";
+      var path = location.pathname || "/";
       var isGhPages = location.hostname.endsWith("github.io");
+      var isProjectPath = path.indexOf(project) === 0;
+      var baseHref = isGhPages ? project : (isProjectPath ? project : "/");
+
       var base = document.createElement("base");
-      base.href = isGhPages ? project : "/";
+      base.href = baseHref;
       document.head.appendChild(base);
     })();
   </script>
 
-  <!-- Meta Tags -->
-  <meta name="description" content="汉江春天 · 韩国医疗观光与大健康平台" />
-  <meta property="og:title" content="汉江春天" />
-  <meta property="og:description" content="专注于韩国医疗、皮肤医美、干细胞、健康管理与高端定制旅行" />
+  <!-- Meta -->
+  <meta name="description" content="汉江春天 · 功能医学与综合健康管理" />
+  <meta property="og:title" content="汉江春天 · 大健康" />
+  <meta property="og:description" content="功能医学检测与综合健康管理，按模块定制可执行方案与来韩行程。" />
   <meta property="og:image" content="https://kmedispring.com/images/preview.jpg" />
-  <meta property="og:url" content="https://kmedispring.com/index.html" />
+  <meta property="og:url" content="https://kmedispring.com/wellness.html" />
   <meta name="twitter:card" content="summary_large_image" />
 
-  <!-- 파비콘 -->
+  <!-- Favicon (절대경로: base 영향 X) -->
   <link rel="icon" type="image/x-icon" href="/images/favicon.ico?v=20251012">
   <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32.png?v=20251012">
   <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16.png?v=20251012">
@@ -34,9 +38,7 @@
   <!-- CSS -->
   <link rel="stylesheet" href="assets/css/fontawesome-all.min.css?v=20251027" />
   <link rel="stylesheet" href="assets/css/main.css?v=20251027" />
-  <noscript>
-    <link rel="stylesheet" href="assets/css/noscript.css?v=20251027" />
-  </noscript>
+  <noscript><link rel="stylesheet" href="assets/css/noscript.css?v=20251027" /></noscript>
 </head>
 
 <body class="is-preload">
@@ -47,11 +49,12 @@
     <div id="main">
       <div class="inner">
 
-        <!-- Header (index와 동일) -->
+        <!-- Header (✅ index와 동일 구조) -->
         <header id="header">
           <a href="index.html" class="logo">
             <img src="images/logo_ch.png" alt="汉江春天" class="logo-img">
           </a>
+
           <a href="#sidebar" class="toggle" aria-label="Menu"></a>
 
           <ul class="icons">
@@ -73,41 +76,76 @@
           </ul>
         </header>
 
-        <!-- Banner (index 구조 유지 / 내용만 大健康로 교체) -->
-        <section id="banner" class="alt">
+        <!-- Banner (✅ index의 #banner 구조 그대로 / 내용만 대건강) -->
+        <section id="banner" class="alt" aria-labelledby="wellnessTitle">
           <div class="content">
             <header>
-              <h1>大健康</h1>
+              <h1 id="wellnessTitle">大健康</h1>
               <h2 style="margin-top:.25em; font-size:2rem; font-weight:400;">功能医学 · 综合健康管理</h2>
             </header>
 
             <p class="brand-desc">
               以功能医学评估为基础，围绕检测数据与生活方式平衡，提供可执行、可追踪的健康管理方案。
-              我们不做空泛的“建议清单”，而是把目标、指标与日常习惯整理成一套可落地的路径。
+              我们把“目标—指标—习惯”整理成一条清晰路径：检测 → 解读 → 管理 → 复测。
             </p>
 
             <ul class="actions">
-              <li>
-                <a href="kplan.html" class="button primary">定制医疗观光方案</a>
-              </li>
+              <li><a href="kplan.html" class="button primary">定制医疗观光方案</a></li>
             </ul>
           </div>
 
-          <!-- Hero image (웰니스 히어로) -->
           <span class="image object hero-media">
-            <img src="images/wellness/hero_wellness.png" alt="大健康 · 功能医学" />
+            <img src="images/wellness/hero_wellness.png" alt="功能医学与综合健康管理" />
           </span>
         </section>
 
-        <!-- 核心模块 (4개 아티클 + 이미지 배치) -->
+        <!-- Why -->
+        <section>
+          <header class="major"><h2>为什么选择汉江春天功能医学管理</h2></header>
+
+          <div class="features">
+            <article>
+              <span class="icon solid fa-hospital"></span>
+              <div class="content">
+                <h3>韩国多机构整合</h3>
+                <p>按目标组合检测模块，并匹配合作机构与医生团队，减少无效项目与时间浪费。</p>
+              </div>
+            </article>
+
+            <article>
+              <span class="icon solid fa-user-shield"></span>
+              <div class="content">
+                <h3>私密高端体验</h3>
+                <p>预约制流程、中文对接与独立动线，让体验更安稳、效率更高。</p>
+              </div>
+            </article>
+
+            <article>
+              <span class="icon solid fa-clipboard-check"></span>
+              <div class="content">
+                <h3>可执行方案</h3>
+                <p>不是“建议清单”，而是每日要点、阶段目标与关键指标的管理路径。</p>
+              </div>
+            </article>
+
+            <article>
+              <span class="icon solid fa-chart-line"></span>
+              <div class="content">
+                <h3>可追踪复盘</h3>
+                <p>围绕关键指标复测与调整，形成闭环，让改变看得见。</p>
+              </div>
+            </article>
+          </div>
+        </section>
+
+        <!-- 核心模块 (4개 이미지 배치) -->
         <section>
           <header class="major"><h2>核心模块</h2></header>
 
           <div class="posts">
-
             <article>
               <h3>检测与评估</h3>
-              <p>血液、激素、微量元素等指标结合生活方式问卷，建立个人健康画像与优先级。</p>
+              <p>血液、激素、微量元素等指标结合生活方式问卷，建立健康画像与优先级。</p>
               <span class="image fit">
                 <img src="images/wellness/section_checks.png" alt="检测与评估">
               </span>
@@ -123,7 +161,7 @@
 
             <article>
               <h3>放松与修复</h3>
-              <p>睡眠、压力、呼吸与日照管理，恢复身心节律与能量，让身体“回到轨道”。</p>
+              <p>睡眠、压力、呼吸与日照管理，恢复身心节律与能量，让身体回到轨道。</p>
               <span class="image fit">
                 <img src="images/wellness/section_relax.png" alt="放松与修复">
               </span>
@@ -136,11 +174,10 @@
                 <img src="images/wellness/section_training.png" alt="运动与习惯">
               </span>
             </article>
-
           </div>
         </section>
 
-        <!-- 功能医学检测类型 (짧고 빽빽하지 않게) -->
+        <!-- 功能医学检测类型 -->
         <section>
           <header class="major"><h2>功能医学检测类型</h2></header>
 
@@ -157,7 +194,7 @@
               <span class="icon solid fa-balance-scale"></span>
               <div class="content">
                 <h3>激素与内分泌</h3>
-                <p>甲状腺、性激素、皮质醇节律，聚焦“平衡与节律”。</p>
+                <p>甲状腺、性激素、皮质醇节律，聚焦平衡与节律。</p>
               </div>
             </article>
 
@@ -165,7 +202,7 @@
               <span class="icon solid fa-heartbeat"></span>
               <div class="content">
                 <h3>血管风险评估</h3>
-                <p>脂质谱、炎症与氧化压力，建立血管健康管理路径。</p>
+                <p>脂质谱、炎症与氧化压力，建立血管管理路径。</p>
               </div>
             </article>
 
@@ -183,7 +220,7 @@
           </ul>
         </section>
 
-        <!-- 3种方案 (짧게, 플랫폼 톤) -->
+        <!-- Signature 3 -->
         <section>
           <header class="major"><h2>Signature 3种方案</h2></header>
 
@@ -221,7 +258,7 @@
           </ul>
         </section>
 
-        <!-- 流程 (Step1부터) -->
+        <!-- Process -->
         <section>
           <header class="major"><h2>服务流程</h2></header>
           <ol class="alt">
@@ -231,6 +268,7 @@
             <li><b>Step 4 定制管理</b>：饮食 / 运动 / 睡眠压力 / 补充策略</li>
             <li><b>Step 5 复测与调整</b>：关键指标复测与方案迭代</li>
           </ol>
+
           <ul class="actions">
             <li><a href="kplan.html" class="button primary">开始定制</a></li>
           </ul>
@@ -255,10 +293,10 @@
           </ul>
         </section>
 
-      </div><!-- inner -->
-    </div><!-- #main -->
+      </div><!-- /.inner -->
+    </div><!-- /#main -->
 
-    <!-- Sidebar (index와 동일) -->
+    <!-- Sidebar (✅ index와 동일 구조/문구) -->
     <div id="sidebar">
       <div class="inner">
 
@@ -307,9 +345,9 @@
       </div>
     </div>
 
-  </div><!-- #wrapper -->
+  </div><!-- /#wrapper -->
 
-  <!-- Modals -->
+  <!-- Modals (✅ index와 동일 구조) -->
   <div id="wechatModal" class="modal" aria-hidden="true" role="dialog">
     <div class="modal-inner">
       <button class="close" aria-label="Close" type="button">&times;</button>
@@ -326,16 +364,9 @@
     </div>
   </div>
 
-  <!-- Custom JS (index와 동일: 모달 + 영상) -->
+  <!-- Custom JS (✅ index와 동일: 모달만 / 중복 없음) -->
   <script>
   document.addEventListener('DOMContentLoaded', function () {
-
-    const v = document.getElementById('introVideo');
-    if (v) {
-      try { v.playbackRate = 0.33; } catch(e) {}
-      v.muted = true;
-      v.volume = 0;
-    }
 
     const wechatModal = document.getElementById('wechatModal');
     const wechatIcon  = document.getElementById('wechat-icon');
@@ -424,7 +455,7 @@
   });
   </script>
 
-  <!-- 템플릿 기본 스크립트 5총사 -->
+  <!-- Template scripts (5총사, 순서 유지) -->
   <script src="assets/js/jquery.min.js"></script>
   <script src="assets/js/browser.min.js"></script>
   <script src="assets/js/breakpoints.min.js"></script>
