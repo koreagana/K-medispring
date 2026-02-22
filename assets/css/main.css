@@ -3414,3 +3414,8 @@ body.is-menu-visible{ overflow:hidden !important; }
   font-size:.75rem;
   color:#999;
 }
+
+/* Remove section top divider site-wide */
+#main > .inner > section {
+  border-top: none !important;
+}
