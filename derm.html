@@ -1,11 +1,20 @@
 <!DOCTYPE HTML>
+<!--
+  汉江春天 · 皮肤医美 (DERM)
+  - Editorial layout safe (index header/sidebar style)
+  - Top: logo + SNS icons only (NO extra “汉江春天” title / NO line under it)
+  - Laser device marquee (image placeholders) + click popup slider (responsive)
+  - “Apple-style” lifting laser comparison (Ultherapy / Thermage / Titanium)
+  - Skin booster (Rejuran focus) + other boosters placeholders
+  - Q&A slider (tabs + list + prev/next) — premium gray (NO blue frames)
+-->
 <html lang="zh-CN">
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
-  <title>汉江春天｜皮肤医美</title>
+  <title>汉江春天 · 皮肤医美</title>
 
-  <!-- GitHub Pages용 base 경로 -->
+  <!-- GitHub Pages base (HEAD 최상단) -->
   <script>
     (function () {
       var project = "/K-medispring/";
@@ -16,1045 +25,1020 @@
     })();
   </script>
 
-  <!-- Meta Tags -->
-  <meta name="description" content="汉江春天 · 皮肤医美（激光/提拉/皮肤管理/skin booster）信息与Q&A" />
-  <meta property="og:title" content="汉江春天｜皮肤医美" />
-  <meta property="og:description" content="提拉与年轻化、色素与肤色、毛孔痘疤、Skin Booster、麻醉与恢复：一页读懂" />
-  <meta property="og:image" content="https://kmedispring.com/images/preview.jpg" />
-  <meta property="og:url" content="https://kmedispring.com/derm.html" />
-  <meta name="twitter:card" content="summary_large_image" />
+  <!-- Favicons (index와 동일하게 유지 권장) -->
+  <link rel="icon" type="image/x-icon" href="images/favicon.ico?v=20251012">
+  <link rel="icon" type="image/png" sizes="32x32" href="images/favicon-32.png?v=20251012">
+  <link rel="icon" type="image/png" sizes="16x16" href="images/favicon-16.png?v=20251012">
+  <link rel="apple-touch-icon" sizes="180x180" href="images/apple-touch-icon.png?v=20251012">
+  <link rel="shortcut icon" href="images/favicon.ico?v=20251012">
 
-  <!-- 파비콘 -->
-  <link rel="icon" type="image/x-icon" href="/images/favicon.ico?v=20251012">
-  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32.png?v=20251012">
-  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16.png?v=20251012">
-  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png?v=20251012">
-  <link rel="shortcut icon" href="/images/favicon.ico?v=20251012">
+  <!-- Editorial CSS -->
+  <link rel="stylesheet" href="assets/css/fontawesome-all.min.css" />
+  <link rel="stylesheet" href="assets/css/main.css" />
 
-  <!-- CSS -->
-  <link rel="stylesheet" href="assets/css/fontawesome-all.min.css?v=20251027" />
-  <link rel="stylesheet" href="assets/css/main.css?v=20251027" />
-  <noscript>
-    <link rel="stylesheet" href="assets/css/noscript.css?v=20251027" />
-  </noscript>
-
-  <!-- Page-only polish -->
   <style>
-    /* ===== page rhythm (fix the "line too close to title") ===== */
-    .kms-page-topline{
-      height:1px; background:rgba(0,0,0,.12);
-      margin: 22px 0 34px 0; /* more breathing room than default */
-    }
-    .kms-hero h1{ margin: 0 0 .18em 0; }
-    .kms-hero .subtags{
-      color: rgba(0,0,0,.55);
-      font-size: 1.05rem;
-      letter-spacing: .02em;
-      margin-top: .65rem;
-    }
-    .kms-lead{
-      font-size: 1.05rem;
-      line-height: 1.9;
-      color: rgba(0,0,0,.78);
-      max-width: 62rem;
+    :root{
+      --hga-blue:#1e6bd6;
+      --ink: rgba(0,0,0,.82);
+      --muted: rgba(0,0,0,.58);
+      --line: rgba(0,0,0,.10);
+      --card: rgba(255,255,255,.94);
+      --soft: rgba(0,0,0,.05);
     }
 
-    /* ===== premium blocks ===== */
-    .card-soft{
-      border:1px solid rgba(0,0,0,.08);
-      border-radius: 18px;
-      padding: 22px 22px;
-      background: rgba(255,255,255,.92);
-      box-shadow: 0 10px 26px rgba(0,0,0,.05);
+    /* ====== IMPORTANT: remove extra page title “汉江春天” + line under logo area ======
+       (너가 말한 “로고 아래 汉江春天 + 라인”은 보통 페이지 본문에서 나온 것)
+       -> 이 페이지는 header 아래에 그 요소 자체를 만들지 않음.
+    */
+
+    /* Sidebar: search 제거 + 로고만 (index 기준) */
+    #sidebar #search{ display:none !important; }
+    #sidebar-brand{
+      padding: 1.8rem 1.5rem 1.1rem;
+      text-align:center;
+      border: 0 !important;
     }
-    .note{
-      color: rgba(0,0,0,.55);
-      font-size: .95rem;
+    #sidebar-brand .sidebar-logo img{
+      display:block;
+      max-width:140px;
+      height:auto;
+      margin:0 auto;
+    }
+
+    /* Menu 상단 라인 제거 */
+    #sidebar nav#menu,
+    #sidebar nav#menu > header,
+    #sidebar nav#menu ul{
+      border-top: 0 !important;
+    }
+
+    /* ===== Page hero ===== */
+    .kms-hero{
+      border: 1px solid var(--line);
+      background: linear-gradient(180deg, rgba(255,255,255,.95), rgba(250,250,250,.92));
+      border-radius: 18px;
+      padding: 22px 20px;
+      box-shadow: 0 16px 26px rgba(0,0,0,.05);
+    }
+    .kms-hero h1{
+      margin: 0 0 10px 0;
+      font-size: 2.25rem;
+      line-height: 1.15;
+      color: var(--ink);
+    }
+    .kms-hero p{
+      margin: 0;
+      color: var(--muted);
       line-height: 1.7;
     }
-    .pill{
-      display:inline-flex; align-items:center; gap:.5rem;
-      padding: .45rem .9rem;
+    .kms-hero .chips{
+      display:flex; flex-wrap:wrap; gap:10px;
+      margin-top: 14px;
+    }
+    .kms-hero .chip{
+      display:inline-flex; align-items:center; gap:8px;
+      padding: 8px 12px;
       border-radius: 999px;
-      border:1px solid rgba(0,0,0,.12);
-      color: rgba(0,0,0,.72);
-      background: rgba(250,250,250,.9);
-      font-size:.95rem;
-      white-space: nowrap;
+      border:1px solid var(--line);
+      background: rgba(255,255,255,.85);
+      font-size: .95rem;
+      color: rgba(0,0,0,.68);
+    }
+    .kms-hero .cta-row{
+      margin-top: 16px;
+      display:flex; gap:12px; flex-wrap:wrap;
+    }
+    .btn-primary{
+      appearance:none;
+      border:0;
+      border-radius: 12px;
+      padding: 12px 14px;
+      background: var(--hga-blue);
+      color: #fff !important;
+      text-decoration:none;
+      font-weight:700;
+      box-shadow: 0 12px 22px rgba(30,107,214,.18);
+    }
+    .btn-ghost{
+      appearance:none;
+      border:1px solid var(--line);
+      border-radius: 12px;
+      padding: 12px 14px;
+      background: rgba(255,255,255,.75);
+      color: rgba(0,0,0,.78) !important;
+      text-decoration:none;
+      font-weight:700;
     }
 
-    /* ===== marquee icons (10–15 icons, grayscale) ===== */
-    .marquee-wrap{
+    /* ===== Marquee photo placeholders ===== */
+    .marquee-photo-wrap{
       overflow:hidden;
-      border:1px solid rgba(0,0,0,.08);
+      border:1px solid var(--line);
       border-radius: 18px;
-      background: linear-gradient(180deg, rgba(250,250,250,.95), rgba(255,255,255,.9));
+      background: linear-gradient(180deg, rgba(250,250,250,.98), rgba(255,255,255,.92));
       padding: 14px 0;
-      margin: 18px 0 26px 0;
+      margin: 14px 0 10px 0;
     }
-    .marquee{
-      display:flex; gap:14px;
+    .marquee-photo-track{
+      display:flex;
+      gap:14px;
       width:max-content;
-      animation: kmsMarquee 26s linear infinite;
+      will-change: transform;
+      animation: kmsMarqueePhotos 34s linear infinite;
       padding-left: 18px;
     }
-    .marquee:hover{ animation-play-state: paused; }
-    @keyframes kmsMarquee{
+    .marquee-photo-wrap:hover .marquee-photo-track{ animation-play-state: paused; }
+    @keyframes kmsMarqueePhotos{
       from { transform: translateX(0); }
       to   { transform: translateX(-50%); }
     }
-    .laser-ico{
-      width: 74px; height: 54px;
-      border-radius: 14px;
-      border:1px solid rgba(0,0,0,.10);
-      background: rgba(255,255,255,.86);
-      display:flex; align-items:center; justify-content:center;
-      color: rgba(0,0,0,.55);
-      box-shadow: 0 10px 18px rgba(0,0,0,.04);
-    }
-    .laser-ico svg{ width: 34px; height: 34px; opacity: .78; }
-    .laser-ico span{
-      font-size:.78rem; letter-spacing:.02em; opacity:.85;
-      display:none; /* label hidden by default (keep premium) */
-    }
-
-    /* ===== Apple-like compare ===== */
-    .compare-grid{
-      display:grid;
-      grid-template-columns: repeat(3, minmax(0, 1fr));
-      gap: 14px;
-    }
-    @media (max-width: 980px){
-      .compare-grid{ grid-template-columns: 1fr; }
-    }
-    .compare-card{
-      border:1px solid rgba(0,0,0,.10);
-      border-radius: 18px;
-      padding: 18px 18px;
-      background: rgba(255,255,255,.95);
-    }
-    .compare-card h4{ margin:0 0 .35rem 0; }
-    .compare-kv{
-      display:grid;
-      grid-template-columns: 110px 1fr;
-      gap: 10px 12px;
-      margin-top: 12px;
-      font-size: .98rem;
-      line-height: 1.7;
-    }
-    .compare-kv b{ color: rgba(0,0,0,.62); font-weight: 700; }
-    .compare-kv div{ color: rgba(0,0,0,.74); }
-    .tagline{
-      color: rgba(0,0,0,.55);
-      font-size: .95rem;
-      margin-top: .25rem;
-    }
-
-    /* ===== Q&A slider (no blue borders, fix vertical alignment) ===== */
-    .qa-shell{ padding: 18px; }
-    .qa-tabs{
-      display:flex; gap:10px; flex-wrap:wrap;
-      margin: 4px 0 16px 0;
-    }
-    .qa-tab{
+    .device-card{
+      width: 152px;      /* 세로 이미지 기준 */
+      height: 190px;
+      border-radius: 16px;
       border:1px solid rgba(0,0,0,.12);
-      border-radius: 999px;
-      padding: .55rem 1rem;
-      background: rgba(255,255,255,.85);
-      color: rgba(0,0,0,.70);
-      cursor:pointer;
-      user-select:none;
-      transition: transform .08s ease, background .2s ease, border-color .2s ease;
-    }
-    .qa-tab:hover{ transform: translateY(-1px); }
-    .qa-tab.active{
-      background: rgba(0,0,0,.86);
-      border-color: rgba(0,0,0,.86);
-      color: rgba(255,255,255,.95);
-    }
-    .qa-grid{
-      display:grid;
-      grid-template-columns: 320px 1fr;
-      gap: 14px;
-      align-items: stretch;
-    }
-    @media (max-width: 980px){
-      .qa-grid{ grid-template-columns: 1fr; }
-    }
-    .qa-left{
-      border:1px solid rgba(0,0,0,.08);
-      border-radius: 16px;
-      background: rgba(255,255,255,.92);
-      padding: 12px;
-    }
-    .qa-list{
-      list-style:none; padding:0; margin:0;
-      display:flex; flex-direction:column; gap:10px;
-    }
-    .qa-q{
-      border:1px solid rgba(0,0,0,.10);
-      border-radius: 14px;
-      padding: 12px 14px;
-      background: rgba(250,250,250,.92);
-      color: rgba(0,0,0,.74);
-      line-height: 1.55;
-      cursor:pointer;
-      transition: background .2s ease, transform .08s ease, border-color .2s ease;
-      display:flex; align-items:center; /* FIX: prevent bottom-sinking */
-      min-height: 52px; /* consistent vertical centering */
-    }
-    .qa-q:hover{ transform: translateY(-1px); }
-    .qa-q.active{
-      background: rgba(0,0,0,.06);
-      border-color: rgba(0,0,0,.22);
-    }
-    .qa-right{
-      border:1px solid rgba(0,0,0,.08);
-      border-radius: 16px;
-      background: rgba(255,255,255,.94);
-      padding: 18px 18px;
+      background: rgba(245,245,245,.9);
       display:flex;
-      flex-direction:column;
-      justify-content:space-between;
-      min-height: 320px;
-    }
-    .qa-title{
-      font-size: 1.25rem;
-      font-weight: 800;
-      margin: 0 0 10px 0;
-      letter-spacing: .01em;
-    }
-    .qa-answer{
-      color: rgba(0,0,0,.78);
-      line-height: 1.9;
-      font-size: 1.03rem;
-    }
-    .qa-ctrl{
-      display:flex; gap:10px; margin-top: 16px;
-    }
-    .qa-btn{
-      border:1px solid rgba(0,0,0,.12);
-      border-radius: 14px;
-      background: rgba(255,255,255,.9);
-      padding: 10px 14px;
-      cursor:pointer;
+      align-items:center;
+      justify-content:center;
+      text-decoration:none;
+      position:relative;
+      box-shadow: 0 10px 22px rgba(0,0,0,.05);
+      overflow:hidden;
       color: rgba(0,0,0,.75);
-      transition: transform .08s ease, background .2s ease;
     }
-    .qa-btn:hover{ transform: translateY(-1px); }
-    .qa-btn:disabled{
-      opacity:.45; cursor:not-allowed; transform:none;
+    .device-card img{
+      width:100%;
+      height:100%;
+      object-fit: cover;
+      display:block;
     }
-    .qa-disclaimer{
-      margin-top: 14px;
-      border-top: 1px solid rgba(0,0,0,.08);
-      padding-top: 12px;
-      color: rgba(0,0,0,.55);
-      font-size: .95rem;
-      line-height: 1.7;
-    }
-
-    /* ===== image placeholders ===== */
-    .img-placeholder{
-      border:1px dashed rgba(0,0,0,.18);
-      border-radius: 18px;
-      background: rgba(245,245,245,.75);
-      min-height: 260px;
+    .device-card .ph{
+      width:100%;
+      height:100%;
       display:flex;
       align-items:center;
       justify-content:center;
       text-align:center;
-      padding: 16px;
-      color: rgba(0,0,0,.55);
+      padding: 12px;
+      font-weight: 800;
+      letter-spacing:.01em;
+      line-height:1.15;
+      background:
+        radial-gradient(closest-side, rgba(0,0,0,.03), rgba(0,0,0,0) 70%),
+        linear-gradient(135deg, rgba(255,255,255,.92), rgba(240,240,240,.96));
     }
-    .img-placeholder b{ color: rgba(0,0,0,.72); }
+    .device-card .ph small{
+      display:block;
+      font-weight: 700;
+      opacity:.72;
+      margin-top: 6px;
+    }
+    @media (max-width: 736px){
+      .device-card{ width: 128px; height: 160px; border-radius: 14px; }
+      .marquee-photo-track{ gap:12px; }
+    }
 
-    /* ===== small helpers ===== */
-    .grid-2{
+    /* ===== Lightbox ===== */
+    .kms-lightbox{
+      position:fixed;
+      inset:0;
+      display:none;
+      z-index: 20000;
+    }
+    .kms-lightbox[aria-hidden="false"]{ display:block; }
+    .kms-lightbox__backdrop{
+      position:absolute;
+      inset:0;
+      background: rgba(0,0,0,.55);
+      backdrop-filter: blur(2px);
+    }
+    .kms-lightbox__panel{
+      position:relative;
+      max-width: 1100px;
+      width: min(92vw, 1100px);
+      margin: 6vh auto;
+      background: rgba(255,255,255,.98);
+      border-radius: 22px;
+      box-shadow: 0 20px 60px rgba(0,0,0,.22);
+      overflow:hidden;
+    }
+    .kms-lightbox__close{
+      position:absolute;
+      top: 10px;
+      right: 12px;
+      width: 44px;
+      height: 44px;
+      border:0;
+      border-radius: 12px;
+      background: rgba(0,0,0,.06);
+      font-size: 28px;
+      line-height: 44px;
+      cursor:pointer;
+      z-index: 2;
+    }
+    .kms-lightbox__nav{
+      position:absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 44px;
+      height: 64px;
+      border:0;
+      cursor:pointer;
+      z-index:2;
+      border-radius: 14px;
+      background: rgba(0,0,0,.07);
+      color: rgba(0,0,0,.7);
+      font-size: 34px;
+    }
+    .kms-lightbox__prev{ left: 10px; }
+    .kms-lightbox__next{ right: 10px; }
+
+    .kms-lightbox__content{
+      display:flex;
+      gap: 0;
+      min-height: 520px;
+    }
+    .kms-lightbox__media{
+      flex: 1.05;
+      background: #111;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      min-height: 520px;
+    }
+    .kms-lightbox__media img{
+      width:100%;
+      height:100%;
+      object-fit: contain;
+      display:block;
+      background:#111;
+    }
+    .kms-lightbox__text{
+      flex: .95;
+      padding: 26px 26px 22px;
+    }
+    .kms-lightbox__text h3{
+      margin: 0 0 10px 0;
+      font-size: 1.35rem;
+      line-height:1.25;
+    }
+    .kmsLbDesc{ margin: 0 0 14px 0; color: rgba(0,0,0,.72); }
+    .kms-lightbox__meta{
+      display:flex; flex-wrap:wrap; gap: 10px;
+      margin: 10px 0 14px;
+    }
+    .lb-chip{
+      padding: 8px 12px;
+      border-radius: 999px;
+      background: rgba(0,0,0,.05);
+      border: 1px solid rgba(0,0,0,.08);
+      font-size: .92rem;
+    }
+    .kms-lightbox__tiny{
+      font-size: .92rem;
+      color: rgba(0,0,0,.55);
+      line-height: 1.55;
+      margin: 0;
+    }
+    @media (max-width: 900px){
+      .kms-lightbox__panel{ margin: 4vh auto; }
+      .kms-lightbox__content{ flex-direction:column; min-height:auto; }
+      .kms-lightbox__media{ min-height: 46vh; }
+      .kms-lightbox__text{ padding: 18px 18px 16px; }
+      .kms-lightbox__prev{ left: 8px; }
+      .kms-lightbox__next{ right: 8px; }
+    }
+
+    /* ===== Apple-style comparison ===== */
+    .compare{
+      border:1px solid var(--line);
+      border-radius: 18px;
+      background: rgba(255,255,255,.92);
+      overflow:hidden;
+      box-shadow: 0 14px 26px rgba(0,0,0,.05);
+    }
+    .compare-head{
+      display:flex;
+      align-items:flex-end;
+      justify-content:space-between;
+      padding: 18px 18px 14px;
+      border-bottom: 1px solid var(--line);
+      background: linear-gradient(180deg, rgba(255,255,255,.96), rgba(250,250,250,.92));
+    }
+    .compare-head h3{ margin:0; }
+    .compare-head p{ margin:6px 0 0 0; color: var(--muted); }
+    .compare-grid{
       display:grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 14px;
+      grid-template-columns: 1.05fr 1fr 1fr 1fr;
+    }
+    .compare-grid > div{
+      padding: 14px 16px;
+      border-bottom: 1px solid var(--line);
+      border-right: 1px solid var(--line);
+    }
+    .compare-grid > div:nth-child(4n){ border-right:0; }
+    .compare-grid .th{
+      font-weight: 900;
+      color: rgba(0,0,0,.82);
+      background: rgba(0,0,0,.02);
+    }
+    .compare-grid .k{ color: rgba(0,0,0,.68); font-weight: 800; }
+    .compare-grid .v{ color: rgba(0,0,0,.72); }
+    .compare-note{
+      padding: 14px 18px;
+      color: rgba(0,0,0,.62);
+      line-height: 1.7;
     }
     @media (max-width: 980px){
-      .grid-2{ grid-template-columns: 1fr; }
+      .compare-grid{ grid-template-columns: 1fr; }
+      .compare-grid > div{ border-right:0; }
+      .compare-grid .th{ border-top: 1px solid var(--line); }
+    }
+
+    /* ===== Q&A Slider (NO blue frames) ===== */
+    .qa-wrap{
+      border:1px solid var(--line);
+      border-radius: 18px;
+      background: rgba(255,255,255,.92);
+      box-shadow: 0 14px 26px rgba(0,0,0,.05);
+      overflow:hidden;
+    }
+    .qa-tabs{
+      display:flex;
+      gap:10px;
+      flex-wrap:wrap;
+      padding: 14px 14px 10px;
+      border-bottom:1px solid var(--line);
+      background: linear-gradient(180deg, rgba(255,255,255,.96), rgba(250,250,250,.92));
+    }
+    .qa-tab{
+      border:1px solid rgba(0,0,0,.12);
+      background: rgba(255,255,255,.92);
+      color: rgba(0,0,0,.74);
+      border-radius: 999px;
+      padding: 10px 12px;
+      font-weight: 800;
+      cursor:pointer;
+      user-select:none;
+    }
+    .qa-tab.is-active{
+      background: rgba(0,0,0,.06);
+      border-color: rgba(0,0,0,.16);
+    }
+
+    .qa-body{
+      display:grid;
+      grid-template-columns: 0.9fr 1.2fr;
+      gap:0;
+      min-height: 360px;
+    }
+    .qa-list{
+      border-right:1px solid var(--line);
+      padding: 12px;
+      background: rgba(0,0,0,.02);
+    }
+    .qa-item{
+      width:100%;
+      text-align:left;
+      border:1px solid rgba(0,0,0,.10);
+      background: rgba(255,255,255,.90);
+      border-radius: 14px;
+      padding: 12px 12px;
+      margin-bottom: 10px;
+      cursor:pointer;
+      font-weight: 800;
+      color: rgba(0,0,0,.72);
+      line-height: 1.25;
+    }
+    .qa-item.is-active{
+      background: rgba(0,0,0,.06);
+      border-color: rgba(0,0,0,.18);
+    }
+
+    .qa-panel{
+      padding: 18px 18px 16px;
+    }
+    .qa-q{
+      margin:0 0 10px 0;
+      font-size: 1.18rem;
+      font-weight: 900;
+      color: rgba(0,0,0,.84);
+    }
+    .qa-a{
+      margin:0 0 16px 0;
+      color: rgba(0,0,0,.70);
+      line-height: 1.75;
+    }
+    .qa-nav{
+      display:flex;
+      gap:10px;
+      margin-top: 8px;
+    }
+    .qa-nav button{
+      border:1px solid rgba(0,0,0,.12);
+      background: rgba(255,255,255,.92);
+      border-radius: 12px;
+      padding: 10px 12px;
+      font-weight: 900;
+      cursor:pointer;
+      color: rgba(0,0,0,.72);
+    }
+    .qa-foot{
+      padding: 12px 18px 16px;
+      border-top:1px solid var(--line);
+      color: rgba(0,0,0,.55);
+      line-height: 1.7;
+      background: rgba(255,255,255,.92);
+    }
+    @media (max-width: 980px){
+      .qa-body{ grid-template-columns: 1fr; }
+      .qa-list{ border-right:0; border-bottom:1px solid var(--line); }
+    }
+
+    /* WeChat modal (index 스타일 가정) */
+    body.modal-open{ overflow:hidden; }
+    .modal{
+      display:none;
+      position:fixed;
+      inset:0;
+      z-index: 21000;
+      background: rgba(0,0,0,.55);
+      align-items:center;
+      justify-content:center;
+      padding: 20px;
+    }
+    .modal.is-open{ display:flex; }
+    .modal-inner{
+      max-width: 420px;
+      width: min(92vw, 420px);
+      background: rgba(255,255,255,.98);
+      border-radius: 18px;
+      box-shadow: 0 18px 50px rgba(0,0,0,.25);
+      padding: 18px 16px 16px;
+      text-align:center;
+      position:relative;
+    }
+    .modal-inner .close{
+      position:absolute;
+      top: 10px;
+      right: 12px;
+      width: 40px;
+      height: 40px;
+      border:0;
+      border-radius: 12px;
+      background: rgba(0,0,0,.06);
+      font-size: 22px;
+      cursor:pointer;
+    }
+    .modal-caption{ margin: 0 0 10px 0; color: rgba(0,0,0,.72); font-weight:800; }
+    .modal-content{ width: 100%; height:auto; border-radius: 14px; border:1px solid rgba(0,0,0,.10); }
+    .modal-id{ margin: 10px 0 0 0; color: rgba(0,0,0,.60); font-weight:800; }
+
+    /* 작은 note */
+    .note{
+      color: rgba(0,0,0,.58);
+      font-size: .95rem;
+      line-height: 1.7;
     }
   </style>
 </head>
 
 <body class="is-preload">
-  <div id="wrapper">
+<div id="wrapper">
 
-    <!-- Main -->
-    <div id="main">
-      <div class="inner">
+  <!-- Main -->
+  <div id="main">
+    <div class="inner">
 
-        <!-- Header (same as index) -->
-        <header id="header">
-          <a href="index.html" class="logo">
-            <img src="images/logo_ch.png" alt="汉江春天" class="logo-img">
-          </a>
-          <a href="#sidebar" class="toggle" aria-label="Menu"></a>
+      <!-- Header (index 스타일: 로고 + SNS) -->
+      <header id="header">
+        <a href="index.html" class="logo"><strong>汉江春天</strong></a>
 
-          <ul class="icons">
-            <li>
-              <a href="#" id="wechat-icon" class="icon brands fa-weixin" title="WeChat">
-                <span class="label">WeChat</span>
-              </a>
-            </li>
-            <li>
-              <a href="#" id="whatsapp-icon" class="icon brands fa-whatsapp" title="WhatsApp">
-                <span class="label">WhatsApp</span>
-              </a>
-            </li>
-            <li>
-              <a href="mailto:egana@kmedispring.com" class="icon solid fa-envelope" title="Email">
-                <span class="label">Email</span>
-              </a>
-            </li>
-          </ul>
-        </header>
+        <ul class="icons">
+          <li><a href="#" id="wechat-icon" class="icon brands fa-weixin" aria-label="WeChat"><span class="label">WeChat</span></a></li>
+          <li><a href="#" class="icon brands fa-whatsapp" aria-label="WhatsApp"><span class="label">WhatsApp</span></a></li>
+          <li><a href="mailto:2gana@naver.com" class="icon solid fa-envelope" aria-label="Email"><span class="label">Email</span></a></li>
+        </ul>
+      </header>
 
-        <!-- Page Hero -->
-        <section class="kms-hero">
-          <header>
-            <h2 style="margin:0;">汉江春天</h2>
-          </header>
+      <!-- IMPORTANT: 여기에는 “汉江春天” 큰 제목/라인을 만들지 않음 (요청사항) -->
 
-          <!-- top thin line with breathing space -->
-          <div class="kms-page-topline"></div>
-
-          <header>
-            <h1>皮肤医美</h1>
-            <div class="subtags">提拉 · 色素 · 毛孔痘疤 · Skin Booster · 麻醉与恢复</div>
-          </header>
-
-          <p class="kms-lead">
-            我们把“皮肤医美”拆成可执行路径：<b>评估 → 组合 → 治疗/管理 → 复盘</b>。
-            重点不是“选一台机器”，而是基于<b>皮肤厚度、脂肪量、松弛层次、色素类型、既往填充/线材史、恢复期</b>做组合。
-          </p>
-
-          <ul class="actions" style="margin-top: 18px;">
-            <li><a href="kplan.html" class="button primary">定制医疗观光方案</a></li>
-          </ul>
-        </section>
-
-        <!-- Marquee icons (10–15). Replace labels / SVG anytime -->
-        <section>
-          <div class="marquee-wrap" aria-label="device-icons-marquee">
-            <!-- duplicate row for seamless scroll -->
-            <div class="marquee" id="kmsMarqueeRow">
-              <!-- 1 -->
-              <div class="laser-ico" title="HIFU / MFU">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6">
-                  <path d="M3 17h6l2-10 2 10h6" />
-                  <path d="M4 7c3 2 5 2 8 0s5-2 8 0" opacity=".6"/>
-                </svg>
-              </div>
-              <!-- 2 -->
-              <div class="laser-ico" title="RF (Monopolar/Bipolar)">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6">
-                  <path d="M7 20V4" />
-                  <path d="M17 20V4" />
-                  <path d="M7 8h10M7 12h10M7 16h10" opacity=".65"/>
-                </svg>
-              </div>
-              <!-- 3 -->
-              <div class="laser-ico" title="Pico / Q-switch">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6">
-                  <path d="M4 12h16" />
-                  <path d="M12 4v16" />
-                  <path d="M6 6l12 12M18 6L6 18" opacity=".55"/>
-                </svg>
-              </div>
-              <!-- 4 -->
-              <div class="laser-ico" title="Fractional">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6">
-                  <path d="M6 6h4v4H6zM14 6h4v4h-4zM6 14h4v4H6zM14 14h4v4h-4z" />
-                </svg>
-              </div>
-              <!-- 5 -->
-              <div class="laser-ico" title="RF Microneedle">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6">
-                  <path d="M7 7h10v4H7z" />
-                  <path d="M9 11v7M12 11v7M15 11v7" opacity=".7"/>
-                </svg>
-              </div>
-              <!-- 6 -->
-              <div class="laser-ico" title="Skin Booster">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6">
-                  <path d="M12 2s6 7 6 12a6 6 0 0 1-12 0c0-5 6-12 6-12z"/>
-                </svg>
-              </div>
-              <!-- 7 -->
-              <div class="laser-ico" title="Cooling">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6">
-                  <path d="M12 2v20" />
-                  <path d="M6 6l12 12M18 6L6 18" opacity=".5"/>
-                </svg>
-              </div>
-              <!-- 8 -->
-              <div class="laser-ico" title="LED / Aftercare">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6">
-                  <path d="M7 10a5 5 0 0 1 10 0c0 2-1 3-2 4s-1 2-1 3H10c0-1 0-2-1-3s-2-2-2-4z"/>
-                  <path d="M10 20h4" opacity=".65"/>
-                </svg>
-              </div>
-              <!-- 9 -->
-              <div class="laser-ico" title="Toning">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6">
-                  <path d="M4 16c4-6 12-6 16 0" />
-                  <path d="M4 12c4-6 12-6 16 0" opacity=".6"/>
-                </svg>
-              </div>
-              <!-- 10 -->
-              <div class="laser-ico" title="Consult">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6">
-                  <path d="M4 5h16v10H7l-3 3V5z" />
-                </svg>
-              </div>
-
-              <!-- duplicate same 10 to form 20 for seamless scroll -->
-              <div class="laser-ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M3 17h6l2-10 2 10h6"/><path d="M4 7c3 2 5 2 8 0s5-2 8 0" opacity=".6"/></svg></div>
-              <div class="laser-ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M7 20V4"/><path d="M17 20V4"/><path d="M7 8h10M7 12h10M7 16h10" opacity=".65"/></svg></div>
-              <div class="laser-ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M4 12h16"/><path d="M12 4v16"/><path d="M6 6l12 12M18 6L6 18" opacity=".55"/></svg></div>
-              <div class="laser-ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M6 6h4v4H6zM14 6h4v4h-4zM6 14h4v4H6zM14 14h4v4h-4z"/></svg></div>
-              <div class="laser-ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M7 7h10v4H7z"/><path d="M9 11v7M12 11v7M15 11v7" opacity=".7"/></svg></div>
-              <div class="laser-ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M12 2s6 7 6 12a6 6 0 0 1-12 0c0-5 6-12 6-12z"/></svg></div>
-              <div class="laser-ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M12 2v20"/><path d="M6 6l12 12M18 6L6 18" opacity=".5"/></svg></div>
-              <div class="laser-ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M7 10a5 5 0 0 1 10 0c0 2-1 3-2 4s-1 2-1 3H10c0-1 0-2-1-3s-2-2-2-4z"/><path d="M10 20h4" opacity=".65"/></svg></div>
-              <div class="laser-ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M4 16c4-6 12-6 16 0"/><path d="M4 12c4-6 12-6 16 0" opacity=".6"/></svg></div>
-              <div class="laser-ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M4 5h16v10H7l-3 3V5z"/></svg></div>
-            </div>
-          </div>
-
-          <p class="note" style="margin-top: 10px;">
-            这里的图标是“占位风格”。你后面可以把它们替换成真实设备照片/品牌logo（建议统一灰阶、同尺寸）。
-          </p>
-        </section>
-
-        <!-- Core message: combination not single machine -->
-        <section>
-          <div class="card-soft">
-            <header class="major"><h2>关键原则：不是“哪台更好”，而是“怎么组合更稳”</h2></header>
-            <p class="kms-lead" style="margin:0;">
-              尤其是提拉类项目：<b>脸上脂肪少的人</b>如果能量层次/分布不当，视觉上可能更显消瘦。
-              因此更强调<b>医生经验 + 分层组合</b>：该紧的紧、该保留的保留；必要时选择更温和路径、调整部位与发数，并与皮肤修复/补水/支撑策略联动。
-            </p>
-          </div>
-        </section>
-
-        <!-- Apple-like compare: Ultherapy vs Thermage vs Titanium -->
-        <section>
-          <header class="major"><h2>拉提与年轻化：Ultherapy / Thermage / Titanium 怎么选</h2></header>
-          <p class="note">
-            下列为“理解框架”，不是替代面诊。实际选择取决于松弛层次、脂肪量、皮肤厚度、疼痛耐受、恢复期与预算。
-          </p>
-
-          <div class="compare-grid">
-            <div class="compare-card">
-              <h4>Ultherapy（超声类）</h4>
-              <div class="tagline">更偏“深层提拉框架感”（因人而异）</div>
-              <div class="compare-kv">
-                <b>能量</b><div>聚焦超声（MFU/HIFU）</div>
-                <b>层次</b><div>偏深层（SMAS 等）</div>
-                <b>适合</b><div>轮廓轻中度松弛、希望“往上走”</div>
-                <b>注意</b><div>脂肪少者需更谨慎，避免能量/层次不当导致更显消瘦</div>
-              </div>
-            </div>
-
-            <div class="compare-card">
-              <h4>Thermage（RF 单极）</h4>
-              <div class="tagline">更偏“紧致与肤质弹性”（因人而异）</div>
-              <div class="compare-kv">
-                <b>能量</b><div>单极射频（Monopolar RF）</div>
-                <b>层次</b><div>偏真皮与皮下热收缩路径</div>
-                <b>适合</b><div>皮肤松弛/弹性下降、纹理与毛孔管理配合</div>
-                <b>注意</b><div>疼痛/热感管理、配合冷却与分区策略</div>
-              </div>
-            </div>
-
-            <div class="compare-card">
-              <h4>Titanium（复合光电类*）</h4>
-              <div class="tagline">常见于“多波段/多模式组合”叙事</div>
-              <div class="compare-kv">
-                <b>能量</b><div>依设备不同（可能含光/热/射频等组合）</div>
-                <b>层次</b><div>通常作为“搭配型”方案的一环</div>
-                <b>适合</b><div>希望更温和、与其它项目组成疗程</div>
-                <b>注意</b><div>核心在“组合逻辑”，不是名称本身</div>
-              </div>
-              <p class="note" style="margin: 10px 0 0 0;">
-                *不同机构“Titanium”可能指不同平台/版本，需确认具体型号与参数。
-              </p>
-            </div>
-          </div>
-
-          <div class="grid-2" style="margin-top:14px;">
-            <div class="img-placeholder">
-              <div>
-                <b>占位：提拉设备对比图</b><br/>
-                建议：3张同角度设备/示意图（灰白背景）<br/>
-                + 1张“分层（真皮/脂肪/筋膜）示意”
-              </div>
-            </div>
-            <div class="img-placeholder">
-              <div>
-                <b>占位：面部区域分区图</b><br/>
-                建议：额/颞/中面/下颌缘/颈部分区<br/>
-                用于解释“为什么要组合”
-              </div>
-            </div>
-          </div>
-        </section>
-
-        <!-- Pigmentation -->
-        <section>
-          <header class="major"><h2>色素与肤色：不是“越猛越快”，而是“越稳越干净”</h2></header>
-          <div class="card-soft">
-            <p class="kms-lead" style="margin:0;">
-              色素问题的关键是：<b>色素类型（表浅/真皮/混合）、炎症背景、皮肤屏障状态、既往反黑史</b>。
-              有些人一次治疗就能看到明显变化，但“追求一次清零”容易触发反黑/复发风险。
-              更推荐“分层、分次、可控剂量 + 严格防晒与修复”。
-            </p>
-          </div>
-
-          <div class="grid-2" style="margin-top:14px;">
-            <div class="img-placeholder">
-              <div>
-                <b>占位：Pico / Q-switch / Toning 示例图</b><br/>
-                建议：同尺寸小图 3–4 张
-              </div>
-            </div>
-            <div class="img-placeholder">
-              <div>
-                <b>占位：色素类型示意</b><br/>
-                雀斑/晒斑/黄褐斑/炎症后色沉（PIH）<br/>
-                标注“表浅/深层/混合”
-              </div>
-            </div>
-          </div>
-        </section>
-
-        <!-- Pores / acne scars -->
-        <section>
-          <header class="major"><h2>毛孔 · 痘疤：修复逻辑比项目名更重要</h2></header>
-          <div class="compare-grid">
-            <div class="compare-card">
-              <h4>凹陷性痘疤（Rolling/Boxcar/Ice-pick）</h4>
-              <p class="tagline">常需“多手段叠加”</p>
-              <p class="note">常见组合：分段剥离/点阵/微针RF/皮肤重建/再生类注射（按医生评估）</p>
-            </div>
-            <div class="compare-card">
-              <h4>毛孔与肤质（油脂+纹理）</h4>
-              <p class="tagline">控油 + 纹理重建 + 屏障修复</p>
-              <p class="note">常见组合：温和焕肤/水光+修复/能量设备低刺激分区</p>
-            </div>
-            <div class="compare-card">
-              <h4>红痘印/敏感泛红</h4>
-              <p class="tagline">先稳屏障，再谈“更强治疗”</p>
-              <p class="note">常见组合：舒缓修复/红血丝相关光电/生活方式管理</p>
-            </div>
-          </div>
-        </section>
-
-        <!-- Skin Boosters -->
-        <section>
-          <header class="major"><h2>Skin Booster：把“成分逻辑”讲清楚</h2></header>
-
-          <div class="card-soft">
-            <p class="kms-lead" style="margin:0;">
-              Skin booster 不是“越贵越好”，而是：<b>目的（光泽/细纹/毛孔/痘疤/紧致）</b>与
-              <b>成分机制（PN/HA/PDLLA/胶原刺激等）</b>匹配。
-              另外要明确：不同国家/机构对产品的注册类别与适应范围可能不同，实际使用以医生判断与合规为前提。
-            </p>
-          </div>
-
-          <div class="compare-grid" style="margin-top:14px;">
-            <div class="compare-card">
-              <h4>Rejuran（PN / Polynucleotide）</h4>
-              <p class="tagline">更偏“修复与肤质质感”叙事</p>
-              <div class="compare-kv">
-                <b>关键词</b><div>修复/弹性/细纹/质感</div>
-                <b>体验</b><div>注射类刺激感相对明显（看方案）</div>
-                <b>注意</b><div>红肿/针眼/短期结节感需管理；禁忌与过敏史需筛查</div>
-              </div>
-              <div class="img-placeholder" style="min-height:160px; margin-top:12px;">
-                <div><b>占位：Rejuran 产品/操作示意图</b></div>
-              </div>
-            </div>
-
-            <div class="compare-card">
-              <h4>Juvelook（PDLLA + HA）</h4>
-              <p class="tagline">更偏“胶原刺激 + 支撑改善”叙事</p>
-              <div class="compare-kv">
-                <b>关键词</b><div>毛孔/痘疤/纹理/支撑</div>
-                <b>节奏</b><div>通常需要疗程与观察期（看方案）</div>
-                <b>注意</b><div>结节/炎症反应风险管理很关键；层次与稀释/手法依医生</div>
-              </div>
-              <div class="img-placeholder" style="min-height:160px; margin-top:12px;">
-                <div><b>占位：Juvelook 产品/结构示意图</b></div>
-              </div>
-            </div>
-
-            <div class="compare-card">
-              <h4>“水光/HA 系”与“胶原刺激系”怎么取舍</h4>
-              <p class="tagline">短期水润 vs 中期结构改善</p>
-              <div class="compare-kv">
-                <b>水光/HA</b><div>更偏补水、光泽、即时感（但维持需管理）</div>
-                <b>刺激系</b><div>更偏纹理、毛孔、支撑（但更依赖医生经验）</div>
-                <b>组合</b><div>常见：先稳屏障与补水，再逐步引入刺激系</div>
-              </div>
-            </div>
-          </div>
-        </section>
-
-        <!-- Q&A (slider) -->
-        <section>
-          <header class="major"><h2>Q&A（滑动式解答）</h2></header>
-
-          <div class="card-soft qa-shell" id="qaRoot">
-            <div class="qa-tabs" id="qaTabs" aria-label="qa-tabs"></div>
-
-            <div class="qa-grid">
-              <div class="qa-left">
-                <ul class="qa-list" id="qaList"></ul>
-              </div>
-
-              <div class="qa-right">
-                <div>
-                  <div class="qa-title" id="qaTitle">—</div>
-                  <div class="qa-answer" id="qaAnswer">—</div>
-
-                  <div class="qa-disclaimer" id="qaDisclaimer">
-                    提醒：本页为信息整理，不构成医疗建议。具体方案必须由医生面诊评估后决定。
-                  </div>
-                </div>
-
-                <div class="qa-ctrl">
-                  <button class="qa-btn" id="qaPrev" type="button">‹ 上一题</button>
-                  <button class="qa-btn" id="qaNext" type="button">下一题 ›</button>
-                </div>
-              </div>
-            </div>
-          </div>
-        </section>
-
-        <!-- Anesthesia & recovery -->
-        <section>
-          <header class="major"><h2>麻醉与恢复：把“疼痛与风险”说清楚</h2></header>
-          <div class="compare-grid">
-            <div class="compare-card">
-              <h4>表面麻醉（麻膏/贴敷）</h4>
-              <p class="note">常用于：激光、微针、注射类前准备。需要一定起效时间，可能配合封包。</p>
-            </div>
-            <div class="compare-card">
-              <h4>冷却镇痛（Cooling）</h4>
-              <p class="note">常用于：热能设备/激光过程中的舒适度管理，降低灼热感。</p>
-            </div>
-            <div class="compare-card">
-              <h4>局部注射麻醉 / 神经阻滞</h4>
-              <p class="note">更偏“强刺激/更深层操作”场景。是否需要取决于项目、范围与医生判断。</p>
-            </div>
-          </div>
-          <p class="note" style="margin-top:12px;">
-            RF 微针类等“带热能的侵入性设备”在不当操作下可能出现严重并发症风险（如灼伤、瘢痕、脂肪层损伤等），务必选择正规机构与有经验医生。
-          </p>
-        </section>
-
-        <!-- Aftercare -->
-        <section>
-          <header class="major"><h2>术后/术后同级：护理要点（让结果更稳）</h2></header>
-          <div class="card-soft">
-            <ul style="margin:0; line-height:1.95; color:rgba(0,0,0,.78);">
-              <li><b>防晒</b>：色素类项目尤其关键；避免日晒与高热环境。</li>
-              <li><b>修复</b>：短期可能出现红、肿、热感、干燥；按指导进行保湿与修复。</li>
-              <li><b>节奏</b>：提拉/胶原刺激类项目通常需要时间观察；不要频繁叠加高强度。</li>
-              <li><b>异常处理</b>：持续加重的疼痛、明显水泡/渗出、视力异常等，立即就医并联系机构。</li>
-            </ul>
-          </div>
-        </section>
-
-      </div><!-- /.inner -->
-    </div><!-- /#main -->
-
-    <!-- Sidebar (same layout, derm active) -->
-    <div id="sidebar">
-      <div class="inner">
-        <section id="sidebar-brand" class="sidebar-spacer"></section>
-
-        <nav id="menu">
-          <ul>
-            <li><a href="index.html" class="menu-home">首页</a></li>
-            <li><a href="wellness.html">大健康</a></li>
-            <li><a href="stemcell.html">干细胞</a></li>
-            <li class="active"><a href="derm.html">皮肤医美</a></li>
-            <li><a href="surgery.html">整形医美</a></li>
-            <li><a href="woman.html">女性护理中心</a></li>
-            <li><a href="man.html">男性健康中心</a></li>
-            <li><a href="kplan.html">定制医疗观光方案</a></li>
-          </ul>
-        </nav>
-
-        <section class="menu-extra">
-          <div class="section-spacer"></div>
-          <header class="major"><h3 class="about-title">关于我们</h3></header>
+      <!-- Hero -->
+      <section>
+        <div class="kms-hero">
+          <h1>皮肤医美</h1>
           <p>
-            我们相信，美丽与健康，源于真诚的交流。如果你对韩国医疗、健康管理或合作有兴趣，欢迎通过微信或邮件与我们联系。
+            以“评估 → 方案 → 治疗/管理 → 复盘”的逻辑，整理你在韩国最常见、最有效、最容易踩坑的皮肤项目。
+            <br>重点：提升能量（Ultherapy / Thermage / Titanium）、色素与肤色、毛孔痘疤、Skin Booster（Rejuran 等）、麻醉与恢复。
           </p>
-        </section>
 
-        <section>
-          <header class="major"><h3>联系方式</h3></header>
-          <ul class="contact">
-            <li class="icon solid fa-envelope">
-              <a href="mailto:egana@kmedispring.com">邮箱：egana@kmedispring.com</a>
-            </li>
-            <li class="icon solid fa-phone">(82) 10-4903-3123</li>
-            <li class="icon solid fa-home">韩国 首尔特别市 城北区 东小门路 63号 6层 (邮编：02845)</li>
+          <div class="chips">
+            <span class="chip"><i class="fas fa-layer-group"></i> 分层与组合</span>
+            <span class="chip"><i class="fas fa-user-md"></i> 医师评估优先</span>
+            <span class="chip"><i class="fas fa-shield-alt"></i> 风险与恢复期</span>
+            <span class="chip"><i class="fas fa-sliders-h"></i> 设备对比</span>
+          </div>
+
+          <div class="cta-row">
+            <a class="btn-primary" href="kplan.html">定制医疗观光方案</a>
+            <a class="btn-ghost" href="#qa">先看Q&A</a>
+          </div>
+        </div>
+      </section>
+
+      <!-- Device marquee + popup slider -->
+      <section id="devices">
+        <header class="major"><h2>设备与项目一览（图片占位 · 点击可放大）</h2></header>
+
+        <div class="marquee-photo-wrap" aria-label="Device marquee gallery">
+          <div class="marquee-photo-track" id="deviceMarqueeTrack">
+
+            <!-- 15 placeholders (세로 이미지 기준) -->
+            <a href="#" class="device-card" data-idx="0"  data-title="Ultherapy（最新版）" data-desc="SMAS聚焦超声提升：轮廓/下颌缘/松弛。关键在分层与能量分布。" data-src="images/devices/ultherapy.jpg">
+              <span class="ph">Ultherapy<br><small>最新版</small></span>
+            </a>
+
+            <a href="#" class="device-card" data-idx="1"  data-title="Thermage（最新版）" data-desc="单极射频紧致：皮肤质地/细纹/紧实感。以发数与能量设定为核心。" data-src="images/devices/thermage.jpg">
+              <span class="ph">Thermage<br><small>最新版</small></span>
+            </a>
+
+            <a href="#" class="device-card" data-idx="2"  data-title="Titanium 提拉" data-desc="多模式能量综合：提升与紧致的“组合连接器”，常用于复合方案。" data-src="images/devices/titanium.jpg">
+              <span class="ph">Titanium<br><small>Lifting</small></span>
+            </a>
+
+            <a href="#" class="device-card" data-idx="3"  data-title="InMode（FX/Forma等）" data-desc="射频/紧致/脂肪层管理：依院内设备与探头不同而变化。" data-src="images/devices/inmode.jpg">
+              <span class="ph">InMode<br><small>RF</small></span>
+            </a>
+
+            <a href="#" class="device-card" data-idx="4"  data-title="Onda（微波溶脂）" data-desc="身体脂肪层与紧致：以部位、能量、次数与恢复期管理为关键。" data-src="images/devices/onda.jpg">
+              <span class="ph">Onda<br><small>Body</small></span>
+            </a>
+
+            <a href="#" class="device-card" data-idx="5"  data-title="色素激光：皮秒（Pico）" data-desc="色素/纹身/肤色不均：需要看肤质、色素类型，常为多次管理。" data-src="images/devices/pico.jpg">
+              <span class="ph">Pico<br><small>Pigment</small></span>
+            </a>
+
+            <a href="#" class="device-card" data-idx="6"  data-title="色素激光：Q-Switched" data-desc="斑点/色沉：术后防晒与修复很关键，常需要疗程。" data-src="images/devices/qswitch.jpg">
+              <span class="ph">Q-Switch<br><small>Pigment</small></span>
+            </a>
+
+            <a href="#" class="device-card" data-idx="7"  data-title="“一次见效系”色素治疗（占位）" data-desc="你提到的‘一次也能明显改善’方向：先留图位与说明位（后续你填真实设备/术式）。" data-src="images/devices/onepass-pigment.jpg">
+              <span class="ph">ONE-PASS<br><small>Pigment</small></span>
+            </a>
+
+            <a href="#" class="device-card" data-idx="8"  data-title="RF 微针" data-desc="毛孔/痘坑/纹理：针深+能量+次数+恢复期共同决定效果。" data-src="images/devices/rf-mn.jpg">
+              <span class="ph">RF Microneedle<br><small>Texture</small></span>
+            </a>
+
+            <a href="#" class="device-card" data-idx="9"  data-title="血管/泛红激光（占位）" data-desc="泛红/红血丝/血管性问题：需要皮肤科评估适应症与风险。" data-src="images/devices/vascular.jpg">
+              <span class="ph">Vascular<br><small>Redness</small></span>
+            </a>
+
+            <a href="#" class="device-card" data-idx="10" data-title="脱毛激光（占位）" data-desc="毛周期与肤色评估很重要：疗程型管理为主。" data-src="images/devices/hair.jpg">
+              <span class="ph">Hair Removal<br><small>Laser</small></span>
+            </a>
+
+            <a href="#" class="device-card" data-idx="11" data-title="水光/导入设备（占位）" data-desc="常与Skin Booster与镇静修复联动：看肤质与恢复期安排。" data-src="images/devices/hydra.jpg">
+              <span class="ph">Hydra/Water-Glow<br><small>Care</small></span>
+            </a>
+
+            <a href="#" class="device-card" data-idx="12" data-title="Rejuran（丽珠兰）— 1（占位）" data-desc="PN修复方向：后续你按实际产品线补充“适用部位/层次/疗程”。" data-src="images/boosters/rejuran-1.jpg">
+              <span class="ph">Rejuran<br><small>Type 1</small></span>
+            </a>
+
+            <a href="#" class="device-card" data-idx="13" data-title="Rejuran（丽珠兰）— 2（占位）" data-desc="肤质与修复：后续你补齐“型号/差异/恢复期/禁忌”。" data-src="images/boosters/rejuran-2.jpg">
+              <span class="ph">Rejuran<br><small>Type 2</small></span>
+            </a>
+
+            <a href="#" class="device-card" data-idx="14" data-title="Skin Booster：里奥투等（占位）" data-desc="Skin Booster图位：你给到具体英文/韩文名后，我再把内容写到很严谨。" data-src="images/boosters/riotu.jpg">
+              <span class="ph">Skin Booster<br><small>NEW</small></span>
+            </a>
+
+          </div>
+        </div>
+
+        <p class="note">
+          你把真实图片上传到 <b>/images/devices/</b> 与 <b>/images/boosters/</b> 后，
+          只要保持文件名一致，这里会自动显示图片；点击可弹出大图并左右切换。
+        </p>
+      </section>
+
+      <!-- Comparison -->
+      <section id="compare">
+        <header class="major"><h2>提升能量对比（Ultherapy / Thermage / Titanium）</h2></header>
+
+        <div class="compare">
+          <div class="compare-head">
+            <div>
+              <h3>选择不是“哪个更强”，而是“哪一层、哪一部位更需要”</h3>
+              <p>同一个人，左右脸、苹果肌、下颌缘、法令周围的策略可能都不同。</p>
+            </div>
+          </div>
+
+          <div class="compare-grid">
+            <div class="th">维度</div>
+            <div class="th">Ultherapy</div>
+            <div class="th">Thermage</div>
+            <div class="th">Titanium</div>
+
+            <div class="k">主要作用层次（概念）</div>
+            <div class="v">偏深层（SMAS 方向）提升</div>
+            <div class="v">真皮/紧致感（射频）</div>
+            <div class="v">综合模式（依设备配置）</div>
+
+            <div class="k">更常被追求</div>
+            <div class="v">轮廓上提、下颌缘</div>
+            <div class="v">紧实、细纹与质地</div>
+            <div class="v">复合提升、整体协调</div>
+
+            <div class="k">容易踩的坑</div>
+            <div class="v">脸上脂肪薄的人，若层次/能量选择不当，可能“更显消瘦”</div>
+            <div class="v">发数/能量不足或适应症不匹配，体感有但改善不明显</div>
+            <div class="v">把它当万能：不分层、不分部位容易失望</div>
+
+            <div class="k">正确策略（核心）</div>
+            <div class="v">医生经验 + 分层能量 + 部位选择</div>
+            <div class="v">医生评估 + 发数/能量 + 术后管理</div>
+            <div class="v">与其它能量/注射搭配，做“组合方案”</div>
+          </div>
+
+          <div class="compare-note">
+            <b>重点：</b>“脸上没肉的人做Ultherapy会更凹吗？”——存在风险。
+            所以提升类项目更应该走 <b>医生评估 + 分层组合</b>，必要时选择更温和路线，或调整部位与发数。
+          </div>
+        </div>
+      </section>
+
+      <!-- Skin boosters -->
+      <section id="boosters">
+        <header class="major"><h2>Skin Booster（重点：Rejuran）</h2></header>
+
+        <div class="box">
+          <h3>Rejuran（丽珠兰）怎么理解</h3>
+          <p class="note">
+            这里先按“用户最常问的点”写成可执行版：你之后给到你要展示的 <b>3种Rejuran</b> 的具体名称/包装图，
+            我再把“差异/适用部位/深度/疗程间隔/恢复期”写到更精确。
+          </p>
+
+          <ul>
+            <li><b>核心诉求：</b>肤质修复、细腻度、稳定度（不是“立刻换脸”）。</li>
+            <li><b>为什么要分型：</b>部位、皮肤厚度、疼痛耐受、恢复期安排都不同。</li>
+            <li><b>现实预期：</b>更像“皮肤状态变稳 + 质地变细”，而不是一次就大幅度紧致。</li>
+            <li><b>组合常见：</b>与水光/导入、镇静修复、色素管理、提升能量分层搭配。</li>
           </ul>
-        </section>
 
-        <footer id="footer">
-          <p style="margin-top:1rem; text-align:center; font-size:0.9em; color:#666;">
-            © 2025 汉江春天 한강애봄 版权所有。模板设计：HTML5 UP。
+          <div class="row gtr-50">
+            <div class="col-6 col-12-small">
+              <span class="image fit"><img src="images/boosters/rejuran-1.jpg" alt="Rejuran placeholder"></span>
+              <p class="note" style="margin:8px 0 0 0;">（图片占位）Rejuran 图 1</p>
+            </div>
+            <div class="col-6 col-12-small">
+              <span class="image fit"><img src="images/boosters/rejuran-2.jpg" alt="Rejuran placeholder"></span>
+              <p class="note" style="margin:8px 0 0 0;">（图片占位）Rejuran 图 2</p>
+            </div>
+          </div>
+
+          <hr>
+
+          <h3>里奥투等其它 Skin Booster（占位）</h3>
+          <p class="note">
+            你把具体产品名（英文/韩文/中文）发给我后，我会用同一套逻辑做对比：<b>诉求</b> / <b>适合人群</b> / <b>恢复期</b> / <b>搭配建议</b> / <b>禁忌与风险提示</b>。
           </p>
-        </footer>
+
+          <span class="image fit"><img src="images/boosters/riotu.jpg" alt="Booster placeholder"></span>
+        </div>
+      </section>
+
+      <!-- Q&A -->
+      <section id="qa">
+        <header class="major"><h2>Q&A（滑动式解答）</h2></header>
+
+        <div class="qa-wrap">
+          <div class="qa-tabs" id="qaTabs">
+            <div class="qa-tab is-active" data-cat="lift">拉提与年轻化</div>
+            <div class="qa-tab" data-cat="pigment">色素与肤色</div>
+            <div class="qa-tab" data-cat="texture">毛孔 · 痘疤</div>
+            <div class="qa-tab" data-cat="booster">水光 · Skin Booster</div>
+            <div class="qa-tab" data-cat="anesthesia">麻醉与恢复</div>
+          </div>
+
+          <div class="qa-body">
+            <div class="qa-list" id="qaList"></div>
+
+            <div class="qa-panel">
+              <div class="qa-q" id="qaQ">—</div>
+              <div class="qa-a" id="qaA">—</div>
+
+              <div class="qa-nav">
+                <button type="button" id="qaPrev">‹ 上一题</button>
+                <button type="button" id="qaNext">下一题 ›</button>
+              </div>
+            </div>
+          </div>
+
+          <div class="qa-foot">
+            提醒：所有能量类/注射类项目都需要医生评估（皮肤厚度、脂肪、松弛层次、既往填充/线材史、恢复期安排）。
+          </div>
+        </div>
+      </section>
+
+    </div><!-- /.inner -->
+  </div><!-- /#main -->
+
+  <!-- Sidebar (index와 동일 구조 유지) -->
+  <div id="sidebar">
+    <div class="inner">
+
+      <section id="sidebar-brand" class="sidebar-spacer">
+        <a class="sidebar-logo" href="index.html" aria-label="汉江春天 Home">
+          <img src="images/logo_ch.png" alt="汉江春天 Logo">
+        </a>
+      </section>
+
+      <nav id="menu">
+        <ul>
+          <li><a href="index.html">首页</a></li>
+          <li><a href="wellness.html">大健康</a></li>
+          <li><a href="stemcell.html">干细胞</a></li>
+          <li><a href="derm.html">皮肤医美</a></li>
+          <li><a href="surgery.html">整形医美</a></li>
+          <li><a href="woman.html">女性</a></li>
+          <li><a href="man.html">男性</a></li>
+          <li><a href="kplan.html">定制医疗观光方案</a></li>
+        </ul>
+      </nav>
+
+      <section>
+        <header class="major"><h2>联系我们</h2></header>
+        <ul class="contact">
+          <li class="icon solid fa-envelope"><a href="mailto:2gana@naver.com">2gana@naver.com</a></li>
+          <li class="icon solid fa-phone">+82-10-4903-3123</li>
+          <li class="icon solid fa-home">Seoul, Korea</li>
+        </ul>
+      </section>
+
+      <footer id="footer">
+        <p class="copyright">©2026 汉江春天. 来源：汉江春天</p>
+      </footer>
+
+    </div>
+  </div><!-- /#sidebar -->
+
+</div><!-- /#wrapper -->
+
+
+<!-- WeChat Modal -->
+<div id="wechatModal" class="modal" aria-hidden="true" role="dialog">
+  <div class="modal-inner">
+    <button class="close" aria-label="Close">&times;</button>
+    <p class="modal-caption">扫描二维码添加微信</p>
+    <img id="wechatQR" class="modal-content" src="images/qr_weixin.jpg" alt="WeChat QR">
+    <p class="modal-id">WeChat ID：e-gana</p>
+  </div>
+</div>
+
+<!-- Popup / Lightbox Slider -->
+<div class="kms-lightbox" id="kmsLightbox" aria-hidden="true" role="dialog" aria-label="Device viewer">
+  <div class="kms-lightbox__backdrop" data-close="1"></div>
+
+  <div class="kms-lightbox__panel" role="document">
+    <button class="kms-lightbox__close" type="button" aria-label="Close" data-close="1">&times;</button>
+
+    <button class="kms-lightbox__nav kms-lightbox__prev" type="button" aria-label="Previous"><span aria-hidden="true">‹</span></button>
+    <button class="kms-lightbox__nav kms-lightbox__next" type="button" aria-label="Next"><span aria-hidden="true">›</span></button>
+
+    <div class="kms-lightbox__content">
+      <div class="kms-lightbox__media">
+        <img id="kmsLbImg" src="" alt="" />
       </div>
-    </div><!-- /#sidebar -->
 
-  </div><!-- /#wrapper -->
+      <div class="kms-lightbox__text">
+        <h3 id="kmsLbTitle">—</h3>
+        <p id="kmsLbDesc" class="kmsLbDesc">—</p>
 
-  <!-- WeChat QR Modal -->
-  <div id="wechatModal" class="modal" aria-hidden="true" role="dialog">
-    <div class="modal-inner">
-      <button class="close" aria-label="Close" type="button">&times;</button>
-      <img id="wechatQR" class="modal-content" src="images/qr_weixin.jpg" alt="WeChat QR e-gana" />
-      <p class="modal-id">WeChat ID：e-gana ｜《汉江春天》医疗<br>医疗旅游咨询公司｜韩国保健福祉部认证机构</p>
+        <div class="kms-lightbox__meta">
+          <div class="lb-chip">医生评估</div>
+          <div class="lb-chip">分层/能量</div>
+          <div class="lb-chip">恢复期管理</div>
+        </div>
+
+        <p class="kms-lightbox__tiny">
+          说明：能量与注射类治疗的“适合与否”必须由医生面诊判断，包含肤质、脂肪层、松弛层次、既往治疗史与恢复期安排。
+        </p>
+      </div>
     </div>
   </div>
+</div>
 
-  <!-- WhatsApp QR Modal -->
-  <div id="whatsappModal" class="modal" aria-hidden="true" role="dialog">
-    <div class="modal-inner">
-      <button class="close" aria-label="Close" type="button">&times;</button>
-      <img id="whatsappQR" class="modal-content" src="images/whatsapp_qr.jpg" alt="WhatsApp QR K-Medi Korea" />
-      <p class="modal-id">WhatsApp：+82-10-4903-3123<br> 《汉江春天》 k-medi korea </p>
-    </div>
-  </div>
 
-  <!-- Custom JS (ONLY ONE script) -->
-  <script>
-  document.addEventListener('DOMContentLoaded', function () {
+<!-- Scripts (Editorial 기본) -->
+<script src="assets/js/jquery.min.js"></script>
+<script src="assets/js/browser.min.js"></script>
+<script src="assets/js/breakpoints.min.js"></script>
+<script src="assets/js/util.js"></script>
+<script src="assets/js/main.js"></script>
 
-    /* =======================
-       WeChat / WhatsApp modals (same as index)
-       ======================= */
-    const wechatModal = document.getElementById('wechatModal');
-    const wechatIcon  = document.getElementById('wechat-icon');
-    const wechatQR    = document.getElementById('wechatQR');
-    const wechatClose = wechatModal ? wechatModal.querySelector('.close') : null;
+<script>
+document.addEventListener('DOMContentLoaded', function(){
 
-    const whatsappModal = document.getElementById('whatsappModal');
-    const whatsappIcon  = document.getElementById('whatsapp-icon');
-    const whatsappQR    = document.getElementById('whatsappQR');
-    const whatsappClose = whatsappModal ? whatsappModal.querySelector('.close') : null;
+  /* ===== WeChat modal ===== */
+  const wechatIcon = document.getElementById('wechat-icon');
+  const wechatModal = document.getElementById('wechatModal');
+  const closeBtn = wechatModal ? wechatModal.querySelector('.close') : null;
 
-    function closeWeChat(){
-      if (wechatModal){
-        wechatModal.style.display = 'none';
-        wechatModal.setAttribute('aria-hidden', 'true');
-      }
-      document.body.classList.remove('modal-open');
-    }
-    function openWeChat(e){
-      if (e) e.preventDefault();
-      closeWhatsApp();
-      if (wechatQR){
-        wechatQR.src = wechatQR.src.split('?')[0] + '?v=' + Date.now();
-      }
-      if (wechatModal){
-        wechatModal.style.display = 'flex';
-        wechatModal.setAttribute('aria-hidden', 'false');
-      }
-      document.body.classList.add('modal-open');
-    }
+  function openWechat(){
+    if(!wechatModal) return;
+    wechatModal.classList.add('is-open');
+    wechatModal.setAttribute('aria-hidden','false');
+    document.body.classList.add('modal-open');
+  }
+  function closeWechat(){
+    if(!wechatModal) return;
+    wechatModal.classList.remove('is-open');
+    wechatModal.setAttribute('aria-hidden','true');
+    document.body.classList.remove('modal-open');
+  }
 
-    function closeWhatsApp(){
-      if (whatsappModal){
-        whatsappModal.style.display = 'none';
-        whatsappModal.setAttribute('aria-hidden', 'true');
-      }
-      document.body.classList.remove('modal-open');
-    }
-    function openWhatsApp(e){
-      if (e) e.preventDefault();
-      closeWeChat();
-      if (whatsappQR){
-        whatsappQR.src = whatsappQR.src.split('?')[0] + '?v=' + Date.now();
-      }
-      if (whatsappModal){
-        whatsappModal.style.display = 'flex';
-        whatsappModal.setAttribute('aria-hidden', 'false');
-      }
-      document.body.classList.add('modal-open');
-    }
-
-    if (wechatIcon) wechatIcon.addEventListener('click', openWeChat);
-    if (whatsappIcon) whatsappIcon.addEventListener('click', openWhatsApp);
-
-    if (wechatClose){
-      wechatClose.addEventListener('click', function(e){
-        e.preventDefault();
-        closeWeChat();
-      });
-    }
-    if (whatsappClose){
-      whatsappClose.addEventListener('click', function(e){
-        e.preventDefault();
-        closeWhatsApp();
-      });
-    }
-
-    if (wechatModal){
-      wechatModal.addEventListener('click', function(e){
-        if (e.target === wechatModal) closeWeChat();
-      });
-    }
-    if (whatsappModal){
-      whatsappModal.addEventListener('click', function(e){
-        if (e.target === whatsappModal) closeWhatsApp();
-      });
-    }
-
-    document.addEventListener('keydown', function (e) {
-      if (e.key === 'Escape') {
-        closeWeChat();
-        closeWhatsApp();
-      }
-    });
-
-    /* =======================
-       Q&A data (richer + portal-style questions)
-       ======================= */
-    const QA = [
-      {
-        key: "lift",
-        label: "拉提与年轻化",
-        items: [
-          {
-            q: "会不会很假？会不会一看就是做过？",
-            a: "“不自然”多数来自：①能量/注射/线材用量与层次不匹配，②忽略脸型基础（脂肪量、骨性支撑），③追求单次过猛。\n\n更稳的做法是：先评估“松弛层次 + 脂肪量 + 皮肤厚度”，再用分区、分层、分次组合；必要时用更温和路径，把目标定为“更精神、更紧致”，而不是“换一张脸”。",
-            tip: "关键词：分层组合 / 适度 / 自然感"
-          },
-          {
-            q: "Ultherapy / Thermage / Titanium 到底差在哪？",
-            a: "理解框架：Ultherapy 偏“深层提拉框架感”；Thermage 偏“紧致与弹性、肤质纹理”；Titanium 常被用于“组合平台叙事”（具体要看型号与模式）。\n\n真正的差别不在名字，而在：你需要提拉还是紧致？脂肪是否偏少？恢复期能接受多少？是否要与皮肤修复/补水/支撑策略联动？",
-            tip: "重点：不是选机型，是选组合逻辑"
-          },
-          {
-            q: "脸上没肉的人做 Ultherapy 会更凹吗？",
-            a: "存在这种风险：脂肪薄、皮肤薄的人，如果能量层次与分布选择不当，视觉上可能更显消瘦。\n\n更稳的策略是：强调医生经验与分层组合；必要时选择更温和紧致路径、调整部位与发数，并把“保留支撑感”的目标放在第一位。",
-            tip: "脂肪少：更谨慎、更分区"
-          },
-          {
-            q: "多久能看到效果？会不会马上就有？",
-            a: "提拉/紧致类通常存在两段变化：①短期（数天~数周）可能出现“紧一点”的主观变化；②中期（1~3个月甚至更久）随着胶原重塑逐步稳定。\n\n因此更建议：先定“阶段目标”，再做复盘与微调，而不是频繁叠加高强度。",
-            tip: "有“时间轴”，别急"
-          }
-        ]
-      },
-      {
-        key: "pigment",
-        label: "色素与肤色",
-        items: [
-          {
-            q: "色斑能不能一次就打掉？",
-            a: "有些表浅色素一次就能明显变淡，但“追求一次清零”并不稳。\n\n原因是：色素有深浅层、炎症背景与反黑体质差异。更稳的是“分层、分次、可控剂量 + 严格防晒与修复”，用可复制的结果去赢。",
-            tip: "一次明显 ≠ 一次清零"
-          },
-          {
-            q: "会不会反黑？怎么降低反黑风险？",
-            a: "反黑（PIH）风险和：皮肤屏障、炎症程度、能量设置、术后防晒与修复有关。\n\n降低策略：①治疗前把皮肤状态稳住（敏感/爆痘/屏障差先处理），②不追求过猛参数，③术后严格防晒与修复，④按医嘱控制热/摩擦/高温环境。",
-            tip: "反黑=“炎症+防晒修复”管理"
-          },
-          {
-            q: "黄褐斑为什么容易反复？",
-            a: "黄褐斑常与激素/血管/炎症/屏障等多因素相关，单靠“打一打”很难长期稳定。\n\n更稳是：把它当“长期管理型问题”，分阶段：先降炎与稳屏障，再进入温和调理与维护，并严格防晒。",
-            tip: "把它当长期管理"
-          }
-        ]
-      },
-      {
-        key: "pores",
-        label: "毛孔·痘疤",
-        items: [
-          {
-            q: "毛孔到底能不能缩？",
-            a: "毛孔本质与油脂、皮肤弹性、角化与炎症相关。能改善“视觉毛孔”，但很难承诺“永久消失”。\n\n更稳做法：控油与角化管理 + 纹理重建（能量/微针等）+ 屏障修复，按周期复盘。",
-            tip: "目标是“视觉改善与稳定”"
-          },
-          {
-            q: "凹陷痘疤怎么做最有效？",
-            a: "凹陷疤常需要组合：不同疤型（Rolling/Boxcar/Ice-pick）路径不同。\n\n通常是“分型 → 组合 → 多次复盘”，而不是一个项目解决全部。",
-            tip: "分型比项目名重要"
-          },
-          {
-            q: "RF 微针是不是最强？有没有风险？",
-            a: "RF 微针可用于纹理与疤痕改善叙事，但它属于医疗操作，若参数/层次/操作者经验不足，可能发生严重并发症风险（如灼伤、瘢痕、脂肪层损伤等）。\n\n因此：只在正规机构由专业人员操作，并把“安全边界与术后管理”放第一位。",
-            tip: "强≠随便做；安全优先"
-          }
-        ]
-      },
-      {
-        key: "booster",
-        label: "水光·Skin Booster",
-        items: [
-          {
-            q: "Rejuran 到底是什么？适合谁？",
-            a: "Rejuran 常以 PN（Polynucleotide）“修复与肤质质感”方向来理解，常见诉求：细纹、弹性、皮肤质感、稳定度。\n\n是否适合取决于：敏感/炎症状态、皮肤薄厚、期望值与恢复期。具体用法与合规范围以医生评估为准。",
-            tip: "把它当“修复型逻辑”"
-          },
-          {
-            q: "Juvelook 和一般水光有什么不同？",
-            a: "Juvelook 常被归到“胶原刺激 + 支撑改善”逻辑（成分与层次要求更高）。\n\n水光/HA 更偏“补水与光泽即时感”；刺激系更偏“纹理与支撑中期改善”。很多情况下会先稳屏障与补水，再逐步引入刺激系。",
-            tip: "即时感 vs 中期结构感"
-          },
-          {
-            q: "打完会结节吗？怎么避免？",
-            a: "结节/触感异常与：产品类型、稀释与层次、剂量、注射速度、炎症体质相关。\n\n降低策略：选择有经验医生、严格无菌、合适层次与剂量、术后遵循指导（避免揉搓与高温），并及时复诊处理异常。",
-            tip: "核心在医生手法与层次"
-          }
-        ]
-      },
-      {
-        key: "anesthesia",
-        label: "麻醉与恢复",
-        items: [
-          {
-            q: "皮肤项目一般用什么麻醉？",
-            a: "常见有：表面麻醉（麻膏/贴敷）、冷却镇痛（Cooling）、局部注射麻醉/神经阻滞（更强刺激或更深层操作时）。\n\n具体选哪种取决于项目强度、范围、疼痛耐受与安全评估。",
-            tip: "麻醉也需要“适配”"
-          },
-          {
-            q: "会不会很疼？能不能完全不疼？",
-            a: "疼痛感受因人而异，也与能量、部位、操作节奏有关。\n\n目标通常是“可控、可耐受”，并通过：分区、冷却、表麻、必要时局麻等降低不适，而不是承诺“完全无感”。",
-            tip: "可控比无感更真实"
-          },
-          {
-            q: "恢复期一般多久？会红几天？",
-            a: "轻度项目可能仅短期泛红/轻肿；能量更强或侵入性更高时，红肿/干燥/结痂等持续时间会更长。\n\n稳定恢复的关键是：防晒 + 修复 + 避免高热与摩擦，并按医嘱复盘。",
-            tip: "恢复=护理执行力"
-          }
-        ]
-      }
-    ];
-
-    /* =======================
-       Q&A slider render
-       ======================= */
-    const elTabs = document.getElementById('qaTabs');
-    const elList = document.getElementById('qaList');
-    const elTitle = document.getElementById('qaTitle');
-    const elAnswer = document.getElementById('qaAnswer');
-    const elPrev = document.getElementById('qaPrev');
-    const elNext = document.getElementById('qaNext');
-    const elDisclaimer = document.getElementById('qaDisclaimer');
-
-    let state = { cat: 0, idx: 0 };
-
-    function renderTabs(){
-      elTabs.innerHTML = '';
-      QA.forEach((c, i) => {
-        const btn = document.createElement('div');
-        btn.className = 'qa-tab' + (i === state.cat ? ' active' : '');
-        btn.textContent = c.label;
-        btn.addEventListener('click', () => {
-          state.cat = i;
-          state.idx = 0;
-          renderAll();
-        });
-        elTabs.appendChild(btn);
-      });
-    }
-
-    function renderList(){
-      elList.innerHTML = '';
-      const items = QA[state.cat].items;
-
-      items.forEach((it, i) => {
-        const li = document.createElement('li');
-        li.className = 'qa-q' + (i === state.idx ? ' active' : '');
-        li.textContent = it.q;
-        li.addEventListener('click', () => {
-          state.idx = i;
-          renderDetail();
-          renderList();
-          renderNav();
-        });
-        elList.appendChild(li);
-      });
-    }
-
-    function renderDetail(){
-      const it = QA[state.cat].items[state.idx];
-      elTitle.textContent = it.q;
-
-      const safeText = (it.a || '').split('\n').map(p => p.trim()).filter(Boolean);
-      elAnswer.innerHTML = safeText.map(p => `<p style="margin:0 0 .85rem 0;">${escapeHtml(p)}</p>`).join('');
-      if (it.tip){
-        elAnswer.innerHTML += `<p class="note" style="margin: .2rem 0 0 0;"><b>要点：</b>${escapeHtml(it.tip)}</p>`;
-      }
-
-      elDisclaimer.innerHTML =
-        "提醒：本页为信息整理，不构成医疗建议。具体方案必须由医生面诊评估后决定。";
-    }
-
-    function renderNav(){
-      const total = QA[state.cat].items.length;
-      elPrev.disabled = (state.idx <= 0);
-      elNext.disabled = (state.idx >= total - 1);
-    }
-
-    function renderAll(){
-      renderTabs();
-      renderList();
-      renderDetail();
-      renderNav();
-    }
-
-    function escapeHtml(str){
-      return String(str)
-        .replaceAll('&','&amp;')
-        .replaceAll('<','&lt;')
-        .replaceAll('>','&gt;')
-        .replaceAll('"','&quot;')
-        .replaceAll("'","&#039;");
-    }
-
-    elPrev.addEventListener('click', () => {
-      if (state.idx > 0){
-        state.idx -= 1;
-        renderDetail(); renderList(); renderNav();
-      }
-    });
-    elNext.addEventListener('click', () => {
-      const total = QA[state.cat].items.length;
-      if (state.idx < total - 1){
-        state.idx += 1;
-        renderDetail(); renderList(); renderNav();
-      }
-    });
-
-    renderAll();
-
+  wechatIcon && wechatIcon.addEventListener('click', function(e){
+    e.preventDefault(); openWechat();
   });
-  </script>
+  closeBtn && closeBtn.addEventListener('click', function(){ closeWechat(); });
+  wechatModal && wechatModal.addEventListener('click', function(e){
+    if(e.target === wechatModal) closeWechat();
+  });
 
-  <!-- Template scripts (same order) -->
-  <script src="assets/js/jquery.min.js"></script>
-  <script src="assets/js/browser.min.js"></script>
-  <script src="assets/js/breakpoints.min.js"></script>
-  <script src="assets/js/util.js"></script>
-  <script src="assets/js/main.js"></script>
+  /* ===== Marquee loop (duplicate 15 cards once) ===== */
+  const track = document.getElementById('deviceMarqueeTrack');
+  const cards = Array.from(document.querySelectorAll('#devices .device-card'));
+  if(track && track.dataset.cloned !== '1'){
+    track.dataset.cloned = '1';
+    const frag = document.createDocumentFragment();
+    cards.forEach(c => frag.appendChild(c.cloneNode(true)));
+    track.appendChild(frag);
+  }
+
+  /* ===== Lightbox slider ===== */
+  const lb = document.getElementById('kmsLightbox');
+  const lbImg = document.getElementById('kmsLbImg');
+  const lbTitle = document.getElementById('kmsLbTitle');
+  const lbDesc = document.getElementById('kmsLbDesc');
+  const btnPrev = lb ? lb.querySelector('.kms-lightbox__prev') : null;
+  const btnNext = lb ? lb.querySelector('.kms-lightbox__next') : null;
+
+  const slideItems = cards.slice(0,15).map(el => ({
+    title: el.getAttribute('data-title') || '—',
+    desc: el.getAttribute('data-desc') || '—',
+    src: el.getAttribute('data-src') || ''
+  }));
+
+  let idx = 0;
+
+  function openLb(i){
+    if(!lb) return;
+    idx = (i + slideItems.length) % slideItems.length;
+    const it = slideItems[idx];
+    lbTitle.textContent = it.title;
+    lbDesc.textContent  = it.desc;
+    lbImg.alt = it.title;
+    lbImg.src = it.src ? (it.src.split('?')[0] + '?v=' + Date.now()) : '';
+    lb.setAttribute('aria-hidden','false');
+    document.body.classList.add('modal-open');
+  }
+  function closeLb(){
+    if(!lb) return;
+    lb.setAttribute('aria-hidden','true');
+    document.body.classList.remove('modal-open');
+    lbImg.src = '';
+  }
+  function prev(){ openLb(idx - 1); }
+  function next(){ openLb(idx + 1); }
+
+  document.getElementById('devices')?.addEventListener('click', function(e){
+    const a = e.target.closest('.device-card');
+    if(!a) return;
+    e.preventDefault();
+    const i = parseInt(a.getAttribute('data-idx') || '0', 10);
+    openLb(i);
+  });
+
+  lb?.addEventListener('click', function(e){
+    const close = e.target.closest('[data-close="1"]');
+    if(close) closeLb();
+  });
+
+  btnPrev?.addEventListener('click', function(e){ e.preventDefault(); prev(); });
+  btnNext?.addEventListener('click', function(e){ e.preventDefault(); next(); });
+
+  document.addEventListener('keydown', function(e){
+    if(e.key === 'Escape'){ closeLb(); closeWechat(); }
+    if(lb && lb.getAttribute('aria-hidden') === 'false'){
+      if(e.key === 'ArrowLeft') prev();
+      if(e.key === 'ArrowRight') next();
+    }
+  });
+
+  /* swipe */
+  let sx=0, sy=0, touching=false;
+  lb?.addEventListener('touchstart', function(e){
+    if(!e.touches || e.touches.length !== 1) return;
+    touching=true; sx=e.touches[0].clientX; sy=e.touches[0].clientY;
+  }, {passive:true});
+  lb?.addEventListener('touchend', function(e){
+    if(!touching) return;
+    touching=false;
+    const t = e.changedTouches && e.changedTouches[0];
+    if(!t) return;
+    const dx=t.clientX-sx, dy=t.clientY-sy;
+    if(Math.abs(dx)>50 && Math.abs(dx)>Math.abs(dy)){
+      if(dx>0) prev(); else next();
+    }
+  }, {passive:true});
+
+  /* ===== Q&A data (강화 버전: 알리/티엔마오에서 흔한 질문 흐름) ===== */
+  const QA = [
+    /* lift */
+    {cat:'lift', q:'会不会很假？会不会一眼看出做过？', a:'“假”的主要原因不是设备本身，而是：①不分层只追求强度；②不看脸型与脂肪厚度；③忽视恢复期与皮肤状态。正确做法是医生评估后按部位分层组合，宁可循序渐进，也不要一次堆到极限。'},
+    {cat:'lift', q:'脸上没肉的人做Ultherapy会更凹吗？', a:'存在这种风险：脂肪薄、皮肤薄的人，如果层次与能量分布选择不当，可能更显消瘦。所以更强调“医生经验 + 分层组合”。必要时选择更温和路线或调整部位/发数。'},
+    {cat:'lift', q:'Ultherapy / Thermage / Titanium 到底怎么选？', a:'按“层次 + 目标”选：Ultherapy偏提升方向；Thermage偏紧致质地；Titanium更像组合型工具。很多人最终的最佳方案是“组合”，而不是三选一。'},
+    {cat:'lift', q:'多久能看到效果？会不会第二天就没了？', a:'提升紧致一般有“即刻感 + 渐进期”。即刻感来自组织收缩与水肿变化，渐进期来自后续修复与胶原相关过程。不同人差异很大，复盘很重要。'},
+
+    /* pigment */
+    {cat:'pigment', q:'色斑能不能一次就打掉？', a:'少数情况下“一次明显淡化”是可能的，但并不等于“所有色斑一次清零”。色斑类型（表皮/真皮/混合）、肤色、炎症风险不同，通常更安全的是分次管理 + 严格防晒与修复。'},
+    {cat:'pigment', q:'做完色素激光最怕什么？反黑吗？', a:'最怕的是术后管理失败：防晒不到位、摩擦/刺激、修复不当导致炎症后色沉风险增加。医生会根据你的肤质与斑型选择更稳的能量与节奏。'},
+    {cat:'pigment', q:'皮秒 vs Q-Switched 有什么差别？', a:'它们都是色素管理常见工具，但对不同色素与不同肤质的策略不一样。关键不是“哪个更贵”，而是“你是哪种斑、你能承受怎样的恢复期与风险”。'},
+
+    /* texture */
+    {cat:'texture', q:'毛孔/痘坑能彻底消失吗？', a:'通常目标是“明显改善”，而不是承诺“彻底消失”。毛孔与痘坑属于结构型问题，往往需要能量+恢复期+多次管理，且对生活作息与皮肤屏障也敏感。'},
+    {cat:'texture', q:'RF微针为什么有人说有效、有人说没用？', a:'主要差别在：针深与能量是否匹配皮肤厚度、是否按区域分层、次数与间隔、恢复期管理、以及痘坑类型（滚动/冰锥/箱形）差异。'},
+
+    /* booster */
+    {cat:'booster', q:'Rejuran（丽珠兰）到底解决什么？', a:'更偏“修复与肤质稳定”：细腻度、光泽感、皮肤状态更稳。它不是立刻把脸“拉上去”的那类项目，通常作为“底盘修复”与其他项目组合更合理。'},
+    {cat:'booster', q:'Skin Booster 一堆名字，怎么不踩坑？', a:'先问三件事：①你要的结果是“修复/保湿/紧致/肤色/毛孔”哪一个；②你能接受多长恢复期；③是否要与提升/色素/水光联动。把目标说清，方案自然清楚。'},
+
+    /* anesthesia */
+    {cat:'anesthesia', q:'皮肤项目常见麻醉方式有哪些？', a:'常见是：表面麻醉（麻膏/敷麻）、局部注射麻醉、冷却镇痛（冷喷/冷却装置）。部分项目可能涉及镇静（需院内流程与评估）。最终以医生评估与院内安全流程为准。'},
+    {cat:'anesthesia', q:'恢复期一般要注意什么？', a:'核心三件事：防晒、修复、避免刺激（搓洗/桑拿/饮酒等按项目要求）。色素类尤其重视防晒；微针/注射类重视清洁与感染风险管理。'}
+  ];
+
+  const qaTabs = document.getElementById('qaTabs');
+  const qaList = document.getElementById('qaList');
+  const qaQ = document.getElementById('qaQ');
+  const qaA = document.getElementById('qaA');
+  const qaPrev = document.getElementById('qaPrev');
+  const qaNext = document.getElementById('qaNext');
+
+  let currentCat = 'lift';
+  let currentIndex = 0;
+  let currentItems = [];
+
+  function renderList(){
+    currentItems = QA.filter(x => x.cat === currentCat);
+    qaList.innerHTML = '';
+    currentItems.forEach((it, i) => {
+      const btn = document.createElement('button');
+      btn.type = 'button';
+      btn.className = 'qa-item' + (i===0 ? ' is-active':'');
+      btn.textContent = it.q;
+      btn.addEventListener('click', () => selectItem(i));
+      qaList.appendChild(btn);
+    });
+    currentIndex = 0;
+    renderPanel();
+  }
+
+  function renderPanel(){
+    const it = currentItems[currentIndex] || {q:'—', a:'—'};
+    qaQ.textContent = it.q;
+    qaA.textContent = it.a;
+
+    const buttons = qaList.querySelectorAll('.qa-item');
+    buttons.forEach((b, i) => b.classList.toggle('is-active', i===currentIndex));
+  }
+
+  function selectItem(i){
+    currentIndex = (i + currentItems.length) % currentItems.length;
+    renderPanel();
+  }
+
+  qaPrev && qaPrev.addEventListener('click', () => selectItem(currentIndex - 1));
+  qaNext && qaNext.addEventListener('click', () => selectItem(currentIndex + 1));
+
+  qaTabs && qaTabs.addEventListener('click', function(e){
+    const t = e.target.closest('.qa-tab');
+    if(!t) return;
+    const cat = t.getAttribute('data-cat');
+    if(!cat) return;
+    currentCat = cat;
+
+    qaTabs.querySelectorAll('.qa-tab').forEach(x => x.classList.toggle('is-active', x===t));
+    renderList();
+  });
+
+  renderList();
+
+});
+</script>
 
 </body>
 </html>
