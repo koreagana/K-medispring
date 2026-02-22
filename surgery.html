@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
-  <title>汉江春天</title>
+  <title>整形医美｜汉江春天</title>
 
   <!-- GitHub Pages용 base 경로 -->
   <script>
@@ -17,207 +17,1182 @@
   </script>
 
   <!-- Meta Tags -->
-  <meta name="description" content="汉江春天 · 韩国医疗观光与大健康平台" />
-  <meta property="og:title" content="汉江春天" />
-  <meta property="og:description" content="专注于韩国医疗、皮肤医美、干细胞、健康管理与高端定制旅行" />
+  <meta name="description" content="汉江春天｜整形医美：提升·轮廓·眼鼻·体型·修复与二次手术。以信息透明与术后管理为核心。" />
+  <meta property="og:title" content="整形医美｜汉江春天" />
+  <meta property="og:description" content="提升·轮廓·眼鼻·体型·修复与二次手术。术前评估→方案选择→手术→术后管理→复盘。" />
   <meta property="og:image" content="https://kmedispring.com/images/preview.jpg" />
-  <meta property="og:url" content="https://kmedispring.com/index.html" />
+  <meta property="og:url" content="https://kmedispring.com/surgery.html" />
   <meta name="twitter:card" content="summary_large_image" />
 
-  <!-- Favicon -->
-  <link rel="icon" type="image/x-icon" href="images/favicon.ico?v=20251012">
-  <link rel="icon" type="image/png" sizes="32x32" href="images/favicon-32.png?v=20251012">
-  <link rel="icon" type="image/png" sizes="16x16" href="images/favicon-16.png?v=20251012">
-  <link rel="apple-touch-icon" sizes="180x180" href="images/apple-touch-icon.png?v=20251012">
+  <!-- 파비콘 -->
+  <link rel="icon" type="image/x-icon" href="/images/favicon.ico?v=20251012">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32.png?v=20251012">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16.png?v=20251012">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png?v=20251012">
+  <link rel="shortcut icon" href="/images/favicon.ico?v=20251012">
 
   <!-- CSS -->
   <link rel="stylesheet" href="assets/css/fontawesome-all.min.css?v=20251027" />
   <link rel="stylesheet" href="assets/css/main.css?v=20251027" />
-  <noscript>
-    <link rel="stylesheet" href="assets/css/noscript.css?v=20251027" />
-  </noscript>
+  <noscript><link rel="stylesheet" href="assets/css/noscript.css?v=20251027" /></noscript>
+
+  <!-- Page-only CSS -->
+  <style>
+    /* tighter + cleaner hero for inner pages */
+    .kms-page-hero{
+      padding-top: 1.25rem;
+      padding-bottom: 0.25rem;
+    }
+    .kms-topline{
+      border-top: 2px solid rgba(0,0,0,.08);
+      margin-top: 1.25rem;
+      margin-bottom: 1.85rem; /* <- makes space under the thin line */
+    }
+    .kms-lede{
+      max-width: 62rem;
+      color: rgba(0,0,0,.72);
+    }
+    .kms-chiprow{
+      display:flex; flex-wrap:wrap; gap:.55rem;
+      margin: .9rem 0 1.2rem 0;
+    }
+    .kms-chip{
+      display:inline-flex; align-items:center; gap:.45rem;
+      border: 1px solid rgba(0,0,0,.12);
+      border-radius: 999px;
+      padding: .45rem .75rem;
+      font-size: .95rem;
+      background: rgba(255,255,255,.7);
+    }
+    .kms-chip i{ color: rgba(0,0,0,.55); }
+
+    /* image placeholders */
+    .kms-imgslot{
+      border: 1px dashed rgba(0,0,0,.18);
+      border-radius: 12px;
+      background: rgba(0,0,0,.02);
+      padding: 14px;
+      margin: 1rem 0 1.5rem 0;
+    }
+    .kms-imgslot .label{
+      font-size:.9rem; color: rgba(0,0,0,.55);
+      margin-bottom: .5rem;
+    }
+    .kms-imgslot .box{
+      border-radius: 10px;
+      background: #fff;
+      min-height: 210px;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      color: rgba(0,0,0,.35);
+      font-size: .95rem;
+    }
+
+    /* category cards */
+    .kms-grid{
+      display:grid;
+      grid-template-columns: repeat(12, 1fr);
+      gap: 1.2rem;
+    }
+    .kms-card{
+      grid-column: span 6;
+      border: 1px solid rgba(0,0,0,.10);
+      border-radius: 16px;
+      background: #fff;
+      padding: 1.1rem 1.1rem;
+      box-shadow: 0 6px 18px rgba(0,0,0,.06);
+    }
+    .kms-card h3{ margin: 0 0 .35rem 0; }
+    .kms-card p{ margin: 0 0 .75rem 0; color: rgba(0,0,0,.70); }
+    .kms-actions{
+      display:flex; flex-wrap:wrap; gap:.55rem;
+      margin-top: .6rem;
+    }
+    .kms-mini-btn{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      gap:.4rem;
+      padding: .55rem .85rem;
+      border-radius: 12px;
+      border: 1px solid rgba(0,0,0,.12);
+      background: rgba(255,255,255,.8);
+      cursor:pointer;
+      font-size: .95rem;
+      line-height:1;
+      text-decoration:none;
+    }
+    .kms-mini-btn:hover{ background: rgba(0,0,0,.03); }
+
+    @media (max-width: 980px){
+      .kms-card{ grid-column: span 12; }
+      .kms-imgslot .box{ min-height: 180px; }
+    }
+
+    /* ====== Slider Drawer (right) ====== */
+    .kms-drawer-overlay{
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,.45);
+      display: none;
+      z-index: 12050;
+    }
+    .kms-drawer{
+      position: fixed;
+      top: 0; right: 0;
+      height: 100vh;
+      width: min(520px, 92vw);
+      background: #fff;
+      box-shadow: -18px 0 40px rgba(0,0,0,.20);
+      transform: translateX(102%);
+      transition: transform .28s ease;
+      z-index: 12100;
+      display: flex;
+      flex-direction: column;
+    }
+    .kms-drawer.open{ transform: translateX(0); }
+    .kms-drawer-header{
+      padding: 1rem 1rem .75rem 1rem;
+      border-bottom: 1px solid rgba(0,0,0,.08);
+      display:flex;
+      align-items:flex-start;
+      justify-content: space-between;
+      gap: .75rem;
+    }
+    .kms-drawer-title{
+      margin: 0;
+      font-size: 1.15rem;
+      line-height: 1.25;
+    }
+    .kms-drawer-sub{
+      margin: .35rem 0 0 0;
+      color: rgba(0,0,0,.62);
+      font-size: .95rem;
+      line-height: 1.4;
+    }
+    .kms-drawer-close{
+      border: 0;
+      background: transparent;
+      font-size: 1.35rem;
+      line-height: 1;
+      cursor: pointer;
+      color: rgba(0,0,0,.55);
+      padding: .25rem .35rem;
+      border-radius: 10px;
+    }
+    .kms-drawer-close:hover{ background: rgba(0,0,0,.05); }
+
+    .kms-drawer-body{
+      padding: .85rem 1rem 1.25rem 1rem;
+      overflow: auto;
+    }
+
+    /* drawer sections */
+    .kms-note{
+      border: 1px solid rgba(0,0,0,.10);
+      background: rgba(0,0,0,.02);
+      border-radius: 14px;
+      padding: .9rem;
+      margin-bottom: 1rem;
+    }
+    .kms-note strong{ display:block; margin-bottom:.25rem; }
+    .kms-note ul{ margin: .35rem 0 0 1.1rem; }
+    .kms-note li{ margin: .2rem 0; }
+
+    /* accordion */
+    .kms-acc{
+      border: 1px solid rgba(0,0,0,.10);
+      border-radius: 14px;
+      overflow: hidden;
+      background: #fff;
+      margin: .75rem 0;
+    }
+    .kms-acc button{
+      width: 100%;
+      text-align: left;
+      border: 0;
+      background: #fff;
+      padding: .85rem .9rem;
+      cursor: pointer;
+      display:flex;
+      align-items:center;
+      justify-content: space-between;
+      gap: .75rem;
+      font-size: 1rem;
+    }
+    .kms-acc button:hover{ background: rgba(0,0,0,.02); }
+    .kms-acc .chev{ color: rgba(0,0,0,.45); transition: transform .2s ease; }
+    .kms-acc.open .chev{ transform: rotate(180deg); }
+    .kms-acc .panel{
+      display:none;
+      padding: 0 .9rem .9rem .9rem;
+      color: rgba(0,0,0,.72);
+    }
+    .kms-acc.open .panel{ display:block; }
+    .kms-acc .panel p{ margin: .55rem 0; }
+    .kms-acc .panel .muted{ color: rgba(0,0,0,.55); font-size:.95rem; }
+    .kms-acc .panel .tagrow{
+      display:flex; flex-wrap:wrap; gap:.45rem;
+      margin-top:.65rem;
+    }
+    .kms-pill{
+      border:1px solid rgba(0,0,0,.12);
+      border-radius: 999px;
+      padding: .25rem .6rem;
+      font-size: .85rem;
+      color: rgba(0,0,0,.62);
+      background: rgba(0,0,0,.02);
+    }
+
+    /* CTA inside drawer */
+    .kms-drawer-cta{
+      margin-top: 1rem;
+      border-top: 1px solid rgba(0,0,0,.08);
+      padding-top: 1rem;
+      display:flex;
+      gap: .6rem;
+      flex-wrap: wrap;
+    }
+    .kms-cta-btn{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      padding: .75rem .95rem;
+      border-radius: 14px;
+      border: 1px solid rgba(0,0,0,.12);
+      background: rgba(255,255,255,.85);
+      cursor:pointer;
+      text-decoration:none;
+      font-size: 1rem;
+    }
+    .kms-cta-btn.primary{
+      background: #1f84c6; /* 한강애봄 블루 계열 */
+      color: #fff;
+      border-color: rgba(0,0,0,.06);
+    }
+    .kms-cta-btn.primary:hover{ filter: brightness(.98); }
+    .kms-cta-btn:hover{ background: rgba(0,0,0,.03); }
+  </style>
 </head>
 
 <body class="is-preload">
+<div id="wrapper">
 
-  <!-- Wrapper -->
-  <div id="wrapper">
+  <!-- Main -->
+  <div id="main">
+    <div class="inner">
 
-    <!-- Main -->
-    <div id="main">
-      <div class="inner">
+      <!-- Header (same as index) -->
+      <header id="header">
+        <a href="index.html" class="logo">
+          <img src="images/logo_ch.png" alt="汉江春天" class="logo-img">
+        </a>
 
-<!-- Header -->
-<header id="header">
-  <a href="index.html" class="logo">
-    <img src="images/logo_ch.png" alt="汉江春天" class="logo-img">
-  </a>
-<!-- ✅ 모바일 햄버거: 헤더 안에 있어야 함 -->
-          <a href="#sidebar" class="toggle" aria-label="Menu"></a>
+        <!-- ✅ mobile hamburger -->
+        <a href="#sidebar" class="toggle" aria-label="Menu"></a>
 
-  <!-- SNS icons -->
-  <ul class="icons">
-    <li>
-      <a href="#" id="wechat-icon" class="icon brands fa-weixin" title="WeChat">
-        <span class="label">WeChat</span>
-      </a>
-    </li>
-    <li>
-      <a href="#" id="whatsapp-icon" class="icon brands fa-whatsapp" title="WhatsApp">
-        <span class="label">WhatsApp</span>
-      </a>
-    </li>
-    <li>
-      <a href="mailto:egana@kmedispring.com" class="icon solid fa-envelope" title="Email">
-        <span class="label">Email</span>
-      </a>
-    </li>
-  </ul>
-</header>
+        <!-- SNS icons -->
+        <ul class="icons">
+          <li>
+            <a href="#" id="wechat-icon" class="icon brands fa-weixin" title="WeChat">
+              <span class="label">WeChat</span>
+            </a>
+          </li>
+          <li>
+            <a href="#" id="whatsapp-icon" class="icon brands fa-whatsapp" title="WhatsApp">
+              <span class="label">WhatsApp</span>
+            </a>
+          </li>
+          <li>
+            <a href="mailto:egana@kmedispring.com" class="icon solid fa-envelope" title="Email">
+              <span class="label">Email</span>
+            </a>
+          </li>
+        </ul>
+      </header>
 
+      <!-- Page Hero -->
+      <section class="kms-page-hero" aria-labelledby="pageTitle">
+        <header>
+          <h1 id="pageTitle" style="margin-bottom:.2rem;">整形医美</h1>
+          <p style="margin:0; color:rgba(0,0,0,.65); font-size:1.05rem;">
+            提升 · 轮廓 · 眼鼻 · 体型 · 修复与二次手术
+          </p>
+        </header>
 
-<!-- Hero (임시: 업로드 전까지 section_skin.png 사용) -->
-<!-- 아래 줄의 hero_surgery.png는 이미지 업로드 후 주석을 풀어 사용하세요. -->
-<!-- <span class="image main">
-  <img src="{{ site.baseurl }}/images/surgery/hero_surgery.png" alt="整形医美综合中心">
-</span> -->
-<span class="image main">
-  <img src="{{ site.baseurl }}/images/surgery/section_skin.png" alt="皮肤与医美形象">
-</span>
+        <!-- thin line (give breathing room) -->
+        <div class="kms-topline"></div>
 
-<p>
-  依托韩式审美与资深专家团队，联合皮肤管理与面部精雕，注重个体差异与自然和谐。
-  从术前评估、精准施术到术后恢复，全流程管理，追求安全、稳妥与真实感。
-</p>
+        <p class="kms-lede">
+          我们把“整形医美”拆成一条清晰路径：<b>评估 → 选择 → 手术 → 术后管理 → 复盘</b>。<br>
+          你最关心的通常不是“做不做”，而是：<b>会不会很假？恢复多久？麻醉怎么选？术后怎么管？需要在韩国待几天？</b><br>
+          下面每个模块点开后，会在右侧滑出“信息面板”，把关键问题一次讲清楚。
+        </p>
 
-<hr class="major" />
+        <div class="kms-chiprow">
+          <span class="kms-chip"><i class="fas fa-shield-alt"></i>信息透明</span>
+          <span class="kms-chip"><i class="fas fa-heart"></i>自然与协调</span>
+          <span class="kms-chip"><i class="fas fa-user-md"></i>医生判断为核心</span>
+          <span class="kms-chip"><i class="fas fa-clock"></i>术后管理与时间线</span>
+        </div>
 
-<!-- Row 1 -->
-<div class="row gtr-200">
-  <div class="col-6 col-12-medium">
-    <h3>术前咨询与评估</h3>
-    <p>基于面部比例、皮肤状态与个人诉求进行一对一方案设计，明确边界与预期。</p>
-    <span class="image fit">
-      <img src="{{ site.baseurl }}/images/surgery/section_checks.png" alt="术前咨询与评估">
-    </span>
-  </div>
+        <ul class="actions">
+          <li><a href="kplan.html" class="button primary">定制医疗观光方案</a></li>
+        </ul>
+      </section>
 
-  <div class="col-6 col-12-medium">
-    <h3>皮肤与微创项目</h3>
-    <p>联合激光、注射、微针等多模态疗程，强调层次化与自然度，降低恢复期。</p>
-    <span class="image fit">
-      <img src="{{ site.baseurl }}/images/surgery/section_skin.png" alt="皮肤管理与微创治疗">
-    </span>
+      <!-- Hero image placeholder -->
+      <div class="kms-imgslot">
+        <div class="label">📌 图片位置（建议：干净高级的“面部提升/轮廓”氛围图，或诊室/走廊质感图）</div>
+        <div class="box">/images/surgery/hero.jpg（待放）</div>
+      </div>
+
+      <!-- Categories -->
+      <section>
+        <header class="major"><h2>手术模块（点开看“滑出式问答”）</h2></header>
+
+        <div class="kms-grid">
+
+          <!-- 1 -->
+          <div class="kms-card">
+            <h3>面部轮廓 / 提升（轮廓、下颌缘、脂肪、拉提类）</h3>
+            <p>适合：松弛下垂、下颌缘模糊、面中部坠感、双下巴/脂肪堆积，或“想更精神但不想假”。</p>
+            <div class="kms-actions">
+              <button class="kms-mini-btn" data-open-drawer="lift_overview"><i class="fas fa-layer-group"></i>项目与思路</button>
+              <button class="kms-mini-btn" data-open-drawer="lift_fake"><i class="fas fa-theater-masks"></i>会不会很假？</button>
+              <button class="kms-mini-btn" data-open-drawer="lift_aftercare"><i class="fas fa-band-aid"></i>术后管理时间线</button>
+            </div>
+          </div>
+
+          <!-- 2 -->
+          <div class="kms-card">
+            <h3>眼鼻（双眼皮 / 眼修复 / 鼻综合 / 鼻修复）</h3>
+            <p>适合：想提高精致度与立体度；或对既往手术不满意，需要“修复逻辑 + 风险管理”。</p>
+            <div class="kms-actions">
+              <button class="kms-mini-btn" data-open-drawer="eye_nose_overview"><i class="fas fa-eye"></i>眼部路径</button>
+              <button class="kms-mini-btn" data-open-drawer="nose_overview"><i class="fas fa-project-diagram"></i>鼻部路径</button>
+              <button class="kms-mini-btn" data-open-drawer="revision_focus"><i class="fas fa-tools"></i>修复重点</button>
+            </div>
+          </div>
+
+          <!-- 3 -->
+          <div class="kms-card">
+            <h3>抗衰与年轻化（只写“年轻化/提升”）</h3>
+            <p>更像“组合策略”：松弛（筋膜/韧带）+ 体积（脂肪/填充）+ 皮肤（质地/细纹）。</p>
+            <div class="kms-actions">
+              <button class="kms-mini-btn" data-open-drawer="young_combo"><i class="fas fa-sliders-h"></i>组合怎么选</button>
+              <button class="kms-mini-btn" data-open-drawer="anesthesia"><i class="fas fa-syringe"></i>麻醉怎么选</button>
+              <button class="kms-mini-btn" data-open-drawer="stay_korea"><i class="fas fa-plane"></i>韩国停留建议</button>
+            </div>
+          </div>
+
+          <!-- 4 -->
+          <div class="kms-card">
+            <h3>体型与脂肪管理（吸脂 / 塑形 / 脂肪移植）</h3>
+            <p>核心不是“吸多少”，而是“比例、线条、恢复管理、回弹与凹凸风险控制”。</p>
+            <div class="kms-actions">
+              <button class="kms-mini-btn" data-open-drawer="body_lipo"><i class="fas fa-compress-arrows-alt"></i>吸脂要点</button>
+              <button class="kms-mini-btn" data-open-drawer="fat_graft"><i class="fas fa-tint"></i>脂肪移植要点</button>
+              <button class="kms-mini-btn" data-open-drawer="compression"><i class="fas fa-tshirt"></i>塑身衣/按压</button>
+            </div>
+          </div>
+
+          <!-- 5 -->
+          <div class="kms-card">
+            <h3>修复与二次手术（修复/再手术咨询）</h3>
+            <p>修复不是“再做一次”，而是：组织条件评估 + 期待值校准 + 风险与阶段性目标管理。</p>
+            <div class="kms-actions">
+              <button class="kms-mini-btn" data-open-drawer="revision_rules"><i class="fas fa-exclamation-triangle"></i>修复规则</button>
+              <button class="kms-mini-btn" data-open-drawer="consult_system"><i class="fas fa-comments"></i>咨询与收费可能</button>
+              <button class="kms-mini-btn" data-open-drawer="risk"><i class="fas fa-shield-virus"></i>风险与并发症</button>
+            </div>
+          </div>
+
+          <!-- 6 (optional placeholder card) -->
+          <div class="kms-card">
+            <h3>（预留）你想加的“重点专题”</h3>
+            <p>例如：口角提升专题 / 中下面部提升专题 / 下颌缘专题（可做成你最强的“信息页”）。</p>
+            <div class="kms-actions">
+              <button class="kms-mini-btn" data-open-drawer="topic_placeholder"><i class="fas fa-star"></i>专题模板</button>
+            </div>
+          </div>
+
+        </div>
+      </section>
+
+      <!-- Section image placeholders -->
+      <div class="kms-imgslot">
+        <div class="label">📌 图片位置（建议：分区配图 / Before&After风格占位 / 简洁图标组）</div>
+        <div class="box">/images/surgery/section_*.jpg（待放）</div>
+      </div>
+
+      <!-- Footer note -->
+      <section>
+        <header class="major"><h2>小提醒</h2></header>
+        <p class="kms-lede">
+          整形手术的“好看”是医生技术 + 你的组织条件 + 术后管理共同决定的结果。<br>
+          我们把术后管理写得更细，是为了让你少走弯路、少焦虑、少踩坑。
+        </p>
+        <p style="margin:.65rem 0 0 0; color:rgba(0,0,0,.55); font-size:.95rem;">
+          站内内容可引用与转载，请标注：<b>来源：汉江春天</b>
+        </p>
+      </section>
+
+    </div><!-- /.inner -->
+  </div><!-- /#main -->
+
+  <!-- Sidebar (same as index) -->
+  <div id="sidebar">
+    <div class="inner">
+
+      <section id="sidebar-brand" class="sidebar-spacer"></section>
+
+      <nav id="menu">
+        <ul>
+          <li><a href="index.html" class="menu-home">首页</a></li>
+          <li><a href="wellness.html">大健康</a></li>
+          <li><a href="stemcell.html">干细胞</a></li>
+          <li><a href="derm.html">皮肤医美</a></li>
+          <li class="active"><a href="surgery.html">整形医美</a></li>
+          <li><a href="woman.html">女性护理中心</a></li>
+          <li><a href="man.html">男性健康中心</a></li>
+          <li><a href="kplan.html">定制医疗观光方案</a></li>
+        </ul>
+      </nav>
+
+      <section class="menu-extra">
+        <div class="section-spacer"></div>
+        <header class="major"><h3 class="about-title">关于我们</h3></header>
+        <p>
+          我们相信，美丽与健康，源于真诚的交流。如果你对韩国医疗、健康管理或合作有兴趣，
+          欢迎通过微信或邮件与我们联系。
+        </p>
+      </section>
+
+      <section>
+        <header class="major"><h3>联系方式</h3></header>
+        <ul class="contact">
+          <li class="icon solid fa-envelope">
+            <a href="mailto:egana@kmedispring.com">邮箱：egana@kmedispring.com</a>
+          </li>
+          <li class="icon solid fa-phone">(82) 10-4903-3123</li>
+          <li class="icon solid fa-home">韩国 首尔特别市 城北区 东小门路 63号 6层</li>
+        </ul>
+      </section>
+
+      <footer id="footer">
+        <p style="margin-top:1rem; text-align:center; font-size:0.9em; color:#666;">
+          © 2025 汉江春天 한강애봄 版权所有。模板设计：HTML5 UP。
+        </p>
+      </footer>
+
+    </div>
+  </div><!-- /#sidebar -->
+
+</div><!-- /#wrapper -->
+
+<!-- =======================
+  Modals (same as index)
+======================= -->
+
+<!-- WeChat QR Modal -->
+<div id="wechatModal" class="modal" aria-hidden="true" role="dialog">
+  <div class="modal-inner">
+    <button class="close" aria-label="Close" type="button">&times;</button>
+    <img id="wechatQR" class="modal-content" src="images/qr_weixin.jpg" alt="WeChat QR e-gana" />
+    <p class="modal-id">WeChat ID：e-gana ｜《汉江春天》医疗<br>医疗旅游咨询公司｜韩国保健福祉部认证机构</p>
   </div>
 </div>
 
-<!-- Row 2 (선택: 이미지 업로드 후 주석 해제) -->
-<!--
-<hr class="major" />
-<div class="row gtr-200">
-  <div class="col-6 col-12-medium">
-    <h3>术中与设备</h3>
-    <p>标准化无菌流程与麻醉科联动，手术安全监控到位。</p>
-    <span class="image fit">
-      <img src="{{ site.baseurl }}/images/surgery/section_lab.png" alt="设备与安全监控">
-    </span>
-  </div>
-  <div class="col-6 col-12-medium">
-    <h3>术后管理与恢复</h3>
-    <p>肿胀管理、瘢痕护理与营养调节，分阶段跟进，稳定效果。</p>
-    <span class="image fit">
-      <img src="{{ site.baseurl }}/images/surgery/section_plan.png" alt="术后管理与恢复">
-    </span>
+<!-- WhatsApp QR Modal -->
+<div id="whatsappModal" class="modal" aria-hidden="true" role="dialog">
+  <div class="modal-inner">
+    <button class="close" aria-label="Close" type="button">&times;</button>
+    <img id="whatsappQR" class="modal-content" src="images/whatsapp_qr.jpg" alt="WhatsApp QR K-Medi Korea" />
+    <p class="modal-id">WhatsApp：+82-10-4903-3123<br>《汉江春天》 k-medi korea</p>
   </div>
 </div>
--->
 
-<!-- ===== Sidebar ===== -->
-   <div id="sidebar">
-  <div class="inner">
+<!-- =======================
+  Slider Drawer (right)
+======================= -->
+<div class="kms-drawer-overlay" id="kmsDrawerOverlay" aria-hidden="true"></div>
 
-   <!-- 사이드바 상단 여백 -->
-<section id="sidebar-brand" class="sidebar-spacer"></section>
-<!-- 메뉴 -->
-<nav id="menu">
-  <ul>
-    <li class="active">
-      <a href="index.html">首页</a>
-    </li>
-    <li><a href="wellness.html">大健康</a></li>
-    <li><a href="stemcell.html">干细胞</a></li>
-    <li><a href="derm.html">皮肤医美</a></li>
-    <li><a href="surgery.html">整形医美</a></li>
-    <li><a href="woman.html">女性护理中心</a></li>
-    <li><a href="man.html">男性健康中心</a></li>
-    <li><a href="kplan.html" aria-current="page">定制医疗观光方案</a></li>
-  </ul>
-</nav>
-  <br>
-  <br>
-   
-  <!-- About -->
-<section class="menu-extra">
-  <header class="major">
-    <h2 class="about-title">关于我们</h2>
-  </header>
-  <p>
-    我们相信，美丽与健康，源于真诚的交流。如果你对韩国医疗、健康管理或合作有兴趣，欢迎通过微信或邮件与我们联系。
-  </p>
-</section>
-
-    <!-- Contact -->
-    <section>
-      <header class="major"><h3>联系方式</h3></header>
-      <ul class="contact">
-        <li class="icon solid fa-envelope">
-          <a href="mailto:egana@kmedispring.com">邮箱：egana@kmedispring.com</a>
-        </li>
-        <li class="icon solid fa-phone">(82) 10-4903-3123</li>
-        <li class="icon solid fa-home">韩国 首尔特别市 城北区 东小门路 63号 6层 (邮编：02845)</li>
-      </ul>
-    </section>
-
-    <!-- Footer -->
-    <footer id="footer">
-      <p style="text-align:center; font-size:0.9em; color:#666;">
-        © 2025 汉江春天 한강애봄 版权所有。模板设计：HTML5 UP。
-      </p>
-    </footer>
-
-  </div><!-- .inner -->
-</div><!-- #sidebar -->
-
-  </div><!-- #wrapper -->
-
-  <!-- WeChat QR Modal -->
-  <div id="wechatModal" class="modal" aria-hidden="true" role="dialog">
-    <div class="modal-inner">
-      <button class="close" aria-label="Close">&times;</button>
-      <p class="modal-caption">扫描二维码添加微信</p>
-      <img id="wechatQR" class="modal-content" src="images/qr_weixin.jpg" alt="WeChat QR for e-gana" />
-      <p class="modal-id">WeChat ID：e-gana</p>
+<aside class="kms-drawer" id="kmsDrawer" aria-hidden="true">
+  <div class="kms-drawer-header">
+    <div>
+      <h3 class="kms-drawer-title" id="kmsDrawerTitle">—</h3>
+      <p class="kms-drawer-sub" id="kmsDrawerSub">—</p>
     </div>
+    <button class="kms-drawer-close" id="kmsDrawerClose" aria-label="Close" type="button">×</button>
   </div>
+  <div class="kms-drawer-body" id="kmsDrawerBody"></div>
+</aside>
 
-  <!-- WhatsApp Modal -->
-  <div id="whatsappModal" class="modal" aria-hidden="true" role="dialog">
-    <div class="modal-inner">
-      <button class="close" aria-label="Close">&times;</button>
-      <p class="modal-caption">QR → WhatsApp Connect</p>
-      <img id="whatsappQR" class="modal-content" src="images/whatsapp_qr.jpg" alt="WhatsApp QR for K-Medi Spring">
-      <p class="modal-id">WhatsApp：+82-10-4903-3123</p>
-    </div>
-  </div>
+<!-- =======================
+  Page JS (modals + drawer)
+======================= -->
+<script>
+document.addEventListener('DOMContentLoaded', function () {
 
-  <!-- 템플릿 기본 스크립트 5총사 (반드시 이 순서) -->
- <script src="assets/js/jquery.min.js"></script>
+  /* ========== WeChat/WhatsApp modals (same behavior as index) ========== */
+  const wechatModal = document.getElementById('wechatModal');
+  const wechatIcon  = document.getElementById('wechat-icon');
+  const wechatQR    = document.getElementById('wechatQR');
+  const wechatClose = wechatModal ? wechatModal.querySelector('.close') : null;
+
+  const whatsappModal = document.getElementById('whatsappModal');
+  const whatsappIcon  = document.getElementById('whatsapp-icon');
+  const whatsappQR    = document.getElementById('whatsappQR');
+  const whatsappClose = whatsappModal ? whatsappModal.querySelector('.close') : null;
+
+  function closeWeChat(){
+    if (wechatModal){
+      wechatModal.style.display = 'none';
+      wechatModal.setAttribute('aria-hidden','true');
+    }
+    document.body.classList.remove('modal-open');
+  }
+  function openWeChat(e){
+    if (e) e.preventDefault();
+    closeWhatsApp();
+    if (wechatQR){
+      wechatQR.src = wechatQR.src.split('?')[0] + '?v=' + Date.now();
+    }
+    if (wechatModal){
+      wechatModal.style.display = 'flex';
+      wechatModal.setAttribute('aria-hidden','false');
+    }
+    document.body.classList.add('modal-open');
+  }
+  function closeWhatsApp(){
+    if (whatsappModal){
+      whatsappModal.style.display = 'none';
+      whatsappModal.setAttribute('aria-hidden','true');
+    }
+    document.body.classList.remove('modal-open');
+  }
+  function openWhatsApp(e){
+    if (e) e.preventDefault();
+    closeWeChat();
+    if (whatsappQR){
+      whatsappQR.src = whatsappQR.src.split('?')[0] + '?v=' + Date.now();
+    }
+    if (whatsappModal){
+      whatsappModal.style.display = 'flex';
+      whatsappModal.setAttribute('aria-hidden','false');
+    }
+    document.body.classList.add('modal-open');
+  }
+
+  if (wechatIcon) wechatIcon.addEventListener('click', openWeChat);
+  if (whatsappIcon) whatsappIcon.addEventListener('click', openWhatsApp);
+  if (wechatClose) wechatClose.addEventListener('click', function(e){ e.preventDefault(); closeWeChat(); });
+  if (whatsappClose) whatsappClose.addEventListener('click', function(e){ e.preventDefault(); closeWhatsApp(); });
+
+  if (wechatModal){
+    wechatModal.addEventListener('click', function(e){ if (e.target === wechatModal) closeWeChat(); });
+  }
+  if (whatsappModal){
+    whatsappModal.addEventListener('click', function(e){ if (e.target === whatsappModal) closeWhatsApp(); });
+  }
+
+  /* ========== Drawer Slider ========== */
+  const overlay = document.getElementById('kmsDrawerOverlay');
+  const drawer  = document.getElementById('kmsDrawer');
+  const dTitle  = document.getElementById('kmsDrawerTitle');
+  const dSub    = document.getElementById('kmsDrawerSub');
+  const dBody   = document.getElementById('kmsDrawerBody');
+  const dClose  = document.getElementById('kmsDrawerClose');
+
+  function openDrawer(key){
+    const data = DRAWER_CONTENT[key];
+    if (!data) return;
+
+    dTitle.textContent = data.title || '';
+    dSub.textContent   = data.sub || '';
+    dBody.innerHTML    = data.html || '';
+
+    overlay.style.display = 'block';
+    overlay.setAttribute('aria-hidden','false');
+
+    drawer.classList.add('open');
+    drawer.setAttribute('aria-hidden','false');
+
+    // bind accordions inside
+    Array.from(dBody.querySelectorAll('.kms-acc')).forEach(function(acc){
+      const btn = acc.querySelector('button');
+      if (!btn) return;
+      btn.addEventListener('click', function(){
+        acc.classList.toggle('open');
+      });
+    });
+
+    document.body.classList.add('modal-open');
+  }
+
+  function closeDrawer(){
+    drawer.classList.remove('open');
+    drawer.setAttribute('aria-hidden','true');
+    overlay.style.display = 'none';
+    overlay.setAttribute('aria-hidden','true');
+    document.body.classList.remove('modal-open');
+  }
+
+  if (dClose) dClose.addEventListener('click', closeDrawer);
+  if (overlay) overlay.addEventListener('click', closeDrawer);
+
+  // ESC closes everything
+  document.addEventListener('keydown', function(e){
+    if (e.key === 'Escape'){
+      closeWeChat();
+      closeWhatsApp();
+      closeDrawer();
+    }
+  });
+
+  // open drawer buttons
+  Array.from(document.querySelectorAll('[data-open-drawer]')).forEach(function(btn){
+    btn.addEventListener('click', function(){
+      openDrawer(btn.getAttribute('data-open-drawer'));
+    });
+  });
+
+  /* ========== Drawer content (editable) ========== */
+  const DRAWER_CONTENT = {
+    /* ===== lift ===== */
+    lift_overview: {
+      title: "面部轮廓 / 提升｜项目与思路",
+      sub: "先看“松弛点位与组织层次”，再决定“做多大”。",
+      html: `
+        <div class="kms-note">
+          <strong>你真正买的是：层次 + 线条 + 表情的自然</strong>
+          <ul>
+            <li>轮廓线（下颌缘、颈颏角）</li>
+            <li>中下面部松弛（法令、口角、木偶纹区域）</li>
+            <li>脂肪与体积（凹陷/臃肿）</li>
+            <li>皮肤质地（细纹、弹性、毛孔）</li>
+          </ul>
+        </div>
+
+        <div class="kms-acc">
+          <button type="button">
+            <span>常见“提升类”方向（按层次）</span>
+            <span class="chev">▾</span>
+          </button>
+          <div class="panel">
+            <p><b>浅层/皮肤层：</b>更偏“紧致质感”，适合轻度松弛或想更精致。</p>
+            <p><b>筋膜/韧带层：</b>决定“上提与稳定”，适合下垂明显、轮廓线散。</p>
+            <p><b>体积策略：</b>该填就填、该减就减（脂肪管理/移植/填充）。</p>
+            <div class="tagrow">
+              <span class="kms-pill">以医生评估为准</span>
+              <span class="kms-pill">拒绝“一个项目打天下”</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="kms-acc">
+          <button type="button">
+            <span>你可以怎么说需求（更有效）</span>
+            <span class="chev">▾</span>
+          </button>
+          <div class="panel">
+            <p>✅ “我想要<b>下颌缘更清晰</b>，但不想变成另一张脸。”</p>
+            <p>✅ “我最在意<b>口角与法令</b>，希望看起来更精神。”</p>
+            <p class="muted">比起“我要做XX术”，这种表达更利于医生把方案做对。</p>
+          </div>
+        </div>
+
+        <div class="kms-drawer-cta">
+          <a class="kms-cta-btn primary" href="kplan.html">去定制方案</a>
+          <button class="kms-cta-btn" type="button" onclick="document.getElementById('wechat-icon').click()">加微信沟通</button>
+        </div>
+      `
+    },
+
+    lift_fake: {
+      title: "会不会很假？",
+      sub: "“假”通常来自：比例不对、拉扯方向不对、体积策略错误、恢复期误判。",
+      html: `
+        <div class="kms-note">
+          <strong>一句话：</strong>
+          “自然”不是不改变，而是改变后依然像你。
+        </div>
+
+        <div class="kms-acc">
+          <button type="button">
+            <span>什么情况下容易显得“假”？</span>
+            <span class="chev">▾</span>
+          </button>
+          <div class="panel">
+            <p>1) 只追求“更紧”忽略了<b>方向与层次</b>（拉错方向会显得僵）。</p>
+            <p>2) 该补的体积没补、该减的脂肪没减（线条会怪）。</p>
+            <p>3) 恢复期被当成最终效果（肿胀/紧绷期看起来都会“过度”）。</p>
+            <div class="tagrow">
+              <span class="kms-pill">方向</span>
+              <span class="kms-pill">层次</span>
+              <span class="kms-pill">比例</span>
+              <span class="kms-pill">时间</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="kms-acc">
+          <button type="button">
+            <span>怎么把“自然度”做到最大？</span>
+            <span class="chev">▾</span>
+          </button>
+          <div class="panel">
+            <p>✅ 先选“<b>你想保留的特征</b>”（例如眼神、笑容、脸型轮廓）。</p>
+            <p>✅ 把目标拆小：先解决“下垂点/轮廓线”，再优化“细节”。</p>
+            <p>✅ 术后管理做到位：消肿、固定、疤痕管理、严格防晒。</p>
+            <p class="muted">你要的是“更好看”，不是“看得出动过”。</p>
+          </div>
+        </div>
+
+        <div class="kms-drawer-cta">
+          <a class="kms-cta-btn primary" href="kplan.html">提交你的目标</a>
+          <button class="kms-cta-btn" type="button" onclick="document.getElementById('wechat-icon').click()">微信问我</button>
+        </div>
+      `
+    },
+
+    lift_aftercare: {
+      title: "术后管理时间线（提升/轮廓类）",
+      sub: "这里写“通用框架”。具体以手术方式与医生要求为准。",
+      html: `
+        <div class="kms-note">
+          <strong>核心原则：</strong>
+          固定 → 消肿 → 伤口/疤痕管理 → 防晒 → 复诊复盘
+          <ul>
+            <li>有的项目会需要引流/加压；有的不会。</li>
+            <li>肿胀、紧绷、左右不对称，很多时候是“正常恢复过程”。</li>
+          </ul>
+        </div>
+
+        <div class="kms-acc">
+          <button type="button">
+            <span>0–72小时：最关键的窗口</span>
+            <span class="chev">▾</span>
+          </button>
+          <div class="panel">
+            <p>重点：<b>休息、按医嘱固定/加压、控制肿胀</b>。</p>
+            <p class="muted">是否冷敷、怎么敷、敷多久，必须以医院医嘱为准。</p>
+            <div class="tagrow">
+              <span class="kms-pill">固定/加压</span>
+              <span class="kms-pill">不要熬夜</span>
+              <span class="kms-pill">按时复诊</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="kms-acc">
+          <button type="button">
+            <span>第1周：伤口与肿胀管理</span>
+            <span class="chev">▾</span>
+          </button>
+          <div class="panel">
+            <p>重点：<b>伤口清洁、避免拉扯、遵医嘱用药/外用</b>。</p>
+            <p>很多人这一周最焦虑：因为“还不像最终”。</p>
+          </div>
+        </div>
+
+        <div class="kms-acc">
+          <button type="button">
+            <span>第2–4周：外观快速回归</span>
+            <span class="chev">▾</span>
+          </button>
+          <div class="panel">
+            <p>多数人会明显“更自然”。但细节仍在变化。</p>
+            <p class="muted">你要的是“更稳”，不是“更快”。</p>
+          </div>
+        </div>
+
+        <div class="kms-acc">
+          <button type="button">
+            <span>3–6个月：稳定期（疤痕/触感/细节）</span>
+            <span class="chev">▾</span>
+          </button>
+          <div class="panel">
+            <p>重点：<b>防晒</b>、疤痕管理、复诊复盘。</p>
+            <p>如果需要二次微调，通常也会在更稳定后再评估。</p>
+          </div>
+        </div>
+
+        <div class="kms-acc">
+          <button type="button">
+            <span>在韩国需要待多久？</span>
+            <span class="chev">▾</span>
+          </button>
+          <div class="panel">
+            <p>取决于手术类型、是否拆线/换药频次、是否需要引流观察。</p>
+            <p class="muted">我们会按你的项目把“复诊节点 + 返程窗口”写进方案。</p>
+          </div>
+        </div>
+
+        <div class="kms-drawer-cta">
+          <a class="kms-cta-btn primary" href="kplan.html">把项目发我做停留计划</a>
+          <button class="kms-cta-btn" type="button" onclick="document.getElementById('wechat-icon').click()">微信沟通</button>
+        </div>
+      `
+    },
+
+    /* ===== eye/nose ===== */
+    eye_nose_overview: {
+      title: "眼部｜路径（双眼皮/眼修复）",
+      sub: "眼部看的是“睑缘线 + 形态 + 对称 + 复合问题”。",
+      html: `
+        <div class="kms-note">
+          <strong>你可以先自查：</strong>
+          <ul>
+            <li>是否有上睑松弛/眼皮厚？</li>
+            <li>是否有提肌无力/大小眼？</li>
+            <li>是否有眼袋/泪沟/凹陷？</li>
+          </ul>
+        </div>
+
+        <div class="kms-acc">
+          <button type="button"><span>“自然”眼的关键</span><span class="chev">▾</span></button>
+          <div class="panel">
+            <p>自然=与你的五官比例一致 + 动态表情不奇怪 + 疤痕管理到位。</p>
+            <p class="muted">修复类更强调“组织条件与风险”，目标常常是分阶段达成。</p>
+          </div>
+        </div>
+
+        <div class="kms-acc">
+          <button type="button"><span>常见关注点</span><span class="chev">▾</span></button>
+          <div class="panel">
+            <p>拆线/消肿/淤青时间、复诊频次、疤痕与色素风险、防晒。</p>
+          </div>
+        </div>
+
+        <div class="kms-drawer-cta">
+          <a class="kms-cta-btn primary" href="kplan.html">提交眼部诉求</a>
+          <button class="kms-cta-btn" type="button" onclick="document.getElementById('wechat-icon').click()">微信问我</button>
+        </div>
+      `
+    },
+
+    nose_overview: {
+      title: "鼻部｜路径（鼻综合/鼻修复）",
+      sub: "鼻子更像“结构工程”：支撑、角度、皮肤张力与对称。",
+      html: `
+        <div class="kms-note">
+          <strong>最重要的不是“高不高”，是“稳不稳”。</strong>
+          <ul>
+            <li>鼻梁（线条）</li>
+            <li>鼻尖（支撑/旋转/投射）</li>
+            <li>鼻翼鼻基底（比例）</li>
+            <li>皮肤厚薄（决定上限与恢复）</li>
+          </ul>
+        </div>
+
+        <div class="kms-acc">
+          <button type="button"><span>恢复你会遇到什么</span><span class="chev">▾</span></button>
+          <div class="panel">
+            <p>肿胀是“分阶段退”的；鼻尖往往退得更慢。</p>
+            <p class="muted">修复类常需要更长的评估与更谨慎的目标设定。</p>
+          </div>
+        </div>
+
+        <div class="kms-acc">
+          <button type="button"><span>你该怎么描述“想要的鼻子”</span><span class="chev">▾</span></button>
+          <div class="panel">
+            <p>用关键词：<b>线条干净</b> / <b>鼻尖更立体</b> / <b>侧面更顺</b> / <b>不要网红感</b>。</p>
+          </div>
+        </div>
+
+        <div class="kms-drawer-cta">
+          <a class="kms-cta-btn primary" href="kplan.html">提交鼻部诉求</a>
+          <button class="kms-cta-btn" type="button" onclick="document.getElementById('wechat-icon').click()">微信沟通</button>
+        </div>
+      `
+    },
+
+    revision_focus: {
+      title: "修复重点（眼/鼻/提升/体型）",
+      sub: "修复=把风险降下来，把目标拆开做。",
+      html: `
+        <div class="kms-note">
+          <strong>修复类三件事：</strong>
+          <ul>
+            <li>组织条件（瘢痕、血供、皮肤张力）</li>
+            <li>时间窗口（是否需要等待更稳定）</li>
+            <li>分阶段目标（先安全、再美观、再细节）</li>
+          </ul>
+        </div>
+
+        <div class="kms-acc">
+          <button type="button"><span>为什么修复要更谨慎？</span><span class="chev">▾</span></button>
+          <div class="panel">
+            <p>因为“可用组织”变少了，任何过度追求都可能放大风险。</p>
+            <p class="muted">所以修复咨询的价值很高：不是推项目，是把边界说清楚。</p>
+          </div>
+        </div>
+
+        <div class="kms-drawer-cta">
+          <a class="kms-cta-btn primary" href="kplan.html">提交既往手术信息</a>
+          <button class="kms-cta-btn" type="button" onclick="document.getElementById('wechat-icon').click()">微信问我</button>
+        </div>
+      `
+    },
+
+    /* ===== young / anesthesia / stay ===== */
+    young_combo: {
+      title: "年轻化/提升｜组合怎么选",
+      sub: "把“松弛/体积/皮肤”分开看，组合才不会乱。",
+      html: `
+        <div class="kms-note">
+          <strong>三个维度：</strong>
+          <ul>
+            <li><b>松弛：</b>轮廓线、下垂点</li>
+            <li><b>体积：</b>凹陷/臃肿（该补/该减）</li>
+            <li><b>皮肤：</b>质地、细纹、弹性</li>
+          </ul>
+        </div>
+
+        <div class="kms-acc">
+          <button type="button"><span>为什么“只做一个”常常不够？</span><span class="chev">▾</span></button>
+          <div class="panel">
+            <p>因为你看到的“老”，往往是多个层次叠加出来的。</p>
+            <p class="muted">组合不是堆项目，而是每一步都有清晰目的。</p>
+          </div>
+        </div>
+
+        <div class="kms-drawer-cta">
+          <a class="kms-cta-btn primary" href="kplan.html">让我帮你做组合逻辑</a>
+          <button class="kms-cta-btn" type="button" onclick="document.getElementById('wechat-icon').click()">微信沟通</button>
+        </div>
+      `
+    },
+
+    anesthesia: {
+      title: "麻醉怎么选？（让你不慌）",
+      sub: "麻醉方式取决于：手术范围、时长、疼痛、你的健康情况与医生判断。",
+      html: `
+        <div class="kms-note">
+          <strong>原则：</strong>安全第一，其次才是舒适与效率。
+          <ul>
+            <li>局麻 / 局麻+镇静 / 全麻：每个医院流程不同。</li>
+            <li>你可以明确表达：<b>我怕疼/我怕紧张/我担心恢复</b>。</li>
+          </ul>
+        </div>
+
+        <div class="kms-acc">
+          <button type="button"><span>你该问医院什么？</span><span class="chev">▾</span></button>
+          <div class="panel">
+            <p>✅ 麻醉由谁负责？（麻醉科/麻醉医生配置）</p>
+            <p>✅ 术前需要做什么检查？（基础评估）</p>
+            <p>✅ 术后清醒观察多久？是否需要留观？</p>
+          </div>
+        </div>
+
+        <div class="kms-acc">
+          <button type="button"><span>你该告诉医生什么？</span><span class="chev">▾</span></button>
+          <div class="panel">
+            <p>✅ 既往麻醉史、药物过敏、慢病、凝血相关、吸烟饮酒习惯。</p>
+            <p class="muted">这些会影响方式选择与风险控制。</p>
+          </div>
+        </div>
+
+        <div class="kms-drawer-cta">
+          <a class="kms-cta-btn primary" href="kplan.html">把你的担心写进方案</a>
+          <button class="kms-cta-btn" type="button" onclick="document.getElementById('wechat-icon').click()">微信沟通</button>
+        </div>
+      `
+    },
+
+    stay_korea: {
+      title: "韩国停留建议（按复诊节点来规划）",
+      sub: "不是“待越久越好”，而是“关键节点必须在”。",
+      html: `
+        <div class="kms-note">
+          <strong>停留规划看四件事：</strong>
+          <ul>
+            <li>是否需要拆线/换药（频次）</li>
+            <li>是否有引流/需要观察</li>
+            <li>肿胀高峰期是否需要医疗支持</li>
+            <li>你是否需要出镜/见人/出差（时间目标）</li>
+          </ul>
+        </div>
+
+        <div class="kms-acc">
+          <button type="button"><span>我不想尴尬出门怎么办？</span><span class="chev">▾</span></button>
+          <div class="panel">
+            <p>我们可以按恢复期给你做：交通/住宿/复诊路线/低社交动线。</p>
+          </div>
+        </div>
+
+        <div class="kms-drawer-cta">
+          <a class="kms-cta-btn primary" href="kplan.html">提交项目，我给你停留表</a>
+          <button class="kms-cta-btn" type="button" onclick="document.getElementById('wechat-icon').click()">微信沟通</button>
+        </div>
+      `
+    },
+
+    /* ===== body ===== */
+    body_lipo: {
+      title: "吸脂｜要点（体型与线条）",
+      sub: "吸脂看“线条与比例”，不是看“抽多少”。",
+      html: `
+        <div class="kms-note">
+          <strong>你最该关注：</strong>
+          <ul>
+            <li>凹凸与皮肤回缩风险</li>
+            <li>术后塑身衣/按压与复诊安排</li>
+            <li>恢复期活动与肿胀管理</li>
+          </ul>
+        </div>
+
+        <div class="kms-acc">
+          <button type="button"><span>为什么塑身衣很关键？</span><span class="chev">▾</span></button>
+          <div class="panel">
+            <p>它决定“贴合与线条稳定”。具体穿法/时长以医院医嘱为准。</p>
+          </div>
+        </div>
+      `
+    },
+
+    fat_graft: {
+      title: "脂肪移植｜要点（体积与自然）",
+      sub: "脂肪移植=“体积设计 + 存活管理”。",
+      html: `
+        <div class="kms-note">
+          <strong>你会在意的：</strong>
+          <ul>
+            <li>设计：哪里补、补多少、怎么不肿不假</li>
+            <li>恢复：肿胀与左右差异是阶段性的</li>
+            <li>稳定：存活与形态需要时间</li>
+          </ul>
+        </div>
+
+        <div class="kms-acc">
+          <button type="button"><span>为什么要有“复盘期”？</span><span class="chev">▾</span></button>
+          <div class="panel">
+            <p>因为脂肪存活与软组织适应需要时间，过早评价会误判。</p>
+          </div>
+        </div>
+      `
+    },
+
+    compression: {
+      title: "塑身衣/按压｜你提到的“细节很重要”",
+      sub: "是的。穿法、时长、以及“什么时候可以只穿半天/只穿晚上”，都应写进医嘱。",
+      html: `
+        <div class="kms-note">
+          <strong>我们会把这些写进你的方案：</strong>
+          <ul>
+            <li>塑身衣：穿戴时长（阶段）</li>
+            <li>按压：强度与频次（阶段）</li>
+            <li>复诊：什么时候评估“线条是否稳定”</li>
+          </ul>
+        </div>
+
+        <div class="kms-acc">
+          <button type="button"><span>为什么阶段管理很重要？</span><span class="chev">▾</span></button>
+          <div class="panel">
+            <p>因为组织在愈合，需求会变：早期重固定，中期重贴合，后期重稳定与舒适。</p>
+          </div>
+        </div>
+      `
+    },
+
+    /* ===== revision/risk/consult ===== */
+    revision_rules: {
+      title: "修复规则（先把坑填平）",
+      sub: "修复的价值=把不确定性变少，把风险边界说清楚。",
+      html: `
+        <div class="kms-note">
+          <strong>修复四条规则：</strong>
+          <ul>
+            <li>先评估：组织条件与时间窗口</li>
+            <li>再定目标：阶段性、可实现</li>
+            <li>再谈方案：越修复越要“保守而精准”</li>
+            <li>最后才谈价格：否则很容易被“冲动”带走</li>
+          </ul>
+        </div>
+      `
+    },
+
+    consult_system: {
+      title: "咨询与收费可能（让你不被动）",
+      sub: "韩国医院系统不同：有时先咨询室长，有时需医生面诊费用。",
+      html: `
+        <div class="kms-note">
+          <strong>你可能遇到的两种流程：</strong>
+          <ul>
+            <li>流程A：咨询室长 → 设计/确认 → 当日手术/治疗</li>
+            <li>流程B：医生先面诊（可能计费）→ 设计 → 安排手术</li>
+          </ul>
+        </div>
+
+        <div class="kms-acc">
+          <button type="button"><span>你应该提前确认什么？</span><span class="chev">▾</span></button>
+          <div class="panel">
+            <p>✅ 是否必须医生面诊？是否收费？收费标准？</p>
+            <p>✅ 术前检查是否另计？麻醉费用如何算？</p>
+            <p class="muted">我们会在你到院前把“可能发生的费用项”写清楚。</p>
+          </div>
+        </div>
+      `
+    },
+
+    risk: {
+      title: "风险与并发症（不吓人，但要真实）",
+      sub: "所有手术都有风险。重要的是：筛查、规范操作、术后管理与及时复诊。",
+      html: `
+        <div class="kms-note">
+          <strong>常见风险类别（概念层面）：</strong>
+          <ul>
+            <li>出血/血肿、感染、伤口问题</li>
+            <li>肿胀与不对称的恢复过程</li>
+            <li>疤痕、色素与皮肤恢复差异</li>
+            <li>修复需求（尤其是修复类/复杂手术）</li>
+          </ul>
+        </div>
+        <div class="kms-acc">
+          <button type="button"><span>我们会怎么做“风险控制”？</span><span class="chev">▾</span></button>
+          <div class="panel">
+            <p>把“术前评估/检查/麻醉方式/复诊节点/紧急联络”写成清单。</p>
+            <p class="muted">这比“口头保证”更可靠。</p>
+          </div>
+        </div>
+      `
+    },
+
+    topic_placeholder: {
+      title: "专题模板（你最强的内容页）",
+      sub: "把一个主题做成：概览→适合谁→怎么做→恢复期→术后管理→停留建议→Q&A。",
+      html: `
+        <div class="kms-note">
+          <strong>你想做的专题可以这样写：</strong>
+          <ul>
+            <li>一句话价值：解决什么问题</li>
+            <li>适合人群：哪些症状/特征</li>
+            <li>方案选择：2-3种路径对比</li>
+            <li>恢复时间线：拆线/一周/一月/半年</li>
+            <li>术后管理：敷、固定、用药、复诊、防晒</li>
+            <li>韩国停留：关键节点</li>
+          </ul>
+        </div>
+        <div class="kms-drawer-cta">
+          <a class="kms-cta-btn primary" href="kplan.html">我想做专题（发我题目）</a>
+          <button class="kms-cta-btn" type="button" onclick="document.getElementById('wechat-icon').click()">微信沟通</button>
+        </div>
+      `
+    }
+  };
+
+});
+</script>
+
+<!-- 템플릿 기본 스크립트 5총사 (반드시 이 순서) -->
+<script src="assets/js/jquery.min.js"></script>
 <script src="assets/js/browser.min.js"></script>
 <script src="assets/js/breakpoints.min.js"></script>
 <script src="assets/js/util.js"></script>
 <script src="assets/js/main.js"></script>
-<script src="assets/js/modals.js"></script>
 
 </body>
 </html>
-
