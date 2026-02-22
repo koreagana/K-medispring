@@ -1,9 +1,15 @@
 <!DOCTYPE HTML>
+<!--
+  汉江春天 · 女性护理中心 (women.html)
+  - Layout: same as index (Editorial: header + sidebar + wechat modal + scripts)
+  - Content: Women category only (6 big sections)
+  - Copyright: 来源：汉江春天
+-->
 <html lang="zh-CN">
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
-  <title>汉江春天</title>
+  <title>汉江春天 · 女性护理中心</title>
 
   <!-- GitHub Pages용 base 경로 -->
   <script>
@@ -16,199 +22,575 @@
     })();
   </script>
 
-  <!-- Meta Tags -->
-  <meta name="description" content="汉江春天 · 韩国医疗观光与大健康平台" />
-  <meta property="og:title" content="汉江春天" />
-  <meta property="og:description" content="专注于韩国医疗、皮肤医美、干细胞、健康管理与高端定制旅行" />
-  <meta property="og:image" content="https://kmedispring.com/images/preview.jpg" />
-  <meta property="og:url" content="https://kmedispring.com/index.html" />
-  <meta name="twitter:card" content="summary_large_image" />
-
-  <!-- Favicon -->
-  <link rel="icon" type="image/x-icon" href="images/favicon.ico?v=20251012">
-  <link rel="icon" type="image/png" sizes="32x32" href="images/favicon-32.png?v=20251012">
-  <link rel="icon" type="image/png" sizes="16x16" href="images/favicon-16.png?v=20251012">
-  <link rel="apple-touch-icon" sizes="180x180" href="images/apple-touch-icon.png?v=20251012">
-
-  <!-- CSS -->
-  <link rel="stylesheet" href="assets/css/fontawesome-all.min.css?v=20251027" />
-  <link rel="stylesheet" href="assets/css/main.css?v=20251027" />
-  <noscript>
-    <link rel="stylesheet" href="assets/css/noscript.css?v=20251027" />
-  </noscript>
+  <link rel="icon" href="favicon.ico" />
+  <link rel="stylesheet" href="assets/css/main.css" />
 </head>
 
 <body class="is-preload">
-
-  <!-- Wrapper -->
   <div id="wrapper">
 
     <!-- Main -->
     <div id="main">
       <div class="inner">
 
-<!-- Header -->
-<header id="header">
-  <a href="index.html" class="logo">
-    <img src="images/logo_ch.png" alt="汉江春天" class="logo-img">
-  </a>
-<!-- ✅ 모바일 햄버거: 헤더 안에 있어야 함 -->
-          <a href="#sidebar" class="toggle" aria-label="Menu"></a>
+        <!-- Header (same layout style) -->
+        <header id="header">
+          <a href="index.html" class="logo"><strong>汉江春天</strong></a>
 
-  <!-- SNS icons -->
-  <ul class="icons">
-    <li>
-      <a href="#" id="wechat-icon" class="icon brands fa-weixin" title="WeChat">
-        <span class="label">WeChat</span>
-      </a>
-    </li>
-    <li>
-      <a href="#" id="whatsapp-icon" class="icon brands fa-whatsapp" title="WhatsApp">
-        <span class="label">WhatsApp</span>
-      </a>
-    </li>
-    <li>
-      <a href="mailto:egana@kmedispring.com" class="icon solid fa-envelope" title="Email">
-        <span class="label">Email</span>
-      </a>
-    </li>
-  </ul>
-</header>
-<!-- ===== Sidebar ===== -->
-   <div id="sidebar">
-  <div class="inner">
+          <ul class="icons">
+            <li><a href="javascript:void(0)" id="wechat-icon" class="icon brands fa-weixin" aria-label="WeChat"><span class="label">WeChat</span></a></li>
+            <li><a href="javascript:void(0)" class="icon brands fa-whatsapp" aria-label="WhatsApp"><span class="label">WhatsApp</span></a></li>
+            <li><a href="mailto:egana@kmedispring.com" class="icon solid fa-envelope" aria-label="Email"><span class="label">Email</span></a></li>
+          </ul>
+        </header>
 
+        <!-- Page -->
+        <section class="banner">
+          <div class="content">
+            <header>
+              <h1>女性护理中心</h1>
+              <p>筛查 · 治疗 · 生育 · 产后 · 私密 · 更年期与激素管理</p>
+            </header>
 
-   <!-- 사이드바 상단 여백 -->
-<section id="sidebar-brand" class="sidebar-spacer"></section>
-<!-- 메뉴 -->
-<nav id="menu">
-  <ul>
-    <li class="active">
-      <a href="index.html">首页</a>
-    </li>
-    <li><a href="wellness.html">大健康</a></li>
-    <li><a href="stemcell.html">干细胞</a></li>
-    <li><a href="derm.html">皮肤医美</a></li>
-    <li><a href="surgery.html">整形医美</a></li>
-    <li><a href="woman.html">女性护理中心</a></li>
-    <li><a href="man.html">男性健康中心</a></li>
-    <li><a href="kplan.html" aria-current="page">定制医疗观光方案</a></li>
-  </ul>
-</nav>
-  <br>
-  <br>
-   
-  <!-- About -->
-<section class="menu-extra">
-  <header class="major">
-    <h2 class="about-title">关于我们</h2>
-  </header>
-  <p>
-    我们相信，美丽与健康，源于真诚的交流。如果你对韩国医疗、健康管理或合作有兴趣，欢迎通过微信或邮件与我们联系。
-  </p>
-</section>
+            <p>
+              我们把“女性医疗”按阶段与需求拆解成清晰路径：<b>评估 → 选择 → 治疗/管理 → 复盘</b>。
+              无论是体检筛查、手术治疗、备孕生育、产后修复、私密困扰，还是更年期激素管理，
+              都可以用同一套逻辑做出不模糊、可执行的方案。
+            </p>
 
-    <!-- Contact -->
-    <section>
-      <header class="major"><h3>联系方式</h3></header>
-      <ul class="contact">
-        <li class="icon solid fa-envelope">
-          <a href="mailto:egana@kmedispring.com">邮箱：egana@kmedispring.com</a>
-        </li>
-        <li class="icon solid fa-phone">(82) 10-4903-3123</li>
-        <li class="icon solid fa-home">韩国 首尔特别市 城北区 东小门路 63号 6层 (邮编：02845)</li>
-      </ul>
-    </section>
+            <ul class="actions">
+              <li><a href="kplan.html" class="button primary">定制医疗观光方案</a></li>
+            </ul>
+          </div>
 
-    <!-- Footer -->
-    <footer id="footer">
-      <p style="text-align:center; font-size:0.9em; color:#666;">
-        © 2025 汉江春天 한강애봄 版权所有。模板设计：HTML5 UP。
-      </p>
-    </footer>
+          <span class="image object">
+            <!-- 여성 대표 이미지(없으면 교체) -->
+            <img src="images/woman/section_relax.png" alt="Women Health" />
+          </span>
+        </section>
 
-  </div><!-- .inner -->
-</div><!-- #sidebar -->
+        <!-- Quick Index -->
+        <section>
+          <header class="major">
+            <h2>六大模块</h2>
+          </header>
 
-  </div><!-- #wrapper -->
+          <div class="features">
+            <article>
+              <span class="icon solid fa-stethoscope"></span>
+              <div class="content">
+                <h3>1) 妇科筛查</h3>
+                <p>把风险提前看见：宫颈、子宫、卵巢、乳腺、感染与分泌。</p>
+              </div>
+            </article>
 
-  <!-- WeChat QR Modal -->
+            <article>
+              <span class="icon solid fa-procedures"></span>
+              <div class="content">
+                <h3>2) 妇科治疗与手术</h3>
+                <p>肌瘤/囊肿/内膜息肉/内异症/盆腔炎症等：从保守到手术的决策路径。</p>
+              </div>
+            </article>
+
+            <article>
+              <span class="icon solid fa-baby"></span>
+              <div class="content">
+                <h3>3) 生育与备孕</h3>
+                <p>评估卵巢储备、排卵与输卵管，制定备孕/辅助生殖/保胎策略。</p>
+              </div>
+            </article>
+
+            <article>
+              <span class="icon solid fa-heartbeat"></span>
+              <div class="content">
+                <h3>4) 产后修复与盆底</h3>
+                <p>松弛、漏尿、腹直肌、疼痛与性生活质量：复位、训练与医学干预。</p>
+              </div>
+            </article>
+
+            <article>
+              <span class="icon solid fa-user-shield"></span>
+              <div class="content">
+                <h3>5) 私密护理与私密美学</h3>
+                <p>干涩、反复炎症、瘙痒、外观与功能：以“安全+舒适+功能”为先。</p>
+              </div>
+            </article>
+
+            <article>
+              <span class="icon solid fa-sun"></span>
+              <div class="content">
+                <h3>6) 更年期与HRT管理</h3>
+                <p>按症状与时间窗做分层：评估、禁忌排除、方案选择与随访复查。</p>
+              </div>
+            </article>
+          </div>
+        </section>
+
+        <!-- 1. Screening -->
+        <section id="women-screening">
+          <header class="major">
+            <h2>1) 妇科筛查（长期健康的起点）</h2>
+          </header>
+
+          <div class="row gtr-200">
+            <div class="col-7 col-12-medium">
+              <h3>适合人群</h3>
+              <ul>
+                <li>有性生活 / 既往宫颈异常 / HPV阳性 / 不规则出血</li>
+                <li>痛经明显、经量增多、经期延长、非经期出血</li>
+                <li>反复阴道炎、分泌物异常、下腹痛或盆腔不适</li>
+                <li>乳腺结节随访、家族史风险、备孕前系统评估</li>
+              </ul>
+
+              <h3>常见筛查组合（按目标匹配）</h3>
+              <div class="table-wrapper">
+                <table>
+                  <thead>
+                    <tr>
+                      <th>目标</th>
+                      <th>建议检查</th>
+                      <th>频次/提醒</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td>宫颈风险</td>
+                      <td>TCT/宫颈细胞学 + HPV分型；必要时阴道镜</td>
+                      <td>按年龄/结果复查；异常需专科随访</td>
+                    </tr>
+                    <tr>
+                      <td>子宫与卵巢</td>
+                      <td>妇科超声（经腹/经阴道）</td>
+                      <td>症状人群优先；结节/囊肿按医嘱随访</td>
+                    </tr>
+                    <tr>
+                      <td>炎症与感染</td>
+                      <td>白带常规、培养/核酸检测（必要时）</td>
+                      <td>反复发作要找诱因与合并因素</td>
+                    </tr>
+                    <tr>
+                      <td>激素与内分泌</td>
+                      <td>性激素六项（按周期）、甲状腺、胰岛素抵抗评估</td>
+                      <td>用于月经紊乱、备孕、围绝经评估</td>
+                    </tr>
+                    <tr>
+                      <td>乳腺筛查</td>
+                      <td>乳腺超声；按年龄与风险补充钼靶/进一步检查</td>
+                      <td>结节随访按分级与医嘱</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+
+              <p class="small">
+                说明：筛查不是“堆项目”，而是围绕症状与风险做组合，避免浪费时间与费用。
+              </p>
+            </div>
+
+            <div class="col-5 col-12-medium">
+              <span class="image fit">
+                <img src="images/woman/section_relax.png" alt="Screening" />
+              </span>
+            </div>
+          </div>
+        </section>
+
+        <!-- 2. Treatment & Surgery -->
+        <section id="women-treatment">
+          <header class="major">
+            <h2>2) 妇科治疗与手术（从保守到手术的路径）</h2>
+          </header>
+
+          <h3>常见问题与解决方向</h3>
+          <div class="table-wrapper">
+            <table>
+              <thead>
+                <tr>
+                  <th>问题</th>
+                  <th>典型表现</th>
+                  <th>常见处理路径</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>子宫肌瘤</td>
+                  <td>经量多、贫血、压迫感</td>
+                  <td>评估大小/位置/症状 → 药物/观察 → 宫腔镜/腹腔镜等</td>
+                </tr>
+                <tr>
+                  <td>卵巢囊肿</td>
+                  <td>下腹痛、B超发现</td>
+                  <td>分型评估 → 随访 → 必要时微创手术</td>
+                </tr>
+                <tr>
+                  <td>子宫内膜息肉</td>
+                  <td>不规则出血、备孕受影响</td>
+                  <td>宫腔镜评估与处理 → 病理确认</td>
+                </tr>
+                <tr>
+                  <td>子宫内膜异位症</td>
+                  <td>痛经、性交痛、备孕困难</td>
+                  <td>影像+评估 → 药物/手术 → 长期管理与复盘</td>
+                </tr>
+                <tr>
+                  <td>盆腔炎/慢性炎症</td>
+                  <td>反复腹痛、分泌物异常</td>
+                  <td>感染源评估 → 抗感染+生活方式 → 复发因素管理</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <h3>你最需要确认的三件事</h3>
+          <ol>
+            <li><b>目标：</b>止血/止痛/保留生育力/改善复发？</li>
+            <li><b>风险：</b>贫血、感染、扭转、恶性可能性？</li>
+            <li><b>路径：</b>保守治疗多久评估一次？何时升级到手术？</li>
+          </ol>
+        </section>
+
+        <!-- 3. Fertility -->
+        <section id="women-fertility">
+          <header class="major">
+            <h2>3) 生育与备孕（评估—计划—执行）</h2>
+          </header>
+
+          <h3>基础评估（建议先做清楚再努力）</h3>
+          <ul>
+            <li>卵巢储备：AMH、基础卵泡（超声）、年龄与周期规律</li>
+            <li>排卵：基础体温/排卵监测、必要时激素评估</li>
+            <li>子宫环境：超声/宫腔评估（必要时宫腔镜）</li>
+            <li>输卵管：按既往史与医生判断选择评估方式</li>
+            <li>伴侣评估：精液分析与基础检查（必要时）</li>
+          </ul>
+
+          <h3>常见需求场景</h3>
+          <div class="row">
+            <div class="col-6 col-12-medium">
+              <h4>备孕（自然）</h4>
+              <ul>
+                <li>优化排卵与同房时机</li>
+                <li>改善甲状腺、胰岛素抵抗、体重与炎症状态</li>
+                <li>缺乏营养素/贫血/维生素D等补充策略</li>
+              </ul>
+            </div>
+            <div class="col-6 col-12-medium">
+              <h4>辅助生殖/保胎</h4>
+              <ul>
+                <li>按评估结果选择路径（如促排/取卵/移植等由专科决定）</li>
+                <li>反复失败需做结构化复盘：胚胎、内膜、免疫、凝血等</li>
+                <li>怀孕后分层随访：出血、胎心、宫颈长度等</li>
+              </ul>
+            </div>
+          </div>
+
+          <p class="small">
+            说明：我们提供“结构化问诊与路径规划”，具体医疗行为以接诊机构医生判断为准。
+          </p>
+        </section>
+
+        <!-- 4. Postpartum & Pelvic floor -->
+        <section id="women-postpartum">
+          <header class="major">
+            <h2>4) 产后修复与盆底（恢复是计划，不是运气）</h2>
+          </header>
+
+          <div class="row gtr-200">
+            <div class="col-6 col-12-medium">
+              <span class="image fit">
+                <img src="images/woman/section_postpartum.png" alt="Postpartum" />
+              </span>
+            </div>
+
+            <div class="col-6 col-12-medium">
+              <h3>常见问题</h3>
+              <ul>
+                <li>漏尿、尿频、尿急、盆腔下坠感</li>
+                <li>阴道松弛、性生活疼痛/敏感度下降</li>
+                <li>腹直肌分离、腰背痛、体态改变</li>
+                <li>睡眠不足、情绪波动与慢性疲劳</li>
+              </ul>
+
+              <h3>路径建议（分层）</h3>
+              <ol>
+                <li><b>评估：</b>盆底肌功能评估 + 产后恢复评估</li>
+                <li><b>训练：</b>物理治疗/康复训练（阶段性目标）</li>
+                <li><b>医学干预：</b>针对松弛、炎症、疼痛等（按医生建议）</li>
+                <li><b>复盘：</b>6–8周一个周期，复测再调整</li>
+              </ol>
+            </div>
+          </div>
+        </section>
+
+        <!-- 5. Intimate care & aesthetic -->
+        <section id="women-intimate">
+          <header class="major">
+            <h2>5) 私密护理与私密美学（安全优先，功能为本）</h2>
+          </header>
+
+          <h3>你可能遇到的困扰</h3>
+          <div class="row">
+            <div class="col-6 col-12-medium">
+              <ul>
+                <li>干涩、灼痛、反复炎症、异味、瘙痒</li>
+                <li>性交痛、紧张、敏感度改变</li>
+                <li>外观困扰（色素、形态、对称性）</li>
+              </ul>
+            </div>
+            <div class="col-6 col-12-medium">
+              <ul>
+                <li>产后松弛、轻中度压力性尿失禁</li>
+                <li>围绝经期黏膜变薄与反复不适</li>
+                <li>需要更“低侵入”的改善方式</li>
+              </ul>
+            </div>
+          </div>
+
+          <h3>常见方式（按医生评估匹配）</h3>
+          <ul>
+            <li><b>基础医疗护理：</b>感染评估与规范治疗，避免反复</li>
+            <li><b>黏膜与弹性管理：</b>保湿、局部治疗、能量类/注射类（按适应证）</li>
+            <li><b>功能改善：</b>盆底训练+必要的医学干预</li>
+            <li><b>外观美学：</b>在安全与功能不受影响前提下的精细化方案</li>
+          </ul>
+
+          <p class="small">
+            说明：私密项目必须建立在“排除感染与病变”的基础上，先诊断，再改善。
+          </p>
+        </section>
+
+        <!-- 6. Menopause & HRT -->
+        <section id="women-menopause">
+          <header class="major">
+            <h2>6) 更年期与HRT管理（时间窗 + 症状分层 + 安全评估）</h2>
+          </header>
+
+          <h3>什么时候需要认真考虑管理？（常见信号）</h3>
+          <ul>
+            <li>潮热盗汗、睡眠明显变差、心悸、焦虑/情绪波动</li>
+            <li>月经紊乱（周期缩短/延长/经量变化）</li>
+            <li>阴道干涩、反复泌尿生殖道不适、性生活疼痛</li>
+            <li>体重上升、脂代谢变差、骨密度下降风险</li>
+          </ul>
+
+          <h3>关键概念：时间窗（越早评估越好）</h3>
+          <ul>
+            <li>围绝经期：症状出现、周期开始紊乱的阶段</li>
+            <li>绝经：连续12个月无月经</li>
+            <li><b>HRT更强调“在合适时间窗内、做足安全评估后再进入方案”</b></li>
+          </ul>
+
+          <h3>HRT开始前必须做的安全评估（核心清单）</h3>
+          <div class="table-wrapper">
+            <table>
+              <thead>
+                <tr>
+                  <th>评估方向</th>
+                  <th>内容</th>
+                  <th>目的</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>乳腺</td>
+                  <td>乳腺影像评估（按年龄与风险）</td>
+                  <td>排除高风险与需要先处理的异常</td>
+                </tr>
+                <tr>
+                  <td>子宫内膜</td>
+                  <td>妇科超声/必要时进一步检查</td>
+                  <td>排除不明原因出血与内膜问题</td>
+                </tr>
+                <tr>
+                  <td>血栓/心血管</td>
+                  <td>既往史、家族史、血压/血脂/血糖等</td>
+                  <td>降低血栓与心血管风险</td>
+                </tr>
+                <tr>
+                  <td>肝肾与代谢</td>
+                  <td>基础化验与代谢评估</td>
+                  <td>确保方案可长期、安全执行</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <h3>方案类型（按医生评估）</h3>
+          <ul>
+            <li><b>系统性激素治疗：</b>针对潮热、睡眠、情绪与系统症状</li>
+            <li><b>局部治疗：</b>针对黏膜干涩、泌尿生殖道症状</li>
+            <li><b>非激素策略：</b>当存在禁忌或不适合HRT时的替代路径</li>
+          </ul>
+
+          <h3>随访复盘（让方案长期有效）</h3>
+          <ul>
+            <li>初期：4–12周评估症状变化与不良反应</li>
+            <li>稳定期：3–6个月复盘一次（指标+体感）</li>
+            <li>每年：乳腺/妇科/代谢风险系统复查</li>
+          </ul>
+
+          <p class="small">
+            说明：HRT不是“万能”，也不是“可怕”。关键是：适合的人、合适的时机、严谨的评估、长期的随访。
+          </p>
+        </section>
+
+        <!-- CTA -->
+        <section>
+          <header class="major">
+            <h2>现在开始</h2>
+          </header>
+          <p>
+            选择你的目标：筛查 / 治疗 / 备孕 / 产后 / 私密 / 更年期管理。我们会把行程与方案做成一套结构化路径。
+          </p>
+          <ul class="actions">
+            <li><a href="kplan.html" class="button primary">立即定制你的健康行程</a></li>
+          </ul>
+          <p class="small">来源：汉江春天</p>
+        </section>
+
+      </div>
+    </div>
+
+    <!-- Sidebar (same layout) -->
+    <div id="sidebar">
+      <div class="inner">
+
+        <!-- Search (optional, keeps layout consistent) -->
+        <section id="search" class="alt">
+          <form method="post" action="#">
+            <input type="text" name="query" id="query" placeholder="Search" />
+          </form>
+        </section>
+
+        <!-- Menu -->
+        <nav id="menu">
+          <header class="major">
+            <h2>菜单</h2>
+          </header>
+          <ul>
+            <li><a href="index.html">首页</a></li>
+            <li><a href="wellness.html">大健康</a></li>
+            <li><a href="stemcell.html">干细胞</a></li>
+            <li><a href="derm.html">皮肤医美</a></li>
+            <li><a href="surgery.html">整形医美</a></li>
+            <li><a href="women.html">女性护理中心</a></li>
+            <li><a href="man.html">男性健康中心</a></li>
+            <li><a href="kplan.html">定制医疗观光方案</a></li>
+          </ul>
+        </nav>
+
+        <!-- About -->
+        <section>
+          <header class="major">
+            <h2>关于我们</h2>
+          </header>
+          <p>
+            我们相信，美丽与健康，源于真诚的交流。 如果你对韩国医疗、健康管理或合作有兴趣，欢迎通过微信或邮件与我们联系。<br><br>
+            韩国代表综合医院 5家，<br>
+            各专科医疗机构 50+，<br>
+            基于医疗适配原则进行专业匹配。
+          </p>
+        </section>
+
+        <!-- Contact -->
+        <section>
+          <header class="major">
+            <h2>联系方式</h2>
+          </header>
+          <ul class="contact">
+            <li class="icon solid fa-envelope"><a href="mailto:egana@kmedispring.com">egana@kmedispring.com</a></li>
+          </ul>
+          <p class="small">来源：汉江春天</p>
+        </section>
+
+        <!-- Footer -->
+        <footer id="footer">
+          <p class="copyright">
+            &copy; 2026 汉江春天. All rights reserved. <br>
+            来源：汉江春天
+          </p>
+        </footer>
+
+      </div>
+    </div>
+
+  </div>
+
+  <!-- WeChat QR Modal (same pattern) -->
   <div id="wechatModal" class="modal" aria-hidden="true" role="dialog">
-    <div class="modal-inner">
+    <div class="modal-inner" role="document">
       <button class="close" aria-label="Close">&times;</button>
       <p class="modal-caption">扫描二维码添加微信</p>
-      <img id="wechatQR" class="modal-content" src="images/qr_weixin.jpg" alt="WeChat QR for e-gana" />
+      <img id="wechatQR" class="modal-content" src="images/qr_weixin.jpg" alt="WeChat QR">
       <p class="modal-id">WeChat ID：e-gana</p>
     </div>
   </div>
 
-  <!-- WhatsApp Modal -->
-  <div id="whatsappModal" class="modal" aria-hidden="true" role="dialog">
-    <div class="modal-inner">
-      <button class="close" aria-label="Close">&times;</button>
-      <p class="modal-caption">QR → WhatsApp Connect</p>
-      <img id="whatsappQR" class="modal-content" src="images/whatsapp_qr.jpg" alt="WhatsApp QR for K-Medi Spring">
-      <p class="modal-id">WhatsApp：+82-10-4903-3123</p>
-    </div>
-  </div>
+  <!-- Scripts (same bundle order) -->
+  <script src="assets/js/jquery.min.js"></script>
+  <script src="assets/js/browser.min.js"></script>
+  <script src="assets/js/breakpoints.min.js"></script>
+  <script src="assets/js/util.js"></script>
+  <script src="assets/js/main.js"></script>
 
-  <!-- 템플릿 기본 스크립트 5총사 (반드시 이 순서) -->
- <script src="assets/js/jquery.min.js"></script>
-<script src="assets/js/browser.min.js"></script>
-<script src="assets/js/breakpoints.min.js"></script>
-<script src="assets/js/util.js"></script>
-<script src="assets/js/main.js"></script>
-<script src="assets/js/modals.js"></script>
+  <!-- Custom logic (keeps behavior consistent with index) -->
+  <script>
+    (function () {
+      // 1) WeChat modal
+      var modal = document.getElementById("wechatModal");
+      var openBtn = document.getElementById("wechat-icon");
+      function openModal() {
+        if (!modal) return;
+        modal.setAttribute("aria-hidden", "false");
+        modal.classList.add("is-active");
+        document.body.classList.add("modal-open");
+      }
+      function closeModal() {
+        if (!modal) return;
+        modal.setAttribute("aria-hidden", "true");
+        modal.classList.remove("is-active");
+        document.body.classList.remove("modal-open");
+      }
+      if (openBtn) openBtn.addEventListener("click", openModal);
+      if (modal) {
+        modal.addEventListener("click", function (e) {
+          if (e.target === modal) closeModal();
+        });
+        var closeBtn = modal.querySelector(".close");
+        if (closeBtn) closeBtn.addEventListener("click", closeModal);
+      }
+      document.addEventListener("keydown", function (e) {
+        if (e.key === "Escape") closeModal();
+      });
 
+      // 2) active menu item
+      (function markActive() {
+        try {
+          var path = (location.pathname || "").split("/").pop() || "index.html";
+          var links = document.querySelectorAll("#menu a");
+          links.forEach(function (a) {
+            var href = (a.getAttribute("href") || "").split("/").pop();
+            if (href === path) a.setAttribute("aria-current", "page");
+          });
+        } catch (_) {}
+      })();
+
+      // 3) Mobile menu hotfix (clone list into #menu for off-canvas robustness)
+      (function hotfixMobileMenu() {
+        try {
+          if (window.__menuBound) return;
+          window.__menuBound = true;
+
+          // If template JS already handles, this is harmless.
+          var menu = document.getElementById("menu");
+          if (!menu) return;
+
+          // Ensure menu has a predictable list class for mobile styling if needed
+          var ul = menu.querySelector("ul");
+          if (ul) ul.classList.add("mobile-menu-list");
+        } catch (_) {}
+      })();
+    })();
+  </script>
 </body>
 </html>
-
-
-
-<header class="main">
-  <h1>女性护理中心</h1>
-</header>
-
-<!-- Hero (업로드 전까지 임시 이미지 사용)
-     아래 hero_woman.png는 추후 업로드되면 주석 해제하여 사용하세요. -->
-<!-- <span class="image main">
-  <img src="{{ site.baseurl }}/images/woman/hero_woman.png" alt="女性健康与护理中心">
-</span> -->
-<span class="image main">
-  <img src="{{ site.baseurl }}/images/woman/section_postpartum.png" alt="女性健康与产后修复">
-</span>
-
-<p>
-  根据女性在不同生命阶段的变化，进行激素平衡、产后修复与皮肤护理。
-  结合功能医学评估与皮肤/生活方式方案，帮助找回由内而外的健康与自信。
-</p>
-
-<hr class="major" />
-
-<!-- Row 1 -->
-<div class="row gtr-200">
-  <div class="col-6 col-12-medium">
-    <h3>激素与节律</h3>
-    <p>结合周期与甲状腺轴评估，针对睡眠、情绪与体重进行个体化管理。</p>
-    <span class="image fit">
-      <img src="{{ site.baseurl }}/images/woman/section_relax.png" alt="节律与情绪管理">
-    </span>
-  </div>
-  <div class="col-6 col-12-medium">
-    <h3>产后与体态</h3>
-    <p>核心力量、体态与皮肤屏障修复，按耐受度分阶段稳定恢复。</p>
-    <span class="image fit">
-      <img src="{{ site.baseurl }}/images/woman/section_postpartum.png" alt="产后修复与体态管理">
-    </span>
-  </div>
-</div>
-
-<!-- CTA -->
-<div class="box">
-  <p>需要按你的节律与目标定制女性护理计划？点击开始 1:1 咨询。</p>
-  <ul class="actions">
-    <li><a href="{{ site.baseurl }}/custom-trip.html" class="button primary">定制我的女性护理方案</a></li>
-    <!-- <li><a href="{{ site.baseurl }}/hospitals.html" class="button alt">查看合作医院</a></li> -->
-  </ul>
-</div>
