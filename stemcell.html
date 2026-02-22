@@ -1,17 +1,11 @@
 <!DOCTYPE HTML>
-<!--
-  汉江春天 · K-Plan (Editorial layout safe)
-  - Mobile hamburger restored (requires #sidebar + main.js)
-  - Sidebar includes menu + contact + footer
-  - Removed duplicate template script imports (critical)
--->
 <html lang="zh-CN">
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
-  <title>汉江春天 · 定制医疗观光方案</title>
+  <title>汉江春天 · 干细胞</title>
 
-  <!-- GitHub Pages base (HEAD 최상단) -->
+  <!-- GitHub Pages용 base 경로 -->
   <script>
     (function () {
       var project = "/K-medispring/";
@@ -22,231 +16,620 @@
     })();
   </script>
 
-  <!-- Editorial CSS -->
-  <link rel="stylesheet" href="assets/css/fontawesome-all.min.css" />
-  <link rel="stylesheet" href="assets/css/main.css" />
-  <link rel="stylesheet" href="assets/css/kplan-agi.css" />
+  <!-- Meta Tags -->
+  <meta name="description" content="汉江春天 · 干细胞/细胞治疗 Q&A（合规优先）" />
+  <meta property="og:title" content="汉江春天 · 干细胞" />
+  <meta property="og:description" content="以合规为前提，梳理韩国已获批细胞治疗产品的适应症与接待流程（Q&A）" />
+  <meta property="og:image" content="https://kmedispring.com/images/preview.jpg" />
+  <meta property="og:url" content="https://kmedispring.com/stemcell.html" />
+  <meta name="twitter:card" content="summary_large_image" />
 
-  <!-- K-Plan inline overrides (short only) -->
+  <!-- 파비콘 -->
+  <link rel="icon" type="image/x-icon" href="/images/favicon.ico?v=20251012">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32.png?v=20251012">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16.png?v=20251012">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png?v=20251012">
+  <link rel="shortcut icon" href="/images/favicon.ico?v=20251012">
+
+  <!-- CSS -->
+  <link rel="stylesheet" href="assets/css/fontawesome-all.min.css?v=20251027" />
+  <link rel="stylesheet" href="assets/css/main.css?v=20251027" />
+  <noscript><link rel="stylesheet" href="assets/css/noscript.css?v=20251027" /></noscript>
+
+  <!-- Page-only polish -->
   <style>
-    :root{
-      --hga-blue: #1e6bd6;
-      --hga-blue-weak: rgba(30,107,214,0.45);
-      --hga-blue-bg: rgba(30,107,214,0.06);
+    /* 배너/타이틀 위 라인 여백(요청: 제목에 딱 붙지 않게) */
+    .kms-topline{
+      height:1px; background: rgba(0,119,182,.55);
+      margin: 1.25rem 0 2.25rem 0; /* 여유 있게 */
     }
-
-    /* Sidebar: Search 제거 + 로고만 */
-    #sidebar #search{ display:none !important; }
-
-    #sidebar-brand{
-      padding: 1.8rem 1.5rem 1.1rem;
-      text-align:center;
-      border: 0 !important;
+    .kms-lead{
+      font-size:1.05rem; line-height:1.9;
+      color: rgba(0,0,0,.72);
+      max-width: 980px;
     }
-    #sidebar-brand .sidebar-logo img{
+    .kms-sub{
+      margin-top:.6rem;
+      color: rgba(0,0,0,.55);
+      letter-spacing:.02em;
+    }
+    .kms-chiprow{
+      display:flex; flex-wrap:wrap; gap:.5rem;
+      margin: 1.2rem 0 0 0;
+    }
+    .kms-chip{
+      border: 1px solid rgba(0,0,0,.12);
+      padding: .45rem .7rem;
+      border-radius: 999px;
+      font-size:.9rem;
+      color: rgba(0,0,0,.68);
+      background: rgba(255,255,255,.7);
+    }
+    .kms-card{
+      border: 1px solid rgba(0,0,0,.10);
+      border-radius: 14px;
+      padding: 1.1rem 1.1rem;
+      background: rgba(255,255,255,.85);
+      box-shadow: 0 6px 16px rgba(0,0,0,.06);
+    }
+    .kms-grid-2{
+      display:grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1rem;
+    }
+    @media (max-width: 736px){
+      .kms-grid-2{ grid-template-columns: 1fr; }
+    }
+    .kms-kv{
+      border-radius: 16px;
+      overflow:hidden;
+      border: 1px solid rgba(0,0,0,.08);
+      background: rgba(0,0,0,.02);
+    }
+    .kms-kv img{
+      width:100%;
+      height: 360px; /* 너무 크게 들어가지 않게 */
+      object-fit: cover;
       display:block;
-      max-width:140px;
-      height:auto;
-      margin:0 auto;
+    }
+    @media (max-width: 736px){
+      .kms-kv img{ height: 220px; }
     }
 
-    /* Menu 상단 라인 제거 (Editorial 안전 범위) */
-    #sidebar nav#menu,
-    #sidebar nav#menu > header,
-    #sidebar nav#menu ul{
-      border-top: 0 !important;
+    /* Q&A accordion */
+    .kms-qa details{
+      border:1px solid rgba(0,0,0,.10);
+      border-radius: 14px;
+      padding: .9rem 1rem;
+      background: rgba(255,255,255,.88);
+      box-shadow: 0 6px 16px rgba(0,0,0,.05);
+      margin: .7rem 0;
+    }
+    .kms-qa summary{
+      cursor:pointer;
+      font-weight:700;
+      list-style:none;
+      outline:none;
+    }
+    .kms-qa summary::-webkit-details-marker{ display:none; }
+    .kms-qa .qa-a{
+      margin-top:.7rem;
+      color: rgba(0,0,0,.74);
+      line-height:1.9;
+    }
+    .kms-badge{
+      display:inline-block;
+      font-size:.82rem;
+      padding:.2rem .55rem;
+      border-radius: 999px;
+      border: 1px solid rgba(0,119,182,.35);
+      background: rgba(0,119,182,.06);
+      color: rgba(0,119,182,.95);
+      margin-left:.5rem;
+      vertical-align: middle;
+    }
+    .kms-note{
+      font-size:.92rem;
+      color: rgba(0,0,0,.62);
+      line-height:1.8;
+    }
+    .kms-hr{
+      height:1px; background: rgba(0,0,0,.10);
+      margin: 1.25rem 0;
+    }
+    .kms-imgslot{
+      border:1px dashed rgba(0,0,0,.18);
+      border-radius: 16px;
+      padding: 1rem;
+      background: rgba(255,255,255,.65);
+      text-align:center;
+      color: rgba(0,0,0,.55);
+    }
+    .kms-imgslot .small{
+      font-size:.9rem; margin-top:.3rem; color: rgba(0,0,0,.45);
+    }
+    .kms-mini{
+      font-size:.9rem; color: rgba(0,0,0,.62); line-height:1.85;
     }
   </style>
 </head>
 
- <body class="is-preload">
-  <div id="wrapper">
+<body class="is-preload">
 
-    <!-- ✅ 모바일 햄버거: 사이드바 전체(메뉴+연락+풋터)를 여는 토글 -->
-    <a href="#sidebar" class="toggle" aria-label="Menu"></a>
+  <div id="wrapper">
 
     <!-- Main -->
     <div id="main">
       <div class="inner">
 
-        <!-- Header -->
+        <!-- Header (index와 동일) -->
         <header id="header">
-          <!-- 로고 -->
           <a href="index.html" class="logo">
             <img src="images/logo_ch.png" alt="汉江春天" class="logo-img">
           </a>
 
+          <!-- ✅ 모바일 햄버거 -->
+          <a href="#sidebar" class="toggle" aria-label="Menu"></a>
+
           <!-- SNS icons -->
           <ul class="icons">
             <li>
-              <a href="#"
-                 id="wechat-icon"
-                 class="icon brands fa-weixin"
-                 title="WeChat"
-                 aria-controls="wechatModal"
-                 aria-haspopup="dialog"
-                 role="button">
+              <a href="#" id="wechat-icon" class="icon brands fa-weixin" title="WeChat">
                 <span class="label">WeChat</span>
               </a>
             </li>
             <li>
-              <a href="#"
-                 id="whatsapp-icon"
-                 class="icon brands fa-whatsapp"
-                 title="WhatsApp"
-                 aria-controls="whatsappModal"
-                 aria-haspopup="dialog"
-                 role="button">
+              <a href="#" id="whatsapp-icon" class="icon brands fa-whatsapp" title="WhatsApp">
                 <span class="label">WhatsApp</span>
               </a>
             </li>
             <li>
-              <a href="mailto:egana@kmedispring.com"
-                 class="icon solid fa-envelope"
-                 title="Email">
+              <a href="mailto:egana@kmedispring.com" class="icon solid fa-envelope" title="Email">
                 <span class="label">Email</span>
               </a>
             </li>
           </ul>
         </header>
-      </br>
 
-<!-- ✅ Banner (index랑 같은 위치/구조) -->
-  <div class="content">
-  <h1>干细胞</h1>
-<br/>
+        <!-- Page Title Block -->
+        <section>
+          <header>
+            <h1 style="margin-bottom:.35rem;">干细胞与细胞治疗</h1>
+            <p class="kms-sub">合规优先 · 适应症明确 · 以医生判断为前提的接待路径</p>
+          </header>
 
-    
-  
-<!-- Row 1 -->
-<div class="row gtr-200">
-  <div class="col-6 col-12-medium">
-    <h3>细胞检测与提取</h3>
-    <p>通过血液与脂肪组织采样，分离高纯度间充质干细胞，评估活性与安全性。</p>
-    <span class="image fit">
-      <img src="{{ site.baseurl }}/images/stemcell/section_lab.png" alt="干细胞检测与提取实验">
-    </span>
-  </div>
+          <div class="kms-topline"></div>
 
-  <div class="col-6 col-12-medium">
-    <h3>再生治疗</h3>
-    <p>广泛应用于抗衰老、皮肤修复、关节疾病与免疫调节，安全可控、效果稳定。</p>
-    <span class="image fit">
-      <img src="{{ site.baseurl }}/images/stemcell/section_regen.png" alt="再生疗法与免疫平衡">
-    </span>
-  </div>
-</div>
+          <div class="kms-grid-2">
+            <div>
+              <p class="kms-lead">
+                我们把“干细胞/细胞治疗”拆成清晰路径：<b>评估 → 选择 → 治疗/管理 → 复盘</b>。
+                <br>
+                重点只有一个：<b>只在韩国法规与品목허가(适应症)边界内沟通</b>，避免“抗衰定制”式的误导表述。
+              </p>
 
-<hr class="major" />
+              <div class="kms-chiprow">
+                <span class="kms-chip">适应症写清楚</span>
+                <span class="kms-chip">流程讲明白</span>
+                <span class="kms-chip">风险与限制先说</span>
+                <span class="kms-chip">不做夸大承诺</span>
+              </div>
 
-<!-- Row 2 -->
-<div class="row gtr-200">
-  <div class="col-6 col-12-medium">
-    <h3>安全与合规</h3>
-    <p>遵守韩国食品药品安全部(MFDS)与医院伦理委员会审批标准，全程医疗监管。</p>
-    <span class="image fit">
-      <img src="{{ site.baseurl }}/images/stemcell/section_safety.png" alt="安全与伦理审批">
-    </span>
-  </div>
+              <ul class="actions" style="margin-top:1.4rem;">
+                <li><a href="kplan.html" class="button primary">定制医疗观光方案</a></li>
+              </ul>
 
-  <div class="col-6 col-12-medium">
-    <h3>修复与能量</h3>
-    <p>配合营养、激素与抗氧化管理，促进细胞修复与能量恢复，维持系统平衡。</p>
-    <span class="image fit">
-      <img src="{{ site.baseurl }}/images/stemcell/section_energy.png" alt="细胞修复与能量恢复">
-    </span>
-  </div>
-</div>
+              <p class="kms-note" style="margin-top:.8rem;">
+                备注：若客户提到“抗衰/逆龄”等诉求，我们只会表达：是否使用治疗方案需由医生根据个体情况判断，并遵循许可适应症与院内合规流程。
+              </p>
+            </div>
 
+            <!-- Hero image placeholder (너가 나중에 넣을 자리) -->
+            <div class="kms-kv">
+              <!-- ✅ TODO: 교체할 이미지 경로만 바꾸면 됨 -->
+              <!-- <img src="images/stemcell/hero.jpg" alt="Stem cell hero"> -->
+              <div class="kms-imgslot" style="height:360px; display:flex; align-items:center; justify-content:center;">
+                <div>
+                  <div style="font-weight:800; font-size:1.05rem;">[이미지 자리]</div>
+                  <div class="small">images/stemcell/hero.jpg (추후 업로드)</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
 
+        <!-- Compliance / Definitions -->
+        <section>
+          <header class="major"><h2>合规边界：先把“能做/不能做”说清楚</h2></header>
 
-    <!-- ===== Sidebar ===== -->
-   <div id="sidebar">
-  <div class="inner">
+          <div class="kms-card">
+            <p class="kms-mini">
+              1) 细胞相关治疗在韩国通常分两类：<b>“최소 조작(最小操作) 的分离/洗涤等医疗行위”</b> 与
+              <b>“经临床试验并获得品목허가的细胞治疗제(药)”</b>。<br>
+              2) “抗衰”属于高风险表达：我们不会把任何治疗写成“抗衰专用/逆龄定制”。只会表述：<b>是否使用、如何使用，由医生基于患者评估与适应症边界决定</b>。<br>
+              3) 价格/医保/可做项目，<b>以医院当日制度为准</b>（各院差异很大）。
+            </p>
+          </div>
+        </section>
 
-    <!-- 사이드바 상단 여백 -->
-<section id="sidebar-brand" class="sidebar-spacer"></section>
-<!-- 메뉴 -->
-<nav id="menu">
-  <ul>
-    <li class="active">
-      <a href="index.html">首页</a>
-    </li>
-    <li><a href="wellness.html">大健康</a></li>
-    <li><a href="stemcell.html">干细胞</a></li>
-    <li><a href="derm.html">皮肤医美</a></li>
-    <li><a href="surgery.html">整形医美</a></li>
-    <li><a href="woman.html">女性护理中心</a></li>
-    <li><a href="man.html">男性健康中心</a></li>
-    <li><a href="kplan.html" aria-current="page">定制医疗观光方案</a></li>
-  </ul>
-</nav>
-  <br>
-  <br>
-   
-  <!-- About -->
-<section class="menu-extra">
-  <header class="major">
-    <h2 class="about-title">关于我们</h2>
-  </header>
-  <p>
-    我们相信，美丽与健康，源于真诚的交流。如果你对韩国医疗、健康管理或合作有兴趣，欢迎通过微信或邮件与我们联系。
-  </p>
-</section>
+        <!-- Approved products snapshot -->
+        <section>
+          <header class="major"><h2>韩国已获批细胞治疗产品（示例）</h2></header>
 
-    <!-- Contact -->
-    <section>
-      <header class="major"><h3>联系方式</h3></header>
-      <ul class="contact">
-        <li class="icon solid fa-envelope">
-          <a href="mailto:egana@kmedispring.com">邮箱：egana@kmedispring.com</a>
-        </li>
-        <li class="icon solid fa-phone">(82) 10-4903-3123</li>
-        <li class="icon solid fa-home">韩国 首尔特别市 城北区 东小门路 63号 6层 (邮编：02845)</li>
-      </ul>
-    </section>
+          <div class="kms-grid-2">
+            <div class="kms-card">
+              <h3 style="margin-bottom:.35rem;">GC녹십자 · 免疫细胞治疗</h3>
+              <p class="kms-mini" style="margin-bottom:.7rem;">
+                <b>ImmunCell-LC（이뮨셀엘씨주）</b><br>
+                适应症：<b>肝细胞癌</b>在特定根治性治疗后、确认肿瘤去除的患者之<b>辅助治疗</b>。<br>
+                <span class="kms-note">（抗衰用途：仅能表述“需医生判断且遵循许可边界”，不做任何定向宣传。）</span>
+              </p>
+              <div class="kms-imgslot">
+                [이뮨셀엘씨 이미지 자리]
+                <div class="small">images/stemcell/immunocell_lc.jpg</div>
+              </div>
+            </div>
 
-    <!-- Footer -->
-    <footer id="footer">
-      <p style="text-align:center; font-size:0.9em; color:#666;">
-        © 2025 汉江春天 한강애봄 版权所有。模板设计：HTML5 UP。
-      </p>
-    </footer>
+            <div class="kms-card">
+              <h3 style="margin-bottom:.35rem;">Pharmicell · 干细胞治疗</h3>
+              <p class="kms-mini" style="margin-bottom:.7rem;">
+                <b>Cellgram-AMI（셀그램-AMI）</b><br>
+                适应症：<b>急性心肌梗死</b>相关适应症范围内，由医院心血管团队评估后实施。<br>
+                <span class="kms-note">（抗衰用途：同样仅能表述“医生判断/合规边界”，不做宣传。）</span>
+              </p>
+              <div class="kms-imgslot">
+                [하티셀/셀그램 이미지 자리]
+                <div class="small">images/stemcell/cellgram_ami.jpg</div>
+              </div>
+            </div>
+          </div>
 
-  </div><!-- .inner -->
-</div><!-- #sidebar -->
+          <div class="kms-hr"></div>
 
-  </div><!-- #wrapper -->
+          <div class="kms-card">
+            <p class="kms-mini" style="margin:0;">
+              其他（后续页面可扩展）：<b>Cartistem（카티스템, 膝关节软骨/骨关节炎相关）</b>、
+              <b>Cupistem（큐피스템, 克罗恩病复杂性肛周瘘相关）</b>等。<br>
+              以及分离细胞类（SVF等）与院内再生项目（例如“미라셀”等）需单独说明其法规属性、适应范围与禁忌。
+            </p>
+          </div>
+        </section>
 
-  <!-- WeChat QR Modal -->
+        <!-- Q&A by product -->
+        <section>
+          <header class="major"><h2>Q&A（按问题逐条回应）</h2></header>
+
+          <!-- ============ ImmunCell-LC ============ -->
+          <section class="kms-card">
+            <h3 style="margin-bottom:.25rem;">
+              GC녹십자 · ImmunCell-LC（이뮨셀엘씨주）
+              <span class="kms-badge">适应症明确</span>
+            </h3>
+            <p class="kms-note" style="margin: .4rem 0 0 0;">
+              适应症表述原则：只写许可范围内的“肝细胞癌根治性治疗后辅助治疗”。任何“抗衰/逆龄”只能写“由医生判断、遵循合规边界”。
+            </p>
+
+            <div class="kms-qa" style="margin-top:1rem;">
+              <details open>
+                <summary>Q1. 当前服务，如何筛选用户？需要做哪些检测？</summary>
+                <div class="qa-a">
+                  以“是否符合许可适应症 + 安全性”为核心：<br>
+                  • 既往诊疗资料：手术/消融记录、影像与病理、肿瘤去除确认等（院方要求为准）。<br>
+                  • 基础评估：生命体征、用药史、过敏史、感染风险评估、肝功能/血常规等（由主治团队决定具体项目）。<br>
+                  • 禁忌/风险：急性感染、严重并发症、医生判断不适合者，不进入流程。
+                </div>
+              </details>
+
+              <details>
+                <summary>Q2. 如果用户想“抗衰”，是否可以接待？流程怎样？</summary>
+                <div class="qa-a">
+                  可以接待“咨询/评估”，但我们不会把该治疗描述为“抗衰定制”。<br>
+                  最多只表达：是否使用治疗方案、是否存在可考虑的医学指征，需由医生在充分评估后决定，并严格遵循许可适应症与院内合规流程。
+                </div>
+              </details>
+
+              <details>
+                <summary>Q3. 接待一个客户，会有几种角色一起服务？如何分工？</summary>
+                <div class="qa-a">
+                  通常包含：<br>
+                  • 主治医生/专科团队：医学评估、方案决策、风险告知、处置与随访。<br>
+                  • 护理/治疗室：采集、给药协助、监测与记录。<br>
+                  • 协调/翻译/接待（外籍患者引进机构侧）：资料收集、预约、同意书签署支持、跨语言沟通与行程衔接。
+                </div>
+              </details>
+
+              <details>
+                <summary>Q4. 细胞使用流程：是否需要复温/去DMSO？</summary>
+                <div class="qa-a">
+                  以院内SOP与产品说明书为准。是否涉及冷链/复温、是否涉及去除保护剂（如DMSO），
+                  由生产与医院药事/无菌操作流程决定；我们只按医院合规SOP执行与对外说明。
+                </div>
+              </details>
+
+              <details>
+                <summary>Q5. 细胞制备：来源、数量/活率、注射频次、有效性数据？</summary>
+                <div class="qa-a">
+                  在对外沟通中，关键是“适应症与证据等级”不越界：<br>
+                  • 细胞来源/制备：按产品说明书与医院可披露材料说明。<br>
+                  • 频次：按许可用法用量与医生判断。<br>
+                  • 有效性：只引用已公开、可核验的临床证据与院内真实世界数据（如院方允许），不做个案夸大。
+                </div>
+              </details>
+
+              <details>
+                <summary>Q6. 是否发生过医疗事故？</summary>
+                <div class="qa-a">
+                  以医院官方口径为准。我们会要求：<br>
+                  • 不良事件分级与上报机制（院内/法规要求）<br>
+                  • 过敏/感染/血栓等应急处置流程<br>
+                  • 24小时联络与复诊安排
+                </div>
+              </details>
+
+              <details>
+                <summary>Q7. 价格区间？</summary>
+                <div class="qa-a">
+                  价格与是否可申报（或是否属于非급여）由医院、病种、方案与次数决定。我们对外只给“到院评估后报价”，避免误导。
+                </div>
+              </details>
+            </div>
+          </section>
+
+          <!-- ============ Cellgram-AMI ============ -->
+          <section class="kms-card" style="margin-top:1.2rem;">
+            <h3 style="margin-bottom:.25rem;">
+              Pharmicell · Cellgram-AMI（셀그램-AMI / Hearticellgram-AMI）
+              <span class="kms-badge">急性心梗相关</span>
+            </h3>
+            <p class="kms-note" style="margin: .4rem 0 0 0;">
+              沟通原则同上：适应症写清楚；“抗衰”只写“医生判断/合规边界”，不写“抗衰专用”。
+            </p>
+
+            <div class="kms-qa" style="margin-top:1rem;">
+              <details open>
+                <summary>Q1. 如何筛选用户？需要做哪些检测？</summary>
+                <div class="qa-a">
+                  以心血管专科评估为主：<br>
+                  • 诊断与分层：急性心肌梗死相关评估、心功能（如超声/EF等）、影像与实验室检查（以医院SOP为准）。<br>
+                  • 风险控制：凝血/感染/肾功能、合并症与用药评估；不适合者不进入流程。
+                </div>
+              </details>
+
+              <details>
+                <summary>Q2. 如果用户想“抗衰”，是否可以接待？流程怎样？</summary>
+                <div class="qa-a">
+                  可以接待咨询与体检式评估，但不把该治疗描述为“抗衰”。是否存在医学适应证、是否可考虑任何治疗方案，仅由医生判断并遵循许可边界。
+                </div>
+              </details>
+
+              <details>
+                <summary>Q3. 接待角色与分工？</summary>
+                <div class="qa-a">
+                  • 心内科/介入团队：评估、是否符合适应症、治疗决策与实施。<br>
+                  • 护理/治疗室：监测、记录与并发症管理。<br>
+                  • 外籍患者引进机构侧：资料准备、翻译、流程衔接、随访沟通。
+                </div>
+              </details>
+
+              <details>
+                <summary>Q4. 细胞使用流程：复温/去DMSO？</summary>
+                <div class="qa-a">
+                  若涉及冷链保存与复温、是否需要处理保护剂（如DMSO），完全按产品说明书与医院药事/无菌SOP执行。对外说明只按可披露SOP描述，不做超范围细节承诺。
+                </div>
+              </details>
+
+              <details>
+                <summary>Q5. 细胞制备、频次与有效性数据？</summary>
+                <div class="qa-a">
+                  • 来源/制备：按已公开资料与说明书描述（自体细胞来源、制造与质控由生产体系完成）。<br>
+                  • 频次：遵循许可用法用量与医生判断。<br>
+                  • 数据：仅引用可核验的公开临床与真实世界证据；不进行夸大式“保证效果”表达。
+                </div>
+              </details>
+
+              <details>
+                <summary>Q6. 医疗事故与应急？</summary>
+                <div class="qa-a">
+                  以医院应急SOP为准：过敏、感染、血栓/栓塞、心律失常等风险的监测与处置路径必须在同意书中提前说明，并有24小时联络机制。
+                </div>
+              </details>
+
+              <details>
+                <summary>Q7. 价格/是否可申报（医保）？</summary>
+                <div class="qa-a">
+                  以医院与当期政策为准。部分细胞治疗在韩国常见为非급여项目，需到院评估后给出正式报价与支付说明。
+                </div>
+              </details>
+            </div>
+          </section>
+
+          <!-- Optional: attach the original question list (from DOCX) -->
+          <section class="kms-card" style="margin-top:1.2rem;">
+            <h3 style="margin-bottom:.25rem;">对外统一口径（简短版）</h3>
+            <p class="kms-mini" style="margin:0;">
+              • 适应症：以韩国品목허가与院内SOP为准。<br>
+              • 抗衰诉求：只说“医生判断/合规边界”，不做“抗衰定制”话术。<br>
+              • 安全：先评估、再进入流程；不适合者不做。<br>
+              • 报价：到院评估后出正式方案与报价（院方制度差异大）。
+            </p>
+          </section>
+
+        </section>
+
+      </div><!-- /.inner -->
+    </div><!-- /#main -->
+
+    <!-- Sidebar (index와 동일) -->
+    <div id="sidebar">
+      <div class="inner">
+
+        <section id="sidebar-brand" class="sidebar-spacer"></section>
+
+        <nav id="menu">
+          <ul>
+            <li><a href="index.html">首页</a></li>
+            <li><a href="wellness.html">大健康</a></li>
+            <li class="active"><a href="stemcell.html">干细胞</a></li>
+            <li><a href="derm.html">皮肤医美</a></li>
+            <li><a href="surgery.html">整形医美</a></li>
+            <li><a href="woman.html">女性护理中心</a></li>
+            <li><a href="man.html">男性健康中心</a></li>
+            <li><a href="kplan.html">定制医疗观光方案</a></li>
+          </ul>
+        </nav>
+
+        <section class="menu-extra">
+          <div class="section-spacer"></div>
+          <header class="major"><h3 class="about-title">关于我们</h3></header>
+          <p>
+            我们相信，美丽与健康，源于真诚的交流。如果你对韩国医疗、健康管理或合作有兴趣，欢迎通过微信或邮件与我们联系。<br>
+            <b>韩国代表综合医院 5家 / 各专科医疗机构 50+</b>
+          </p>
+        </section>
+
+        <section>
+          <header class="major"><h3>联系方式</h3></header>
+          <ul class="contact">
+            <li class="icon solid fa-envelope"><a href="mailto:egana@kmedispring.com">邮箱：egana@kmedispring.com</a></li>
+            <li class="icon solid fa-phone">(82) 10-4903-3123</li>
+            <li class="icon solid fa-home">韩国 首尔特别市 城北区 东小门路 63号 6层</li>
+          </ul>
+        </section>
+
+        <footer id="footer">
+          <p style="margin:0.8rem 0 0 0; text-align:center; font-size:0.9em; color:#666;">
+            © 2025 汉江春天 한강애봄 版权所有。模板设计：HTML5 UP。<br>
+            来源：汉江春天
+          </p>
+        </footer>
+
+      </div>
+    </div><!-- /#sidebar -->
+
+  </div><!-- /#wrapper -->
+
+  <!-- =======================
+     Modals (index와 동일)
+     ======================= -->
+
   <div id="wechatModal" class="modal" aria-hidden="true" role="dialog">
     <div class="modal-inner">
-      <button class="close" aria-label="Close">&times;</button>
-      <p class="modal-caption">扫描二维码添加微信</p>
-      <img id="wechatQR" class="modal-content" src="images/qr_weixin.jpg" alt="WeChat QR for e-gana" />
-      <p class="modal-id">WeChat ID：e-gana</p>
+      <button class="close" aria-label="Close" type="button">&times;</button>
+      <img id="wechatQR" class="modal-content" src="images/qr_weixin.jpg" alt="WeChat QR e-gana" />
+      <p class="modal-id">WeChat ID：e-gana ｜《汉江春天》医疗<br>医疗旅游咨询公司｜韩国保健福祉部认证机构</p>
     </div>
   </div>
 
-  <!-- WhatsApp Modal -->
   <div id="whatsappModal" class="modal" aria-hidden="true" role="dialog">
     <div class="modal-inner">
-      <button class="close" aria-label="Close">&times;</button>
-      <p class="modal-caption">QR → WhatsApp Connect</p>
-      <img id="whatsappQR" class="modal-content" src="images/whatsapp_qr.jpg" alt="WhatsApp QR for K-Medi Spring">
-      <p class="modal-id">WhatsApp：+82-10-4903-3123</p>
+      <button class="close" aria-label="Close" type="button">&times;</button>
+      <img id="whatsappQR" class="modal-content" src="images/whatsapp_qr.jpg" alt="WhatsApp QR K-Medi Korea" />
+      <p class="modal-id">WhatsApp：+82-10-4903-3123<br> 《汉江春天》 k-medi korea </p>
     </div>
   </div>
 
+  <!-- Custom JS (index와 동일) -->
+  <script>
+  document.addEventListener('DOMContentLoaded', function () {
+
+    /* WeChat */
+    const wechatModal = document.getElementById('wechatModal');
+    const wechatIcon  = document.getElementById('wechat-icon');
+    const wechatQR    = document.getElementById('wechatQR');
+    const wechatClose = wechatModal ? wechatModal.querySelector('.close') : null;
+
+    function closeWeChat(){
+      if (wechatModal){
+        wechatModal.style.display = 'none';
+        wechatModal.setAttribute('aria-hidden', 'true');
+      }
+      document.body.classList.remove('modal-open');
+    }
+    function openWeChat(e){
+      if (e) e.preventDefault();
+      closeWhatsApp();
+      if (wechatQR){
+        wechatQR.src = wechatQR.src.split('?')[0] + '?v=' + Date.now();
+      }
+      if (wechatModal){
+        wechatModal.style.display = 'flex';
+        wechatModal.setAttribute('aria-hidden', 'false');
+      }
+      document.body.classList.add('modal-open');
+    }
+
+    /* WhatsApp */
+    const whatsappModal = document.getElementById('whatsappModal');
+    const whatsappIcon  = document.getElementById('whatsapp-icon');
+    const whatsappQR    = document.getElementById('whatsappQR');
+    const whatsappClose = whatsappModal ? whatsappModal.querySelector('.close') : null;
+
+    function closeWhatsApp(){
+      if (whatsappModal){
+        whatsappModal.style.display = 'none';
+        whatsappModal.setAttribute('aria-hidden', 'true');
+      }
+      document.body.classList.remove('modal-open');
+    }
+    function openWhatsApp(e){
+      if (e) e.preventDefault();
+      closeWeChat();
+      if (whatsappQR){
+        whatsappQR.src = whatsappQR.src.split('?')[0] + '?v=' + Date.now();
+      }
+      if (whatsappModal){
+        whatsappModal.style.display = 'flex';
+        whatsappModal.setAttribute('aria-hidden', 'false');
+      }
+      document.body.classList.add('modal-open');
+    }
+
+    /* bind */
+    if (wechatIcon) wechatIcon.addEventListener('click', openWeChat);
+    if (whatsappIcon) whatsappIcon.addEventListener('click', openWhatsApp);
+
+    if (wechatClose){
+      wechatClose.addEventListener('click', function(e){
+        e.preventDefault();
+        closeWeChat();
+      });
+    }
+    if (whatsappClose){
+      whatsappClose.addEventListener('click', function(e){
+        e.preventDefault();
+        closeWhatsApp();
+      });
+    }
+
+    /* overlay click */
+    if (wechatModal){
+      wechatModal.addEventListener('click', function(e){
+        if (e.target === wechatModal) closeWeChat();
+      });
+    }
+    if (whatsappModal){
+      whatsappModal.addEventListener('click', function(e){
+        if (e.target === whatsappModal) closeWhatsApp();
+      });
+    }
+
+    /* ESC */
+    document.addEventListener('keydown', function (e) {
+      if (e.key === 'Escape') {
+        closeWeChat();
+        closeWhatsApp();
+      }
+    });
+
+  });
+  </script>
+
   <!-- 템플릿 기본 스크립트 5총사 (반드시 이 순서) -->
- <script src="assets/js/jquery.min.js"></script>
-<script src="assets/js/browser.min.js"></script>
-<script src="assets/js/breakpoints.min.js"></script>
-<script src="assets/js/util.js"></script>
-<script src="assets/js/main.js"></script>
-<script src="assets/js/modals.js"></script>
+  <script src="assets/js/jquery.min.js"></script>
+  <script src="assets/js/browser.min.js"></script>
+  <script src="assets/js/breakpoints.min.js"></script>
+  <script src="assets/js/util.js"></script>
+  <script src="assets/js/main.js"></script>
 
 </body>
 </html>
-
-
