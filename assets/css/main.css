@@ -1026,12 +1026,6 @@ header p {
   margin-top: -0.5em;
   text-transform: uppercase; }
 
-header.major > :last-child {
-  border-bottom: solid 3px #4E97D1;
-  display: inline-block;
-  margin: 0 0 2em 0;
-  padding: 0 0.75em 0.5em 0; }
-
 header.main > :last-child {
   margin: 0 0 1em 0; }
 
@@ -2294,13 +2288,6 @@ body.modal-open{ overflow:hidden; }
 #header, .logo { position: relative; z-index: 2; }
 .hero-media video { pointer-events: none; }
 
-/* (전역) major 헤더 밑줄 – 브랜드색 */
-header.major > :last-child{
-  border-bottom: solid 3px #4E97D1 !important;
-  display: inline-block;
-  padding-bottom: .5em !important;
-  margin: 0 0 1.5em 0 !important;
-}
 
 /* =========================================================
    K-MediSpring — Quick polish pack (by Ronnie)
@@ -3427,10 +3414,3 @@ body.is-menu-visible{ overflow:hidden !important; }
   font-size:.75rem;
   color:#999;
 }
-
-/* ===== Remove major header divider line site-wide ===== */
-header.major:after {
-  display: none !important;
-}
-
-
