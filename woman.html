@@ -1,17 +1,11 @@
 <!DOCTYPE HTML>
-<!--
-  汉江春天 · 女性护理中心 (Women)
-  - Layout/header/sidebar/modal/scripts aligned with index.html (Editorial safe)
-  - Spacing tuned: thin line above title has breathing room
-  - Image blocks constrained (no oversized / no male images)
--->
 <html lang="zh-CN">
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
-  <title>汉江春天｜女性护理中心</title>
+  <title>女性护理中心 · 汉江春天</title>
 
-  <!-- GitHub Pages base path -->
+  <!-- GitHub Pages용 base 경로 -->
   <script>
     (function () {
       var project = "/K-medispring/";
@@ -22,569 +16,554 @@
     })();
   </script>
 
-  <!-- Favicons -->
-  <link rel="icon" href="favicon.ico">
-  <link rel="icon" type="image/png" sizes="16x16" href="favicon-16.png">
-  <link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png">
-  <link rel="apple-touch-icon" href="apple-touch-icon.png">
+  <!-- Meta Tags -->
+  <meta name="description" content="女性护理中心 · 筛查、治疗、生育、产后、私密、更年期与激素管理" />
+  <meta property="og:title" content="女性护理中心 · 汉江春天" />
+  <meta property="og:description" content="以阶段+需求拆解女性医疗路径：评估→选择→治疗/管理→复盘" />
+  <meta property="og:image" content="https://kmedispring.com/images/preview.jpg" />
+  <meta property="og:url" content="https://kmedispring.com/woman.html" />
+  <meta name="twitter:card" content="summary_large_image" />
+
+  <!-- 파비콘 -->
+  <link rel="icon" type="image/x-icon" href="/images/favicon.ico?v=20251012">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32.png?v=20251012">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16.png?v=20251012">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png?v=20251012">
+  <link rel="shortcut icon" href="/images/favicon.ico?v=20251012">
 
   <!-- CSS -->
-  <link rel="stylesheet" href="assets/css/main.css" />
+  <link rel="stylesheet" href="assets/css/fontawesome-all.min.css?v=20251027" />
+  <link rel="stylesheet" href="assets/css/main.css?v=20251027" />
+  <noscript><link rel="stylesheet" href="assets/css/noscript.css?v=20251027" /></noscript>
 
-  <!-- Page-only polish -->
+  <!-- Page polish (only for this page) -->
   <style>
-    /* Header right icons alignment (same intention as index) */
-    #header .kms-icons {
-      margin-left: auto;
-      display: flex;
-      gap: .85rem;
-      align-items: center;
+    /* Make the thin line breathe (your screenshot issue) */
+    .kms-kicker { margin: 0 0 1.2rem 0; padding: 0; }
+    .kms-kicker .logoText { font-size: 1.1rem; letter-spacing: .06em; color: rgba(0,0,0,.65); }
+    .kms-divider { height: 1px; background: rgba(0,0,0,.10); margin: 1.25rem 0 2.25rem 0; }
+    .kms-hero { margin: 0 0 2rem 0; }
+    .kms-hero h1 { margin: 0 0 .6rem 0; }
+    .kms-hero .sub { margin: 0 0 1.25rem 0; color: rgba(0,0,0,.6); }
+    .kms-hero .lead { margin: 0 0 1.6rem 0; }
+    .kms-hero-media { border-radius: 14px; overflow: hidden; background: rgba(0,0,0,.04); }
+    .kms-hero-media img { width: 100%; height: auto; display: block; }
+    .kms-navchips { display:flex; flex-wrap:wrap; gap:.6rem; margin: 0 0 1.6rem 0; }
+    .kms-chip {
+      display:inline-flex; align-items:center; gap:.45rem;
+      padding:.55rem .9rem; border:1px solid rgba(0,0,0,.12);
+      border-radius: 999px; font-size: .95rem; text-decoration:none;
+      color: rgba(0,0,0,.75);
     }
-    #header .kms-icons a {
-      text-decoration: none;
-      border: 0;
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      width: 40px;
-      height: 40px;
+    .kms-chip:hover { border-color: rgba(0,0,0,.22); }
+    .kms-section { padding-top: .5rem; }
+    .kms-mini { color: rgba(0,0,0,.58); font-size: .95rem; }
+    .kms-grid2 { display:grid; grid-template-columns: 1fr 1fr; gap: 1.4rem; }
+    @media (max-width: 980px){ .kms-grid2{ grid-template-columns: 1fr; } }
+    .kms-card {
+      border:1px solid rgba(0,0,0,.10); border-radius: 16px;
+      padding: 1.1rem 1.1rem; background: #fff;
+    }
+    .kms-card h4 { margin: 0 0 .6rem 0; }
+    .kms-ul { margin: .2rem 0 0 1.1rem; }
+    .kms-ul li { margin: .35rem 0; }
+    .kms-note {
+      border-left: 3px solid rgba(0,0,0,.18);
+      padding: .85rem 1rem; background: rgba(0,0,0,.03);
       border-radius: 10px;
     }
-    #header .kms-icons a:hover { background: rgba(0,0,0,.04); }
-
-    /* Top thin line spacing (fix: not stuck to title) */
-    .page-topline {
-      border-top: 1px solid rgba(0,0,0,.12);
-      margin: 18px 0 34px; /* key spacing */
-    }
-
-    /* Hero intro: keep airy, readable */
-    .page-lead {
-      max-width: 980px;
-      font-size: 1.05rem;
-      line-height: 1.9;
-      color: rgba(0,0,0,.72);
-      margin: 0 0 1.8rem;
-    }
-    .tagline {
-      margin-top: .6rem;
-      color: rgba(0,0,0,.6);
-      letter-spacing: .02em;
-    }
-
-    /* Image blocks: prevent “too big” */
-    .img-grid {
-      display: grid;
-      grid-template-columns: repeat(2, minmax(0, 1fr));
-      gap: 18px;
-      margin: 22px 0 10px;
-    }
-    .img-card {
-      border-radius: 14px;
-      overflow: hidden;
-      border: 1px solid rgba(0,0,0,.08);
-      background: #fff;
-    }
-    .img-card img {
-      width: 100%;
-      height: 280px;           /* key sizing */
-      object-fit: cover;       /* no stretching */
-      display: block;
-    }
-    .img-caption {
-      padding: 12px 14px 14px;
-      font-size: .95rem;
-      color: rgba(0,0,0,.7);
-    }
-    @media (max-width: 736px) {
-      .img-grid { grid-template-columns: 1fr; }
-      .img-card img { height: 240px; }
-    }
-
-    /* Section blocks */
-    .section-note {
-      color: rgba(0,0,0,.62);
-      margin: .4rem 0 1rem;
-      line-height: 1.8;
-    }
-    .pill-row {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 10px;
-      margin: 14px 0 10px;
-    }
-    .pill {
-      display: inline-flex;
-      align-items: center;
-      padding: 8px 12px;
-      border: 1px solid rgba(0,0,0,.12);
-      border-radius: 999px;
-      font-size: .92rem;
-      color: rgba(0,0,0,.72);
-      background: rgba(255,255,255,.9);
-    }
-
-    /* Accordion (clear, not heavy) */
-    details.kms-acc {
-      border: 1px solid rgba(0,0,0,.10);
-      border-radius: 14px;
-      padding: 12px 14px;
-      margin: 12px 0;
-      background: rgba(255,255,255,.9);
-    }
-    details.kms-acc > summary {
-      cursor: pointer;
-      font-weight: 700;
-      list-style: none;
-      outline: none;
-    }
-    details.kms-acc > summary::-webkit-details-marker { display:none; }
-    details.kms-acc .acc-body {
-      margin-top: 10px;
-      color: rgba(0,0,0,.72);
-      line-height: 1.85;
-    }
-
-    /* WeChat Modal (same structure as index memory) */
-    body.modal-open { overflow: hidden; }
-    .modal {
-      display: none;
-      position: fixed;
-      inset: 0;
-      background: rgba(0,0,0,.55);
-      z-index: 20000;
-      padding: 24px;
-    }
-    .modal[aria-hidden="false"] { display: flex; align-items: center; justify-content: center; }
-    .modal-inner {
-      width: min(420px, 92vw);
-      background: #fff;
-      border-radius: 16px;
-      box-shadow: 0 18px 60px rgba(0,0,0,.22);
-      padding: 16px 16px 18px;
-      text-align: center;
-      position: relative;
-    }
-    .modal-inner .close {
-      position: absolute;
-      top: 10px;
-      right: 12px;
-      width: 40px;
-      height: 40px;
-      border: 0;
-      background: rgba(0,0,0,.04);
-      border-radius: 12px;
-      font-size: 22px;
-      line-height: 40px;
-      cursor: pointer;
-    }
-    .modal-caption { margin: 10px 0 12px; color: rgba(0,0,0,.72); }
-    .modal-content { width: 86%; max-width: 320px; height: auto; border-radius: 12px; border: 1px solid rgba(0,0,0,.08); }
-    .modal-id { margin-top: 10px; color: rgba(0,0,0,.68); }
   </style>
 </head>
 
 <body class="is-preload">
+
+  <!-- Wrapper -->
   <div id="wrapper">
 
     <!-- Main -->
     <div id="main">
       <div class="inner">
 
-        <!-- Header (restore logo + WeChat icon) -->
+        <!-- Header (SAME as index) -->
         <header id="header">
-          <a href="index.html" class="logo" aria-label="汉江春天 Home">
-            <strong>汉江春天</strong>
+          <a href="index.html" class="logo">
+            <img src="images/logo_ch.png" alt="汉江春天" class="logo-img">
           </a>
 
-          <div class="kms-icons" aria-label="Contact icons">
-            <!-- WeChat (modal) -->
-            <a href="#wechat" id="wechat-icon" aria-label="WeChat">
-              <span class="icon brands fa-weixin"></span>
-            </a>
-            <!-- WhatsApp (optional: link/QR page later) -->
-            <a href="whatsapp.html" aria-label="WhatsApp">
-              <span class="icon brands fa-whatsapp"></span>
-            </a>
-            <!-- Email -->
-            <a href="mailto:egana@kmedispring.com" aria-label="Email">
-              <span class="icon solid fa-envelope"></span>
-            </a>
-          </div>
+          <!-- ✅ 모바일 햄버거: 헤더 안에 있어야 함 -->
+          <a href="#sidebar" class="toggle" aria-label="Menu"></a>
+
+          <!-- SNS icons -->
+          <ul class="icons">
+            <li>
+              <a href="#" id="wechat-icon" class="icon brands fa-weixin" title="WeChat">
+                <span class="label">WeChat</span>
+              </a>
+            </li>
+            <li>
+              <a href="#" id="whatsapp-icon" class="icon brands fa-whatsapp" title="WhatsApp">
+                <span class="label">WhatsApp</span>
+              </a>
+            </li>
+            <li>
+              <a href="mailto:egana@kmedispring.com" class="icon solid fa-envelope" title="Email">
+                <span class="label">Email</span>
+              </a>
+            </li>
+          </ul>
         </header>
 
-        <!-- Page Header -->
-        <section>
-          <header class="main">
-            <h1>女性护理中心</h1>
-            <div class="tagline">筛查 · 治疗 · 生育 · 产后 · 私密 · 更年期与激素管理</div>
+        <!-- Page Kicker + Divider (breathing space) -->
+        <div class="kms-kicker">
+          <div class="logoText">汉江春天</div>
+        </div>
+        <div class="kms-divider"></div>
+
+        <!-- HERO -->
+        <section class="kms-hero" aria-labelledby="pageTitle">
+          <header>
+            <h1 id="pageTitle">女性护理中心</h1>
+            <p class="sub">筛查 · 妇科治疗与手术 · 生育与备孕 · 产后修复 · 私密护理 · 更年期与激素管理</p>
           </header>
 
-          <div class="page-topline"></div>
-
-          <p class="page-lead">
-            我们把女性医疗按「阶段 + 需求」拆成清晰路径：<b>评估 → 选择 → 治疗/管理 → 复盘</b>。
-            无论是体检筛查、手术治疗、备孕生育、产后修复、私密困扰，还是更年期激素管理，都可以用同一套逻辑做出不模糊、可执行的方案。
+          <p class="lead">
+            我们把“女性医疗”按「阶段 + 需求」拆成清晰路径：<b>评估 → 选择 → 治疗/管理 → 复盘</b>。
+            无论是体检筛查、手术治疗、备孕生育、产后修复、私密困扰，还是更年期激素管理，都用同一套逻辑做出不模糊、可执行的方案。
           </p>
 
           <ul class="actions">
-            <li><a href="kplan.html" class="button primary large">定制医疗观光方案</a></li>
+            <li><a href="kplan.html" class="button primary">定制医疗观光方案</a></li>
           </ul>
 
-          <!-- Image grid (woman only, constrained size) -->
-          <div class="img-grid" aria-label="Women page images">
-            <div class="img-card">
-              <img src="images/woman/section_postpartum.png" alt="产后与恢复（示意图）">
-              <div class="img-caption">产后恢复与盆底管理：把“恢复”当成系统工程。</div>
+          <!-- Hero image placeholder (female-themed) -->
+          <div class="kms-hero-media kms-hero">
+            <!-- ✅ 你要换图就替换 src；没有合适图也可以先留空 -->
+            <img src="images/woman/section_relax.png" alt="女性护理中心 视觉图（可替换）"
+                 onerror="this.style.display='none'">
+          </div>
+
+          <!-- Quick jump chips -->
+          <div class="kms-navchips" aria-label="快速跳转">
+            <a class="kms-chip" href="#sec1"><span class="icon solid fa-stethoscope"></span>妇科筛查</a>
+            <a class="kms-chip" href="#sec2"><span class="icon solid fa-hospital"></span>治疗与手术</a>
+            <a class="kms-chip" href="#sec3"><span class="icon solid fa-seedling"></span>备孕与生育</a>
+            <a class="kms-chip" href="#sec4"><span class="icon solid fa-baby"></span>产后修复</a>
+            <a class="kms-chip" href="#sec5"><span class="icon solid fa-heart"></span>私密护理</a>
+            <a class="kms-chip" href="#sec6"><span class="icon solid fa-leaf"></span>更年期·HRT</a>
+          </div>
+
+          <div class="kms-note">
+            <b>提示：</b>具体可做项目与费用因医院/医生/麻醉方式不同而变动。你只要把需求勾出来，我们按“安全优先 + 目标导向”去匹配机构与行程。
+          </div>
+        </section>
+
+        <!-- ============ 1) Gynecological screening ============ -->
+        <section id="sec1" class="kms-section">
+          <header class="major"><h2>1) 妇科筛查（体检与风险评估）</h2></header>
+
+          <div class="kms-grid2">
+            <div class="kms-card">
+              <h4>常见筛查组合</h4>
+              <ul class="kms-ul">
+                <li><b>宫颈筛查：</b>HPV + TCT（宫颈细胞学）</li>
+                <li><b>盆腔评估：</b>经阴道/经腹超声（子宫、卵巢、内膜）</li>
+                <li><b>乳腺筛查：</b>乳腺超声 ± 钼靶/必要时进一步检查</li>
+                <li><b>感染/炎症：</b>白带常规、分泌物检测（按症状选择）</li>
+                <li><b>激素/代谢：</b>甲状腺、血糖血脂、维生素/铁蛋白（按人群与目标选择）</li>
+              </ul>
+              <p class="kms-mini">目标：先把“有没有风险/需要干预”说清楚，再决定是观察、用药、还是进一步治疗。</p>
             </div>
-            <div class="img-card">
-              <img src="images/woman/section_relax.png" alt="身心放松与管理（示意图）">
-              <div class="img-caption">压力、睡眠、体重、激素波动：很多困扰需要一起处理。</div>
+
+            <div class="kms-card">
+              <h4>什么时候建议尽快做筛查</h4>
+              <ul class="kms-ul">
+                <li>月经异常：量明显变多/变少、周期紊乱、经期延长</li>
+                <li>反复下腹痛、同房痛、异常出血、异味/瘙痒反复</li>
+                <li>备孕超过一定时间仍未成功（按年龄与情况评估）</li>
+                <li>更年期相关不适影响生活（潮热、失眠、心悸、情绪波动等）</li>
+                <li>既往有子宫肌瘤/内膜息肉/囊肿等随访需求</li>
+              </ul>
+              <p class="kms-mini">我们会把结果转成“可执行结论”：要不要治、怎么治、时间线怎么安排。</p>
             </div>
           </div>
 
+          <!-- Optional image slot -->
+          <div class="kms-hero-media" style="margin-top:1.6rem;">
+            <img src="images/woman/section_postpartum.png" alt="筛查示意图（可替换）" onerror="this.style.display='none'">
+          </div>
         </section>
 
-        <hr class="major" />
+        <!-- ============ 2) Treatment & surgery ============ -->
+        <section id="sec2" class="kms-section">
+          <header class="major"><h2>2) 妇科治疗与手术（从保守到手术的路径）</h2></header>
 
-        <!-- 1) Screening -->
-        <section id="w-screening">
-          <header class="major">
-            <h2>1) 妇科筛查与体检（把风险提前看见）</h2>
-          </header>
+          <div class="kms-grid2">
+            <div class="kms-card">
+              <h4>保守治疗（先稳住，再升级）</h4>
+              <ul class="kms-ul">
+                <li>炎症/感染：规范用药、复查与复发管理</li>
+                <li>功能性出血：评估内分泌/结构性原因后制定方案</li>
+                <li>痛经/盆腔痛：鉴别子宫内膜异位症、腺肌症等可能</li>
+                <li>肌瘤/囊肿：大小、位置、症状与生育计划共同决定策略</li>
+              </ul>
+              <p class="kms-mini">核心：不“硬扛”，也不“过度治疗”。</p>
+            </div>
 
-          <p class="section-note">
-            适用：首次检查/多年未检/体检异常复查/家族史（乳腺、卵巢、子宫、结直肠等）/HPV阳性或曾异常。
-          </p>
-
-          <div class="pill-row">
-            <span class="pill">基础筛查</span>
-            <span class="pill">HPV/宫颈</span>
-            <span class="pill">乳腺</span>
-            <span class="pill">卵巢/子宫</span>
-            <span class="pill">内分泌</span>
-            <span class="pill">感染/分泌物</span>
+            <div class="kms-card">
+              <h4>常见手术/介入方向（按诊断决定）</h4>
+              <ul class="kms-ul">
+                <li>宫腔镜：内膜息肉、粘膜下肌瘤、异常出血评估与处理</li>
+                <li>腹腔镜：卵巢囊肿、子宫肌瘤、内膜异位相关处理</li>
+                <li>宫颈相关处理：按筛查结果与分级决定进一步方案</li>
+                <li>术后随访：复查节奏、用药、生活方式与复盘</li>
+              </ul>
+              <p class="kms-mini">你只需要告诉我们：是否要保留生育力、能接受的恢复期、来韩停留时间。</p>
+            </div>
           </div>
 
-          <details class="kms-acc">
-            <summary>核心项目（不模糊版）</summary>
-            <div class="acc-body">
-              <ul>
-                <li><b>宫颈：</b>宫颈细胞学（TCT/ThinPrep）＋ HPV分型；必要时阴道镜与活检。</li>
-                <li><b>乳腺：</b>乳腺超声；需要时加做乳腺钼靶/进一步影像评估。</li>
-                <li><b>子宫/卵巢：</b>经阴道超声（或经腹超声）评估肌瘤、腺肌症、囊肿、内膜厚度。</li>
-                <li><b>感染：</b>分泌物检查（pH、显微/培养、性传播相关检测按需）。</li>
-                <li><b>内分泌：</b>月经紊乱/备孕/疑似多囊/更年期评估：性激素、甲状腺、维D、代谢指标按需求组合。</li>
-              </ul>
-              <p class="section-note">提示：检查项目最终以医生评估为准；我们强调“为什么做、做完怎么解读、下一步是什么”。</p>
-            </div>
-          </details>
+          <div class="kms-note" style="margin-top:1.4rem;">
+            <b>我们会在方案里写清楚：</b>麻醉方式、恢复期、复查节点、以及“什么时候必须立刻就医”的红旗信号。
+          </div>
         </section>
 
-        <hr class="major" />
+        <!-- ============ 3) Fertility & reproductive ============ -->
+        <section id="sec3" class="kms-section">
+          <header class="major"><h2>3) 备孕与生育（从评估到路径选择）</h2></header>
 
-        <!-- 2) Treatment & Surgery -->
-        <section id="w-treatment-surgery">
-          <header class="major">
-            <h2>2) 妇科治疗与手术（从保守到手术的路径）</h2>
-          </header>
-
-          <p class="section-note">
-            适用：肌瘤/腺肌症/卵巢囊肿/内膜息肉/反复异常出血/慢性盆腔痛/宫颈病变等。
-          </p>
-
-          <details class="kms-acc">
-            <summary>保守治疗（先稳住，再决定）</summary>
-            <div class="acc-body">
-              <ul>
-                <li>药物与激素调控：止血、止痛、周期管理、贫血纠正。</li>
-                <li>炎症/感染规范治疗：避免反复用药但不根治。</li>
-                <li>影像随访：明确“观察的边界”，什么时候必须升级策略。</li>
+          <div class="kms-grid2">
+            <div class="kms-card">
+              <h4>备孕评估（把变量拆开）</h4>
+              <ul class="kms-ul">
+                <li>卵巢储备与排卵：基础激素/AMH/超声（按计划选择）</li>
+                <li>子宫与输卵管评估：结构性问题、内膜环境</li>
+                <li>男方因素：精液相关检查（很多时候被忽略）</li>
+                <li>生活方式与慢病：体重、睡眠、甲状腺、胰岛素抵抗等</li>
               </ul>
             </div>
-          </details>
 
-          <details class="kms-acc">
-            <summary>微创与手术（把选择讲清楚）</summary>
-            <div class="acc-body">
-              <ul>
-                <li><b>宫腔镜：</b>内膜息肉、粘膜下肌瘤、异常出血评估与处理。</li>
-                <li><b>腹腔镜：</b>肌瘤、囊肿、子宫内膜异位症等（视情况选择保宫/保卵巢策略）。</li>
-                <li><b>宫颈病变：</b>阴道镜评估后，按级别选择随访/局部治疗/手术处理。</li>
+            <div class="kms-card">
+              <h4>路径选择（按时间与目标）</h4>
+              <ul class="kms-ul">
+                <li>自然备孕管理：排卵监测 + 周期管理 + 风险因素纠正</li>
+                <li>促排/辅助生殖：按适应证与个人节奏制定</li>
+                <li>反复流产/失败史：做“原因归因”，避免盲目重复</li>
               </ul>
-              <p class="section-note">
-                我们会把每个选择拆成：<b>目的、效果、风险、恢复期、对生育的影响、韩国停留建议</b>（便于医疗观光规划）。
-              </p>
+              <p class="kms-mini">目标：用更少的试错时间，换更清晰的决定。</p>
             </div>
-          </details>
+          </div>
+
+          <!-- image slot -->
+          <div class="kms-hero-media" style="margin-top:1.6rem;">
+            <!-- ✅ 这里建议放温柔、克制的“生育/备孕”主题图（你之后再换） -->
+            <img src="" alt="备孕/生育主题图（待添加）" onerror="this.style.display='none'">
+          </div>
         </section>
 
-        <hr class="major" />
+        <!-- ============ 4) Postpartum ============ -->
+        <section id="sec4" class="kms-section">
+          <header class="major"><h2>4) 产后修复（身体、盆底、体态与能量）</h2></header>
 
-        <!-- 3) Fertility & Reproductive -->
-        <section id="w-fertility">
-          <header class="major">
-            <h2>3) 生育与生殖管理（备孕到辅助生殖）</h2>
-          </header>
-
-          <p class="section-note">
-            适用：备孕超过一段时间未成功/月经不规律/反复流产/男性因素或双方因素/高龄备孕等。
-          </p>
-
-          <details class="kms-acc">
-            <summary>评估（先把关键变量找出来）</summary>
-            <div class="acc-body">
-              <ul>
-                <li><b>女性：</b>排卵与卵巢储备评估、子宫内膜环境、输卵管因素（按需求）。</li>
-                <li><b>男性：</b>精液分析与相关评估（必要时泌尿男科介入）。</li>
-                <li><b>共同：</b>甲状腺、代谢、体重、营养、睡眠与压力管理。</li>
+          <div class="kms-grid2">
+            <div class="kms-card">
+              <h4>产后常见需求</h4>
+              <ul class="kms-ul">
+                <li>盆底功能：漏尿、松弛、下坠感、性生活不适</li>
+                <li>腹直肌分离与体态：核心稳定、腰背痛、体型变化</li>
+                <li>皮肤与体重：妊娠纹、色素、代谢与脂肪分布变化</li>
+                <li>睡眠与情绪：疲劳、焦虑、情绪波动（必要时专业支持）</li>
               </ul>
             </div>
-          </details>
 
-          <details class="kms-acc">
-            <summary>路径（自然备孕 → 诱导排卵 → IUI → IVF/ICSI）</summary>
-            <div class="acc-body">
-              <ul>
-                <li>明确每一步的“升级条件”：什么时候继续、什么时候换方案。</li>
-                <li>把周期与行程对齐：来韩时间窗口、复诊频率、检查与取卵/移植节点规划。</li>
+            <div class="kms-card">
+              <h4>节奏建议（按阶段）</h4>
+              <ul class="kms-ul">
+                <li>早期：先评估伤口/恢复情况，避免过早强刺激</li>
+                <li>中期：盆底训练 + 体态与核心恢复</li>
+                <li>后期：根据目标加入医美/塑形/功能性治疗</li>
               </ul>
+              <p class="kms-mini">我们会把“你现在在哪一段、下一步做什么”写成清单。</p>
             </div>
-          </details>
+          </div>
+
+          <div class="kms-hero-media" style="margin-top:1.6rem;">
+            <img src="images/woman/section_postpartum.png" alt="产后修复视觉图（可替换）" onerror="this.style.display='none'">
+          </div>
         </section>
 
-        <hr class="major" />
+        <!-- ============ 5) Intimate care ============ -->
+        <section id="sec5" class="kms-section">
+          <header class="major"><h2>5) 私密护理与功能改善（隐私友好 + 功能优先）</h2></header>
 
-        <!-- 4) Pelvic floor & intimate care -->
-        <section id="w-pelvicfloor">
-          <header class="major">
-            <h2>4) 盆底与私密健康（功能优先）</h2>
-          </header>
-
-          <p class="section-note">
-            适用：漏尿/频尿/盆腔坠胀/性生活不适/产后松弛与疼痛/反复炎症与干涩等。
-          </p>
-
-          <details class="kms-acc">
-            <summary>常见症状 → 可能原因 → 处理顺序</summary>
-            <div class="acc-body">
-              <ul>
-                <li><b>漏尿（压力性/急迫性）：</b>盆底肌力评估 → 训练/物理治疗 → 必要时进一步治疗。</li>
-                <li><b>干涩与疼痛：</b>黏膜状态评估（炎症/雌激素缺乏/敏感刺激）→ 对症治疗与护理。</li>
-                <li><b>反复炎症：</b>先做规范检测与分型，再做治疗与复发预防（避免“反复自用药”）。</li>
+          <div class="kms-grid2">
+            <div class="kms-card">
+              <h4>功能类（优先解决“困扰”）</h4>
+              <ul class="kms-ul">
+                <li>干涩、疼痛、反复炎症：先做原因评估与分层处理</li>
+                <li>松弛与敏感度问题：根据盆底与组织状态选择方案</li>
+                <li>轻度尿失禁：盆底评估后决定训练/治疗路线</li>
               </ul>
+              <p class="kms-mini">原则：不把“私密”做成羞耻，而是做成医学问题。</p>
             </div>
-          </details>
+
+            <div class="kms-card">
+              <h4>美学类（在“安全”前提下做“协调”）</h4>
+              <ul class="kms-ul">
+                <li>外观修饰：根据个人审美与比例进行沟通</li>
+                <li>疤痕与色素：按皮肤类型与恢复期安排治疗</li>
+                <li>术后护理：清洁、用药、复查与恢复指导</li>
+              </ul>
+              <p class="kms-mini">我们会明确：可选项、不可选项、以及恢复期对行程的影响。</p>
+            </div>
+          </div>
+
+          <!-- image slot -->
+          <div class="kms-hero-media" style="margin-top:1.6rem;">
+            <img src="" alt="私密护理主题图（待添加）" onerror="this.style.display='none'">
+          </div>
         </section>
 
-        <hr class="major" />
+        <!-- ============ 6) Menopause & HRT ============ -->
+        <section id="sec6" class="kms-section">
+          <header class="major"><h2>6) 更年期与激素管理（HRT/非HRT）</h2></header>
 
-        <!-- 5) Intimate aesthetic & functional -->
-        <section id="w-intimate-aesthetic">
-          <header class="major">
-            <h2>5) 私密美学与功能改善（审美建立在安全上）</h2>
-          </header>
+          <div class="kms-grid2">
+            <div class="kms-card">
+              <h4>什么时候考虑做“更年期评估”</h4>
+              <ul class="kms-ul">
+                <li><b>典型症状：</b>潮热盗汗、心悸、睡眠差、情绪波动、易怒焦虑</li>
+                <li><b>身体变化：</b>体脂上升、疲劳、关节不适、皮肤干燥、性欲下降</li>
+                <li><b>泌尿生殖：</b>干涩、疼痛、反复尿路问题</li>
+              </ul>
+              <p class="kms-mini">评估不是为了“马上用激素”，而是为了把风险与收益算清楚。</p>
+            </div>
 
-          <p class="section-note">
-            适用：外观困扰/摩擦不适/产后改变/希望改善紧致与触感/功能与美学同时关注。
-          </p>
+            <div class="kms-card">
+              <h4>HRT 适用人群（简化逻辑）</h4>
+              <ul class="kms-ul">
+                <li>症状明显影响生活质量，且评估后风险可控</li>
+                <li>骨质与心代谢风险需要长期管理（按评估结果）</li>
+                <li>更年期泌尿生殖综合征（GSM）需要系统改善</li>
+              </ul>
+              <p class="kms-mini">你会拿到一份：<b>“我属于哪类、目标是什么、预计多久复盘”</b>。</p>
+            </div>
+          </div>
 
-          <details class="kms-acc">
-            <summary>我们怎么把“需求”说清楚</summary>
-            <div class="acc-body">
-              <ul>
-                <li><b>先功能后美学：</b>疼痛、炎症、干涩、瘢痕、盆底问题优先处理。</li>
-                <li><b>再谈外观：</b>在安全边界内讨论比例、对称、触感与恢复期。</li>
-                <li><b>明确恢复与停留：</b>何时可运动、何时可性生活、何时复诊与评估。</li>
+          <div class="kms-grid2" style="margin-top:1.4rem;">
+            <div class="kms-card">
+              <h4>治疗类型（HRT / 非HRT）</h4>
+              <ul class="kms-ul">
+                <li><b>HRT：</b>雌激素 ± 孕激素（根据是否有子宫等因素决定）</li>
+                <li><b>局部治疗：</b>以局部不适为主时优先考虑</li>
+                <li><b>非HRT：</b>睡眠/情绪/生活方式、营养与运动处方等</li>
+                <li><b>联合策略：</b>必要时用“组合拳”，但每一步都有理由</li>
               </ul>
             </div>
-          </details>
+
+            <div class="kms-card">
+              <h4>安全评估与随访（一定写进方案）</h4>
+              <ul class="kms-ul">
+                <li>既往病史、家族史、血压/体重/代谢评估</li>
+                <li>乳腺/子宫相关检查与基础筛查（按情况安排）</li>
+                <li>用药后随访：症状改善、指标变化、不良反应监测</li>
+                <li>复盘：是否继续、是否调整、是否转为维护期</li>
+              </ul>
+              <p class="kms-mini">目标：让“激素”回到医学，不是玄学。</p>
+            </div>
+          </div>
+
+          <div class="kms-note" style="margin-top:1.4rem;">
+            <b>我们做的不是“推销某种疗法”。</b>我们做的是：把你当前的状态、风险、目标和时间线对齐，让你做决定更省力、更安心。
+          </div>
+
+          <!-- image slot -->
+          <div class="kms-hero-media" style="margin-top:1.6rem;">
+            <img src="" alt="更年期/激素管理主题图（待添加）" onerror="this.style.display='none'">
+          </div>
         </section>
 
-        <hr class="major" />
-
-        <!-- 6) Menopause & HRT -->
-        <section id="w-menopause-hrt">
-          <header class="major">
-            <h2>6) 更年期与激素管理（HRT/非HRT 全路径）</h2>
-          </header>
-
-          <p class="section-note">
-            你要的不是“吃不吃激素”的争论，而是：<b>什么时候需要评估、哪些症状算指标、怎么选方案、如何安全监测</b>。
-          </p>
-
-          <details class="kms-acc">
-            <summary>何时应该认真评估（时间点）</summary>
-            <div class="acc-body">
-              <ul>
-                <li><b>围绝经期：</b>周期开始紊乱、经量变化、睡眠变差、情绪波动明显。</li>
-                <li><b>绝经后：</b>潮热盗汗、干涩疼痛、反复泌尿问题、骨量/体成分变化加速。</li>
-                <li><b>你不必“忍到受不了”：</b>症状影响生活质量时，就值得评估。</li>
-              </ul>
-            </div>
-          </details>
-
-          <details class="kms-acc">
-            <summary>症状与对象（不模糊指标）</summary>
-            <div class="acc-body">
-              <ul>
-                <li><b>血管舒缩：</b>潮热、盗汗、心悸、夜间反复醒。</li>
-                <li><b>睡眠与情绪：</b>入睡难、早醒、焦虑、易怒、疲劳感。</li>
-                <li><b>泌尿生殖：</b>干涩、疼痛、反复尿路不适、性生活质量下降。</li>
-                <li><b>代谢与骨骼：</b>体重/腹部脂肪增加、肌少、骨密度下降风险。</li>
-              </ul>
-            </div>
-          </details>
-
-          <details class="kms-acc">
-            <summary>治疗选项（HRT 与非HRT）</summary>
-            <div class="acc-body">
-              <ul>
-                <li><b>生活方式处方：</b>睡眠、压力、运动、营养与体重管理（所有方案的底盘）。</li>
-                <li><b>非HRT：</b>针对潮热/睡眠/情绪的对症策略与药物选择（由医生评估）。</li>
-                <li><b>HRT：</b>雌激素 ± 孕激素（是否需要取决于子宫情况与风险评估）。</li>
-                <li><b>局部治疗：</b>针对泌尿生殖症状的局部方案（与全身方案可组合）。</li>
-              </ul>
-            </div>
-          </details>
-
-          <details class="kms-acc">
-            <summary>安全评估与随访（你关心的“敢不敢用”）</summary>
-            <div class="acc-body">
-              <ul>
-                <li><b>用前评估：</b>个人病史、家族史、血压/代谢、乳腺与妇科评估等。</li>
-                <li><b>用后随访：</b>症状改善、剂量与途径调整、必要检查与风险监测。</li>
-                <li><b>目标：</b>用最低有效剂量，在可控风险内提升生活质量。</li>
-              </ul>
-              <p class="section-note">注：具体方案必须由医生面诊后决定；页面提供的是“结构化理解”。</p>
-            </div>
-          </details>
-        </section>
-
-        <hr class="major" />
-
-        <!-- Source note -->
-        <section>
-          <p style="margin: 0; color: rgba(0,0,0,.55); font-size: .95rem;">
-            允许转载：请注明出处。<b>来源：汉江春天</b>
+        <!-- Attribution -->
+        <section style="margin-top:2.6rem;">
+          <hr />
+          <p class="kms-mini" style="margin:0;">
+            资料可引用与转载，请注明出处：<b>来源：汉江春天</b>
           </p>
         </section>
 
-      </div><!-- /.inner -->
-    </div><!-- /#main -->
+      </div><!-- inner -->
+    </div><!-- #main -->
 
-    <!-- Sidebar (same idea as index) -->
+    <!-- Sidebar (SAME skeleton as index, only active highlight changed) -->
     <div id="sidebar">
       <div class="inner">
 
         <section id="sidebar-brand" class="sidebar-spacer"></section>
 
         <nav id="menu">
-          <header class="major">
-            <h2>菜单</h2>
-          </header>
           <ul>
-            <li><a href="index.html">首页</a></li>
+            <li><a href="index.html" class="menu-home">首页</a></li>
             <li><a href="wellness.html">大健康</a></li>
             <li><a href="stemcell.html">干细胞</a></li>
             <li><a href="derm.html">皮肤医美</a></li>
             <li><a href="surgery.html">整形医美</a></li>
-            <li><a href="woman.html" aria-current="page">女性护理中心</a></li>
+            <li class="active"><a href="woman.html">女性护理中心</a></li>
             <li><a href="man.html">男性健康中心</a></li>
             <li><a href="kplan.html">定制医疗观光方案</a></li>
           </ul>
         </nav>
 
-        <section>
+        <section class="menu-extra">
+          <div class="section-spacer"></div>
           <header class="major">
-            <h2>关于我们</h2>
+            <h3 class="about-title">关于我们</h3>
           </header>
-          <p style="margin-bottom:.9rem;">
-            我们相信，美丽与健康，源于真诚的交流。若你对韩国医疗、健康管理或合作有兴趣，欢迎通过微信或邮件联系我们。
-          </p>
-          <p style="margin:0; color: rgba(0,0,0,.62);">
-            <b>韩国代表综合医院 5家</b><br>
-            各专科医疗机构 <b>50+</b>
+          <p>
+            我们相信，美丽与健康，源于真诚的交流。如果你对韩国医疗、健康管理或合作有兴趣，欢迎通过微信或邮件与我们联系。<br>
+            <b>韩国代表综合医院 5家 · 各专科医疗机构 50+</b>
           </p>
         </section>
 
         <section>
-          <header class="major">
-            <h2>联系方式</h2>
-          </header>
+          <header class="major"><h3>联系方式</h3></header>
           <ul class="contact">
-            <li class="icon solid fa-envelope"><a href="mailto:egana@kmedispring.com">egana@kmedispring.com</a></li>
+            <li class="icon solid fa-envelope">
+              <a href="mailto:egana@kmedispring.com">邮箱：egana@kmedispring.com</a>
+            </li>
             <li class="icon solid fa-phone">(82) 10-4903-3123</li>
+            <li class="icon solid fa-home">韩国 首尔特别市 城北区 东小门路 63号 6层</li>
           </ul>
         </section>
 
         <footer id="footer">
-          <p class="copyright">
-            &copy; 2026 汉江春天. <span>来源：汉江春天</span>
+          <p style="margin-top:1rem; text-align:center; font-size:0.9em; color:#666;">
+            © 2025 汉江春天 한강애봄 版权所有。模板设计：HTML5 UP。
           </p>
         </footer>
 
       </div>
-    </div><!-- /#sidebar -->
+    </div><!-- #sidebar -->
 
-  </div><!-- /#wrapper -->
+  </div><!-- #wrapper -->
 
   <!-- WeChat QR Modal -->
-  <div id="wechatModal" class="modal" aria-hidden="true" role="dialog" aria-label="WeChat QR">
+  <div id="wechatModal" class="modal" aria-hidden="true" role="dialog">
     <div class="modal-inner">
-      <button class="close" aria-label="Close">&times;</button>
-      <p class="modal-caption">扫描二维码添加微信</p>
-      <img id="wechatQR" class="modal-content" src="images/qr_weixin.jpg" alt="WeChat QR">
-      <p class="modal-id">WeChat ID：e-gana</p>
+      <button class="close" aria-label="Close" type="button">&times;</button>
+      <img id="wechatQR" class="modal-content" src="images/qr_weixin.jpg" alt="WeChat QR e-gana" />
+      <p class="modal-id">WeChat ID：e-gana ｜《汉江春天》医疗<br>医疗旅游咨询公司｜韩国保健福祉部认证机构</p>
     </div>
   </div>
 
-  <!-- Scripts (same bundle style as index) -->
+  <!-- WhatsApp QR Modal -->
+  <div id="whatsappModal" class="modal" aria-hidden="true" role="dialog">
+    <div class="modal-inner">
+      <button class="close" aria-label="Close" type="button">&times;</button>
+      <img id="whatsappQR" class="modal-content" src="images/whatsapp_qr.jpg" alt="WhatsApp QR K-Medi Korea" />
+      <p class="modal-id">WhatsApp：+82-10-4903-3123<br> 《汉江春天》 k-medi korea </p>
+    </div>
+  </div>
+
+  <!-- Custom JS (ONLY ONE) -->
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+
+      /* WeChat */
+      const wechatModal = document.getElementById('wechatModal');
+      const wechatIcon  = document.getElementById('wechat-icon');
+      const wechatQR    = document.getElementById('wechatQR');
+      const wechatClose = wechatModal ? wechatModal.querySelector('.close') : null;
+
+      function closeWeChat(){
+        if (wechatModal){
+          wechatModal.style.display = 'none';
+          wechatModal.setAttribute('aria-hidden', 'true');
+        }
+        document.body.classList.remove('modal-open');
+      }
+      function openWeChat(e){
+        if (e) e.preventDefault();
+        closeWhatsApp();
+        if (wechatQR){
+          wechatQR.src = wechatQR.src.split('?')[0] + '?v=' + Date.now();
+        }
+        if (wechatModal){
+          wechatModal.style.display = 'flex';
+          wechatModal.setAttribute('aria-hidden', 'false');
+        }
+        document.body.classList.add('modal-open');
+      }
+
+      /* WhatsApp */
+      const whatsappModal = document.getElementById('whatsappModal');
+      const whatsappIcon  = document.getElementById('whatsapp-icon');
+      const whatsappQR    = document.getElementById('whatsappQR');
+      const whatsappClose = whatsappModal ? whatsappModal.querySelector('.close') : null;
+
+      function closeWhatsApp(){
+        if (whatsappModal){
+          whatsappModal.style.display = 'none';
+          whatsappModal.setAttribute('aria-hidden', 'true');
+        }
+        document.body.classList.remove('modal-open');
+      }
+      function openWhatsApp(e){
+        if (e) e.preventDefault();
+        closeWeChat();
+        if (whatsappQR){
+          whatsappQR.src = whatsappQR.src.split('?')[0] + '?v=' + Date.now();
+        }
+        if (whatsappModal){
+          whatsappModal.style.display = 'flex';
+          whatsappModal.setAttribute('aria-hidden', 'false');
+        }
+        document.body.classList.add('modal-open');
+      }
+
+      /* bind */
+      if (wechatIcon) wechatIcon.addEventListener('click', openWeChat);
+      if (whatsappIcon) whatsappIcon.addEventListener('click', openWhatsApp);
+
+      if (wechatClose){
+        wechatClose.addEventListener('click', function(e){
+          e.preventDefault();
+          closeWeChat();
+        });
+      }
+      if (whatsappClose){
+        whatsappClose.addEventListener('click', function(e){
+          e.preventDefault();
+          closeWhatsApp();
+        });
+      }
+
+      /* overlay click */
+      if (wechatModal){
+        wechatModal.addEventListener('click', function(e){
+          if (e.target === wechatModal) closeWeChat();
+        });
+      }
+      if (whatsappModal){
+        whatsappModal.addEventListener('click', function(e){
+          if (e.target === whatsappModal) closeWhatsApp();
+        });
+      }
+
+      /* ESC */
+      document.addEventListener('keydown', function (e) {
+        if (e.key === 'Escape') {
+          closeWeChat();
+          closeWhatsApp();
+        }
+      });
+
+    });
+  </script>
+
+  <!-- 템플릿 기본 스크립트 5총사 (반드시 이 순서) -->
   <script src="assets/js/jquery.min.js"></script>
   <script src="assets/js/browser.min.js"></script>
   <script src="assets/js/breakpoints.min.js"></script>
   <script src="assets/js/util.js"></script>
   <script src="assets/js/main.js"></script>
 
-  <!-- Page custom logic (kept minimal + safe) -->
-  <script>
-    (function () {
-      // Active link (aria-current)
-      try {
-        var path = (location.pathname.split("/").pop() || "index.html").toLowerCase();
-        document.querySelectorAll('#menu a').forEach(function (a) {
-          var href = (a.getAttribute('href') || '').toLowerCase();
-          if (href === path) a.setAttribute('aria-current', 'page');
-        });
-      } catch (e) {}
-
-      // WeChat modal
-      var modal = document.getElementById('wechatModal');
-      var openBtn = document.getElementById('wechat-icon');
-      if (modal && openBtn) {
-        var closeBtn = modal.querySelector('.close');
-
-        function openModal() {
-          modal.setAttribute('aria-hidden', 'false');
-          document.body.classList.add('modal-open');
-        }
-        function closeModal() {
-          modal.setAttribute('aria-hidden', 'true');
-          document.body.classList.remove('modal-open');
-        }
-
-        openBtn.addEventListener('click', function (e) { e.preventDefault(); openModal(); });
-        closeBtn && closeBtn.addEventListener('click', function () { closeModal(); });
-
-        modal.addEventListener('click', function (e) {
-          if (e.target === modal) closeModal();
-        });
-
-        document.addEventListener('keydown', function (e) {
-          if (e.key === 'Escape' && modal.getAttribute('aria-hidden') === 'false') closeModal();
-        });
-      }
-    })();
-  </script>
 </body>
 </html>
