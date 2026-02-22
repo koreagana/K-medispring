@@ -3428,5 +3428,9 @@ body.is-menu-visible{ overflow:hidden !important; }
   color:#999;
 }
 
+/* ===== Remove major header divider line site-wide ===== */
+header.major:after {
+  display: none !important;
+}
 
 
