@@ -1,11 +1,16 @@
 <!DOCTYPE HTML>
+<!--
+  汉江春天 · 男性健康中心 (Man)
+  - Layout/header/sidebar/modal/scripts aligned with index.html (Editorial safe)
+  - Image placeholders prepared where visually necessary (no forced assets)
+-->
 <html lang="zh-CN">
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
-  <title>汉江春天</title>
+  <title>汉江春天｜男性健康中心</title>
 
-  <!-- GitHub Pages용 base 경로 -->
+  <!-- GitHub Pages base path -->
   <script>
     (function () {
       var project = "/K-medispring/";
@@ -16,213 +21,616 @@
     })();
   </script>
 
-  <!-- Meta Tags -->
-  <meta name="description" content="汉江春天 · 韩国医疗观光与大健康平台" />
-  <meta property="og:title" content="汉江春天" />
-  <meta property="og:description" content="专注于韩国医疗、皮肤医美、干细胞、健康管理与高端定制旅行" />
-  <meta property="og:image" content="https://kmedispring.com/images/preview.jpg" />
-  <meta property="og:url" content="https://kmedispring.com/index.html" />
-  <meta name="twitter:card" content="summary_large_image" />
-
-  <!-- Favicon -->
-  <link rel="icon" type="image/x-icon" href="images/favicon.ico?v=20251012">
-  <link rel="icon" type="image/png" sizes="32x32" href="images/favicon-32.png?v=20251012">
-  <link rel="icon" type="image/png" sizes="16x16" href="images/favicon-16.png?v=20251012">
-  <link rel="apple-touch-icon" sizes="180x180" href="images/apple-touch-icon.png?v=20251012">
+  <!-- Favicons -->
+  <link rel="icon" href="favicon.ico">
+  <link rel="icon" type="image/png" sizes="16x16" href="favicon-16.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png">
+  <link rel="apple-touch-icon" href="apple-touch-icon.png">
 
   <!-- CSS -->
-  <link rel="stylesheet" href="assets/css/fontawesome-all.min.css?v=20251027" />
-  <link rel="stylesheet" href="assets/css/main.css?v=20251027" />
-  <noscript>
-    <link rel="stylesheet" href="assets/css/noscript.css?v=20251027" />
-  </noscript>
+  <link rel="stylesheet" href="assets/css/main.css" />
+
+  <!-- Page-only polish -->
+  <style>
+    /* Header right icons alignment */
+    #header .kms-icons {
+      margin-left: auto;
+      display: flex;
+      gap: .85rem;
+      align-items: center;
+    }
+    #header .kms-icons a {
+      text-decoration: none;
+      border: 0;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 40px;
+      height: 40px;
+      border-radius: 10px;
+    }
+    #header .kms-icons a:hover { background: rgba(0,0,0,.04); }
+
+    /* Top thin line spacing (not stuck to title) */
+    .page-topline {
+      border-top: 1px solid rgba(0,0,0,.12);
+      margin: 18px 0 34px;
+    }
+
+    .page-lead {
+      max-width: 980px;
+      font-size: 1.05rem;
+      line-height: 1.9;
+      color: rgba(0,0,0,.72);
+      margin: 0 0 1.8rem;
+    }
+    .tagline {
+      margin-top: .6rem;
+      color: rgba(0,0,0,.6);
+      letter-spacing: .02em;
+    }
+
+    /* Image grid / placeholders */
+    .img-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 18px;
+      margin: 22px 0 10px;
+    }
+    .img-card {
+      border-radius: 14px;
+      overflow: hidden;
+      border: 1px solid rgba(0,0,0,.08);
+      background: #fff;
+    }
+    .img-card img {
+      width: 100%;
+      height: 280px;
+      object-fit: cover;
+      display: block;
+    }
+    .img-caption {
+      padding: 12px 14px 14px;
+      font-size: .95rem;
+      color: rgba(0,0,0,.7);
+    }
+    .img-placeholder {
+      height: 280px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: linear-gradient(180deg, rgba(0,0,0,.03), rgba(0,0,0,.01));
+      color: rgba(0,0,0,.45);
+      font-size: .95rem;
+      letter-spacing: .02em;
+    }
+    @media (max-width: 736px) {
+      .img-grid { grid-template-columns: 1fr; }
+      .img-card img, .img-placeholder { height: 240px; }
+    }
+
+    /* Pills */
+    .pill-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin: 14px 0 10px;
+    }
+    .pill {
+      display: inline-flex;
+      align-items: center;
+      padding: 8px 12px;
+      border: 1px solid rgba(0,0,0,.12);
+      border-radius: 999px;
+      font-size: .92rem;
+      color: rgba(0,0,0,.72);
+      background: rgba(255,255,255,.9);
+    }
+
+    /* Accordion */
+    details.kms-acc {
+      border: 1px solid rgba(0,0,0,.10);
+      border-radius: 14px;
+      padding: 12px 14px;
+      margin: 12px 0;
+      background: rgba(255,255,255,.9);
+    }
+    details.kms-acc > summary {
+      cursor: pointer;
+      font-weight: 700;
+      list-style: none;
+      outline: none;
+    }
+    details.kms-acc > summary::-webkit-details-marker { display:none; }
+    details.kms-acc .acc-body {
+      margin-top: 10px;
+      color: rgba(0,0,0,.72);
+      line-height: 1.85;
+    }
+    .section-note {
+      color: rgba(0,0,0,.62);
+      margin: .4rem 0 1rem;
+      line-height: 1.8;
+    }
+
+    /* Comparison cards (3 columns) */
+    .compare3 {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 14px;
+      margin: 12px 0 6px;
+    }
+    .c-card {
+      border: 1px solid rgba(0,0,0,.10);
+      border-radius: 16px;
+      padding: 14px 14px 12px;
+      background: rgba(255,255,255,.95);
+    }
+    .c-title { font-weight: 800; margin: 0 0 8px; }
+    .c-list { margin: 0; padding-left: 18px; color: rgba(0,0,0,.72); line-height: 1.7; }
+    @media (max-width: 980px) { .compare3 { grid-template-columns: 1fr; } }
+
+    /* WeChat modal */
+    body.modal-open { overflow: hidden; }
+    .modal {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,.55);
+      z-index: 20000;
+      padding: 24px;
+    }
+    .modal[aria-hidden="false"] { display: flex; align-items: center; justify-content: center; }
+    .modal-inner {
+      width: min(420px, 92vw);
+      background: #fff;
+      border-radius: 16px;
+      box-shadow: 0 18px 60px rgba(0,0,0,.22);
+      padding: 16px 16px 18px;
+      text-align: center;
+      position: relative;
+    }
+    .modal-inner .close {
+      position: absolute;
+      top: 10px;
+      right: 12px;
+      width: 40px;
+      height: 40px;
+      border: 0;
+      background: rgba(0,0,0,.04);
+      border-radius: 12px;
+      font-size: 22px;
+      line-height: 40px;
+      cursor: pointer;
+    }
+    .modal-caption { margin: 10px 0 12px; color: rgba(0,0,0,.72); }
+    .modal-content { width: 86%; max-width: 320px; height: auto; border-radius: 12px; border: 1px solid rgba(0,0,0,.08); }
+    .modal-id { margin-top: 10px; color: rgba(0,0,0,.68); }
+  </style>
 </head>
 
 <body class="is-preload">
-
-  <!-- Wrapper -->
   <div id="wrapper">
 
     <!-- Main -->
     <div id="main">
       <div class="inner">
 
-<!-- Header -->
-<header id="header">
-  <a href="index.html" class="logo">
-    <img src="images/logo_ch.png" alt="汉江春天" class="logo-img">
-  </a>
-<!-- ✅ 모바일 햄버거: 헤더 안에 있어야 함 -->
-          <a href="#sidebar" class="toggle" aria-label="Menu"></a>
+        <!-- Header (logo + icons) -->
+        <header id="header">
+          <a href="index.html" class="logo" aria-label="汉江春天 Home">
+            <strong>汉江春天</strong>
+          </a>
 
-  <!-- SNS icons -->
-  <ul class="icons">
-    <li>
-      <a href="#" id="wechat-icon" class="icon brands fa-weixin" title="WeChat">
-        <span class="label">WeChat</span>
-      </a>
-    </li>
-    <li>
-      <a href="#" id="whatsapp-icon" class="icon brands fa-whatsapp" title="WhatsApp">
-        <span class="label">WhatsApp</span>
-      </a>
-    </li>
-    <li>
-      <a href="mailto:egana@kmedispring.com" class="icon solid fa-envelope" title="Email">
-        <span class="label">Email</span>
-      </a>
-    </li>
-  </ul>
-</header>
-        
-<header class="main">
-  <h1>男性健康中心</h1>
-</header>
+          <div class="kms-icons" aria-label="Contact icons">
+            <a href="#wechat" id="wechat-icon" aria-label="WeChat">
+              <span class="icon brands fa-weixin"></span>
+            </a>
+            <a href="whatsapp.html" aria-label="WhatsApp">
+              <span class="icon brands fa-whatsapp"></span>
+            </a>
+            <a href="mailto:egana@kmedispring.com" aria-label="Email">
+              <span class="icon solid fa-envelope"></span>
+            </a>
+          </div>
+        </header>
 
-<!-- Hero (업로드 전까지 임시 구성)
-     아래 hero_man.png는 이미지 업로드 후 주석 해제하여 사용하세요. -->
-<!-- <span class="image main">
-  <img src="{{ site.baseurl }}/images/man/hero_man.png" alt="男性活力与健康管理">
-</span> -->
+        <!-- Page Header -->
+        <section>
+          <header class="main">
+            <h1>男性健康中心</h1>
+            <div class="tagline">筛查 · 性功能 · 前列腺 · 生殖与泌尿 · 男科手术 · 激素与代谢管理</div>
+          </header>
 
-<span class="image main">
-  <img src="{{ site.baseurl }}/images/man/section_vehicle.png" alt="日常活力与通勤节律">
-</span>
+          <div class="page-topline"></div>
 
-<p>
-  从功能医学视角评估压力、睡眠与能量，结合训练与饮食框架，
-  为忙碌节奏中的男性提供高遵从度的活力管理方案。
-</p>
+          <p class="page-lead">
+            男性健康的核心不是“尴尬”，而是<b>效率与结果</b>：把问题拆成可验证的指标，然后按路径解决。
+            我们用同一套逻辑：<b>评估 → 选择 → 治疗/手术 → 复盘</b>，让你清楚知道下一步是什么、要来韩多久、恢复到哪一步。
+          </p>
 
-<hr class="major" />
+          <ul class="actions">
+            <li><a href="kplan.html" class="button primary large">定制医疗观光方案</a></li>
+          </ul>
 
-<!-- Row 1 -->
-<div class="row gtr-200">
-  <div class="col-6 col-12-medium">
-    <h3>压力—睡眠—节律</h3>
-    <p>以可执行的小步骤优化就寝与起床时点、蓝光暴露与恢复节律。</p>
-    <span class="image fit">
-      <img src="{{ site.baseurl }}/images/man/section_plan.png" alt="作息与节律管理计划">
-    </span>
-  </div>
-  <div class="col-6 col-12-medium">
-    <h3>体成分与训练</h3>
-    <p>围度与脂肪分布、力量与心肺耐力协同提升，周期化训练与营养支持。</p>
-    <span class="image fit">
-      <img src="{{ site.baseurl }}/images/man/section_vehicle.png" alt="训练与通勤中的能量维护">
-    </span>
-  </div>
-</div>
+          <!-- Image: use your existing man assets + placeholders for future -->
+          <div class="img-grid" aria-label="Man page images">
+            <div class="img-card">
+              <img src="images/man/section_plan.png" alt="男性健康规划（示意图）">
+              <div class="img-caption">用“计划”解决问题：检查—判断—选择方案—复盘。</div>
+            </div>
+            <div class="img-card">
+              <img src="images/man/section_vehicle.png" alt="就诊动线与行程（示意图）">
+              <div class="img-caption">医疗观光动线：把治疗与行程、复诊时间对齐。</div>
+            </div>
+          </div>
 
-<!-- (선택) Hero 업로드 후 추가 섹션
-<hr class="major" />
-<div class="row gtr-200">
-  <div class="col-6 col-12-medium">
-    <h3>指标与复评</h3>
-    <p>维生素D、铁蛋白、Zn/Cu/Se、甲状腺轴等指标，4–8周复评与调整。</p>
-    <span class="image fit">
-      <img src="{{ site.baseurl }}/images/man/hero_man.png" alt="男性健康指标与复评">
-    </span>
-  </div>
-</div>
--->
+          <!-- Optional hero placeholder (if later you want a strong cover image) -->
+          <div class="img-card" style="margin-top:14px;">
+            <div class="img-placeholder">【预留：男性健康封面图 / 诊室氛围图 / 医疗设备图】</div>
+            <div class="img-caption">建议选：干净的泌尿男科诊室、检查设备、或“生活方式管理”氛围图（避免尴尬视觉）。</div>
+          </div>
 
-<!-- CTA -->
-<div class="box">
-  <p>需要按你的时间表定制活力管理计划？点击开始 1:1 咨询。</p>
-  <ul class="actions">
-    <li><a href="{{ site.baseurl }}/custom-trip.html" class="button primary">定制我的男性计划</a></li>
-    <!-- <li><a href="{{ site.baseurl }}/hospitals.html" class="button alt">查看合作医院</a></li> -->
-  </ul>
-</div>
+        </section>
 
-<!-- ===== Sidebar ===== -->
-   <div id="sidebar">
-  <div class="inner">
+        <hr class="major" />
 
-  
-   <!-- 사이드바 상단 여백 -->
-<section id="sidebar-brand" class="sidebar-spacer"></section>
-<!-- 메뉴 -->
-<nav id="menu">
-  <ul>
-    <li class="active">
-      <a href="index.html">首页</a>
-    </li>
-    <li><a href="wellness.html">大健康</a></li>
-    <li><a href="stemcell.html">干细胞</a></li>
-    <li><a href="derm.html">皮肤医美</a></li>
-    <li><a href="surgery.html">整形医美</a></li>
-    <li><a href="woman.html">女性护理中心</a></li>
-    <li><a href="man.html">男性健康中心</a></li>
-    <li><a href="kplan.html" aria-current="page">定制医疗观光方案</a></li>
-  </ul>
-</nav>
-  <br>
-  <br>
-   
-  <!-- About -->
-<section class="menu-extra">
-  <header class="major">
-    <h2 class="about-title">关于我们</h2>
-  </header>
-  <p>
-    我们相信，美丽与健康，源于真诚的交流。如果你对韩国医疗、健康管理或合作有兴趣，欢迎通过微信或邮件与我们联系。
-  </p>
-</section>
+        <!-- 1) Screening -->
+        <section id="m-screening">
+          <header class="major">
+            <h2>1) 男性体检与筛查（把“隐性风险”提前抓住）</h2>
+          </header>
 
-    <!-- Contact -->
-    <section>
-      <header class="major"><h3>联系方式</h3></header>
-      <ul class="contact">
-        <li class="icon solid fa-envelope">
-          <a href="mailto:egana@kmedispring.com">邮箱：egana@kmedispring.com</a>
-        </li>
-        <li class="icon solid fa-phone">(82) 10-4903-3123</li>
-        <li class="icon solid fa-home">韩国 首尔特别市 城北区 东小门路 63号 6层 (邮编：02845)</li>
-      </ul>
-    </section>
+          <p class="section-note">
+            适用：长期疲劳/睡眠差/体重上升/家族史/抽烟饮酒/长期久坐/计划备孕/40+ 常规体检升级。
+          </p>
 
-    <!-- Footer -->
-    <footer id="footer">
-      <p style="text-align:center; font-size:0.9em; color:#666;">
-        © 2025 汉江春天 한강애봄 版权所有。模板设计：HTML5 UP。
-      </p>
-    </footer>
+          <div class="pill-row">
+            <span class="pill">基础体检</span>
+            <span class="pill">心血管/代谢</span>
+            <span class="pill">肝肾与炎症</span>
+            <span class="pill">激素</span>
+            <span class="pill">前列腺</span>
+            <span class="pill">生育评估</span>
+          </div>
 
-  </div><!-- .inner -->
-</div><!-- #sidebar -->
+          <details class="kms-acc">
+            <summary>核心项目（按需求组合）</summary>
+            <div class="acc-body">
+              <ul>
+                <li><b>代谢与心血管：</b>血脂、血糖/糖化、血压、体成分与脂肪肝风险评估。</li>
+                <li><b>肝肾与炎症：</b>肝肾功能、尿检、炎症指标（长期疲劳/反复不适时很关键）。</li>
+                <li><b>激素轴：</b>睾酮相关评估（症状+化验结合解读，不只看一个数）。</li>
+                <li><b>前列腺：</b>症状问卷 + 体检/影像（按需求），必要时 PSA 等。</li>
+                <li><b>生育：</b>精液分析 + 男科评估（备孕效率的关键一步）。</li>
+              </ul>
+              <p class="section-note">我们会把检查结果翻译成“下一步选择”：观察？生活方式？药物？进一步检查？</p>
+            </div>
+          </details>
+        </section>
 
-  </div><!-- #wrapper -->
+        <hr class="major" />
+
+        <!-- 2) Sexual function / ED -->
+        <section id="m-ed">
+          <header class="major">
+            <h2>2) 性功能与勃起功能障碍（ED）</h2>
+          </header>
+
+          <p class="section-note">
+            ED = 勃起功能障碍。它经常是<b>血管、神经、激素、心理压力、代谢问题</b>的综合结果，不是“意志力不够”。
+          </p>
+
+          <details class="kms-acc">
+            <summary>先分型：你属于哪一种（决定治疗路线）</summary>
+            <div class="acc-body">
+              <ul>
+                <li><b>血管型：</b>动脉供血不足或静脉漏（常与代谢/抽烟/年龄相关）。</li>
+                <li><b>神经/损伤相关：</b>手术史、糖尿病神经病变等。</li>
+                <li><b>激素相关：</b>低睾酮、甲状腺等内分泌因素。</li>
+                <li><b>心理与压力型：</b>焦虑、睡眠差、关系压力（常与其他因素叠加）。</li>
+              </ul>
+            </div>
+          </details>
+
+          <details class="kms-acc">
+            <summary>治疗阶梯（从轻到重，清晰可选）</summary>
+            <div class="acc-body">
+              <div class="compare3">
+                <div class="c-card">
+                  <p class="c-title">第一层：基础修复</p>
+                  <ul class="c-list">
+                    <li>睡眠与压力管理</li>
+                    <li>体重/代谢改善</li>
+                    <li>戒烟与运动处方</li>
+                  </ul>
+                </div>
+                <div class="c-card">
+                  <p class="c-title">第二层：医学治疗</p>
+                  <ul class="c-list">
+                    <li>口服药物（医生评估）</li>
+                    <li>局部/器械治疗（按适应证）</li>
+                    <li>激素相关问题的规范处理</li>
+                  </ul>
+                </div>
+                <div class="c-card">
+                  <p class="c-title">第三层：手术/高级方案</p>
+                  <ul class="c-list">
+                    <li>针对结构性问题的治疗</li>
+                    <li>个体化手术方案（必要时）</li>
+                    <li>恢复期与停留期明确规划</li>
+                  </ul>
+                </div>
+              </div>
+              <p class="section-note">提示：你要的是“可持续有效”，不是一次性冲动。我们会把风险与收益讲清楚。</p>
+            </div>
+          </details>
+
+          <!-- Image placeholder: ED education diagram -->
+          <div class="img-card" style="margin-top:14px;">
+            <div class="img-placeholder">【预留：ED 分型示意图（血管/神经/激素/心理）】</div>
+            <div class="img-caption">建议做成 4 宫格信息图：原因→检查→治疗选项→复盘指标。</div>
+          </div>
+        </section>
+
+        <hr class="major" />
+
+        <!-- 3) Prostate -->
+        <section id="m-prostate">
+          <header class="major">
+            <h2>3) 前列腺与排尿症状（别拖到生活质量崩）</h2>
+          </header>
+
+          <p class="section-note">
+            适用：尿频、尿急、夜尿、尿线变细、排尿等待、排不尽感、会阴不适等。
+          </p>
+
+          <details class="kms-acc">
+            <summary>症状 → 检查 → 处理顺序</summary>
+            <div class="acc-body">
+              <ul>
+                <li><b>先排除感染与急症：</b>尿检/必要检查。</li>
+                <li><b>再判断良性增生/炎症/其他因素：</b>症状量表 + 影像/相关评估（按需求）。</li>
+                <li><b>治疗：</b>生活方式与用药 → 需要时升级为手术/介入方案。</li>
+              </ul>
+              <p class="section-note">我们会把“什么时候该升级方案”写成明确阈值，避免长期拖延。</p>
+            </div>
+          </details>
+
+          <!-- Image placeholder: LUTS pathway -->
+          <div class="img-card" style="margin-top:14px;">
+            <div class="img-placeholder">【预留：前列腺排尿症状（LUTS）路径图】</div>
+            <div class="img-caption">建议：用流程图表达“观察/用药/进一步检查/手术”的升级条件。</div>
+          </div>
+        </section>
+
+        <hr class="major" />
+
+        <!-- 4) Fertility (male) -->
+        <section id="m-fertility">
+          <header class="major">
+            <h2>4) 男性生育力（备孕效率真正的加速器）</h2>
+          </header>
+
+          <p class="section-note">
+            适用：备孕时间较长未成功、精液指标异常、反复流产需要双方共同评估、计划冻精/生育规划等。
+          </p>
+
+          <details class="kms-acc">
+            <summary>核心：精液分析 + 男科评估（把原因找出来）</summary>
+            <div class="acc-body">
+              <ul>
+                <li><b>精液分析：</b>数量、活力、形态等关键指标。</li>
+                <li><b>病因评估：</b>精索静脉曲张、炎症、内分泌、生活方式等。</li>
+                <li><b>方案：</b>生活方式 + 医学干预 + 必要时手术/辅助生殖路径对接。</li>
+              </ul>
+            </div>
+          </details>
+
+          <!-- Image placeholder: sperm health -->
+          <div class="img-card" style="margin-top:14px;">
+            <div class="img-placeholder">【预留：生育力“可控变量”信息图（睡眠/压力/体重/烟酒/营养）】</div>
+            <div class="img-caption">做成 Apple 风格 5~6 个图标卡片，强调“可被改变”的变量。</div>
+          </div>
+        </section>
+
+        <hr class="major" />
+
+        <!-- 5) Andrology surgery (varicocele, circumcision, etc.) -->
+        <section id="m-surgery">
+          <header class="major">
+            <h2>5) 男科常见手术与微创（把恢复期讲清楚）</h2>
+          </header>
+
+          <p class="section-note">
+            你最担心的通常不是“做不做”，而是：<b>麻醉方式、恢复时间、是否影响工作与性生活、韩国停留多久</b>。
+          </p>
+
+          <details class="kms-acc">
+            <summary>常见手术方向（按需求定制）</summary>
+            <div class="acc-body">
+              <ul>
+                <li><b>精索静脉曲张：</b>与生育力/不适相关时，评估后可考虑手术或介入方案。</li>
+                <li><b>包皮/龟头相关问题：</b>按适应证与生活需求选择处理方式。</li>
+                <li><b>阴囊/附睾等常见问题：</b>依据影像与症状决定保守或手术。</li>
+                <li><b>结构性功能问题：</b>必要时进入更高阶方案（医生评估）。</li>
+              </ul>
+            </div>
+          </details>
+
+          <details class="kms-acc">
+            <summary>麻醉与恢复（页面级“说明书”逻辑）</summary>
+            <div class="acc-body">
+              <ul>
+                <li><b>麻醉：</b>局麻/镇静/全麻（取决于项目与医院规则）。</li>
+                <li><b>恢复：</b>拆线/回诊节点、运动限制、性生活恢复窗口。</li>
+                <li><b>停留建议：</b>把“最低停留天数 + 推荐停留天数”写出来，方便医疗观光计划。</li>
+              </ul>
+              <p class="section-note">之后你给我“所有手术注意事项文档”，我会做成统一弹窗/卡片模板。</p>
+            </div>
+          </details>
+
+          <!-- Image placeholder: recovery timeline -->
+          <div class="img-card" style="margin-top:14px;">
+            <div class="img-placeholder">【预留：术后时间轴图（Day 1 / Week 1 / Month 1 / Month 3）】</div>
+            <div class="img-caption">建议统一成时间轴组件：复诊、拆线、运动、性生活、完全恢复节点。</div>
+          </div>
+        </section>
+
+        <hr class="major" />
+
+        <!-- 6) Hormone & metabolism -->
+        <section id="m-hormone">
+          <header class="major">
+            <h2>6) 激素与代谢管理（男性“状态差”的底层原因）</h2>
+          </header>
+
+          <p class="section-note">
+            适用：疲劳、动力下降、体脂上升、肌肉流失、睡眠变差、情绪易怒、性欲下降等。
+          </p>
+
+          <details class="kms-acc">
+            <summary>先别急着“补”：先评估再决定</summary>
+            <div class="acc-body">
+              <ul>
+                <li><b>评估：</b>症状 + 生活方式 + 化验指标综合判断。</li>
+                <li><b>优先修复：</b>睡眠、压力、体重、运动与营养。</li>
+                <li><b>医学方案：</b>由医生决定是否需要进一步治疗与随访监测。</li>
+              </ul>
+            </div>
+          </details>
+
+          <!-- Image placeholder: metabolism -->
+          <div class="img-card" style="margin-top:14px;">
+            <div class="img-placeholder">【预留：代谢改善“三指标”卡片（腰围/血糖/血脂）】</div>
+            <div class="img-caption">做成 3 卡比较，强调可量化、可复盘。</div>
+          </div>
+        </section>
+
+        <hr class="major" />
+
+        <!-- Source note -->
+        <section>
+          <p style="margin: 0; color: rgba(0,0,0,.55); font-size: .95rem;">
+            允许转载：请注明出处。<b>来源：汉江春天</b>
+          </p>
+        </section>
+
+      </div><!-- /.inner -->
+    </div><!-- /#main -->
+
+    <!-- Sidebar -->
+    <div id="sidebar">
+      <div class="inner">
+
+        <section id="sidebar-brand" class="sidebar-spacer"></section>
+
+        <nav id="menu">
+          <header class="major">
+            <h2>菜单</h2>
+          </header>
+          <ul>
+            <li><a href="index.html">首页</a></li>
+            <li><a href="wellness.html">大健康</a></li>
+            <li><a href="stemcell.html">干细胞</a></li>
+            <li><a href="derm.html">皮肤医美</a></li>
+            <li><a href="surgery.html">整形医美</a></li>
+            <li><a href="woman.html">女性护理中心</a></li>
+            <li><a href="man.html" aria-current="page">男性健康中心</a></li>
+            <li><a href="kplan.html">定制医疗观光方案</a></li>
+          </ul>
+        </nav>
+
+        <section>
+          <header class="major">
+            <h2>关于我们</h2>
+          </header>
+          <p style="margin-bottom:.9rem;">
+            我们相信，美丽与健康，源于真诚的交流。若你对韩国医疗、健康管理或合作有兴趣，欢迎通过微信或邮件联系我们。
+          </p>
+          <p style="margin:0; color: rgba(0,0,0,.62);">
+            <b>韩国代表综合医院 5家</b><br>
+            各专科医疗机构 <b>50+</b>
+          </p>
+        </section>
+
+        <section>
+          <header class="major">
+            <h2>联系方式</h2>
+          </header>
+          <ul class="contact">
+            <li class="icon solid fa-envelope"><a href="mailto:egana@kmedispring.com">egana@kmedispring.com</a></li>
+            <li class="icon solid fa-phone">(82) 10-4903-3123</li>
+          </ul>
+        </section>
+
+        <footer id="footer">
+          <p class="copyright">
+            &copy; 2026 汉江春天. <span>来源：汉江春天</span>
+          </p>
+        </footer>
+
+      </div>
+    </div><!-- /#sidebar -->
+
+  </div><!-- /#wrapper -->
 
   <!-- WeChat QR Modal -->
-  <div id="wechatModal" class="modal" aria-hidden="true" role="dialog">
+  <div id="wechatModal" class="modal" aria-hidden="true" role="dialog" aria-label="WeChat QR">
     <div class="modal-inner">
       <button class="close" aria-label="Close">&times;</button>
       <p class="modal-caption">扫描二维码添加微信</p>
-      <img id="wechatQR" class="modal-content" src="images/qr_weixin.jpg" alt="WeChat QR for e-gana" />
+      <img id="wechatQR" class="modal-content" src="images/qr_weixin.jpg" alt="WeChat QR">
       <p class="modal-id">WeChat ID：e-gana</p>
     </div>
   </div>
 
-  <!-- WhatsApp Modal -->
-  <div id="whatsappModal" class="modal" aria-hidden="true" role="dialog">
-    <div class="modal-inner">
-      <button class="close" aria-label="Close">&times;</button>
-      <p class="modal-caption">QR → WhatsApp Connect</p>
-      <img id="whatsappQR" class="modal-content" src="images/whatsapp_qr.jpg" alt="WhatsApp QR for K-Medi Spring">
-      <p class="modal-id">WhatsApp：+82-10-4903-3123</p>
-    </div>
-  </div>
+  <!-- Scripts -->
+  <script src="assets/js/jquery.min.js"></script>
+  <script src="assets/js/browser.min.js"></script>
+  <script src="assets/js/breakpoints.min.js"></script>
+  <script src="assets/js/util.js"></script>
+  <script src="assets/js/main.js"></script>
 
-  <!-- 템플릿 기본 스크립트 5총사 (반드시 이 순서) -->
- <script src="assets/js/jquery.min.js"></script>
-<script src="assets/js/browser.min.js"></script>
-<script src="assets/js/breakpoints.min.js"></script>
-<script src="assets/js/util.js"></script>
-<script src="assets/js/main.js"></script>
-<script src="assets/js/modals.js"></script>
+  <!-- Page custom logic -->
+  <script>
+    (function () {
+      // Active link
+      try {
+        var path = (location.pathname.split("/").pop() || "index.html").toLowerCase();
+        document.querySelectorAll('#menu a').forEach(function (a) {
+          var href = (a.getAttribute('href') || '').toLowerCase();
+          if (href === path) a.setAttribute('aria-current', 'page');
+        });
+      } catch (e) {}
 
+      // WeChat modal
+      var modal = document.getElementById('wechatModal');
+      var openBtn = document.getElementById('wechat-icon');
+      if (modal && openBtn) {
+        var closeBtn = modal.querySelector('.close');
+
+        function openModal() {
+          modal.setAttribute('aria-hidden', 'false');
+          document.body.classList.add('modal-open');
+        }
+        function closeModal() {
+          modal.setAttribute('aria-hidden', 'true');
+          document.body.classList.remove('modal-open');
+        }
+
+        openBtn.addEventListener('click', function (e) { e.preventDefault(); openModal(); });
+        closeBtn && closeBtn.addEventListener('click', function () { closeModal(); });
+
+        modal.addEventListener('click', function (e) {
+          if (e.target === modal) closeModal();
+        });
+
+        document.addEventListener('keydown', function (e) {
+          if (e.key === 'Escape' && modal.getAttribute('aria-hidden') === 'false') closeModal();
+        });
+      }
+    })();
+  </script>
 </body>
 </html>
-
