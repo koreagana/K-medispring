@@ -114,4 +114,39 @@
     closeMenu();
   });
 
+  /* =========================
+     WhatsApp QR Modal
+     ========================= */
+  var whatsappIcon = document.getElementById('whatsapp-icon');
+  var whatsappModal = document.getElementById('whatsappModal');
+
+  if (whatsappIcon && whatsappModal) {
+
+    whatsappIcon.addEventListener('click', function (e) {
+      e.preventDefault();
+      whatsappModal.style.display = 'block';
+      document.body.classList.add('modal-open');
+    });
+
+    var closeBtn = whatsappModal.querySelector('.close');
+
+    if (closeBtn) {
+      closeBtn.addEventListener('click', function () {
+        whatsappModal.style.display = 'none';
+        document.body.classList.remove('modal-open');
+      });
+    }
+
+    whatsappModal.addEventListener('click', function (e) {
+      if (e.target === whatsappModal) {
+        whatsappModal.style.display = 'none';
+        document.body.classList.remove('modal-open');
+      }
+    });
+
+  }
+  
 })(jQuery);
+
+
+
