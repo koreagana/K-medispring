@@ -91,7 +91,13 @@
     }, 200);
   });
 
-  
+    /* =========================
+     바깥 클릭 → 닫기
+     ========================= */
+  $window.on('click touchstart', function () {
+    if (!$body.hasClass('is-menu-visible')) return;
+    closeMenu();
+  });
 
   /* =========================
      ESC → 닫기
