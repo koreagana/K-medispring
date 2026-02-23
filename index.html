@@ -407,20 +407,10 @@ document.addEventListener('DOMContentLoaded', function () {
 <script src="assets/js/util.js"></script>
 <script src="assets/js/main.js"></script>
 
- <script>
-(function(){
-  if (window.innerWidth <= 980) return; // 모바일은 기존 main.js 사용
-  var t = document.querySelector('a.toggle');
-  if(!t) return;
-  t.addEventListener('click', function(e){
-    e.preventDefault();
-    document.body.classList.toggle('is-menu-visible');
-  }, { passive:false });
-})();
-</script>
   
 </body>
 </html>
+
 
 
 
