@@ -520,8 +520,11 @@
 
   <ul class="icons">
     <li><a href="#" id="wechat-icon" class="icon brands fa-weixin" aria-label="WeChat"><span class="label">WeChat</span></a></li>
-    <li><a href="#" class="icon brands fa-whatsapp" aria-label="WhatsApp"><span class="label">WhatsApp</span></a></li>
-    <li><a href="mailto:2gana@naver.com" class="icon solid fa-envelope" aria-label="Email"><span class="label">Email</span></a></li>
+<li>
+  <a href="#" id="whatsapp-icon" class="icon brands fa-whatsapp" aria-label="WhatsApp">
+    <span class="label">WhatsApp</span>
+  </a>
+</li>    <li><a href="mailto:2gana@naver.com" class="icon solid fa-envelope" aria-label="Email"><span class="label">Email</span></a></li>
   </ul>
 </header>
       <!-- IMPORTANT: 여기에는 “汉江春天” 큰 제목/라인을 만들지 않음 (요청사항) -->
@@ -800,6 +803,15 @@
   </div>
 </div>
 
+<!-- WhatsApp QR Modal -->
+<div id="whatsappModal" class="modal" aria-hidden="true" role="dialog">
+  <div class="modal-inner">
+    <button class="close" aria-label="Close">&times;</button>
+    <p class="modal-caption">Scan to contact via WhatsApp</p>
+    <img src="images/qr_whatsapp.jpg" alt="WhatsApp QR" class="modal-content">
+  </div>
+</div>
+  
 <!-- Popup / Lightbox Slider -->
 <div class="kms-lightbox" id="kmsLightbox" aria-hidden="true" role="dialog" aria-label="Device viewer">
   <div class="kms-lightbox__backdrop" data-close="1"></div>
