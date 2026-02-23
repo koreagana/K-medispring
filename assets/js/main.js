@@ -53,14 +53,18 @@
   }
 
   /* =========================
-     Toggle (HTML에 있는 것만 사용)
+     Toggle
      ========================= */
-  $toggle.on('click', function (e) {
-    e.preventDefault();
-    e.stopPropagation();
-    if (!isMobile()) return;
-    toggleMenu();
-  });
+ $toggle.on('click', function (e) {
+  e.preventDefault();
+  e.stopPropagation();
+
+  if (isMobile()) {
+    toggleMenu();                 // 모바일: 기존대로 (modal-open 포함)
+  } else {
+    $body.toggleClass('is-menu-visible'); // PC: is-menu-visible만 토글 (레이아웃 꼬임 최소)
+  }
+});
 
   /* =========================
      Sidebar 내부 클릭은 버블 차단
