@@ -406,8 +406,10 @@ document.addEventListener('DOMContentLoaded', function () {
 <script src="assets/js/breakpoints.min.js"></script>
 <script src="assets/js/util.js"></script>
 <script src="assets/js/main.js"></script>
-<script>
+
+ <script>
 (function(){
+  if (window.innerWidth <= 980) return; // 모바일은 기존 main.js 사용
   var t = document.querySelector('a.toggle');
   if(!t) return;
   t.addEventListener('click', function(e){
@@ -419,6 +421,7 @@ document.addEventListener('DOMContentLoaded', function () {
   
 </body>
 </html>
+
 
 
 
