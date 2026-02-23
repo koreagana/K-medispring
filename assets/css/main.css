@@ -3403,10 +3403,17 @@ body.is-menu-visible{ overflow:hidden !important; }
   border-top: none !important;
 }
 
-@media screen and (min-width: 1681px) {
-  .inner {
-    max-width: 1400px;
-    margin: 0 auto;
+@media screen and (min-width:1681px){
+  #main > .inner{
+    max-width:1000px;
+    margin:0 auto;
+  }
+}
+
+@media screen and (min-width:1681px){
+  body{
+    font-size: 18px;
+    line-height: 1.8;
   }
 }
 
