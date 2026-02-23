@@ -2579,8 +2579,7 @@ a.toggle{ display:block !important; }
 #main{ min-width:0 !important; }
 
 /* 본문 중앙 고정 – 현재 크기 유지 */
-#main > .inner{
-  max-width:1120px !important;
+
   width:100% !important;
   margin:0 auto !important;
   padding-left:0 !important;
@@ -2861,7 +2860,6 @@ body.modal-open{ overflow:hidden; }
 
 /* 본문 중앙 고정(PC에서 지금 크기 유지) */
 #main > .inner{
-  max-width:1120px !important;
   width:100% !important;
   margin:0 auto !important;
 }
@@ -3411,4 +3409,5 @@ body.is-menu-visible{ overflow:hidden !important; }
     margin: 0 auto;
   }
 }
+
 
