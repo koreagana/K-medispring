@@ -3419,3 +3419,10 @@ body.is-menu-visible{ overflow:hidden !important; }
 #main > .inner > section {
   border-top: none !important;
 }
+
+@media screen and (min-width: 1681px) {
+  .inner {
+    max-width: 1400px;
+    margin: 0 auto;
+  }
+}
