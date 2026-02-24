@@ -509,109 +509,135 @@
     });
 
     // ✅ 모달 확인 = 검증 후 mailto 실행 + 토스트
-    confirmContactBtn.addEventListener('click', function(){
-      const email = (contactEmail.value || '').trim();
-      const wechat = (contactWeChat.value || '').trim();
+confirmContactBtn.addEventListener('click', function(){
+  const wechat = (contactWeChat.value || '').trim();
+  const email  = (contactEmail.value || '').trim();
 
-      if(!email && !wechat){
-        contactError.textContent = '请填写邮箱地址或 WeChat ID（任选其一）';
-        return;
-      }
-
-      const mailTo = "leegana@k-medispring.cn";
-      const subject = "K-Plan 咨询申请";
-
-      const contactLine =
-        email ? `联系邮箱：${email}` :
-        wechat ? `WeChat ID：${wechat}` : '';
-
-      const body =
-  `您好，
-  以下是客户选择的咨询项目：
-
-  ${pendingLines.join("\n")}
-
-  ${contactLine ? ("\n" + contactLine + "\n") : ""}
-
-  请回信提供价格与详细说明。`;
-
-      closeContactModal();
-      showToast();
-
-      window.location.href =
-        `mailto:${mailTo}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
-    });
-
-    render();
-  })();
-  </script>
-
-  <!-- ✅ CSS (head의 css 파일에 넣거나, 급하면 body 끝에 style로) -->
-  <style>
-  .kms-modal{position:fixed; inset:0; z-index:9999; display:none;}
-  .kms-modal.is-open{display:block;}
-  .kms-modal__backdrop{position:absolute; inset:0; background:rgba(0,0,0,.55);}
-  .kms-modal__card{
-    position:relative;
-    width:min(520px,92vw);
-    margin:10vh auto 0;
-    background:#fff;
-    border-radius:18px;
-    padding:28px 22px 22px;
-    box-shadow:0 18px 55px rgba(0,0,0,.28);
-    text-align:center;
-    font-family:"HJS-Serif","Source Han Serif SC","Noto Serif CJK SC","Songti SC","STSong","SimSun",serif;
+  if(!wechat && !email){
+    contactError.textContent = '请填写 WeChat ID 或邮箱地址（任选其一）';
+    return;
   }
-  .kms-modal__close{
-    position:absolute; top:10px; right:12px;
-    width:40px; height:40px;
-    border:none; background:transparent;
-    font-size:28px; line-height:40px;
-    color:#777; cursor:pointer;
-  }
-  .kms-modal__title{margin:4px 0 8px; font-size:20px; font-weight:700; color:#111;}
-  .kms-modal__desc{margin:0 0 16px; font-size:14px; color:#555; line-height:1.55;}
-  .kms-modal__inputs{display:flex; flex-direction:column; gap:10px; margin:8px 0 10px;}
-  .kms-modal__inputs input{
-    width:100%;
-    padding:14px 14px;
-    border:1px solid #ddd;
-    border-radius:12px;
-    font-size:16px;
-    outline:none;
-    font-family:inherit;
-  }
-  .kms-modal__inputs input:focus{border-color:#4E97D1; box-shadow:0 0 0 3px rgba(78,151,209,.15);}
-  .kms-modal__or{font-size:12px; color:#888; margin:2px 0;}
-  .kms-modal__error{min-height:18px; margin:6px 0 10px; color:#d33; font-size:13px;}
-  .kms-modal__btn{
-    width:100%;
-    border:none;
-    border-radius:14px;
-    padding:14px 14px;
-    background:#4E97D1;
-    color:#fff;
-    font-size:16px;
-    font-weight:700;
-    cursor:pointer;
-  }
-  .kms-modal__hint{margin-top:10px; font-size:12px; color:#999;}
 
-  .kms-toast{position:fixed; inset:0; z-index:10000; display:none; pointer-events:none;}
-  .kms-toast.is-show{display:block;}
-  .kms-toast__box{
-    position:absolute; left:50%; top:10%;
-    transform:translateX(-50%);
-    background:rgba(0,0,0,.78);
-    color:#fff;
-    padding:10px 12px;
-    border-radius:12px;
-    font-size:13px;
-    line-height:1.35;
-    text-align:center;
-    max-width:92vw;
-  }
-  </style>
+  const mailTo = "leegana@k-medispring.cn";
+  const subject = "K-Plan 咨询申请";
 
+  const contactLine =
+    wechat ? `WeChat ID：${wechat}` :
+    email  ? `联系邮箱：${email}` : '';
+
+  const body =
+`您好，
+以下是客户选择的咨询项目：
+
+${pendingLines.join("\n")}
+
+${contactLine ? ("\n" + contactLine + "\n") : ""}
+
+请回信提供价格与详细说明。`;
+
+  closeContactModal();
+  showToast();
+
+  window.location.href =
+    `mailto:${mailTo}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+});
+
+render();
+})();
+</script>
+
+<style>
+.kms-modal{position:fixed; inset:0; z-index:9999; display:none;}
+.kms-modal.is-open{display:block;}
+.kms-modal__backdrop{position:absolute; inset:0; background:rgba(0,0,0,.55);}
+.kms-modal__card{
+  position:relative;
+  width:min(520px,92vw);
+  margin:10vh auto 0;
+  background:#fff;
+  border-radius:18px;
+  padding:28px 22px 22px;
+  box-shadow:0 18px 55px rgba(0,0,0,.28);
+  text-align:center;
+  font-family:"HJS-Serif","Source Han Serif SC","Noto Serif CJK SC","Songti SC","STSong","SimSun",serif;
+}
+
+/* ✅ 닫기 버튼: 정사각형 블루 + 흰 X (블링) */
+.kms-modal__close{
+  position:absolute; top:14px; right:14px;
+  width:44px; height:44px;
+  border:none;
+  border-radius:10px;
+  background:#4E97D1;
+  color:#fff;
+  font-size:22px; line-height:44px;
+  cursor:pointer;
+  box-shadow:
+    0 10px 22px rgba(78,151,209,.35),
+    0 0 0 2px rgba(255,255,255,.85) inset;
+  transition:transform .12s ease, box-shadow .12s ease, filter .12s ease;
+}
+.kms-modal__close:hover{
+  transform:translateY(-1px);
+  filter:brightness(1.05);
+  box-shadow:
+    0 14px 28px rgba(78,151,209,.42),
+    0 0 0 2px rgba(255,255,255,.92) inset,
+    0 0 14px rgba(255,255,255,.35);
+}
+
+.kms-modal__title{margin:4px 0 8px; font-size:20px; font-weight:700; color:#111;}
+.kms-modal__desc{margin:0 0 16px; font-size:14px; color:#555; line-height:1.55;}
+.kms-modal__inputs{display:flex; flex-direction:column; gap:10px; margin:8px 0 10px;}
+.kms-modal__inputs input{
+  width:100%;
+  padding:14px 14px;
+  border:1px solid #ddd;
+  border-radius:12px;
+  font-size:16px;
+  outline:none;
+  font-family:inherit;
+}
+.kms-modal__inputs input:focus{border-color:#4E97D1; box-shadow:0 0 0 3px rgba(78,151,209,.15);}
+.kms-modal__or{font-size:12px; color:#888; margin:2px 0;}
+.kms-modal__error{min-height:18px; margin:6px 0 10px; color:#d33; font-size:13px;}
+
+/* ✅ 제출 버튼: 기본 블루 + 흰색, hover 핑크 (텍스트 안떨어지게) */
+.kms-modal__btn{
+  width:100%;
+  border:none;
+  border-radius:14px;
+  padding:14px 14px;
+  background:#4E97D1;
+  color:#fff;
+  font-size:16px;
+  font-weight:700;
+  cursor:pointer;
+  transition:filter .12s ease, transform .12s ease, background .12s ease;
+}
+.kms-modal__btn:hover{
+  background:#F3A6C8;
+  transform:none;
+  filter:none;
+}
+.kms-modal__btn::after{content:none !important;}
+
+.kms-modal__hint{margin-top:10px; font-size:12px; color:#999;}
+
+.kms-toast{position:fixed; inset:0; z-index:10000; display:none; pointer-events:none;}
+.kms-toast.is-show{display:block;}
+.kms-toast__box{
+  position:absolute; left:50%; top:10%;
+  transform:translateX(-50%);
+  background:rgba(0,0,0,.78);
+  color:#fff;
+  padding:10px 12px;
+  border-radius:12px;
+  font-size:13px;
+  line-height:1.35;
+  text-align:center;
+  max-width:92vw;
+}
+</style>
 </body>
 </html>
