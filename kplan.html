@@ -1,18 +1,23 @@
 <!DOCTYPE HTML>
 <!--
-  汉江春天 · K-Plan (Editorial layout safe)
-  - Mobile hamburger restored (requires #sidebar + main.js)
-  - Sidebar includes menu + contact + footer
-  - No duplicate scripts
-  - K-Plan: 선택/서머리/버튼/이동방지 정상 동작 (정본)
+  汉江春天 · K-Plan (kplan.html) ✅완성형
+  =========================================================
+  ✅ 이 파일은 "복붙 1방" 기준본
+  ✅ 핵심 체크리스트
+    1) </body> </html> 절대 먼저 닫지 말기 (모든 모달/스크립트는 그 전에)
+    2) contactModal(X/배경/ESC) 닫힘
+    3) 提交 버튼: 기본/호버 모두 흰색 볼드 + 중앙정렬 + 테두리(선) 없음
+    4) Header WeChat / WhatsApp 아이콘 클릭 시 메인으로 튀지 않고 QR 모달 열림
+    5) 5총사 스크립트는 맨 아래에 위치
 -->
+
 <html lang="zh-CN">
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
   <title>汉江春天 · 定制医疗观光方案</title>
 
-  <!-- GitHub Pages base (HEAD 최상단) -->
+  <!-- ✅ GitHub Pages base (HEAD 최상단 유지) -->
   <script>
     (function () {
       var project = "/K-medispring/";
@@ -23,28 +28,28 @@
     })();
   </script>
 
-    <!-- 파비콘 (base 태그와 GitHub Pages 경로 대응: 앞에 / 제거) -->
+  <!-- ✅ 파비콘 (base 태그 대응: 앞에 / 제거) -->
   <link rel="icon" href="images/favicon.ico?v=20251012">
   <link rel="icon" type="image/png" sizes="32x32" href="images/favicon-32.png?v=20251012">
   <link rel="icon" type="image/png" sizes="16x16" href="images/favicon-16.png?v=20251012">
   <link rel="apple-touch-icon" sizes="180x180" href="images/apple-touch-icon.png?v=20251012">
-  
-  <!-- Editorial CSS -->
+
+  <!-- ✅ Editorial CSS -->
   <link rel="stylesheet" href="assets/css/fontawesome-all.min.css" />
   <link rel="stylesheet" href="assets/css/main.css" />
   <link rel="stylesheet" href="assets/css/kplan-agi.css" />
 
-  <!-- K-Plan inline overrides (short only) -->
+  <!-- =========================================================
+       ✅ K-Plan / 모달 전용 CSS (이 파일 안에서만 관리)
+       ========================================================= -->
   <style>
     :root{
-      --hga-blue: #1e6bd6;
-      --hga-blue-weak: rgba(30,107,214,0.45);
-      --hga-blue-bg: rgba(30,107,214,0.06);
+      --hga-blue:#4E97D1;
+      --hga-pink:#D97AA6;         /* ✅ 짙은 파스텔 핑크 */
     }
 
-    /* Sidebar: Search 제거 + 로고만 */
+    /* ✅ Sidebar: Search 제거 + 로고만 */
     #sidebar #search{ display:none !important; }
-
     #sidebar-brand{
       padding: 1.8rem 1.5rem 1.1rem;
       text-align:center;
@@ -56,32 +61,261 @@
       height:auto;
       margin:0 auto;
     }
-
-    /* Menu 상단 라인 제거 (Editorial 안전 범위) */
+    /* ✅ Menu 상단 라인 제거 */
     #sidebar nav#menu,
     #sidebar nav#menu > header,
     #sidebar nav#menu ul{
       border-top: 0 !important;
     }
+
+    /* =========================================================
+       ✅ (1) K-Plan 연락처 입력 모달: contactModal (kms-modal)
+       ========================================================= */
+    .kms-modal{
+      position:fixed; inset:0;
+      z-index:9999;
+      display:none;
+    }
+    .kms-modal.is-open{ display:block; }
+    .kms-modal__backdrop{
+      position:absolute; inset:0;
+      background:rgba(0,0,0,.55);
+    }
+    .kms-modal__card{
+      position:relative;
+      width:min(520px,92vw);
+      margin:10vh auto 0;
+      background:#fff;
+      border-radius:18px;
+      padding:28px 22px 22px;
+      box-shadow:0 18px 55px rgba(0,0,0,.28);
+      text-align:center;
+      font-family:"HJS-Serif","Source Han Serif SC","Noto Serif CJK SC","Songti SC","STSong","SimSun",serif;
+    }
+
+    /* ✅ 닫기 버튼: 정사각형(라운드) 블루 + 흰 X + 블링 */
+    .kms-modal__close{
+      position:absolute; top:14px; right:14px;
+      width:52px; height:44px;
+      border:none !important;
+      outline:none !important;
+      border-radius:12px;
+      background:var(--hga-blue);
+      cursor:pointer;
+
+      display:flex;
+      align-items:center;
+      justify-content:center;
+
+      box-shadow:
+        0 10px 22px rgba(78,151,209,.35),
+        0 0 0 2px rgba(255,255,255,.85) inset;
+      transition:transform .12s ease, box-shadow .12s ease, filter .12s ease;
+    }
+    .kms-modal__close:hover{
+      transform:translateY(-1px);
+      filter:brightness(1.05);
+      box-shadow:
+        0 14px 28px rgba(78,151,209,.42),
+        0 0 0 2px rgba(255,255,255,.92) inset,
+        0 0 14px rgba(255,255,255,.35);
+    }
+    .kms-modal__close svg{ display:block; }
+
+    .kms-modal__title{margin:4px 0 8px; font-size:20px; font-weight:700; color:#111;}
+    .kms-modal__desc{margin:0 0 16px; font-size:14px; color:#555; line-height:1.55;}
+
+    .kms-modal__inputs{
+      display:flex;
+      flex-direction:column;
+      gap:10px;
+      margin:8px 0 10px;
+    }
+    .kms-modal__inputs input{
+      width:100%;
+      padding:14px 14px;
+      border:1px solid #ddd;
+      border-radius:12px;
+      font-size:16px;
+      outline:none;
+      font-family:inherit;
+      background:#fff;
+    }
+    .kms-modal__inputs input:focus{
+      border-color:var(--hga-blue);
+      box-shadow:0 0 0 3px rgba(78,151,209,.15);
+    }
+    .kms-modal__or{font-size:12px; color:#888; margin:2px 0;}
+    .kms-modal__error{min-height:18px; margin:6px 0 10px; color:#d33; font-size:13px;}
+
+    /* =========================================================
+       ✅ (2) 공용 버튼 클래스: kms-modal__btn (제출 버튼)
+       - 기본: 블루 + 흰색 볼드
+       - 호버: 핑크 + 흰색 볼드 + 블링 + 스파클
+       - 테두리/선/이상한 ::after 제거
+       ========================================================= */
+    .kms-modal__btn{
+      width:100%;
+      -webkit-appearance:none;
+      appearance:none;
+
+      border:none !important;
+      outline:none !important;
+      box-shadow:none !important;
+
+      border-radius:14px;
+      padding:14px 14px;
+
+      background:var(--hga-blue);
+      color:#fff !important;
+      font-size:16px;
+      font-weight:800;
+
+      cursor:pointer;
+
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      text-align:center;
+      line-height:1;
+      letter-spacing:.5px;
+
+      position:relative;
+      overflow:hidden;
+
+      text-shadow:
+        0 0 6px rgba(255,255,255,.55),
+        0 0 12px rgba(255,255,255,.25);
+
+      transition:background .15s ease, transform .12s ease, filter .12s ease;
+    }
+
+    .kms-modal__btn:hover{
+      background:var(--hga-pink) !important;   /* ✅ 짙은 파스텔 핑크 */
+      color:#fff !important;
+      transform:none;
+      filter:none;
+      text-shadow:
+        0 0 10px rgba(255,255,255,.75),
+        0 0 18px rgba(255,255,255,.45);
+    }
+
+    /* ✅ 버튼 주변에서 생기는 가짜 라인/장식 제거 */
+    .kms-modal__btn::before,
+    .kms-modal__btn::after{
+      content:none !important;
+    }
+
+    /* ✅ hover 스파클(빤짝이 떨어지는 느낌) */
+    .kms-modal__btn span.spark-layer{
+      position:absolute;
+      inset:0;
+      pointer-events:none;
+      opacity:0;
+      background:
+        radial-gradient(circle at 15% -20%, rgba(255,255,255,.95) 0 3px, transparent 4px),
+        radial-gradient(circle at 35% -10%, rgba(255,255,255,.85) 0 2px, transparent 3px),
+        radial-gradient(circle at 55% -25%, rgba(255,255,255,.90) 0 3px, transparent 4px),
+        radial-gradient(circle at 75% -15%, rgba(255,255,255,.80) 0 2px, transparent 3px),
+        radial-gradient(circle at 90% -30%, rgba(255,255,255,.90) 0 3px, transparent 4px);
+    }
+    .kms-modal__btn:hover span.spark-layer{
+      opacity:1;
+      animation:sparkleFall .9s ease forwards;
+    }
+    @keyframes sparkleFall{
+      0%{ transform:translateY(-22px); opacity:0; }
+      18%{ opacity:1; }
+      100%{ transform:translateY(140%); opacity:0; }
+    }
+
+    .kms-modal__hint{margin-top:10px; font-size:12px; color:#999;}
+
+    /* =========================================================
+       ✅ (3) 제출 토스트: submitToast
+       ========================================================= */
+    .kms-toast{
+      position:fixed; inset:0;
+      z-index:10000;
+      display:none;
+      pointer-events:none;
+    }
+    .kms-toast.is-show{ display:block; }
+    .kms-toast__box{
+      position:absolute;
+      left:50%; top:10%;
+      transform:translateX(-50%);
+      background:rgba(0,0,0,.78);
+      color:#fff;
+      padding:10px 12px;
+      border-radius:12px;
+      font-size:13px;
+      line-height:1.35;
+      text-align:center;
+      max-width:92vw;
+    }
+
+    /* =========================================================
+       ✅ (4) WeChat / WhatsApp QR 모달 (기존 index 스타일과 호환)
+       - modals.js가 있어도, 이 파일 JS가 강제로 열고 닫게 함
+       ========================================================= */
+    .modal{
+      display:none;
+      position:fixed; inset:0;
+      z-index:9998;
+      background:rgba(0,0,0,.55);
+    }
+    .modal.is-open{ display:block; }
+    .modal .modal-inner{
+      position:relative;
+      width:min(520px,92vw);
+      margin:10vh auto 0;
+      background:#fff;
+      border-radius:18px;
+      padding:22px 18px 18px;
+      text-align:center;
+      box-shadow:0 18px 55px rgba(0,0,0,.28);
+    }
+    .modal .close{
+      position:absolute; top:10px; right:12px;
+      width:40px; height:40px;
+      border:none;
+      background:transparent;
+      font-size:30px;
+      line-height:40px;
+      color:#777;
+      cursor:pointer;
+    }
+    .modal .modal-caption{ margin:6px 0 10px; font-size:14px; color:#333; }
+    .modal .modal-content{ max-width:100%; height:auto; border-radius:12px; }
+    .modal .modal-id{ margin:10px 0 0; font-size:13px; color:#555; line-height:1.5; }
   </style>
 </head>
 
+<!-- =========================================================
+     ✅ BODY 시작
+     ========================================================= -->
 <body class="is-preload">
   <div id="wrapper">
 
-    <!-- ✅ 모바일 햄버거: 사이드바 전체(메뉴+연락+풋터)를 여는 토글 -->
+    <!-- ✅ 모바일 햄버거: 사이드바 토글 -->
     <a href="#sidebar" class="toggle" aria-label="Menu"></a>
 
-    <!-- Main -->
+    <!-- =========================
+         MAIN
+         ========================= -->
     <div id="main">
       <div class="inner">
 
-        <!-- Header -->
+        <!-- =========================
+             HEADER
+             ========================= -->
         <header id="header">
           <a href="index.html" class="logo">
             <img src="images/logo_ch.png" alt="汉江春天" class="logo-img">
           </a>
 
+          <!-- ✅ 아이콘: href="#" 유지 + JS가 preventDefault 하고 모달 열기 -->
           <ul class="icons">
             <li>
               <a href="#"
@@ -117,7 +351,9 @@
 
         <br />
 
-        <!-- Banner -->
+        <!-- =========================
+             BANNER
+             ========================= -->
         <section class="apple-banner-section">
           <h2 class="main-title">定制医疗观光方案</h2>
 
@@ -135,10 +371,6 @@
              K-PLAN ROOT (JS 연결 핵심)
              ========================= -->
         <div id="kplan-page">
-
-          <!-- =========================
-               Step 2 · 选择项目
-               ========================= -->
 
           <h4 class="kplan-section-title">大健康（功能医学）</h4>
           <div class="kplan-choices" data-group-title="大健康">
@@ -216,13 +448,9 @@
 
           <hr />
 
-          <!-- =========================
-               Step 3 · 旅行服务（可选）
-               ========================= -->
           <h4 class="kplan-section-title">旅行服务（可选）</h4>
 
           <div class="kplan-step3">
-
             <div class="step3-row step3-row-2">
               <div class="step3-item">
                 <span class="step3-label">机场接送</span>
@@ -258,13 +486,12 @@
                 </div>
               </div>
             </div>
-
           </div>
 
           <hr />
 
           <!-- =========================
-               Summary
+               SUMMARY
                ========================= -->
           <div id="kplanSummary">
             <div class="sum-head">
@@ -282,19 +509,22 @@
               <li class="empty">还未选择。先点选几项也可以。</li>
             </ul>
 
-            <!-- ✅ 제출 버튼 (id는 그대로 유지) -->
-<button type="button" id="kplanSubmitBtn" class="kms-modal__btn">提交</button>
+            <!-- ✅ K-Plan 제출 버튼 -->
+            <button type="button" id="kplanSubmitBtn" class="kms-modal__btn">
+              提交
+              <span class="spark-layer" aria-hidden="true"></span>
+            </button>
           </div><!-- /#kplanSummary -->
 
         </div><!-- /#kplan-page -->
-
       </div><!-- /.inner -->
     </div><!-- /#main -->
 
-    <!-- Sidebar -->
+    <!-- =========================
+         SIDEBAR
+         ========================= -->
     <div id="sidebar">
       <div class="inner">
-
         <section id="sidebar-brand" class="sidebar-spacer"></section>
 
         <nav id="menu">
@@ -330,63 +560,65 @@
             © 2025 汉江春天 한강애봄 版权所有。模板设计：HTML5 UP。
           </p>
         </footer>
-
       </div><!-- /.inner -->
     </div><!-- /#sidebar -->
 
   </div><!-- /#wrapper -->
 
-  <!-- ✅ 제출 전: 연락처 입력 모달 -->
+
+  <!-- =========================================================
+       ✅ (A) contactModal: "연락처 입력" 모달
+       - 중요: 반드시 </body> 전에 있어야 함
+       ========================================================= -->
   <div id="contactModal" class="kms-modal" aria-hidden="true">
+    <!-- ✅ 배경 클릭 시 닫히는 영역 -->
     <div class="kms-modal__backdrop" data-close="1"></div>
 
     <div class="kms-modal__card" role="dialog" aria-modal="true" aria-labelledby="contactModalTitle">
 
-    <button class="kms-modal__close close" aria-label="Close" type="button">
-  <svg width="18" height="18" viewBox="0 0 24 24" fill="none"
-       xmlns="http://www.w3.org/2000/svg">
-    <line x1="5" y1="5" x2="19" y2="19"
-          stroke="white" stroke-width="2.5"
-          stroke-linecap="round"/>
-    <line x1="19" y1="5" x2="5" y2="19"
-          stroke="white" stroke-width="2.5"
-          stroke-linecap="round"/>
-  </svg>
-</button>
-      
+      <!-- ✅ X 닫기 버튼 (class에 close 포함) -->
+      <button class="kms-modal__close close" aria-label="Close" type="button">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <line x1="5" y1="5" x2="19" y2="19" stroke="white" stroke-width="2.5" stroke-linecap="round"/>
+          <line x1="19" y1="5" x2="5" y2="19" stroke="white" stroke-width="2.5" stroke-linecap="round"/>
+        </svg>
+      </button>
+
       <h3 id="contactModalTitle" class="kms-modal__title">请留下您的联系方式（任选其一）</h3>
       <p class="kms-modal__desc">我们将尽快为您提供价格与医院信息</p>
 
+      <!-- ✅ 입력 순서: WeChat ID 위 / 이메일 아래 -->
       <div class="kms-modal__inputs">
-        <input id="contactEmail" type="email" inputmode="email" autocomplete="email" placeholder="邮箱地址">
-        <div class="kms-modal__or">或</div>
         <input id="contactWeChat" type="text" autocomplete="off" placeholder="WeChat ID">
+        <div class="kms-modal__or">或</div>
+        <input id="contactEmail" type="email" inputmode="email" autocomplete="email" placeholder="邮箱地址">
       </div>
 
       <div id="contactError" class="kms-modal__error" aria-live="polite"></div>
 
-      <button type="button" id="confirmContactBtn" class="kms-modal__btn">提交</button>
+      <!-- ✅ 모달 제출 버튼 -->
+      <button type="button" id="confirmContactBtn" class="kms-modal__btn">
+        提交
+        <span class="spark-layer" aria-hidden="true"></span>
+      </button>
+
       <div class="kms-modal__hint">※ 只需填写其中一项即可</div>
     </div>
   </div>
 
-  <!-- ✅ 제출 후: 작은 토스트 -->
+  <!-- =========================================================
+       ✅ (B) submitToast: 제출 후 토스트
+       ========================================================= -->
   <div id="submitToast" class="kms-toast" aria-hidden="true">
     <div class="kms-toast__box">提交完成，谢谢</div>
   </div>
 
-  <!-- Scripts (5총사 + modals) -->
-  <script src="assets/js/jquery.min.js"></script>
-  <script src="assets/js/browser.min.js"></script>
-  <script src="assets/js/breakpoints.min.js"></script>
-  <script src="assets/js/util.js"></script>
-  <script src="assets/js/main.js"></script>
-  <script src="assets/js/modals.js"></script>
-
-  <!-- Modals -->
+  <!-- =========================================================
+       ✅ (C) WeChat / WhatsApp QR 모달 (header 아이콘용)
+       ========================================================= -->
   <div id="wechatModal" class="modal" aria-hidden="true" role="dialog">
     <div class="modal-inner" role="document">
-      <button class="close" aria-label="Close">&times;</button>
+      <button class="close" aria-label="Close" type="button">&times;</button>
       <p class="modal-caption">扫描二维码添加微信</p>
       <img id="wechatQR" class="modal-content" src="images/qr_weixin.jpg" alt="WeChat QR for e-gana" />
       <p class="modal-id">WeChat ID：e-gana</p>
@@ -395,20 +627,18 @@
 
   <div id="whatsappModal" class="modal" aria-hidden="true" role="dialog">
     <div class="modal-inner" role="document">
-      <button class="close" aria-label="Close">&times;</button>
+      <button class="close" aria-label="Close" type="button">&times;</button>
       <p class="modal-caption">QR → WhatsApp Connect</p>
       <img id="whatsappQR" class="modal-content" src="images/whatsapp_qr.jpg" alt="WhatsApp QR for K-Medi Spring" />
       <p class="modal-id">WhatsApp：+82-10-4903-3123</p>
     </div>
   </div>
 
-  <!-- =========================
-     K-PLAN JS (정본 1개)
-     - a.choice 이동 완전 차단
-     - Step3: data-excl 기준 단일선택
-     - Summary 자동 반영
-     - 提交: 연락처 모달 → mailto 전송
-     ========================= -->
+
+  <!-- =========================================================
+       ✅ (D) K-Plan JS: 선택/요약/제출/메일전송/모달제어
+       - 중요: 아래쪽에서 실행 (DOM 다 만든 뒤)
+       ========================================================= -->
   <script>
   (function(){
     const root = document.getElementById('kplan-page');
@@ -420,26 +650,32 @@
     const submitBtn = root.querySelector('#kplanSubmitBtn');
     if(!groups.length || !list || !cnt || !submitBtn) return;
 
-    // ✅ 모달/토스트
+    // ✅ contactModal 요소
     const contactModal = document.getElementById('contactModal');
     const confirmContactBtn = document.getElementById('confirmContactBtn');
-    const contactEmail = document.getElementById('contactEmail');
     const contactWeChat = document.getElementById('contactWeChat');
+    const contactEmail = document.getElementById('contactEmail');
     const contactError = document.getElementById('contactError');
     const submitToast = document.getElementById('submitToast');
-
     let pendingLines = [];
 
+    /* =========================
+       contactModal 열기/닫기
+       ========================= */
     function openContactModal(){
       contactError.textContent = '';
       contactModal.classList.add('is-open');
       contactModal.setAttribute('aria-hidden','false');
-      setTimeout(()=> (contactEmail.value ? contactWeChat.focus() : contactEmail.focus()), 30);
+      setTimeout(()=> (contactWeChat.focus()), 30);
     }
     function closeContactModal(){
       contactModal.classList.remove('is-open');
       contactModal.setAttribute('aria-hidden','true');
     }
+
+    /* =========================
+       Toast
+       ========================= */
     function showToast(){
       submitToast.classList.add('is-show');
       submitToast.setAttribute('aria-hidden','false');
@@ -449,22 +685,18 @@
       }, 1400);
     }
 
-    // ✅ 아무대나 클릭하면 닫기(백드롭/닫기버튼)
-    contactModal.addEventListener('click', (e)=>{
-      if(e.target && e.target.dataset && e.target.dataset.close === '1') closeContactModal();
-    });
-    document.addEventListener('keydown', (e)=>{
-      if(e.key === 'Escape' && contactModal.classList.contains('is-open')) closeContactModal();
-    });
-
-    // a.choice 이동 완전 차단
+    /* =========================
+       a.choice 이동 차단(완전)
+       ========================= */
     root.addEventListener('click', function(e){
       const a = e.target.closest('a.choice');
       if(!a) return;
       e.preventDefault();
     }, true);
 
-    // 선택 항목 수집
+    /* =========================
+       선택 목록 만들기
+       ========================= */
     function getSelected(){
       const selected = [];
       groups.forEach((g)=>{
@@ -476,7 +708,9 @@
       return selected;
     }
 
-    // Summary 렌더
+    /* =========================
+       Summary 렌더
+       ========================= */
     function render(){
       const selected = getSelected();
       cnt.textContent = String(selected.length);
@@ -488,7 +722,10 @@
       list.innerHTML = selected.map(text=>`<li>${text}</li>`).join('');
     }
 
-    // 카드 클릭 처리
+    /* =========================
+       카드 클릭 처리
+       - data-excl가 있으면 같은 그룹 내 단일선택(需要/不需要 같은 것)
+       ========================= */
     groups.forEach((g)=>{
       g.addEventListener('click', (e)=>{
         const el = e.target.closest('.choice');
@@ -506,7 +743,9 @@
       }, true);
     });
 
-    // ✅ 제출(버튼) = 먼저 연락처 모달
+    /* =========================
+       K-Plan 제출 버튼 → contactModal 열기
+       ========================= */
     submitBtn.addEventListener('click', function(e){
       e.preventDefault();
 
@@ -519,24 +758,27 @@
       openContactModal();
     });
 
-    // ✅ 모달 확인 = 검증 후 mailto 실행 + 토스트
-confirmContactBtn.addEventListener('click', function(){
-  const wechat = (contactWeChat.value || '').trim();
-  const email  = (contactEmail.value || '').trim();
+    /* =========================
+       contactModal 확인(제출) → mailto
+       - WeChat 우선 / 없으면 email
+       ========================= */
+    confirmContactBtn.addEventListener('click', function(){
+      const wechat = (contactWeChat.value || '').trim();
+      const email  = (contactEmail.value || '').trim();
 
-  if(!wechat && !email){
-    contactError.textContent = '请填写 WeChat ID 或邮箱地址（任选其一）';
-    return;
-  }
+      if(!wechat && !email){
+        contactError.textContent = '请填写 WeChat ID 或邮箱地址（任选其一）';
+        return;
+      }
 
-  const mailTo = "leegana@k-medispring.cn";
-  const subject = "K-Plan 咨询申请";
+      const mailTo = "leegana@k-medispring.cn";
+      const subject = "K-Plan 咨询申请";
 
-  const contactLine =
-    wechat ? `WeChat ID：${wechat}` :
-    email  ? `联系邮箱：${email}` : '';
+      const contactLine =
+        wechat ? `WeChat ID：${wechat}` :
+        email  ? `联系邮箱：${email}` : '';
 
-  const body =
+      const body =
 `您好，
 以下是客户选择的咨询项目：
 
@@ -546,149 +788,127 @@ ${contactLine ? ("\n" + contactLine + "\n") : ""}
 
 请回信提供价格与详细说明。`;
 
-  closeContactModal();
-  showToast();
+      closeContactModal();
+      showToast();
 
-  window.location.href =
-    `mailto:${mailTo}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
-});
+      window.location.href =
+        `mailto:${mailTo}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+    });
 
-render();
-})();
-</script>
+    /* =========================
+       contactModal 닫기:
+       1) X 버튼(.close)
+       2) 배경 클릭(data-close="1")
+       3) ESC
+       ========================= */
+    contactModal.addEventListener('click', function(e){
+      const closeHit = e.target.closest('.close');
+      if(closeHit){
+        e.preventDefault();
+        closeContactModal();
+        return;
+      }
+      if(e.target && e.target.dataset && e.target.dataset.close === '1'){
+        closeContactModal();
+      }
+    });
 
-<style>
-.kms-modal{position:fixed; inset:0; z-index:9999; display:none;}
-.kms-modal.is-open{display:block;}
-.kms-modal__backdrop{position:absolute; inset:0; background:rgba(0,0,0,.55);}
-.kms-modal__card{
-  position:relative;
-  width:min(520px,92vw);
-  margin:10vh auto 0;
-  background:#fff;
-  border-radius:18px;
-  padding:28px 22px 22px;
-  box-shadow:0 18px 55px rgba(0,0,0,.28);
-  text-align:center;
-  font-family:"HJS-Serif","Source Han Serif SC","Noto Serif CJK SC","Songti SC","STSong","SimSun",serif;
-}
+    document.addEventListener('keydown', function(e){
+      if(e.key === 'Escape' && contactModal.classList.contains('is-open')){
+        closeContactModal();
+      }
+    });
 
-/* ✅ 닫기 버튼: 정사각형 블루 + 흰 X (블링) */
-.kms-modal__close{
-  position:absolute; top:14px; right:14px;
-  width:44px; height:44px;
-  border:none;
-  border-radius:10px;
-  background:#4E97D1;
-  color:#fff;
-  font-size:22px; line-height:44px;
-  cursor:pointer;
-  box-shadow:
-    0 10px 22px rgba(78,151,209,.35),
-    0 0 0 2px rgba(255,255,255,.85) inset;
-  transition:transform .12s ease, box-shadow .12s ease, filter .12s ease;
-}
-.kms-modal__close:hover{
-  transform:translateY(-1px);
-  filter:brightness(1.05);
-  box-shadow:
-    0 14px 28px rgba(78,151,209,.42),
-    0 0 0 2px rgba(255,255,255,.92) inset,
-    0 0 14px rgba(255,255,255,.35);
-}
+    /* =========================
+       WeChat / WhatsApp 아이콘 클릭 → QR 모달 열기
+       (메인페이지로 튀는 현상 방지: preventDefault)
+       ========================= */
+    function openSimpleModal(modalId){
+      const m = document.getElementById(modalId);
+      if(!m) return;
+      m.classList.add('is-open');
+      m.setAttribute('aria-hidden','false');
+    }
+    function closeSimpleModal(modalEl){
+      modalEl.classList.remove('is-open');
+      modalEl.setAttribute('aria-hidden','true');
+    }
 
-.kms-modal__title{margin:4px 0 8px; font-size:20px; font-weight:700; color:#111;}
-.kms-modal__desc{margin:0 0 16px; font-size:14px; color:#555; line-height:1.55;}
-.kms-modal__inputs{display:flex; flex-direction:column; gap:10px; margin:8px 0 10px;}
-.kms-modal__inputs input{
-  width:100%;
-  padding:14px 14px;
-  border:1px solid #ddd;
-  border-radius:12px;
-  font-size:16px;
-  outline:none;
-  font-family:inherit;
-}
-.kms-modal__inputs input:focus{border-color:#4E97D1; box-shadow:0 0 0 3px rgba(78,151,209,.15);}
-.kms-modal__or{font-size:12px; color:#888; margin:2px 0;}
-.kms-modal__error{min-height:18px; margin:6px 0 10px; color:#d33; font-size:13px;}
+    const wechatIcon = document.getElementById('wechat-icon');
+    if(wechatIcon){
+      wechatIcon.addEventListener('click', function(e){
+        e.preventDefault();
+        openSimpleModal('wechatModal');
+      });
+    }
 
-/* ✅ 제출 버튼: 기본 블루 + 흰색, hover 핑크 (텍스트 안떨어지게) */
-.kms-modal__btn{
-  width:100%;
-  border:none;
-  border-radius:14px;
-  padding:14px 14px;
-  background:#4E97D1;
-  color:#fff;
-  font-size:16px;
-  font-weight:700;
-  cursor:pointer;
+    const whatsappIcon = document.getElementById('whatsapp-icon');
+    if(whatsappIcon){
+      whatsappIcon.addEventListener('click', function(e){
+        e.preventDefault();
+        openSimpleModal('whatsappModal');
+      });
+    }
 
-  display:flex;                 /* 중앙정렬 */
-  align-items:center;
-  justify-content:center;
-  text-align:center;
-  line-height:1;
+    /* =========================
+       WeChat/WhatsApp 모달 닫기:
+       - X 버튼(.close)
+       - 배경 클릭(모달 바깥 영역)
+       - ESC
+       ========================= */
+    function bindOverlayModal(modalId){
+      const m = document.getElementById(modalId);
+      if(!m) return;
 
-  transition:background .15s ease;
-}
+      // X
+      const x = m.querySelector('.close');
+      if(x){
+        x.addEventListener('click', function(e){
+          e.preventDefault();
+          closeSimpleModal(m);
+        });
+      }
 
-.kms-modal__btn{
-  width:100%;
-  border:none !important;              /* 파란선 제거 */
-  outline:none !important;
-  box-shadow:none !important;
+      // 배경 클릭(모달 자체를 클릭했을 때만 닫기: inner 클릭은 제외)
+      m.addEventListener('click', function(e){
+        if(e.target === m){
+          closeSimpleModal(m);
+        }
+      });
 
-  border-radius:14px;
-  padding:14px 14px;
-  background:#4E97D1;
-  color:#fff;
-  font-size:16px;
-  font-weight:700;
-  cursor:pointer;
+      // ESC
+      document.addEventListener('keydown', function(e){
+        if(e.key === 'Escape' && m.classList.contains('is-open')){
+          closeSimpleModal(m);
+        }
+      });
+    }
 
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  text-align:center;
-  line-height:1;
+    bindOverlayModal('wechatModal');
+    bindOverlayModal('whatsappModal');
 
-  transition:background .15s ease;
-}
+    // ✅ 첫 렌더
+    render();
+  })();
+  </script>
 
-.kms-modal__btn:hover{
-  background:#D97AA6 !important;       /* 짙은 파스텔 핑크 */
-  border:none !important;
-  outline:none !important;
-  box-shadow:none !important;
-  transform:none;
-  filter:none;
-}
 
-.kms-modal__btn::before,
-.kms-modal__btn::after{
-  content:none !important;
-}
-}
-.kms-modal__btn::after{content:none !important;}
+  <!-- =========================================================
+       ✅ (E) Scripts "5총사" + modals.js
+       - 반드시 맨 아래 (</body> 바로 위)
+       ========================================================= -->
+  <script src="assets/js/jquery.min.js"></script>
+  <script src="assets/js/browser.min.js"></script>
+  <script src="assets/js/breakpoints.min.js"></script>
+  <script src="assets/js/util.js"></script>
+  <script src="assets/js/main.js"></script>
+  <script src="assets/js/modals.js"></script>
 
-.kms-modal__hint{margin-top:10px; font-size:12px; color:#999;}
-
-.kms-toast{position:fixed; inset:0; z-index:10000; display:none; pointer-events:none;}
-.kms-toast.is-show{display:block;}
-.kms-toast__box{
-  position:absolute; left:50%; top:10%;
-  transform:translateX(-50%);
-  background:rgba(0,0,0,.78);
-  color:#fff;
-  padding:10px 12px;
-  border-radius:12px;
-  font-size:13px;
-  line-height:1.35;
-  text-align:center;
-  max-width:92vw;
-}
-</style>
+  <!-- =========================================================
+       ✅ BODY 닫기 (여기가 "바디 닫기" 자리)
+       - 이 아래에 HTML/모달/스크립트 있으면 DOM 깨짐
+       ========================================================= -->
 </body>
+
+<!-- ✅ HTML 닫기 (여기가 "html 닫기" 자리) -->
 </html>
