@@ -342,7 +342,7 @@
 
     <div class="kms-modal__card" role="dialog" aria-modal="true" aria-labelledby="contactModalTitle">
 
-     <button class="kms-modal__close" aria-label="Close" type="button">
+    <button class="kms-modal__close close" aria-label="Close" type="button">
   <svg width="18" height="18" viewBox="0 0 24 24" fill="none"
        xmlns="http://www.w3.org/2000/svg">
     <line x1="5" y1="5" x2="19" y2="19"
@@ -634,8 +634,34 @@ render();
   transition:background .15s ease;
 }
 
+.kms-modal__btn{
+  width:100%;
+  border:none !important;              /* 파란선 제거 */
+  outline:none !important;
+  box-shadow:none !important;
+
+  border-radius:14px;
+  padding:14px 14px;
+  background:#4E97D1;
+  color:#fff;
+  font-size:16px;
+  font-weight:700;
+  cursor:pointer;
+
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  text-align:center;
+  line-height:1;
+
+  transition:background .15s ease;
+}
+
 .kms-modal__btn:hover{
-  background:#D97AA6;            /* 짙은 파스텔 핑크 */
+  background:#D97AA6 !important;       /* 짙은 파스텔 핑크 */
+  border:none !important;
+  outline:none !important;
+  box-shadow:none !important;
   transform:none;
   filter:none;
 }
@@ -644,11 +670,6 @@ render();
 .kms-modal__btn::after{
   content:none !important;
 }
-  
-.kms-modal__btn:hover{
-  background:#F3A6C8;
-  transform:none;
-  filter:none;
 }
 .kms-modal__btn::after{content:none !important;}
 
