@@ -94,7 +94,7 @@
     }
 
     /* ✅ 닫기 버튼: 정사각형(라운드) 블루 + 흰 X + 블링 */
-    .kms-modal__close{
+.kms-modal__close{
   position:absolute;
   top:14px;
   right:14px;
@@ -106,8 +106,8 @@
   border:none !important;
   border-radius:14px;
 
-  background:#4E97D1;   /* 기본 블루 */
-  color:#fff;
+  background:#4E97D1;  /* 기본 블루 */
+  color:#ffffff !important;
   font-size:16px;
   font-weight:800;
 
@@ -116,18 +116,18 @@
   justify-content:center;
 
   cursor:pointer;
-  transition:all .15s ease;
+  transition:background .15s ease;
 
-  text-shadow:
-    0 0 6px rgba(255,255,255,.6),
-    0 0 12px rgba(255,255,255,.3);
+  /* 🔥 글로우 제거 */
+  text-shadow:none !important;
 }
 
 .kms-modal__close:hover{
-  background:#D97AA6;   /* 제출과 같은 핑크 */
-  box-shadow:
-    0 0 14px rgba(255,255,255,.4);
-}    
+  background:#D97AA6;  /* 핑크 */
+  box-shadow:none;
+  text-shadow:none !important;
+}
+    
     .kms-modal__close svg{ display:block; }
 
     .kms-modal__title{margin:4px 0 8px; font-size:20px; font-weight:700; color:#111;}
