@@ -283,7 +283,7 @@
             </ul>
 
             <!-- ✅ 제출 버튼 (id는 그대로 유지) -->
-            <button type="button" id="kplanSubmitBtn" class="primary">提交</button>
+<button type="button" id="kplanSubmitBtn" class="kms-modal__btn">提交</button>
           </div><!-- /#kplanSummary -->
 
         </div><!-- /#kplan-page -->
@@ -624,8 +624,27 @@ render();
   font-size:16px;
   font-weight:700;
   cursor:pointer;
-  transition:filter .12s ease, transform .12s ease, background .12s ease;
+
+  display:flex;                 /* 중앙정렬 */
+  align-items:center;
+  justify-content:center;
+  text-align:center;
+  line-height:1;
+
+  transition:background .15s ease;
 }
+
+.kms-modal__btn:hover{
+  background:#D97AA6;            /* 짙은 파스텔 핑크 */
+  transform:none;
+  filter:none;
+}
+
+.kms-modal__btn::before,
+.kms-modal__btn::after{
+  content:none !important;
+}
+  
 .kms-modal__btn:hover{
   background:#F3A6C8;
   transform:none;
