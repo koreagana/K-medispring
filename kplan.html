@@ -770,6 +770,8 @@
        contactModal 확인(제출) → mailto
        - WeChat 우선 / 없으면 email
        ========================= */
+    //修改邮件提交的方式，使用在线Formspree提供的表单邮件服务
+    /*
     confirmContactBtn.addEventListener('click', function(){
       const wechat = (contactWeChat.value || '').trim();
       const email  = (contactEmail.value || '').trim();
@@ -804,7 +806,52 @@ ${contactLine ? ("\n" + contactLine + "\n") : ""}
       window.location.href =
         `mailto:${mailTo}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
     });
+    */
+    // ✅ 修改 confirmContactBtn 事件：改用 Formspree
+    confirmContactBtn.addEventListener('click', function() {
+      const wechat = (contactWeChat.value || '').trim();
+      const email = (contactEmail.value || '').trim();
 
+      if (!wechat && !email) {
+        contactError.textContent = '请填写 WeChat ID 或邮箱地址（任选其一）';
+        return;
+      }
+
+      // 构造要发送的数据
+      const formData = new FormData();
+      formData.append('wechat', wechat);
+      formData.append('email', email);
+      formData.append('items', pendingLines.join('\n'));
+      // 可选：设置邮件主题
+      formData.append('_subject', 'K-Plan 咨询申请');
+
+      // 发送到 Formspree
+      fetch('https://formspree.io/f/你的表单ID', {  // 🔥 替换为您的实际表单ID
+        method: 'POST',
+        body: formData,
+        headers: {
+          'Accept': 'application/json'
+        }
+      })
+      .then(response => {
+        if (response.ok) {
+          return response.json();
+        } else {
+          throw new Error('提交失败');
+        }
+      })
+      .then(data => {
+        closeContactModal();
+        showToast();
+        // 可选：清空输入框
+        contactWeChat.value = '';
+        contactEmail.value = '';
+      })
+      .catch(error => {
+        contactError.textContent = '提交失败，请稍后重试或联系客服';
+        console.error('Formspree error:', error);
+      });
+    });
     /* =========================
        contactModal 닫기:
        1) X 버튼(.close)
