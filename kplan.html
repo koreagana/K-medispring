@@ -826,7 +826,8 @@ ${contactLine ? ("\n" + contactLine + "\n") : ""}
       formData.append('_subject', 'K-Plan 咨询申请');
 
       // 发送到 Formspree
-      fetch('https://formspree.io/f/你的表单ID', {  // 🔥 替换为您的实际表单ID
+      // 'https://formspree.io/f/******' 替换为您的实际表单ID
+      fetch('https://formspree.io/f/mnjbkqnk', {
         method: 'POST',
         body: formData,
         headers: {
