@@ -37,7 +37,6 @@
   <!-- ✅ Editorial CSS -->
   <link rel="stylesheet" href="assets/css/fontawesome-all.min.css" />
   <link rel="stylesheet" href="assets/css/main.css" />
-  <link rel="stylesheet" href="assets/css/kplan-agi.css" />
 
   <!-- =========================================================
        ✅ K-Plan / 모달 전용 CSS (이 파일 안에서만 관리)
@@ -785,7 +784,7 @@ confirmContactBtn.addEventListener('click', async function () {
   };
 
 try {
-  const res = await fetch('https://1359240005-4umn2nze5t.ap-guangzhou.tencentscf.com/release/kplanMail', {
+  const res = await fetch('https://1359240005-4umn2nze5t.ap-guangzhou.tencentscf.com', {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json'
