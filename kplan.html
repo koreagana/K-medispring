@@ -762,9 +762,10 @@
       openContactModal();
     });
 
-  /* =========================
+/* =========================
    contactModal 확인(제출) → Tencent Cloud POST
    - WeChat 우선 / 없으면 email
+   - CORS 우회: no-cors + text/plain
    ========================= */
 confirmContactBtn.addEventListener('click', async function () {
   const wechat = (contactWeChat.value || '').trim();
@@ -783,20 +784,15 @@ confirmContactBtn.addEventListener('click', async function () {
     submittedAt: new Date().toISOString()
   };
 
-try {
-  const res = await fetch('https://1359240005-4umn2nze5t.ap-guangzhou.tencentscf.com', {
-    method: 'POST',
-    headers: {
-      'Content-Type': 'application/json'
-    },
-    body: JSON.stringify(payload)
-  });
-
-    const data = await res.json();
-
-    if (!res.ok || !data.ok) {
-      throw new Error(data.message || '提交失败');
-    }
+  try {
+    await fetch('https://1359240005-4umn2nze5t.ap-guangzhou.tencentscf.com', {
+      method: 'POST',
+      mode: 'no-cors',
+      headers: {
+        'Content-Type': 'text/plain;charset=UTF-8'
+      },
+      body: JSON.stringify(payload)
+    });
 
     closeContactModal();
     showToast();
