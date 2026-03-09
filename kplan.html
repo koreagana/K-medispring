@@ -763,12 +763,11 @@
       openContactModal();
     });
 
-    /* =========================
-       contactModal 확인(제출) → mailto
-       - WeChat 우선 / 없으면 email
-       ========================= */
-
-    confirmContactBtn.addEventListener('click', async function () {
+  /* =========================
+   contactModal 확인(제출) → Tencent Cloud POST
+   - WeChat 우선 / 없으면 email
+   ========================= */
+confirmContactBtn.addEventListener('click', async function () {
   const wechat = (contactWeChat.value || '').trim();
   const email = (contactEmail.value || '').trim();
 
@@ -785,20 +784,20 @@
     submittedAt: new Date().toISOString()
   };
 
-try {
-  const res = await fetch('https://1359240005-4umn2nze5t.ap-guangzhou.tencentscf.com', {
-    method: 'POST',
-    headers: {
-      'Content-Type': 'application/json'
-    },
-    body: JSON.stringify(payload)
-  });
+  try {
+    const res = await fetch('https://1359240005-4umn2nze5t.ap-guangzhou.tencentscf.com', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(payload)
+    });
 
-  const data = await res.json();
+    const data = await res.json();
 
-  if (!res.ok || !data.ok) {
-    throw new Error(data.message || '提交失败');
-  }
+    if (!res.ok || !data.ok) {
+      throw new Error(data.message || '提交失败');
+    }
 
     closeContactModal();
     showToast();
@@ -810,8 +809,6 @@ try {
     console.error('submit error:', err);
   }
 });
-
-  
     /* =========================
        contactModal 닫기:
        1) X 버튼(.close)
