@@ -796,31 +796,33 @@ confirmContactBtn.addEventListener('click', async function () {
     submittedAt: new Date().toISOString()
   };
 
-const res = await fetch('https://1359240005-4umn2nze5t.ap-guangzhou.tencentscf.com', {
-  method: 'POST',
-  headers: {
-    'Content-Type': 'text/plain;charset=UTF-8'
-  },
-  body: JSON.stringify(payload)
-});
+  try {
+  const res = await fetch('https://1359240005-4umn2nze5t.ap-guangzhou.tencentscf.com', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'text/plain;charset=UTF-8'
+    },
+    body: JSON.stringify(payload)
+  });
 
-const data = await res.json();
-  
-    if (!data.ok) {
-      throw new Error(data.message || 'submit failed');
-    }
+  const data = await res.json();
 
-    closeContactModal();
-    showToast();
-    contactWeChat.value = '';
-    contactEmail.value = '';
-    contactError.textContent = '';
-
-  } catch (err) {
-    contactError.textContent = '提交失败，请稍后重试或联系客服';
-    console.error('submit error:', err);
+  if (!data.ok) {
+    throw new Error(data.message || 'submit failed');
   }
-});
+
+  closeContactModal();
+  showToast();
+  contactWeChat.value = '';
+  contactEmail.value = '';
+  contactError.textContent = '';
+
+} catch (err) {
+  contactError.textContent = '提交失败，请稍后重试或联系客服';
+  console.error('submit error:', err);
+}
+  });
+
     
  /* =========================
        contactModal 닫기:
