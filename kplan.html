@@ -796,17 +796,16 @@ confirmContactBtn.addEventListener('click', async function () {
     submittedAt: new Date().toISOString()
   };
 
-  try {
-    const res = await fetch('https://1359240005-4umn2nze5t.ap-guangzhou.tencentscf.com', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify(payload)
-    });
+const res = await fetch('https://1359240005-4umn2nze5t.ap-guangzhou.tencentscf.com', {
+  method: 'POST',
+  headers: {
+    'Content-Type': 'text/plain;charset=UTF-8'
+  },
+  body: JSON.stringify(payload)
+});
 
-    const data = await res.json();
-
+const data = await res.json();
+  
     if (!data.ok) {
       throw new Error(data.message || 'submit failed');
     }
