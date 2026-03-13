@@ -799,12 +799,12 @@
 
   try {
     const res = await fetch('https://1359240005-4umn2nze5t.ap-guangzhou.tencentscf.com', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify(payload)   // ✅ 이 부분 꼭 넣으세요!
-    });
+  method: 'POST',
+  headers: {
+    'Content-Type': 'application/json'
+  },
+  body: JSON.stringify(payload)
+});
 
     const data = await res.json();
 
