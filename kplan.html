@@ -2,7 +2,6 @@
 <!--
   汉江春天 · K-Plan (kplan.html) ✅완성형
   =========================================================
-  ✅ 이 파일은 "복붙 1방" 기준본
   ✅ 핵심 체크리스트
     1) </body> </html> 절대 먼저 닫지 말기 (모든 모달/스크립트는 그 전에)
     2) contactModal(X/배경/ESC) 닫힘
@@ -827,3 +826,67 @@ confirmContactBtn.addEventListener('click', async function () {
     }
     function closeSimpleModal(modalEl){
       modalEl
+  /* =========================
+      요기부터 끊긴거 추가 통째 붙여넣기
+       ========================= */
+
+          function closeSimpleModal(modalEl){
+      modalEl.classList.remove('is-open');
+      modalEl.setAttribute('aria-hidden','true');
+    }
+
+    const wechatIcon = document.getElementById('wechat-icon');
+    if(wechatIcon){
+      wechatIcon.addEventListener('click', function(e){
+        e.preventDefault();
+        openSimpleModal('wechatModal');
+      });
+    }
+
+    const whatsappIcon = document.getElementById('whatsapp-icon');
+    if(whatsappIcon){
+      whatsappIcon.addEventListener('click', function(e){
+        e.preventDefault();
+        openSimpleModal('whatsappModal');
+      });
+    }
+
+    /* =========================
+       WeChat/WhatsApp 모달 닫기:
+       - X 버튼(.close)
+       - 배경 클릭(모달 바깥 영역)
+       - ESC
+       ========================= */
+    function bindOverlayModal(modalId){
+      const m = document.getElementById(modalId);
+      if(!m) return;
+
+      const x = m.querySelector('.close');
+      if(x){
+        x.addEventListener('click', function(e){
+          e.preventDefault();
+          closeSimpleModal(m);
+        });
+      }
+
+      m.addEventListener('click', function(e){
+        if(e.target === m){
+          closeSimpleModal(m);
+        }
+      });
+
+      document.addEventListener('keydown', function(e){
+        if(e.key === 'Escape' && m.classList.contains('is-open')){
+          closeSimpleModal(m);
+        }
+      });
+    }
+
+    bindOverlayModal('wechatModal');
+    bindOverlayModal('whatsappModal');
+
+    // ✅ 첫 렌더
+    render();
+  })();
+  </script>
+    
