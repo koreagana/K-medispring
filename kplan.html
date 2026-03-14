@@ -47,6 +47,13 @@
       --hga-pink:#D97AA6;         /* ✅ 짙은 파스텔 핑크 */
     }
 
+    /* ✅ 선택된 항목 파란색 스타일 (이게 빠져서 생긴 문제!) */
+    .choice.is-selected {
+      background: var(--hga-blue) !important;
+      color: #fff !important;
+      border-color: var(--hga-blue) !important;
+    }
+
     /* ✅ Sidebar: Search 제거 + 로고만 */
     #sidebar #search{ display:none !important; }
     #sidebar-brand{
@@ -607,14 +614,12 @@
              style="width: 200px; height: 200px; border-radius: 12px; box-shadow: 0 4px 12px rgba(0,0,0,0.15);">
       </div>
 
-      <!-- ✅ 더 이상 필요 없는 WeChat/Email 입력란은 완전히 제거됨 -->
-
       <!-- 에러 메시지 (필요시 사용) -->
       <div id="contactError" class="kms-modal__error" aria-live="polite"></div>
 
       <!-- 확인 버튼 (제출 용도가 아니라, QR 코드 확인 후 닫기 용도) -->
       <button type="button" id="confirmContactBtn" class="kms-modal__btn">
-        확인 완료
+        确认
         <span class="spark-layer" aria-hidden="true"></span>
       </button>
 
@@ -652,7 +657,7 @@
 
 
   <!-- =========================================================
-       ✅ (D) K-Plan JS: 선택/요약/모달제어
+       ✅ (D) K-Plan JS: 선택/요약/제출/모달제어
        - 중요: 아래쪽에서 실행 (DOM 다 만든 뒤)
        ========================================================= -->
   <script>
@@ -669,8 +674,6 @@
     // ✅ contactModal 요소
     const contactModal = document.getElementById('contactModal');
     const confirmContactBtn = document.getElementById('confirmContactBtn');
-    const contactWeChat = document.getElementById('contactWeChat');
-    const contactEmail = document.getElementById('contactEmail');
     const contactError = document.getElementById('contactError');
     const submitToast = document.getElementById('submitToast');
     let pendingLines = [];
@@ -823,31 +826,4 @@ confirmContactBtn.addEventListener('click', async function () {
       m.setAttribute('aria-hidden','false');
     }
     function closeSimpleModal(modalEl){
-      modalEl.classList.remove('is-open');
-      modalEl.setAttribute('aria-hidden','true');
-    }
-
-    const wechatIcon = document.getElementById('wechat-icon');
-    if(wechatIcon){
-      wechatIcon.addEventListener('click', function(e){
-        e.preventDefault();
-        openSimpleModal('wechatModal');
-      });
-    }
-
-    const whatsappIcon = document.getElementById('whatsapp-icon');
-    if(whatsappIcon){
-      whatsappIcon.addEventListener('click', function(e){
-        e.preventDefault();
-        openSimpleModal('whatsappModal');
-      });
-    }
-
-    /* =========================
-       WeChat/WhatsApp 모달 닫기:
-       - X 버튼(.close)
-       - 배경 클릭(모달 바깥 영역)
-       - ESC
-       ========================= */
-    function bindOverlayModal(modalId){
-      const
+      modalEl
