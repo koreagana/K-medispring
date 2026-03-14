@@ -586,39 +586,39 @@
 
 
   <!-- =========================================================
-       ✅ (A) contactModal: "연락처 입력" 모달
-       - 중요: 반드시 </body> 전에 있어야 함
+       ✅ (A) contactModal: 企业微信 QR 코드 모달 (새 버전)
        ========================================================= -->
   <div id="contactModal" class="kms-modal" aria-hidden="true">
-    <!-- ✅ 배경 클릭 시 닫히는 영역 -->
+    <!-- 배경 클릭 시 닫힘 -->
     <div class="kms-modal__backdrop" data-close="1"></div>
 
     <div class="kms-modal__card" role="dialog" aria-modal="true" aria-labelledby="contactModalTitle">
 
-<!-- ✅ X 닫기 버튼 (class에 close 포함) -->
-<button class="kms-modal__close close" aria-label="Close" type="button">
-  关闭
-</button>
+      <!-- 닫기 버튼 -->
+      <button class="kms-modal__close close" aria-label="Close" type="button">关闭</button>
 
-      <h3 id="contactModalTitle" class="kms-modal__title">请留下您的联系方式（任选其一）</h3>
-      <p class="kms-modal__desc">我们将尽快为您提供价格与医院信息</p>
+      <h3 id="contactModalTitle" class="kms-modal__title">添加企业微信</h3>
+      <p class="kms-modal__desc">扫描下方二维码，添加后我们将为您提供价格与详细说明</p>
 
-      <!-- ✅ 입력 순서: WeChat ID 위 / 이메일 아래 -->
-      <div class="kms-modal__inputs">
-        <input id="contactWeChat" type="text" autocomplete="off" placeholder="WeChat ID">
-        <div class="kms-modal__or">或</div>
-        <input id="contactEmail" type="email" inputmode="email" autocomplete="email" placeholder="邮箱地址">
+      <!-- ✅ QR 코드 이미지 (여기가 핵심!) -->
+      <div style="text-align: center; margin: 15px 0;">
+        <img src="https://raw.githubusercontent.com/koreagana/K-medispring/main/images/qr_qiye_2603.jpg"
+             alt="企业微信 QR Code"
+             style="width: 200px; height: 200px; border-radius: 12px; box-shadow: 0 4px 12px rgba(0,0,0,0.15);">
       </div>
 
+      <!-- ✅ 더 이상 필요 없는 WeChat/Email 입력란은 완전히 제거됨 -->
+
+      <!-- 에러 메시지 (필요시 사용) -->
       <div id="contactError" class="kms-modal__error" aria-live="polite"></div>
 
-      <!-- ✅ 모달 제출 버튼 -->
+      <!-- 확인 버튼 (제출 용도가 아니라, QR 코드 확인 후 닫기 용도) -->
       <button type="button" id="confirmContactBtn" class="kms-modal__btn">
-        提交
+        확인 완료
         <span class="spark-layer" aria-hidden="true"></span>
       </button>
 
-      <div class="kms-modal__hint">※ 只需填写其中一项即可</div>
+      <div class="kms-modal__hint">※ 企业微信으로 문의해 주셔서 감사합니다</div>
     </div>
   </div>
 
@@ -652,7 +652,7 @@
 
 
   <!-- =========================================================
-       ✅ (D) K-Plan JS: 선택/요약/제출/메일전송/모달제어
+       ✅ (D) K-Plan JS: 선택/요약/모달제어
        - 중요: 아래쪽에서 실행 (DOM 다 만든 뒤)
        ========================================================= -->
   <script>
@@ -682,7 +682,6 @@
       contactError.textContent = '';
       contactModal.classList.add('is-open');
       contactModal.setAttribute('aria-hidden','false');
-      setTimeout(()=> (contactWeChat.focus()), 30);
     }
     function closeContactModal(){
       contactModal.classList.remove('is-open');
@@ -775,53 +774,18 @@
     });
 
 /* =========================
-   contactModal 확인(제출) → Tencent Cloud POST
-   - WeChat 우선 / 없으면 email
-   - CORS 우회: no-cors + text/plain
+   contactModal 확인 버튼 (企业微信 QR 코드 모달용)
+   - 더 이상 서버로 데이터를 보내지 않음
+   - QR 코드 확인 후 모달만 닫고 토스트 표시
    ========================= */
 
-    confirmContactBtn.addEventListener('click', async function () {
-  const wechat = (contactWeChat.value || '').trim();
-  const email = (contactEmail.value || '').trim();
+confirmContactBtn.addEventListener('click', async function () {
+  // 입력 필드가 사라졌으므로, 아무 조건 없이 모달 닫기
+  closeContactModal();
+  showToast(); // "提交完成，谢谢" 토스트 표시
 
-  if (!wechat && !email) {
-    contactError.textContent = '请填写 WeChat ID 或邮箱地址（任选其一）';
-    return;
-  }
-
-  const payload = {
-    wechat,
-    email,
-    items: pendingLines,
-    source: window.location.href,
-    submittedAt: new Date().toISOString()
-  };
-
-  try {
-    const res = await fetch('https://1359240005-4umn2nze5t.ap-guangzhou.tencentscf.com', {
-  method: 'POST',
-  headers: {
-    'Content-Type': 'application/json'
-  },
-  body: JSON.stringify(payload)
-});
-
-    const data = await res.json();
-
-    if (!data.ok) {
-      throw new Error(data.message || 'submit failed');
-    }
-
-    closeContactModal();
-    showToast();
-    contactWeChat.value = '';
-    contactEmail.value = '';
-    contactError.textContent = '';
-
-  } catch (err) {
-    contactError.textContent = '提交失败，请稍后重试或联系客服';
-    console.error('submit error:', err);
-  }
+  // 혹시 모를 에러 메시지 초기화
+  contactError.textContent = '';
 });
     
  /* =========================
@@ -886,58 +850,4 @@
        - ESC
        ========================= */
     function bindOverlayModal(modalId){
-      const m = document.getElementById(modalId);
-      if(!m) return;
-
-      // X
-      const x = m.querySelector('.close');
-      if(x){
-        x.addEventListener('click', function(e){
-          e.preventDefault();
-          closeSimpleModal(m);
-        });
-      }
-
-      // 배경 클릭(모달 자체를 클릭했을 때만 닫기: inner 클릭은 제외)
-      m.addEventListener('click', function(e){
-        if(e.target === m){
-          closeSimpleModal(m);
-        }
-      });
-
-      // ESC
-      document.addEventListener('keydown', function(e){
-        if(e.key === 'Escape' && m.classList.contains('is-open')){
-          closeSimpleModal(m);
-        }
-      });
-    }
-
-    bindOverlayModal('wechatModal');
-    bindOverlayModal('whatsappModal');
-
-    // ✅ 첫 렌더
-    render();
-  })();
-  </script>
-
-
-  <!-- =========================================================
-       ✅ (E) Scripts "5총사" + modals.js
-       - 반드시 맨 아래 (</body> 바로 위)
-       ========================================================= -->
-  <script src="assets/js/jquery.min.js"></script>
-  <script src="assets/js/browser.min.js"></script>
-  <script src="assets/js/breakpoints.min.js"></script>
-  <script src="assets/js/util.js"></script>
-  <script src="assets/js/main.js"></script>
-  <script src="assets/js/modals.js"></script>
-
-  <!-- =========================================================
-       ✅ BODY 닫기 (여기가 "바디 닫기" 자리)
-       - 이 아래에 HTML/모달/스크립트 있으면 DOM 깨짐
-       ========================================================= -->
-</body>
-
-<!-- ✅ HTML 닫기 (여기가 "html 닫기" 자리) -->
-</html>
+      const
