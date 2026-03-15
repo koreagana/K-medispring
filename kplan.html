@@ -775,17 +775,32 @@
 
 /* =========================
    contactModal 확인 버튼 (企业微信 QR 코드 모달용)
-   - 더 이상 서버로 데이터를 보내지 않음
-   - QR 코드 확인 후 모달만 닫고 토스트 표시
+   - 선택항목을 SCF에 저장하고 QR 모달 열기
    ========================= */
 
 confirmContactBtn.addEventListener('click', async function () {
-  // 입력 필드가 사라졌으므로, 아무 조건 없이 모달 닫기
-  closeContactModal();
-  showToast(); // "提交完成，谢谢" 토스트 표시
+  const selectedItems = getSelected();
+  
+  if (!selectedItems.length) {
+    alert("선택된 항목이 없습니다.");
+    return;
+  }
 
-  // 혹시 모를 에러 메시지 초기화
-  contactError.textContent = '';
+  // 1. 선택항목을 SCF에 저장 요청
+  const saveRes = await fetch('https://1359240005-4umn2nze5t.ap-guangzhou.tencentscf.com', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ 
+      action: 'save', 
+      items: selectedItems 
+    })
+  });
+  
+  const { sessionId } = await saveRes.json();
+  console.log('저장된 sessionId:', sessionId); // 확인용 로그
+  
+  // 2. QR 코드 모달 열기
+  openContactModal();
 });
     
  /* =========================
