@@ -772,35 +772,18 @@
     });
 
 /* =========================
-   contactModal 확인 버튼 (닫기 기능 통합)
-   - 선택항목을 SCF에 저장하고 QR 모달 열기 + 닫기
+   contactModal 확인 버튼 (닫기 전용)
+   - QR 코드 확인 후 모달만 닫고 토스트 표시
    ========================= */
 
-confirmContactBtn.addEventListener('click', async function () {
-  const selectedItems = getSelected();
+confirmContactBtn.addEventListener('click', function () {
+  // 모달 닫기
+  closeContactModal();
   
-  if (!selectedItems.length) {
-    alert("선택된 항목이 없습니다.");
-    return;
-  }
-
-  // 1. 선택항목을 SCF에 저장 요청
-  const saveRes = await fetch('https://1359240005-4umn2nze5t.ap-guangzhou.tencentscf.com', {
-    method: 'POST',
-    headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify({ 
-      action: 'save', 
-      items: selectedItems 
-    })
-  });
-  
-  const { sessionId } = await saveRes.json();
-  console.log('저장된 sessionId:', sessionId);
-  
-  // 2. QR 코드 모달 열기
-  openContactModal();
+  // 토스트 메시지 표시
+  showToast();
 });
-
+    
 /* =========================
    contactModal 닫기:
    1) "确认 关闭" 버튼 클릭
