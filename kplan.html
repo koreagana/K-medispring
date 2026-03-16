@@ -591,36 +591,25 @@
   </div><!-- /#wrapper -->
 
   <!-- =========================================================
-       ✅ (A) contactModal: 企业微信 QR 코드 모달 (최종)
+       ✅ contactModal: 企业微信 
        ========================================================= -->
-  <div id="contactModal" class="kms-modal" aria-hidden="true">
-    <!-- 배경 클릭 시 닫힘 -->
-    <div class="kms-modal__backdrop" data-close="1"></div>
+<div id="contactModal" class="kms-modal" aria-hidden="true">
+  <div class="kms-modal__backdrop" data-close="1"></div>
 
-    <div class="kms-modal__card" role="dialog" aria-modal="true" aria-labelledby="contactModalTitle">
+  <div class="kms-modal__card" role="dialog" aria-modal="true" aria-labelledby="contactModalTitle">
+    <h3 id="contactModalTitle" class="kms-modal__title">确认提交</h3>
+    <p class="kms-modal__desc">提交后，将为你打开企业微信咨询窗口</p>
 
-      <!-- 닫기 버튼 없음 -->
+    <div id="contactError" class="kms-modal__error" aria-live="polite"></div>
 
-      <h3 id="contactModalTitle" class="kms-modal__title">请扫描下方二维码</h3>
-      <p class="kms-modal__desc">我们将为您提供价格与详细说明</p>
+    <button type="button" id="confirmContactBtn" class="kms-modal__btn">
+      提交并咨询
+      <span class="spark-layer" aria-hidden="true"></span>
+    </button>
 
-      <!-- QR 코드 이미지 -->
-      <img src="https://raw.githubusercontent.com/koreagana/K-medispring/main/images/wecom_qr.png"
-           alt="企业微信 QR Code"
-           style="width: 200px; height: 200px; border-radius: 12px; box-shadow: 0 4px 12px rgba(0,0,0,0.15); margin: 15px 0;">
-
-      <!-- 에러 메시지 -->
-      <div id="contactError" class="kms-modal__error" aria-live="polite"></div>
-
-      <!-- 통합 버튼: 닫기 + 확인 -->
-      <button type="button" id="confirmContactBtn" class="kms-modal__btn">
-        确认 关闭
-        <span class="spark-layer" aria-hidden="true"></span>
-      </button>
-
-      <div class="kms-modal__hint">※扫描后请稍等</div>
-    </div>
+    <div class="kms-modal__hint">※ 提交成功后将自动跳转</div>
   </div>
+</div>
   
   <!-- =========================================================
        ✅ (B) submitToast: 제출 후 토스트
@@ -655,235 +644,165 @@
        ✅ (D) K-Plan JS: 선택/요약/제출/모달제어
        - 중요: 아래쪽에서 실행 (DOM 다 만든 뒤)
        ========================================================= -->
-  <script>
-  (function(){
-    const root = document.getElementById('kplan-page');
-    if(!root) return;
+<script>
+(function(){
 
-    const groups = Array.from(root.querySelectorAll('.kplan-choices'));
-    const list = root.querySelector('#summaryList');
-    const cnt  = root.querySelector('#kplanSummaryCount');
-    const submitBtn = root.querySelector('#kplanSubmitBtn');
-    if(!groups.length || !list || !cnt || !submitBtn) return;
+const root = document.getElementById('kplan-page');
+if(!root) return;
 
-    // ✅ contactModal 요소
-    const contactModal = document.getElementById('contactModal');
-    const confirmContactBtn = document.getElementById('confirmContactBtn');
-    const contactError = document.getElementById('contactError');
-    const submitToast = document.getElementById('submitToast');
-    let pendingLines = [];
+const groups = Array.from(root.querySelectorAll('.kplan-choices'));
+const list = root.querySelector('#summaryList');
+const cnt  = root.querySelector('#kplanSummaryCount');
+const submitBtn = root.querySelector('#kplanSubmitBtn');
 
-    /* =========================
-       contactModal 열기/닫기
-       ========================= */
-    function openContactModal(){
-      contactError.textContent = '';
-      contactModal.classList.add('is-open');
-      contactModal.setAttribute('aria-hidden','false');
-    }
-    function closeContactModal(){
-      contactModal.classList.remove('is-open');
-      contactModal.setAttribute('aria-hidden','true');
-    }
+const contactModal = document.getElementById('contactModal');
+const confirmContactBtn = document.getElementById('confirmContactBtn');
+const contactError = document.getElementById('contactError');
+const submitToast = document.getElementById('submitToast');
 
-    /* =========================
-       Toast
-       ========================= */
-    function showToast(){
-      submitToast.classList.add('is-show');
-      submitToast.setAttribute('aria-hidden','false');
-      setTimeout(()=>{
-        submitToast.classList.remove('is-show');
-        submitToast.setAttribute('aria-hidden','true');
-      }, 1400);
-    }
+let pendingLines = [];
 
-    /* =========================
-       a.choice 이동 차단(완전)
-       ========================= */
-    root.addEventListener('click', function(e){
-      const a = e.target.closest('a.choice');
-      if(!a) return;
-      e.preventDefault();
-    }, true);
+function openContactModal(){
+  contactError.textContent = '';
+  contactModal.classList.add('is-open');
+  contactModal.setAttribute('aria-hidden','false');
+}
 
-    /* =========================
-       선택 목록 만들기
-       ========================= */
-    function getSelected(){
-      const selected = [];
-      groups.forEach((g)=>{
-        const title = g.dataset.groupTitle || '';
-        g.querySelectorAll('.choice.is-selected').forEach(el=>{
-          selected.push(title ? `【${title}】${el.textContent.trim()}` : el.textContent.trim());
-        });
-      });
-      return selected;
-    }
+function closeContactModal(){
+  contactModal.classList.remove('is-open');
+  contactModal.setAttribute('aria-hidden','true');
+}
 
-    /* =========================
-       Summary 렌더
-       ========================= */
-    function render(){
-      const selected = getSelected();
-      cnt.textContent = String(selected.length);
+function showToast(){
+  submitToast.classList.add('is-show');
+  submitToast.setAttribute('aria-hidden','false');
 
-      if(!selected.length){
-        list.innerHTML = '<li class="empty">还未选择。先点选几项也可以。</li>';
-        return;
-      }
-      list.innerHTML = selected.map(text=>`<li>${text}</li>`).join('');
-    }
+  setTimeout(function(){
+    submitToast.classList.remove('is-show');
+    submitToast.setAttribute('aria-hidden','true');
+  },1400);
+}
 
-    /* =========================
-       카드 클릭 처리
-       - data-excl가 있으면 같은 그룹 내 단일선택(需要/不需要 같은 것)
-       ========================= */
-    groups.forEach((g)=>{
-      g.addEventListener('click', (e)=>{
-        const el = e.target.closest('.choice');
-        if(!el) return;
-        e.preventDefault();
+function getSelected(){
+  const selected = [];
+  groups.forEach(function(g){
+    const title = g.dataset.groupTitle || '';
 
-        const key = el.dataset.excl;
-        if(key){
-          g.querySelectorAll(`.choice[data-excl="${key}"]`).forEach(x=>x.classList.remove('is-selected'));
-          el.classList.add('is-selected');
-        }else{
-          el.classList.toggle('is-selected');
-        }
-        render();
-      }, true);
+    g.querySelectorAll('.choice.is-selected').forEach(function(el){
+      const text = el.textContent.trim();
+      selected.push(title ? "【"+title+"】"+text : text);
     });
 
-    /* =========================
-       K-Plan 제출 버튼 → contactModal 열기
-       ========================= */
-    submitBtn.addEventListener('click', function(e){
-      e.preventDefault();
+  });
 
-      const lines = getSelected();
-      if(!lines.length){
-        alert("还未选择。请先点选几项。");
-        return;
-      }
-      pendingLines = lines;
-      openContactModal();
-    });
+  return selected;
+}
 
-/* =========================
-   contactModal 확인 버튼 (닫기 전용)
-   - QR 코드 확인 후 모달만 닫고 토스트 표시
-   ========================= */
+function render(){
 
-confirmContactBtn.addEventListener('click', function () {
-  // 모달 닫기
-  closeContactModal();
-  
-  // 토스트 메시지 표시
-  showToast();
-});
-    
-/* =========================
-   contactModal 닫기:
-   1) "确认 关闭" 버튼 클릭
-   2) 배경 클릭 (data-close="1")
-   3) ESC 키
-   ========================= */
+  const selected = getSelected();
+  cnt.textContent = selected.length;
 
-// 통합 닫기 처리: 버튼 클릭, 배경 클릭 모두 여기서 처리
-contactModal.addEventListener('click', function(e) {
-  // "确认 关闭" 버튼 클릭 시
-  if (e.target.closest('#confirmContactBtn')) {
-    e.preventDefault();
-    closeContactModal();
-    showToast();  // 토스트 메시지 표시 (원하면 유지)
+  if(!selected.length){
+    list.innerHTML =
+      '<li class="empty">还未选择。先点选几项也可以。</li>';
     return;
   }
-  
-  // 배경 클릭 시 (data-close="1")
-  if (e.target && e.target.dataset && e.target.dataset.close === '1') {
-    closeContactModal();
-  }
-});
 
-// ESC 키 닫기
-document.addEventListener('keydown', function(e) {
-  if (e.key === 'Escape' && contactModal.classList.contains('is-open')) {
-    closeContactModal();
-  }
-});
-    
-    /* =========================
-       WeChat / WhatsApp 아이콘 클릭 → QR 모달 열기
-       (메인페이지로 튀는 현상 방지: preventDefault)
-       ========================= */
-    function openSimpleModal(modalId){
-      const m = document.getElementById(modalId);
-      if(!m) return;
-      m.classList.add('is-open');
-      m.setAttribute('aria-hidden','false');
-    }
+  list.innerHTML =
+    selected.map(function(t){
+      return "<li>"+t+"</li>";
+    }).join('');
 
-          function closeSimpleModal(modalEl){
-      modalEl.classList.remove('is-open');
-      modalEl.setAttribute('aria-hidden','true');
-    }
+}
 
-    const wechatIcon = document.getElementById('wechat-icon');
-    if(wechatIcon){
-      wechatIcon.addEventListener('click', function(e){
-        e.preventDefault();
-        openSimpleModal('wechatModal');
-      });
-    }
+groups.forEach(function(g){
 
-    const whatsappIcon = document.getElementById('whatsapp-icon');
-    if(whatsappIcon){
-      whatsappIcon.addEventListener('click', function(e){
-        e.preventDefault();
-        openSimpleModal('whatsappModal');
-      });
-    }
+  g.addEventListener('click',function(e){
 
-    /* =========================
-       WeChat/WhatsApp 모달 닫기:
-       - X 버튼(.close)
-       - 배경 클릭(모달 바깥 영역)
-       - ESC
-       ========================= */
-    function bindOverlayModal(modalId){
-      const m = document.getElementById(modalId);
-      if(!m) return;
+    const el = e.target.closest('.choice');
+    if(!el) return;
 
-      const x = m.querySelector('.close');
-      if(x){
-        x.addEventListener('click', function(e){
-          e.preventDefault();
-          closeSimpleModal(m);
-        });
-      }
+    e.preventDefault();
 
-      m.addEventListener('click', function(e){
-        if(e.target === m){
-          closeSimpleModal(m);
-        }
+    const key = el.dataset.excl;
+
+    if(key){
+      g.querySelectorAll('.choice[data-excl="'+key+'"]')
+      .forEach(function(x){
+        x.classList.remove('is-selected');
       });
 
-      document.addEventListener('keydown', function(e){
-        if(e.key === 'Escape' && m.classList.contains('is-open')){
-          closeSimpleModal(m);
-        }
-      });
+      el.classList.add('is-selected');
+
+    }else{
+      el.classList.toggle('is-selected');
     }
 
-    bindOverlayModal('wechatModal');
-    bindOverlayModal('whatsappModal');
-
-    // ✅ 첫 렌더
     render();
-  })();
-  </script>
 
-  </body>
+  },true);
+
+});
+
+submitBtn.addEventListener('click',function(e){
+
+  e.preventDefault();
+
+  const lines = getSelected();
+
+  if(!lines.length){
+    alert("还未选择。请先点选几项。");
+    return;
+  }
+
+  pendingLines = lines;
+
+  openContactModal();
+
+});
+
+confirmContactBtn.addEventListener('click',function(){
+
+  if(!pendingLines.length){
+    contactError.textContent = "还未选择项目。";
+    return;
+  }
+
+  const wecomLink =
+  "https://work.weixin.qq.com/kfid/kfcde7d9ec26f6b0df0";
+
+  closeContactModal();
+  showToast();
+
+  setTimeout(function(){
+    window.location.href = wecomLink;
+  },800);
+
+});
+
+contactModal.addEventListener('click',function(e){
+
+  if(e.target && e.target.dataset &&
+     e.target.dataset.close === '1'){
+    closeContactModal();
+  }
+
+});
+
+document.addEventListener('keydown',function(e){
+
+  if(e.key === 'Escape' &&
+     contactModal.classList.contains('is-open')){
+    closeContactModal();
+  }
+
+});
+
+render();
+
+})();
+</script>
+
+</body>
 </html>
