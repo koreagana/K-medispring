@@ -762,41 +762,64 @@ submitBtn.addEventListener('click',function(e){
 
 });
 
-confirmContactBtn.addEventListener('click',function(){
+confirmContactBtn.addEventListener('click', async function(){
 
   if(!pendingLines.length){
     contactError.textContent = "还未选择项目。";
     return;
   }
 
-  const wecomLink =
-  "https://work.weixin.qq.com/kfid/kfcde7d9ec26f6b0df0";
+  try{
+    const res = await fetch(
+      "https://1359240005-fwzjf6nyn1.ap-guangzhou.tencentscf.com",
+      {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify({
+          action: "save",
+          items: pendingLines
+        })
+      }
+    );
 
-  closeContactModal();
-  showToast();
+    if(!res.ok){
+      throw new Error("request failed");
+    }
 
-  setTimeout(function(){
-    window.location.href = wecomLink;
-  },800);
+    const data = await res.json();
 
-});
-
-contactModal.addEventListener('click',function(e){
-
-  if(e.target && e.target.dataset &&
-     e.target.dataset.close === '1'){
     closeContactModal();
+    showToast();
+
+    if(data && data.qrCodeUrl){
+      setTimeout(function(){
+        window.location.href = data.qrCodeUrl;
+      }, 800);
+    }else{
+      setTimeout(function(){
+        window.location.href = "https://work.weixin.qq.com/kfid/kfcde7d9ec26f6b0df0";
+      }, 800);
+    }
+
+  }catch(err){
+    console.error(err);
+    contactError.textContent = "提交失败，请稍后再试。";
   }
 
 });
 
-document.addEventListener('keydown',function(e){
-
-  if(e.key === 'Escape' &&
-     contactModal.classList.contains('is-open')){
+contactModal.addEventListener('click', function(e){
+  if(e.target && e.target.dataset && e.target.dataset.close === '1'){
     closeContactModal();
   }
+});
 
+document.addEventListener('keydown', function(e){
+  if(e.key === 'Escape' && contactModal.classList.contains('is-open')){
+    closeContactModal();
+  }
 });
 
 render();
