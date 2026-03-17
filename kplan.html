@@ -674,13 +674,13 @@ function closeContactModal(){
 }
 
 function showToast(){
-  submitToast.classList.add('is-show');
-  submitToast.setAttribute('aria-hidden','false');
+  const toast = document.getElementById('toast');
+  toast.textContent = "已复制您的选择，请粘贴发送给客服";
+  toast.classList.add('show');
 
   setTimeout(function(){
-    submitToast.classList.remove('is-show');
-    submitToast.setAttribute('aria-hidden','true');
-  },1400);
+    toast.classList.remove('show');
+  },2000);
 }
 
 function getSelected(){
@@ -762,27 +762,25 @@ submitBtn.addEventListener('click',function(e){
 
 });
 
-confirmContactBtn.addEventListener('click', async function(){
+  confirmContactBtn.addEventListener('click', function(){
 
   if(!pendingLines.length){
     contactError.textContent = "还未选择项目。";
     return;
   }
 
-  try{
-    const res = await fetch(
-      "https://1359240005-fwzjf6nyn1.ap-guangzhou.tencentscf.com",
-      {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json"
-        },
-        body: JSON.stringify({
-          action: "save",
-          items: pendingLines
-        })
-      }
-    );
+  const text = pendingLines.join('\n');
+
+  navigator.clipboard.writeText(text);
+
+  closeContactModal();
+  showToast();
+
+  setTimeout(function(){
+    window.location.href = "https://work.weixin.qq.com/kfid/kfcde7d9ec26f6b0df0";
+  },800);
+
+});
 
     if(!res.ok){
       throw new Error("request failed");
