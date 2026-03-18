@@ -520,6 +520,8 @@
         </div><!-- /#kplan-page -->
       </div><!-- /.inner -->
     </div><!-- /#main -->
+    <br>
+    <br>
 
     <!-- =========================
          SIDEBAR
@@ -618,191 +620,125 @@
 
 
   <!-- =========================================================
-       ✅ (D) K-Plan JS: 선택/요약/제출/모달제어
-       - 중요: 아래쪽에서 실행 (DOM 다 만든 뒤)
-       ========================================================= -->
+     ✅ (D) K-Plan JS: 선택/제출/모달제어
+     ========================================================= -->
 <script>
 (function(){
 
-const root = document.getElementById('kplan-page');
-if(!root) return;
+  const root = document.getElementById('kplan-page');
+  if(!root) return;
 
-const groups = Array.from(root.querySelectorAll('.kplan-choices'));
-const list = root.querySelector('#summaryList');
-const submitBtn = root.querySelector('#kplanSubmitBtn');
-const contactModal = document.getElementById('contactModal');
-const confirmContactBtn = document.getElementById('confirmContactBtn');
-const contactError = document.getElementById('contactError');
-const submitToast = document.getElementById('submitToast');
+  const groups = Array.from(root.querySelectorAll('.kplan-choices'));
+  const submitBtn = document.getElementById('kplanSubmitBtn');
+  const contactModal = document.getElementById('contactModal');
+  const confirmContactBtn = document.getElementById('confirmContactBtn');
+  const contactError = document.getElementById('contactError');
+  const submitToast = document.getElementById('submitToast');
 
-let pendingLines = [];
+  if(!submitBtn || !contactModal || !confirmContactBtn || !contactError || !submitToast) return;
 
-function openContactModal(){
-  contactError.textContent = '';
-  contactModal.classList.add('is-open');
-  contactModal.setAttribute('aria-hidden','false');
-}
+  let pendingLines = [];
 
-function closeContactModal(){
-  contactModal.classList.remove('is-open');
-  contactModal.setAttribute('aria-hidden','true');
-}
-
-function showToast(){
-  const toast = document.getElementById('toast');
-  toast.textContent = "已复制您的选择，请粘贴发送给客服";
-  toast.classList.add('show');
-
-  setTimeout(function(){
-    toast.classList.remove('show');
-  },2000);
-}
-
-function getSelected(){
-  const selected = [];
-  groups.forEach(function(g){
-    const title = g.dataset.groupTitle || '';
-
-    g.querySelectorAll('.choice.is-selected').forEach(function(el){
-      const text = el.textContent.trim();
-      selected.push(title ? "【"+title+"】"+text : text);
-    });
-
-  });
-
-  return selected;
-}
-
-function render(){
-
-  const selected = getSelected();
-  cnt.textContent = selected.length;
-
-  if(!selected.length){
-    list.innerHTML =
-      '<li class="empty">还未选择。先点选几项也可以。</li>';
-    return;
+  function openContactModal(){
+    contactError.textContent = '';
+    contactModal.classList.add('is-open');
+    contactModal.setAttribute('aria-hidden','false');
   }
 
-  list.innerHTML =
-    selected.map(function(t){
-      return "<li>"+t+"</li>";
-    }).join('');
-
-}
-
-groups.forEach(function(g){
-
-  g.addEventListener('click',function(e){
-
-    const el = e.target.closest('.choice');
-    if(!el) return;
-
-    e.preventDefault();
-
-    const key = el.dataset.excl;
-
-    if(key){
-      g.querySelectorAll('.choice[data-excl="'+key+'"]')
-      .forEach(function(x){
-        x.classList.remove('is-selected');
-      });
-
-      el.classList.add('is-selected');
-
-    }else{
-      el.classList.toggle('is-selected');
-    }
-
-    render();
-
-  },true);
-
-});
-
-submitBtn.addEventListener('click',function(e){
-
-  e.preventDefault();
-
-  const lines = getSelected();
-
-  if(!lines.length){
-    alert("还未选择。请先点选几项。");
-    return;
+  function closeContactModal(){
+    contactModal.classList.remove('is-open');
+    contactModal.setAttribute('aria-hidden','true');
   }
 
-  pendingLines = lines;
-
-  openContactModal();
-
-});
-
-confirmContactBtn.addEventListener('click', function(){
-
-  if(!pendingLines.length){
-    contactError.textContent = "还未选择项目。";
-    return;
-  }
-
-  const wecomLink =
-  "https://work.weixin.qq.com/kfid/kfcde7d9ec26f6b0df0";
-
-  closeContactModal();
-
-  if(submitToast){
+  function showToast(message){
     const box = submitToast.querySelector('.kms-toast__box');
     if(box){
-      box.textContent = "即将为您打开咨询窗口";
-    }
-  }
-
-  showToast();
-
-  setTimeout(function(){
-    window.location.href = wecomLink;
-  }, 800);
-
-});
-
-    if(!res.ok){
-      throw new Error("request failed");
+      box.textContent = message || "即将为您打开咨询窗口";
     }
 
-    const data = await res.json();
+    submitToast.classList.add('is-show');
+    submitToast.setAttribute('aria-hidden','false');
 
-    closeContactModal();
-    showToast();
+    setTimeout(function(){
+      submitToast.classList.remove('is-show');
+      submitToast.setAttribute('aria-hidden','true');
+    }, 1400);
+  }
 
-    if(data && data.qrCodeUrl){
-      setTimeout(function(){
-        window.location.href = data.qrCodeUrl;
-      }, 800);
-    }else{
-      setTimeout(function(){
-        window.location.href = "https://work.weixin.qq.com/kfid/kfcde7d9ec26f6b0df0";
-      }, 800);
+  function getSelected(){
+    const selected = [];
+
+    groups.forEach(function(g){
+      const title = g.dataset.groupTitle || '';
+
+      g.querySelectorAll('.choice.is-selected').forEach(function(el){
+        const text = el.textContent.trim();
+        selected.push(title ? "【" + title + "】" + text : text);
+      });
+    });
+
+    return selected;
+  }
+
+  groups.forEach(function(g){
+    g.addEventListener('click', function(e){
+      const el = e.target.closest('.choice');
+      if(!el) return;
+
+      e.preventDefault();
+
+      const key = el.dataset.excl;
+
+      if(key){
+        g.querySelectorAll('.choice[data-excl="' + key + '"]').forEach(function(x){
+          x.classList.remove('is-selected');
+        });
+        el.classList.add('is-selected');
+      }else{
+        el.classList.toggle('is-selected');
+      }
+    }, true);
+  });
+
+  submitBtn.addEventListener('click', function(e){
+    e.preventDefault();
+
+    const lines = getSelected();
+
+    if(!lines.length){
+      alert("还未选择。请先点选几项。");
+      return;
     }
 
-  }catch(err){
-    console.error(err);
-    contactError.textContent = "提交失败，请稍后再试。";
-  }
+    pendingLines = lines;
+    openContactModal();
+  });
 
-});
+  confirmContactBtn.addEventListener('click', function(){
+    if(!pendingLines.length){
+      contactError.textContent = "还未选择项目。";
+      return;
+    }
 
-contactModal.addEventListener('click', function(e){
-  if(e.target && e.target.dataset && e.target.dataset.close === '1'){
     closeContactModal();
-  }
-});
+    showToast("即将为您打开咨询窗口");
 
-document.addEventListener('keydown', function(e){
-  if(e.key === 'Escape' && contactModal.classList.contains('is-open')){
-    closeContactModal();
-  }
-});
+    setTimeout(function(){
+      window.location.href = "https://work.weixin.qq.com/kfid/kfcde7d9ec26f6b0df0";
+    }, 800);
+  });
 
-render();
+  contactModal.addEventListener('click', function(e){
+    if(e.target && e.target.dataset && e.target.dataset.close === '1'){
+      closeContactModal();
+    }
+  });
+
+  document.addEventListener('keydown', function(e){
+    if(e.key === 'Escape' && contactModal.classList.contains('is-open')){
+      closeContactModal();
+    }
+  });
 
 })();
 </script>
