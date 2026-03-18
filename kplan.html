@@ -383,10 +383,7 @@
           <h2 class="main-title">定制医疗观光方案</h2>
 
           <div class="aurora-text-group">
-            <span>让自己看起来更年轻</span>
-            <span>把现在的不舒服解决掉</span>
-            <span>把精力和活力找回来</span>
-            <span>为晚年生活打好健康基础</span>
+            <span>请查看您想要咨询的诊疗项目，然后点击“咨询”。</span>
           </div>
         </section>
 
@@ -598,17 +595,17 @@
   <div class="kms-modal__backdrop" data-close="1"></div>
 
   <div class="kms-modal__card" role="dialog" aria-modal="true" aria-labelledby="contactModalTitle">
-    <h3 id="contactModalTitle" class="kms-modal__title">确认提交</h3>
-    <p class="kms-modal__desc">提交后，将为你打开企业微信咨询窗口</p>
+    <h3 id="contactModalTitle" class="kms-modal__title">确认咨询</h3>
+    <p class="kms-modal__desc">点击后，将直接跳转到企业微信咨询窗口</p>
 
     <div id="contactError" class="kms-modal__error" aria-live="polite"></div>
 
     <button type="button" id="confirmContactBtn" class="kms-modal__btn">
-      提交并咨询
+      立即咨询
       <span class="spark-layer" aria-hidden="true"></span>
     </button>
 
-    <div class="kms-modal__hint">※ 提交成功后将自动跳转</div>
+    <div class="kms-modal__hint">※ 即将跳转到企业微信客服</div>
   </div>
 </div>
   
@@ -616,7 +613,7 @@
        ✅ (B) submitToast: 제출 후 토스트
        ========================================================= -->
   <div id="submitToast" class="kms-toast" aria-hidden="true">
-    <div class="kms-toast__box">提交完成，谢谢</div>
+    <div class="kms-toast__box">即将为您打开咨询窗口</div>
   </div>
 
   <!-- =========================================================
@@ -763,23 +760,30 @@ submitBtn.addEventListener('click',function(e){
 
 });
 
-  confirmContactBtn.addEventListener('click', function(){
+confirmContactBtn.addEventListener('click', function(){
 
   if(!pendingLines.length){
     contactError.textContent = "还未选择项目。";
     return;
   }
 
-  const text = pendingLines.join('\n');
-
-  navigator.clipboard.writeText(text);
+  const wecomLink =
+  "https://work.weixin.qq.com/kfid/kfcde7d9ec26f6b0df0";
 
   closeContactModal();
+
+  if(submitToast){
+    const box = submitToast.querySelector('.kms-toast__box');
+    if(box){
+      box.textContent = "即将为您打开咨询窗口";
+    }
+  }
+
   showToast();
 
   setTimeout(function(){
-    window.location.href = "https://work.weixin.qq.com/kfid/kfcde7d9ec26f6b0df0";
-  },800);
+    window.location.href = wecomLink;
+  }, 800);
 
 });
 
