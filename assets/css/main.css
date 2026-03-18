@@ -3435,6 +3435,8 @@ body{
   line-height: 1.8;
 }
 
-
+#selectedSummary {
+  display: none !important;
+}
 
 
