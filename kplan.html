@@ -706,26 +706,18 @@
     }, true);
   });
 
-  submitBtn.addEventListener('click', function(e){
-    e.preventDefault();
+submitBtn.addEventListener('click', function(e){
+  e.preventDefault();
 
-    const lines = getSelected();
+  const lines = getSelected();
+  pendingLines = lines;
 
-    if(!lines.length){
-      alert("还未选择。请先点选几项。");
-      return;
-    }
+  openContactModal();
+});
 
-    pendingLines = lines;
-    openContactModal();
-  });
-
-  confirmContactBtn.addEventListener('click', function(){
-    if(!pendingLines.length){
-      contactError.textContent = "还未选择项目。";
-      return;
-    }
-
+confirmContactBtn.addEventListener('click', function(){
+  contactError.textContent = "";
+  
     closeContactModal();
     showToast("即将为您打开咨询窗口");
 
