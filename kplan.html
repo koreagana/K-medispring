@@ -324,8 +324,9 @@
   <div id="wrapper">
 
     <!-- ✅ 모바일 햄버거: 사이드바 토글 -->
-    <a href="#sidebar" class="toggle" aria-label="Menu"></a>
-
+<a href="#sidebar" class="toggle" aria-label="Menu">
+  <span class="fa fa-bars"></span>
+</a>
     <!-- =========================
          MAIN
          ========================= -->
@@ -643,8 +644,6 @@
 
   if(!submitBtn || !contactModal || !confirmContactBtn || !contactError || !submitToast) return;
 
-  let pendingLines = [];
-
   function openContactModal(){
     contactError.textContent = '';
     contactModal.classList.add('is-open');
@@ -708,9 +707,8 @@
 
 submitBtn.addEventListener('click', function(e){
   e.preventDefault();
-
-  const lines = getSelected();
-  pendingLines = lines;
+  openContactModal();
+});
 
   openContactModal();
 });
@@ -739,7 +737,64 @@ confirmContactBtn.addEventListener('click', function(){
   });
 
 })();
-</script>
 
+const wechatIcon = document.getElementById('wechat-icon');
+const whatsappIcon = document.getElementById('whatsapp-icon');
+const wechatModal = document.getElementById('wechatModal');
+const whatsappModal = document.getElementById('whatsappModal');
+
+function openModal(modal){
+  if(!modal) return;
+  modal.classList.add('is-open');
+  modal.setAttribute('aria-hidden', 'false');
+}
+
+function closeModal(modal){
+  if(!modal) return;
+  modal.classList.remove('is-open');
+  modal.setAttribute('aria-hidden', 'true');
+}
+
+if (wechatIcon && wechatModal) {
+  wechatIcon.addEventListener('click', function(e){
+    e.preventDefault();
+    openModal(wechatModal);
+  });
+}
+
+if (whatsappIcon && whatsappModal) {
+  whatsappIcon.addEventListener('click', function(e){
+    e.preventDefault();
+    openModal(whatsappModal);
+  });
+}
+
+[wechatModal, whatsappModal].forEach(function(modal){
+  if(!modal) return;
+
+  modal.addEventListener('click', function(e){
+    if (
+      e.target === modal ||
+      e.target.classList.contains('close')
+    ) {
+      closeModal(modal);
+    }
+  });
+});
+
+document.addEventListener('keydown', function(e){
+  if(e.key === 'Escape'){
+    closeModal(wechatModal);
+    closeModal(whatsappModal);
+  }
+});
+  
+</script>
+<script src="assets/js/jquery.min.js"></script>
+<script src="assets/js/browser.min.js"></script>
+<script src="assets/js/breakpoints.min.js"></script>
+<script src="assets/js/util.js"></script>
+<script src="assets/js/main.js"></script>
+  
 </body>
 </html>
