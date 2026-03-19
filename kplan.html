@@ -569,27 +569,33 @@
 
   </div><!-- /#wrapper -->
 
-  <!-- =========================================================
-       ✅ contactModal: 企业微信 
-       ========================================================= -->
+ <!-- =========================================================
+     ✅ contactModal: 企业微信 
+     ========================================================= -->
 <div id="contactModal" class="kms-modal" aria-hidden="true">
   <div class="kms-modal__backdrop" data-close="1"></div>
 
   <div class="kms-modal__card" role="dialog" aria-modal="true" aria-labelledby="contactModalTitle">
     <h3 id="contactModalTitle" class="kms-modal__title">确认咨询</h3>
-    <p class="kms-modal__desc">点击后，将直接跳转到企业微信咨询窗口</p>
+
+    <div class="kms-modal__desc" style="font-size:1.25rem; font-weight:600; text-align:center; margin:10px 0 16px;">
+      点击后，将直接跳转到企业微信咨询窗口
+    </div>
 
     <div id="contactError" class="kms-modal__error" aria-live="polite"></div>
 
-    <button type="button" id="confirmContactBtn" class="kms-modal__btn">
-      立即咨询
+    <button type="button" id="confirmContactBtn" class="kms-modal__btn"
+      style="font-size:1.1rem; font-weight:600;">
+      确认咨询
       <span class="spark-layer" aria-hidden="true"></span>
     </button>
 
-    <div class="kms-modal__hint">※ 即将跳转到企业微信客服</div>
+    <div class="kms-modal__hint"
+      style="font-size:1.2rem; font-weight:600; text-align:center; margin-top:14px;">
+      ※ 即将跳转到企业微信客服
+    </div>
   </div>
 </div>
-  
   <!-- =========================================================
        ✅ (B) submitToast: 제출 후 토스트
        ========================================================= -->
