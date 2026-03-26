@@ -1,0 +1,616 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>외국인환자 유치 업무협약서</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700&display=swap');
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: 'Noto Sans KR', 'Apple SD Gothic Neo', sans-serif;
+    font-size: 10pt;
+    line-height: 1.8;
+    color: #1a1a2e;
+    background: #fff;
+  }
+
+  .page {
+    width: 210mm;
+    min-height: 297mm;
+    margin: 0 auto;
+    padding: 18mm 20mm 18mm 22mm;
+    background: #fff;
+    position: relative;
+  }
+
+  /* HEADER */
+  .header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 2.5px solid #1565C0;
+    padding-bottom: 10px;
+    margin-bottom: 6px;
+  }
+
+  .logo-area {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .logo-text-kr {
+    font-size: 20pt;
+    font-weight: 700;
+    color: #1565C0;
+    letter-spacing: -1px;
+    line-height: 1.1;
+  }
+
+  .logo-text-cn {
+    font-size: 11pt;
+    color: #1565C0;
+    letter-spacing: 2px;
+  }
+
+  .logo-dot {
+    width: 8px;
+    height: 8px;
+    background: #1565C0;
+    border-radius: 50%;
+    margin: 0 4px;
+    display: inline-block;
+    vertical-align: middle;
+  }
+
+  .header-right {
+    text-align: right;
+    font-size: 8pt;
+    color: #555;
+    line-height: 1.6;
+  }
+
+  .header-right span {
+    display: block;
+    font-size: 7.5pt;
+    color: #888;
+  }
+
+  /* DOC META */
+  .doc-meta {
+    display: flex;
+    justify-content: flex-end;
+    gap: 16px;
+    font-size: 8pt;
+    color: #888;
+    margin-bottom: 18px;
+    margin-top: 4px;
+  }
+
+  /* TITLE BLOCK */
+  .title-block {
+    text-align: center;
+    margin: 22px 0 20px;
+  }
+
+  .title-block .main-title {
+    font-size: 17pt;
+    font-weight: 700;
+    color: #1565C0;
+    letter-spacing: 4px;
+    display: block;
+    margin-bottom: 6px;
+  }
+
+  .title-block .sub-title {
+    font-size: 9pt;
+    color: #666;
+    letter-spacing: 1px;
+  }
+
+  .title-divider {
+    width: 60px;
+    height: 2px;
+    background: #1565C0;
+    margin: 10px auto;
+  }
+
+  /* PREAMBLE */
+  .preamble {
+    background: #EEF4FD;
+    border-left: 3px solid #1565C0;
+    padding: 10px 14px;
+    font-size: 9pt;
+    line-height: 1.9;
+    color: #2c2c2c;
+    margin-bottom: 18px;
+    border-radius: 0 4px 4px 0;
+  }
+
+  /* PARTY TABLE */
+  .party-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 20px;
+    font-size: 9pt;
+  }
+  .party-table th {
+    background: #1565C0;
+    color: #fff;
+    font-weight: 500;
+    padding: 7px 12px;
+    text-align: left;
+    letter-spacing: 1px;
+    width: 14%;
+  }
+  .party-table td {
+    padding: 6px 12px;
+    border: 0.5px solid #c8d8f0;
+    background: #fff;
+    color: #1a1a2e;
+    line-height: 1.7;
+  }
+  .party-table tr:nth-child(even) td { background: #f7faff; }
+
+  /* ARTICLE */
+  .article {
+    margin-bottom: 14px;
+    page-break-inside: avoid;
+  }
+
+  .article-title {
+    font-size: 10pt;
+    font-weight: 700;
+    color: #1565C0;
+    background: #EEF4FD;
+    padding: 5px 10px;
+    border-left: 3px solid #1565C0;
+    margin-bottom: 7px;
+    letter-spacing: 0.5px;
+  }
+
+  .article-body {
+    padding: 0 10px;
+    font-size: 9.5pt;
+    line-height: 1.85;
+    color: #2c2c2c;
+  }
+
+  .article-body .item {
+    margin-bottom: 6px;
+    padding-left: 14px;
+    text-indent: -14px;
+    position: relative;
+  }
+
+  .item-num {
+    color: #1565C0;
+    font-weight: 500;
+    margin-right: 4px;
+  }
+
+  /* HIGHLIGHT BOX */
+  .highlight-box {
+    background: #fff8e1;
+    border: 0.5px solid #f0c040;
+    padding: 8px 12px;
+    border-radius: 4px;
+    font-size: 9pt;
+    margin: 8px 0;
+    color: #5d4037;
+  }
+
+  .highlight-box strong {
+    color: #bf6000;
+  }
+
+  /* BANK INFO */
+  .bank-info {
+    background: #EEF4FD;
+    border: 0.5px solid #90b8e8;
+    border-radius: 4px;
+    padding: 8px 14px;
+    font-size: 9pt;
+    margin: 6px 0;
+    color: #1565C0;
+    display: flex;
+    gap: 20px;
+    align-items: center;
+  }
+  .bank-info .label { color: #555; font-size: 8.5pt; }
+
+  /* SIGNATURE SECTION */
+  .sig-section {
+    margin-top: 28px;
+    page-break-inside: avoid;
+  }
+
+  .sig-date {
+    text-align: center;
+    font-size: 11pt;
+    font-weight: 500;
+    letter-spacing: 3px;
+    margin-bottom: 24px;
+    color: #1a1a2e;
+  }
+
+  .sig-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+    margin-top: 10px;
+  }
+
+  .sig-card {
+    border: 0.5px solid #c8d8f0;
+    border-radius: 6px;
+    overflow: hidden;
+  }
+
+  .sig-card-header {
+    background: #1565C0;
+    color: #fff;
+    font-size: 10pt;
+    font-weight: 500;
+    padding: 7px 14px;
+    letter-spacing: 2px;
+  }
+
+  .sig-card-body {
+    padding: 12px 14px;
+    font-size: 9pt;
+    line-height: 2.2;
+    color: #2c2c2c;
+  }
+
+  .sig-card-body .field {
+    display: flex;
+    gap: 10px;
+    border-bottom: 0.5px solid #e8eef8;
+    padding: 4px 0;
+  }
+  .sig-card-body .field:last-child { border-bottom: none; }
+  .sig-card-body .field .lbl {
+    color: #888;
+    font-size: 8.5pt;
+    min-width: 52px;
+  }
+  .sig-card-body .field .val {
+    color: #1a1a2e;
+    font-size: 9pt;
+    flex: 1;
+  }
+
+  .sig-line {
+    border-top: 0.5px solid #aaa;
+    margin: 12px 0 4px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .sig-stamp-area {
+    height: 50px;
+    border: 0.5px dashed #b0bec5;
+    border-radius: 4px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 8pt;
+    color: #aaa;
+    margin-top: 8px;
+    letter-spacing: 1px;
+  }
+
+  /* FOOTER */
+  .footer {
+    margin-top: 20px;
+    border-top: 1px solid #c8d8f0;
+    padding-top: 7px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 7.5pt;
+    color: #aaa;
+  }
+
+  .footer-logo {
+    font-size: 8.5pt;
+    font-weight: 700;
+    color: #1565C0;
+    letter-spacing: -0.5px;
+  }
+
+  .page-num {
+    font-size: 7.5pt;
+    color: #bbb;
+  }
+
+  /* PRINT */
+  @media print {
+    body { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    .page { margin: 0; padding: 14mm 18mm; width: 100%; }
+  }
+</style>
+</head>
+<body>
+<div class="page">
+
+  <!-- HEADER -->
+  <div class="header">
+    <div class="logo-area">
+      <div>
+        <div class="logo-text-kr">한강애봄</div>
+        <div class="logo-text-cn">汉江春天</div>
+      </div>
+    </div>
+    <div class="header-right">
+      <strong style="font-size:9pt; color:#1565C0;">한강애봄 (Hangang Aebbom)</strong>
+      <span>서울특별시 성북구 삼양로 29, 3층 11호</span>
+      <span>https://kmedispring.com</span>
+      <span>외국인환자유치업 등록기관</span>
+    </div>
+  </div>
+
+
+
+  <!-- TITLE -->
+  <div class="title-block">
+    <span class="main-title">외국인환자 유치 업무협약서</span>
+    <div class="title-divider"></div>
+    <div class="sub-title">Agreement for Foreign Patient Attraction Services</div>
+    <div style="font-size:8pt; color:#999; margin-top:4px;">※ 본 협약서는 의료법 제27조의2 및 보건복지부 고시에 근거합니다.</div>
+  </div>
+
+  <!-- PREAMBLE -->
+  <div class="preamble">
+    <strong><u>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</u></strong> (주소: <u>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</u>, 이하 <strong>"갑"</strong>)과
+    <strong>한강애봄</strong> (주소: 서울시 성북구 동소문로 63, 6층, 이하 <strong>"을"</strong>)은 외국인 환자를 유치하고 진료함에 있어
+    각자의 역할과 법률 관계를 명확히 하고자, 「의료법」 제27조의2, 같은 법 시행규칙 제19조의7 이하 및 관련 보건복지부 고시에 따라
+    다음과 같이 본 업무협약을 체결한다.
+  </div>
+
+  <!-- PARTY TABLE -->
+  <table class="party-table">
+    <tr>
+      <th rowspan="4">"갑"<br>(의료기관)</th>
+      <td><strong>기관명</strong></td>
+      <td colspan="3"></td>
+    </tr>
+    <tr>
+      <td><strong>주소</strong></td>
+      <td colspan="3"></td>
+    </tr>
+    <tr>
+      <td><strong>대표자</strong></td>
+      <td style="width:30%">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; (인)</td>
+      <td><strong>사업자번호</strong></td>
+      <td></td>
+    </tr>
+    <tr>
+      <td><strong>연락처</strong></td>
+      <td></td>
+      <td><strong>이메일</strong></td>
+      <td></td>
+    </tr>
+    <tr>
+      <th rowspan="4">"을"<br>(유치업체)</th>
+      <td><strong>기관명</strong></td>
+      <td colspan="3">한강애봄</td>
+    </tr>
+    <tr>
+      <td><strong>주소</strong></td>
+      <td colspan="3">서울시 성북구 동소문로 63, 6층</td>
+    </tr>
+    <tr>
+      <td><strong>대표자</strong></td>
+      <td>이 가 나 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; (인)</td>
+      <td><strong>사업자번호</strong></td>
+      <td></td>
+    </tr>
+    <tr>
+      <td><strong>연락처</strong></td>
+      <td></td>
+      <td><strong>이메일</strong></td>
+      <td></td>
+    </tr>
+  </table>
+
+  <!-- ARTICLES -->
+  <div class="article">
+    <div class="article-title">제1조 (목적)</div>
+    <div class="article-body">
+      <div class="item">
+        본 협약은 "을"이 외국인 고객을 "갑"에게 소개하고, "갑"이 소개받은 고객에게 최선의 의료서비스를 제공함에 있어 "갑"과 "을" 각각의 권리와 의무를 명확히 규정하고, 신의성실의 원칙에 따라 이를 준수함으로써 원활한 사업 수행과 지속적인 협력관계를 통해 공동의 번영과 발전을 도모하는 데 그 목적이 있다.
+      </div>
+    </div>
+  </div>
+
+  <div class="article">
+    <div class="article-title">제2조 (용어의 정의)</div>
+    <div class="article-body">
+      <div class="item"><span class="item-num">①</span> <strong>"의료비(Medical Charges)"</strong>라 함은 병실료, 치료비, 약제비, 검사비, 응급처치료, 방사선·병리검사비 등 "갑"이 제공하는 의료서비스와 직접 관련된 일체의 비용으로서 "갑"이 "을" 또는 고객, 보험회사에게 청구하는 비용을 의미한다.</div>
+      <div class="item"><span class="item-num">②</span> <strong>"의료서비스(Medical Services)"</strong>라 함은 "갑"이 입원·외래·건강검진 고객에게 제공하는 검진, 응급처치, 입원병실, 간호, 투약, 중환자실, 수술, 재료 제공, 수혈, 검사, 방사선·병리검사, 구급차 운용 등 의료관련 서비스 일체를 의미한다.</div>
+      <div class="item"><span class="item-num">③</span> <strong>"의료 외 서비스(Non-Medical Services)"</strong>라 함은 의료서비스를 제외하고 고객 요청에 의해 "을"이 제공하는 행정사무, 비자 발급 지원, 교통·숙박 예약, 통역, 국내관광 안내 등 서비스 일체를 의미한다.</div>
+      <div class="item"><span class="item-num">④</span> <strong>"유치수수료(Commission)"</strong>라 함은 "을"이 고객을 "갑"에게 소개하여 의료서비스가 제공됨으로써 발생하는 의료비용에 대해 양 당사자가 합의한 금액 또는 비율에 따라 "갑"이 "을"에게 지급하는 금원을 의미한다.</div>
+      <div class="item"><span class="item-num">⑤</span> <strong>"외국인환자"</strong>라 함은 「의료법」 제27조의2에 따라 국내에 거주하지 아니하는 외국인으로서 진료를 목적으로 입국한 자를 의미한다.</div>
+    </div>
+  </div>
+
+  <div class="article">
+    <div class="article-title">제3조 (협약의 성립 및 기간)</div>
+    <div class="article-body">
+      <div class="item"><span class="item-num">①</span> 본 협약은 양 당사자의 서명(또는 전자서명) 후 1년간 유효하며, 만료 1개월 전까지 서면에 의한 해지 통보가 없을 경우 동일 조건으로 1년씩 자동 연장된다.</div>
+      <div class="item"><span class="item-num">②</span> 협약이 해지되더라도 입원·진료 중인 고객에 대한 양 당사자의 책임과 의무는 해당 고객이 퇴원·치료를 완료할 때까지 유효하게 존속한다.</div>
+      <div class="item"><span class="item-num">③</span> "갑"과 "을"은 「의료법」 등 관련 법규에 따라 외국인환자 유치업으로 등록된 기관이어야 하며, 등록 유지 의무를 부담한다. 등록 취소 또는 효력 상실 시 즉시 상대방에게 서면 통보하여야 한다.</div>
+    </div>
+  </div>
+
+  <div class="article">
+    <div class="article-title">제4조 ("갑"의 책임과 의무)</div>
+    <div class="article-body">
+      <div class="item"><span class="item-num">①</span> "갑"은 "을"이 의뢰한 고객에게 최선의 의료서비스를 제공한다. 다만, 진료 여부에 관한 결정권은 "갑"에게 있다.</div>
+      <div class="item"><span class="item-num">②</span> "갑"은 "을"이 의뢰하는 고객의 예상 진료방법·절차·소요시간·진료비·주의사항 등을 안내하고, 담당부서 및 담당자를 지정·운영한다.</div>
+      <div class="item"><span class="item-num">③</span> "갑"은 「의료법 시행규칙」 제19조의9에 따른 사업실적 보고를 위해 "을"이 요청하는 경우, 유치한 외국인환자의 진료 관련 자료 또는 설명을 제공할 의무가 있다.</div>
+      <div class="item"><span class="item-num">④</span> "갑"은 홍보·마케팅 목적으로 "을"이 요청하는 경우, 시설·의료진·제공서비스 관련 자료(온·오프라인)를 제공할 수 있다.</div>
+      <div class="item"><span class="item-num">⑤</span> "갑"은 사전 고지된 서비스 내용과 상이한 서비스가 예상되거나 이미 제공된 경우, 즉시 "을"에게 서면으로 통보한다.</div>
+      <div class="item"><span class="item-num">⑥</span> "갑"은 외국인환자 진료 시 「의료법」 제27조의2 제4항에 따라 보험 또는 공제 가입 여부를 확인하고 필요한 경우 "을"에게 협조를 요청할 수 있다.</div>
+    </div>
+  </div>
+
+  <div class="article">
+    <div class="article-title">제5조 ("을"의 책임과 의무)</div>
+    <div class="article-body">
+      <div class="item"><span class="item-num">①</span> "을"은 "갑"을 고객에게 홍보·추천하고, 고객 요청 시 진료 관련 의뢰서를 한국어 또는 고객의 주요 사용 언어로 된 문서·전자문서 형태로 "갑"에게 제출한다.</div>
+      <div class="item"><span class="item-num">②</span> "을"은 홍보·마케팅 활동에서 "갑"의 권리와 명예를 침해하지 않도록 하며, 허위·과장 광고를 하지 아니한다.</div>
+      <div class="item"><span class="item-num">③</span> "을"은 외국인환자의 사정으로 사전 조율된 서비스의 변경 또는 취소가 필요한 경우, 인지 즉시 "갑"에게 통지하고 양해를 구한다.</div>
+      <div class="item"><span class="item-num">④</span> "을"은 의료 외 서비스 제공을 위해 여행업자 등 관련 업종과 별도 계약을 체결할 수 있으며, 이에 따른 비용은 "을"이 부담한다.</div>
+      <div class="item"><span class="item-num">⑤</span> "을"은 「의료법」 제27조의2 제3항에 따라 금지되는 행위(리베이트 수수, 환자 알선·소개에 대한 부당한 대가 수수 등)를 하여서는 아니 된다.</div>
+      <div class="item"><span class="item-num">⑥</span> "을"은 외국인환자의 개인정보를 「개인정보 보호법」 및 관련 법규에 따라 적법하게 처리하며, 목적 외 사용 또는 제3자 제공을 금지한다.</div>
+    </div>
+  </div>
+
+  <div class="article">
+    <div class="article-title">제6조 (의료비 및 유치수수료 정산)</div>
+    <div class="article-body">
+      <div class="item"><span class="item-num">①</span> "갑"이 "을"에게 지급할 외국인환자 유치수수료는 <strong>의료비(Medical Charges)의 30% (부가가치세 포함)</strong>로 하며, 진료가 종료되는 시점에 정산함을 원칙으로 한다. 다만, "을"이 할인쿠폰 발행 등 프로모션을 진행한 경우 해당 할인금액을 수수료에서 차감한다.</div>
+      <div class="item"><span class="item-num">②</span> 영세율을 적용하는 경우 유치수수료는 의료비의 <strong>20%</strong>로 한다.</div>
+      <div class="item"><span class="item-num">③</span> "을"은 의료비 결제 완료 후 유치수수료에 대한 세금계산서(또는 인보이스)를 "갑"에게 발행하고, "갑"은 수령일로부터 <strong>15일 이내</strong>에 아래 계좌로 지급한다.</div>
+      <div class="bank-info">
+        <div><span class="label">은행</span><br><strong>국민은행</strong></div>
+        <div><span class="label">계좌번호</span><br><strong>907637-00-000473</strong></div>
+        <div><span class="label">예금주</span><br><strong>이가나 (한강애봄)</strong></div>
+      </div>
+      <div class="item"><span class="item-num">④</span> 의료비는 원칙적으로 고객이 "갑"에게 직접 결제하며, 입원환자는 입원 시점에 100%, 외래환자는 매 진료 시마다 결제한다. 단, "을"이 선결제하는 경우 양 당사자가 합의한 수가를 적용한다.</div>
+      <div class="item"><span class="item-num">⑤</span> 동일 외국인환자가 초진일로부터 1년 이내 재진료하거나, 건강검진 후 질병이 발견되어 치료받는 경우에도 유치수수료를 지급한다.</div>
+      <div class="item"><span class="item-num">⑥</span> 진료 중 부득이하게 발생한 부작용 치료비 및 병실료는 수수료 산정의 의료비에서 제외하며, 이 경우 "갑"은 "을"에게 즉시 통보한다.</div>
+      <div class="item"><span class="item-num">⑦</span> 분기별 정산 내역서를 양 당사자가 서면(또는 전자문서)으로 상호 교환하여 확인한다.</div>
+    </div>
+  </div>
+
+  <div class="article">
+    <div class="article-title">제7조 (개인정보 보호)</div>
+    <div class="article-body">
+      <div class="item"><span class="item-num">①</span> 양 당사자는 본 협약의 이행 과정에서 취득한 외국인환자의 개인정보(성명, 국적, 진료정보 등)를 「개인정보 보호법」, 「의료법」 및 관련 법령에 따라 적법하게 처리·보호한다.</div>
+      <div class="item"><span class="item-num">②</span> 환자의 진료 정보는 환자 본인의 서면 동의 없이 제3자에게 제공하거나 공개할 수 없다.</div>
+      <div class="item"><span class="item-num">③</span> 협약 종료 후에도 개인정보 보호 의무는 관련 법령이 정하는 기간 동안 존속한다.</div>
+    </div>
+  </div>
+
+  <div class="article">
+    <div class="article-title">제8조 (지식재산권)</div>
+    <div class="article-body">
+      <div class="item"><span class="item-num">①</span> "갑"이 "을"에게 제공한 콘텐츠의 소유권은 "갑"에게 있다. 다만, "을"은 이를 "을"이 운영하는 인터넷사이트·SNS 등에 목적에 맞게 가공·등록할 수 있으며, "을"이 창작한 2차 콘텐츠의 저작권은 "을"에게 있다.</div>
+      <div class="item"><span class="item-num">②</span> "갑"은 "을"의 사전 서면 승인 없이 "을" 운영 채널에 등록된 정보를 제3자에게 양도·판매하거나 상업적으로 이용할 수 없다.</div>
+    </div>
+  </div>
+
+  <div class="article">
+    <div class="article-title">제9조 (협약의 해지)</div>
+    <div class="article-body">
+      <div class="item"><span class="item-num">①</span> 일방 당사자가 본 협약을 위반하거나 이행이 불가능한 사정이 발생한 경우, 상대방은 이를 서면으로 통보할 수 있으며, 통보일로부터 30일 이내에 서면 합의가 이루어지지 않으면 협약은 해지된 것으로 본다.</div>
+      <div class="item"><span class="item-num">②</span> 다음 각 호의 사유가 발생한 경우 상대방은 즉시 서면 통보로 협약을 해지할 수 있다: ㉮ 외국인환자유치업 등록이 취소된 경우, ㉯ 파산·회생절차 개시 신청이 있는 경우, ㉰ 법령 위반으로 영업정지 처분을 받은 경우.</div>
+    </div>
+  </div>
+
+  <div class="article">
+    <div class="article-title">제10조 (비밀 유지)</div>
+    <div class="article-body">
+      <div class="item">양 당사자는 본 협약과 관련하여 취득한 상대방의 영업상 비밀 및 정보를 계약 당사자 이외의 제3자에게 누설하지 아니하며, 이를 위반한 경우 대한민국 관련 법규에 따라 민·형사상 책임을 진다. 이 의무는 협약 종료 후 <strong>3년간</strong> 존속한다.</div>
+    </div>
+  </div>
+
+  <div class="article">
+    <div class="article-title">제11조 (불가항력)</div>
+    <div class="article-body">
+      <div class="item"><span class="item-num">①</span> 양 당사자는 천재지변, 전쟁, 계엄, 폭동, 전염병, 폭발, 화재, 지진, 법적 명령, 정부 처분 등 불가항력적 사유로 인한 협약 불이행 또는 지연에 대하여 책임을 지지 아니한다.</div>
+      <div class="item"><span class="item-num">②</span> 다만, "갑" 내부의 쟁의행위로 인한 경우 "갑"은 입원 중인 환자의 안전과 진료 연속성을 위해 최선의 노력을 다하여야 한다.</div>
+    </div>
+  </div>
+
+  <div class="article">
+    <div class="article-title">제12조 (법적 책임)</div>
+    <div class="article-body">
+      <div class="item"><span class="item-num">①</span> "갑"은 의료기관 내에서 "갑"의 고의 또는 중과실로 발생한 사고에 대하여 법적 책임을 부담한다. 의료 외의 상황에서 발생한 사고에 대한 법적 책임은 "을"이 부담한다.</div>
+      <div class="item"><span class="item-num">②</span> "을"은 의료분쟁 발생 시 원만한 해결을 위해 적극 협력하며, 환자 사망 시 사체 운구, 본국 송환 및 관련 서류 준비를 "갑"과 상호 협조하여 진행한다. 관련 수습 비용은 환자 보호자가 부담한다.</div>
+      <div class="item"><span class="item-num">③</span> "갑"의 과실 또는 채무불이행으로 "을"이 법적 책임을 부담하게 된 경우 "갑"은 "을"을 면책하고, "을"의 과실 또는 채무불이행으로 "갑"이 손해를 입은 경우 "을"은 "갑"을 면책한다.</div>
+    </div>
+  </div>
+
+  <div class="article">
+    <div class="article-title">제13조 (권리·의무의 양도 금지)</div>
+    <div class="article-body">
+      <div class="item">양 당사자는 상대방의 서면 동의 없이 본 협약상의 권리·의무 전부 또는 일부를 제3자에게 양도·이전·담보로 제공할 수 없다.</div>
+    </div>
+  </div>
+
+  <div class="article">
+    <div class="article-title">제14조 (분쟁 해결)</div>
+    <div class="article-body">
+      <div class="item"><span class="item-num">①</span> 본 협약에 명시되지 아니한 사항은 대한민국 관련 법령 및 일반 상관례에 따른다.</div>
+      <div class="item"><span class="item-num">②</span> 본 협약과 관련하여 분쟁이 발생한 경우 "갑"의 소재지를 관할하는 <strong>서울중앙지방법원</strong>을 제1심 전속 관할 법원으로 한다.</div>
+    </div>
+  </div>
+
+  <div class="article">
+    <div class="article-title">제15조 (존속 조항)</div>
+    <div class="article-body">
+      <div class="item">협약 해지 후에도 제7조(개인정보 보호), 제8조(지식재산권), 제9조 제2항(진행 중인 환자 의무), 제10조(비밀 유지), 제12조(법적 책임) 및 제14조(분쟁 해결)는 그 목적이 달성될 때까지 유효하게 존속한다.</div>
+    </div>
+  </div>
+
+  <div class="article">
+    <div class="article-title">제16조 (기타)</div>
+    <div class="article-body">
+      <div class="item"><span class="item-num">①</span> 본 협약은 본건 사안에 관하여 양 당사자 간의 모든 합의를 포함하며, 본 협약에 반하는 구두 또는 이전의 서면 합의를 대체한다.</div>
+      <div class="item"><span class="item-num">②</span> 본 협약의 변경·수정은 양 당사자가 서명(또는 전자서명)한 서면으로만 유효하다.</div>
+      <div class="item"><span class="item-num">③</span> 본 협약상 통지는 각 당사자의 등록 주소 또는 이메일로 서면 발송하며, 주소 변경 시 즉시 상대방에게 통보하여야 한다.</div>
+      <div class="item"><span class="item-num">④</span> 본 협약은 2부를 작성하여 양 당사자가 각 1부씩 보관한다.</div>
+    </div>
+  </div>
+
+  <!-- SIGNATURE -->
+  <div class="sig-section">
+    <div class="sig-date">20&nbsp;&nbsp;&nbsp;&nbsp;년 &nbsp;&nbsp;&nbsp;&nbsp; 월 &nbsp;&nbsp;&nbsp;&nbsp; 일</div>
+
+    <div style="font-size:8.5pt; color:#888; text-align:center; margin-bottom:16px;">
+      아래 서명함으로써 본 협약의 모든 조항을 읽고 이해하였으며 이에 동의함을 확인합니다.
+    </div>
+
+    <div class="sig-grid">
+      <div class="sig-card">
+        <div class="sig-card-header">"갑" — 의료기관</div>
+        <div class="sig-card-body">
+          <div class="field"><span class="lbl">기관명</span><span class="val">&nbsp;</span></div>
+          <div class="field"><span class="lbl">대표자</span><span class="val">&nbsp;</span></div>
+          <div class="field"><span class="lbl">주소</span><span class="val">&nbsp;</span></div>
+          <div class="field"><span class="lbl">날짜</span><span class="val">2025년 &nbsp;&nbsp;&nbsp; 월 &nbsp;&nbsp;&nbsp; 일</span></div>
+          <div class="sig-stamp-area">서명 / 날인</div>
+        </div>
+      </div>
+      <div class="sig-card">
+        <div class="sig-card-header">"을" — 외국인환자유치업체</div>
+        <div class="sig-card-body">
+          <div class="field"><span class="lbl">기관명</span><span class="val">한강애봄</span></div>
+          <div class="field"><span class="lbl">대표자</span><span class="val">이 가 나</span></div>
+          <div class="field"><span class="lbl">주소</span><span class="val">서울시 성북구 동소문로 63, 6층</span></div>
+          <div class="field"><span class="lbl">날짜</span><span class="val">2025년 &nbsp;&nbsp;&nbsp; 월 &nbsp;&nbsp;&nbsp; 일</span></div>
+          <div class="sig-stamp-area">서명 / 날인</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <div class="footer">
+    <div class="footer-logo">한강애봄 · 汉江春天</div>
+    <div style="font-size:7.5pt; color:#aaa;">서울특별시 성북구 삼양로 29, 3층 11호 &nbsp;|&nbsp; https://kmedispring.com</div>
+    <div class="page-num">Page 1</div>
+  </div>
+
+</div>
+</body>
+</html>
