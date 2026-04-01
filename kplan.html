@@ -121,17 +121,52 @@
     /* ══════════════════════════════════════
        ① 건강검진 섹션
     ══════════════════════════════════════ */
-    .checkup-intro {
-      background: linear-gradient(135deg, #EEF6FD 0%, #F8FBFF 100%);
-      border-left: 5px solid var(--hga-blue);
-      border-radius: 0 12px 12px 0;
-      padding: 16px 20px;
-      margin-bottom: 24px;
-      font-size: 15px;
-      color: var(--text-main);
-      line-height: 1.8;
-    }
-    .checkup-intro strong { color: var(--hga-blue); }
+/* 검색어: .checkup-intro {
+   아래 내용으로 교체 */
+
+.checkup-intro {
+  background: linear-gradient(135deg, #EEF6FD 0%, #F8FBFF 100%);
+  border-left: 5px solid var(--hga-blue);
+  border-radius: 0 12px 12px 0;
+  padding: 16px 20px;
+  margin-bottom: 24px;
+  font-size: 15px;
+  color: var(--text-main);
+  line-height: 1.85;
+  word-break: keep-all;       /* 중국어 단어 단위 줄바꿈 */
+  overflow-wrap: break-word;
+}
+.checkup-intro strong { color: var(--hga-blue); }
+
+/* block-title 모바일 줄바꿈 대응 */
+.block-title {
+  font-family: 'Source Han Serif CN', 'Noto Serif CJK SC', serif;
+  font-size: 26px;
+  font-weight: 700;
+  color: var(--hga-blue);
+  margin: 0 0 6px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;            /* 배지가 줄 바꿔도 자연스럽게 */
+  word-break: keep-all;
+}
+
+.block-subtitle {
+  font-size: 14px;
+  color: var(--text-sub);
+  margin: 0 0 22px;
+  line-height: 1.7;
+  word-break: keep-all;
+}
+
+/* 모바일: 글씨 살짝 줄이기 */
+@media (max-width: 480px) {
+  .block-title   { font-size: 20px; }
+  .block-subtitle { font-size: 13px; }
+  .checkup-intro { font-size: 13.5px; padding: 14px 16px; }
+  .kplan-block   { padding: 22px 18px; }
+}
 
     /* 병원 카드 */
     .hospital-card {
@@ -166,111 +201,132 @@
       border: none;
     }
 
-    /* 가격 테이블 */
-    .price-table {
-      width: 100%;
-      border-collapse: collapse;
-      font-size: 14px;
-    }
-    .price-table thead tr {
-      background: var(--table-hd);
-    }
-    .price-table th {
-      padding: 11px 14px;
-      font-weight: 700;
-      color: var(--hga-blue);
-      font-size: 13px;
-      border-bottom: 2px solid var(--blue-line);
-      text-align: left;
-    }
-    .price-table td {
-      padding: 12px 14px;
-      border-bottom: 1px solid var(--row-border);
-      vertical-align: top;
-      line-height: 1.6;
-      color: var(--text-main);
-    }
-    .price-table tr:last-child td { border-bottom: none; }
-    .price-table .tier-badge {
-      display: inline-block;
-      font-family: 'Roboto', monospace;
-      font-size: 12px;
-      font-weight: 700;
-      border-radius: 8px;
-      padding: 3px 10px;
-    }
-    .tier-low  { background: #EEF6FD; color: var(--hga-blue); }
-    .tier-mid  { background: #EDF7F6; color: #2aa8a0; }
-    .tier-high { background: #FFF3EE; color: #e07b00; }
-    .price-krw {
-      font-family: 'Roboto', monospace;
-      font-weight: 700;
-      color: var(--hga-blue);
-      font-size: 15px;
-    }
-    .price-rmb {
-      font-family: 'Roboto', monospace;
-      font-size: 12px;
-      color: var(--hga-pink);
-      margin-left: 4px;
-    }
-    .price-consult {
-      font-size: 13px;
-      color: var(--text-sub);
-      font-style: italic;
-    }
+ /* ══════════════════════════════════════
+   가격 테이블 — 반응형 (기존 코드 전체 교체)
+   검색어: /* ── 가격 테이블 */
+   ══════════════════════════════════════ */
 
-    /* 추가 항목 */
-    .addon-box {
-      background: var(--soft-bg);
-      border-radius: 0 0 12px 12px;
-      padding: 14px 20px;
-    }
-    .addon-box h4 {
-      font-size: 13px;
-      font-weight: 700;
-      color: var(--text-sub);
-      margin: 0 0 8px;
-      letter-spacing: .5px;
-    }
-    .addon-tags {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 7px;
-    }
-    .addon-tag {
-      background: #fff;
-      border: 1px solid var(--blue-line);
-      border-radius: 20px;
-      padding: 4px 13px;
-      font-size: 12px;
-      color: var(--text-main);
-    }
+.price-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 14px;
+  table-layout: fixed;        /* ← 핵심: 열 너비 고정 */
+}
 
-    /* 병원 특징 리스트 */
-    .hospital-features {
-      padding: 12px 20px;
-      background: #fff;
-    }
-    .hospital-features ul {
-      margin: 0;
-      padding: 0;
-      list-style: none;
-    }
-    .hospital-features ul li {
-      font-size: 13px;
-      color: var(--text-sub);
-      padding: 3px 0 3px 16px;
-      position: relative;
-      line-height: 1.6;
-    }
-    .hospital-features ul li::before {
-      content: '·';
-      position: absolute;
-      left: 4px;
-      color: var(--hga-blue);
-      font-weight: 700;
-    }
+.price-table thead tr {
+  background: var(--table-hd);
+}
+
+.price-table th {
+  padding: 11px 10px;
+  font-weight: 700;
+  color: var(--hga-blue);
+  font-size: 13px;
+  border-bottom: 2px solid var(--blue-line);
+  text-align: left;
+  word-break: keep-all;
+}
+
+/* 열 너비 비율 지정 */
+.price-table th:nth-child(1) { width: 14%; }   /* 价位 */
+.price-table th:nth-child(2) { width: 20%; }   /* 套餐名称 */
+.price-table th:nth-child(3) { width: 26%; }   /* 费用 */
+.price-table th:nth-child(4) { width: 40%; }   /* 核心内容 */
+
+.price-table td {
+  padding: 12px 10px;
+  border-bottom: 1px solid var(--row-border);
+  vertical-align: top;
+  line-height: 1.65;
+  color: var(--text-main);
+  word-break: keep-all;       /* ← 한자·중국어 단어 단위 줄바꿈 */
+  overflow-wrap: break-word;
+}
+
+.price-table tr:last-child td { border-bottom: none; }
+
+.tier-badge {
+  display: inline-block;
+  font-family: 'Roboto', monospace;
+  font-size: 11px;
+  font-weight: 700;
+  border-radius: 8px;
+  padding: 3px 8px;
+  white-space: nowrap;
+}
+
+.tier-low  { background: #EEF6FD; color: var(--hga-blue); }
+.tier-mid  { background: #EDF7F6; color: #2aa8a0; }
+.tier-high { background: #FFF3EE; color: #e07b00; }
+
+.price-krw {
+  font-family: 'Roboto', monospace;
+  font-weight: 700;
+  color: var(--hga-blue);
+  font-size: 14px;
+  display: block;             /* ← 가격을 줄 단위로 */
+}
+
+.price-rmb {
+  font-family: 'Roboto', monospace;
+  font-size: 12px;
+  color: var(--hga-pink);
+  display: block;
+  margin-top: 2px;
+}
+
+.price-consult {
+  font-size: 13px;
+  color: var(--text-sub);
+  font-style: italic;
+}
+
+/* ══════════════════════════════════════
+   모바일 390px 이하 (iPhone SE 포함)
+   → 테이블을 카드형으로 변환
+   ══════════════════════════════════════ */
+@media (max-width: 480px) {
+
+  /* 헤더 숨기기 */
+  .price-table thead { display: none; }
+
+  /* 테이블·행·셀 모두 블록으로 */
+  .price-table,
+  .price-table tbody,
+  .price-table tr,
+  .price-table td { display: block; width: 100%; }
+
+  /* 행 = 카드 */
+  .price-table tr {
+    border: 1px solid var(--row-border);
+    border-radius: 12px;
+    margin-bottom: 12px;
+    padding: 12px 14px;
+    background: #fff;
+  }
+  .price-table tr:last-child { margin-bottom: 0; }
+
+  /* 셀 앞에 라벨 자동 삽입 */
+  .price-table td::before {
+    content: attr(data-label);
+    display: block;
+    font-size: 11px;
+    font-weight: 700;
+    color: var(--hga-blue);
+    margin-bottom: 4px;
+    letter-spacing: .4px;
+  }
+
+  .price-table td {
+    padding: 6px 0;
+    border-bottom: 1px dashed var(--row-border);
+  }
+  .price-table td:last-child { border-bottom: none; }
+
+  /* 병원 카드 헤더 글자 줄바꿈 허용 */
+  .hospital-card-header h3 { font-size: 16px; line-height: 1.4; }
+  .hospital-card-header .h-num { font-size: 11px; }
+}
 
     /* ══════════════════════════════════════
        ② 서비스 카드 그리드 (리플릿 스타일)
@@ -704,189 +760,295 @@
 
       <hr />
 
-      <!-- ══════════════════════════════════════
-           ① 综合健康体检 — 3개 병원 패키지
-      ══════════════════════════════════════ -->
-      <div class="kplan-block">
-        <div class="block-title cn-serif">
-          🩺 综合健康体检
-          <span class="badge">推荐</span>
-        </div>
-        <div class="block-subtitle">与韩国顶级医疗机构合作 · 1~2天即可完成精密检查 · 全程中文陪同</div>
+   <!-- 검색어: <!-- ══ ① 综合健康体检 -->
+     아래로 교체 -->
 
-        <div class="checkup-intro">
-          韩国健康体检系统<strong>世界顶级水平</strong>。1~2天内完成100项以上检查，当天或次日即可获得结果。<br>
-          汉江春天与以下三家代表性医疗机构合作，<strong>根据您的目的和预算量身定制最适合的套餐</strong>。
-        </div>
+<!-- ══════════════════════════════════════
+     ① 综合健康体检 — 3개 병원 패키지
+══════════════════════════════════════ -->
+<div class="kplan-block">
+  <div class="block-title cn-serif">
+    🩺 综合健康体检
+    <span class="badge">推荐</span>
+  </div>
+  <div class="block-subtitle">
+    与韩国顶级医疗机构合作 · 1~2天即可完成精密检查 · 全程中文陪同
+  </div>
+  <div class="checkup-intro">
+    韩国健康体检系统<strong>世界顶级水平</strong>。
+    1~2天内完成100项以上检查，当天或次日即可获得结果。
+    汉江春天与以下三家代表性医疗机构合作，
+    <strong>根据您的目的和预算量身定制最适合的套餐</strong>。
+  </div>
 
-        <!-- 병원 ① KMI -->
-        <div class="hospital-card">
-          <div class="hospital-card-header">
-            <span class="h-num">① KMI</span>
-            <h3>KMI 健康体检中心</h3>
-          </div>
-          <table class="price-table">
-            <thead>
-              <tr>
-                <th style="width:70px;">价位</th>
-                <th style="width:110px;">套餐名称</th>
-                <th style="width:160px;">费用</th>
-                <th>核心内容</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td><span class="tier-badge tier-low">低价</span></td>
-                <td><strong>STANDARD</strong></td>
-                <td>
-                  <span class="price-krw num">500,000</span><small style="color:var(--text-sub);font-size:11px;">韩元</small>
-                  <span class="price-rmb">约¥2,650</span>
-                </td>
-                <td>基本检查＋腹部超声波＋甲状腺功能＋肿瘤标记物＋胃肠道检查（三选一）</td>
-              </tr>
-              <tr>
-                <td><span class="tier-badge tier-mid">中价</span></td>
-                <td><strong>SIGNATURE</strong></td>
-                <td>
-                  <span class="price-krw num">1,000,000</span><small style="color:var(--text-sub);font-size:11px;">韩元</small>
-                  <span class="price-rmb">约¥5,300</span>
-                </td>
-                <td>STANDARD基础上＋超声波（腹部/甲状腺/乳房/子宫或前列腺）＋大肠检查（二选一）＋CT或超声波（两项自选）</td>
-              </tr>
-              <tr>
-                <td><span class="tier-badge tier-high">高价</span></td>
-                <td><strong>NOBLE</strong></td>
-                <td>
-                  <span class="price-krw num">2,000,000</span><small style="color:var(--text-sub);font-size:11px;">韩元</small>
-                  <span class="price-rmb">约¥10,600</span>
-                </td>
-                <td>SIGNATURE基础上＋更详细血液检查＋多部位超声＋可选CT/MRI/基因检查</td>
-              </tr>
-            </tbody>
-          </table>
-          <div class="addon-box">
-            <h4>可追加项目（其他项目）</h4>
-            <div class="addon-tags">
-              <span class="addon-tag">脑MRI / MRA</span>
-              <span class="addon-tag">CT（脑/肺/腰椎/颈椎/心脏钙化/腹部肥胖）</span>
-              <span class="addon-tag">肠镜</span>
-              <span class="addon-tag">胃镜 / 胃肠钡餐 / 胃蛋白酶原</span>
-              <span class="addon-tag">心脏超声 / 颈动脉超声 / 乳房超声</span>
-              <span class="addon-tag">基因检查 / 免疫力检查 / 心血管系统检查</span>
-            </div>
-          </div>
-        </div>
+  
+<!-- ══════════════════════════════════════
+  검색어: <!-- 병원 ① KMI -->
+  아래 코드로 병원 3개 블록 전체 교체
+  ══════════════════════════════════════ -->
 
-        <!-- 병원 ② Samsung -->
-        <div class="hospital-card">
-          <div class="hospital-card-header">
-            <span class="h-num">② Samsung</span>
-            <h3>三星首尔医院健康促进中心</h3>
-          </div>
-          <table class="price-table">
-            <thead>
-              <tr>
-                <th style="width:70px;">价位</th>
-                <th style="width:110px;">套餐名称</th>
-                <th style="width:200px;">费用（韩元）</th>
-                <th>核心内容</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td><span class="tier-badge tier-low">低价</span></td>
-                <td><strong>Primary</strong></td>
-                <td>
-                  <span class="price-krw num" style="font-size:13px;">男1,874,000 / 女2,323,000</span>
-                </td>
-                <td>基础检查＋血液检查＋上腹部超声波＋睡眠胃镜；女性另含乳房/妇科检查</td>
-              </tr>
-              <tr>
-                <td><span class="tier-badge tier-mid">中价</span></td>
-                <td><strong>Executive</strong></td>
-                <td>
-                  <span class="price-krw num" style="font-size:13px;">男2,990,000 / 女3,439,000</span>
-                </td>
-                <td>Primary升级＋睡眠肠镜＋心脏超声/颈动脉超声＋甲状腺超声＋骨密度等</td>
-              </tr>
-              <tr>
-                <td><span class="tier-badge tier-high">高价</span></td>
-                <td><strong>Premium</strong></td>
-                <td>
-                  <span class="price-krw num" style="font-size:13px;">男7,857,000 / 女8,216,000</span>
-                </td>
-                <td>Executive升级＋脑MRI/MRA＋PET-CT（40岁以上）＋冠状动脉钙化CT＋更全面精密检查</td>
-              </tr>
-            </tbody>
-          </table>
-          <div class="addon-box">
-            <h4>可追加项目（Additional Items）</h4>
-            <div class="addon-tags">
-              <span class="addon-tag">脑MRI/MRA <span class="num">1,500,000</span>韩元</span>
-              <span class="addon-tag">低剂量肺CT <span class="num">200,000</span>韩元</span>
-              <span class="addon-tag">心脏超声 <span class="num">285,000</span>韩元</span>
-              <span class="addon-tag">颈动脉超声 <span class="num">228,000</span>韩元</span>
-              <span class="addon-tag">甲状腺超声 <span class="num">192,000</span>韩元</span>
-              <span class="addon-tag">冠状动脉钙化CT <span class="num">185,000</span>韩元</span>
-              <span class="addon-tag">肠镜 <span class="num">265,000</span>韩元</span>
-              <span class="addon-tag">腹部-骨盆CT <span class="num">290,000</span>韩元</span>
-              <span class="addon-tag">尿素呼气试验 <span class="num">60,000</span>韩元</span>
-              <span class="addon-tag">骨密度 <span class="num">62,000</span>韩元</span>
-            </div>
-          </div>
-        </div>
+<style>
+/* ── 가격 테이블 공통 ── */
+.price-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 14px;
+  table-layout: fixed;
+}
+.price-table thead tr { background: var(--table-hd); }
+.price-table th {
+  padding: 11px 10px;
+  font-weight: 700;
+  color: var(--hga-blue);
+  font-size: 13px;
+  border-bottom: 2px solid var(--blue-line);
+  text-align: left;
+  word-break: keep-all;
+}
+.price-table th:nth-child(1) { width: 14%; }
+.price-table th:nth-child(2) { width: 20%; }
+.price-table th:nth-child(3) { width: 26%; }
+.price-table th:nth-child(4) { width: 40%; }
+.price-table td {
+  padding: 12px 10px;
+  border-bottom: 1px solid var(--row-border);
+  vertical-align: top;
+  line-height: 1.65;
+  color: var(--text-main);
+  word-break: keep-all;
+  overflow-wrap: break-word;
+}
+.price-table tr:last-child td { border-bottom: none; }
+.price-krw {
+  font-family: 'Roboto', monospace;
+  font-weight: 700;
+  color: var(--hga-blue);
+  font-size: 14px;
+  display: block;
+}
+.price-rmb {
+  font-family: 'Roboto', monospace;
+  font-size: 12px;
+  color: var(--hga-pink);
+  display: block;
+  margin-top: 2px;
+}
+.price-consult { font-size: 13px; color: var(--text-sub); font-style: italic; }
+.tier-badge {
+  display: inline-block;
+  font-size: 11px; font-weight: 700;
+  border-radius: 8px; padding: 3px 8px;
+  white-space: nowrap;
+}
+.tier-low  { background: #EEF6FD; color: var(--hga-blue); }
+.tier-mid  { background: #EDF7F6; color: #2aa8a0; }
+.tier-high { background: #FFF3EE; color: #e07b00; }
 
-        <!-- 병원 ③ SNUH 강남 -->
-        <div class="hospital-card">
-          <div class="hospital-card-header">
-            <span class="h-num">③ SNUH</span>
-            <h3>首尔大学医院江南中心</h3>
-          </div>
-          <table class="price-table">
-            <thead>
-              <tr>
-                <th style="width:70px;">价位</th>
-                <th style="width:130px;">套餐名称</th>
-                <th style="width:130px;">费用</th>
-                <th>核心内容</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td><span class="tier-badge tier-low">低价</span></td>
-                <td><strong>基础体检</strong></td>
-                <td><span class="price-consult">另行咨询</span></td>
-                <td>一站式体检、半天完成、国际医疗团队支持</td>
-              </tr>
-              <tr>
-                <td><span class="tier-badge tier-mid">中价</span></td>
-                <td><strong>精密体检</strong></td>
-                <td><span class="price-consult">另行咨询</span></td>
-                <td>专业教授团队、较高异常发现率、外籍客户专属服务</td>
-              </tr>
-              <tr>
-                <td><span class="tier-badge tier-high">高价</span></td>
-                <td><strong>高端定制体检</strong></td>
-                <td><span class="price-consult">另行咨询</span></td>
-                <td>可结合本院与本院本部专科联动，适合高端体检及后续诊疗衔接</td>
-              </tr>
-            </tbody>
-          </table>
-          <div class="hospital-features">
-            <ul>
-              <li>位于首尔江南，地址为首尔市江南区德黑兰路152，江南金融中心38~40层</li>
-              <li>一站式动线设计，含CT/MRI等可集中完成，所需时间约半天</li>
-              <li>国际医疗团队、翻译支持、1:1协调服务、外籍专线支持</li>
-            </ul>
-          </div>
-        </div>
+/* ── 모바일: 480px 이하 → 카드형 ── */
+@media (max-width: 480px) {
+  .price-table thead { display: none; }
+  .price-table,
+  .price-table tbody,
+  .price-table tr,
+  .price-table td { display: block; width: 100%; box-sizing: border-box; }
+  .price-table tr {
+    border: 1px solid var(--row-border);
+    border-radius: 12px;
+    margin-bottom: 12px;
+    padding: 12px 14px;
+    background: #fff;
+  }
+  .price-table tr:last-child { margin-bottom: 0; }
+  .price-table td {
+    padding: 5px 0;
+    border-bottom: 1px dashed var(--row-border);
+    font-size: 13px;
+  }
+  .price-table td:last-child { border-bottom: none; }
+  .price-table td::before {
+    content: attr(data-label);
+    display: block;
+    font-size: 11px;
+    font-weight: 700;
+    color: var(--hga-blue);
+    margin-bottom: 3px;
+    letter-spacing: .4px;
+  }
+  .hospital-card-header h3 { font-size: 16px; line-height: 1.4; }
+  .hospital-card-header .h-num { font-size: 11px; }
+}
+</style>
 
-        <div class="banner-strip">
-          <strong>📋 汉江春天代为预约 · 全程中文陪同 · 结果翻译解读</strong><br>
-          请通过下方咨询按钮，告知您的目的与预算，我们为您推荐最合适的套餐。
-        </div>
-      </div>
+<!-- ══ 병원 ① KMI ══ -->
+<div class="hospital-card">
+  <div class="hospital-card-header">
+    <span class="h-num">① KMI</span>
+    <h3>KMI 健康体检中心</h3>
+  </div>
+  <table class="price-table">
+    <thead>
+      <tr>
+        <th>价位</th>
+        <th>套餐名称</th>
+        <th>费用</th>
+        <th>核心内容</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td data-label="价位"><span class="tier-badge tier-low">低价</span></td>
+        <td data-label="套餐名称"><strong>STANDARD</strong></td>
+        <td data-label="费用">
+          <span class="price-krw num">500,000 <small style="font-weight:400;font-size:11px;">韩元</small></span>
+          <span class="price-rmb">约¥2,650</span>
+        </td>
+        <td data-label="核心内容">基本检查＋腹部超声波＋甲状腺功能＋肿瘤标记物＋胃肠道检查（三选一）</td>
+      </tr>
+      <tr>
+        <td data-label="价位"><span class="tier-badge tier-mid">中价</span></td>
+        <td data-label="套餐名称"><strong>SIGNATURE</strong></td>
+        <td data-label="费用">
+          <span class="price-krw num">1,000,000 <small style="font-weight:400;font-size:11px;">韩元</small></span>
+          <span class="price-rmb">约¥5,300</span>
+        </td>
+        <td data-label="核心内容">STANDARD基础上＋超声波（腹部/甲状腺/乳房/子宫或前列腺）＋大肠检查（二选一）＋CT或超声波（两项自选）</td>
+      </tr>
+      <tr>
+        <td data-label="价位"><span class="tier-badge tier-high">高价</span></td>
+        <td data-label="套餐名称"><strong>NOBLE</strong></td>
+        <td data-label="费用">
+          <span class="price-krw num">2,000,000 <small style="font-weight:400;font-size:11px;">韩元</small></span>
+          <span class="price-rmb">约¥10,600</span>
+        </td>
+        <td data-label="核心内容">SIGNATURE基础上＋更详细血液检查＋多部位超声＋可选CT/MRI/基因检查</td>
+      </tr>
+    </tbody>
+  </table>
+  <div class="addon-box">
+    <h4>可追加项目（其他项目）</h4>
+    <div class="addon-tags">
+      <span class="addon-tag">脑MRI / MRA</span>
+      <span class="addon-tag">CT（脑/肺/腰椎/颈椎/心脏钙化/腹部肥胖）</span>
+      <span class="addon-tag">肠镜</span>
+      <span class="addon-tag">胃镜 / 胃肠钡餐 / 胃蛋白酶原</span>
+      <span class="addon-tag">心脏超声 / 颈动脉超声 / 乳房超声</span>
+      <span class="addon-tag">基因检查 / 免疫力检查 / 心血管系统检查</span>
+    </div>
+  </div>
+</div>
 
+<!-- ══ 병원 ② Samsung ══ -->
+<div class="hospital-card">
+  <div class="hospital-card-header">
+    <span class="h-num">② Samsung</span>
+    <h3>三星首尔医院健康促进中心</h3>
+  </div>
+  <table class="price-table">
+    <thead>
+      <tr>
+        <th>价位</th>
+        <th>套餐名称</th>
+        <th>费用（韩元）</th>
+        <th>核心内容</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td data-label="价位"><span class="tier-badge tier-low">低价</span></td>
+        <td data-label="套餐名称"><strong>Primary</strong></td>
+        <td data-label="费用（韩元）">
+          <span class="price-krw num" style="font-size:13px;">男 1,874,000</span>
+          <span class="price-krw num" style="font-size:13px;">女 2,323,000</span>
+        </td>
+        <td data-label="核心内容">基础检查＋血液检查＋上腹部超声波＋睡眠胃镜；女性另含乳房/妇科检查</td>
+      </tr>
+      <tr>
+        <td data-label="价位"><span class="tier-badge tier-mid">中价</span></td>
+        <td data-label="套餐名称"><strong>Executive</strong></td>
+        <td data-label="费用（韩元）">
+          <span class="price-krw num" style="font-size:13px;">男 2,990,000</span>
+          <span class="price-krw num" style="font-size:13px;">女 3,439,000</span>
+        </td>
+        <td data-label="核心内容">Primary升级＋睡眠肠镜＋心脏超声/颈动脉超声＋甲状腺超声＋骨密度等</td>
+      </tr>
+      <tr>
+        <td data-label="价位"><span class="tier-badge tier-high">高价</span></td>
+        <td data-label="套餐名称"><strong>Premium</strong></td>
+        <td data-label="费用（韩元）">
+          <span class="price-krw num" style="font-size:13px;">男 7,857,000</span>
+          <span class="price-krw num" style="font-size:13px;">女 8,216,000</span>
+        </td>
+        <td data-label="核心内容">Executive升级＋脑MRI/MRA＋PET-CT（40岁以上）＋冠状动脉钙化CT＋更全面精密检查</td>
+      </tr>
+    </tbody>
+  </table>
+  <div class="addon-box">
+    <h4>可追加项目（Additional Items）</h4>
+    <div class="addon-tags">
+      <span class="addon-tag">脑MRI/MRA <span class="num">1,500,000</span>韩元</span>
+      <span class="addon-tag">低剂量肺CT <span class="num">200,000</span>韩元</span>
+      <span class="addon-tag">心脏超声 <span class="num">285,000</span>韩元</span>
+      <span class="addon-tag">颈动脉超声 <span class="num">228,000</span>韩元</span>
+      <span class="addon-tag">甲状腺超声 <span class="num">192,000</span>韩元</span>
+      <span class="addon-tag">冠状动脉钙化CT <span class="num">185,000</span>韩元</span>
+      <span class="addon-tag">肠镜 <span class="num">265,000</span>韩元</span>
+      <span class="addon-tag">腹部-骨盆CT <span class="num">290,000</span>韩元</span>
+      <span class="addon-tag">尿素呼气试验 <span class="num">60,000</span>韩元</span>
+      <span class="addon-tag">骨密度 <span class="num">62,000</span>韩元</span>
+    </div>
+  </div>
+</div>
+
+<!-- ══ 병원 ③ SNUH 강남 ══ -->
+<div class="hospital-card">
+  <div class="hospital-card-header">
+    <span class="h-num">③ SNUH</span>
+    <h3>首尔大学医院江南中心</h3>
+  </div>
+  <table class="price-table">
+    <thead>
+      <tr>
+        <th>价位</th>
+        <th>套餐名称</th>
+        <th>费用</th>
+        <th>核心内容</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td data-label="价位"><span class="tier-badge tier-low">低价</span></td>
+        <td data-label="套餐名称"><strong>基础体检</strong></td>
+        <td data-label="费用"><span class="price-consult">另行咨询</span></td>
+        <td data-label="核心内容">一站式体检、半天完成、国际医疗团队支持</td>
+      </tr>
+      <tr>
+        <td data-label="价位"><span class="tier-badge tier-mid">中价</span></td>
+        <td data-label="套餐名称"><strong>精密体检</strong></td>
+        <td data-label="费用"><span class="price-consult">另行咨询</span></td>
+        <td data-label="核心内容">专业教授团队、较高异常发现率、外籍客户专属服务</td>
+      </tr>
+      <tr>
+        <td data-label="价位"><span class="tier-badge tier-high">高价</span></td>
+        <td data-label="套餐名称"><strong>高端定制体检</strong></td>
+        <td data-label="费用"><span class="price-consult">另行咨询</span></td>
+        <td data-label="核心内容">可结合本院与本院本部专科联动，适合高端体检及后续诊疗衔接</td>
+      </tr>
+    </tbody>
+  </table>
+  <div class="hospital-features">
+    <ul>
+      <li>位于首尔江南，地址为首尔市江南区德黑兰路152，江南金融中心38~40层</li>
+      <li>一站式动线设计，含CT/MRI等可集中完成，所需时间约半天</li>
+      <li>国际医疗团队、翻译支持、1:1协调服务、外籍专线支持</li>
+    </ul>
+  </div>
+</div>
+
+<div class="banner-strip">
+  <strong>📋 汉江春天代为预约 · 全程中文陪同 · 结果翻译解读</strong><br>
+  请通过下方咨询按钮，告知您的目的与预算，我们为您推荐最合适的套餐。
+</div>
+        
       <!-- ══════════════════════════════════════
            ② 功能医学 大健康
       ══════════════════════════════════════ -->
