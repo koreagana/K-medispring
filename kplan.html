@@ -1,22 +1,10 @@
 <!DOCTYPE HTML>
-<!--
-  汉江春天 · K-Plan (kplan.html) ✅완성형
-  =========================================================
-  ✅ 핵심 체크리스트
-    1) </body> </html> 절대 먼저 닫지 말기 (모든 모달/스크립트는 그 전에)
-    2) contactModal(X/배경/ESC) 닫힘
-    3) 提交 버튼: 기본/호버 모두 흰색 볼드 + 중앙정렬 + 테두리(선) 없음
-    4) Header WeChat / WhatsApp 아이콘 클릭 시 메인으로 튀지 않고 QR 모달 열림
-    5) 5총사 스크립트는 맨 아래에 위치
--->
-
 <html lang="zh-CN">
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
   <title>汉江春天 · 定制医疗观光方案</title>
 
-  <!-- ✅ GitHub Pages base (HEAD 최상단 유지) -->
   <script>
     (function () {
       var project = "/K-medispring/";
@@ -27,774 +15,1511 @@
     })();
   </script>
 
-  <!-- ✅ 파비콘 (base 태그 대응: 앞에 / 제거) -->
   <link rel="icon" href="images/favicon.ico?v=20251012">
   <link rel="icon" type="image/png" sizes="32x32" href="images/favicon-32.png?v=20251012">
   <link rel="icon" type="image/png" sizes="16x16" href="images/favicon-16.png?v=20251012">
   <link rel="apple-touch-icon" sizes="180x180" href="images/apple-touch-icon.png?v=20251012">
 
-  <!-- ✅ Editorial CSS -->
   <link rel="stylesheet" href="assets/css/fontawesome-all.min.css" />
   <link rel="stylesheet" href="assets/css/main.css" />
 
-  <!-- =========================================================
-       ✅ K-Plan / 모달 전용 CSS (이 파일 안에서만 관리)
-       ========================================================= -->
+  <!-- Google Fonts: Roboto -->
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+  <!-- Pretendard CDN -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css">
+
   <style>
-    :root{
-      --hga-blue:#4E97D1;
-      --hga-pink:#D97AA6;         /* ✅ 짙은 파스텔 핑크 */
+    /* ══════════════════════════════════════
+       ROOT / 브랜드 컬러
+    ══════════════════════════════════════ */
+    :root {
+      --hga-blue:    #4E97D1;
+      --hga-pink:    #D97AA6;
+      --blue-line:   #BFD8EE;
+      --bg:          #F8FBFF;
+      --white:       #FFFFFF;
+      --text-main:   #222222;
+      --text-sub:    #666666;
+      --soft-bg:     #EEF6FD;
+      --table-hd:    #FAFDFF;
+      --row-border:  #EAEFF5;
     }
 
-    /* ✅ 선택된 항목 파란색 스타일 (이게 빠져서 생긴 문제!) */
+    /* ══════════════════════════════════════
+       기본 폰트 세팅
+    ══════════════════════════════════════ */
+    body, .inner, p, li, td, th, input, button {
+      font-family: 'Pretendard', 'Noto Sans SC', 'Source Han Sans CN', sans-serif;
+      color: var(--text-main);
+    }
+
+    /* 중국어 제목용 세리프 */
+    .cn-serif {
+      font-family: 'Source Han Serif CN', 'Noto Serif CJK SC', 'STSong', serif;
+    }
+
+    /* 숫자/가격 Roboto */
+    .num { font-family: 'Roboto', monospace; }
+
+    /* ══════════════════════════════════════
+       사이드바 / 헤더 원본 유지
+    ══════════════════════════════════════ */
+    #sidebar #search { display: none !important; }
+    #sidebar-brand {
+      padding: 1.8rem 1.5rem 1.1rem;
+      text-align: center;
+      border: 0 !important;
+    }
+    #sidebar-brand .sidebar-logo img {
+      display: block;
+      max-width: 140px;
+      height: auto;
+      margin: 0 auto;
+    }
+    #sidebar nav#menu,
+    #sidebar nav#menu > header,
+    #sidebar nav#menu ul { border-top: 0 !important; }
+
+    /* ══════════════════════════════════════
+       SECTION 공통
+    ══════════════════════════════════════ */
+    .kplan-block {
+      background: var(--white);
+      border-radius: 18px;
+      padding: 32px 36px;
+      margin-bottom: 28px;
+      border: 1.5px solid var(--blue-line);
+      box-shadow: 0 2px 16px rgba(78,151,209,.07);
+    }
+
+    .block-title {
+      font-family: 'Source Han Serif CN', 'Noto Serif CJK SC', serif;
+      font-size: 26px;
+      font-weight: 700;
+      color: var(--hga-blue);
+      margin: 0 0 6px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .block-title .badge {
+      font-family: 'Pretendard', sans-serif;
+      font-size: 11px;
+      font-weight: 700;
+      background: var(--hga-pink);
+      color: #fff;
+      border-radius: 20px;
+      padding: 3px 12px;
+      letter-spacing: .5px;
+    }
+    .block-subtitle {
+      font-size: 14px;
+      color: var(--text-sub);
+      margin: 0 0 22px;
+    }
+
+    /* ══════════════════════════════════════
+       ① 건강검진 섹션
+    ══════════════════════════════════════ */
+    .checkup-intro {
+      background: linear-gradient(135deg, #EEF6FD 0%, #F8FBFF 100%);
+      border-left: 5px solid var(--hga-blue);
+      border-radius: 0 12px 12px 0;
+      padding: 16px 20px;
+      margin-bottom: 24px;
+      font-size: 15px;
+      color: var(--text-main);
+      line-height: 1.8;
+    }
+    .checkup-intro strong { color: var(--hga-blue); }
+
+    /* 병원 카드 */
+    .hospital-card {
+      border: 1.5px solid var(--row-border);
+      border-radius: 14px;
+      overflow: hidden;
+      margin-bottom: 22px;
+    }
+    .hospital-card-header {
+      background: linear-gradient(90deg, var(--hga-blue), #6db3e8);
+      color: #fff;
+      padding: 14px 20px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    .hospital-card-header .h-num {
+      font-family: 'Roboto', monospace;
+      font-size: 13px;
+      font-weight: 700;
+      background: rgba(255,255,255,.25);
+      border-radius: 20px;
+      padding: 3px 12px;
+      letter-spacing: 1px;
+    }
+    .hospital-card-header h3 {
+      font-family: 'Source Han Serif CN', serif;
+      font-size: 18px;
+      font-weight: 700;
+      margin: 0;
+      color: #fff;
+      border: none;
+    }
+
+    /* 가격 테이블 */
+    .price-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 14px;
+    }
+    .price-table thead tr {
+      background: var(--table-hd);
+    }
+    .price-table th {
+      padding: 11px 14px;
+      font-weight: 700;
+      color: var(--hga-blue);
+      font-size: 13px;
+      border-bottom: 2px solid var(--blue-line);
+      text-align: left;
+    }
+    .price-table td {
+      padding: 12px 14px;
+      border-bottom: 1px solid var(--row-border);
+      vertical-align: top;
+      line-height: 1.6;
+      color: var(--text-main);
+    }
+    .price-table tr:last-child td { border-bottom: none; }
+    .price-table .tier-badge {
+      display: inline-block;
+      font-family: 'Roboto', monospace;
+      font-size: 12px;
+      font-weight: 700;
+      border-radius: 8px;
+      padding: 3px 10px;
+    }
+    .tier-low  { background: #EEF6FD; color: var(--hga-blue); }
+    .tier-mid  { background: #EDF7F6; color: #2aa8a0; }
+    .tier-high { background: #FFF3EE; color: #e07b00; }
+    .price-krw {
+      font-family: 'Roboto', monospace;
+      font-weight: 700;
+      color: var(--hga-blue);
+      font-size: 15px;
+    }
+    .price-rmb {
+      font-family: 'Roboto', monospace;
+      font-size: 12px;
+      color: var(--hga-pink);
+      margin-left: 4px;
+    }
+    .price-consult {
+      font-size: 13px;
+      color: var(--text-sub);
+      font-style: italic;
+    }
+
+    /* 추가 항목 */
+    .addon-box {
+      background: var(--soft-bg);
+      border-radius: 0 0 12px 12px;
+      padding: 14px 20px;
+    }
+    .addon-box h4 {
+      font-size: 13px;
+      font-weight: 700;
+      color: var(--text-sub);
+      margin: 0 0 8px;
+      letter-spacing: .5px;
+    }
+    .addon-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 7px;
+    }
+    .addon-tag {
+      background: #fff;
+      border: 1px solid var(--blue-line);
+      border-radius: 20px;
+      padding: 4px 13px;
+      font-size: 12px;
+      color: var(--text-main);
+    }
+
+    /* 병원 특징 리스트 */
+    .hospital-features {
+      padding: 12px 20px;
+      background: #fff;
+    }
+    .hospital-features ul {
+      margin: 0;
+      padding: 0;
+      list-style: none;
+    }
+    .hospital-features ul li {
+      font-size: 13px;
+      color: var(--text-sub);
+      padding: 3px 0 3px 16px;
+      position: relative;
+      line-height: 1.6;
+    }
+    .hospital-features ul li::before {
+      content: '·';
+      position: absolute;
+      left: 4px;
+      color: var(--hga-blue);
+      font-weight: 700;
+    }
+
+    /* ══════════════════════════════════════
+       ② 서비스 카드 그리드 (리플릿 스타일)
+    ══════════════════════════════════════ */
+    .svc-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+      margin-bottom: 0;
+    }
+    .svc-card {
+      border: 1.5px solid var(--blue-line);
+      border-radius: 14px;
+      padding: 20px;
+      background: #fff;
+      transition: box-shadow .2s;
+    }
+    .svc-card:hover { box-shadow: 0 4px 20px rgba(78,151,209,.13); }
+    .svc-card .svc-icon { font-size: 26px; margin-bottom: 8px; }
+    .svc-card .svc-num {
+      font-size: 10px;
+      font-weight: 700;
+      color: var(--hga-blue);
+      letter-spacing: 1px;
+      margin-bottom: 4px;
+      font-family: 'Roboto', monospace;
+    }
+    .svc-card h3 {
+      font-family: 'Source Han Serif CN', serif;
+      font-size: 16px;
+      font-weight: 700;
+      color: var(--text-main);
+      margin: 0 0 4px;
+      border: none;
+    }
+    .svc-card .svc-sub {
+      font-size: 12px;
+      color: var(--hga-blue);
+      margin-bottom: 8px;
+    }
+    .svc-card p {
+      font-size: 13px;
+      color: var(--text-sub);
+      line-height: 1.6;
+      margin: 0;
+    }
+    .svc-card.highlight {
+      border-color: #f5a623;
+      background: #fffbf0;
+    }
+    .svc-card.highlight .svc-num { color: #e07b00; }
+
+    /* 카티스템 전용 블록 */
+    .cati-block {
+      background: linear-gradient(135deg, #fff8ee, #fff3e0);
+      border: 2px solid #f5a623;
+      border-radius: 14px;
+      padding: 22px 24px;
+      margin-bottom: 18px;
+    }
+    .cati-block h3 {
+      font-family: 'Source Han Serif CN', serif;
+      font-size: 19px;
+      font-weight: 700;
+      color: #c85000;
+      margin: 0 0 6px;
+      border: none;
+    }
+    .cati-block .cati-sub { font-size: 13px; color: #e07b00; margin-bottom: 12px; }
+    .cati-badge-row { display: flex; flex-wrap: wrap; gap: 7px; margin-bottom: 14px; }
+    .cati-badge {
+      background: #e07b00;
+      color: #fff;
+      border-radius: 20px;
+      padding: 4px 13px;
+      font-size: 11px;
+      font-weight: 700;
+      font-family: 'Roboto', monospace;
+    }
+    .cati-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
+    }
+    .cati-item {
+      background: #fff;
+      border-radius: 9px;
+      padding: 12px 14px;
+      border-left: 3px solid #f5a623;
+    }
+    .cati-item h4 {
+      font-size: 12.5px;
+      font-weight: 700;
+      color: #c85000;
+      margin: 0 0 5px;
+      border: none;
+    }
+    .cati-item p {
+      font-size: 12px;
+      color: var(--text-sub);
+      line-height: 1.55;
+      margin: 0;
+    }
+
+    /* 기능의학 체크그리드 */
+    .check-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 13px;
+      margin-bottom: 16px;
+    }
+    .check-block {
+      background: var(--soft-bg);
+      border-radius: 10px;
+      padding: 13px 15px;
+    }
+    .check-block h4 {
+      font-size: 13px;
+      font-weight: 700;
+      color: var(--hga-blue);
+      border-bottom: 1.5px solid var(--blue-line);
+      padding-bottom: 6px;
+      margin: 0 0 8px;
+      border-radius: 0;
+    }
+    .check-block ul {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+    }
+    .check-block ul li {
+      font-size: 12px;
+      color: var(--text-sub);
+      padding: 2.5px 0 2.5px 14px;
+      position: relative;
+      line-height: 1.5;
+    }
+    .check-block ul li::before {
+      content: '·';
+      position: absolute;
+      left: 4px;
+      color: var(--hga-blue);
+      font-weight: 700;
+    }
+
+    /* 여성 그리드 */
+    .women-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 13px;
+      margin-bottom: 16px;
+    }
+    .women-item {
+      background: var(--soft-bg);
+      border-radius: 10px;
+      padding: 13px 15px;
+      border-left: 3px solid var(--hga-pink);
+    }
+    .women-item h4 {
+      font-size: 13px;
+      font-weight: 700;
+      color: var(--text-main);
+      margin: 0 0 7px;
+      border: none;
+    }
+    .women-item ul { list-style: none; margin: 0; padding: 0; }
+    .women-item ul li {
+      font-size: 12px;
+      color: var(--text-sub);
+      padding: 2px 0 2px 13px;
+      position: relative;
+      line-height: 1.5;
+    }
+    .women-item ul li::before {
+      content: '·';
+      position: absolute;
+      left: 3px;
+      color: var(--hga-pink);
+      font-weight: 700;
+    }
+
+    /* highlight 박스 */
+    .hl-box {
+      background: linear-gradient(135deg, var(--hga-blue), #2aa8a0);
+      color: #fff;
+      border-radius: 14px;
+      padding: 16px 20px;
+      margin-bottom: 14px;
+      font-size: 13.5px;
+      line-height: 1.8;
+    }
+    .hl-box strong { color: #ffe066; font-size: 15px; }
+    .hl-box .hl-cn { font-size: 12px; opacity: .85; }
+
+    /* 두 컬럼 박스 */
+    .two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; margin-bottom: 16px; }
+    .col-box { border-radius: 14px; padding: 18px; }
+    .col-box.blue { background: var(--soft-bg); border: 1.5px solid var(--blue-line); }
+    .col-box.teal { background: #e6f7f6; border: 1.5px solid #a0ddd9; }
+    .col-box h3 { font-family: 'Source Han Serif CN', serif; font-size: 15px; font-weight: 700; margin: 0 0 4px; border: none; }
+    .col-box .col-sub { font-size: 11.5px; color: var(--hga-blue); margin-bottom: 10px; }
+    .col-box ul { list-style: none; margin: 0; padding: 0; }
+    .col-box ul li {
+      font-size: 12px; color: var(--text-sub);
+      padding: 2.5px 0 2.5px 15px; position: relative; line-height: 1.5;
+    }
+    .col-box ul li::before { content: '✓'; position: absolute; left: 0; color: var(--hga-blue); font-size: 10px; font-weight: 700; }
+    .col-box.teal ul li::before { color: #2aa8a0; }
+
+    /* 토탈케어 스텝 */
+    .steps { display: flex; flex-direction: column; gap: 10px; margin-bottom: 20px; }
+    .step-row { display: flex; align-items: flex-start; gap: 13px; }
+    .step-num {
+      width: 30px; height: 30px; min-width: 30px;
+      background: var(--hga-blue); color: #fff; border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 13px; font-weight: 700;
+    }
+    .step-content h4 { font-size: 14px; font-weight: 700; color: var(--text-main); margin: 0 0 2px; border: none; }
+    .step-content p { font-size: 12.5px; color: var(--text-sub); line-height: 1.6; margin: 0; }
+
+    /* 프로세스 박스 */
+    .process-row {
+      display: flex; gap: 7px; flex-wrap: wrap;
+    }
+    .process-step {
+      flex: 1; min-width: 110px;
+      background: #fff; border: 1px solid var(--blue-line);
+      border-radius: 9px; padding: 10px 12px;
+      font-size: 11.5px; color: var(--text-sub);
+      text-align: center; line-height: 1.6;
+    }
+    .process-step strong { display: block; color: var(--hga-blue); margin-bottom: 3px; }
+
+    /* 배너 스트립 */
+    .banner-strip {
+      background: linear-gradient(90deg, var(--hga-blue), #2aa8a0);
+      color: #fff;
+      border-radius: 12px;
+      padding: 14px 22px;
+      font-size: 13px;
+      text-align: center;
+      line-height: 1.8;
+      margin-top: 16px;
+    }
+    .banner-strip strong { color: #ffe066; }
+
+    /* 오렌지 강조 스트립 */
+    .orange-strip {
+      background: linear-gradient(90deg, #c85000, #f5a623);
+      color: #fff;
+      border-radius: 10px;
+      padding: 13px 20px;
+      font-size: 12.5px;
+      text-align: center;
+      line-height: 1.8;
+      margin-top: 14px;
+    }
+    .orange-strip strong { font-size: 14px; }
+
+    /* 섹션 구분선 */
+    .sec-divider {
+      height: 1px;
+      background: var(--row-border);
+      margin: 8px 0 22px;
+    }
+
+    /* kplan 선택 버튼 (원본 유지) */
     .choice.is-selected {
       background: var(--hga-blue) !important;
       color: #fff !important;
       border-color: var(--hga-blue) !important;
     }
 
-    /* ✅ Sidebar: Search 제거 + 로고만 */
-    #sidebar #search{ display:none !important; }
-    #sidebar-brand{
-      padding: 1.8rem 1.5rem 1.1rem;
-      text-align:center;
-      border: 0 !important;
+    /* ══════════════════════════════════════
+       모달 (원본 그대로)
+    ══════════════════════════════════════ */
+    .kms-modal {
+      position: fixed; inset: 0;
+      z-index: 9999;
+      display: none;
     }
-    #sidebar-brand .sidebar-logo img{
-      display:block;
-      max-width:140px;
-      height:auto;
-      margin:0 auto;
+    .kms-modal.is-open { display: block; }
+    .kms-modal__backdrop {
+      position: absolute; inset: 0;
+      background: rgba(0,0,0,.55);
     }
-    /* ✅ Menu 상단 라인 제거 */
-    #sidebar nav#menu,
-    #sidebar nav#menu > header,
-    #sidebar nav#menu ul{
-      border-top: 0 !important;
+    .kms-modal__card {
+      position: relative;
+      width: min(520px,92vw);
+      margin: 10vh auto 0;
+      background: #fff;
+      border-radius: 18px;
+      padding: 28px 22px 22px;
+      box-shadow: 0 18px 55px rgba(0,0,0,.28);
+      text-align: center;
+      font-family: 'Pretendard', sans-serif;
     }
-
-    /* =========================================================
-       ✅ (1) K-Plan 연락처 입력 모달: contactModal (kms-modal)
-       ========================================================= */
-    .kms-modal{
-      position:fixed; inset:0;
-      z-index:9999;
-      display:none;
+    .kms-modal__close {
+      position: absolute; top: 14px; right: 14px;
+      min-width: 64px; height: 44px; padding: 0 14px;
+      border: none !important; border-radius: 14px;
+      background: var(--hga-blue); color: #fff !important;
+      font-size: 16px; font-weight: 800;
+      display: flex; align-items: center; justify-content: center;
+      cursor: pointer; transition: background .15s;
     }
-    .kms-modal.is-open{ display:block; }
-    .kms-modal__backdrop{
-      position:absolute; inset:0;
-      background:rgba(0,0,0,.55);
+    .kms-modal__close:hover { background: var(--hga-pink); }
+    .kms-modal__title { margin: 4px 0 8px; font-size: 20px; font-weight: 700; color: #111; }
+    .kms-modal__desc { margin: 0 0 16px; font-size: 14px; color: #555; line-height: 1.55; }
+    .kms-modal__inputs { display: flex; flex-direction: column; gap: 10px; margin: 8px 0 10px; }
+    .kms-modal__inputs input {
+      width: 100%; padding: 14px; border: 1px solid #ddd;
+      border-radius: 12px; font-size: 16px; outline: none; background: #fff;
     }
-    .kms-modal__card{
-      position:relative;
-      width:min(520px,92vw);
-      margin:10vh auto 0;
-      background:#fff;
-      border-radius:18px;
-      padding:28px 22px 22px;
-      box-shadow:0 18px 55px rgba(0,0,0,.28);
-      text-align:center;
-      font-family:"HJS-Serif","Source Han Serif SC","Noto Serif CJK SC","Songti SC","STSong","SimSun",serif;
+    .kms-modal__inputs input:focus { border-color: var(--hga-blue); box-shadow: 0 0 0 3px rgba(78,151,209,.15); }
+    .kms-modal__error { min-height: 18px; margin: 6px 0 10px; color: #d33; font-size: 13px; }
+    .kms-modal__btn {
+      width: 100%; -webkit-appearance: none; appearance: none;
+      border: none !important; outline: none !important; box-shadow: none !important;
+      border-radius: 14px; padding: 14px;
+      background: var(--hga-blue); color: #fff !important;
+      font-size: 16px; font-weight: 800;
+      cursor: pointer;
+      display: flex; align-items: center; justify-content: center;
+      position: relative; overflow: hidden;
+      transition: background .15s;
     }
-
-    /* ✅ 닫기 버튼: 정사각형(라운드) 블루 + 흰 X + 블링 */
-.kms-modal__close{
-  position:absolute;
-  top:14px;
-  right:14px;
-
-  min-width:64px;
-  height:44px;
-  padding:0 14px;
-
-  border:none !important;
-  border-radius:14px;
-
-  background:#4E97D1;  /* 기본 블루 */
-  color:#ffffff !important;
-  font-size:16px;
-  font-weight:800;
-
-  display:flex;
-  align-items:center;
-  justify-content:center;
-
-  cursor:pointer;
-  transition:background .15s ease;
-
-  /* 🔥 글로우 제거 */
-  text-shadow:none !important;
-}
-
-.kms-modal__close:hover{
-  background:#D97AA6;  /* 핑크 */
-  box-shadow:none;
-  text-shadow:none !important;
-}
-    
-    .kms-modal__close svg{ display:block; }
-
-    .kms-modal__title{margin:4px 0 8px; font-size:20px; font-weight:700; color:#111;}
-    .kms-modal__desc{margin:0 0 16px; font-size:14px; color:#555; line-height:1.55;}
-
-    .kms-modal__inputs{
-      display:flex;
-      flex-direction:column;
-      gap:10px;
-      margin:8px 0 10px;
-    }
-    .kms-modal__inputs input{
-      width:100%;
-      padding:14px 14px;
-      border:1px solid #ddd;
-      border-radius:12px;
-      font-size:16px;
-      outline:none;
-      font-family:inherit;
-      background:#fff;
-    }
-    .kms-modal__inputs input:focus{
-      border-color:var(--hga-blue);
-      box-shadow:0 0 0 3px rgba(78,151,209,.15);
-    }
-    .kms-modal__or{font-size:12px; color:#888; margin:2px 0;}
-    .kms-modal__error{min-height:18px; margin:6px 0 10px; color:#d33; font-size:13px;}
-
-    /* =========================================================
-       ✅ (2) 공용 버튼 클래스: kms-modal__btn (제출 버튼)
-       - 기본: 블루 + 흰색 볼드
-       - 호버: 핑크 + 흰색 볼드 + 블링 + 스파클
-       - 테두리/선/이상한 ::after 제거
-       ========================================================= */
-    .kms-modal__btn{
-      width:100%;
-      -webkit-appearance:none;
-      appearance:none;
-
-      border:none !important;
-      outline:none !important;
-      box-shadow:none !important;
-
-      border-radius:14px;
-      padding:14px 14px;
-
-      background:var(--hga-blue);
-      color:#fff !important;
-      font-size:16px;
-      font-weight:800;
-
-      cursor:pointer;
-
-      display:flex;
-      align-items:center;
-      justify-content:center;
-      text-align:center;
-      line-height:1;
-      letter-spacing:.5px;
-
-      position:relative;
-      overflow:hidden;
-
-      text-shadow:
-        0 0 6px rgba(255,255,255,.55),
-        0 0 12px rgba(255,255,255,.25);
-
-      transition:background .15s ease, transform .12s ease, filter .12s ease;
-    }
-
-    .kms-modal__btn:hover{
-      background:var(--hga-pink) !important;   /* ✅ 짙은 파스텔 핑크 */
-      color:#fff !important;
-      transform:none;
-      filter:none;
-      text-shadow:
-        0 0 10px rgba(255,255,255,.75),
-        0 0 18px rgba(255,255,255,.45);
-    }
-
-    /* ✅ 버튼 주변에서 생기는 가짜 라인/장식 제거 */
-    .kms-modal__btn::before,
-    .kms-modal__btn::after{
-      content:none !important;
-    }
-
-    /* ✅ hover 스파클(빤짝이 떨어지는 느낌) */
-    .kms-modal__btn span.spark-layer{
-      position:absolute;
-      inset:0;
-      pointer-events:none;
-      opacity:0;
+    .kms-modal__btn:hover { background: var(--hga-pink) !important; }
+    .kms-modal__btn::before, .kms-modal__btn::after { content: none !important; }
+    .kms-modal__btn span.spark-layer {
+      position: absolute; inset: 0; pointer-events: none; opacity: 0;
       background:
         radial-gradient(circle at 15% -20%, rgba(255,255,255,.95) 0 3px, transparent 4px),
-        radial-gradient(circle at 35% -10%, rgba(255,255,255,.85) 0 2px, transparent 3px),
         radial-gradient(circle at 55% -25%, rgba(255,255,255,.90) 0 3px, transparent 4px),
-        radial-gradient(circle at 75% -15%, rgba(255,255,255,.80) 0 2px, transparent 3px),
         radial-gradient(circle at 90% -30%, rgba(255,255,255,.90) 0 3px, transparent 4px);
     }
-    .kms-modal__btn:hover span.spark-layer{
-      opacity:1;
-      animation:sparkleFall .9s ease forwards;
+    .kms-modal__btn:hover span.spark-layer { opacity: 1; animation: sparkleFall .9s ease forwards; }
+    @keyframes sparkleFall {
+      0%{ transform: translateY(-22px); opacity: 0; }
+      18%{ opacity: 1; }
+      100%{ transform: translateY(140%); opacity: 0; }
     }
-    @keyframes sparkleFall{
-      0%{ transform:translateY(-22px); opacity:0; }
-      18%{ opacity:1; }
-      100%{ transform:translateY(140%); opacity:0; }
+    .kms-modal__hint { margin-top: 10px; font-size: 12px; color: #999; }
+    .kms-toast {
+      position: fixed; inset: 0; z-index: 10000;
+      display: none; pointer-events: none;
     }
-
-    .kms-modal__hint{margin-top:10px; font-size:12px; color:#999;}
-
-    /* =========================================================
-       ✅ (3) 제출 토스트: submitToast
-       ========================================================= */
-  .kms-toast{
-  position:fixed;
-  inset:0;
-  z-index:10000;
-  display:none;
-  pointer-events:none;
-}
-
-.kms-toast.is-show{
-  display:block;
-}
-
-.kms-toast__box{
-  position:absolute;
-  left:50%;
-  top:40%;
-  transform:translate(-50%,-50%);
-
-  background:#D97AA6;
-  color:#ffffff;
-
-  padding:22px 36px;
-  border-radius:18px;
-
-  font-size:20px;
-  font-weight:700;
-  letter-spacing:1px;
-
-  text-align:center;
-
-  box-shadow:0 12px 40px rgba(0,0,0,.28);
-}
-
-    /* =========================================================
-       ✅ (4) WeChat / WhatsApp QR 모달 (기존 index 스타일과 호환)
-       - modals.js가 있어도, 이 파일 JS가 강제로 열고 닫게 함
-       ========================================================= */
-    .modal{
-      display:none;
-      position:fixed; inset:0;
-      z-index:9998;
-      background:rgba(0,0,0,.55);
+    .kms-toast.is-show { display: block; }
+    .kms-toast__box {
+      position: absolute; left: 50%; top: 40%;
+      transform: translate(-50%,-50%);
+      background: var(--hga-pink); color: #fff;
+      padding: 22px 36px; border-radius: 18px;
+      font-size: 20px; font-weight: 700;
+      box-shadow: 0 12px 40px rgba(0,0,0,.28);
     }
-    .modal.is-open{ display:block; }
-    .modal .modal-inner{
-      position:relative;
-      width:min(520px,92vw);
-      margin:10vh auto 0;
-      background:#fff;
-      border-radius:18px;
-      padding:22px 18px 18px;
-      text-align:center;
-      box-shadow:0 18px 55px rgba(0,0,0,.28);
+    .modal {
+      display: none; position: fixed; inset: 0;
+      z-index: 9998; background: rgba(0,0,0,.55);
     }
-    .modal .close{
-      position:absolute; top:10px; right:12px;
-      width:40px; height:40px;
-      border:none;
-      background:transparent;
-      font-size:30px;
-      line-height:40px;
-      color:#777;
-      cursor:pointer;
+    .modal.is-open { display: block; }
+    .modal .modal-inner {
+      position: relative; width: min(520px,92vw);
+      margin: 10vh auto 0; background: #fff;
+      border-radius: 18px; padding: 22px 18px 18px;
+      text-align: center; box-shadow: 0 18px 55px rgba(0,0,0,.28);
     }
-    .modal .modal-caption{ margin:6px 0 10px; font-size:14px; color:#333; }
-    .modal .modal-content{ max-width:100%; height:auto; border-radius:12px; }
-    .modal .modal-id{ margin:10px 0 0; font-size:13px; color:#555; line-height:1.5; }
+    .modal .close {
+      position: absolute; top: 10px; right: 12px;
+      width: 40px; height: 40px; border: none;
+      background: transparent; font-size: 30px; color: #777; cursor: pointer;
+    }
+    .modal .modal-caption { margin: 6px 0 10px; font-size: 14px; color: #333; }
+    .modal .modal-content { max-width: 100%; height: auto; border-radius: 12px; }
+    .modal .modal-id { margin: 10px 0 0; font-size: 13px; color: #555; line-height: 1.5; }
   </style>
 </head>
 
-<!-- =========================================================
-     ✅ BODY 시작
-     ========================================================= -->
 <body class="is-preload">
-  <div id="wrapper">
+<div id="wrapper">
 
-    <!-- ✅ 모바일 햄버거: 사이드바 토글 -->
-<a href="#sidebar" class="toggle" aria-label="Menu">
-  <span class="fa fa-bars"></span>
-</a>
-    <!-- =========================
-         MAIN
-         ========================= -->
-    <div id="main">
-      <div class="inner">
+  <a href="#sidebar" class="toggle" aria-label="Menu">
+    <span class="fa fa-bars"></span>
+  </a>
 
-        <!-- =========================
-             HEADER
-             ========================= -->
-        <header id="header">
-          <a href="index.html" class="logo">
-            <img src="images/logo_ch.png" alt="汉江春天" class="logo-img">
-          </a>
+  <!-- ══════════════════════════════════════
+       MAIN
+  ══════════════════════════════════════ -->
+  <div id="main">
+    <div class="inner">
 
-          <!-- ✅ 아이콘: href="#" 유지 + JS가 preventDefault 하고 모달 열기 -->
-         <ul class="icons">
-  <li>
-    <a href="javascript:void(0);"
-       id="wechat-icon"
-       class="icon brands fa-weixin"
-       title="WeChat"
-       aria-controls="wechatModal"
-       aria-haspopup="dialog"
-       role="button">
-      <span class="label">WeChat</span>
-    </a>
-  </li>
-  <li>
-    <a href="javascript:void(0);"
-       id="whatsapp-icon"
-       class="icon brands fa-whatsapp"
-       title="WhatsApp"
-       aria-controls="whatsappModal"
-       aria-haspopup="dialog"
-       role="button">
-      <span class="label">WhatsApp</span>
-    </a>
-  </li>
-  <li>
-    <a href="mailto:leegana@k-medispring.cn"
-       class="icon solid fa-envelope"
-       title="Email">
-      <span class="label">Email</span>
-    </a>
-  </li>
-</ul>
-        </header>
+      <!-- HEADER (원본 유지) -->
+      <header id="header">
+        <a href="index.html" class="logo">
+          <img src="images/logo_ch.png" alt="汉江春天" class="logo-img">
+        </a>
+        <ul class="icons">
+          <li>
+            <a href="javascript:void(0);" id="wechat-icon"
+               class="icon brands fa-weixin" title="WeChat"
+               aria-controls="wechatModal" aria-haspopup="dialog" role="button">
+              <span class="label">WeChat</span>
+            </a>
+          </li>
+          <li>
+            <a href="javascript:void(0);" id="whatsapp-icon"
+               class="icon brands fa-whatsapp" title="WhatsApp"
+               aria-controls="whatsappModal" aria-haspopup="dialog" role="button">
+              <span class="label">WhatsApp</span>
+            </a>
+          </li>
+          <li>
+            <a href="mailto:leegana@k-medispring.cn"
+               class="icon solid fa-envelope" title="Email">
+              <span class="label">Email</span>
+            </a>
+          </li>
+        </ul>
+      </header>
 
-        <br />
+      <br />
 
-        <!-- =========================
-             BANNER
-             ========================= -->
-        <section class="apple-banner-section">
-          <h2 class="main-title">定制医疗观光方案</h2>
+      <!-- BANNER -->
+      <section class="apple-banner-section">
+        <h2 class="main-title cn-serif">定制医疗观光方案</h2>
+        <div class="aurora-text-group">
+          <span>请查看您想要咨询的诊疗项目，然后点击"立即咨询"。</span>
+        </div>
+      </section>
 
-          <div class="aurora-text-group">
-            <span>请查看您想要咨询的诊疗项目，然后点击“咨询”。</span>
+      <hr />
+
+      <!-- ══════════════════════════════════════
+           ① 综合健康体检 — 3개 병원 패키지
+      ══════════════════════════════════════ -->
+      <div class="kplan-block">
+        <div class="block-title cn-serif">
+          🩺 综合健康体检
+          <span class="badge">推荐</span>
+        </div>
+        <div class="block-subtitle">与韩国顶级医疗机构合作 · 1~2天即可完成精密检查 · 全程中文陪同</div>
+
+        <div class="checkup-intro">
+          韩国健康体检系统<strong>世界顶级水平</strong>。1~2天内完成100项以上检查，当天或次日即可获得结果。<br>
+          汉江春天与以下三家代表性医疗机构合作，<strong>根据您的目的和预算量身定制最适合的套餐</strong>。
+        </div>
+
+        <!-- 병원 ① KMI -->
+        <div class="hospital-card">
+          <div class="hospital-card-header">
+            <span class="h-num">① KMI</span>
+            <h3>KMI 健康体检中心</h3>
           </div>
-        </section>
+          <table class="price-table">
+            <thead>
+              <tr>
+                <th style="width:70px;">价位</th>
+                <th style="width:110px;">套餐名称</th>
+                <th style="width:160px;">费用</th>
+                <th>核心内容</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><span class="tier-badge tier-low">低价</span></td>
+                <td><strong>STANDARD</strong></td>
+                <td>
+                  <span class="price-krw num">500,000</span><small style="color:var(--text-sub);font-size:11px;">韩元</small>
+                  <span class="price-rmb">约¥2,650</span>
+                </td>
+                <td>基本检查＋腹部超声波＋甲状腺功能＋肿瘤标记物＋胃肠道检查（三选一）</td>
+              </tr>
+              <tr>
+                <td><span class="tier-badge tier-mid">中价</span></td>
+                <td><strong>SIGNATURE</strong></td>
+                <td>
+                  <span class="price-krw num">1,000,000</span><small style="color:var(--text-sub);font-size:11px;">韩元</small>
+                  <span class="price-rmb">约¥5,300</span>
+                </td>
+                <td>STANDARD基础上＋超声波（腹部/甲状腺/乳房/子宫或前列腺）＋大肠检查（二选一）＋CT或超声波（两项自选）</td>
+              </tr>
+              <tr>
+                <td><span class="tier-badge tier-high">高价</span></td>
+                <td><strong>NOBLE</strong></td>
+                <td>
+                  <span class="price-krw num">2,000,000</span><small style="color:var(--text-sub);font-size:11px;">韩元</small>
+                  <span class="price-rmb">约¥10,600</span>
+                </td>
+                <td>SIGNATURE基础上＋更详细血液检查＋多部位超声＋可选CT/MRI/基因检查</td>
+              </tr>
+            </tbody>
+          </table>
+          <div class="addon-box">
+            <h4>可追加项目（其他项目）</h4>
+            <div class="addon-tags">
+              <span class="addon-tag">脑MRI / MRA</span>
+              <span class="addon-tag">CT（脑/肺/腰椎/颈椎/心脏钙化/腹部肥胖）</span>
+              <span class="addon-tag">肠镜</span>
+              <span class="addon-tag">胃镜 / 胃肠钡餐 / 胃蛋白酶原</span>
+              <span class="addon-tag">心脏超声 / 颈动脉超声 / 乳房超声</span>
+              <span class="addon-tag">基因检查 / 免疫力检查 / 心血管系统检查</span>
+            </div>
+          </div>
+        </div>
 
+        <!-- 병원 ② Samsung -->
+        <div class="hospital-card">
+          <div class="hospital-card-header">
+            <span class="h-num">② Samsung</span>
+            <h3>三星首尔医院健康促进中心</h3>
+          </div>
+          <table class="price-table">
+            <thead>
+              <tr>
+                <th style="width:70px;">价位</th>
+                <th style="width:110px;">套餐名称</th>
+                <th style="width:200px;">费用（韩元）</th>
+                <th>核心内容</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><span class="tier-badge tier-low">低价</span></td>
+                <td><strong>Primary</strong></td>
+                <td>
+                  <span class="price-krw num" style="font-size:13px;">男1,874,000 / 女2,323,000</span>
+                </td>
+                <td>基础检查＋血液检查＋上腹部超声波＋睡眠胃镜；女性另含乳房/妇科检查</td>
+              </tr>
+              <tr>
+                <td><span class="tier-badge tier-mid">中价</span></td>
+                <td><strong>Executive</strong></td>
+                <td>
+                  <span class="price-krw num" style="font-size:13px;">男2,990,000 / 女3,439,000</span>
+                </td>
+                <td>Primary升级＋睡眠肠镜＋心脏超声/颈动脉超声＋甲状腺超声＋骨密度等</td>
+              </tr>
+              <tr>
+                <td><span class="tier-badge tier-high">高价</span></td>
+                <td><strong>Premium</strong></td>
+                <td>
+                  <span class="price-krw num" style="font-size:13px;">男7,857,000 / 女8,216,000</span>
+                </td>
+                <td>Executive升级＋脑MRI/MRA＋PET-CT（40岁以上）＋冠状动脉钙化CT＋更全面精密检查</td>
+              </tr>
+            </tbody>
+          </table>
+          <div class="addon-box">
+            <h4>可追加项目（Additional Items）</h4>
+            <div class="addon-tags">
+              <span class="addon-tag">脑MRI/MRA <span class="num">1,500,000</span>韩元</span>
+              <span class="addon-tag">低剂量肺CT <span class="num">200,000</span>韩元</span>
+              <span class="addon-tag">心脏超声 <span class="num">285,000</span>韩元</span>
+              <span class="addon-tag">颈动脉超声 <span class="num">228,000</span>韩元</span>
+              <span class="addon-tag">甲状腺超声 <span class="num">192,000</span>韩元</span>
+              <span class="addon-tag">冠状动脉钙化CT <span class="num">185,000</span>韩元</span>
+              <span class="addon-tag">肠镜 <span class="num">265,000</span>韩元</span>
+              <span class="addon-tag">腹部-骨盆CT <span class="num">290,000</span>韩元</span>
+              <span class="addon-tag">尿素呼气试验 <span class="num">60,000</span>韩元</span>
+              <span class="addon-tag">骨密度 <span class="num">62,000</span>韩元</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- 병원 ③ SNUH 강남 -->
+        <div class="hospital-card">
+          <div class="hospital-card-header">
+            <span class="h-num">③ SNUH</span>
+            <h3>首尔大学医院江南中心</h3>
+          </div>
+          <table class="price-table">
+            <thead>
+              <tr>
+                <th style="width:70px;">价位</th>
+                <th style="width:130px;">套餐名称</th>
+                <th style="width:130px;">费用</th>
+                <th>核心内容</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><span class="tier-badge tier-low">低价</span></td>
+                <td><strong>基础体检</strong></td>
+                <td><span class="price-consult">另行咨询</span></td>
+                <td>一站式体检、半天完成、国际医疗团队支持</td>
+              </tr>
+              <tr>
+                <td><span class="tier-badge tier-mid">中价</span></td>
+                <td><strong>精密体检</strong></td>
+                <td><span class="price-consult">另行咨询</span></td>
+                <td>专业教授团队、较高异常发现率、外籍客户专属服务</td>
+              </tr>
+              <tr>
+                <td><span class="tier-badge tier-high">高价</span></td>
+                <td><strong>高端定制体检</strong></td>
+                <td><span class="price-consult">另行咨询</span></td>
+                <td>可结合本院与本院本部专科联动，适合高端体检及后续诊疗衔接</td>
+              </tr>
+            </tbody>
+          </table>
+          <div class="hospital-features">
+            <ul>
+              <li>位于首尔江南，地址为首尔市江南区德黑兰路152，江南金融中心38~40层</li>
+              <li>一站式动线设计，含CT/MRI等可集中完成，所需时间约半天</li>
+              <li>国际医疗团队、翻译支持、1:1协调服务、外籍专线支持</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="banner-strip">
+          <strong>📋 汉江春天代为预约 · 全程中文陪同 · 结果翻译解读</strong><br>
+          请通过下方咨询按钮，告知您的目的与预算，我们为您推荐最合适的套餐。
+        </div>
+      </div>
+
+      <!-- ══════════════════════════════════════
+           ② 功能医学 大健康
+      ══════════════════════════════════════ -->
+      <div class="kplan-block">
+        <div class="block-title cn-serif">🔬 功能医学 · 大健康管理</div>
+        <div class="block-subtitle">超越普通体检，找到身体问题的根本原因 · 全身精密功能医学分析</div>
+
+        <div class="check-grid">
+          <div class="check-block">
+            <h4>🩸 血液 · 免疫</h4>
+            <ul>
+              <li>精密血液检查（CBC·生化·炎症标志物）</li>
+              <li>抗癌免疫细胞活性检查（NK细胞）</li>
+              <li>免疫细胞分析（T·B·NK细胞比例）</li>
+              <li>自身免疫疾病检查</li>
+              <li>过敏精密检查（200种）</li>
+              <li>血液净化治疗</li>
+            </ul>
+          </div>
+          <div class="check-block">
+            <h4>⚗️ 激素 · 内分泌</h4>
+            <ul>
+              <li>性激素（雌激素·睾酮·DHEA）</li>
+              <li>甲状腺精密功能检查（T3·T4·TSH）</li>
+              <li>肾上腺疲劳检查（皮质醇日节律）</li>
+              <li>胰岛素抵抗·糖化血红蛋白</li>
+              <li>生长激素检查</li>
+              <li>更年期激素全套</li>
+            </ul>
+          </div>
+          <div class="check-block">
+            <h4>🦠 消化道 · 肠道健康</h4>
+            <ul>
+              <li>肠道菌群分析（微生物组检查）</li>
+              <li>消化器官综合检查（胃·肠·肝·胰）</li>
+              <li>尿液有机酸检查（肠道发酵代谢）</li>
+              <li>肠道通透性检查（Leaky Gut）</li>
+              <li>幽门螺旋杆菌检查</li>
+              <li>慢性消化系统疾病原因分析</li>
+            </ul>
+          </div>
+          <div class="check-block">
+            <h4>🧠 神经系统 · 大脑健康</h4>
+            <ul>
+              <li>阿尔茨海默症早期检查（淀粉样蛋白）</li>
+              <li>重金属检查（铅·汞·镉·砷）</li>
+              <li>神经递质检查（血清素·多巴胺）</li>
+              <li>基因型痴呆风险检查</li>
+              <li>脑MRI · 脑血管MRA</li>
+              <li>认知功能精密评估</li>
+            </ul>
+          </div>
+          <div class="check-block">
+            <h4>💊 慢性病 · 营养状态</h4>
+            <ul>
+              <li>慢性病风险度（心脏·糖尿病·高血压）</li>
+              <li>维生素·矿物质营养状态检查</li>
+              <li>氧化应激·抗氧化能力</li>
+              <li>细胞老化指标（端粒长度）</li>
+              <li>尿液有机酸（综合代谢指标）</li>
+              <li>个性化营养补充剂处方</li>
+            </ul>
+          </div>
+          <div class="check-block">
+            <h4>💉 治疗 · 处方</h4>
+            <ul>
+              <li>免疫细胞治疗注射</li>
+              <li>抗氧化营养液（维C·谷胱甘肽）</li>
+              <li>个性化营养补充剂处方及配送</li>
+              <li>血液净化治疗</li>
+              <li>定制健康管理方案制订</li>
+              <li>回国后远程随访管理</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <!-- ══════════════════════════════════════
+           ③ Cartistem 카티스템
+      ══════════════════════════════════════ -->
+      <div class="kplan-block">
+        <div class="block-title cn-serif">
+          🦴 Cartistem® 膝关节软骨再生复原术
+          <span class="badge">★ 特色项目</span>
+        </div>
+        <div class="block-subtitle">韩国KFDA获批 · 国内单一机构最多病例 · 全球瞩目的软骨再生治疗</div>
+
+        <div class="cati-block">
+          <h3>世界认可的膝关节软骨再生治疗</h3>
+          <div class="cati-sub">韩国KFDA 2012年批准 · 同种异体干细胞治疗剂 · 江南JS医院合作</div>
+          <div class="cati-badge-row">
+            <span class="cati-badge">KFDA 2012年批准</span>
+            <span class="cati-badge">单机构3,000例突破</span>
+            <span class="cati-badge">希丁克教练手术医院</span>
+            <span class="cati-badge">同种异体干细胞</span>
+            <span class="cati-badge">无需人工关节</span>
+          </div>
+          <div class="cati-grid">
+            <div class="cati-item">
+              <h4>🔬 什么是Cartistem？</h4>
+              <p>利用脐带血来源的同种间充质干细胞治疗剂，直接应用于受损膝关节软骨部位，促进软骨再生的全球首款获批治疗剂。</p>
+            </div>
+            <div class="cati-item">
+              <h4>✅ 治疗对象</h4>
+              <p>退行性关节炎、膝软骨损伤、希望避免人工关节手术的患者、运动损伤后软骨缺损。</p>
+            </div>
+            <div class="cati-item">
+              <h4>🏥 江南JS医院</h4>
+              <p>国内单一机构首次突破3,000例（2026年2月）。退行性关节炎·脊柱·运动损伤专科医院。</p>
+            </div>
+            <div class="cati-item">
+              <h4>⚽ 希丁克教练案例</h4>
+              <p>2014年作为1号患者手术后完全康复。2022年对侧膝盖在同一医院再次手术。向全世界展示韩国再生医学实力的标志性案例。</p>
+            </div>
+            <div class="cati-item">
+              <h4>📅 治疗日程</h4>
+              <p>术后<strong>住院2周＋门诊2周</strong>为基本方案。为确保完全康复，<strong>推荐住院4周治疗</strong>。汉江春天全程陪同。</p>
+            </div>
+            <div class="cati-item">
+              <h4>🌏 全球患者</h4>
+              <p>中东·中国·欧洲·英语圈等全球患者前来治疗的国际化医院。中文翻译及协调员完善支持。</p>
+            </div>
+          </div>
+        </div>
+
+        <div style="background:#fff8ee;border-radius:12px;padding:16px 20px;border:1.5px solid #f5d08a;margin-bottom:14px;">
+          <p style="font-size:13px;font-weight:700;color:#c85000;margin-bottom:10px;">📋 Cartistem治疗流程（汉江春天全程陪同）</p>
+          <div class="process-row">
+            <div class="process-step"><strong style="color:#e07b00;">① 事前咨询</strong>MRI影像审核<br>中文咨询</div>
+            <div class="process-step"><strong style="color:#e07b00;">② 入境·检查</strong>精密检查<br>手术方案确定</div>
+            <div class="process-step"><strong style="color:#e07b00;">③ 手术</strong>Cartistem<br>软骨再生手术</div>
+            <div class="process-step"><strong style="color:#e07b00;">④ 住院康复</strong>2~4周<br>专业康复治疗</div>
+            <div class="process-step"><strong style="color:#e07b00;">⑤ 回国后</strong>远程咨询<br>康复监测</div>
+          </div>
+        </div>
+
+        <div class="orange-strip">
+          <strong>🌟 只有在韩国才能接受的治疗 — 无需人工关节，再生自己的软骨组织</strong><br>
+          汉江春天负责从预约、翻译、住院协调到回国后随访的全部流程
+        </div>
+      </div>
+
+      <!-- ══════════════════════════════════════
+           ④ 整形美容
+      ══════════════════════════════════════ -->
+      <div class="kplan-block">
+        <div class="block-title cn-serif">✨ 整形美容 · 皮肤科</div>
+        <div class="block-subtitle">随心所欲，负责到底 · 韩国整形美容强国</div>
+
+        <div class="two-col">
+          <div class="col-box blue">
+            <h3>整形外科</h3>
+            <div class="col-sub">整形·重塑·修复</div>
+            <ul>
+              <li>眼部整形（双眼皮·开眼角·眼角矫正·眼袋）</li>
+              <li>鼻部整形（隆鼻·鼻尖·修复）</li>
+              <li>面部轮廓（颧骨·下颌角·下颏矫正）</li>
+              <li>胸部整形（扩大·缩小·重建）</li>
+              <li>吸脂 & 脂肪移植</li>
+              <li>上眼睑·下眼睑手术</li>
+              <li>耳·额·颈部整形</li>
+            </ul>
+          </div>
+          <div class="col-box teal">
+            <h3>皮肤科 · 非手术美容</h3>
+            <div class="col-sub" style="color:#2aa8a0;">提升·再生·焕肤</div>
+            <ul>
+              <li>肉毒素 & 玻尿酸（皱纹·丰盈·提升）</li>
+              <li>线雕提升（面部·颈部）</li>
+              <li>激光嫩肤（色斑·美白·毛孔）</li>
+              <li>皮肤再生 & 紧致（Thermage·Ulthera·InMode）</li>
+              <li>HIFU · RF 面部提升</li>
+              <li>色素·疤痕治疗</li>
+              <li>脱发治疗（PRP·植发）</li>
+              <li>Petit小手术 — 皮肤免疫力·再生护理</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <!-- ══════════════════════════════════════
+           ⑤ 再生医学
+      ══════════════════════════════════════ -->
+      <div class="kplan-block">
+        <div class="block-title cn-serif">🧬 再生医学 · 干细胞治疗</div>
+        <div class="block-subtitle">韩国先进再生医疗法授权 · 政府批准合法医疗机构</div>
+
+        <div class="svc-grid">
+          <div class="svc-card">
+            <div class="svc-icon">💉</div>
+            <div class="svc-num">REGEN 01</div>
+            <h3>免疫疾病干细胞治疗</h3>
+            <div class="svc-sub">免疫·炎症·自身免疫</div>
+            <p>针对免疫系统紊乱的干细胞靶向治疗，激活自身修复能力。</p>
+          </div>
+          <div class="svc-card">
+            <div class="svc-icon">⏳</div>
+            <div class="svc-num">REGEN 02</div>
+            <h3>抗衰老 · 细胞再生</h3>
+            <div class="svc-sub">逆龄·活力·再生</div>
+            <p>通过干细胞激活细胞再生能力，延缓衰老，恢复活力与年轻状态。</p>
+          </div>
+          <div class="svc-card">
+            <div class="svc-icon">🦴</div>
+            <div class="svc-num">REGEN 03</div>
+            <h3>关节 · 软骨再生治疗</h3>
+            <div class="svc-sub">关节保存·软骨修复</div>
+            <p>含Cartistem®等干细胞软骨再生治疗，无需人工关节，保留自身关节功能。</p>
+          </div>
+          <div class="svc-card">
+            <div class="svc-icon">🌟</div>
+            <div class="svc-num">REGEN 04</div>
+            <h3>NK细胞 + 干细胞联合</h3>
+            <div class="svc-sub">免疫强化·综合抗衰</div>
+            <p>NK细胞活性化与干细胞治疗并行，构建全方位抗衰老综合套餐。</p>
+          </div>
+        </div>
+        <div style="background:rgba(42,168,160,.08);border-radius:10px;padding:12px 16px;font-size:12.5px;color:#155a8a;line-height:1.7;margin-top:4px;">
+          ⚠️ 干细胞治疗须在专业咨询后进行。汉江春天只与持有政府许可·临床论文的合法医疗机构合作。
+        </div>
+      </div>
+
+      <!-- ══════════════════════════════════════
+           ⑥ 女性健康
+      ══════════════════════════════════════ -->
+      <div class="kplan-block">
+        <div class="block-title cn-serif">
+          👩‍⚕️ 女性健康 · 妇产科专科
+          <span class="badge" style="background:var(--hga-pink);">韩国独有</span>
+        </div>
+        <div class="block-subtitle">陪伴女性全生命周期 · 未婚女性卵子冷冻保存合法</div>
+
+        <div class="hl-box">
+          <strong>💡 只有在韩国才能享受的服务 — 未婚女性卵子冷冻保存合法！</strong><br>
+          在中国，未婚女性的卵子冷冻在法律上<strong style="color:#ffcdd2;">受到限制</strong>。<br>
+          <strong>在韩国，未婚女性也可以合法进行卵子冷冻保存。</strong><br>
+          <span class="hl-cn">在中国目前受到法律限制的未婚女性卵子冷冻，在韩国可以合法进行。</span>
+        </div>
+
+        <div class="women-grid">
+          <div class="women-item">
+            <h4>🌸 不孕不育治疗</h4>
+            <ul>
+              <li>不孕不育原因精密检查（男女双方）</li>
+              <li>人工授精（IUI）</li>
+              <li>试管婴儿（IVF · ICSI）</li>
+              <li>植入前基因检查（PGT-A/M）</li>
+              <li>反复着床失败精密检查</li>
+            </ul>
+          </div>
+          <div class="women-item">
+            <h4>❄️ 卵子·精子·胚胎冷冻</h4>
+            <ul>
+              <li><strong>未婚女性卵子冷冻可行 ✓</strong></li>
+              <li>精子冷冻保存</li>
+              <li>受精卵（胚胎）冷冻保存</li>
+              <li>长期保管及管理服务</li>
+              <li>冷冻前健康检查包含</li>
+            </ul>
+          </div>
+          <div class="women-item">
+            <h4>🔍 妇产科定期检查</h4>
+            <ul>
+              <li>子宫·卵巢精密超声</li>
+              <li>宫颈癌检查（HPV + 细胞检查）</li>
+              <li>女性激素全套检查</li>
+              <li>乳腺癌早期筛查</li>
+              <li>更年期激素治疗咨询</li>
+            </ul>
+          </div>
+          <div class="women-item">
+            <h4>🤰 孕产妇 · 胎儿健康</h4>
+            <ul>
+              <li>孕妇精密超声（NT检查等）</li>
+              <li>出生缺陷筛查（含NIPT）</li>
+              <li>妊娠并发症精密检查</li>
+              <li>孕妇个性化营养管理</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <!-- ══════════════════════════════════════
+           ⑦ 全程贴心服务
+      ══════════════════════════════════════ -->
+      <div class="kplan-block">
+        <div class="block-title cn-serif">🛎️ 全程贴心服务</div>
+        <div class="block-subtitle">从入境到回国，全程中文陪同 · 汉江春天一手包办</div>
+
+        <div class="steps">
+          <div class="step-row">
+            <div class="step-num">1</div>
+            <div class="step-content">
+              <h4>出发前咨询 · 个性化方案设计</h4>
+              <p>专属中文顾问1对1免费咨询 · 根据健康状态·目的·预算定制医疗观光方案 · 签证申请指引</p>
+            </div>
+          </div>
+          <div class="step-row">
+            <div class="step-num">2</div>
+            <div class="step-content">
+              <h4>入境 & 接送服务</h4>
+              <p>仁川·金浦机场接机 · 专属医疗用车 · 会说中文的专属司机</p>
+            </div>
+          </div>
+          <div class="step-row">
+            <div class="step-num">3</div>
+            <div class="step-content">
+              <h4>医院全程陪同 & 医疗协调</h4>
+              <p>专业医疗协调员随行 · 诊疗·检查·手术全程口译 · 医疗文件翻译 · 24小时应急支援</p>
+            </div>
+          </div>
+          <div class="step-row">
+            <div class="step-num">4</div>
+            <div class="step-content">
+              <h4>住宿 & 生活支援</h4>
+              <p>医院附近酒店·服务公寓对接 · 适合康复的长期住宿选项（含Cartistem 4周） · 餐饮·出行便利支持</p>
+            </div>
+          </div>
+          <div class="step-row">
+            <div class="step-num">5</div>
+            <div class="step-content">
+              <h4>观光 & 文化体验</h4>
+              <p>首尔观光路线 · K-Beauty购物（江南·明洞·免税店） · 韩流体验 · 韩食美食之旅</p>
+            </div>
+          </div>
+          <div class="step-row">
+            <div class="step-num">6</div>
+            <div class="step-content">
+              <h4>回国后随访管理</h4>
+              <p>微信在线远程咨询 · 检查结果追踪管理 · 再次访韩优先预约优惠</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="banner-strip">
+          <strong>支持付款方式：微信支付 · 支付宝 · 信用卡 · 银行转账</strong><br>
+          韩国保健福祉部外国患者招募正式注册机构 · 专属中文医疗协调员常驻
+        </div>
+      </div>
+
+      <hr />
+
+      <!-- ══════════════════════════════════════
+           K-PLAN 선택 (원본 유지)
+      ══════════════════════════════════════ -->
+      <div id="kplan-page">
+
+        <h4 class="kplan-section-title">大健康（功能医学）</h4>
+        <div class="kplan-choices" data-group-title="大健康">
+          <a class="choice" href="javascript:void(0)">营养代谢分析（OAT）</a>
+          <a class="choice" href="javascript:void(0)">慢性炎症 / 免疫评估</a>
+          <a class="choice" href="javascript:void(0)">睡眠·压力评估（皮质醇）</a>
+          <a class="choice" href="javascript:void(0)">重金属 / 毒性金属检测</a>
+          <a class="choice" href="javascript:void(0)">肠道菌群检测</a>
+          <a class="choice" href="javascript:void(0)">静脉营养（IV）</a>
+        </div>
         <hr />
-
-        <!-- =========================
-             K-PLAN ROOT (JS 연결 핵심)
-             ========================= -->
-        <div id="kplan-page">
-
-          <h4 class="kplan-section-title">大健康（功能医学）</h4>
-          <div class="kplan-choices" data-group-title="大健康">
-            <a class="choice" href="javascript:void(0)">营养代谢分析（OAT）</a>
-            <a class="choice" href="javascript:void(0)">慢性炎症 / 免疫评估</a>
-            <a class="choice" href="javascript:void(0)">睡眠·压力评估（皮质醇）</a>
-            <a class="choice" href="javascript:void(0)">重金属 / 毒性金属检测</a>
-            <a class="choice" href="javascript:void(0)">肠道菌群检测</a>
-            <a class="choice" href="javascript:void(0)">静脉营养（IV）</a>
-          </div>
-
-          <hr />
-
-          <h4 class="kplan-section-title">干细胞 / 再生</h4>
-          <div class="kplan-choices" data-group-title="干细胞 / 再生">
-            <a class="choice" href="javascript:void(0)">干细胞静脉输注（IV）</a>
-            <a class="choice" href="javascript:void(0)">外泌体治疗</a>
-            <a class="choice" href="javascript:void(0)">关节 / 软骨再生</a>
-            <a class="choice" href="javascript:void(0)">皮肤再生</a>
-            <a class="choice" href="javascript:void(0)">干细胞 + NK 联合</a>
-            <a class="choice" href="javascript:void(0)">自体脂肪 MSC</a>
-          </div>
-
-          <hr />
-
-          <h4 class="kplan-section-title">皮肤医美</h4>
-          <div class="kplan-choices" data-group-title="皮肤医美">
-            <a class="choice" href="javascript:void(0)">Ulthera 超声提升</a>
-            <a class="choice" href="javascript:void(0)">Thermage 热玛吉紧肤</a>
-            <a class="choice" href="javascript:void(0)">Rejuran 修复针</a>
-            <a class="choice" href="javascript:void(0)">肉毒（Botox）</a>
-            <a class="choice" href="javascript:void(0)">玻尿酸（Filler）</a>
-            <a class="choice" href="javascript:void(0)">皮秒 / 光子嫩肤（色斑·肤色）</a>
-            <a class="choice" href="javascript:void(0)">痘疤 / 毛孔修复激光</a>
-            <a class="choice" href="javascript:void(0)">水光 / Skin Booster</a>
-          </div>
-
-          <hr />
-
-          <h4 class="kplan-section-title">整形外科</h4>
-          <div class="kplan-choices" data-group-title="整形外科">
-            <a class="choice" href="javascript:void(0)">双眼皮</a>
-            <a class="choice" href="javascript:void(0)">眼修复 / 眼综合</a>
-            <a class="choice" href="javascript:void(0)">隆鼻 / 鼻修复</a>
-            <a class="choice" href="javascript:void(0)">面部轮廓 / 下颌线</a>
-            <a class="choice" href="javascript:void(0)">提眉 / 眼袋</a>
-            <a class="choice" href="javascript:void(0)">吸脂</a>
-            <a class="choice" href="javascript:void(0)">脂肪移植</a>
-            <a class="choice" href="javascript:void(0)">胸部整形</a>
-          </div>
-
-          <hr />
-
-          <h4 class="kplan-section-title">女性中心</h4>
-          <div class="kplan-choices" data-group-title="女性中心">
-            <a class="choice" href="javascript:void(0)">阴道紧致激光</a>
-            <a class="choice" href="javascript:void(0)">小阴唇整形</a>
-            <a class="choice" href="javascript:void(0)">私密美白</a>
-            <a class="choice" href="javascript:void(0)">HPV 筛查 / 疫苗咨询</a>
-            <a class="choice" href="javascript:void(0)">女性激素全套</a>
-            <a class="choice" href="javascript:void(0)">性病检测（12项）</a>
-          </div>
-
-          <hr />
-
-          <h4 class="kplan-section-title">男性健康</h4>
-          <div class="kplan-choices" data-group-title="男性健康">
-            <a class="choice" href="javascript:void(0)">包皮环切</a>
-            <a class="choice" href="javascript:void(0)">ED 综合治疗</a>
-            <a class="choice" href="javascript:void(0)">前列腺微创</a>
-            <a class="choice" href="javascript:void(0)">男性体成分 / 代谢管理</a>
-            <a class="choice" href="javascript:void(0)">HPV 疫苗 / 筛查</a>
-            <a class="choice" href="javascript:void(0)">增粗 / 加长</a>
-          </div>
-
-          <hr />
-
-          <h4 class="kplan-section-title">旅行服务（可选）</h4>
-
-          <div class="kplan-step3">
-            <div class="step3-row step3-row-2">
-              <div class="step3-item">
-                <span class="step3-label">机场接送</span>
-                <div class="kplan-choices step3" data-group-title="旅行服务">
-                  <a class="choice" href="javascript:void(0)" data-excl="airport">需要</a>
-                  <a class="choice" href="javascript:void(0)" data-excl="airport">不需要</a>
-                </div>
-              </div>
-
-              <div class="step3-item">
-                <span class="step3-label">酒店预订</span>
-                <div class="kplan-choices step3" data-group-title="旅行服务">
-                  <a class="choice" href="javascript:void(0)" data-excl="hotel">需要</a>
-                  <a class="choice" href="javascript:void(0)" data-excl="hotel">不需要</a>
-                </div>
+        <h4 class="kplan-section-title">干细胞 / 再生</h4>
+        <div class="kplan-choices" data-group-title="干细胞 / 再生">
+          <a class="choice" href="javascript:void(0)">干细胞静脉输注（IV）</a>
+          <a class="choice" href="javascript:void(0)">外泌体治疗</a>
+          <a class="choice" href="javascript:void(0)">关节 / 软骨再生（Cartistem）</a>
+          <a class="choice" href="javascript:void(0)">皮肤再生</a>
+          <a class="choice" href="javascript:void(0)">干细胞 + NK 联合</a>
+          <a class="choice" href="javascript:void(0)">自体脂肪 MSC</a>
+        </div>
+        <hr />
+        <h4 class="kplan-section-title">皮肤医美</h4>
+        <div class="kplan-choices" data-group-title="皮肤医美">
+          <a class="choice" href="javascript:void(0)">Ulthera 超声提升</a>
+          <a class="choice" href="javascript:void(0)">Thermage 热玛吉紧肤</a>
+          <a class="choice" href="javascript:void(0)">Rejuran 修复针</a>
+          <a class="choice" href="javascript:void(0)">肉毒（Botox）</a>
+          <a class="choice" href="javascript:void(0)">玻尿酸（Filler）</a>
+          <a class="choice" href="javascript:void(0)">皮秒 / 光子嫩肤</a>
+          <a class="choice" href="javascript:void(0)">痘疤 / 毛孔修复激光</a>
+          <a class="choice" href="javascript:void(0)">水光 / Skin Booster</a>
+        </div>
+        <hr />
+        <h4 class="kplan-section-title">整形外科</h4>
+        <div class="kplan-choices" data-group-title="整形外科">
+          <a class="choice" href="javascript:void(0)">双眼皮</a>
+          <a class="choice" href="javascript:void(0)">眼修复 / 眼综合</a>
+          <a class="choice" href="javascript:void(0)">隆鼻 / 鼻修复</a>
+          <a class="choice" href="javascript:void(0)">面部轮廓 / 下颌线</a>
+          <a class="choice" href="javascript:void(0)">提眉 / 眼袋</a>
+          <a class="choice" href="javascript:void(0)">吸脂</a>
+          <a class="choice" href="javascript:void(0)">脂肪移植</a>
+          <a class="choice" href="javascript:void(0)">胸部整形</a>
+        </div>
+        <hr />
+        <h4 class="kplan-section-title">女性中心</h4>
+        <div class="kplan-choices" data-group-title="女性中心">
+          <a class="choice" href="javascript:void(0)">阴道紧致激光</a>
+          <a class="choice" href="javascript:void(0)">小阴唇整形</a>
+          <a class="choice" href="javascript:void(0)">私密美白</a>
+          <a class="choice" href="javascript:void(0)">HPV 筛查 / 疫苗咨询</a>
+          <a class="choice" href="javascript:void(0)">女性激素全套</a>
+          <a class="choice" href="javascript:void(0)">性病检测（12项）</a>
+        </div>
+        <hr />
+        <h4 class="kplan-section-title">男性健康</h4>
+        <div class="kplan-choices" data-group-title="男性健康">
+          <a class="choice" href="javascript:void(0)">包皮环切</a>
+          <a class="choice" href="javascript:void(0)">ED 综合治疗</a>
+          <a class="choice" href="javascript:void(0)">前列腺微创</a>
+          <a class="choice" href="javascript:void(0)">男性体成分 / 代谢管理</a>
+          <a class="choice" href="javascript:void(0)">HPV 疫苗 / 筛查</a>
+          <a class="choice" href="javascript:void(0)">增粗 / 加长</a>
+        </div>
+        <hr />
+        <h4 class="kplan-section-title">旅行服务（可选）</h4>
+        <div class="kplan-step3">
+          <div class="step3-row step3-row-2">
+            <div class="step3-item">
+              <span class="step3-label">机场接送</span>
+              <div class="kplan-choices step3" data-group-title="旅行服务">
+                <a class="choice" href="javascript:void(0)" data-excl="airport">需要</a>
+                <a class="choice" href="javascript:void(0)" data-excl="airport">不需要</a>
               </div>
             </div>
-
-            <div class="step3-row step3-row-2">
-              <div class="step3-item">
-                <span class="step3-label">市区观光</span>
-                <div class="kplan-choices step3" data-group-title="旅行服务">
-                  <a class="choice" href="javascript:void(0)" data-excl="tour">需要</a>
-                  <a class="choice" href="javascript:void(0)" data-excl="tour">不需要</a>
-                </div>
-              </div>
-
-              <div class="step3-item">
-                <span class="step3-label">医疗陪同 / 翻译</span>
-                <div class="kplan-choices step3" data-group-title="旅行服务">
-                  <a class="choice" href="javascript:void(0)" data-excl="translation">需要</a>
-                  <a class="choice" href="javascript:void(0)" data-excl="translation">不需要</a>
-                </div>
+            <div class="step3-item">
+              <span class="step3-label">酒店预订</span>
+              <div class="kplan-choices step3" data-group-title="旅行服务">
+                <a class="choice" href="javascript:void(0)" data-excl="hotel">需要</a>
+                <a class="choice" href="javascript:void(0)" data-excl="hotel">不需要</a>
               </div>
             </div>
           </div>
+          <div class="step3-row step3-row-2">
+            <div class="step3-item">
+              <span class="step3-label">市区观光</span>
+              <div class="kplan-choices step3" data-group-title="旅行服务">
+                <a class="choice" href="javascript:void(0)" data-excl="tour">需要</a>
+                <a class="choice" href="javascript:void(0)" data-excl="tour">不需要</a>
+              </div>
+            </div>
+            <div class="step3-item">
+              <span class="step3-label">医疗陪同 / 翻译</span>
+              <div class="kplan-choices step3" data-group-title="旅行服务">
+                <a class="choice" href="javascript:void(0)" data-excl="translation">需要</a>
+                <a class="choice" href="javascript:void(0)" data-excl="translation">不需要</a>
+              </div>
+            </div>
+          </div>
+        </div>
+        <hr />
+        <button type="button" id="kplanSubmitBtn" class="kms-modal__btn">
+          立即咨询
+          <span class="spark-layer" aria-hidden="true"></span>
+        </button>
 
-          <hr />
+      </div><!-- /#kplan-page -->
+    </div><!-- /.inner -->
+  </div><!-- /#main -->
 
-          <!-- ✅ K-Plan 제출 버튼 -->
-           <button type="button" id="kplanSubmitBtn" class="kms-modal__btn">
-  立即咨询
-  <span class="spark-layer" aria-hidden="true"></span>
-</button>
-        </div><!-- /#kplan-page -->
-      </div><!-- /.inner -->
-    </div><!-- /#main -->
-    <br>
-    <br>
+  <br><br>
 
-    <!-- =========================
-         SIDEBAR
-         ========================= -->
-    <div id="sidebar">
-      <div class="inner">
-        <section id="sidebar-brand" class="sidebar-spacer"></section>
+  <!-- SIDEBAR (원본 완전 유지) -->
+  <div id="sidebar">
+    <div class="inner">
+      <section id="sidebar-brand" class="sidebar-spacer"></section>
+      <nav id="menu">
+        <ul>
+          <li><a href="index.html">首页</a></li>
+          <li><a href="wellness.html">大健康</a></li>
+          <li><a href="stemcell.html">干细胞</a></li>
+          <li><a href="derm.html">皮肤医美</a></li>
+          <li><a href="surgery.html">整形医美</a></li>
+          <li><a href="woman.html">女性护理中心</a></li>
+          <li><a href="man.html">男性健康中心</a></li>
+          <li class="active"><a href="kplan.html" aria-current="page">定制医疗观光方案</a></li>
+        </ul>
+      </nav>
+      <section>
+        <header class="major"><h3>关于我们</h3></header>
+        <p>我们相信，美丽与健康，源于真诚的交流。如果你对韩国医疗、健康管理或合作有兴趣，欢迎通过微信或邮件与我们联系。</p>
+        <ul class="contact">
+          <li><strong>联系方式</strong></li>
+          <li class="icon solid fa-envelope"><a href="mailto:leegana@k-medispring.cn">邮箱：leegana@k-medispring.cn</a></li>
+          <li class="icon solid fa-phone">+82-10-4903-3123</li>
+          <li class="icon solid fa-phone">+82-070-8880-3123</li>
+          <li class="icon solid fa-home">韩国 首尔特别市 城北区 三阳路29号 3层11号（邮编：02832）</li>
+        </ul>
+      </section>
+      <footer id="footer">
+        <p style="text-align:center;font-size:.9em;color:#666;">
+          © 2025 汉江春天 한강애봄 版权所有。模板设计：HTML5 UP。
+        </p>
+      </footer>
+    </div>
+  </div>
 
-        <nav id="menu">
-          <ul>
-            <li><a href="index.html">首页</a></li>
-            <li><a href="wellness.html">大健康</a></li>
-            <li><a href="stemcell.html">干细胞</a></li>
-            <li><a href="derm.html">皮肤医美</a></li>
-            <li><a href="surgery.html">整形医美</a></li>
-            <li><a href="woman.html">女性护理中心</a></li>
-            <li><a href="man.html">男性健康中心</a></li>
-            <li class="active"><a href="kplan.html" aria-current="page">定制医疗观光方案</a></li>
-          </ul>
-        </nav>
+</div><!-- /#wrapper -->
 
-        <section>
-          <header class="major"><h3>关于我们</h3></header>
-          <p>
-            我们相信，美丽与健康，源于真诚的交流。
-            如果你对韩国医疗、健康管理或合作有兴趣，欢迎通过微信或邮件与我们联系。
-          </p>
-
-          <ul class="contact">
-            <li><strong>联系方式</strong></li>
-            <li class="icon solid fa-envelope"><a href="mailto:leegana@k-medispring.cn">邮箱：leegana@k-medispring.cn</a></li>
-            <li class="icon solid fa-phone">+82-10-4903-3123</li>
-            <li class="icon solid fa-phone">+82-070-8880-3123</li>
-            <li class="icon solid fa-home">韩国 首尔特别市 城北区 三阳路29号 3层11号 (邮编：02832)</li>
-          </ul>
-        </section>
-
-        <footer id="footer">
-          <p style="text-align:center; font-size:0.9em; color:#666;">
-            © 2025 汉江春天 한강애봄 版权所有。模板设计：HTML5 UP。
-          </p>
-        </footer>
-      </div><!-- /.inner -->
-    </div><!-- /#sidebar -->
-
-  </div><!-- /#wrapper -->
-
- <!-- =========================================================
-     ✅ contactModal: 企业微信 
-     ========================================================= -->
+<!-- ══════════════ 모달 (원본 완전 유지) ══════════════ -->
 <div id="contactModal" class="kms-modal" aria-hidden="true">
   <div class="kms-modal__backdrop" data-close="1"></div>
-
   <div class="kms-modal__card" role="dialog" aria-modal="true" aria-labelledby="contactModalTitle">
     <h3 id="contactModalTitle" class="kms-modal__title">确认咨询</h3>
-
-    <div class="kms-modal__desc" style="font-size:1.25rem; font-weight:600; text-align:center; margin:10px 0 16px;">
+    <div class="kms-modal__desc" style="font-size:1.25rem;font-weight:600;text-align:center;margin:10px 0 16px;">
       点击后，将直接跳转到企业微信咨询窗口
     </div>
-
     <div id="contactError" class="kms-modal__error" aria-live="polite"></div>
-
-    <button type="button" id="confirmContactBtn" class="kms-modal__btn"
-      style="font-size:1.1rem; font-weight:600;">
+    <button type="button" id="confirmContactBtn" class="kms-modal__btn" style="font-size:1.1rem;font-weight:600;">
       确认咨询
       <span class="spark-layer" aria-hidden="true"></span>
     </button>
-
-    <div class="kms-modal__hint"
-      style="font-size:1.2rem; font-weight:600; text-align:center; margin-top:14px;">
+    <div class="kms-modal__hint" style="font-size:1.2rem;font-weight:600;text-align:center;margin-top:14px;">
       ※ 即将跳转到企业微信客服
     </div>
   </div>
 </div>
-  <!-- =========================================================
-       ✅ (B) submitToast: 제출 후 토스트
-       ========================================================= -->
-  <div id="submitToast" class="kms-toast" aria-hidden="true">
-    <div class="kms-toast__box">即将为您打开咨询窗口</div>
+
+<div id="submitToast" class="kms-toast" aria-hidden="true">
+  <div class="kms-toast__box">即将为您打开咨询窗口</div>
+</div>
+
+<div id="wechatModal" class="modal" aria-hidden="true" role="dialog">
+  <div class="modal-inner" role="document">
+    <button class="close" aria-label="Close" type="button">&times;</button>
+    <p class="modal-caption">扫描二维码添加微信</p>
+    <img id="wechatQR" class="modal-content" src="images/qr_weixin.jpg" alt="WeChat QR for e-gana" />
+    <p class="modal-id">WeChat ID：e-gana</p>
   </div>
+</div>
 
-  <!-- =========================================================
-       ✅ (C) WeChat / WhatsApp QR 모달 (header 아이콘용)
-       ========================================================= -->
-  <div id="wechatModal" class="modal" aria-hidden="true" role="dialog">
-    <div class="modal-inner" role="document">
-      <button class="close" aria-label="Close" type="button">&times;</button>
-      <p class="modal-caption">扫描二维码添加微信</p>
-      <img id="wechatQR" class="modal-content" src="images/qr_weixin.jpg" alt="WeChat QR for e-gana" />
-      <p class="modal-id">WeChat ID：e-gana</p>
-    </div>
+<div id="whatsappModal" class="modal" aria-hidden="true" role="dialog">
+  <div class="modal-inner" role="document">
+    <button class="close" aria-label="Close" type="button">&times;</button>
+    <p class="modal-caption">QR → WhatsApp Connect</p>
+    <img id="whatsappQR" class="modal-content" src="images/whatsapp_qr.jpg" alt="WhatsApp QR" />
+    <p class="modal-id">WhatsApp：+82-10-4903-3123</p>
   </div>
+</div>
 
-  <div id="whatsappModal" class="modal" aria-hidden="true" role="dialog">
-    <div class="modal-inner" role="document">
-      <button class="close" aria-label="Close" type="button">&times;</button>
-      <p class="modal-caption">QR → WhatsApp Connect</p>
-      <img id="whatsappQR" class="modal-content" src="images/whatsapp_qr.jpg" alt="WhatsApp QR for K-Medi Spring" />
-      <p class="modal-id">WhatsApp：+82-10-4903-3123</p>
-    </div>
-  </div>
-
-
-  <!-- =========================================================
-     ✅ (D) K-Plan JS: 선택/제출/모달제어
-     ========================================================= -->
+<!-- ══════════════ JS (원본 완전 유지) ══════════════ -->
 <script>
 (function(){
-
   const root = document.getElementById('kplan-page');
   if(!root) return;
-
   const groups = Array.from(root.querySelectorAll('.kplan-choices'));
   const submitBtn = document.getElementById('kplanSubmitBtn');
   const contactModal = document.getElementById('contactModal');
   const confirmContactBtn = document.getElementById('confirmContactBtn');
   const contactError = document.getElementById('contactError');
   const submitToast = document.getElementById('submitToast');
-
-  if(!submitBtn || !contactModal || !confirmContactBtn || !contactError || !submitToast) return;
+  if(!submitBtn||!contactModal||!confirmContactBtn||!contactError||!submitToast) return;
 
   function openContactModal(){
-    contactError.textContent = '';
+    contactError.textContent='';
     contactModal.classList.add('is-open');
     contactModal.setAttribute('aria-hidden','false');
   }
-
   function closeContactModal(){
     contactModal.classList.remove('is-open');
     contactModal.setAttribute('aria-hidden','true');
   }
-
-  function showToast(message){
-    const box = submitToast.querySelector('.kms-toast__box');
-    if(box){
-      box.textContent = message || "即将为您打开咨询窗口";
-    }
-
+  function showToast(msg){
+    const box=submitToast.querySelector('.kms-toast__box');
+    if(box) box.textContent=msg||"即将为您打开咨询窗口";
     submitToast.classList.add('is-show');
     submitToast.setAttribute('aria-hidden','false');
-
     setTimeout(function(){
       submitToast.classList.remove('is-show');
       submitToast.setAttribute('aria-hidden','true');
-    }, 1400);
-  }
-
-  function getSelected(){
-    const selected = [];
-
-    groups.forEach(function(g){
-      const title = g.dataset.groupTitle || '';
-
-      g.querySelectorAll('.choice.is-selected').forEach(function(el){
-        const text = el.textContent.trim();
-        selected.push(title ? "【" + title + "】" + text : text);
-      });
-    });
-
-    return selected;
+    },1400);
   }
 
   groups.forEach(function(g){
-    g.addEventListener('click', function(e){
-      const el = e.target.closest('.choice');
+    g.addEventListener('click',function(e){
+      const el=e.target.closest('.choice');
       if(!el) return;
-
       e.preventDefault();
-
-      const key = el.dataset.excl;
-
+      const key=el.dataset.excl;
       if(key){
-        g.querySelectorAll('.choice[data-excl="' + key + '"]').forEach(function(x){
-          x.classList.remove('is-selected');
-        });
+        g.querySelectorAll('.choice[data-excl="'+key+'"]').forEach(function(x){ x.classList.remove('is-selected'); });
         el.classList.add('is-selected');
-      }else{
+      } else {
         el.classList.toggle('is-selected');
       }
-    }, true);
+    },true);
   });
 
-submitBtn.addEventListener('click', function(e){
-  e.preventDefault();
-  openContactModal();
-});
+  submitBtn.addEventListener('click',function(e){
+    e.preventDefault();
+    openContactModal();
+  });
 
-  openContactModal();
-});
-
-confirmContactBtn.addEventListener('click', function(){
-  contactError.textContent = "";
-  
+  confirmContactBtn.addEventListener('click',function(){
+    contactError.textContent='';
     closeContactModal();
     showToast("即将为您打开咨询窗口");
-
-    setTimeout(function(){
-      window.location.href = "https://work.weixin.qq.com/kfid/kfcde7d9ec26f6b0df0";
-    }, 800);
+    setTimeout(function(){ window.location.href="https://work.weixin.qq.com/kfid/kfcde7d9ec26f6b0df0"; },800);
   });
 
-  contactModal.addEventListener('click', function(e){
-    if(e.target && e.target.dataset && e.target.dataset.close === '1'){
-      closeContactModal();
-    }
+  contactModal.addEventListener('click',function(e){
+    if(e.target&&e.target.dataset&&e.target.dataset.close==='1') closeContactModal();
   });
 
-  document.addEventListener('keydown', function(e){
-    if(e.key === 'Escape' && contactModal.classList.contains('is-open')){
-      closeContactModal();
-    }
+  document.addEventListener('keydown',function(e){
+    if(e.key==='Escape'&&contactModal.classList.contains('is-open')) closeContactModal();
   });
-
 })();
 
-const wechatIcon = document.getElementById('wechat-icon');
-const whatsappIcon = document.getElementById('whatsapp-icon');
-const wechatModal = document.getElementById('wechatModal');
-const whatsappModal = document.getElementById('whatsappModal');
+const wechatIcon=document.getElementById('wechat-icon');
+const whatsappIcon=document.getElementById('whatsapp-icon');
+const wechatModal=document.getElementById('wechatModal');
+const whatsappModal=document.getElementById('whatsappModal');
 
-function openModal(modal){
-  if(!modal) return;
-  modal.classList.add('is-open');
-  modal.setAttribute('aria-hidden', 'false');
-}
+function openModal(m){ if(!m) return; m.classList.add('is-open'); m.setAttribute('aria-hidden','false'); }
+function closeModal(m){ if(!m) return; m.classList.remove('is-open'); m.setAttribute('aria-hidden','true'); }
 
-function closeModal(modal){
-  if(!modal) return;
-  modal.classList.remove('is-open');
-  modal.setAttribute('aria-hidden', 'true');
-}
+if(wechatIcon&&wechatModal) wechatIcon.addEventListener('click',function(e){ e.preventDefault(); openModal(wechatModal); });
+if(whatsappIcon&&whatsappModal) whatsappIcon.addEventListener('click',function(e){ e.preventDefault(); openModal(whatsappModal); });
 
-if (wechatIcon && wechatModal) {
-  wechatIcon.addEventListener('click', function(e){
-    e.preventDefault();
-    openModal(wechatModal);
-  });
-}
-
-if (whatsappIcon && whatsappModal) {
-  whatsappIcon.addEventListener('click', function(e){
-    e.preventDefault();
-    openModal(whatsappModal);
-  });
-}
-
-[wechatModal, whatsappModal].forEach(function(modal){
-  if(!modal) return;
-
-  modal.addEventListener('click', function(e){
-    if (
-      e.target === modal ||
-      e.target.classList.contains('close')
-    ) {
-      closeModal(modal);
-    }
+[wechatModal,whatsappModal].forEach(function(m){
+  if(!m) return;
+  m.addEventListener('click',function(e){
+    if(e.target===m||e.target.classList.contains('close')) closeModal(m);
   });
 });
 
-document.addEventListener('keydown', function(e){
-  if(e.key === 'Escape'){
-    closeModal(wechatModal);
-    closeModal(whatsappModal);
-  }
+document.addEventListener('keydown',function(e){
+  if(e.key==='Escape'){ closeModal(wechatModal); closeModal(whatsappModal); }
 });
-  
 </script>
+
 <script src="assets/js/jquery.min.js"></script>
 <script src="assets/js/browser.min.js"></script>
 <script src="assets/js/breakpoints.min.js"></script>
 <script src="assets/js/util.js"></script>
 <script src="assets/js/main.js"></script>
-  
+
 </body>
 </html>
