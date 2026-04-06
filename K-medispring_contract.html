@@ -337,11 +337,14 @@
     color: #bbb;
   }
 
-  /* PRINT */
-  @media print {
-    body { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
-    .page { margin: 0; padding: 14mm 18mm; width: 100%; }
+@media print {
+  @page {
+    margin: 0;
   }
+  body { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+  .page { margin: 0; padding: 14mm 18mm; width: 100%; }
+}
+  
 </style>
 </head>
 <body>
