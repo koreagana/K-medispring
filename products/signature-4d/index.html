@@ -4,171 +4,387 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>한강애봄 Signature 4D 프로그램</title>
-
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700;800&display=swap" rel="stylesheet">
 <style>
 body {
   font-family: 'Noto Sans KR', sans-serif;
   margin: 0;
-  background: #f9f9f9;
+  background: #f3f3f3;
   color: #222;
 }
-
 .container {
-  max-width: 900px;
-  margin: auto;
-  padding: 20px;
+  max-width: 1040px;
+  margin: 0 auto;
+  padding: 28px 20px 40px;
 }
-
 h1 {
-  font-size: 26px;
-  font-weight: bold;
-  margin-bottom: 10px;
+  font-size: 28px;
+  font-weight: 800;
+  margin: 0 0 8px;
 }
-
 .subtitle {
   color: #666;
-  margin-bottom: 20px;
+  margin-bottom: 22px;
+  font-size: 16px;
 }
-
 .card {
   background: #fff;
-  border-radius: 10px;
-  padding: 15px;
-  margin-bottom: 15px;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+  border-radius: 14px;
+  padding: 18px 18px 16px;
+  margin-bottom: 18px;
+  box-shadow: 0 2px 10px rgba(0,0,0,.05);
 }
-
+.card-title {
+  font-size: 17px;
+  font-weight: 800;
+  margin-bottom: 12px;
+}
 .highlight {
-  background: #FDF6FF;
-  padding: 10px;
-  border-radius: 6px;
-  margin-top: 10px;
+  background: #f7eff9;
+  padding: 14px 16px;
+  border-radius: 10px;
+  line-height: 1.75;
+  font-size: 15px;
 }
-
 table {
   width: 100%;
   border-collapse: collapse;
-  margin-top: 10px;
+  margin-top: 8px;
 }
-
 th {
-  background: #5c2c0c;
-  color: white;
-  padding: 8px;
-  font-size: 13px;
-}
-
-td {
-  border-bottom: 1px solid #eee;
-  padding: 8px;
-  font-size: 13px;
-}
-
-.cta {
-  margin-top: 20px;
+  background: #6a3207;
+  color: #fff;
+  padding: 11px 10px;
+  font-size: 14px;
+  font-weight: 700;
   text-align: center;
 }
-
+td {
+  padding: 12px 10px;
+  border-bottom: 1px solid #e6e6e6;
+  font-size: 15px;
+  vertical-align: top;
+}
+td:first-child {
+  width: 78px;
+  font-weight: 700;
+  white-space: nowrap;
+}
+.control-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 14px;
+}
+.control-box {
+  background: #f7eff9;
+  border-radius: 10px;
+  padding: 14px;
+}
+.control-box h3 {
+  margin: 0 0 10px;
+  font-size: 15px;
+}
+label {
+  display: block;
+  margin-bottom: 8px;
+  font-size: 13px;
+  font-weight: 700;
+  color: #5b5b5b;
+}
+select {
+  width: 100%;
+  padding: 10px 12px;
+  border: 1px solid #d7d7d7;
+  border-radius: 8px;
+  background: #fff;
+  font-size: 14px;
+  margin-bottom: 10px;
+}
+.note {
+  margin-top: 10px;
+  font-size: 13px;
+  color: #666;
+  line-height: 1.6;
+}
+.cta {
+  margin-top: 22px;
+  text-align: center;
+}
 .button {
   background: #4E97D1;
-  color: white;
-  padding: 14px 20px;
-  border-radius: 8px;
-  font-weight: bold;
+  color: #fff;
+  padding: 14px 24px;
+  border-radius: 10px;
+  font-weight: 700;
   display: inline-block;
   text-decoration: none;
 }
-
 .button:hover {
-  background: #3a7db2;
+  background: #397db4;
+}
+.small {
+  color: #777;
+  font-size: 13px;
+}
+.summary-list {
+  margin: 8px 0 0;
+  padding-left: 18px;
+  line-height: 1.8;
+  font-size: 14px;
+}
+@media (max-width: 768px) {
+  .control-grid {
+    grid-template-columns: 1fr;
+  }
+  th, td {
+    font-size: 13px;
+    padding: 10px 8px;
+  }
+  h1 {
+    font-size: 24px;
+  }
 }
 </style>
 </head>
-
 <body>
 
 <div class="container">
 
-<h1>한강애봄 Signature 4D 프로그램</h1>
-<div class="subtitle">의료 + 여행 + 경험을 결합한 프리미엄 3박4일 일정</div>
+  <h1>한강애봄 Signature 4D 프로그램</h1>
+  <div class="subtitle">의료 + 여행 + 경험을 결합한 프리미엄 3박4일 일정</div>
 
-<div class="card">
-<strong>프로그램 구성</strong>
-<div class="highlight">
-✔ 의료 시술 (피부 / 리프팅 / 항노화)<br>
-✔ 서울 핵심 관광 3곳<br>
-✔ 쇼핑 2회<br>
-✔ 명상 프로그램<br>
-✔ 선택 프로그램 (요리 OR K-컬처 3시간)
+  <div class="card">
+    <div class="card-title">프로그램 구성</div>
+    <div class="highlight">
+      ✔ 의료 시술 (피부 / 리프팅 / 항노화)<br>
+      ✔ 서울 핵심 관광 3곳<br>
+      ✔ 쇼핑 2회<br>
+      ✔ 명상 프로그램<br>
+      ✔ 선택 프로그램 (요리 OR K-컬처 3시간)<br>
+      ✔ 병원 방문 3회 (1일차 / 2일차 / 4일차)
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">4일 일정표</div>
+
+    <table>
+      <tr>
+        <th>시간</th>
+        <th>1일차</th>
+        <th>2일차</th>
+        <th>3일차</th>
+        <th>4일차</th>
+      </tr>
+      <tr>
+        <td>아침</td>
+        <td>입국 / 공항 픽업 / 호텔 체크인</td>
+        <td>호텔 조식 / 병원 2차 방문 / 의료 시술</td>
+        <td>호텔 조식 / 선택 프로그램</td>
+        <td>호텔 조식 / 병원 3차 방문 / 경과 체크</td>
+      </tr>
+      <tr>
+        <td>점심</td>
+        <td>서울 로컬 맛집 (비빔밥 / 한식)</td>
+        <td>수담 한정식</td>
+        <td>관광지 식사 (한식)</td>
+        <td>자유식 또는 간단 식사</td>
+      </tr>
+      <tr>
+        <td>오후</td>
+        <td id="day1-afternoon">병원 1차 방문 / 기본 상담 / 기본 검사 / 관광지 1곳</td>
+        <td>회복 / 재생관리 / 명상</td>
+        <td id="day3-afternoon">서울 관광지 2곳 / 쇼핑 1곳</td>
+        <td>출국 준비 / 공항 이동 / 필요 시 면세 쇼핑</td>
+      </tr>
+      <tr>
+        <td>저녁</td>
+        <td>삼겹살 (한식 BBQ)</td>
+        <td>삼계탕 (보양식)</td>
+        <td id="day3-dinner">선택식 (김치찌개 / 아구찜 / 분식 등) / 쇼핑 1곳</td>
+        <td>-</td>
+      </tr>
+    </table>
+
+    <div class="note">
+      ※ 관광지와 쇼핑 장소는 아래 드롭다운에서 바로 바꿔볼 수 있게 구성함.<br>
+      ※ 상담할 때 고객 취향에 맞춰 즉시 조합 확인 가능.
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">관광지 / 쇼핑 선택</div>
+
+    <div class="control-grid">
+      <div class="control-box">
+        <h3>1일차 관광지 1곳</h3>
+        <label for="tour1">관광지 선택</label>
+        <select id="tour1" onchange="updatePlan()">
+          <option>경복궁</option>
+          <option>북촌한옥마을</option>
+          <option>인사동</option>
+          <option>남산서울타워</option>
+          <option>한강공원</option>
+          <option>청계천</option>
+          <option>광장시장</option>
+          <option>익선동</option>
+          <option>창덕궁</option>
+          <option>덕수궁</option>
+          <option>DDP</option>
+          <option>코엑스 별마당도서관</option>
+          <option>성수동</option>
+          <option>홍대거리</option>
+          <option>가로수길</option>
+          <option>이태원</option>
+          <option>서촌</option>
+          <option>롯데월드타워 서울스카이</option>
+        </select>
+      </div>
+
+      <div class="control-box">
+        <h3>3일차 관광지 2곳</h3>
+        <label for="tour2a">관광지 A</label>
+        <select id="tour2a" onchange="updatePlan()">
+          <option>북촌한옥마을</option>
+          <option>경복궁</option>
+          <option>인사동</option>
+          <option>남산서울타워</option>
+          <option>한강공원</option>
+          <option>청계천</option>
+          <option>광장시장</option>
+          <option>익선동</option>
+          <option>창덕궁</option>
+          <option>덕수궁</option>
+          <option>DDP</option>
+          <option>코엑스 별마당도서관</option>
+          <option>성수동</option>
+          <option>홍대거리</option>
+          <option>가로수길</option>
+          <option>이태원</option>
+          <option>서촌</option>
+          <option>롯데월드타워 서울스카이</option>
+        </select>
+
+        <label for="tour2b">관광지 B</label>
+        <select id="tour2b" onchange="updatePlan()">
+          <option>인사동</option>
+          <option>경복궁</option>
+          <option>북촌한옥마을</option>
+          <option>남산서울타워</option>
+          <option>한강공원</option>
+          <option>청계천</option>
+          <option>광장시장</option>
+          <option>익선동</option>
+          <option>창덕궁</option>
+          <option>덕수궁</option>
+          <option>DDP</option>
+          <option>코엑스 별마당도서관</option>
+          <option>성수동</option>
+          <option>홍대거리</option>
+          <option>가로수길</option>
+          <option>이태원</option>
+          <option>서촌</option>
+          <option>롯데월드타워 서울스카이</option>
+        </select>
+      </div>
+
+      <div class="control-box">
+        <h3>쇼핑 1차</h3>
+        <label for="shop1">3일차 오후 쇼핑</label>
+        <select id="shop1" onchange="updatePlan()">
+          <option>더현대서울</option>
+          <option>명동</option>
+          <option>롯데백화점 본점</option>
+          <option>신세계백화점 본점</option>
+          <option>현대백화점 압구정본점</option>
+          <option>스타필드 코엑스몰</option>
+          <option>롯데월드몰</option>
+          <option>IFC몰</option>
+          <option>타임스퀘어</option>
+          <option>현대백화점 무역센터점</option>
+          <option>갤러리아 명품관</option>
+          <option>압구정 로데오</option>
+          <option>가로수길</option>
+          <option>성수동 편집숍 거리</option>
+          <option>홍대 쇼핑거리</option>
+          <option>동대문 패션타운</option>
+          <option>고투몰</option>
+          <option>커먼그라운드</option>
+        </select>
+      </div>
+
+      <div class="control-box">
+        <h3>쇼핑 2차</h3>
+        <label for="shop2">3일차 저녁 쇼핑</label>
+        <select id="shop2" onchange="updatePlan()">
+          <option>명동</option>
+          <option>더현대서울</option>
+          <option>롯데백화점 본점</option>
+          <option>신세계백화점 본점</option>
+          <option>현대백화점 압구정본점</option>
+          <option>스타필드 코엑스몰</option>
+          <option>롯데월드몰</option>
+          <option>IFC몰</option>
+          <option>타임스퀘어</option>
+          <option>현대백화점 무역센터점</option>
+          <option>갤러리아 명품관</option>
+          <option>압구정 로데오</option>
+          <option>가로수길</option>
+          <option>성수동 편집숍 거리</option>
+          <option>홍대 쇼핑거리</option>
+          <option>동대문 패션타운</option>
+          <option>고투몰</option>
+          <option>커먼그라운드</option>
+        </select>
+      </div>
+    </div>
+
+    <ul class="summary-list">
+      <li><strong>1일차 관광:</strong> <span id="summary-tour1">경복궁</span></li>
+      <li><strong>3일차 관광:</strong> <span id="summary-tour2">북촌한옥마을 / 인사동</span></li>
+      <li><strong>쇼핑 1차:</strong> <span id="summary-shop1">더현대서울</span></li>
+      <li><strong>쇼핑 2차:</strong> <span id="summary-shop2">명동</span></li>
+    </ul>
+  </div>
+
+  <div class="card">
+    <div class="card-title">선택 프로그램</div>
+    <div class="highlight">
+      ① 한식 요리 클래스<br>
+      ② K-POP 댄스 / 노래 체험 (3시간)
+    </div>
+  </div>
+
+  <div class="cta">
+    <a href="https://work.weixin.qq.com/kfid/kfcde7d9ec26f6b0df0" target="_blank" class="button">지금 상담하기</a>
+  </div>
 </div>
-</div>
 
-<div class="card">
-<strong>4일 일정표</strong>
+<script>
+function updatePlan() {
+  const tour1 = document.getElementById('tour1').value;
+  const tour2a = document.getElementById('tour2a').value;
+  const tour2b = document.getElementById('tour2b').value;
+  const shop1 = document.getElementById('shop1').value;
+  const shop2 = document.getElementById('shop2').value;
 
-<table>
+  document.getElementById('day1-afternoon').textContent =
+    `병원 1차 방문 / 기본 상담 / 기본 검사 / ${tour1}`;
 
-<tr>
-<th>시간</th>
-<th>1일차</th>
-<th>2일차</th>
-<th>3일차</th>
-<th>4일차</th>
-</tr>
+  document.getElementById('day3-afternoon').textContent =
+    `${tour2a} / ${tour2b} / ${shop1}`;
 
-<tr>
-<td>아침</td>
-<td>-</td>
-<td>호텔 조식</td>
-<td>호텔 조식</td>
-<td>호텔 조식</td>
-</tr>
+  document.getElementById('day3-dinner').textContent =
+    `선택식 (김치찌개 / 아구찜 / 분식 등) / ${shop2}`;
 
-<tr>
-<td>점심</td>
-<td>서울 로컬 맛집 (비빔밥 / 한식)</td>
-<td>수담 한정식</td>
-<td>관광지 식사 (한식)</td>
-<td>-</td>
-</tr>
+  document.getElementById('summary-tour1').textContent = tour1;
+  document.getElementById('summary-tour2').textContent = `${tour2a} / ${tour2b}`;
+  document.getElementById('summary-shop1').textContent = shop1;
+  document.getElementById('summary-shop2').textContent = shop2;
+}
 
-<tr>
-<td>오후</td>
-<td>입국 / 호텔 체크인 / 서울 관광 2곳</td>
-<td>의료 시술 / 회복 / 명상</td>
-<td>서울 관광 3곳 / 쇼핑</td>
-<td>출국 준비 / 공항 이동</td>
-</tr>
-
-<tr>
-<td>저녁</td>
-<td>삼겹살 (한식 BBQ)</td>
-<td>삼계탕 (보양식)</td>
-<td>선택식 (김치찌개 / 아구찜 / 분식 등)</td>
-<td>-</td>
-</tr>
-
-</table>
-
-</div>
-
-<div class="card">
-<strong>선택 프로그램</strong>
-
-<div class="highlight">
-① 한식 요리 클래스<br>
-② K-POP 댄스 / 노래 체험 (3시간)
-</div>
-
-</div>
-
-<div class="cta">
-<a href="https://work.weixin.qq.com/kfid/kfcde7d9ec26f6b0df0" target="_blank" class="button">
-지금 상담하기
-</a>
-</div>
-
-</div>
+updatePlan();
+</script>
 
 </body>
 </html>
