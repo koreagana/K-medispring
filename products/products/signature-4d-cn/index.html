@@ -4,14 +4,10 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>汉江春天 Signature 4D 项目</title>
-<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;500;700;800&display=swap" rel="stylesheet">
-
-<!-- favicon -->
-<link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32.png">
-<link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
 <link rel="icon" href="/images/favicon.ico">
 <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
-  
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;500;700;800&display=swap" rel="stylesheet">
+
 <style>
 body {
   font-family: 'Noto Sans SC', sans-serif;
@@ -19,33 +15,39 @@ body {
   background: #f3f3f3;
   color: #222;
 }
+
 .container {
   max-width: 1040px;
   margin: 0 auto;
   padding: 28px 20px 40px;
 }
+
 h1 {
   font-size: 28px;
   font-weight: 800;
   margin: 0 0 8px;
 }
+
 .subtitle {
   color: #666;
   margin-bottom: 22px;
   font-size: 16px;
 }
+
 .card {
   background: #fff;
   border-radius: 14px;
   padding: 18px 18px 16px;
   margin-bottom: 18px;
-  box-shadow: 0 2px 10px rgba(0,0,0,.05);
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
 }
+
 .card-title {
   font-size: 17px;
   font-weight: 800;
   margin-bottom: 12px;
 }
+
 .highlight {
   background: #f7eff9;
   padding: 14px 16px;
@@ -53,11 +55,13 @@ h1 {
   line-height: 1.75;
   font-size: 15px;
 }
+
 table {
   width: 100%;
   border-collapse: collapse;
   margin-top: 8px;
 }
+
 th {
   background: #6a3207;
   color: #fff;
@@ -66,31 +70,37 @@ th {
   font-weight: 700;
   text-align: center;
 }
+
 td {
   padding: 12px 10px;
   border-bottom: 1px solid #e6e6e6;
   font-size: 15px;
   vertical-align: top;
 }
+
 td:first-child {
   width: 78px;
   font-weight: 700;
   white-space: nowrap;
 }
+
 .control-grid {
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 14px;
 }
+
 .control-box {
   background: #f7eff9;
   border-radius: 10px;
   padding: 14px;
 }
+
 .control-box h3 {
   margin: 0 0 10px;
   font-size: 15px;
 }
+
 label {
   display: block;
   margin-bottom: 8px;
@@ -98,6 +108,7 @@ label {
   font-weight: 700;
   color: #5b5b5b;
 }
+
 select {
   width: 100%;
   padding: 10px 12px;
@@ -107,16 +118,19 @@ select {
   font-size: 14px;
   margin-bottom: 10px;
 }
+
 .note {
   margin-top: 10px;
   font-size: 13px;
   color: #666;
   line-height: 1.6;
 }
+
 .cta {
   margin-top: 22px;
   text-align: center;
 }
+
 .button {
   background: #4E97D1;
   color: #fff;
@@ -126,23 +140,52 @@ select {
   display: inline-block;
   text-decoration: none;
 }
+
 .button:hover {
   background: #397db4;
 }
+
 .summary-list {
   margin: 8px 0 0;
   padding-left: 18px;
   line-height: 1.8;
   font-size: 14px;
 }
+
+.line {
+  display: block;
+  margin-bottom: 4px;
+  line-height: 1.55;
+}
+
+.line:last-child {
+  margin-bottom: 0;
+}
+
+.medical-box {
+  background: #fdf6ff;
+  border-left: 4px solid #b66fd8;
+  border-radius: 8px;
+  padding: 8px 10px;
+  margin-bottom: 6px;
+}
+
+.medical-title {
+  font-weight: 700;
+  color: #7b3fa0;
+}
+
 @media (max-width: 768px) {
   .control-grid {
     grid-template-columns: 1fr;
   }
-  th, td {
+
+  th,
+  td {
     font-size: 13px;
     padding: 10px 8px;
   }
+
   h1 {
     font-size: 24px;
   }
@@ -151,9 +194,8 @@ select {
 </head>
 <body>
 
-<!-- 언어 전환 버튼 -->
 <div style="position:fixed; top:20px; right:20px; z-index:9999;">
-  <a href="/products/products/signature-4d-cn/" style="
+  <a href="/products/signature-4d/" style="
     background:#4E97D1;
     color:#fff;
     padding:8px 14px;
@@ -163,7 +205,7 @@ select {
     font-weight:600;
   ">한국어</a>
 </div>
-  
+
 <div class="container">
 
   <h1>汉江春天 Signature 4D 项目</h1>
@@ -192,32 +234,94 @@ select {
         <th>第3天</th>
         <th>第4天</th>
       </tr>
+
       <tr>
         <td>早餐</td>
-        <td>入境 / 机场接送 / 入住酒店</td>
-        <td>酒店早餐 / 第2次到院 / 医疗项目</td>
-        <td>酒店早餐 / 可选体验</td>
-        <td>酒店早餐 / 第3次到院 / 术后复查</td>
+        <td>
+          <span class="line">入境</span>
+          <span class="line">机场接送</span>
+          <span class="line">入住酒店</span>
+        </td>
+        <td>
+          <span class="line">酒店早餐</span>
+          <div class="medical-box">
+            <span class="line medical-title">第2次到院</span>
+            <span class="line">医疗项目</span>
+          </div>
+        </td>
+        <td>
+          <span class="line">酒店早餐</span>
+          <span class="line">可选体验</span>
+        </td>
+        <td>
+          <span class="line">酒店早餐</span>
+          <div class="medical-box">
+            <span class="line medical-title">第3次到院</span>
+            <span class="line">术后复查</span>
+          </div>
+        </td>
       </tr>
+
       <tr>
         <td>午餐</td>
-        <td>首尔本地美食（拌饭 / 韩餐）</td>
-        <td>Sudam 韩定食</td>
-        <td>景点餐（韩餐）</td>
-        <td>自由简餐</td>
+        <td>
+          <span class="line">首尔本地美食</span>
+          <span class="line">（拌饭 / 韩餐）</span>
+        </td>
+        <td>
+          <span class="line">Sudam 韩定食</span>
+        </td>
+        <td>
+          <span class="line">景点餐</span>
+          <span class="line">（韩餐）</span>
+        </td>
+        <td>
+          <span class="line">自由简餐</span>
+        </td>
       </tr>
+
       <tr>
         <td>下午</td>
-        <td id="day1-afternoon">第1次到院 / 初诊咨询 / 基本检查 / 景点1处</td>
-        <td>恢复 / 再生管理 / 冥想</td>
-        <td id="day3-afternoon">首尔景点2处 / 购物1处</td>
-        <td>离境准备 / 前往机场 / 如有需要可安排免税购物</td>
+        <td id="day1-afternoon">
+          <div class="medical-box">
+            <span class="line medical-title">第1次到院</span>
+            <span class="line">初诊咨询</span>
+            <span class="line">基本检查</span>
+          </div>
+          <span class="line">景福宫</span>
+        </td>
+        <td>
+          <span class="line">恢复</span>
+          <span class="line">再生管理</span>
+          <span class="line">冥想</span>
+        </td>
+        <td id="day3-afternoon">
+          <span class="line">北村韩屋村</span>
+          <span class="line">仁寺洞</span>
+          <span class="line">现代百货 The Hyundai Seoul</span>
+        </td>
+        <td>
+          <span class="line">离境准备</span>
+          <span class="line">前往机场</span>
+          <span class="line">如有需要可安排免税购物</span>
+        </td>
       </tr>
+
       <tr>
         <td>晚餐</td>
-        <td>韩式烤肉（五花肉）</td>
-        <td>参鸡汤（养生）</td>
-        <td id="day3-dinner">自由选择（泡菜汤 / 安康鱼炖 / 韩式小吃等） / 购物1处</td>
+        <td>
+          <span class="line">韩式烤肉</span>
+          <span class="line">（五花肉）</span>
+        </td>
+        <td>
+          <span class="line">参鸡汤</span>
+          <span class="line">（养生）</span>
+        </td>
+        <td id="day3-dinner">
+          <span class="line">自由选择</span>
+          <span class="line">（泡菜汤 / 安康鱼炖 / 韩式小吃等）</span>
+          <span class="line">明洞</span>
+        </td>
         <td>-</td>
       </tr>
     </table>
@@ -384,14 +488,26 @@ function updatePlan() {
   const shop1 = document.getElementById('shop1').value;
   const shop2 = document.getElementById('shop2').value;
 
-  document.getElementById('day1-afternoon').textContent =
-    `第1次到院 / 初诊咨询 / 基本检查 / ${tour1}`;
+  document.getElementById('day1-afternoon').innerHTML = `
+    <div class="medical-box">
+      <span class="line medical-title">第1次到院</span>
+      <span class="line">初诊咨询</span>
+      <span class="line">基本检查</span>
+    </div>
+    <span class="line">${tour1}</span>
+  `;
 
-  document.getElementById('day3-afternoon').textContent =
-    `${tour2a} / ${tour2b} / ${shop1}`;
+  document.getElementById('day3-afternoon').innerHTML = `
+    <span class="line">${tour2a}</span>
+    <span class="line">${tour2b}</span>
+    <span class="line">${shop1}</span>
+  `;
 
-  document.getElementById('day3-dinner').textContent =
-    `自由选择（泡菜汤 / 安康鱼炖 / 韩式小吃等） / ${shop2}`;
+  document.getElementById('day3-dinner').innerHTML = `
+    <span class="line">自由选择</span>
+    <span class="line">（泡菜汤 / 安康鱼炖 / 韩式小吃等）</span>
+    <span class="line">${shop2}</span>
+  `;
 
   document.getElementById('summary-tour1').textContent = tour1;
   document.getElementById('summary-tour2').textContent = `${tour2a} / ${tour2b}`;
