@@ -4,15 +4,10 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>한강애봄 Signature 4D 프로그램</title>
-<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700;800&display=swap" rel="stylesheet">
-
-  <!-- favicon -->
-<link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32.png">
-<link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
 <link rel="icon" href="/images/favicon.ico">
 <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
-  
-  
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700;800&display=swap" rel="stylesheet">
+
 <style>
 body {
   font-family: 'Noto Sans KR', sans-serif;
@@ -20,33 +15,39 @@ body {
   background: #f3f3f3;
   color: #222;
 }
+
 .container {
   max-width: 1040px;
   margin: 0 auto;
   padding: 28px 20px 40px;
 }
+
 h1 {
   font-size: 28px;
   font-weight: 800;
   margin: 0 0 8px;
 }
+
 .subtitle {
   color: #666;
   margin-bottom: 22px;
   font-size: 16px;
 }
+
 .card {
   background: #fff;
   border-radius: 14px;
   padding: 18px 18px 16px;
   margin-bottom: 18px;
-  box-shadow: 0 2px 10px rgba(0,0,0,.05);
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
 }
+
 .card-title {
   font-size: 17px;
   font-weight: 800;
   margin-bottom: 12px;
 }
+
 .highlight {
   background: #f7eff9;
   padding: 14px 16px;
@@ -54,11 +55,13 @@ h1 {
   line-height: 1.75;
   font-size: 15px;
 }
+
 table {
   width: 100%;
   border-collapse: collapse;
   margin-top: 8px;
 }
+
 th {
   background: #6a3207;
   color: #fff;
@@ -67,31 +70,37 @@ th {
   font-weight: 700;
   text-align: center;
 }
+
 td {
   padding: 12px 10px;
   border-bottom: 1px solid #e6e6e6;
   font-size: 15px;
   vertical-align: top;
 }
+
 td:first-child {
   width: 78px;
   font-weight: 700;
   white-space: nowrap;
 }
+
 .control-grid {
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 14px;
 }
+
 .control-box {
   background: #f7eff9;
   border-radius: 10px;
   padding: 14px;
 }
+
 .control-box h3 {
   margin: 0 0 10px;
   font-size: 15px;
 }
+
 label {
   display: block;
   margin-bottom: 8px;
@@ -99,6 +108,7 @@ label {
   font-weight: 700;
   color: #5b5b5b;
 }
+
 select {
   width: 100%;
   padding: 10px 12px;
@@ -108,16 +118,19 @@ select {
   font-size: 14px;
   margin-bottom: 10px;
 }
+
 .note {
   margin-top: 10px;
   font-size: 13px;
   color: #666;
   line-height: 1.6;
 }
+
 .cta {
   margin-top: 22px;
   text-align: center;
 }
+
 .button {
   background: #4E97D1;
   color: #fff;
@@ -127,50 +140,91 @@ select {
   display: inline-block;
   text-decoration: none;
 }
+
 .button:hover {
   background: #397db4;
 }
-.small {
-  color: #777;
-  font-size: 13px;
-}
+
 .summary-list {
   margin: 8px 0 0;
   padding-left: 18px;
   line-height: 1.8;
   font-size: 14px;
 }
+
+.line {
+  display: block;
+  margin-bottom: 4px;
+  line-height: 1.55;
+}
+
+.line:last-child {
+  margin-bottom: 0;
+}
+
+.medical-box {
+  background: #fdf6ff;
+  border-left: 4px solid #b66fd8;
+  border-radius: 8px;
+  padding: 8px 10px;
+  margin-bottom: 6px;
+}
+
+.medical-title {
+  font-weight: 700;
+  color: #7b3fa0;
+}
+
+.lang-switch {
+  position: fixed;
+  top: 20px;
+  right: 24px;
+  z-index: 9999;
+}
+
+.lang-switch a {
+  background: #4E97D1;
+  color: #fff;
+  padding: 8px 14px;
+  border-radius: 8px;
+  font-size: 13px;
+  text-decoration: none;
+  font-weight: 600;
+  display: inline-block;
+}
+
+.lang-switch a:hover {
+  background: #397db4;
+}
+
 @media (max-width: 768px) {
   .control-grid {
     grid-template-columns: 1fr;
   }
-  th, td {
+
+  th,
+  td {
     font-size: 13px;
     padding: 10px 8px;
   }
+
   h1 {
     font-size: 24px;
+  }
+
+  .lang-switch {
+    top: 14px;
+    right: 14px;
   }
 }
 </style>
 </head>
 <body>
 
-<body>
-
-<!-- 언어 전환 버튼 -->
-<div style="position:fixed; top:20px; right:20px; z-index:9999;">
-  <a href="/products/products/signature-4d-cn/" style="
-    background:#4E97D1;
-    color:#fff;
-    padding:8px 14px;
-    border-radius:8px;
-    font-size:13px;
-    text-decoration:none;
-    font-weight:600;
-  ">中文</a>
+<div class="lang-switch">
+  <a href="https://kmedispring.com/products/products/signature-4d-cn/">中文</a>
 </div>
-  
+
 <div class="container">
 
   <h1>한강애봄 Signature 4D 프로그램</h1>
@@ -199,44 +253,106 @@ select {
         <th>3일차</th>
         <th>4일차</th>
       </tr>
+
       <tr>
         <td>아침</td>
-        <td>입국 / 공항 픽업 / 호텔 체크인</td>
-        <td>호텔 조식 / 병원 2차 방문 / 의료 시술</td>
-        <td>호텔 조식 / 선택 프로그램</td>
-        <td>호텔 조식 / 병원 3차 방문 / 경과 체크</td>
+        <td>
+          <span class="line">입국</span>
+          <span class="line">공항 픽업</span>
+          <span class="line">호텔 체크인</span>
+        </td>
+        <td>
+          <span class="line">호텔 조식</span>
+          <div class="medical-box">
+            <span class="line medical-title">병원 2차 방문</span>
+            <span class="line">의료 시술</span>
+          </div>
+        </td>
+        <td>
+          <span class="line">호텔 조식</span>
+          <span class="line">선택 프로그램</span>
+        </td>
+        <td>
+          <span class="line">호텔 조식</span>
+          <div class="medical-box">
+            <span class="line medical-title">병원 3차 방문</span>
+            <span class="line">경과 체크</span>
+          </div>
+        </td>
       </tr>
+
       <tr>
         <td>점심</td>
-        <td>서울 로컬 맛집 (비빔밥 / 한식)</td>
-        <td>수담 한정식</td>
-        <td>관광지 식사 (한식)</td>
-        <td>자유식 또는 간단 식사</td>
+        <td>
+          <span class="line">서울 로컬 맛집</span>
+          <span class="line">비빔밥 / 한식</span>
+        </td>
+        <td>
+          <span class="line">수담 한정식</span>
+        </td>
+        <td>
+          <span class="line">관광지 식사</span>
+          <span class="line">한식</span>
+        </td>
+        <td>
+          <span class="line">자유식 또는 간단 식사</span>
+        </td>
       </tr>
+
       <tr>
         <td>오후</td>
-        <td id="day1-afternoon">병원 1차 방문 / 기본 상담 / 기본 검사 / 관광지 1곳</td>
-        <td>회복 / 재생관리 / 명상</td>
-        <td id="day3-afternoon">서울 관광지 2곳 / 쇼핑 1곳</td>
-        <td>출국 준비 / 공항 이동 / 필요 시 면세 쇼핑</td>
+        <td id="day1-afternoon">
+          <div class="medical-box">
+            <span class="line medical-title">병원 1차 방문</span>
+            <span class="line">기본 상담</span>
+            <span class="line">기본 검사</span>
+          </div>
+          <span class="line">경복궁</span>
+        </td>
+        <td>
+          <span class="line">회복</span>
+          <span class="line">재생관리</span>
+          <span class="line">명상</span>
+        </td>
+        <td id="day3-afternoon">
+          <span class="line">북촌한옥마을</span>
+          <span class="line">인사동</span>
+          <span class="line">더현대서울</span>
+        </td>
+        <td>
+          <span class="line">출국 준비</span>
+          <span class="line">공항 이동</span>
+          <span class="line">필요 시 면세 쇼핑</span>
+        </td>
       </tr>
+
       <tr>
         <td>저녁</td>
-        <td>삼겹살 (한식 BBQ)</td>
-        <td>삼계탕 (보양식)</td>
-        <td id="day3-dinner">선택식 (김치찌개 / 아구찜 / 분식 등) / 쇼핑 1곳</td>
+        <td>
+          <span class="line">삼겹살</span>
+          <span class="line">한식 BBQ</span>
+        </td>
+        <td>
+          <span class="line">삼계탕</span>
+          <span class="line">보양식</span>
+        </td>
+        <td id="day3-dinner">
+          <span class="line">선택식</span>
+          <span class="line">김치찌개 / 아구찜 / 분식 등</span>
+          <span class="line">명동</span>
+        </td>
         <td>-</td>
       </tr>
     </table>
 
     <div class="note">
-      ※ 관광지와 쇼핑 장소는 아래 드롭다운에서 바로 바꿔볼 수 있게 구성함.<br>
-      ※ 상담할 때 고객 취향에 맞춰 즉시 조합 확인 가능.
+      ※ 관광지와 쇼핑 장소는 아래 드롭다운에서 바로 변경할 수 있다.<br>
+      ※ 상담 시 고객 취향에 맞춰 바로 조합을 바꿔 설명할 수 있다.
     </div>
   </div>
 
   <div class="card">
-    <div class="card-title">관광지 / 쇼핑 선택</div>
+    <div class="card-title">관광지 / 쇼핑 장소 선택</div>
 
     <div class="control-grid">
       <div class="control-box">
@@ -260,7 +376,7 @@ select {
           <option>가로수길</option>
           <option>이태원</option>
           <option>서촌</option>
-          <option>롯데월드타워 서울스카이</option>
+          <option>서울스카이</option>
         </select>
       </div>
 
@@ -285,7 +401,7 @@ select {
           <option>가로수길</option>
           <option>이태원</option>
           <option>서촌</option>
-          <option>롯데월드타워 서울스카이</option>
+          <option>서울스카이</option>
         </select>
 
         <label for="tour2b">관광지 B</label>
@@ -307,7 +423,7 @@ select {
           <option>가로수길</option>
           <option>이태원</option>
           <option>서촌</option>
-          <option>롯데월드타워 서울스카이</option>
+          <option>서울스카이</option>
         </select>
       </div>
 
@@ -363,8 +479,8 @@ select {
     </div>
 
     <ul class="summary-list">
-      <li><strong>1일차 관광:</strong> <span id="summary-tour1">경복궁</span></li>
-      <li><strong>3일차 관광:</strong> <span id="summary-tour2">북촌한옥마을 / 인사동</span></li>
+      <li><strong>1일차 관광지:</strong> <span id="summary-tour1">경복궁</span></li>
+      <li><strong>3일차 관광지:</strong> <span id="summary-tour2">북촌한옥마을 / 인사동</span></li>
       <li><strong>쇼핑 1차:</strong> <span id="summary-shop1">더현대서울</span></li>
       <li><strong>쇼핑 2차:</strong> <span id="summary-shop2">명동</span></li>
     </ul>
@@ -381,6 +497,7 @@ select {
   <div class="cta">
     <a href="https://work.weixin.qq.com/kfid/kfcde7d9ec26f6b0df0" target="_blank" class="button">지금 상담하기</a>
   </div>
+
 </div>
 
 <script>
@@ -391,14 +508,26 @@ function updatePlan() {
   const shop1 = document.getElementById('shop1').value;
   const shop2 = document.getElementById('shop2').value;
 
-  document.getElementById('day1-afternoon').textContent =
-    `병원 1차 방문 / 기본 상담 / 기본 검사 / ${tour1}`;
+  document.getElementById('day1-afternoon').innerHTML = `
+    <div class="medical-box">
+      <span class="line medical-title">병원 1차 방문</span>
+      <span class="line">기본 상담</span>
+      <span class="line">기본 검사</span>
+    </div>
+    <span class="line">${tour1}</span>
+  `;
 
-  document.getElementById('day3-afternoon').textContent =
-    `${tour2a} / ${tour2b} / ${shop1}`;
+  document.getElementById('day3-afternoon').innerHTML = `
+    <span class="line">${tour2a}</span>
+    <span class="line">${tour2b}</span>
+    <span class="line">${shop1}</span>
+  `;
 
-  document.getElementById('day3-dinner').textContent =
-    `선택식 (김치찌개 / 아구찜 / 분식 등) / ${shop2}`;
+  document.getElementById('day3-dinner').innerHTML = `
+    <span class="line">선택식</span>
+    <span class="line">김치찌개 / 아구찜 / 분식 등</span>
+    <span class="line">${shop2}</span>
+  `;
 
   document.getElementById('summary-tour1').textContent = tour1;
   document.getElementById('summary-tour2').textContent = `${tour2a} / ${tour2b}`;
