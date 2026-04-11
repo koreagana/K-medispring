@@ -175,6 +175,28 @@ select {
   color: #7b3fa0;
 }
 
+.lang-switch {
+  position: fixed;
+  top: 20px;
+  right: 24px;
+  z-index: 9999;
+}
+
+.lang-switch a {
+  background: #4E97D1;
+  color: #fff;
+  padding: 8px 14px;
+  border-radius: 8px;
+  font-size: 13px;
+  text-decoration: none;
+  font-weight: 600;
+  display: inline-block;
+}
+
+.lang-switch a:hover {
+  background: #397db4;
+}
+
 @media (max-width: 768px) {
   .control-grid {
     grid-template-columns: 1fr;
@@ -189,21 +211,18 @@ select {
   h1 {
     font-size: 24px;
   }
+
+  .lang-switch {
+    top: 14px;
+    right: 14px;
+  }
 }
 </style>
 </head>
 <body>
 
-<div style="position:fixed; top:20px; right:20px; z-index:9999;">
-  <a href="https://kmedispring.com/products/signature-4d/" style="
-    background:#4E97D1;
-    color:#fff;
-    padding:8px 14px;
-    border-radius:8px;
-    font-size:13px;
-    text-decoration:none;
-    font-weight:600;
-  ">한국어</a>
+<div class="lang-switch">
+  <a href="https://kmedispring.com/products/signature-4d/">한국어</a>
 </div>
 
 <div class="container">
@@ -211,65 +230,65 @@ select {
   <h1>汉江春天 Signature 4D 项目</h1>
   <div class="subtitle">医疗 + 旅行 + 体验相结合的高端3晚4日行程</div>
 
- <div class="card">
-  <div class="card-title">项目内容</div>
+  <div class="card">
+    <div class="card-title">项目内容</div>
 
- <div class="highlight">
-  ✔ 医疗项目（皮肤 / 提升 / 抗衰等）
-  <span style="color:#d64545; font-weight:700;">（※ 医疗费用不包含）</span><br>
-  ✔ 首尔核心景点 3处<br>
-  ✔ 自由购物时间 2次<br>
-  ✔ 冥想恢复项目<br>
-  ✔ 可选体验（料理 OR K-文化体验 3小时）<br>
-  ✔ 医院访问 3次（第1天 / 第2天 / 第4天）
-</div>
-   
-  <div style="
-    margin-top:14px;
-    background:#fff7ef;
-    border:1px solid #f0d9bf;
-    border-radius:12px;
-    padding:16px 18px;
-  ">
-    <div style="
-      font-size:16px;
-      font-weight:800;
-      color:#6a3207;
-      margin-bottom:10px;
-    ">
-      基础行程价格
+    <div class="highlight">
+      ✔ 医疗项目（皮肤 / 提升 / 抗衰等）
+      <span style="color:#d64545; font-weight:700;">（※ 医疗费用不包含）</span><br>
+      ✔ 首尔核心景点 4处<br>
+      ✔ 自由购物时间 2次<br>
+      ✔ 可选体验（料理 OR K-文化体验 3小时）<br>
+      ✔ 医院访问 3次（第1天 / 第2天 / 第4天）
     </div>
 
     <div style="
-      background:#ffffff;
-      border-radius:10px;
-      padding:12px 14px;
-      line-height:1.8;
-      font-size:15px;
-      box-shadow: inset 0 0 0 1px rgba(106,50,7,.08);
+      margin-top:14px;
+      background:#fff7ef;
+      border:1px solid #f0d9bf;
+      border-radius:12px;
+      padding:16px 18px;
     ">
-      <div><strong>1人：</strong>6500元 / 人</div>
-      <div><strong>2~3人：</strong>6000元 / 人</div>
-      <div><strong>4人：</strong>5000元 / 人</div>
-    </div>
+      <div style="
+        font-size:16px;
+        font-weight:800;
+        color:#6a3207;
+        margin-bottom:10px;
+      ">
+        基础行程价格
+      </div>
 
-    <div style="
-      margin-top:10px;
-      font-size:13px;
-      color:#6b6b6b;
-      line-height:1.7;
-    ">
-      ※ 不含酒店 / 医疗费用<br>
-      ※ 包含车辆、医院陪同、景点安排、基础行程陪同<br>
-      ※ 酒店可根据医院位置与客户行程，推荐就近安排
+      <div style="
+        background:#ffffff;
+        border-radius:10px;
+        padding:12px 14px;
+        line-height:1.8;
+        font-size:15px;
+        box-shadow: inset 0 0 0 1px rgba(106,50,7,.08);
+      ">
+        <div><strong>1人：</strong>6500元 / 人</div>
+        <div><strong>2~3人：</strong>6000元 / 人</div>
+        <div><strong>4人：</strong>5000元 / 人</div>
+      </div>
+
+      <div style="
+        margin-top:10px;
+        font-size:13px;
+        color:#6b6b6b;
+        line-height:1.7;
+      ">
+        ※ 不含酒店 / 医疗费用<br>
+        ※ 包含车辆、医院陪同、景点安排、基础行程陪同<br>
+        ※ 酒店可根据医院位置与客户行程，推荐就近安排
+      </div>
     </div>
   </div>
-</div>
 
   <div class="card">
-<div class="card-title">
-3晚4日行程安排【可在下方下拉菜单中提前选择景点与购物地点，并规划行程】
-</div>
+    <div class="card-title">
+      3晚4日行程安排【可在下方下拉菜单中提前选择景点与购物地点，并规划行程】
+    </div>
+
     <table>
       <tr>
         <th>时间</th>
@@ -293,9 +312,10 @@ select {
             <span class="line">医疗项目</span>
           </div>
         </td>
-        <td>
+        <td id="day3-morning">
           <span class="line">酒店早餐</span>
           <span class="line">可选体验</span>
+          <span class="line">景福宫</span>
         </td>
         <td>
           <span class="line">酒店早餐</span>
@@ -332,12 +352,12 @@ select {
             <span class="line">初诊咨询</span>
             <span class="line">基本检查</span>
           </div>
-          <span class="line">景福宫</span>
+          <span class="line">北村韩屋村</span>
         </td>
-        <td>
+        <td id="day2-afternoon">
           <span class="line">恢复</span>
           <span class="line">再生管理</span>
-          <span class="line">冥想</span>
+          <span class="line">仁寺洞</span>
         </td>
         <td id="day3-afternoon">
           <span class="line">北村韩屋村</span>
@@ -384,6 +404,54 @@ select {
         <h3>第1天 景点1处</h3>
         <label for="tour1">选择景点</label>
         <select id="tour1" onchange="updatePlan()">
+          <option>北村韩屋村</option>
+          <option>仁寺洞</option>
+          <option>南山首尔塔</option>
+          <option>汉江公园</option>
+          <option>清溪川</option>
+          <option>广藏市场</option>
+          <option>益善洞</option>
+          <option>昌德宫</option>
+          <option>德寿宫</option>
+          <option>东大门设计广场 DDP</option>
+          <option>COEX 星光图书馆</option>
+          <option>圣水洞</option>
+          <option>弘大步行街</option>
+          <option>林荫道</option>
+          <option>梨泰院</option>
+          <option>西村</option>
+          <option>首尔天空观景台</option>
+        </select>
+      </div>
+
+      <div class="control-box">
+        <h3>第2天下午 景点1处</h3>
+        <label for="tourDay2">选择景点</label>
+        <select id="tourDay2" onchange="updatePlan()">
+          <option>仁寺洞</option>
+          <option>北村韩屋村</option>
+          <option>南山首尔塔</option>
+          <option>汉江公园</option>
+          <option>清溪川</option>
+          <option>广藏市场</option>
+          <option>益善洞</option>
+          <option>昌德宫</option>
+          <option>德寿宫</option>
+          <option>东大门设计广场 DDP</option>
+          <option>COEX 星光图书馆</option>
+          <option>圣水洞</option>
+          <option>弘大步行街</option>
+          <option>林荫道</option>
+          <option>梨泰院</option>
+          <option>西村</option>
+          <option>首尔天空观景台</option>
+        </select>
+      </div>
+
+      <div class="control-box">
+        <h3>第3天上午 景点1处</h3>
+        <label for="tourDay3Morning">选择景点</label>
+        <select id="tourDay3Morning" onchange="updatePlan()">
           <option>景福宫</option>
           <option>北村韩屋村</option>
           <option>仁寺洞</option>
@@ -410,7 +478,6 @@ select {
         <label for="tour2a">景点 A</label>
         <select id="tour2a" onchange="updatePlan()">
           <option>北村韩屋村</option>
-          <option>景福宫</option>
           <option>仁寺洞</option>
           <option>南山首尔塔</option>
           <option>汉江公园</option>
@@ -432,7 +499,6 @@ select {
         <label for="tour2b">景点 B</label>
         <select id="tour2b" onchange="updatePlan()">
           <option>仁寺洞</option>
-          <option>景福宫</option>
           <option>北村韩屋村</option>
           <option>南山首尔塔</option>
           <option>汉江公园</option>
@@ -453,7 +519,7 @@ select {
       </div>
 
       <div class="control-box">
-        <h3>购物 1次</h3>
+        <h3>自由购物时间 1次</h3>
         <label for="shop1">第3天下午购物地点</label>
         <select id="shop1" onchange="updatePlan()">
           <option>现代百货 The Hyundai Seoul</option>
@@ -478,7 +544,7 @@ select {
       </div>
 
       <div class="control-box">
-        <h3>购物 2次</h3>
+        <h3>自由购物时间 2次</h3>
         <label for="shop2">第3天晚上购物地点</label>
         <select id="shop2" onchange="updatePlan()">
           <option>明洞</option>
@@ -504,10 +570,12 @@ select {
     </div>
 
     <ul class="summary-list">
-      <li><strong>第1天景点：</strong><span id="summary-tour1">景福宫</span></li>
-      <li><strong>第3天景点：</strong><span id="summary-tour2">北村韩屋村 / 仁寺洞</span></li>
-      <li><strong>购物 1次：</strong><span id="summary-shop1">现代百货 The Hyundai Seoul</span></li>
-      <li><strong>购物 2次：</strong><span id="summary-shop2">明洞</span></li>
+      <li><strong>第1天景点：</strong><span id="summary-tour1">北村韩屋村</span></li>
+      <li><strong>第2天下午景点：</strong><span id="summary-tourDay2">仁寺洞</span></li>
+      <li><strong>第3天上午景点：</strong><span id="summary-tourDay3Morning">景福宫</span></li>
+      <li><strong>第3天下午景点：</strong><span id="summary-tour2">北村韩屋村 / 仁寺洞</span></li>
+      <li><strong>自由购物时间 1次：</strong><span id="summary-shop1">现代百货 The Hyundai Seoul</span></li>
+      <li><strong>自由购物时间 2次：</strong><span id="summary-shop2">明洞</span></li>
     </ul>
   </div>
 
@@ -527,6 +595,8 @@ select {
 <script>
 function updatePlan() {
   const tour1 = document.getElementById('tour1').value;
+  const tourDay2 = document.getElementById('tourDay2').value;
+  const tourDay3Morning = document.getElementById('tourDay3Morning').value;
   const tour2a = document.getElementById('tour2a').value;
   const tour2b = document.getElementById('tour2b').value;
   const shop1 = document.getElementById('shop1').value;
@@ -539,6 +609,18 @@ function updatePlan() {
       <span class="line">基本检查</span>
     </div>
     <span class="line">${tour1}</span>
+  `;
+
+  document.getElementById('day2-afternoon').innerHTML = `
+    <span class="line">恢复</span>
+    <span class="line">再生管理</span>
+    <span class="line">${tourDay2}</span>
+  `;
+
+  document.getElementById('day3-morning').innerHTML = `
+    <span class="line">酒店早餐</span>
+    <span class="line">可选体验</span>
+    <span class="line">${tourDay3Morning}</span>
   `;
 
   document.getElementById('day3-afternoon').innerHTML = `
@@ -554,6 +636,8 @@ function updatePlan() {
   `;
 
   document.getElementById('summary-tour1').textContent = tour1;
+  document.getElementById('summary-tourDay2').textContent = tourDay2;
+  document.getElementById('summary-tourDay3Morning').textContent = tourDay3Morning;
   document.getElementById('summary-tour2').textContent = `${tour2a} / ${tour2b}`;
   document.getElementById('summary-shop1').textContent = shop1;
   document.getElementById('summary-shop2').textContent = shop2;
