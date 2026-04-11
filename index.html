@@ -98,14 +98,121 @@
             </ul>
           </div>
 
-          <!-- Hero video -->
-          <span class="image object hero-media">
+               <!-- Hero video -->
+        <section id="banner" style="position:relative; overflow:hidden;">
+          <span class="image object hero-media" style="position:relative; display:block;">
             <video id="introVideo" autoplay muted loop playsinline preload="metadata"
                    style="width:100%;height:60vh;object-fit:cover;display:block">
               <source src="https://kmedispring.com/videos/intro_v1.mp4.mp4?v=4#t=0.01" type="video/mp4">
             </video>
+
+            <!-- Overlay -->
+            <div id="heroOverlay" style="
+              position:absolute;
+              top:0;
+              left:0;
+              width:100%;
+              height:100%;
+              display:flex;
+              align-items:center;
+              justify-content:center;
+              z-index:5;
+              cursor:pointer;
+            ">
+              <div class="hero-content" style="
+                text-align:center;
+                padding:28px 36px;
+                border-radius:16px;
+                background:rgba(255,255,255,0.65);
+                backdrop-filter:blur(8px);
+                -webkit-backdrop-filter:blur(8px);
+                box-shadow:0 8px 30px rgba(0,0,0,0.06);
+                animation:fadeUp 0.8s ease;
+              ">
+                <div class="hero-line" style="
+                  width:40px;
+                  height:3px;
+                  background:#4E97D1;
+                  margin:0 auto 12px;
+                  border-radius:2px;
+                  animation:lineFlow 1.2s ease;
+                "></div>
+                <h2 style="
+                  margin:0;
+                  font-size:24px;
+                  font-weight:800;
+                  color:#4E97D1;
+                ">欢迎来到韩国医疗旅游</h2>
+                <p style="
+                  margin:8px 0 10px;
+                  font-size:15px;
+                  color:#333;
+                ">请告诉我们您的需求</p>
+                <span style="
+                  font-size:13px;
+                  color:#4E97D1;
+                  opacity:.8;
+                ">点击开启您的韩国医疗之旅</span>
+              </div>
+            </div>
           </span>
         </section>
+
+        <style>
+          @keyframes fadeUp {
+            from { opacity:0; transform:translateY(20px); }
+            to { opacity:1; transform:translateY(0); }
+          }
+
+          @keyframes lineFlow {
+            from { width:0; }
+            to { width:40px; }
+          }
+
+          @media screen and (max-width: 768px) {
+            #heroOverlay .hero-content {
+              padding:20px 22px !important;
+              border-radius:12px !important;
+              width:82%;
+            }
+
+            #heroOverlay h2 {
+              font-size:19px !important;
+            }
+
+            #heroOverlay p {
+              font-size:13px !important;
+            }
+
+            #heroOverlay span {
+              font-size:12px !important;
+            }
+
+            #introVideo {
+              height:52vh !important;
+            }
+          }
+        </style>
+
+        <script>
+          document.addEventListener('DOMContentLoaded', function () {
+            const heroOverlay = document.getElementById('heroOverlay');
+            if (!heroOverlay) return;
+
+            heroOverlay.addEventListener('click', function () {
+              const box = heroOverlay.querySelector('.hero-content');
+              box.innerHTML = `
+                <div style="width:40px;height:3px;background:#4E97D1;margin:0 auto 12px;border-radius:2px;"></div>
+                <h2 style="margin:0;font-size:24px;font-weight:800;color:#4E97D1;">欢迎来到韩国医疗旅游</h2>
+                <p style="margin:8px 0 0;font-size:15px;color:#333;">为您定制专属行程</p>
+              `;
+
+              setTimeout(function () {
+                window.location.href = "https://kmedispring.com/products/products/signature-4d-cn/";
+              }, 1000);
+            });
+          });
+        </script>
 
         <!-- 品牌理念 -->
         <section>
