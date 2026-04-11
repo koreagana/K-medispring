@@ -225,7 +225,7 @@ select {
   <a href="https://kmedispring.com/products/products/signature-4d-cn/">中文</a>
 </div>
 
-  <div class="container">
+<div class="container">
 
   <h1>한강애봄 Signature 4D 프로그램</h1>
   <div class="subtitle">의료 + 여행 + 경험을 결합한 프리미엄 3박4일 일정</div>
@@ -233,16 +233,15 @@ select {
   <div class="card">
     <div class="card-title">프로그램 구성</div>
 
- <div class="highlight">
-  ✔ 의료 시술 (피부 / 리프팅 / 항노화)
-  <span style="color:#d64545; font-weight:700;">(※ 시술 비용 별도)</span><br>
-  ✔ 서울 핵심 관광지 3곳<br>
-  ✔ 쇼핑 2회<br>
-  ✔ 명상 & 회복 프로그램<br>
-  ✔ 선택 체험 (한국요리, K-POP, K-DANCE 택1 체험 3시간)<br>
-  ✔ 병원 방문 3회 (1일차 / 2일차 / 4일차)
-</div>
-    
+    <div class="highlight">
+      ✔ 의료 시술 (피부 / 리프팅 / 항노화)
+      <span style="color:#d64545; font-weight:700;">(※ 시술 비용 별도)</span><br>
+      ✔ 서울 핵심 관광지 4곳<br>
+      ✔ 자유 쇼핑 시간 2회<br>
+      ✔ 선택 체험 (한국요리, K-POP, K-DANCE 택1 체험 3시간)<br>
+      ✔ 병원 방문 3회 (1일차 / 2일차 / 4일차)
+    </div>
+
     <div style="
       margin-top:14px;
       background:#eef6ff;
@@ -267,9 +266,9 @@ select {
         font-size:15px;
         box-shadow: inset 0 0 0 1px rgba(47,95,148,.08);
       ">
-    <div><strong>1인:</strong> 1,230,000원 / 인</div>
-<div><strong>2~3인:</strong> 1,140,000원 / 인</div>
-<div><strong>4인:</strong> 950,000원 / 인</div>
+        <div><strong>1인:</strong> 1,230,000원 / 인</div>
+        <div><strong>2~3인:</strong> 1,140,000원 / 인</div>
+        <div><strong>4인:</strong> 950,000원 / 인</div>
       </div>
 
       <div style="
@@ -286,8 +285,8 @@ select {
   </div>
 
   <div class="card">
-    <div class="card-title">3박4일 일정표【아래 표에서 관광지 및 쇼핑 장소를 미리 선택하고 일정을 계획할 수 있습니다. 】</div>
-    
+    <div class="card-title">3박4일 일정표【아래 표에서 관광지 및 쇼핑 장소를 미리 선택하고 일정을 계획할 수 있습니다.】</div>
+
     <table>
       <tr>
         <th>시간</th>
@@ -311,9 +310,10 @@ select {
             <span class="line">의료 시술</span>
           </div>
         </td>
-        <td>
+        <td id="day3-morning">
           <span class="line">호텔 조식</span>
           <span class="line">선택 프로그램</span>
+          <span class="line">경복궁</span>
         </td>
         <td>
           <span class="line">호텔 조식</span>
@@ -350,12 +350,12 @@ select {
             <span class="line">기본 상담</span>
             <span class="line">기본 검사</span>
           </div>
-          <span class="line">경복궁</span>
+          <span class="line">북촌한옥마을</span>
         </td>
-        <td>
+        <td id="day2-afternoon">
           <span class="line">회복</span>
           <span class="line">재생관리</span>
-          <span class="line">명상</span>
+          <span class="line">인사동</span>
         </td>
         <td id="day3-afternoon">
           <span class="line">북촌한옥마을</span>
@@ -402,6 +402,54 @@ select {
         <h3>1일차 관광지 1곳</h3>
         <label for="tour1">관광지 선택</label>
         <select id="tour1" onchange="updatePlan()">
+          <option>북촌한옥마을</option>
+          <option>인사동</option>
+          <option>남산서울타워</option>
+          <option>한강공원</option>
+          <option>청계천</option>
+          <option>광장시장</option>
+          <option>익선동</option>
+          <option>창덕궁</option>
+          <option>덕수궁</option>
+          <option>DDP</option>
+          <option>코엑스 별마당도서관</option>
+          <option>성수동</option>
+          <option>홍대거리</option>
+          <option>가로수길</option>
+          <option>이태원</option>
+          <option>서촌</option>
+          <option>서울스카이</option>
+        </select>
+      </div>
+
+      <div class="control-box">
+        <h3>2일차 오후 관광지 1곳</h3>
+        <label for="tourDay2">관광지 선택</label>
+        <select id="tourDay2" onchange="updatePlan()">
+          <option>인사동</option>
+          <option>북촌한옥마을</option>
+          <option>남산서울타워</option>
+          <option>한강공원</option>
+          <option>청계천</option>
+          <option>광장시장</option>
+          <option>익선동</option>
+          <option>창덕궁</option>
+          <option>덕수궁</option>
+          <option>DDP</option>
+          <option>코엑스 별마당도서관</option>
+          <option>성수동</option>
+          <option>홍대거리</option>
+          <option>가로수길</option>
+          <option>이태원</option>
+          <option>서촌</option>
+          <option>서울스카이</option>
+        </select>
+      </div>
+
+      <div class="control-box">
+        <h3>3일차 오전 관광지 1곳</h3>
+        <label for="tourDay3Morning">관광지 선택</label>
+        <select id="tourDay3Morning" onchange="updatePlan()">
           <option>경복궁</option>
           <option>북촌한옥마을</option>
           <option>인사동</option>
@@ -428,7 +476,6 @@ select {
         <label for="tour2a">관광지 A</label>
         <select id="tour2a" onchange="updatePlan()">
           <option>북촌한옥마을</option>
-          <option>경복궁</option>
           <option>인사동</option>
           <option>남산서울타워</option>
           <option>한강공원</option>
@@ -450,7 +497,6 @@ select {
         <label for="tour2b">관광지 B</label>
         <select id="tour2b" onchange="updatePlan()">
           <option>인사동</option>
-          <option>경복궁</option>
           <option>북촌한옥마을</option>
           <option>남산서울타워</option>
           <option>한강공원</option>
@@ -471,7 +517,7 @@ select {
       </div>
 
       <div class="control-box">
-        <h3>쇼핑 1차</h3>
+        <h3>자유 쇼핑 시간 1차</h3>
         <label for="shop1">3일차 오후 쇼핑</label>
         <select id="shop1" onchange="updatePlan()">
           <option>더현대서울</option>
@@ -496,7 +542,7 @@ select {
       </div>
 
       <div class="control-box">
-        <h3>쇼핑 2차</h3>
+        <h3>자유 쇼핑 시간 2차</h3>
         <label for="shop2">3일차 저녁 쇼핑</label>
         <select id="shop2" onchange="updatePlan()">
           <option>명동</option>
@@ -522,10 +568,12 @@ select {
     </div>
 
     <ul class="summary-list">
-      <li><strong>1일차 관광지:</strong> <span id="summary-tour1">경복궁</span></li>
-      <li><strong>3일차 관광지:</strong> <span id="summary-tour2">북촌한옥마을 / 인사동</span></li>
-      <li><strong>쇼핑 1차:</strong> <span id="summary-shop1">더현대서울</span></li>
-      <li><strong>쇼핑 2차:</strong> <span id="summary-shop2">명동</span></li>
+      <li><strong>1일차 관광지:</strong> <span id="summary-tour1">북촌한옥마을</span></li>
+      <li><strong>2일차 오후 관광지:</strong> <span id="summary-tourDay2">인사동</span></li>
+      <li><strong>3일차 오전 관광지:</strong> <span id="summary-tourDay3Morning">경복궁</span></li>
+      <li><strong>3일차 오후 관광지:</strong> <span id="summary-tour2">북촌한옥마을 / 인사동</span></li>
+      <li><strong>자유 쇼핑 시간 1차:</strong> <span id="summary-shop1">더현대서울</span></li>
+      <li><strong>자유 쇼핑 시간 2차:</strong> <span id="summary-shop2">명동</span></li>
     </ul>
   </div>
 
@@ -546,6 +594,8 @@ select {
 <script>
 function updatePlan() {
   const tour1 = document.getElementById('tour1').value;
+  const tourDay2 = document.getElementById('tourDay2').value;
+  const tourDay3Morning = document.getElementById('tourDay3Morning').value;
   const tour2a = document.getElementById('tour2a').value;
   const tour2b = document.getElementById('tour2b').value;
   const shop1 = document.getElementById('shop1').value;
@@ -558,6 +608,18 @@ function updatePlan() {
       <span class="line">기본 검사</span>
     </div>
     <span class="line">${tour1}</span>
+  `;
+
+  document.getElementById('day2-afternoon').innerHTML = `
+    <span class="line">회복</span>
+    <span class="line">재생관리</span>
+    <span class="line">${tourDay2}</span>
+  `;
+
+  document.getElementById('day3-morning').innerHTML = `
+    <span class="line">호텔 조식</span>
+    <span class="line">선택 프로그램</span>
+    <span class="line">${tourDay3Morning}</span>
   `;
 
   document.getElementById('day3-afternoon').innerHTML = `
@@ -573,6 +635,8 @@ function updatePlan() {
   `;
 
   document.getElementById('summary-tour1').textContent = tour1;
+  document.getElementById('summary-tourDay2').textContent = tourDay2;
+  document.getElementById('summary-tourDay3Morning').textContent = tourDay3Morning;
   document.getElementById('summary-tour2').textContent = `${tour2a} / ${tour2b}`;
   document.getElementById('summary-shop1').textContent = shop1;
   document.getElementById('summary-shop2').textContent = shop2;
