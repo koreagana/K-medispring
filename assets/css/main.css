@@ -2821,9 +2821,9 @@ body.modal-open{ overflow:hidden; }
   justify-content:space-between;
   border-bottom:1px solid var(--brand);
 
-  padding-top:20px !important;
-  padding-bottom:10px !important;
-  margin-bottom:0px !important;
+  padding-top:20 !important;
+  padding-bottom:10px !important;   /* ← px 추가 */
+  margin-bottom:30px !important;
 }
 
 #header .logo{ margin-right:auto; }
