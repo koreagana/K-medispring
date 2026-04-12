@@ -5,6 +5,14 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
   <title>汉江春天 · 定制医疗观光方案</title>
 
+  <!-- SEO: 百度优化 -->
+  <meta name="description" content="汉江春天·专业韩国医疗观光定制服务。健康体检、皮肤医美、整形、干细胞、女性护理，全程中文陪同。" />
+  <meta name="keywords" content="韩国医疗观光,首尔整形,皮肤医美,水光针,润百颜,健康体检,汉江春天,韩国旅游,医美套餐" />
+  <meta property="og:title" content="汉江春天 · 定制医疗观光方案" />
+  <meta property="og:description" content="专业韩国医疗观光定制服务 · 全程中文陪同 · 合作医院39家" />
+  <meta property="og:url" content="https://kmedispring.com/kplan.html" />
+  <meta property="og:image" content="https://kmedispring.com/images/logo_ch.png" />
+
   <script>
     (function () {
       var project = "/K-medispring/";
@@ -43,6 +51,56 @@
       --soft-bg:     #EEF6FD;
       --table-hd:    #FAFDFF;
       --row-border:  #EAEFF5;
+    }
+
+    /* ══════════════════════════════════════
+       영상 히어로
+    ══════════════════════════════════════ */
+    .kplan-video-hero {
+      position: relative;
+      width: 100%;
+      height: 240px;
+      border-radius: 18px;
+      overflow: hidden;
+      margin-bottom: 18px;
+      background: linear-gradient(135deg, var(--hga-blue), #2aa8a0);
+    }
+    .kplan-hero-video {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      opacity: 0.65;
+    }
+    .kplan-hero-overlay {
+      position: relative;
+      z-index: 1;
+      padding: 32px 28px 24px;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+    .kplan-trust-strip {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 14px;
+    }
+    .kplan-trust-strip span {
+      background: rgba(255,255,255,.18);
+      border: 1px solid rgba(255,255,255,.35);
+      color: #fff;
+      font-size: 11px;
+      font-weight: 700;
+      padding: 4px 10px;
+      border-radius: 20px;
+      white-space: nowrap;
+    }
+    @media (max-width: 600px) {
+      .kplan-video-hero { height: 200px; }
+      .kplan-hero-overlay { padding: 20px 16px 16px; }
     }
 
     /* ══════════════════════════════════════
@@ -751,14 +809,52 @@
       <br />
 
       <!-- BANNER -->
-      <section class="apple-banner-section">
-        <h2 class="main-title cn-serif">定制医疗观光方案</h2>
-        <div class="aurora-text-group">
-          <span>请查看您想要咨询的诊疗项目，然后点击"立即咨询"。</span>
+      <!-- 영상 히어로 -->
+      <div class="kplan-video-hero">
+        <video autoplay muted loop playsinline class="kplan-hero-video">
+          <source src="videos/intro_v1.mp4" type="video/mp4">
+        </video>
+        <div class="kplan-hero-overlay">
+          <h2 class="main-title cn-serif" style="color:#fff;text-shadow:0 2px 16px rgba(0,0,0,.45);">定制医疗观光方案</h2>
+          <div class="aurora-text-group" style="color:rgba(255,255,255,.92);">
+            <span>请查看您想要咨询的诊疗项目，然后点击"立即咨询"。</span>
+          </div>
+          <!-- 신뢰 배지 -->
+          <div class="kplan-trust-strip">
+            <span>✅ 韩国保健福祉部注册</span>
+            <span>✅ 综合旅行社许可证</span>
+            <span>✅ 合作医院 39家</span>
+            <span>✅ 全程中文陪同</span>
+          </div>
         </div>
-      </section>
+      </div>
 
       <hr />
+
+      <!-- ══════════════════════════════════════
+           🛒 티엔마오 CTA — 알리바바 계약 완료 후 display:block 으로 변경
+      ══════════════════════════════════════ -->
+      <div id="tmall-cta-block" style="display:none; background:linear-gradient(135deg,#FF6B00,#FF4D00); border-radius:18px; padding:20px 24px; margin-bottom:28px; color:#fff; text-align:center;">
+        <div style="font-size:12px; letter-spacing:1px; opacity:.85; margin-bottom:4px;">天猫限定</div>
+        <div style="font-family:'Source Han Serif CN',serif; font-size:22px; font-weight:700; margin-bottom:6px;">
+          润百颜 4cc 水光针套餐
+        </div>
+        <div style="font-size:13px; opacity:.9; margin-bottom:16px;">含韩国首尔诊疗 · 全程中文陪同</div>
+        <div style="font-size:28px; font-weight:900; font-family:'Roboto',monospace; margin-bottom:16px;">
+          ¥2,499
+        </div>
+        <div style="display:flex; gap:10px; justify-content:center; flex-wrap:wrap;">
+          <a href="#" id="tmall-buy-btn" target="_blank" rel="noopener noreferrer"
+             style="background:#fff; color:#FF4D00; font-weight:800; font-size:14px; padding:12px 28px; border-radius:24px; text-decoration:none; display:inline-block;">
+            🛒 立即购买
+          </a>
+          <a href="https://work.weixin.qq.com/kfid/kfcde7d9ec26f6b0df0" target="_blank" rel="noopener noreferrer"
+             style="background:rgba(255,255,255,.2); color:#fff; font-weight:700; font-size:14px; padding:12px 24px; border-radius:24px; text-decoration:none; display:inline-block; border:1px solid rgba(255,255,255,.4);">
+            微信咨询
+          </a>
+        </div>
+      </div>
+      <!-- ══ 티엔마오 CTA 끝 ══ -->
 
    <!-- 검색어: <!-- ══ ① 综合健康体检 -->
 
