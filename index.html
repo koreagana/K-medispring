@@ -192,7 +192,36 @@
     height:52vh !important;
   }
 }
-</style>
+
+    /* ── 시그니처 메뉴 버튼 ── */
+    #sidebar nav#menu li.sig-menu-item { padding: 0 0 6px; }
+    #sidebar nav#menu li.sig-menu-item a.sig-menu-btn {
+      display: block;
+      background: linear-gradient(135deg, #4E97D1, #2aa8a0);
+      color: #fff !important;
+      font-weight: 700;
+      font-size: 13px;
+      padding: 10px 14px 8px;
+      border-radius: 12px;
+      text-decoration: none;
+      line-height: 1.35;
+      box-shadow: 0 3px 12px rgba(78,151,209,.35);
+      border: none;
+    }
+    #sidebar nav#menu li.sig-menu-item a.sig-menu-btn:hover {
+      background: linear-gradient(135deg, #D97AA6, #c85000);
+      box-shadow: 0 4px 16px rgba(217,122,166,.4);
+    }
+    .sig-badge {
+      display: block;
+      font-size: 10px;
+      font-weight: 400;
+      opacity: .85;
+      letter-spacing: .4px;
+      margin-top: 2px;
+    }
+
+    </style>
 
 <script>
 document.addEventListener('DOMContentLoaded', function () {
@@ -337,7 +366,13 @@ document.addEventListener('DOMContentLoaded', function () {
     <li><a href="surgery.html">整形医美</a></li>
     <li><a href="woman.html">女性护理中心</a></li>
     <li><a href="man.html">男性健康中心</a></li>
-    <li><a href="kplan.html">定制医疗观光方案</a></li>
+              <li class="sig-menu-item">
+            <a href="products/signature-4d/" class="sig-menu-btn">
+              ✨ 招牌旅游套餐
+              <span class="sig-badge">汉江春天 · 招牌精品</span>
+            </a>
+          </li>
+<li><a href="kplan.html">定制医疗观光方案</a></li>
   </ul>
 </nav>
     
