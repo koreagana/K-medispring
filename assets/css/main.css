@@ -2718,6 +2718,7 @@ body.is-menu-visible{ overflow:hidden !important; }
   white-space:normal !important;
   overflow-wrap:anywhere !important;
   word-break:break-word !important;
+  color:#222 !important;
 }
 
 #sidebar nav#menu ul li a:hover{ color:var(--hover) !important; }
