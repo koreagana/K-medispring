@@ -5,9 +5,9 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
   <title>汉江春天 · 定制医疗观光方案</title>
 
-  <meta name="description" content="汉江春天·定制医疗观光方案。根据需求选择韩国热门项目，查看价格参考，快速进入咨询。" />
+  <meta name="description" content="汉江春天定制医疗观光方案。按韩国可治疗的主要诊疗科目，快速查看适合自己的方向。" />
   <meta property="og:title" content="汉江春天 · 定制医疗观光方案" />
-  <meta property="og:description" content="选择你的需求 → 查看韩国热门方案 → 参考价格 → 立即咨询" />
+  <meta property="og:description" content="从健康检查到专科治疗，按诊疗科目快速查看韩国医疗方案。" />
   <meta property="og:url" content="https://kmedispring.com/kplan.html" />
   <meta property="og:image" content="https://kmedispring.com/images/logo_ch.png" />
 
@@ -33,17 +33,16 @@
   <style>
     :root {
       --hga-blue:#4E97D1;
-      --hga-pink:#D97AA6;
       --hga-teal:#2aa8a0;
+      --hga-pink:#D97AA6;
       --hga-soft:#F6FAFE;
       --hga-line:#DDEAF6;
       --hga-text:#1F2937;
       --hga-sub:#667085;
-      --hga-gold:#E6A400;
-      --hga-shadow:0 8px 28px rgba(78,151,209,.10);
+      --hga-shadow:0 10px 30px rgba(78,151,209,.08);
     }
 
-    body, .inner, p, li, td, th, input, button, a {
+    body, .inner, p, li, td, th, input, button, a, summary, details {
       font-family:'Pretendard','Noto Sans SC','Microsoft YaHei',sans-serif;
     }
 
@@ -52,12 +51,6 @@
       padding:1.8rem 1.5rem 1.1rem;
       text-align:center;
       border:0 !important;
-    }
-    #sidebar-brand .sidebar-logo img {
-      display:block;
-      max-width:140px;
-      height:auto;
-      margin:0 auto;
     }
     #sidebar nav#menu,
     #sidebar nav#menu > header,
@@ -69,11 +62,11 @@
     }
 
     .hero-block {
-      background: linear-gradient(135deg, rgba(78,151,209,.10), rgba(42,168,160,.10));
+      background:linear-gradient(135deg, rgba(78,151,209,.10), rgba(42,168,160,.10));
       border:1px solid var(--hga-line);
       border-radius:24px;
-      padding:28px 22px;
-      margin-bottom:24px;
+      padding:28px 20px;
+      margin-bottom:18px;
       box-shadow:var(--hga-shadow);
     }
     .hero-block h1 {
@@ -90,10 +83,10 @@
       line-height:1.7;
     }
     .hero-question {
-      margin-top:20px;
+      margin-top:18px;
       display:inline-flex;
       align-items:center;
-      gap:10px;
+      justify-content:center;
       padding:12px 16px;
       border-radius:999px;
       background:#fff;
@@ -104,145 +97,173 @@
       box-shadow:0 4px 16px rgba(78,151,209,.08);
     }
 
-    .section-card {
-      background:#fff;
-      border:1px solid var(--hga-line);
-      border-radius:22px;
-      padding:24px 20px;
-      margin-bottom:24px;
-      box-shadow:var(--hga-shadow);
-    }
-
-    .pick-grid {
+    .quick-nav {
       display:grid;
-      grid-template-columns:repeat(3,1fr);
-      gap:14px;
-      margin-top:18px;
+      grid-template-columns:repeat(4,1fr);
+      gap:10px;
+      margin:0 0 18px;
     }
-    .pick-card {
-      appearance:none;
-      border:1.5px solid var(--hga-line);
-      background:#fff;
-      border-radius:18px;
-      padding:18px 14px;
-      text-align:left;
-      cursor:pointer;
-      transition:.2s ease;
-      box-shadow:none;
-      min-height:94px;
-    }
-    .pick-card:hover,
-    .pick-card.is-active {
-      border-color:var(--hga-blue);
-      background:linear-gradient(135deg, rgba(78,151,209,.08), rgba(217,122,166,.08));
-      box-shadow:0 8px 24px rgba(78,151,209,.14);
-      transform:translateY(-1px);
-    }
-    .pick-card .pick-kicker {
-      display:block;
-      font-size:11px;
-      color:var(--hga-sub);
-      margin-bottom:6px;
-      letter-spacing:.4px;
-    }
-    .pick-card .pick-title {
-      display:block;
-      font-size:18px;
-      font-weight:800;
-      color:var(--hga-text);
-      line-height:1.35;
-    }
-
-    .result-panel {
-      display:none;
-      margin-top:18px;
-      border-top:1px solid var(--hga-line);
-      padding-top:20px;
-    }
-    .result-panel.is-show { display:block; }
-
-    .result-head {
+    .quick-nav a {
       display:flex;
       align-items:center;
-      justify-content:space-between;
-      gap:12px;
-      margin-bottom:14px;
-      flex-wrap:wrap;
-    }
-    .result-title {
-      font-size:24px;
-      font-weight:800;
-      color:var(--hga-text);
-      margin:0;
-    }
-    .result-desc {
-      margin:0;
-      font-size:14px;
-      color:var(--hga-sub);
-    }
-
-    .result-layout {
-      display:grid;
-      grid-template-columns:1.1fr .9fr;
-      gap:18px;
-      align-items:start;
-    }
-
-    .result-image {
-      border-radius:18px;
-      overflow:hidden;
-      border:1px solid var(--hga-line);
-      background:var(--hga-soft);
-      min-height:220px;
-    }
-    .result-image img {
-      width:100%;
-      height:100%;
-      object-fit:cover;
-      display:block;
-    }
-
-    .result-list {
-      display:grid;
-      grid-template-columns:1fr;
-      gap:10px;
-    }
-    .result-item {
+      justify-content:center;
+      text-align:center;
+      min-height:52px;
       border:1px solid var(--hga-line);
       border-radius:14px;
       background:#fff;
-      padding:14px 14px 14px 16px;
-      line-height:1.55;
       color:var(--hga-text);
-      font-size:15px;
-      position:relative;
+      text-decoration:none;
+      font-size:14px;
+      font-weight:700;
+      padding:10px 8px;
+      box-shadow:var(--hga-shadow);
     }
-    .result-item::before {
+
+    .intro-card,
+    .cta-block {
+      border:1px solid var(--hga-line);
+      border-radius:22px;
+      background:#fff;
+      box-shadow:var(--hga-shadow);
+      padding:22px 18px;
+      margin-bottom:18px;
+    }
+    .intro-card p,
+    .cta-note {
+      margin:0;
+      color:var(--hga-sub);
+      font-size:15px;
+      line-height:1.75;
+    }
+
+    .section-title {
+      margin:0 0 12px;
+      font-size:24px;
+      color:var(--hga-text);
+      font-weight:800;
+    }
+
+    .dept-list {
+      display:grid;
+      gap:12px;
+      margin-bottom:18px;
+    }
+    .dept-item {
+      border:1px solid var(--hga-line);
+      border-radius:18px;
+      background:#fff;
+      box-shadow:var(--hga-shadow);
+      overflow:hidden;
+    }
+    .dept-item summary {
+      list-style:none;
+      cursor:pointer;
+      padding:18px 16px;
+      display:flex;
+      align-items:flex-start;
+      justify-content:space-between;
+      gap:12px;
+    }
+    .dept-item summary::-webkit-details-marker { display:none; }
+    .dept-main {
+      min-width:0;
+    }
+    .dept-kicker {
+      display:block;
+      margin-bottom:4px;
+      color:var(--hga-blue);
+      font-size:11px;
+      font-weight:800;
+      letter-spacing:.4px;
+      text-transform:uppercase;
+    }
+    .dept-name {
+      display:block;
+      color:var(--hga-text);
+      font-size:20px;
+      line-height:1.3;
+      font-weight:800;
+    }
+    .dept-desc {
+      margin-top:6px;
+      color:var(--hga-sub);
+      font-size:14px;
+      line-height:1.65;
+    }
+    .dept-arrow {
+      flex:0 0 auto;
+      width:30px;
+      height:30px;
+      border-radius:50%;
+      background:var(--hga-soft);
+      color:var(--hga-blue);
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      font-size:15px;
+      transition:.2s ease;
+    }
+    .dept-item[open] .dept-arrow {
+      transform:rotate(180deg);
+    }
+    .dept-body {
+      padding:0 16px 18px;
+      border-top:1px solid var(--hga-line);
+      background:#fcfeff;
+    }
+    .tag-row {
+      display:flex;
+      flex-wrap:wrap;
+      gap:8px;
+      margin:14px 0 12px;
+    }
+    .tag {
+      display:inline-flex;
+      align-items:center;
+      min-height:32px;
+      padding:6px 10px;
+      border-radius:999px;
+      background:var(--hga-soft);
+      color:var(--hga-blue);
+      font-size:13px;
+      font-weight:700;
+      line-height:1.3;
+    }
+    .bullet-list {
+      display:grid;
+      gap:8px;
+      margin:0;
+      padding:0;
+      list-style:none;
+    }
+    .bullet-list li {
+      position:relative;
+      padding-left:14px;
+      color:var(--hga-text);
+      font-size:14px;
+      line-height:1.65;
+    }
+    .bullet-list li::before {
       content:'';
       position:absolute;
       left:0;
-      top:0;
-      bottom:0;
-      width:4px;
-      border-radius:14px 0 0 14px;
-      background:linear-gradient(180deg,var(--hga-blue),var(--hga-pink));
+      top:.7em;
+      width:5px;
+      height:5px;
+      border-radius:50%;
+      background:var(--hga-blue);
     }
 
     .cta-block {
       text-align:center;
       background:linear-gradient(135deg, rgba(78,151,209,.10), rgba(42,168,160,.14));
     }
-    .cta-note {
-      margin:0 0 12px;
-      color:var(--hga-sub);
-      font-size:15px;
-      line-height:1.7;
-    }
+    .cta-note { margin-bottom:12px; }
     .cta-button {
       display:inline-flex;
       align-items:center;
       justify-content:center;
-      gap:8px;
       min-height:54px;
       padding:14px 24px;
       border:none;
@@ -253,11 +274,6 @@
       font-weight:800;
       text-decoration:none;
       box-shadow:0 10px 28px rgba(78,151,209,.24);
-      transition:.2s ease;
-    }
-    .cta-button:hover {
-      transform:translateY(-1px);
-      background:linear-gradient(135deg,var(--hga-pink),#c85000);
     }
 
     .price-modal {
@@ -363,246 +379,337 @@
     .modal .modal-content { max-width:100%; height:auto; border-radius:12px; }
     .modal .modal-id { margin:10px 0 0; font-size:13px; color:#555; line-height:1.5; }
 
-    #sidebar nav#menu li.sig-menu-item { padding:0 0 6px; }
-    #sidebar nav#menu li.sig-menu-item a.sig-menu-btn {
-      display:block;
-      background:linear-gradient(135deg,#4E97D1,#2aa8a0);
-      color:#fff !important;
-      font-weight:700;
-      font-size:13px;
-      padding:10px 14px 8px;
-      border-radius:12px;
-      text-decoration:none;
-      line-height:1.35;
-      box-shadow:0 3px 12px rgba(78,151,209,.35);
-      border:none;
-    }
-    #sidebar nav#menu li.sig-menu-item a.sig-menu-btn:hover {
-      background:linear-gradient(135deg,#D97AA6,#c85000);
-      box-shadow:0 4px 16px rgba(217,122,166,.4);
-    }
-    .sig-badge {
-      display:block;
-      font-size:10px;
-      font-weight:400;
-      opacity:.85;
-      letter-spacing:.4px;
-      margin-top:2px;
-    }
-
     @media (max-width: 980px) {
-      .result-layout,
-      .price-grid,
-      .pick-grid { grid-template-columns:1fr 1fr; }
+      .quick-nav,
+      .price-grid { grid-template-columns:repeat(2,1fr); }
     }
     @media (max-width: 640px) {
       .hero-block { padding:22px 16px; border-radius:20px; }
       .hero-block h1 { font-size:28px; }
       .hero-sub { font-size:14px; }
-      .hero-question { font-size:17px; width:100%; justify-content:center; }
-      .section-card { padding:20px 14px; border-radius:18px; }
-      .pick-grid,
-      .price-grid,
-      .result-layout { grid-template-columns:1fr; }
-      .pick-card { min-height:auto; padding:16px 14px; }
-      .pick-card .pick-title { font-size:17px; }
-      .result-title { font-size:22px; }
-      .result-image { min-height:180px; }
-      .cta-button { width:100%; }
+      .hero-question { width:100%; font-size:17px; }
+      .quick-nav { grid-template-columns:repeat(2,1fr); }
+      .quick-nav a { min-height:48px; font-size:13px; }
+      .intro-card,
+      .cta-block { padding:18px 14px; border-radius:18px; }
+      .section-title { font-size:22px; }
+      .dept-item summary { padding:16px 14px; }
+      .dept-name { font-size:18px; }
+      .dept-body { padding:0 14px 16px; }
+      .price-grid { grid-template-columns:1fr; }
       .price-modal__card { margin:5vh auto 0; padding:20px 14px 16px; }
+      .cta-button { width:100%; }
     }
   </style>
 </head>
 
 <body class="is-preload">
 <div id="wrapper">
-
-  <a href="#sidebar" class="toggle" aria-label="Menu">
-    <span class="fa fa-bars"></span>
-  </a>
+  <a href="#sidebar" class="toggle" aria-label="Menu"><span class="fa fa-bars"></span></a>
 
   <div id="main">
     <div class="inner">
       <header id="header">
-        <a href="index.html" class="logo">
-          <img src="images/logo_ch.png" alt="汉江春天" class="logo-img">
-        </a>
+        <a href="index.html" class="logo"><img src="images/logo_ch.png" alt="汉江春天" class="logo-img"></a>
         <ul class="icons">
-          <li>
-            <a href="javascript:void(0);" id="wechat-icon" class="icon brands fa-weixin" title="WeChat" aria-controls="wechatModal" aria-haspopup="dialog" role="button">
-              <span class="label">WeChat</span>
-            </a>
-          </li>
-          <li>
-            <a href="javascript:void(0);" id="whatsapp-icon" class="icon brands fa-whatsapp" title="WhatsApp" aria-controls="whatsappModal" aria-haspopup="dialog" role="button">
-              <span class="label">WhatsApp</span>
-            </a>
-          </li>
-          <li>
-            <a href="mailto:leegana@k-medispring.cn" class="icon solid fa-envelope" title="Email">
-              <span class="label">Email</span>
-            </a>
-          </li>
+          <li><a href="javascript:void(0);" id="wechat-icon" class="icon brands fa-weixin" title="WeChat"><span class="label">WeChat</span></a></li>
+          <li><a href="javascript:void(0);" id="whatsapp-icon" class="icon brands fa-whatsapp" title="WhatsApp"><span class="label">WhatsApp</span></a></li>
+          <li><a href="mailto:leegana@k-medispring.cn" class="icon solid fa-envelope" title="Email"><span class="label">Email</span></a></li>
         </ul>
       </header>
 
       <div class="kplan-page">
         <section class="hero-block">
           <h1>定制医疗观光方案</h1>
-          <p class="hero-sub">根据你的需求，选择最适合你的韩国医疗方案</p>
-          <div class="hero-question">你想改善什么？</div>
+          <p class="hero-sub">不只是看美容项目，而是按韩国可以实际接受的诊疗科目，快速找到适合自己的治疗方向。</p>
+          <div class="hero-question">你想先了解哪一类治疗？</div>
         </section>
 
-        <section class="section-card">
-          <div class="pick-grid" id="categoryPicker">
-            <button type="button" class="pick-card is-active" data-target="face">
-              <span class="pick-kicker">FACE</span>
-              <span class="pick-title">面部年轻化</span>
-            </button>
-            <button type="button" class="pick-card" data-target="skin">
-              <span class="pick-kicker">SKIN</span>
-              <span class="pick-title">皮肤改善</span>
-            </button>
-            <button type="button" class="pick-card" data-target="surgery">
-              <span class="pick-kicker">SURGERY</span>
-              <span class="pick-title">整形手术</span>
-            </button>
-            <button type="button" class="pick-card" data-target="checkup">
-              <span class="pick-kicker">CHECKUP</span>
-              <span class="pick-title">健康体检</span>
-            </button>
-            <button type="button" class="pick-card" data-target="women">
-              <span class="pick-kicker">WOMEN</span>
-              <span class="pick-title">女性健康</span>
-            </button>
-            <button type="button" class="pick-card" data-target="men">
-              <span class="pick-kicker">MEN</span>
-              <span class="pick-title">男性健康</span>
-            </button>
-          </div>
+        <nav class="quick-nav" aria-label="Quick Navigation">
+          <a href="#core">热门项目</a>
+          <a href="#specialty">专科治疗</a>
+          <a href="#checkup">检查与管理</a>
+          <a href="#antiaging">抗衰与康养</a>
+        </nav>
 
-          <div class="result-panel is-show" data-panel="face">
-            <div class="result-head">
-              <div>
-                <h2 class="result-title">面部年轻化</h2>
-                <p class="result-desc">想改善松弛、下垂、轮廓感，韩国热门方向都在这里。</p>
-              </div>
-            </div>
-            <div class="result-layout">
-              <div class="result-list">
-                <div class="result-item">轮廓提升（HIFU / 热玛吉）</div>
-                <div class="result-item">面部填充（玻尿酸 / 再生针）</div>
-                <div class="result-item">法令纹 / 下垂改善</div>
-                <div class="result-item">V脸塑形</div>
-              </div>
-              <div class="result-image">
-                <img src="https://images.unsplash.com/photo-1515377905703-c4788e51af15?auto=format&fit=crop&w=1200&q=80" alt="面部年轻化">
-              </div>
-            </div>
-          </div>
+        <section class="intro-card">
+          <h2 class="section-title">韩国医疗，不止是医美</h2>
+          <p>如果你准备来韩国治疗，不一定要先知道医院名字。更有效的方法，是先按自己的需求找到对应的诊疗科目，再决定检查、治疗、手术或康复方向。下面按照实际咨询中最常见的需求，整理成可以直接浏览的结构。</p>
+        </section>
 
-          <div class="result-panel" data-panel="skin">
-            <div class="result-head">
-              <div>
-                <h2 class="result-title">皮肤改善</h2>
-                <p class="result-desc">想要发光感、细腻感、净透感，可以先从这些项目看起。</p>
+        <section id="core">
+          <h2 class="section-title">热门项目</h2>
+          <div class="dept-list">
+            <details class="dept-item" open>
+              <summary>
+                <div class="dept-main">
+                  <span class="dept-kicker">Aesthetic</span>
+                  <span class="dept-name">皮肤科 · 面部年轻化</span>
+                  <div class="dept-desc">适合想改善松弛、细纹、肤质、色斑、痘痘、毛孔、发光感的人群。</div>
+                </div>
+                <span class="dept-arrow">⌄</span>
+              </summary>
+              <div class="dept-body">
+                <div class="tag-row">
+                  <span class="tag">热玛吉</span><span class="tag">超声提升</span><span class="tag">丽珠兰</span><span class="tag">水光针</span><span class="tag">祛斑激光</span>
+                </div>
+                <ul class="bullet-list">
+                  <li>面部松弛、轮廓下垂、法令纹、嘴角下垂改善</li>
+                  <li>色斑、红血丝、毛孔、痘痘、痘疤、肤色不均管理</li>
+                  <li>适合短期变美、长期维护、术后修复等不同需求</li>
+                </ul>
               </div>
-            </div>
-            <div class="result-layout">
-              <div class="result-list">
-                <div class="result-item">水光针 / 丽珠兰 / RE2O</div>
-                <div class="result-item">激光美白 / 祛斑 / 去红血丝</div>
-                <div class="result-item">痘痘 / 痘疤修复</div>
-                <div class="result-item">毛孔缩小 / 皮肤细腻化</div>
-              </div>
-              <div class="result-image">
-                <img src="https://images.unsplash.com/photo-1524504388940-b1c1722653e1?auto=format&fit=crop&w=1200&q=80" alt="皮肤改善">
-              </div>
-            </div>
-          </div>
+            </details>
 
-          <div class="result-panel" data-panel="surgery">
-            <div class="result-head">
-              <div>
-                <h2 class="result-title">整形手术</h2>
-                <p class="result-desc">从五官到轮廓，再到身体线条，按结果来选更容易。</p>
+            <details class="dept-item">
+              <summary>
+                <div class="dept-main">
+                  <span class="dept-kicker">Plastic Surgery</span>
+                  <span class="dept-name">整形外科</span>
+                  <div class="dept-desc">适合希望从五官、轮廓到身体线条进行更明确改变的人群。</div>
+                </div>
+                <span class="dept-arrow">⌄</span>
+              </summary>
+              <div class="dept-body">
+                <div class="tag-row">
+                  <span class="tag">双眼皮</span><span class="tag">鼻整形</span><span class="tag">面部轮廓</span><span class="tag">吸脂</span><span class="tag">胸部整形</span>
+                </div>
+                <ul class="bullet-list">
+                  <li>眼部、鼻部、轮廓、面部提升与身体塑形手术</li>
+                  <li>适合需要设计、恢复期管理、翻修评估的人群</li>
+                  <li>可以根据预算、恢复时间、期望变化幅度分层规划</li>
+                </ul>
               </div>
-            </div>
-            <div class="result-layout">
-              <div class="result-list">
-                <div class="result-item">眼部整形（双眼皮 / 开眼角）</div>
-                <div class="result-item">鼻部整形</div>
-                <div class="result-item">面部轮廓手术</div>
-                <div class="result-item">吸脂 / 身体塑形</div>
-              </div>
-              <div class="result-image">
-                <img src="https://images.unsplash.com/photo-1521572267360-ee0c2909d518?auto=format&fit=crop&w=1200&q=80" alt="整形手术">
-              </div>
-            </div>
-          </div>
+            </details>
 
-          <div class="result-panel" data-panel="checkup">
-            <div class="result-head">
-              <div>
-                <h2 class="result-title">健康体检</h2>
-                <p class="result-desc">不是随便做个检查，而是更快更系统地看清身体状态。</p>
+            <details class="dept-item">
+              <summary>
+                <div class="dept-main">
+                  <span class="dept-kicker">Dental</span>
+                  <span class="dept-name">牙科</span>
+                  <div class="dept-desc">从基础检查到种植、正畸、美学修复，都是国际患者常见需求。</div>
+                </div>
+                <span class="dept-arrow">⌄</span>
+              </summary>
+              <div class="dept-body">
+                <div class="tag-row">
+                  <span class="tag">种植牙</span><span class="tag">正畸</span><span class="tag">牙贴面</span><span class="tag">牙周治疗</span><span class="tag">美白</span>
+                </div>
+                <ul class="bullet-list">
+                  <li>适合缺牙、牙齿不齐、牙周问题、美学修复需求</li>
+                  <li>可根据停留时间安排单次治疗或分阶段治疗</li>
+                  <li>需要先确认口腔基础状态、骨量与恢复计划</li>
+                </ul>
               </div>
-            </div>
-            <div class="result-layout">
-              <div class="result-list">
-                <div class="result-item">全身精密体检（大学医院）</div>
-                <div class="result-item">癌症筛查</div>
-                <div class="result-item">心脑血管检查</div>
-                <div class="result-item">VIP定制体检</div>
-              </div>
-              <div class="result-image">
-                <img src="https://images.unsplash.com/photo-1576091160550-2173dba999ef?auto=format&fit=crop&w=1200&q=80" alt="健康体检">
-              </div>
-            </div>
-          </div>
-
-          <div class="result-panel" data-panel="women">
-            <div class="result-head">
-              <div>
-                <h2 class="result-title">女性健康</h2>
-                <p class="result-desc">从检查到管理，再到更细分的功能护理，选择更清楚。</p>
-              </div>
-            </div>
-            <div class="result-layout">
-              <div class="result-list">
-                <div class="result-item">妇科检查</div>
-                <div class="result-item">生育力评估</div>
-                <div class="result-item">私密护理</div>
-                <div class="result-item">更年期管理</div>
-              </div>
-              <div class="result-image">
-                <img src="https://images.unsplash.com/photo-1512290923902-8a9f81dc236c?auto=format&fit=crop&w=1200&q=80" alt="女性健康">
-              </div>
-            </div>
-          </div>
-
-          <div class="result-panel" data-panel="men">
-            <div class="result-head">
-              <div>
-                <h2 class="result-title">男性健康</h2>
-                <p class="result-desc">先看重点问题，再决定做哪一类检查和恢复方案。</p>
-              </div>
-            </div>
-            <div class="result-layout">
-              <div class="result-list">
-                <div class="result-item">男性体检</div>
-                <div class="result-item">激素检测</div>
-                <div class="result-item">前列腺检查</div>
-                <div class="result-item">体能恢复</div>
-              </div>
-              <div class="result-image">
-                <img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=1200&q=80" alt="男性健康">
-              </div>
-            </div>
+            </details>
           </div>
         </section>
 
-        <section class="section-card cta-block">
+        <section id="specialty">
+          <h2 class="section-title">专科治疗</h2>
+          <div class="dept-list">
+            <details class="dept-item">
+              <summary>
+                <div class="dept-main">
+                  <span class="dept-kicker">Orthopedics</span>
+                  <span class="dept-name">骨科 · 关节 · 脊柱</span>
+                  <div class="dept-desc">适合膝关节疼痛、软骨损伤、腰颈椎问题、运动损伤、慢性疼痛。</div>
+                </div>
+                <span class="dept-arrow">⌄</span>
+              </summary>
+              <div class="dept-body">
+                <div class="tag-row">
+                  <span class="tag">卡티스템</span><span class="tag">关节镜</span><span class="tag">脊柱治疗</span><span class="tag">注射治疗</span><span class="tag">康复训练</span>
+                </div>
+                <ul class="bullet-list">
+                  <li>膝关节软骨损伤、半月板、肩膝疼痛、退行性关节问题</li>
+                  <li>颈椎、腰椎、坐骨神经痛与姿势相关慢性疼痛管理</li>
+                  <li>可结合手术、注射、康复医学一起规划</li>
+                </ul>
+              </div>
+            </details>
+
+            <details class="dept-item">
+              <summary>
+                <div class="dept-main">
+                  <span class="dept-kicker">Women</span>
+                  <span class="dept-name">妇科 · 生殖医学 · 女性健康</span>
+                  <div class="dept-desc">适合妇科检查、生育力评估、私密功能、激素与更年期管理。</div>
+                </div>
+                <span class="dept-arrow">⌄</span>
+              </summary>
+              <div class="dept-body">
+                <div class="tag-row">
+                  <span class="tag">妇科检查</span><span class="tag">不孕评估</span><span class="tag">私密治疗</span><span class="tag">盆底管理</span><span class="tag">更年期管理</span>
+                </div>
+                <ul class="bullet-list">
+                  <li>妇科炎症、肌瘤、囊肿、月经问题等基础治疗</li>
+                  <li>生育力检查、辅助生殖前评估、备孕管理</li>
+                  <li>盆底、私密功能与更年期综合管理</li>
+                </ul>
+              </div>
+            </details>
+
+            <details class="dept-item">
+              <summary>
+                <div class="dept-main">
+                  <span class="dept-kicker">Men</span>
+                  <span class="dept-name">泌尿科 · 男性健康</span>
+                  <div class="dept-desc">适合前列腺、男性功能、激素状态、疲劳恢复相关需求。</div>
+                </div>
+                <span class="dept-arrow">⌄</span>
+              </summary>
+              <div class="dept-body">
+                <div class="tag-row">
+                  <span class="tag">前列腺检查</span><span class="tag">激素检测</span><span class="tag">男性体检</span><span class="tag">功能评估</span><span class="tag">恢复管理</span>
+                </div>
+                <ul class="bullet-list">
+                  <li>排尿问题、前列腺检查、男科功能性问题评估</li>
+                  <li>激素水平、疲劳、睡眠与体能下降相关检查</li>
+                  <li>适合中年男性健康管理与高压工作人群恢复方案</li>
+                </ul>
+              </div>
+            </details>
+
+            <details class="dept-item">
+              <summary>
+                <div class="dept-main">
+                  <span class="dept-kicker">Ophthalmology & ENT</span>
+                  <span class="dept-name">眼科 · 耳鼻喉科</span>
+                  <div class="dept-desc">适合视力矫正、白内障、鼻部功能问题、慢性鼻炎、喉部不适。</div>
+                </div>
+                <span class="dept-arrow">⌄</span>
+              </summary>
+              <div class="dept-body">
+                <div class="tag-row">
+                  <span class="tag">近视矫正</span><span class="tag">白内障</span><span class="tag">鼻炎</span><span class="tag">鼻中隔</span><span class="tag">喉部检查</span>
+                </div>
+                <ul class="bullet-list">
+                  <li>眼科可覆盖近视手术、白内障、干眼及基础检查</li>
+                  <li>耳鼻喉可覆盖慢性鼻炎、鼻塞、鼻中隔、嗓音问题</li>
+                  <li>适合症状明确、恢复期相对可控的海外患者</li>
+                </ul>
+              </div>
+            </details>
+          </div>
+        </section>
+
+        <section id="checkup">
+          <h2 class="section-title">检查与管理</h2>
+          <div class="dept-list">
+            <details class="dept-item">
+              <summary>
+                <div class="dept-main">
+                  <span class="dept-kicker">Checkup</span>
+                  <span class="dept-name">健康体检</span>
+                  <div class="dept-desc">从基础体检到大学医院精密体检，适合想快速看清身体状态的人。</div>
+                </div>
+                <span class="dept-arrow">⌄</span>
+              </summary>
+              <div class="dept-body">
+                <div class="tag-row">
+                  <span class="tag">全身体检</span><span class="tag">癌症筛查</span><span class="tag">心脑血管</span><span class="tag">大学医院</span><span class="tag">VIP定制</span>
+                </div>
+                <ul class="bullet-list">
+                  <li>适合年度体检、家族病史筛查、短期高效检查安排</li>
+                  <li>可以根据年龄、性别、既往病史与预算定制项目</li>
+                  <li>常见方向包括胃肠镜、心脑血管、肺部、肝脏、肿瘤筛查</li>
+                </ul>
+              </div>
+            </details>
+
+            <details class="dept-item">
+              <summary>
+                <div class="dept-main">
+                  <span class="dept-kicker">Internal Medicine</span>
+                  <span class="dept-name">内科 · 慢病管理</span>
+                  <div class="dept-desc">适合高血压、糖尿病、肝功能、甲状腺、消化系统等持续管理需求。</div>
+                </div>
+                <span class="dept-arrow">⌄</span>
+              </summary>
+              <div class="dept-body">
+                <div class="tag-row">
+                  <span class="tag">消化内科</span><span class="tag">内分泌</span><span class="tag">心内科</span><span class="tag">呼吸科</span><span class="tag">甲状腺</span>
+                </div>
+                <ul class="bullet-list">
+                  <li>适合慢性疾病评估、复诊、二次意见与系统检查</li>
+                  <li>可针对胃肠、肝脏、血糖、血压、甲状腺进行深入检查</li>
+                  <li>适合有明确症状但尚未系统诊断的人群</li>
+                </ul>
+              </div>
+            </details>
+
+            <details class="dept-item">
+              <summary>
+                <div class="dept-main">
+                  <span class="dept-kicker">Cancer Screening</span>
+                  <span class="dept-name">肿瘤筛查 · 重疾早筛</span>
+                  <div class="dept-desc">适合有家族病史、体检异常、想做深度排查的人群。</div>
+                </div>
+                <span class="dept-arrow">⌄</span>
+              </summary>
+              <div class="dept-body">
+                <div class="tag-row">
+                  <span class="tag">肺癌筛查</span><span class="tag">乳腺筛查</span><span class="tag">胃肠筛查</span><span class="tag">肝胆胰</span><span class="tag">肿瘤标志物</span>
+                </div>
+                <ul class="bullet-list">
+                  <li>适合健康焦虑较高、想提高确定性的人群</li>
+                  <li>可与大学医院体检、专科门诊、影像检查联动安排</li>
+                  <li>重点不只是查出问题，更是查清问题在哪里</li>
+                </ul>
+              </div>
+            </details>
+          </div>
+        </section>
+
+        <section id="antiaging">
+          <h2 class="section-title">抗衰与康养</h2>
+          <div class="dept-list">
+            <details class="dept-item">
+              <summary>
+                <div class="dept-main">
+                  <span class="dept-kicker">Anti-aging</span>
+                  <span class="dept-name">抗衰老 · 功能医学 · 干细胞</span>
+                  <div class="dept-desc">适合关注长期状态、疲劳、免疫、激素、老化节奏的人群。</div>
+                </div>
+                <span class="dept-arrow">⌄</span>
+              </summary>
+              <div class="dept-body">
+                <div class="tag-row">
+                  <span class="tag">功能医学</span><span class="tag">激素检测</span><span class="tag">营养评估</span><span class="tag">干细胞</span><span class="tag">抗衰管理</span>
+                </div>
+                <ul class="bullet-list">
+                  <li>适合长期疲劳、睡眠差、免疫下降、状态持续低迷的人群</li>
+                  <li>重视检测、评估与个体化管理，而不是单次项目体验</li>
+                  <li>可以结合体检、激素、营养、韩医与恢复方案统筹设计</li>
+                </ul>
+              </div>
+            </details>
+
+            <details class="dept-item">
+              <summary>
+                <div class="dept-main">
+                  <span class="dept-kicker">Recovery</span>
+                  <span class="dept-name">康复医学 · 韩医 · 身心疗愈</span>
+                  <div class="dept-desc">适合术后恢复、慢性疲劳、疼痛调理、压力型失衡与疗愈需求。</div>
+                </div>
+                <span class="dept-arrow">⌄</span>
+              </summary>
+              <div class="dept-body">
+                <div class="tag-row">
+                  <span class="tag">术后康复</span><span class="tag">疼痛管理</span><span class="tag">韩医调理</span><span class="tag">睡眠恢复</span><span class="tag">身心平衡</span>
+                </div>
+                <ul class="bullet-list">
+                  <li>适合做完手术后需要恢复期支持的人群</li>
+                  <li>也适合长期亚健康、肌肉紧张、睡眠与情绪失衡状态</li>
+                  <li>可以与现代医学检查结果结合，做更完整的恢复计划</li>
+                </ul>
+              </div>
+            </details>
+          </div>
+        </section>
+
+        <section class="cta-block">
           <p class="cta-note">看看韩国本地人都在做什么，大概需要多少钱</p>
           <button type="button" class="cta-button" id="openPriceModal">韩国热门项目 + 价格参考</button>
         </section>
@@ -622,12 +729,7 @@
           <li><a href="surgery.html">整形医美</a></li>
           <li><a href="woman.html">女性护理中心</a></li>
           <li><a href="man.html">男性健康中心</a></li>
-          <li class="sig-menu-item">
-            <a href="products/signature-4d/" class="sig-menu-btn">
-              ✨ 招牌旅游套餐
-              <span class="sig-badge">汉江春天 · 招牌精品</span>
-            </a>
-          </li>
+          <li><a href="products/signature-4d/">汉江春天 医疗旅游精品</a></li>
           <li class="active"><a href="kplan.html" aria-current="page">定制医疗观光方案</a></li>
         </ul>
       </nav>
@@ -643,9 +745,7 @@
         </ul>
       </section>
       <footer id="footer">
-        <p style="text-align:center;font-size:.9em;color:#666;">
-          © 2025 汉江春天 한강애봄 版权所有。模板设计：HTML5 UP。
-        </p>
+        <p style="text-align:center;font-size:.9em;color:#666;">© 2025 汉江春天 한강애봄 版权所有。模板设计：HTML5 UP。</p>
       </footer>
     </div>
   </div>
@@ -658,36 +758,12 @@
     <h3 id="priceModalTitle" class="price-modal__title">韩国热门项目 + 价格参考</h3>
     <p class="price-modal__sub">以下为常见区间，仅供参考。实际费用会根据医院、医生、方案难度、使用产品与检查内容而变化。</p>
     <div class="price-grid">
-      <div class="price-card">
-        <h4>面部年轻化</h4>
-        <p>热玛吉 / HIFU / 提升类项目常见选择。</p>
-        <span class="price-range">约 80万 ~ 300万韩元</span>
-      </div>
-      <div class="price-card">
-        <h4>皮肤改善</h4>
-        <p>水光针、丽珠兰、激光嫩肤、祛斑等常见项目。</p>
-        <span class="price-range">约 20万 ~ 150万韩元</span>
-      </div>
-      <div class="price-card">
-        <h4>整形手术</h4>
-        <p>眼部、鼻部、轮廓、吸脂等根据手术类型差异较大。</p>
-        <span class="price-range">约 150万 ~ 1500万韩元</span>
-      </div>
-      <div class="price-card">
-        <h4>健康体检</h4>
-        <p>基础体检到大学医院VIP精密体检，选择范围广。</p>
-        <span class="price-range">约 50万 ~ 800万韩元</span>
-      </div>
-      <div class="price-card">
-        <h4>女性健康</h4>
-        <p>妇科检查、生育力评估、私密护理、更年期管理。</p>
-        <span class="price-range">约 30万 ~ 500万韩元</span>
-      </div>
-      <div class="price-card">
-        <h4>男性健康</h4>
-        <p>男性体检、激素检测、前列腺检查、恢复类方案。</p>
-        <span class="price-range">约 30万 ~ 300万韩元</span>
-      </div>
+      <div class="price-card"><h4>皮肤与年轻化</h4><p>热玛吉、提升类、丽珠兰、水光、祛斑等常见项目。</p><span class="price-range">约 20万 ~ 300万韩元</span></div>
+      <div class="price-card"><h4>整形手术</h4><p>眼、鼻、轮廓、吸脂等根据手术类型差异较大。</p><span class="price-range">约 150万 ~ 1500万韩元</span></div>
+      <div class="price-card"><h4>健康体检</h4><p>基础体检到大学医院VIP精密体检，选择范围广。</p><span class="price-range">约 50万 ~ 800万韩元</span></div>
+      <div class="price-card"><h4>骨科与关节</h4><p>检查、注射、关节治疗、康复方案价格差别明显。</p><span class="price-range">约 30万 ~ 1000万韩元以上</span></div>
+      <div class="price-card"><h4>女性健康</h4><p>妇科检查、生育力评估、私密护理、更年期管理。</p><span class="price-range">约 30万 ~ 500万韩元</span></div>
+      <div class="price-card"><h4>男性健康</h4><p>男性体检、激素检测、前列腺检查、恢复类方案。</p><span class="price-range">约 30万 ~ 300万韩元</span></div>
     </div>
   </div>
 </div>
@@ -712,70 +788,29 @@
 
 <script>
 (function(){
-  const cards = document.querySelectorAll('.pick-card');
-  const panels = document.querySelectorAll('.result-panel');
-
-  cards.forEach(function(card){
-    card.addEventListener('click', function(){
-      const target = card.getAttribute('data-target');
-      cards.forEach(function(c){ c.classList.remove('is-active'); });
-      panels.forEach(function(panel){ panel.classList.remove('is-show'); });
-      card.classList.add('is-active');
-      const activePanel = document.querySelector('.result-panel[data-panel="' + target + '"]');
-      if (activePanel) activePanel.classList.add('is-show');
-    });
-  });
-})();
-
-(function(){
   const openBtn = document.getElementById('openPriceModal');
   const modal = document.getElementById('priceModal');
   const closeBtn = document.getElementById('closePriceModal');
-  if(!openBtn || !modal || !closeBtn) return;
-
-  function openModal(){
-    modal.classList.add('is-open');
-    modal.setAttribute('aria-hidden','false');
+  if(openBtn && modal && closeBtn){
+    function openModal(){ modal.classList.add('is-open'); modal.setAttribute('aria-hidden','false'); }
+    function closeModal(){ modal.classList.remove('is-open'); modal.setAttribute('aria-hidden','true'); }
+    openBtn.addEventListener('click', openModal);
+    closeBtn.addEventListener('click', closeModal);
+    modal.addEventListener('click', function(e){ if(e.target && e.target.dataset && e.target.dataset.priceClose === '1') closeModal(); });
+    document.addEventListener('keydown', function(e){ if(e.key === 'Escape') closeModal(); });
   }
-  function closeModal(){
-    modal.classList.remove('is-open');
-    modal.setAttribute('aria-hidden','true');
-  }
-
-  openBtn.addEventListener('click', openModal);
-  closeBtn.addEventListener('click', closeModal);
-  modal.addEventListener('click', function(e){
-    if(e.target && e.target.dataset && e.target.dataset.priceClose === '1') closeModal();
-  });
-  document.addEventListener('keydown', function(e){
-    if(e.key === 'Escape') closeModal();
-  });
 })();
 
 const wechatIcon = document.getElementById('wechat-icon');
 const whatsappIcon = document.getElementById('whatsapp-icon');
 const wechatModal = document.getElementById('wechatModal');
 const whatsappModal = document.getElementById('whatsappModal');
-
-function openSimpleModal(m){ if(!m) return; m.classList.add('is-open'); m.setAttribute('aria-hidden','false'); }
-function closeSimpleModal(m){ if(!m) return; m.classList.remove('is-open'); m.setAttribute('aria-hidden','true'); }
-
+function openSimpleModal(m){ if(m){ m.classList.add('is-open'); m.setAttribute('aria-hidden','false'); } }
+function closeSimpleModal(m){ if(m){ m.classList.remove('is-open'); m.setAttribute('aria-hidden','true'); } }
 if(wechatIcon && wechatModal) wechatIcon.addEventListener('click', function(e){ e.preventDefault(); openSimpleModal(wechatModal); });
 if(whatsappIcon && whatsappModal) whatsappIcon.addEventListener('click', function(e){ e.preventDefault(); openSimpleModal(whatsappModal); });
-
-[wechatModal, whatsappModal].forEach(function(m){
-  if(!m) return;
-  m.addEventListener('click', function(e){
-    if(e.target === m || e.target.classList.contains('close')) closeSimpleModal(m);
-  });
-});
-
-document.addEventListener('keydown', function(e){
-  if(e.key === 'Escape') {
-    closeSimpleModal(wechatModal);
-    closeSimpleModal(whatsappModal);
-  }
-});
+[wechatModal, whatsappModal].forEach(function(m){ if(m){ m.addEventListener('click', function(e){ if(e.target === m || e.target.classList.contains('close')) closeSimpleModal(m); }); } });
+document.addEventListener('keydown', function(e){ if(e.key === 'Escape'){ closeSimpleModal(wechatModal); closeSimpleModal(whatsappModal); } });
 </script>
 
 <script src="assets/js/jquery.min.js"></script>
