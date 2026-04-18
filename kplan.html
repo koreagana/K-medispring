@@ -100,6 +100,17 @@
       0%, 100% { color:var(--hga-sub); text-shadow:none; opacity:1; }
       50% { color:var(--hga-blue-light); text-shadow:0 0 10px rgba(127,200,248,.55); opacity:1; }
     }
+    .section-title.is-highlight {
+      animation:titleBlinkFast 1s ease-in-out 3, titleBlinkSlow 2.2s ease-in-out 2 3s;
+    }
+    @keyframes titleBlinkFast {
+      0%, 100% { color:var(--hga-text); text-shadow:none; }
+      50% { color:var(--hga-blue-light); text-shadow:0 0 14px rgba(127,200,248,.65); }
+    }
+    @keyframes titleBlinkSlow {
+      0%, 100% { color:var(--hga-text); text-shadow:none; }
+      50% { color:var(--hga-blue); text-shadow:0 0 16px rgba(78,151,209,.5); }
+    }
 
     .hero-question {
       margin-top:18px;
@@ -499,10 +510,10 @@
         </section>
 
         <nav class="quick-nav" aria-label="Quick Navigation">
-          <button type="button" data-target="core-anchor" data-lead="core-lead">热门项目</button>
-          <button type="button" data-target="specialty-anchor" data-lead="specialty-lead">专科治疗</button>
-          <button type="button" data-target="checkup-anchor" data-lead="checkup-lead">检查与管理</button>
-          <button type="button" data-target="antiaging-anchor" data-lead="antiaging-lead">抗衰与康养</button>
+          <button type="button" data-target="core-anchor" data-lead="core-lead" data-title="core-title">热门项目</button>
+          <button type="button" data-target="specialty-anchor" data-lead="specialty-lead" data-title="specialty-title">专科治疗</button>
+          <button type="button" data-target="checkup-anchor" data-lead="checkup-lead" data-title="checkup-title">检查与管理</button>
+          <button type="button" data-target="antiaging-anchor" data-lead="antiaging-lead" data-title="antiaging-title">抗衰与康养</button>
         </nav>
 
         <section class="intro-card">
@@ -511,7 +522,7 @@
         </section>
 
         <section id="core-anchor" class="section-anchor">
-          <h2 class="section-title">热门项目</h2>
+          <h2 id="core-title" class="section-title">热门项目</h2>
           <p id="core-lead" class="section-lead">先看韩国国际患者最常咨询、最容易理解、也最容易先做决策的方向。</p>
           <div class="dept-list">
             <details class="dept-item" open>
@@ -580,7 +591,7 @@
         </section>
 
         <section id="specialty-anchor" class="section-anchor">
-          <h2 class="section-title">专科治疗</h2>
+          <h2 id="specialty-title" class="section-title">专科治疗</h2>
           <p id="specialty-lead" class="section-lead">这里是更明确的治疗型需求，适合已经有症状、病史，或知道自己需要进一步诊疗的人。</p>
           <div class="dept-list">
             <details class="dept-item">
@@ -670,7 +681,7 @@
         </section>
 
         <section id="checkup-anchor" class="section-anchor">
-          <h2 class="section-title">检查与管理</h2>
+          <h2 id="checkup-title" class="section-title">检查与管理</h2>
           <p id="checkup-lead" class="section-lead">如果你还不确定问题在哪里，先从系统检查与身体状态评估开始，会更稳妥也更高效。</p>
           <div class="dept-list">
             <details class="dept-item">
@@ -739,7 +750,7 @@
         </section>
 
         <section id="antiaging-anchor" class="section-anchor">
-          <h2 class="section-title">抗衰与康养</h2>
+          <h2 id="antiaging-title" class="section-title">抗衰与康养</h2>
           <p id="antiaging-lead" class="section-lead">这一类更适合关注长期状态、恢复力、激素节奏、疲劳和身心平衡的人群。</p>
           <div class="dept-list">
             <details class="dept-item">
@@ -905,8 +916,10 @@ document.addEventListener('DOMContentLoaded', function(){
     btn.addEventListener('click', function(){
       var targetId = btn.getAttribute('data-target');
       var leadId = btn.getAttribute('data-lead');
+      var titleId = btn.getAttribute('data-title');
       var target = document.getElementById(targetId);
       var lead = document.getElementById(leadId);
+      var title = document.getElementById(titleId);
       if (target) {
         target.scrollIntoView({ behavior:'smooth', block:'start' });
       }
@@ -915,6 +928,12 @@ document.addEventListener('DOMContentLoaded', function(){
         void lead.offsetWidth;
         lead.classList.add('is-blink');
         setTimeout(function(){ lead.classList.remove('is-blink'); }, 5000);
+      }
+      if (title) {
+        title.classList.remove('is-highlight');
+        void title.offsetWidth;
+        title.classList.add('is-highlight');
+        setTimeout(function(){ title.classList.remove('is-highlight'); }, 7400);
       }
     });
   });
