@@ -33,6 +33,7 @@
   <style>
     :root {
       --hga-blue:#4E97D1;
+      --hga-blue-light:#7fc8f8;
       --hga-teal:#2aa8a0;
       --hga-pink:#D97AA6;
       --hga-soft:#F6FAFE;
@@ -41,6 +42,8 @@
       --hga-sub:#667085;
       --hga-shadow:0 10px 30px rgba(78,151,209,.08);
     }
+
+    html { scroll-behavior:smooth; }
 
     body, .inner, p, li, td, th, input, button, a, summary, details {
       font-family:'Pretendard','Noto Sans SC','Microsoft YaHei',sans-serif;
@@ -88,6 +91,15 @@
       font-size:16px;
       line-height:1.7;
     }
+    .hero-sub.is-blink {
+      color:var(--hga-blue);
+      animation:hgaBlink 1s ease-in-out 5;
+    }
+    @keyframes hgaBlink {
+      0%, 100% { color:var(--hga-sub); text-shadow:none; opacity:1; }
+      50% { color:var(--hga-blue-light); text-shadow:0 0 10px rgba(127,200,248,.55); opacity:1; }
+    }
+
     .hero-question {
       margin-top:18px;
       display:inline-flex;
@@ -141,6 +153,10 @@
       color:var(--hga-sub);
       font-size:15px;
       line-height:1.75;
+    }
+
+    .section-anchor {
+      scroll-margin-top: 3rem;
     }
 
     .section-title {
@@ -471,15 +487,15 @@
       <div class="kplan-page">
         <section class="hero-block">
           <h1>定制医疗观光方案</h1>
-          <p class="hero-sub">不只是看美容项目，而是按韩国可以实际接受的诊疗科目，快速找到适合自己的治疗方向。</p>
+          <p class="hero-sub is-blink">不只是看美容项目，而是按韩国可以实际接受的诊疗科目，快速找到适合自己的治疗方向。</p>
           <div class="hero-question">你想先了解哪一类治疗？</div>
         </section>
 
         <nav class="quick-nav" aria-label="Quick Navigation">
-          <a href="#core">热门项目</a>
-          <a href="#specialty">专科治疗</a>
-          <a href="#checkup">检查与管理</a>
-          <a href="#antiaging">抗衰与康养</a>
+          <a href="#core-anchor">热门项目</a>
+          <a href="#specialty-anchor">专科治疗</a>
+          <a href="#checkup-anchor">检查与管理</a>
+          <a href="#antiaging-anchor">抗衰与康养</a>
         </nav>
 
         <section class="intro-card">
@@ -487,7 +503,7 @@
           <p>如果你准备来韩国治疗，不一定要先知道医院名字。更有效的方法，是先按自己的需求找到对应的诊疗科目，再决定检查、治疗、手术或康复方向。下面按照实际咨询中最常见的需求，整理成可以直接浏览的结构。</p>
         </section>
 
-        <section id="core">
+        <section id="core-anchor" class="section-anchor">
           <h2 class="section-title">热门项目</h2>
           <div class="dept-list">
             <details class="dept-item" open>
@@ -555,7 +571,7 @@
           </div>
         </section>
 
-        <section id="specialty">
+        <section id="specialty-anchor" class="section-anchor">
           <h2 class="section-title">专科治疗</h2>
           <div class="dept-list">
             <details class="dept-item">
@@ -644,7 +660,7 @@
           </div>
         </section>
 
-        <section id="checkup">
+        <section id="checkup-anchor" class="section-anchor">
           <h2 class="section-title">检查与管理</h2>
           <div class="dept-list">
             <details class="dept-item">
@@ -712,7 +728,7 @@
           </div>
         </section>
 
-        <section id="antiaging">
+        <section id="antiaging-anchor" class="section-anchor">
           <h2 class="section-title">抗衰与康养</h2>
           <div class="dept-list">
             <details class="dept-item">
@@ -868,6 +884,13 @@ if(wechatIcon && wechatModal) wechatIcon.addEventListener('click', function(e){ 
 if(whatsappIcon && whatsappModal) whatsappIcon.addEventListener('click', function(e){ e.preventDefault(); openSimpleModal(whatsappModal); });
 [wechatModal, whatsappModal].forEach(function(m){ if(m){ m.addEventListener('click', function(e){ if(e.target === m || e.target.classList.contains('close')) closeSimpleModal(m); }); } });
 document.addEventListener('keydown', function(e){ if(e.key === 'Escape'){ closeSimpleModal(wechatModal); closeSimpleModal(whatsappModal); } });
+
+document.addEventListener('DOMContentLoaded', function(){
+  setTimeout(function(){
+    var blinkText = document.querySelector('.hero-sub.is-blink');
+    if (blinkText) blinkText.classList.remove('is-blink');
+  }, 5000);
+});
 </script>
 
 <script src="assets/js/jquery.min.js"></script>
