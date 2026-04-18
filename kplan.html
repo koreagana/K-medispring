@@ -85,13 +85,14 @@
       color:var(--hga-text);
       font-weight:800;
     }
-    .hero-sub {
+    .hero-sub,
+    .section-lead {
       margin:0;
       color:var(--hga-sub);
       font-size:16px;
       line-height:1.7;
     }
-    .hero-sub.is-blink {
+    .is-blink {
       color:var(--hga-blue);
       animation:hgaBlink 1s ease-in-out 5;
     }
@@ -121,7 +122,7 @@
       gap:10px;
       margin:0 0 18px;
     }
-    .quick-nav a {
+    .quick-nav button {
       display:flex;
       align-items:center;
       justify-content:center;
@@ -131,11 +132,11 @@
       border-radius:14px;
       background:#fff;
       color:var(--hga-text);
-      text-decoration:none;
       font-size:14px;
       font-weight:700;
       padding:10px 8px;
       box-shadow:var(--hga-shadow);
+      cursor:pointer;
     }
 
     .intro-card,
@@ -160,10 +161,15 @@
     }
 
     .section-title {
-      margin:0 0 12px;
+      margin:0 0 8px;
       font-size:24px;
       color:var(--hga-text);
       font-weight:800;
+    }
+
+    .section-lead {
+      margin:0 0 14px;
+      font-size:14px;
     }
 
     .dept-list {
@@ -435,10 +441,11 @@
     @media (max-width: 640px) {
       .hero-block { padding:22px 16px; border-radius:20px; }
       .hero-block h1 { font-size:28px; }
-      .hero-sub { font-size:14px; }
+      .hero-sub,
+      .section-lead { font-size:14px; }
       .hero-question { width:100%; font-size:17px; }
       .quick-nav { grid-template-columns:repeat(2,1fr); }
-      .quick-nav a { min-height:48px; font-size:13px; }
+      .quick-nav button { min-height:48px; font-size:13px; }
       .intro-card,
       .cta-block { padding:18px 14px; border-radius:18px; }
       .section-title { font-size:22px; }
@@ -492,10 +499,10 @@
         </section>
 
         <nav class="quick-nav" aria-label="Quick Navigation">
-          <a href="#core-anchor">热门项目</a>
-          <a href="#specialty-anchor">专科治疗</a>
-          <a href="#checkup-anchor">检查与管理</a>
-          <a href="#antiaging-anchor">抗衰与康养</a>
+          <button type="button" data-target="core-anchor" data-lead="core-lead">热门项目</button>
+          <button type="button" data-target="specialty-anchor" data-lead="specialty-lead">专科治疗</button>
+          <button type="button" data-target="checkup-anchor" data-lead="checkup-lead">检查与管理</button>
+          <button type="button" data-target="antiaging-anchor" data-lead="antiaging-lead">抗衰与康养</button>
         </nav>
 
         <section class="intro-card">
@@ -505,6 +512,7 @@
 
         <section id="core-anchor" class="section-anchor">
           <h2 class="section-title">热门项目</h2>
+          <p id="core-lead" class="section-lead">先看韩国国际患者最常咨询、最容易理解、也最容易先做决策的方向。</p>
           <div class="dept-list">
             <details class="dept-item" open>
               <summary>
@@ -573,6 +581,7 @@
 
         <section id="specialty-anchor" class="section-anchor">
           <h2 class="section-title">专科治疗</h2>
+          <p id="specialty-lead" class="section-lead">这里是更明确的治疗型需求，适合已经有症状、病史，或知道自己需要进一步诊疗的人。</p>
           <div class="dept-list">
             <details class="dept-item">
               <summary>
@@ -662,6 +671,7 @@
 
         <section id="checkup-anchor" class="section-anchor">
           <h2 class="section-title">检查与管理</h2>
+          <p id="checkup-lead" class="section-lead">如果你还不确定问题在哪里，先从系统检查与身体状态评估开始，会更稳妥也更高效。</p>
           <div class="dept-list">
             <details class="dept-item">
               <summary>
@@ -730,6 +740,7 @@
 
         <section id="antiaging-anchor" class="section-anchor">
           <h2 class="section-title">抗衰与康养</h2>
+          <p id="antiaging-lead" class="section-lead">这一类更适合关注长期状态、恢复力、激素节奏、疲劳和身心平衡的人群。</p>
           <div class="dept-list">
             <details class="dept-item">
               <summary>
@@ -887,9 +898,26 @@ document.addEventListener('keydown', function(e){ if(e.key === 'Escape'){ closeS
 
 document.addEventListener('DOMContentLoaded', function(){
   setTimeout(function(){
-    var blinkText = document.querySelector('.hero-sub.is-blink');
-    if (blinkText) blinkText.classList.remove('is-blink');
+    document.querySelectorAll('.is-blink').forEach(function(el){ el.classList.remove('is-blink'); });
   }, 5000);
+
+  document.querySelectorAll('.quick-nav button[data-target]').forEach(function(btn){
+    btn.addEventListener('click', function(){
+      var targetId = btn.getAttribute('data-target');
+      var leadId = btn.getAttribute('data-lead');
+      var target = document.getElementById(targetId);
+      var lead = document.getElementById(leadId);
+      if (target) {
+        target.scrollIntoView({ behavior:'smooth', block:'start' });
+      }
+      if (lead) {
+        lead.classList.remove('is-blink');
+        void lead.offsetWidth;
+        lead.classList.add('is-blink');
+        setTimeout(function(){ lead.classList.remove('is-blink'); }, 5000);
+      }
+    });
+  });
 });
 </script>
 
