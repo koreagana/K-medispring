@@ -130,24 +130,41 @@
     .quick-nav {
       display:grid;
       grid-template-columns:repeat(4,1fr);
-      gap:10px;
-      margin:0 0 22px;
+      gap:12px;
+      margin:0 0 24px;
     }
     .quick-nav button {
       display:flex;
       align-items:center;
       justify-content:center;
       text-align:center;
-      min-height:52px;
-      border:1px solid var(--hga-line);
-      border-radius:14px;
-      background:#fff;
-      color:var(--hga-text);
-      font-size:14px;
-      font-weight:700;
-      padding:10px 8px;
-      box-shadow:var(--hga-shadow);
+      min-height:68px;
+      border:1px solid rgba(78,151,209,.18);
+      border-radius:18px;
+      background:linear-gradient(180deg,#ffffff 0%, #f7fbff 100%);
+      color:var(--hga-blue);
+      font-size:18px;
+      font-weight:800;
+      letter-spacing:.2px;
+      padding:14px 14px;
+      box-shadow:0 10px 24px rgba(78,151,209,.10);
       cursor:pointer;
+      transition:transform .18s ease, box-shadow .18s ease, border-color .18s ease;
+    }
+    .quick-nav button:hover,
+    .quick-nav button:focus {
+      transform:translateY(-2px);
+      box-shadow:0 14px 28px rgba(78,151,209,.16);
+      border-color:rgba(78,151,209,.34);
+      outline:none;
+    }
+    .quick-nav button::before {
+      content:'●';
+      display:inline-block;
+      font-size:10px;
+      margin-right:8px;
+      color:var(--hga-blue-light);
+      transform:translateY(-1px);
     }
 
     .intro-card,
@@ -473,8 +490,18 @@
       .hero-sub,
       .section-lead { font-size:14px; }
       .hero-question { width:100%; font-size:17px; }
-      .quick-nav { grid-template-columns:repeat(2,1fr); }
-      .quick-nav button { min-height:48px; font-size:13px; }
+      .quick-nav { grid-template-columns:repeat(2,1fr); gap:10px; }
+      .quick-nav button {
+        min-height:60px;
+        font-size:16px;
+        line-height:1.2;
+        border-radius:16px;
+        padding:12px 10px;
+      }
+      .quick-nav button::before {
+        font-size:8px;
+        margin-right:6px;
+      }
       .intro-card,
       .cta-block { padding:18px 14px; border-radius:18px; }
       .section-anchor { margin-top:28px; margin-bottom:28px; }
