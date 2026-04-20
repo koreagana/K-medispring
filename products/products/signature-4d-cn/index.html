@@ -7,6 +7,8 @@
 <link rel="icon" href="/images/favicon.ico">
 <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
 <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;500;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/css/fontawesome-all.min.css" />
+<link rel="stylesheet" href="/assets/css/main.css" />
 
 <style>
 body {
@@ -177,7 +179,7 @@ select {
 
 .lang-switch {
   position: fixed;
-  top: 20px;
+  top: 68px;
   right: 24px;
   z-index: 9999;
 }
@@ -213,13 +215,41 @@ select {
   }
 
   .lang-switch {
-    top: 14px;
+    top: 68px;
     right: 14px;
   }
 }
 </style>
 </head>
-<body>
+<body class="is-preload">
+
+<div id="wrapper">
+  <div id="main">
+    <div class="inner">
+
+<header id="header">
+  <a href="/" class="logo">
+    <img src="/images/logo_ch.png" alt="汉江春天" class="logo-img">
+  </a>
+  <a href="#sidebar" class="toggle" aria-label="Menu"></a>
+  <ul class="icons">
+    <li>
+      <a href="#" id="wechat-icon" class="icon brands fa-weixin" title="WeChat">
+        <span class="label">WeChat</span>
+      </a>
+    </li>
+    <li>
+      <a href="#" id="whatsapp-icon" class="icon brands fa-whatsapp" title="WhatsApp">
+        <span class="label">WhatsApp</span>
+      </a>
+    </li>
+    <li>
+      <a href="mailto:leegana@k-medispring.cn" class="icon solid fa-envelope">
+        <span class="label">leegana@k-medispring.cn</span>
+      </a>
+    </li>
+  </ul>
+</header>
 
 <div class="lang-switch">
   <a href="https://kmedispring.com/products/signature-4d/">한국어</a>
@@ -644,6 +674,88 @@ function updatePlan() {
 }
 
 updatePlan();
+</script>
+
+    </div><!-- .inner -->
+  </div><!-- #main -->
+
+  <div id="sidebar">
+    <div class="inner">
+      <nav id="menu">
+        <ul>
+          <li><a href="/">首页</a></li>
+          <li><a href="/wellness.html">大健康</a></li>
+          <li><a href="/stemcell.html">干细胞</a></li>
+          <li><a href="/derm.html">皮肤医美</a></li>
+          <li><a href="/surgery.html">整形医美</a></li>
+          <li><a href="/woman.html">女性护理中心</a></li>
+          <li><a href="/man.html">男性健康中心</a></li>
+          <li><a href="/products/signature-4d/">汉江春天 医疗旅游精品</a></li>
+          <li><a href="/kplan.html">定制医疗观光方案</a></li>
+        </ul>
+      </nav>
+      <section>
+        <header class="major">
+          <h3>联系方式</h3>
+        </header>
+        <ul class="contact">
+          <li class="icon solid fa-envelope"><a href="mailto:leegana@k-medispring.cn">leegana@k-medispring.cn</a></li>
+          <li class="icon solid fa-phone">+82-10-4903-3123</li>
+          <li class="icon solid fa-home">韩国 首尔特别市 城北区 三阳路29号</li>
+        </ul>
+      </section>
+    </div>
+  </div>
+
+</div><!-- #wrapper -->
+
+<div id="wechatModal" class="modal" aria-hidden="true" role="dialog">
+  <div class="modal-inner">
+    <button class="close" aria-label="Close" type="button">&times;</button>
+    <img id="wechatQR" class="modal-content" src="/images/qr_weixin.jpg" alt="WeChat QR" />
+    <p class="modal-id">WeChat ID：e-gana</p>
+  </div>
+</div>
+
+<div id="whatsappModal" class="modal" aria-hidden="true" role="dialog">
+  <div class="modal-inner">
+    <button class="close" aria-label="Close" type="button">&times;</button>
+    <img id="whatsappQR" class="modal-content" src="/images/whatsapp_qr.jpg" alt="WhatsApp QR" />
+    <p class="modal-id">WhatsApp：+82-10-4903-3123</p>
+  </div>
+</div>
+
+<script src="/assets/js/jquery.min.js"></script>
+<script src="/assets/js/browser.min.js"></script>
+<script src="/assets/js/breakpoints.min.js"></script>
+<script src="/assets/js/util.js"></script>
+<script src="/assets/js/main.js"></script>
+
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+  var wechatIcon  = document.getElementById('wechat-icon');
+  var wechatModal = document.getElementById('wechatModal');
+  if (wechatIcon && wechatModal) {
+    wechatIcon.addEventListener('click', function (e) {
+      e.preventDefault();
+      wechatModal.style.display = 'flex';
+      wechatModal.setAttribute('aria-hidden', 'false');
+    });
+    var wechatClose = wechatModal.querySelector('.close');
+    if (wechatClose) {
+      wechatClose.addEventListener('click', function () {
+        wechatModal.style.display = 'none';
+        wechatModal.setAttribute('aria-hidden', 'true');
+      });
+    }
+    wechatModal.addEventListener('click', function (e) {
+      if (e.target === wechatModal) {
+        wechatModal.style.display = 'none';
+        wechatModal.setAttribute('aria-hidden', 'true');
+      }
+    });
+  }
+});
 </script>
 
 </body>

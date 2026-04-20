@@ -55,6 +55,10 @@
   /* =========================
      Toggle
      ========================= */
+ $toggle.on('touchstart', function (e) {
+  e.stopPropagation(); // window touchstart가 closeMenu() 호출하는 것 방지
+});
+
  $toggle.on('click', function (e) {
   e.preventDefault();
   e.stopPropagation();
