@@ -3446,17 +3446,30 @@ body{
 }
 
 /* ===================================================
-   sig-menu-btn 색상 수정: 흰색→검정 (모든 페이지 적용)
-   - background !important 로 그라디언트 강제 표시
-   - color !important 로 흰 글씨 대신 진한 글씨
+   sig-menu-btn: 일반 메뉴 항목과 동일한 스타일로 통일
 =================================================== */
 #wrapper #sidebar nav#menu li.sig-menu-item a.sig-menu-btn {
-  background: linear-gradient(135deg, #4E97D1, #2aa8a0) !important;
+  background: transparent !important;
   color: #222 !important;
-  box-shadow: 0 3px 12px rgba(78,151,209,.35) !important;
-  font-weight: 700 !important;
+  box-shadow: none !important;
+  border-radius: 0 !important;
+  font-weight: 400 !important;
+  font-size: inherit !important;
+  padding: 18px 20px !important;
+  border-bottom: 0.7px solid var(--line) !important;
+}
+#wrapper #sidebar nav#menu li.sig-menu-item a.sig-menu-btn:hover {
+  background: transparent !important;
+  box-shadow: none !important;
+  color: var(--hover) !important;
 }
 #wrapper #sidebar nav#menu li.sig-menu-item a.sig-menu-btn .sig-badge,
 #wrapper #sidebar nav#menu li.sig-menu-item a.sig-menu-btn span {
+  display: inline !important;
+  font-size: inherit !important;
+  font-weight: inherit !important;
+  opacity: 1 !important;
+  margin-top: 0 !important;
+  letter-spacing: normal !important;
   color: #222 !important;
 }
