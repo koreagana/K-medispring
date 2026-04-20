@@ -3444,3 +3444,19 @@ body{
 #kplanSubmitBtn{
   margin-bottom: 3cm;
 }
+
+/* ===================================================
+   sig-menu-btn 색상 수정: 흰색→검정 (모든 페이지 적용)
+   - background !important 로 그라디언트 강제 표시
+   - color !important 로 흰 글씨 대신 진한 글씨
+=================================================== */
+#wrapper #sidebar nav#menu li.sig-menu-item a.sig-menu-btn {
+  background: linear-gradient(135deg, #4E97D1, #2aa8a0) !important;
+  color: #222 !important;
+  box-shadow: 0 3px 12px rgba(78,151,209,.35) !important;
+  font-weight: 700 !important;
+}
+#wrapper #sidebar nav#menu li.sig-menu-item a.sig-menu-btn .sig-badge,
+#wrapper #sidebar nav#menu li.sig-menu-item a.sig-menu-btn span {
+  color: #222 !important;
+}
