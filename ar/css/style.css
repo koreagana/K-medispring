@@ -38,16 +38,23 @@ body {
   color: var(--gray-800);
   line-height: 1.7;
   overflow-x: hidden;
+  /* 데스크탑: flex로 사이드바+본문 배치 */
+  display: flex;
+  flex-direction: row-reverse; /* RTL: 사이드바 오른쪽, 본문 왼쪽 */
+  min-height: 100vh;
+  align-items: stretch;
 }
 
 /* ══════════════════════════════════════
-   SIDEBAR — 데스크탑: 항상 표시 (fixed right)
+   SIDEBAR — 데스크탑: flex 항상 표시 (sticky)
              모바일: overlay 방식 토글
    ══════════════════════════════════════ */
 #sidebar {
-  position: fixed;
-  top: 0; right: 0;
+  flex: 0 0 var(--sidebar-w);
   width: var(--sidebar-w);
+  min-height: 100vh;
+  position: sticky;
+  top: 0;
   height: 100vh;
   background: var(--blue-dark);
   z-index: 1000;
@@ -56,7 +63,6 @@ body {
   overflow-y: auto;
   overflow-x: hidden;
   box-shadow: -4px 0 20px rgba(0,0,0,.2);
-  /* 데스크탑: 항상 보임 — transform 없음 */
 }
 /* 모바일에서만 토글 사용 */
 #sidebar.mobile-hidden { transform: translateX(var(--sidebar-w)); transition: transform var(--transition); }
@@ -191,14 +197,15 @@ body {
 
 /* ══════════════════════════════════════
    MAIN CONTENT WRAPPER
-   데스크탑: 사이드바 너비만큼 오른쪽 여백
-   모바일:   여백 없음 (사이드바 overlay)
+   데스크탑: flex: 1로 남은 공간 전체 사용
+   모바일:   width: 100% (사이드바 overlay)
    ══════════════════════════════════════ */
 #main-wrapper {
-  margin-right: var(--sidebar-w); /* 사이드바 공간 확보 */
+  flex: 1;
+  min-width: 0;    /* flex child가 축소될 수 있도록 */
+  max-width: none;
+  overflow-x: hidden;
   min-height: 100vh;
-  width: calc(100% - var(--sidebar-w));
-  display: block;
 }
 
 /* ══════════════════════════════════════
@@ -444,12 +451,21 @@ body {
    RESPONSIVE
    ══════════════════════════════════════ */
 @media (max-width: 1024px) {
-  /* 모바일: 토글 버튼 표시, 사이드바 overlay */
+  /* 모바일: flex 해제 → overlay 방식으로 전환 */
+  body { display: block; }
   #sidebar-toggle { display: flex; }
-  #sidebar { transform: translateX(var(--sidebar-w)); }
+  #sidebar {
+    position: fixed;
+    top: 0; right: 0;
+    width: var(--sidebar-w);
+    height: 100vh;
+    transform: translateX(var(--sidebar-w));
+    transition: transform var(--transition);
+    z-index: 1000;
+  }
   #sidebar.mobile-open { transform: translateX(0); }
   /* 콘텐츠는 전체 너비 */
-  #main-wrapper { margin-right: 0; width: 100%; }
+  #main-wrapper { width: 100%; min-width: 0; }
   .footer-grid { grid-template-columns: 1fr 1fr; }
 }
 @media (max-width: 768px) {
