@@ -1,7 +1,7 @@
 /* ════════════════════════════════════════════
-   K-Medi Spring Arabic — Main JavaScript
-   Desktop: sidebar always visible, no toggle
-   Mobile (≤1024px): overlay toggle
+   MEDI SPRING Arabic — Main JavaScript
+   Desktop: sidebar always visible (sticky right)
+   Mobile (≤1024px): overlay toggle from right
    ════════════════════════════════════════════ */
 
 (function () {
@@ -17,84 +17,63 @@
   /* ── Mobile sidebar open/close ── */
   function openMobile() {
     sidebar.classList.add('mobile-open');
-    sidebar.classList.remove('mobile-hidden');
     overlay.classList.add('active');
-    toggle.classList.add('is-open');
+    if (toggle) toggle.classList.add('is-open');
+    document.body.style.overflow = 'hidden';
   }
   function closeMobile() {
     sidebar.classList.remove('mobile-open');
-    sidebar.classList.add('mobile-hidden');
     overlay.classList.remove('active');
-    toggle.classList.remove('is-open');
+    if (toggle) toggle.classList.remove('is-open');
+    document.body.style.overflow = '';
   }
 
-  /* ── Init based on viewport ── */
-  function init() {
-    if (isMobile()) {
-      /* 모바일: 사이드바 숨김, 토글 보임 */
-      sidebar.classList.add('mobile-hidden');
-      sidebar.classList.remove('mobile-open');
-      overlay.classList.remove('active');
-      if (toggle) toggle.classList.remove('is-open');
-    } else {
-      /* 데스크탑: 사이드바 항상 표시, 토글 숨김 (CSS로 처리) */
-      sidebar.classList.remove('mobile-hidden');
-      sidebar.classList.remove('mobile-open');
-      overlay.classList.remove('active');
-    }
+  if (sidebar && toggle) {
+    toggle.addEventListener('click', () => {
+      if (sidebar.classList.contains('mobile-open')) {
+        closeMobile();
+      } else {
+        openMobile();
+      }
+    });
   }
 
+  if (overlay) {
+    overlay.addEventListener('click', closeMobile);
+  }
+
+  /* ESC key */
+  document.addEventListener('keydown', e => {
+    if (e.key === 'Escape') closeMobile();
+  });
+
+  /* Close sidebar on nav link click (mobile) */
   if (sidebar) {
-    init();
-
-    if (toggle) {
-      toggle.addEventListener('click', () => {
-        if (sidebar.classList.contains('mobile-open')) {
-          closeMobile();
-        } else {
-          openMobile();
-        }
-      });
-    }
-
-    if (overlay) {
-      overlay.addEventListener('click', closeMobile);
-    }
-
-    /* 링크 클릭 시 모바일 사이드바 닫기 */
-    sidebar.querySelectorAll('.sidebar-nav a').forEach(a => {
+    sidebar.querySelectorAll('#menu a').forEach(a => {
       a.addEventListener('click', () => {
         if (isMobile()) closeMobile();
       });
     });
-
-    /* 리사이즈 대응 */
-    let resizeTimer;
-    window.addEventListener('resize', () => {
-      clearTimeout(resizeTimer);
-      resizeTimer = setTimeout(init, 120);
-    });
   }
+
+  /* Re-init on resize */
+  let resizeTimer;
+  window.addEventListener('resize', () => {
+    clearTimeout(resizeTimer);
+    resizeTimer = setTimeout(() => {
+      if (!isMobile()) closeMobile();
+    }, 120);
+  });
 
   /* ── Active nav link ── */
   const path = window.location.pathname;
-  document.querySelectorAll('.sidebar-nav a').forEach(a => {
+  document.querySelectorAll('#menu a').forEach(a => {
     const href = a.getAttribute('href') || '';
     if (href === '/ar/' && (path === '/ar/' || path === '/ar/index.html')) {
-      a.classList.add('active');
+      a.closest('li') && a.closest('li').classList.add('active');
     } else if (href !== '/ar/' && href.length > 4 && path.startsWith(href)) {
-      a.classList.add('active');
+      a.closest('li') && a.closest('li').classList.add('active');
     }
-  });
-
-  /* ── FAQ Accordion ── */
-  document.querySelectorAll('.faq-q').forEach(q => {
-    q.addEventListener('click', () => {
-      const item = q.closest('.faq-item');
-      const open = item.classList.contains('open');
-      document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('open'));
-      if (!open) item.classList.add('open');
-    });
   });
 
   /* ── Scroll Reveal ── */
@@ -109,15 +88,15 @@
       });
     }, { threshold: 0.1 });
 
-    document.querySelectorAll('.card, .feature-item, .step-item, .partner-card').forEach(el => {
+    document.querySelectorAll('.features article, .posts article, .stat-item, .card').forEach(el => {
       el.style.opacity = '0';
-      el.style.transform = 'translateY(18px)';
+      el.style.transform = 'translateY(16px)';
       el.style.transition = 'opacity .4s ease, transform .4s ease';
       io.observe(el);
     });
   }
 
-  /* ── WA label 소형 화면 숨김 ── */
+  /* ── WA float label hide on small screens ── */
   const waLabel = document.querySelector('.wa-float-label');
   if (waLabel && window.innerWidth < 480) waLabel.style.display = 'none';
 

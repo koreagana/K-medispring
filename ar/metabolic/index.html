@@ -9,47 +9,28 @@
   <link rel="icon" type="image/png" href="/ar/images/medispring-ar-favicon.png" />
 </head>
 <body>
+
 <div id="sidebar-overlay"></div>
 
-<button id="sidebar-toggle" aria-label="القائمة">
-  <span></span><span></span><span></span>
-</button>
+<div id="wrapper">
 
-<!-- SIDEBAR -->
-<div id="sidebar">
-  <a href="/ar/" class="sidebar-logo">
-    <img src="/ar/images/medispring-ar-favicon.png" alt="K-Medi Spring Logo" />
-    <div class="sidebar-logo-text">
-      <strong>K-Medi Spring</strong>
-      <span>KOREAN MEDICAL CARE</span>
-    </div>
-  </a>
+  <!-- MAIN CONTENT -->
+  <div id="main">
+    <div class="inner">
 
-  <nav class="sidebar-nav">
-    <a href="/ar/checkup/"><span class="nav-icon">🔬</span>الفحص الشامل</a>
-    <div class="nav-divider"></div>
-    <a href="/ar/metabolic/"><span class="nav-icon">💊</span>الأمراض المزمنة</a>
-    <a href="/ar/diabetes/"><span class="nav-icon">🩸</span>علاج السكري</a>
-    <a href="/ar/obesity/"><span class="nav-icon">⚖️</span>السمنة وإنقاص الوزن</a>
-    <a href="/ar/fertility/"><span class="nav-icon">🌱</span>العقم والخصوبة</a>
-    <a href="/ar/women/"><span class="nav-icon">🌸</span>صحة المرأة</a>
-    <a href="/ar/cosmetic/"><span class="nav-icon">✨</span>التجميل</a>
-    <a href="/ar/knee/"><span class="nav-icon">🦴</span>العظام والمفاصل</a>
-    <a href="/ar/ophthalmology/"><span class="nav-icon">👁️</span>طب العيون</a>
-    <a href="/ar/pediatrics/"><span class="nav-icon">👶</span>طب الأطفال</a>
-    <div class="nav-divider"></div>
-    <a href="/ar/vip/"><span class="nav-icon">⭐</span>كبار الشخصيات VIP</a>
-    <a href="/ar/contact/"><span class="nav-icon">✉️</span>تواصل معنا</a>
-  </nav>
-
-  <div class="sidebar-cta">
-    <a href="https://wa.me/821077671903" class="btn-wa-side" target="_blank">💬 واتساب — نرد فوراً</a>
-    <a href="/ar/contact/" class="btn-contact-side">استشارة مجانية</a>
-  </div>
-</div>
-
-<!-- MAIN WRAPPER -->
-<div id="main-wrapper">
+      <!-- HEADER -->
+      <header id="header">
+        <button id="sidebar-toggle" aria-label="القائمة">
+          <span></span><span></span><span></span>
+        </button>
+        <div class="header-brand">
+          <a href="/ar/" class="brand-name">MEDI SPRING</a>
+        </div>
+        <div class="header-actions">
+          <a href="https://wa.me/821077671903?text=مرحباً،%20أود%20الاستفسار%20عن%20خدماتكم"
+             class="header-wa" target="_blank" rel="noopener">💬 واتساب</a>
+        </div>
+      </header>
 
 <!-- PAGE HERO -->
 <section class="page-hero">
@@ -321,55 +302,68 @@
   </div>
 </section>
 
+    </div><!-- /.inner -->
+  </div><!-- /#main -->
 
-</div><!-- /#main-wrapper -->
+  <!-- SIDEBAR (right) -->
+  <div id="sidebar">
+    <div class="inner">
 
-<footer class="site-footer">
-  <div class="container">
-    <div class="footer-grid">
-      <div class="footer-brand">
-        <img src="/ar/images/medispring-ar-favicon.png" alt="K-Medi Spring" class="footer-logo-img" />
-        <p>بوابتك الموثوقة للرعاية الطبية الكورية مع دعم عربي كامل على مدار الساعة.</p>
-        <div class="social-links">
-          <a href="https://wa.me/821077671903" target="_blank">💬</a>
-          <a href="#">📸</a>
-          <a href="#">▶️</a>
-        </div>
+      <div class="sidebar-brand">
+        <a href="/ar/">
+          <img src="/ar/images/medispring-ar-favicon.png" alt="MEDI SPRING" class="sidebar-brand-img" />
+          <div class="sidebar-brand-text">
+            <strong>MEDI SPRING</strong>
+            <span>KOREAN MEDICAL CARE</span>
+          </div>
+        </a>
       </div>
-      <div class="footer-col"><h4>خدماتنا</h4><ul>
-        <li><a href="/ar/metabolic/">الأمراض الأيضية</a></li>
-        <li><a href="/ar/serious/">الأمراض الحرجة</a></li>
-        <li><a href="/ar/ophthalmology/">طب العيون</a></li>
-        <li><a href="/ar/checkup/">الفحص الصحي</a></li>
-        <li><a href="/ar/knee/">الركبة والمفاصل</a></li>
-        <li><a href="/ar/pediatrics/">طب الأطفال</a></li>
-        <li><a href="/ar/women/">صحة المرأة</a></li>
-      </ul></div>
-      <div class="footer-col"><h4>معلومات</h4><ul>
-        <li><a href="/ar/process/">كيف نعمل</a></li>
-        <li><a href="/ar/partners/">شركاؤنا</a></li>
-        <li><a href="/ar/about/">من نحن</a></li>
-        <li><a href="/ar/contact/">اتصل بنا</a></li>
-      </ul></div>
-      <div class="footer-col"><h4>تواصل معنا</h4>
-        <div class="footer-contact-item"><strong>💬</strong><span>واتساب: +82-10-7767-1903</span></div>
-        <div class="footer-contact-item"><strong>📧</strong><span>Alaadin22@yahoo.co.kr</span></div>
-        <div class="footer-contact-item"><strong>🌐</strong><span>kmedispring.com</span></div>
+
+      <nav id="menu">
+        <ul>
+          <li><a href="/ar/checkup/"><span class="nav-icon">🔬</span>الفحص الشامل</a></li>
+          <div class="nav-divider"></div>
+          <li><a href="/ar/metabolic/"><span class="nav-icon">💊</span>الأمراض المزمنة</a></li>
+          <li><a href="/ar/diabetes/"><span class="nav-icon">🩸</span>علاج السكري</a></li>
+          <li><a href="/ar/obesity/"><span class="nav-icon">⚖️</span>السمنة وإنقاص الوزن</a></li>
+          <li><a href="/ar/fertility/"><span class="nav-icon">🌱</span>العقم والخصوبة</a></li>
+          <li><a href="/ar/women/"><span class="nav-icon">🌸</span>صحة المرأة</a></li>
+          <li><a href="/ar/cosmetic/"><span class="nav-icon">✨</span>التجميل</a></li>
+          <li><a href="/ar/knee/"><span class="nav-icon">🦴</span>العظام والمفاصل</a></li>
+          <li><a href="/ar/ophthalmology/"><span class="nav-icon">👁️</span>طب العيون</a></li>
+          <li><a href="/ar/pediatrics/"><span class="nav-icon">👶</span>طب الأطفال</a></li>
+          <div class="nav-divider"></div>
+          <li class="nav-vip"><a href="/ar/vip/"><span class="nav-icon">⭐</span>خدمة VIP</a></li>
+          <li class="nav-contact"><a href="/ar/contact/"><span class="nav-icon">✉️</span>تواصل معنا</a></li>
+        </ul>
+      </nav>
+
+      <div class="sidebar-contact">
+        <h4>تواصل معنا</h4>
+        <ul class="contact-list">
+          <li><a href="https://wa.me/821077671903" class="wa-link" target="_blank">💬 +82-10-7767-1903</a></li>
+          <li>📧 Alaadin22@yahoo.co.kr</li>
+        </ul>
+        <a href="https://wa.me/821077671903?text=مرحباً،%20أود%20الاستفسار%20عن%20خدماتكم"
+           class="btn-wa-full" target="_blank" rel="noopener">
+          💬 ابدأ محادثة الآن
+        </a>
       </div>
+
+      <div class="sidebar-footer">
+        <p>© 2025 MEDI SPRING<br/>الرعاية الطبية الكورية</p>
+      </div>
+
     </div>
-    <div class="footer-bottom">
-      <span>© 2025 K-Medi Spring | هانغانغ أيبوم. جميع الحقوق محفوظة.</span>
-      <span>kmedispring.com/ar/</span>
-    </div>
-  </div>
-</footer>
+  </div><!-- /#sidebar -->
+
+</div><!-- /#wrapper -->
 
 <div class="wa-float">
   <span class="wa-float-label">تواصل عبر واتساب</span>
-  <a href="https://wa.me/821077671903" class="wa-float-btn" target="_blank">💬</a>
+  <a href="https://wa.me/821077671903" class="wa-float-btn" target="_blank" rel="noopener">💬</a>
 </div>
-<script src="/ar/js/main.js"></script>
 
-</div><!-- /#main-wrapper -->
+<script src="/ar/js/main.js"></script>
 </body>
 </html>
