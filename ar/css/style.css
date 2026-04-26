@@ -40,7 +40,7 @@ body {
   overflow-x: hidden;
   /* 데스크탑: flex로 사이드바+본문 배치 */
   display: flex;
-  flex-direction: row-reverse; /* RTL: 사이드바 오른쪽, 본문 왼쪽 */
+  flex-direction: row; /* RTL에서 row = 오른쪽→왼쪽: 사이드바 오른쪽 고정 */
   min-height: 100vh;
   align-items: stretch;
 }
