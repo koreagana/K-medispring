@@ -41,7 +41,8 @@ body {
 }
 
 /* ══════════════════════════════════════
-   SIDEBAR (right side for RTL)
+   SIDEBAR — 데스크탑: 항상 표시 (fixed right)
+             모바일: overlay 방식 토글
    ══════════════════════════════════════ */
 #sidebar {
   position: fixed;
@@ -52,13 +53,14 @@ body {
   z-index: 1000;
   display: flex;
   flex-direction: column;
-  transform: translateX(0);
-  transition: transform var(--transition);
   overflow-y: auto;
   overflow-x: hidden;
   box-shadow: -4px 0 20px rgba(0,0,0,.2);
+  /* 데스크탑: 항상 보임 — transform 없음 */
 }
-#sidebar.collapsed { transform: translateX(var(--sidebar-w)); }
+/* 모바일에서만 토글 사용 */
+#sidebar.mobile-hidden { transform: translateX(var(--sidebar-w)); transition: transform var(--transition); }
+#sidebar.mobile-open   { transform: translateX(0);                transition: transform var(--transition); }
 
 /* Sidebar Logo */
 .sidebar-logo {
@@ -144,12 +146,13 @@ body {
 .btn-contact-side:hover { background: rgba(255,255,255,.2); }
 
 /* ══════════════════════════════════════
-   TOGGLE BUTTON
+   TOGGLE BUTTON — 모바일 전용 (데스크탑 숨김)
    ══════════════════════════════════════ */
 #sidebar-toggle {
+  display: none; /* 데스크탑에서 숨김 */
   position: fixed;
-  top: 16px;
-  right: calc(var(--sidebar-w) + 14px);
+  top: 14px;
+  right: 14px;
   z-index: 1100;
   background: var(--blue-dark);
   color: var(--white);
@@ -158,12 +161,10 @@ body {
   height: 44px;
   border-radius: 10px;
   cursor: pointer;
-  display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   gap: 5px;
-  transition: right var(--transition), background .2s;
   box-shadow: var(--shadow-md);
 }
 #sidebar-toggle span {
@@ -174,13 +175,11 @@ body {
   border-radius: 2px;
   transition: all .3s;
 }
-/* collapsed state — sidebar hidden, toggle at right edge */
-#sidebar-toggle.sidebar-hidden { right: 14px; }
-#sidebar-toggle.sidebar-hidden span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
-#sidebar-toggle.sidebar-hidden span:nth-child(2) { opacity: 0; }
-#sidebar-toggle.sidebar-hidden span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+#sidebar-toggle.is-open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+#sidebar-toggle.is-open span:nth-child(2) { opacity: 0; }
+#sidebar-toggle.is-open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
 
-/* Overlay for mobile */
+/* Overlay — 모바일 전용 */
 #sidebar-overlay {
   display: none;
   position: fixed;
@@ -192,13 +191,15 @@ body {
 
 /* ══════════════════════════════════════
    MAIN CONTENT WRAPPER
+   데스크탑: 사이드바 너비만큼 오른쪽 여백
+   모바일:   여백 없음 (사이드바 overlay)
    ══════════════════════════════════════ */
 #main-wrapper {
-  margin-right: var(--sidebar-w);
+  margin-right: var(--sidebar-w); /* 사이드바 공간 확보 */
   min-height: 100vh;
-  transition: margin-right var(--transition);
+  width: calc(100% - var(--sidebar-w));
+  display: block;
 }
-#main-wrapper.sidebar-hidden { margin-right: 0; }
 
 /* ══════════════════════════════════════
    HERO
@@ -443,11 +444,12 @@ body {
    RESPONSIVE
    ══════════════════════════════════════ */
 @media (max-width: 1024px) {
+  /* 모바일: 토글 버튼 표시, 사이드바 overlay */
+  #sidebar-toggle { display: flex; }
   #sidebar { transform: translateX(var(--sidebar-w)); }
-  #sidebar.open { transform: translateX(0); }
-  #sidebar-toggle { right: 14px; }
-  #sidebar-toggle.sidebar-hidden { right: calc(var(--sidebar-w) + 14px); }
-  #main-wrapper { margin-right: 0 !important; }
+  #sidebar.mobile-open { transform: translateX(0); }
+  /* 콘텐츠는 전체 너비 */
+  #main-wrapper { margin-right: 0; width: 100%; }
   .footer-grid { grid-template-columns: 1fr 1fr; }
 }
 @media (max-width: 768px) {

@@ -1,105 +1,105 @@
 /* ════════════════════════════════════════════
    K-Medi Spring Arabic — Main JavaScript
-   Editorial sidebar layout
+   Desktop: sidebar always visible, no toggle
+   Mobile (≤1024px): overlay toggle
    ════════════════════════════════════════════ */
 
 (function () {
   'use strict';
 
-  // ── Sidebar Toggle ──
   const sidebar  = document.getElementById('sidebar');
   const toggle   = document.getElementById('sidebar-toggle');
   const overlay  = document.getElementById('sidebar-overlay');
-  const wrapper  = document.getElementById('main-wrapper');
 
-  // Desktop: sidebar visible by default (no .collapsed)
-  // Mobile (≤1024px): sidebar hidden by default
-  const isMobile = () => window.innerWidth <= 1024;
+  const MOBILE_BP = 1024;
+  const isMobile  = () => window.innerWidth <= MOBILE_BP;
 
-  function openSidebar() {
-    sidebar.classList.remove('collapsed');
-    sidebar.classList.add('open');
+  /* ── Mobile sidebar open/close ── */
+  function openMobile() {
+    sidebar.classList.add('mobile-open');
+    sidebar.classList.remove('mobile-hidden');
     overlay.classList.add('active');
-    toggle.classList.remove('sidebar-hidden');
-    if (!isMobile()) wrapper.classList.remove('sidebar-hidden');
+    toggle.classList.add('is-open');
   }
-
-  function closeSidebar() {
-    sidebar.classList.add('collapsed');
-    sidebar.classList.remove('open');
+  function closeMobile() {
+    sidebar.classList.remove('mobile-open');
+    sidebar.classList.add('mobile-hidden');
     overlay.classList.remove('active');
-    toggle.classList.add('sidebar-hidden');
-    if (!isMobile()) wrapper.classList.add('sidebar-hidden');
+    toggle.classList.remove('is-open');
   }
 
-  function initSidebarState() {
+  /* ── Init based on viewport ── */
+  function init() {
     if (isMobile()) {
-      // Mobile: start closed
-      sidebar.classList.add('collapsed');
-      sidebar.classList.remove('open');
+      /* 모바일: 사이드바 숨김, 토글 보임 */
+      sidebar.classList.add('mobile-hidden');
+      sidebar.classList.remove('mobile-open');
       overlay.classList.remove('active');
-      toggle.classList.add('sidebar-hidden');
+      if (toggle) toggle.classList.remove('is-open');
     } else {
-      // Desktop: start open
-      sidebar.classList.remove('collapsed');
-      sidebar.classList.remove('open');
+      /* 데스크탑: 사이드바 항상 표시, 토글 숨김 (CSS로 처리) */
+      sidebar.classList.remove('mobile-hidden');
+      sidebar.classList.remove('mobile-open');
       overlay.classList.remove('active');
-      toggle.classList.remove('sidebar-hidden');
-      wrapper.classList.remove('sidebar-hidden');
     }
   }
 
-  if (toggle && sidebar) {
-    initSidebarState();
+  if (sidebar) {
+    init();
 
-    toggle.addEventListener('click', () => {
-      const isCollapsed = sidebar.classList.contains('collapsed');
-      if (isCollapsed) openSidebar(); else closeSidebar();
-    });
+    if (toggle) {
+      toggle.addEventListener('click', () => {
+        if (sidebar.classList.contains('mobile-open')) {
+          closeMobile();
+        } else {
+          openMobile();
+        }
+      });
+    }
 
     if (overlay) {
-      overlay.addEventListener('click', closeSidebar);
+      overlay.addEventListener('click', closeMobile);
     }
 
-    // Close sidebar on nav link click (mobile)
+    /* 링크 클릭 시 모바일 사이드바 닫기 */
     sidebar.querySelectorAll('.sidebar-nav a').forEach(a => {
       a.addEventListener('click', () => {
-        if (isMobile()) closeSidebar();
+        if (isMobile()) closeMobile();
       });
     });
 
-    // Re-init on resize
+    /* 리사이즈 대응 */
     let resizeTimer;
     window.addEventListener('resize', () => {
       clearTimeout(resizeTimer);
-      resizeTimer = setTimeout(initSidebarState, 150);
+      resizeTimer = setTimeout(init, 120);
     });
   }
 
-  // ── Active Nav Link ──
-  const currentPath = window.location.pathname;
+  /* ── Active nav link ── */
+  const path = window.location.pathname;
   document.querySelectorAll('.sidebar-nav a').forEach(a => {
-    const href = a.getAttribute('href');
-    if (href && href !== '/ar/' && currentPath.includes(href)) {
+    const href = a.getAttribute('href') || '';
+    if (href === '/ar/' && (path === '/ar/' || path === '/ar/index.html')) {
       a.classList.add('active');
-    } else if (href === '/ar/' && (currentPath === '/ar/' || currentPath === '/ar/index.html')) {
+    } else if (href !== '/ar/' && href.length > 4 && path.startsWith(href)) {
       a.classList.add('active');
     }
   });
 
-  // ── FAQ Accordion ──
+  /* ── FAQ Accordion ── */
   document.querySelectorAll('.faq-q').forEach(q => {
     q.addEventListener('click', () => {
       const item = q.closest('.faq-item');
-      const isOpen = item.classList.contains('open');
+      const open = item.classList.contains('open');
       document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('open'));
-      if (!isOpen) item.classList.add('open');
+      if (!open) item.classList.add('open');
     });
   });
 
-  // ── Scroll Reveal ──
+  /* ── Scroll Reveal ── */
   if ('IntersectionObserver' in window) {
-    const io = new IntersectionObserver((entries) => {
+    const io = new IntersectionObserver(entries => {
       entries.forEach(e => {
         if (e.isIntersecting) {
           e.target.style.opacity = '1';
@@ -111,13 +111,13 @@
 
     document.querySelectorAll('.card, .feature-item, .step-item, .partner-card').forEach(el => {
       el.style.opacity = '0';
-      el.style.transform = 'translateY(20px)';
-      el.style.transition = 'opacity .45s ease, transform .45s ease';
+      el.style.transform = 'translateY(18px)';
+      el.style.transition = 'opacity .4s ease, transform .4s ease';
       io.observe(el);
     });
   }
 
-  // ── WhatsApp float label hide on small screens ──
+  /* ── WA label 소형 화면 숨김 ── */
   const waLabel = document.querySelector('.wa-float-label');
   if (waLabel && window.innerWidth < 480) waLabel.style.display = 'none';
 
