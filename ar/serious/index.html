@@ -1,0 +1,605 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="علاج السرطان وأمراض القلب والدماغ في كوريا — مستشفى سيول أسان، سيبرانس، سامسونج سيول، الجامعة الكاثوليكية، وبوندانغ. أحدث تقنيات العلاج بالجسيمات الثقيلة وزراعة الخلايا الجذعية." />
+  <title>الأمراض الحرجة | هانغانغ أيبوم</title>
+  <link rel="stylesheet" href="../css/style.css" />
+  <style>
+    .hospital-tag {
+      display: inline-flex; align-items: center; gap: 6px;
+      background: var(--blue-dark); color: var(--white);
+      border-radius: 50px; padding: 4px 12px;
+      font-size: .78rem; font-weight: 600; margin: 3px 2px;
+    }
+    .hospital-tag.gold { background: var(--gold); }
+    .stat-box {
+      background: var(--blue-dark); color: var(--white);
+      border-radius: var(--radius-md); padding: 20px; text-align: center;
+    }
+    .stat-box .num { font-size: 2rem; font-weight: 900; color: var(--gold); display: block; }
+    .stat-box .lbl { font-size: .82rem; opacity: .8; margin-top: 4px; }
+    .disease-section {
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      box-shadow: var(--shadow-md);
+      margin-bottom: 48px;
+    }
+    .disease-header {
+      background: linear-gradient(135deg, var(--blue-dark), var(--blue-mid));
+      color: var(--white); padding: 28px 36px;
+      display: flex; align-items: center; gap: 16px;
+    }
+    .disease-header h2 { font-size: 1.5rem; font-weight: 800; margin: 0; }
+    .disease-body { background: var(--white); padding: 36px; }
+    .hospital-ref {
+      background: var(--blue-light);
+      border-radius: var(--radius-sm);
+      padding: 14px 18px;
+      margin: 16px 0;
+      font-size: .9rem;
+      border-right: 3px solid var(--blue-mid);
+    }
+    .hospital-ref strong { color: var(--blue-dark); }
+    .treatment-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+      margin: 20px 0;
+    }
+    .treatment-item {
+      background: var(--gray-50);
+      border-radius: var(--radius-sm);
+      padding: 16px;
+      border-right: 3px solid var(--blue-light);
+    }
+    .treatment-item.gold-border { border-right-color: var(--gold); }
+    .treatment-item h4 { font-size: .95rem; color: var(--blue-dark); font-weight: 700; margin-bottom: 6px; }
+    .treatment-item p { font-size: .85rem; color: var(--gray-500); margin: 0; }
+    @media (max-width: 640px) {
+      .treatment-row { grid-template-columns: 1fr; }
+      .disease-body { padding: 20px; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- HEADER -->
+<header class="site-header">
+  <div class="container">
+    <div class="header-inner">
+      <a href="/ar/" class="logo-wrap">
+        <div class="logo-img img-placeholder sm-ph" style="min-height:44px;width:44px;border-radius:8px;"><span style="font-size:.6rem">Logo</span></div>
+        <div class="logo-text">هانغانغ أيبوم<span class="logo-sub">K-Medi Spring</span></div>
+      </a>
+      <nav class="main-nav">
+        <a href="/ar/metabolic/">الأمراض الأيضية</a>
+        <a href="/ar/serious/" class="active">الأمراض الحرجة</a>
+        <a href="/ar/ophthalmology/">طب العيون</a>
+        <a href="/ar/checkup/">الفحص الصحي</a>
+        <a href="/ar/knee/">الركبة والمفاصل</a>
+        <a href="/ar/pediatrics/">طب الأطفال</a>
+    <a href="/ar/women/">صحة المرأة</a>
+    <a href="/ar/process/">كيف نعمل</a>
+        <a href="/ar/partners/">شركاؤنا</a>
+      </nav>
+      <div class="header-cta">
+        <a href="/ar/contact/" class="btn btn-outline">تواصل معنا</a>
+        <a href="https://wa.me/821077671903" class="btn btn-wa" target="_blank">💬 واتساب</a>
+      </div>
+      <div class="hamburger"><span></span><span></span><span></span></div>
+    </div>
+  </div>
+  <nav class="mobile-nav">
+    <a href="/ar/">الرئيسية</a>
+    <a href="/ar/metabolic/">الأمراض الأيضية</a>
+    <a href="/ar/serious/">الأمراض الحرجة</a>
+    <a href="/ar/ophthalmology/">طب العيون</a>
+    <a href="/ar/checkup/">الفحص الصحي</a>
+    <a href="/ar/knee/">الركبة والمفاصل</a>
+    <a href="/ar/pediatrics/">طب الأطفال</a>
+    <a href="/ar/women/">صحة المرأة</a>
+    <a href="/ar/process/">كيف نعمل</a>
+    <a href="/ar/contact/">اتصل بنا</a>
+  </nav>
+</header>
+
+<!-- PAGE HERO -->
+<section class="page-hero" style="background:linear-gradient(135deg,#0d1b3e 0%,#1B3A6B 100%);">
+  <div class="container">
+    <div class="breadcrumb"><a href="/ar/">الرئيسية</a><span>/</span><span>الأمراض الحرجة</span></div>
+    <h1>الأمراض الحرجة</h1>
+    <p>حيث يصل الطب الكوري إلى قمة ما وصل إليه الطب البشري — مراكز 3A الكورية لأصعب الحالات</p>
+  </div>
+</section>
+
+<!-- KOREA RANK STRIP -->
+<div style="background:var(--gold);padding:14px 0;">
+  <div class="container">
+    <div style="display:flex;justify-content:center;gap:40px;flex-wrap:wrap;color:var(--white);">
+      <span style="font-weight:700;font-size:.9rem;">🏆 المرتبة الأولى آسيوياً — معدلات بقاء السرطان</span>
+      <span style="font-weight:700;font-size:.9rem;">🏥 5 مستشفيات في أفضل 200 عالمياً (Newsweek 2024)</span>
+      <span style="font-weight:700;font-size:.9rem;">⚛️ 3 مراكز للعلاج بالجسيمات الثقيلة في سيول</span>
+    </div>
+  </div>
+</div>
+
+<!-- WHY KOREA -->
+<section class="section">
+  <div class="container">
+    <div class="split-section">
+      <div class="split-content">
+        <h2>كوريا — وجهة الأمراض الخطيرة الأولى في آسيا</h2>
+        <div class="gold-line" style="margin:12px 0 20px;"></div>
+        <p>ليست مجرد مستشفيات — إنها مراكز أبحاث وعلاج متكاملة تعمل بأحدث البروتوكولات الأمريكية والأوروبية. المرضى الذين لم يجدوا حلاً في الغرب وجدوه في كوريا.</p>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;margin:20px 0;">
+          <div class="stat-box"><span class="num">90%</span><span class="lbl">معدل بقاء سرطان المعدة 5 سنوات</span></div>
+          <div class="stat-box"><span class="num">97%</span><span class="lbl">نجاح عمليات القلب المفتوح</span></div>
+          <div class="stat-box"><span class="num">48h</span><span class="lbl">من الوصول إلى خطة العلاج الكاملة</span></div>
+          <div class="stat-box"><span class="num">#1</span><span class="lbl">آسيا في زراعة الخلايا الجذعية (BMT)</span></div>
+        </div>
+        <a href="/ar/contact/" class="btn btn-primary">إرسال الملف الطبي — استشارة مجانية</a>
+      </div>
+      <div class="img-placeholder hero-ph">
+        <span class="ph-icon">⚛️</span>
+        <strong>صورة: جهاز العلاج بالجسيمات الثقيلة</strong>
+        <span>المقاس: 560 × 480 بكسل</span>
+        <span style="font-size:.78rem;margin-top:4px;">Heavy Ion Therapy — سيبرانس أو سيول أسان</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- HOSPITALS TRUST BAR -->
+<section class="section-sm" style="background:var(--blue-light);">
+  <div class="container" style="text-align:center;">
+    <p style="font-size:.9rem;color:var(--blue-dark);font-weight:600;margin-bottom:12px;">مستشفياتنا الشريكة لعلاج الأمراض الحرجة</p>
+    <div style="display:flex;flex-wrap:wrap;gap:8px;justify-content:center;">
+      <span class="hospital-tag">🏥 سيول أسان — المرتبة الأولى كورياً</span>
+      <span class="hospital-tag">🏥 سيبرانس — جامعة يونسي</span>
+      <span class="hospital-tag gold">🏥 سامسونج سيول — جامعة سونغكيونكوان</span>
+      <span class="hospital-tag">🏥 سانت ماري الكاثوليكي</span>
+      <span class="hospital-tag gold">🏥 بوندانغ سيول — جامعة سيول الوطنية</span>
+    </div>
+  </div>
+</section>
+
+<!-- DISEASE SECTIONS -->
+<section class="section">
+  <div class="container">
+    <h2 class="section-title">تخصصاتنا في علاج الأمراض الحرجة</h2>
+    <div class="gold-line"></div>
+
+    <!-- ══ CANCER ══ -->
+    <div class="disease-section">
+      <div class="disease-header">
+        <span style="font-size:2.5rem;">🎗️</span>
+        <div>
+          <h2>علاج السرطان</h2>
+          <p style="opacity:.85;font-size:.9rem;margin:4px 0 0;">كوريا الأولى عالمياً في معدلات الشفاء من سرطانات المعدة والقولون — مراكز أورام بمعايير الـ JCI</p>
+        </div>
+      </div>
+      <div class="disease-body">
+
+        <!-- Gastric / Colon -->
+        <h3 style="font-size:1.25rem;color:var(--blue-dark);margin-bottom:12px;">سرطان المعدة والقولون والكبد</h3>
+        <p style="color:var(--gray-500);line-height:1.9;margin-bottom:16px;">
+          كوريا الأولى عالمياً في معدل النجاة من سرطان المعدة (5 سنوات: 90%) نظراً لبروتوكول التشخيص المبكر بالمنظار الكبسولي وتقنية الجراحة الروبوتية داVinci. قسم الأورام في مستشفى سيول أسان أجرى أكثر من 10,000 عملية استئصال معدة روبوتية.
+        </p>
+        <div class="hospital-ref">
+          <strong>🏥 مستشفى سيول أسان:</strong> مركز الأورام الهضمية — الأكثر خبرة في كوريا بعمليات الكبد والبنكرياس والمعدة. يُعالج +7,000 حالة سرطانية جديدة سنوياً. شريك كليفلاند كلينيك.
+        </div>
+        <div class="hospital-ref">
+          <strong>🏥 مستشفى سامسونج سيول:</strong> مركز السرطان الشامل (SCCC) — جهاز PET-CT مخصص 24 ساعة، وبروتوكول "Fast Track Oncology" يبدأ العلاج خلال 72 ساعة من التشخيص.
+        </div>
+        <div class="treatment-row">
+          <div class="treatment-item gold-border">
+            <h4>الجراحة الروبوتية داVinci</h4>
+            <p>استئصال دقيق بجروح أصغر من 1 سم — الشفاء خلال أسبوع لا شهر</p>
+          </div>
+          <div class="treatment-item">
+            <h4>المنظار الكبسولي للكشف المبكر</h4>
+            <p>اكتشاف الأورام بحجم 2–3 مم قبل أي أعراض</p>
+          </div>
+          <div class="treatment-item">
+            <h4>TACE / RFA للكبد</h4>
+            <p>علاج سرطان الكبد بالقسطرة دون جراحة مفتوحة</p>
+          </div>
+          <div class="treatment-item gold-border">
+            <h4>العلاج المناعي (Immunotherapy)</h4>
+            <p>Pembrolizumab, Nivolumab — متاح للحالات المتقدمة</p>
+          </div>
+        </div>
+
+        <!-- Lung / Blood -->
+        <h3 style="font-size:1.25rem;color:var(--blue-dark);margin-top:32px;margin-bottom:12px;">سرطان الرئة والدم واللمفاويات</h3>
+        <p style="color:var(--gray-500);line-height:1.9;margin-bottom:16px;">
+          مستشفى سانت ماري الكاثوليكي يُصنّف الأول في كوريا في زراعة نخاع العظم (BMT) — أكثر من 7,000 عملية زراعة ناجحة منذ عام 1983، وهو الرقم الأعلى في آسيا. مركز أورام الدم يعالج اللوكيميا، اللمفوما، ومتلازمة ميلو.
+        </p>
+        <div class="hospital-ref">
+          <strong>🏥 مستشفى سانت ماري الكاثوليكي:</strong> مركز زراعة نخاع العظم — الأول آسيوياً في عدد العمليات وأعلى معدلات النجاح. خبرة مع مرضى الخليج منذ عقود. يستقبل وفوداً ملكية خليجية.
+        </div>
+        <div class="hospital-ref">
+          <strong>🏥 مستشفى بوندانغ سيول الجامعي:</strong> مركز متخصص في سرطانات الرئة والغدة الدرقية — تقنية VATS (جراحة صدر بالمنظار) الأقل تدخلاً في آسيا. قسم علم الوراثة الورمية (Tumor Genomics) لتحديد الطفرات وتخصيص العلاج.
+        </div>
+        <div class="treatment-row">
+          <div class="treatment-item gold-border">
+            <h4>زراعة الخلايا الجذعية (BMT)</h4>
+            <p>Allogeneic & Autologous — HLA Matching عالمي مع مراكز دولية</p>
+          </div>
+          <div class="treatment-item">
+            <h4>CAR-T Cell Therapy</h4>
+            <p>أحدث علاج خلوي لسرطانات الدم المعقدة — متاح في كوريا</p>
+          </div>
+          <div class="treatment-item">
+            <h4>VATS جراحة الرئة</h4>
+            <p>استئصال الرئة بالمنظار — 3 أيام إقامة لا 3 أسابيع</p>
+          </div>
+          <div class="treatment-item gold-border">
+            <h4>Targeted Therapy جيل 3</h4>
+            <p>Osimertinib, Alectinib — علاج موجّه بحسب الطفرة الجينية</p>
+          </div>
+        </div>
+
+        <!-- Heavy Ion -->
+        <div style="background:linear-gradient(135deg,#0d1b3e,#1B3A6B);color:var(--white);border-radius:var(--radius-md);padding:28px;margin-top:32px;">
+          <div style="display:flex;align-items:flex-start;gap:20px;flex-wrap:wrap;">
+            <span style="font-size:3rem;flex-shrink:0;">⚛️</span>
+            <div>
+              <h3 style="font-size:1.3rem;font-weight:800;margin-bottom:8px;">العلاج بالجسيمات الثقيلة (Heavy Ion Therapy)</h3>
+              <p style="opacity:.9;line-height:1.9;margin-bottom:16px;">
+                أحدث وأدق تقنيات العلاج الإشعاعي عالمياً — يضرب الورم بدقة أقل من 1 مم دون تضرر الأنسجة المجاورة. مناسب للسرطانات الصعبة، المتكررة، أو القريبة من الأعصاب والأوعية. متاح في <strong>مستشفى سيبرانس (جامعة يونسي)</strong> و<strong>مستشفى سيول أسان</strong>.
+              </p>
+              <div style="display:flex;flex-wrap:wrap;gap:8px;">
+                <span style="background:rgba(255,255,255,.15);border-radius:50px;padding:5px 14px;font-size:.82rem;">سرطان البروستاتا</span>
+                <span style="background:rgba(255,255,255,.15);border-radius:50px;padding:5px 14px;font-size:.82rem;">سرطان الرئة</span>
+                <span style="background:rgba(255,255,255,.15);border-radius:50px;padding:5px 14px;font-size:.82rem;">أورام الكبد</span>
+                <span style="background:rgba(255,255,255,.15);border-radius:50px;padding:5px 14px;font-size:.82rem;">سرطانات العمود الفقري</span>
+                <span style="background:var(--gold);border-radius:50px;padding:5px 14px;font-size:.82rem;font-weight:700;">سرطانات العودة المقاومة</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="img-placeholder" style="min-height:200px;margin-top:24px;">
+          <span class="ph-icon">🏥</span>
+          <strong>صورة: مركز الأورام — قاعة انتظار VIP</strong>
+          <span>المقاس: 1060 × 200 بكسل</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- ══ HEART ══ -->
+    <div class="disease-section">
+      <div class="disease-header" style="background:linear-gradient(135deg,#7b1fa2,#1B3A6B);">
+        <span style="font-size:2.5rem;">🫀</span>
+        <div>
+          <h2>أمراض القلب والأوعية الدموية</h2>
+          <p style="opacity:.85;font-size:.9rem;margin:4px 0 0;">معدلات نجاح كورية تتجاوز 97% في عمليات القلب المفتوح — مع أحدث غرف القسطرة وجراحة الروبوت</p>
+        </div>
+      </div>
+      <div class="disease-body">
+
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:24px;margin-bottom:24px;">
+          <div>
+            <h3 style="font-size:1.15rem;color:var(--blue-dark);margin-bottom:12px;">الشريان التاجي وضخ الدم</h3>
+            <p style="color:var(--gray-500);font-size:.93rem;line-height:1.9;">
+              مستشفى سيول أسان يُجري أكثر من 3,500 قسطرة قلبية وعملية قلب سنوياً. تقنية TAVI (استبدال الصمام الأورطي بالقسطرة) بدون شق الصدر — للمرضى كبار السن الذين لا يتحملون الجراحة التقليدية.
+            </p>
+          </div>
+          <div>
+            <h3 style="font-size:1.15rem;color:var(--blue-dark);margin-bottom:12px;">قصور القلب والصمامات</h3>
+            <p style="color:var(--gray-500);font-size:.93rem;line-height:1.9;">
+              مستشفى سيبرانس (يونسي) — مركز القلب يُصنّف الأول آسيوياً في جراحات الصمامات بالمنظار. LVAD (القلب الاصطناعي) للحالات في انتظار زراعة القلب.
+            </p>
+          </div>
+        </div>
+
+        <div class="hospital-ref">
+          <strong>🏥 مستشفى سيول أسان — مركز القلب:</strong> يمتلك أكبر وحدة رعاية قلب مكثفة في كوريا (CCU) مع +120 طبيب قلب متخصص. أجرى أول زراعة قلب ناجحة في كوريا عام 1992. معدل وفيات الجراحة: 1.2% (المعدل العالمي: 3–5%).
+        </div>
+        <div class="hospital-ref">
+          <strong>🏥 مستشفى سيبرانس — مركز قلب سيول الدولي:</strong> تقنية MitraClip لإصلاح الصمام التاجي بدون جراحة مفتوحة. مركز متقدم لعلاج اضطرابات النظم (Electrophysiology) — Ablation والأجهزة القابلة للزرع.
+        </div>
+        <div class="hospital-ref">
+          <strong>🏥 مستشفى سامسونج سيول — مركز القلب والأوعية:</strong> أفضل مركز لعلاج الشريان الأبهر والتشريحات الأبهرية (Aortic Dissection) — يستقبل الحالات الطارئة من دول الخليج عبر الإخلاء الطبي الجوي.
+        </div>
+
+        <div class="treatment-row">
+          <div class="treatment-item gold-border">
+            <h4>TAVI — استبدال الصمام بالقسطرة</h4>
+            <p>بدون شق الصدر — للمرضى فوق 70 سنة أو عالي الخطورة</p>
+          </div>
+          <div class="treatment-item">
+            <h4>CABG بالمنظار</h4>
+            <p>جراحة تحويل الشريان التاجي — 3 شقوق صغيرة بدل شق الصدر كاملاً</p>
+          </div>
+          <div class="treatment-item">
+            <h4>MitraClip — إصلاح الصمام</h4>
+            <p>ترميم الصمام التاجي المتسرب بالقسطرة — بدون عملية مفتوحة</p>
+          </div>
+          <div class="treatment-item gold-border">
+            <h4>LVAD — القلب الاصطناعي</h4>
+            <p>جهاز مساعدة البطين الأيسر لقصور القلب الشديد</p>
+          </div>
+          <div class="treatment-item">
+            <h4>Ablation — علاج الرجفان</h4>
+            <p>Cryoablation & Radiofrequency لاضطرابات النظم المزمنة</p>
+          </div>
+          <div class="treatment-item gold-border">
+            <h4>زراعة القلب</h4>
+            <p>مستشفى سيول أسان — المركز الأول في كوريا لزراعة القلب</p>
+          </div>
+        </div>
+
+        <div class="img-placeholder" style="min-height:200px;margin-top:16px;">
+          <span class="ph-icon">🫀</span>
+          <strong>صورة: Cath Lab — غرفة قسطرة القلب الحديثة</strong>
+          <span>المقاس: 1060 × 200 بكسل</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- ══ BRAIN ══ -->
+    <div class="disease-section">
+      <div class="disease-header" style="background:linear-gradient(135deg,#1a237e,#1B3A6B);">
+        <span style="font-size:2.5rem;">🧠</span>
+        <div>
+          <h2>أمراض الدماغ والأعصاب</h2>
+          <p style="opacity:.85;font-size:.9rem;margin:4px 0 0;">وحدات السكتة الدماغية الكورية الأسرع استجابةً في آسيا — Gamma Knife لأورام الدماغ دون جراحة مفتوحة</p>
+        </div>
+      </div>
+      <div class="disease-body">
+
+        <h3 style="font-size:1.15rem;color:var(--blue-dark);margin-bottom:12px;">السكتة الدماغية الحادة</h3>
+        <p style="color:var(--gray-500);line-height:1.9;margin-bottom:16px;">
+          الساعات الذهبية الأولى تحدد ما يتبقى للمريض من وظائف. مستشفيات سيول تمتلك "Stroke Units" تستجيب خلال 30 دقيقة من وصول المريض — tPA وThrombectomy الميكانيكي بأحدث أجهزة DSA ثلاثية الأبعاد.
+        </p>
+        <div class="hospital-ref">
+          <strong>🏥 مستشفى بوندانغ سيول الجامعي:</strong> مركز السكتة الدماغية الإقليمي — وقت الاستجابة "Door-to-Needle" أقل من 30 دقيقة. يتعامل مع أكثر من 1,200 حالة سكتة دماغية سنوياً. تقنية Mechanical Thrombectomy بمعدل نجاح 78% في استعادة الوظيفة.
+        </div>
+
+        <h3 style="font-size:1.15rem;color:var(--blue-dark);margin-top:28px;margin-bottom:12px;">أورام الدماغ</h3>
+        <p style="color:var(--gray-500);line-height:1.9;margin-bottom:16px;">
+          Gamma Knife وCyberKnife — جراحة إشعاعية بدون شق الرأس. توجيه بالتصوير MRI الفوري لضمان دقة التدخل في الأجزاء الحساسة. مناسب لـ GBM والنقائل الدماغية وأورام الغدة النخامية.
+        </p>
+        <div class="hospital-ref">
+          <strong>🏥 مستشفى سيول أسان — مركز أورام الدماغ:</strong> يمتلك نظام التخطيط الجراحي intraoperative MRI — يصور الدماغ أثناء العملية لضمان الاستئصال الكامل للورم. فريق متخصص في Glioblastoma (GBM) بروتوكول Stupp المحدّث.
+        </div>
+        <div class="hospital-ref">
+          <strong>🏥 مستشفى سيبرانس:</strong> Gamma Knife Perfexion — الأدق عالمياً في علاج أورام قاع الجمجمة وأورام العصب السمعي والنقائل الدماغية المتعددة بجلسة واحدة.
+        </div>
+
+        <h3 style="font-size:1.15rem;color:var(--blue-dark);margin-top:28px;margin-bottom:12px;">أمراض الأعصاب المزمنة</h3>
+        <div class="treatment-row">
+          <div class="treatment-item gold-border">
+            <h4>باركنسون — DBS</h4>
+            <p>Deep Brain Stimulation — زراعة محفز دماغي يتحكم في الارتعاش بدقة ميليمترية</p>
+          </div>
+          <div class="treatment-item">
+            <h4>ألزهايمر المبكر</h4>
+            <p>بروتوكول تشخيصي بـ Amyloid PET + CSF Biomarkers — التدخل المبكر يبطئ التطور</p>
+          </div>
+          <div class="treatment-item">
+            <h4>التصلب المتعدد (MS)</h4>
+            <p>بروتوكول DMT (Disease-Modifying Therapy) الجيل الثالث — Ocrelizumab, Cladribine</p>
+          </div>
+          <div class="treatment-item gold-border">
+            <h4>إصابات الحبل الشوكي</h4>
+            <p>إعادة تأهيل بروبوتيك متطورة + خلايا جذعية للحبل الشوكي (قيد الأبحاث السريرية)</p>
+          </div>
+        </div>
+
+        <div class="img-placeholder" style="min-height:200px;margin-top:16px;">
+          <span class="ph-icon">🧠</span>
+          <strong>صورة: غرفة جراحة Gamma Knife</strong>
+          <span>المقاس: 1060 × 200 بكسل — جهاز Gamma Knife فقط، لا صور مرضى</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- ══ LIVER / KIDNEY TRANSPLANT ══ -->
+    <div class="disease-section">
+      <div class="disease-header" style="background:linear-gradient(135deg,#1B4A2B,#1B3A6B);">
+        <span style="font-size:2.5rem;">🫁</span>
+        <div>
+          <h2>زراعة الأعضاء</h2>
+          <p style="opacity:.85;font-size:.9rem;margin:4px 0 0;">كوريا ضمن أعلى 5 دول عالمياً في معدلات نجاح زراعة الكبد والكلى — انتظار أقصر وتوافق أدق</p>
+        </div>
+      </div>
+      <div class="disease-body">
+        <div class="hospital-ref">
+          <strong>🏥 مستشفى سيول أسان — مركز زراعة الأعضاء:</strong> أجرى أكثر من 5,000 عملية زراعة كبد — الأعلى عالمياً لمستشفى واحد. معدل بقاء المرضى 5 سنوات: 82% لزراعة الكبد من متبرع حي. تقنية "Split Liver Transplant" — تقسيم كبد واحد لمريضَين.
+        </div>
+        <div class="hospital-ref">
+          <strong>🏥 مستشفى سيبرانس — مركز زراعة الكلى:</strong> الأول كورياً في زراعة الكلى من متبرع حي — 400 عملية سنوياً. بروتوكول خاص للمتبرعين غير المتوافقين (ABO Incompatible) بمعدل نجاح 95%.
+        </div>
+        <div class="treatment-row">
+          <div class="treatment-item gold-border"><h4>زراعة الكبد من متبرع حي</h4><p>بقاء 5 سنوات: 82% — الأعلى عالمياً</p></div>
+          <div class="treatment-item"><h4>زراعة الكلى ABO Incompatible</h4><p>حل ثوري للمرضى بلا متبرع متوافق</p></div>
+          <div class="treatment-item"><h4>زراعة القلب والرئة</h4><p>مستشفى سيول أسان — مركز زراعة القلب الأول كورياً</p></div>
+          <div class="treatment-item gold-border"><h4>زراعة نخاع العظم (BMT)</h4><p>سانت ماري الكاثوليكي — الأول آسيوياً في عدد العمليات</p></div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- HOSPITAL COMPARISON -->
+<section class="section" style="background:var(--gray-50);">
+  <div class="container">
+    <h2 class="section-title">أي مستشفى لأي حالة؟</h2>
+    <div class="gold-line"></div>
+    <p class="section-subtitle">دليل سريع — نحدد المناسب بدقة بعد مراجعة ملفك الطبي</p>
+
+    <div style="overflow-x:auto;">
+      <table style="width:100%;border-collapse:collapse;font-size:.9rem;">
+        <thead>
+          <tr style="background:var(--blue-dark);color:var(--white);">
+            <th style="padding:14px 16px;text-align:right;border-radius:var(--radius-sm) 0 0 0;">الحالة</th>
+            <th style="padding:14px 16px;text-align:center;">المستشفى الأول</th>
+            <th style="padding:14px 16px;text-align:center;">البديل</th>
+            <th style="padding:14px 16px;text-align:center;border-radius:0 var(--radius-sm) 0 0;">السبب</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr style="border-bottom:1px solid var(--gray-100);">
+            <td style="padding:12px 16px;font-weight:600;color:var(--blue-dark);">سرطان المعدة / الكبد</td>
+            <td style="padding:12px 16px;text-align:center;">سيول أسان</td>
+            <td style="padding:12px 16px;text-align:center;">سامسونج سيول</td>
+            <td style="padding:12px 16px;color:var(--gray-500);font-size:.83rem;">+10,000 عملية معدة، المرتبة الأولى عالمياً</td>
+          </tr>
+          <tr style="border-bottom:1px solid var(--gray-100);background:var(--blue-light);">
+            <td style="padding:12px 16px;font-weight:600;color:var(--blue-dark);">زراعة الخلايا الجذعية (BMT)</td>
+            <td style="padding:12px 16px;text-align:center;">سانت ماري الكاثوليكي</td>
+            <td style="padding:12px 16px;text-align:center;">سيول أسان</td>
+            <td style="padding:12px 16px;color:var(--gray-500);font-size:.83rem;">+7,000 عملية BMT — الأعلى آسيوياً</td>
+          </tr>
+          <tr style="border-bottom:1px solid var(--gray-100);">
+            <td style="padding:12px 16px;font-weight:600;color:var(--blue-dark);">الجسيمات الثقيلة (Heavy Ion)</td>
+            <td style="padding:12px 16px;text-align:center;">سيبرانس (يونسي)</td>
+            <td style="padding:12px 16px;text-align:center;">سيول أسان</td>
+            <td style="padding:12px 16px;color:var(--gray-500);font-size:.83rem;">أكثر مراكز الجسيمات الثقيلة خبرةً في كوريا</td>
+          </tr>
+          <tr style="border-bottom:1px solid var(--gray-100);background:var(--blue-light);">
+            <td style="padding:12px 16px;font-weight:600;color:var(--blue-dark);">جراحة القلب / الصمامات</td>
+            <td style="padding:12px 16px;text-align:center;">سيول أسان</td>
+            <td style="padding:12px 16px;text-align:center;">سيبرانس</td>
+            <td style="padding:12px 16px;color:var(--gray-500);font-size:.83rem;">معدل وفيات 1.2% — أقل من المعدل العالمي</td>
+          </tr>
+          <tr style="border-bottom:1px solid var(--gray-100);">
+            <td style="padding:12px 16px;font-weight:600;color:var(--blue-dark);">أورام الدماغ / Gamma Knife</td>
+            <td style="padding:12px 16px;text-align:center;">سيبرانس</td>
+            <td style="padding:12px 16px;text-align:center;">بوندانغ سيول</td>
+            <td style="padding:12px 16px;color:var(--gray-500);font-size:.83rem;">Gamma Knife Perfexion الأدق في كوريا</td>
+          </tr>
+          <tr style="border-bottom:1px solid var(--gray-100);background:var(--blue-light);">
+            <td style="padding:12px 16px;font-weight:600;color:var(--blue-dark);">زراعة الكبد / الكلى</td>
+            <td style="padding:12px 16px;text-align:center;">سيول أسان</td>
+            <td style="padding:12px 16px;text-align:center;">سيبرانس</td>
+            <td style="padding:12px 16px;color:var(--gray-500);font-size:.83rem;">+5,000 زراعة كبد — الأعلى عالمياً لمستشفى واحد</td>
+          </tr>
+          <tr>
+            <td style="padding:12px 16px;font-weight:600;color:var(--blue-dark);">السكتة الدماغية / الطوارئ</td>
+            <td style="padding:12px 16px;text-align:center;">بوندانغ سيول</td>
+            <td style="padding:12px 16px;text-align:center;">سيول أسان</td>
+            <td style="padding:12px 16px;color:var(--gray-500);font-size:.83rem;">Door-to-Needle أقل من 30 دقيقة</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<!-- NUMBERS -->
+<section class="section" style="background:var(--blue-dark);color:var(--white);text-align:center;">
+  <div class="container">
+    <h2 style="font-size:1.8rem;font-weight:800;margin-bottom:12px;">أرقام تثبت الثقة</h2>
+    <p style="opacity:.8;margin-bottom:40px;">إحصائيات موثقة من مستشفياتنا الشريكة — 2023/2024</p>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:28px;">
+      <div>
+        <div class="stat-num">90%</div>
+        <div style="opacity:.8;font-size:.85rem;margin-top:4px;">معدل بقاء سرطان المعدة 5 سنوات</div>
+      </div>
+      <div>
+        <div class="stat-num">+7,000</div>
+        <div style="opacity:.8;font-size:.85rem;margin-top:4px;">عملية BMT في سانت ماري الكاثوليكي</div>
+      </div>
+      <div>
+        <div class="stat-num">1.2%</div>
+        <div style="opacity:.8;font-size:.85rem;margin-top:4px;">معدل وفيات القلب المفتوح في أسان<br/><span style="font-size:.75rem;opacity:.7;">(المعدل العالمي 3–5%)</span></div>
+      </div>
+      <div>
+        <div class="stat-num">+5,000</div>
+        <div style="opacity:.8;font-size:.85rem;margin-top:4px;">زراعة كبد في سيول أسان</div>
+      </div>
+      <div>
+        <div class="stat-num">48h</div>
+        <div style="opacity:.8;font-size:.85rem;margin-top:4px;">من وصولك إلى خطة علاج كاملة</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="section">
+  <div class="container">
+    <h2 class="section-title">أسئلة شائعة</h2>
+    <div class="gold-line"></div>
+    <div class="faq-list">
+      <div class="faq-item">
+        <div class="faq-q">هل يمكن بدء علاج السرطان خلال أسبوع من الوصول؟</div>
+        <div class="faq-a">نعم في كثير من الحالات. مستشفى سامسونج سيول يملك بروتوكول "Fast Track Oncology" الذي يبدأ العلاج خلال 72 ساعة من التشخيص الكامل. ننصح بإرسال التقارير الطبية قبل السفر لنرتب مسبقاً.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">هل العلاج بالجسيمات الثقيلة أفضل من الإشعاع العادي؟</div>
+        <div class="faq-a">للحالات المناسبة — نعم. الجسيمات الثقيلة أدق بكثير ولها آثار جانبية أقل، وتُستخدم بشكل خاص للسرطانات الصعبة القريبة من الأعصاب أو المقاومة للإشعاع التقليدي. ليست بديلاً عاماً بل حلاً لحالات محددة.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">ما مدة انتظار عملية زراعة الكبد في كوريا؟</div>
+        <div class="faq-a">للمتبرع الحي (من أحد الأقارب) لا يوجد انتظار تقريباً — التجهيز يستغرق 4–6 أسابيع لإجراء الفحوصات. للمتبرع المتوفى: الانتظار أطول وغير مضمون، لذا نرشح دائماً خيار المتبرع الحي.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">كيف يتواصل الطبيب الكوري معي بالعربية؟</div>
+        <div class="faq-a">نوفر مترجماً طبياً معتمداً في كل موعد وكل جلسة علاج. التقارير الطبية تُترجم للعربية. الطبيب يرسل ملاحظاته لمنسقنا العربي الذي يشرحها لك بالكامل.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta-banner">
+  <div class="container">
+    <h2>حالتك الحرجة تستحق الأفضل</h2>
+    <p>أرسل لنا ملف حالتك الآن — نراجعه مع طبيب متخصص ونرد بخطة علاج واضحة خلال 24 ساعة</p>
+    <div class="cta-btns">
+      <a href="/ar/contact/" class="btn btn-gold">إرسال الملف الطبي — مجاناً</a>
+      <a href="https://wa.me/821077671903" class="btn btn-wa" target="_blank">💬 واتساب طارئ — رد فوري</a>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <div class="logo-text" style="color:var(--white);font-size:1.1rem;font-weight:700;">هانغانغ أيبوم</div>
+        <p>بوابتك الموثوقة للرعاية الطبية الكورية — أمراض حرجة بمعايير عالمية ودعم عربي كامل.</p>
+      </div>
+      <div class="footer-col"><h4>خدماتنا</h4><ul>
+        <li><a href="/ar/metabolic/">الأمراض الأيضية</a></li>
+        <li><a href="/ar/serious/">الأمراض الحرجة</a></li>
+        <li><a href="/ar/ophthalmology/">طب العيون</a></li>
+        <li><a href="/ar/checkup/">الفحص الصحي</a></li>
+        <li><a href="/ar/knee/">الركبة والمفاصل</a></li>
+      </ul></div>
+      <div class="footer-col"><h4>معلومات</h4><ul>
+        <li><a href="/ar/process/">كيف نعمل</a></li>
+        <li><a href="/ar/partners/">شركاؤنا</a></li>
+        <li><a href="/ar/about/">من نحن</a></li>
+        <li><a href="/ar/contact/">اتصل بنا</a></li>
+      </ul></div>
+      <div class="footer-col"><h4>تواصل معنا</h4>
+        <div class="footer-contact-item"><strong>💬</strong><span>واتساب: +82-10-7767-1903</span></div>
+        <div class="footer-contact-item"><strong>📧</strong><span>Alaadin22@yahoo.co.kr</span></div>
+        <div class="footer-contact-item"><strong>🌐</strong><span>www.kmedispring.com</span></div>
+        <a href="https://wa.me/821077671903" class="btn btn-wa" style="margin-top:16px;font-size:.85rem;" target="_blank">💬 واتساب الآن</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2025 هانغانغ أيبوم | K-Medi Spring. جميع الحقوق محفوظة.</span>
+      <span>kmedispring.com/ar/serious/</span>
+    </div>
+  </div>
+</footer>
+
+<div class="wa-float">
+  <span class="wa-float-label">تواصل عبر واتساب</span>
+  <a href="https://wa.me/821077671903" class="wa-float-btn" target="_blank">💬</a>
+</div>
+<script src="../js/main.js"></script>
+</body>
+</html>
