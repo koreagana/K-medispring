@@ -741,28 +741,32 @@ updatePlan();
 
 <script>
 document.addEventListener('DOMContentLoaded', function () {
-  var wechatIcon  = document.getElementById('wechat-icon');
-  var wechatModal = document.getElementById('wechatModal');
-  if (wechatIcon && wechatModal) {
-    wechatIcon.addEventListener('click', function (e) {
+  function bindModal(iconId, modalId) {
+    var icon  = document.getElementById(iconId);
+    var modal = document.getElementById(modalId);
+    if (!icon || !modal) return;
+    icon.addEventListener('click', function (e) {
       e.preventDefault();
-      wechatModal.style.display = 'flex';
-      wechatModal.setAttribute('aria-hidden', 'false');
+      modal.style.display = 'flex';
+      modal.setAttribute('aria-hidden', 'false');
     });
-    var wechatClose = wechatModal.querySelector('.close');
-    if (wechatClose) {
-      wechatClose.addEventListener('click', function () {
-        wechatModal.style.display = 'none';
-        wechatModal.setAttribute('aria-hidden', 'true');
+    var closeBtn = modal.querySelector('.close');
+    if (closeBtn) {
+      closeBtn.addEventListener('click', function () {
+        modal.style.display = 'none';
+        modal.setAttribute('aria-hidden', 'true');
       });
     }
-    wechatModal.addEventListener('click', function (e) {
-      if (e.target === wechatModal) {
-        wechatModal.style.display = 'none';
-        wechatModal.setAttribute('aria-hidden', 'true');
+    modal.addEventListener('click', function (e) {
+      if (e.target === modal) {
+        modal.style.display = 'none';
+        modal.setAttribute('aria-hidden', 'true');
       }
     });
   }
+
+  bindModal('wechat-icon',   'wechatModal');
+  bindModal('whatsapp-icon', 'whatsappModal');
 });
 </script>
 
