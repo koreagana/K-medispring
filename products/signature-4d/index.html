@@ -184,24 +184,27 @@ select {
 
 .lang-switch {
   position: fixed;
-  top: 68px;
+  top: 20px;
   right: 24px;
   z-index: 9999;
 }
 
 .lang-switch a {
-  background: #4E97D1;
+  background: #1a5fa8;
   color: #fff;
-  padding: 8px 14px;
-  border-radius: 8px;
-  font-size: 13px;
+  padding: 10px 20px;
+  border-radius: 10px;
+  font-size: 20px;
   text-decoration: none;
-  font-weight: 600;
+  font-weight: 700;
   display: inline-block;
+  box-shadow: 0 3px 12px rgba(26, 95, 168, 0.35);
+  letter-spacing: 0.03em;
+  transition: background 0.2s;
 }
 
 .lang-switch a:hover {
-  background: #397db4;
+  background: #124986;
 }
 
 @media (max-width: 768px) {
@@ -255,10 +258,6 @@ select {
     </li>
   </ul>
 </header>
-
-<div class="lang-switch">
-  <a href="https://kmedispring.com/products/products/signature-4d-cn/">中文</a>
-</div>
 
 <div class="container">
 
@@ -712,6 +711,10 @@ updatePlan();
   </div>
 
 </div><!-- #wrapper -->
+
+<div class="lang-switch">
+  <a href="https://kmedispring.com/products/products/signature-4d-cn/">汉语</a>
+</div>
 
 <div id="wechatModal" class="modal" aria-hidden="true" role="dialog">
   <div class="modal-inner">
